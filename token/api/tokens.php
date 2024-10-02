@@ -17,14 +17,14 @@ function dataWalletProfile($domain, $address = null)
 }
 
 if ($address != null) {
-    $active_domains = selectList("select `domain` from addresses where `address` = '$address' "
+    $active_domains = selectList("select `domain` from accounts where `address` = '$address' "
         . " and `domain` like '$search_text%'"
     );
     foreach ($active_domains as $domain)
         $response[active][] = dataWalletProfile($domain, $address);
 
-    $domains = selectList("select distinct `domain` from addresses "
-        . " where `domain` not in (select `domain` from addresses where `address` = '$address') "
+    $domains = selectList("select distinct `domain` from accounts "
+        . " where `domain` not in (select `domain` from accounts where `address` = '$address') "
         . " and `domain` like '$search_text%'"
         . " limit 0, 20");
     foreach ($domains as $domain)
@@ -34,7 +34,7 @@ if ($address != null) {
         return -strcmp($a[balance] * $a[price], $b[balance] * $b[price]);
     });
 } else {
-    $domains = selectList("select distinct `domain` from addresses"
+    $domains = selectList("select distinct `domain` from accounts"
         . " where `domain` like '$search_text%'"
         . " limit 0, 20");
     foreach ($domains as $domain)
