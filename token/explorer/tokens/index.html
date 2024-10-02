@@ -1,0 +1,54 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body class="row" ng-app="App" ng-controller="Controller">
+<div class="col p16">
+    <input type="text"
+           class="input ripple radius24"
+           autocapitalize="off"
+           autocomplete="off"
+           ng-model="search_domain"
+           placeholder="Find any domain"
+           style="padding-left: 34px">
+    <div class="col pv8 ripple"
+         ng-repeat="coin in searchCoins"
+         ng-click="selectDomain(coin)">
+        <div class="row pv8 align-start-center">
+            <img class="img32" src="{{genLogo(coin.logo)}}">
+            <div class="col flex ml8">
+                <p class="size16 bold uppercase medium">{{coin.domain}}</p>
+                <p class="size12 gray400-text">{{coin.owner}}</p>
+            </div>
+        </div>
+        <div class="divider"></div>
+    </div>
+</div>
+<div class="flex col input-content">
+    <ng-include src="'/mfm-wallet/options/profile.html'"></ng-include>
+</div>
+
+<script src="/angular/angular.js"></script>
+<script src="/angular-aria/angular-aria.js"></script>
+<script src="/angular-animate/angular-animate.js"></script>
+<script src="/angular-messages/angular-messages.js"></script>
+<script src="/angular-material/angular-material.js"></script>
+<link href="/angular-material/angular-material.min.css" rel="stylesheet">
+<script src="/angular-material/angular-material.min.js"></script>
+
+<link href="/angular-flex-short/flex.css" rel="stylesheet">
+<link href="/angular-flex-short/shorts.css" rel="stylesheet">
+<link href="/angular-flex-short/colors.css" rel="stylesheet">
+<link href="/angular-flex-short/colors-dark.css" rel="stylesheet">
+<link href="../style.css" rel="stylesheet">
+
+<script src="/mfm-wallet/utils/formats.js"></script>
+<script src="/mfm-wallet/utils/backend.js"></script>
+<script src="/mfm-wallet/utils/ui.js"></script>
+
+<script src="controller.js"></script>
+<script>
+    controller(main)
+</script>
+<script async src="/mfm-wallet/dialogs/pin/controller.js"></script>
+</body>
