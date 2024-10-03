@@ -39,11 +39,7 @@ function openSendDialog(domain, to_address, amount, success) {
             }
 
             $scope.getMax = function () {
-                if (domain == wallet.gas_domain) {
-                    return Math.round(Math.max(0, $scope.token.balance - $scope.gas_recommended), 2)
-                } else {
-                    return $scope.token.balance
-                }
+                return $scope.token.balance
             }
 
             $scope.setMax = function () {

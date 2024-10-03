@@ -33,5 +33,14 @@ function uploadContent($domain, $filepath, $local_path)
 }
 
 
+function installApp($domain, $app_domain)
+{
+    postWithGas("/mfm-wallet/store/api/archive.php", [domain => $app_domain]);
+    postWithGas("/mfm-wallet/store/api/install.php", [
+        domain => $domain,
+        app_domain => $app_domain,
+    ]);
+}
+
 
 
