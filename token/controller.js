@@ -141,10 +141,6 @@ function addTokens($scope) {
         openCraft(recipe, init)
     }
 
-    $scope.openWorld = function () {
-        window.open("/mfm-world", '_blank').focus();
-    }
-
     function init() {
         $scope.setMode($scope.mode)
     }

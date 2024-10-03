@@ -124,11 +124,6 @@ function addFormats($scope) {
         return $scope.round(number, 0) + "%";
     }
 
-    $scope.formatTicker = function (ticker) {
-        return ticker.toUpperCase()
-    }
-
-
     $scope.back = function (result) {
         window.$mdBottomSheet.hide(result)
     }

@@ -23,21 +23,21 @@ if ($address != null) {
     foreach ($active_domains as $domain)
         $response[active][] = dataWalletProfile($domain, $address);
 
-    $domains = selectList("select distinct `domain` from accounts "
+    $rec_domains = selectList("select distinct `domain` from accounts "
         . " where `domain` not in (select `domain` from accounts where `address` = '$address') "
         . " and `domain` like '$search_text%'"
         . " limit 0, 20");
-    foreach ($domains as $domain)
+    foreach ($rec_domains as $domain)
         $response[recs][] = dataWalletProfile($domain, $address);
 
     usort($response[active], function ($a, $b) {
         return -strcmp($a[balance] * $a[price], $b[balance] * $b[price]);
     });
 } else {
-    $domains = selectList("select distinct `domain` from accounts"
+    $rec_domains = selectList("select distinct `domain` from accounts"
         . " where `domain` like '$search_text%'"
         . " limit 0, 20");
-    foreach ($domains as $domain)
+    foreach ($rec_domains as $domain)
         $response[recs][] = dataWalletProfile($domain, $address);
 }
 

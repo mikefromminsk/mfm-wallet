@@ -45,7 +45,7 @@ function addChart($scope, key) {
     $scope.period_name = '1M'
     $scope.setPeriod = function (period_name) {
         $scope.period_name = period_name
-        postContract("data", "candles.php", {
+        postContract("mfm-data", "candles.php", {
             key: key,
             period_name: period_name,
         }, function (response) {

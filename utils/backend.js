@@ -77,7 +77,7 @@ function postContract(domain, path, params, success, error) {
 }
 
 function dataObject(path, success, error) {
-    postContract("data", "object.php", {
+    postContract("mfm-data", "object.php", {
         path: path,
     }, (response) => {
         if (success)
@@ -86,7 +86,7 @@ function dataObject(path, success, error) {
 }
 
 function dataGet(path, success, error) {
-    postContract("data", "get.php", {
+    postContract("mfm-data", "get.php", {
         path: path,
     }, function (response) {
         if (success)
@@ -95,7 +95,7 @@ function dataGet(path, success, error) {
 }
 
 function dataInfo(path, success, error) {
-    postContract("data", "info.php", {
+    postContract("mfm-data", "info.php", {
         path: path,
     }, function (response) {
         if (success)
