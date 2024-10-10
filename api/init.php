@@ -4,8 +4,8 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/mfm-token/utils.php";
 
 onlyInDebug();
 
-$address = get_required(address);
-$password = get_required(password);
+$address = get_required(wallet_admin_address);
+$password = get_required(wallet_admin_password);
 
 requestEquals("/mfm-token/init.php", [
     address => $address,

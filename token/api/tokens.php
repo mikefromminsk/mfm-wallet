@@ -1,5 +1,5 @@
 <?php
-include_once $_SERVER["DOCUMENT_ROOT"] . "/mfm-wallet/api/utils.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/mfm-wallet/api/utils.php";
 
 $address = get_string(address);
 $search_text = get_string(search_text);
