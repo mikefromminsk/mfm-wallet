@@ -1,6 +1,6 @@
 {
     "name": "mfm-wallet",
-    "version": "1.1.26",
+    "version": "1.1.27",
     "author": "x29a100@gmail.com",
     "dependencies": {
         "angular": "^1.8.3",
@@ -8,8 +8,9 @@
         "angular-aria": "^1.8.3",
         "angular-material": "^1.2.5",
         "angular-messages": "^1.8.3",
-        "angular-flex-short": "latest",
+        "mfm-flex": "latest",
         "mfm-token": "latest",
+        "mfm-telegram": "latest",
         "mfm-angular-template": "latest",
         "mfm-root": "latest",
         "mfm-exchange": "latest"

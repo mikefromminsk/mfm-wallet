@@ -4,6 +4,14 @@ function main($scope, $http, $mdBottomSheet, $mdDialog, $mdToast) {
     window.$mdBottomSheet = $mdBottomSheet
     window.$mdDialog = $mdDialog
 
+    function setIcon(){
+        var link = document.createElement('link');
+        link.rel = 'icon';
+        link.href = DEBUG ? 'logo-debug.png' : 'logo.png';
+        document.head.appendChild(link);
+    }
+    setIcon()
+
     addTokens($scope)
 
     if (getParam("bonus") != null) {

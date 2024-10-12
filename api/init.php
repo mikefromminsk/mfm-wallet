@@ -8,9 +8,10 @@ $address = get_required(wallet_admin_address);
 $password = get_required(wallet_admin_password);
 
 requestEquals("/mfm-token/init.php", [
-    address => $address,
-    password => $password
+    wallet_admin_address => $address,
+    wallet_admin_password => $password
 ]);
+
 
 function launchList($tokens, $address, $password)
 {
