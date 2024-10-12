@@ -25,7 +25,6 @@ if ($address != null) {
     foreach ($rec_domains as $domain)
         if (!in_array($domain, $active_domains))
             $response[recs][] = dataWalletProfile($domain, $address);
-
     usort($response[active], function ($a, $b) {
         return -strcmp($a[balance] * $a[price], $b[balance] * $b[price]);
     });

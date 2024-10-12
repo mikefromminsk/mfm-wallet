@@ -33,4 +33,11 @@ $tokens = [
 
 launchList($tokens, $address, $password);
 
-commit();
+//test track events
+
+/*requestEquals("/mfm-telegram/api/send.php", [
+    bot => "mytoken_space_bot",
+    username => "mikefromminsk",
+    message => "hello",
+    telegram_bot_api_token => "7225199013:AAFffFm4qv8FU2JZzuN1cuttWyihhVUNB7E",
+]);*/

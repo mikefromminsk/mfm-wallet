@@ -53,14 +53,16 @@ function openLogin(success) {
             })
 
             function setPin() {
-                let userData = window.Telegram.WebApp.initDataUnsafe
-                if (userData.user != null) {
-                    postContract("telegram", "api/connect.php", {
-                        address: $scope.username,
-                        username: userData.user.username,
-                    })
+                if (window.Telegram != null) {
+                    let userData = window.Telegram.WebApp.initDataUnsafe
+                    if (userData.user != null) {
+                        postContract("mfm-telegram", "api/link_address.php", {
+                            bot: getParam("bot"),
+                            address: $scope.username,
+                            username: userData.user.username,
+                        })
+                    }
                 }
-
                 getPin(function (pin) {
                     storage.setString(storageKeys.username, $scope.username)
                     storage.setString(storageKeys.passhash, encode($scope.password, pin))
