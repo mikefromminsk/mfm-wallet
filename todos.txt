@@ -1,3 +1,5 @@
+сделать терминал оплаты как wechat
+
 встроить servers в mfm-servers npm package
 
 по нажатию на enter в окне send отправлять транзакцию
