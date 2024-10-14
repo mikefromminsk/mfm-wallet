@@ -13,6 +13,7 @@
         "mfm-telegram": "latest",
         "mfm-angular-template": "latest",
         "mfm-root": "latest",
+        "mfm-mining": "latest",
         "mfm-exchange": "latest"
     }
 }

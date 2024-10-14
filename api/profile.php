@@ -13,10 +13,10 @@ $tran = tokenFirstTran($domain);
 $token[created] = $tran[time];
 $token[total] = $tran[amount];
 $token[owner] = $tran[to];
-$token[circulation] = $tran[amount] - tokenAddressBalance($domain, $token[owner]);
+$token[circulation] = $tran[amount] - tokenBalance($domain, $token[owner]);
 
 $token[description] = dataGet([wallet, info, $domain, description]);
-$token[balance] = tokenAddressBalance($domain, $address);
+$token[balance] = tokenBalance($domain, $address);
 $token[price] = getCandleLastValue($domain . _price);
 $token[price24] = getCandleChange24($domain . _price);
 $token[trans] = getCandleLastValue($domain . _trans);
