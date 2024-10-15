@@ -5,15 +5,29 @@ function openTokenSettings(domain, success) {
             addFormats($scope)
             $scope.DEBUG = DEBUG
 
-            $scope.getLogo = function () {
-                if ($scope.logo == null)
-                    return "wallet/token/logo/img/" + domain + ".svg"
+            $scope.domain = domain
 
+            $scope.getLogoOrGen = function () {
+                if ($scope.logo == null)
+                    return "https://storage.mytoken.space/" + domain + ".png"
                 let canvas = document.createElement("canvas")
                 canvas.width = 32
                 canvas.height = 32
                 drawLogo(canvas.getContext("2d"), $scope.logo)
                 return canvas.toDataURL()
+            }
+
+            $scope.uploadLogo = function () {
+                selectFile(function (file) {
+                    post("https://storage.mytoken.space/upload_file.php", {
+                        filename: domain + ".png",
+                        file: file,
+                    }, function () {
+                        showSuccess("Logo uploaded successfully", function () {
+                            $scope.close("success")
+                        })
+                    })
+                }, ".png")
             }
 
             $scope.generate = async function () {
@@ -50,22 +64,19 @@ function openTokenSettings(domain, success) {
                 return context
             }
 
-            function genSvg(logo) {
-                if (logo == null) return ""
-                var ctx = new C2S(32, 32);
-                drawLogo(ctx, logo)
-                return ctx.getSerializedSvg(); //true here, if you need to convert named to numbered entities.
-            }
-
             $scope.saveLogo = function () {
-                postContract("mfm-wallet", "store/api/upload_file.php", {
-                    filename: "/mfm-wallet/token/logo/img/" + domain + ".svg",
-                    file: genSvg($scope.logo),
-                }, function () {
-                    showSuccess("Logo uploaded successfully", function () {
-                        $scope.close("success")
+                if ($scope.logo != null) {
+                    post("https://storage.mytoken.space/upload_file.php", {
+                        filename: domain + ".png",
+                        file: dataURLtoFile($scope.getLogoOrGen(), "logo.png"),
+                    }, function () {
+                        showSuccess("Logo uploaded successfully", function () {
+                            $scope.close("success")
+                        })
                     })
-                })
+                } else {
+                    $scope.close("success")
+                }
             }
 
             function init() {
@@ -73,6 +84,10 @@ function openTokenSettings(domain, success) {
                     $scope.profile = response
                     $scope.$apply()
                 })
+            }
+
+            window.imgError = function () {
+                $scope.generate()
             }
 
             init()

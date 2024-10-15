@@ -18,19 +18,13 @@ function openTokenProfile(domain, success) {
 
             checkFavorite()
 
-            function checkSiteExist(domain) {
-                var xhr = new XMLHttpRequest();
-                xhr.open("GET", "/" + domain + "/index.html", true);
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState === XMLHttpRequest.DONE) {
-                        $scope.siteExist = xhr.status === 200;
-                        $scope.$apply()
-                    }
-                }
-                xhr.send(null);
-            }
-
-            checkSiteExist(domain)
+            /*checkFileExist("/" + domain + "/index.html", function () {
+                $scope.siteExist = true
+                $scope.$apply()
+            }, function () {
+                $scope.siteExist = false
+                $scope.$apply()
+            })*/
 
             $scope.toggleFavorite = function () {
                 $rootScope.addFavorite(domain, function () {

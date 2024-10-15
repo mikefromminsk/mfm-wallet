@@ -1,17 +1,24 @@
 <md-dialog class="col fill">
     <div class="row header align-start-center gray100-back">
         <img class="ripple" src="/mfm-wallet/img/back.svg" ng-click="close()">
-        <p class="flex">Logo</p>
+        <p class="flex">{{formatTicker(domain)}} logo</p>
     </div>
     <div class="flex col content">
         <div class="flex col input-content align-center-center">
             <div class="col align-center-center gap16">
-                <div class="row">
-                    <img class="radius24" src="{{getLogo()}}"
-                         style="width: 100px; height: 100px"
+                <div class="col">
+                    <div class="button"
                          ng-click="uploadLogo()">
+                        Upload
+                    </div>
                 </div>
-                <div class="col gap16">
+                <div class="row">
+                    <img class="radius24"
+                         src="{{getLogoOrGen()}}"
+                         style="width: 100px; height: 100px"
+                         onerror="imgError(this)">
+                </div>
+                <div class="col">
                     <div class="button" ng-click="generate()">
                         Generate
                     </div>

@@ -213,23 +213,7 @@ function addFormats($scope) {
             'min-height': width + 'px',
         }
         if (domain != null){
-            img['background-image'] =  "url('/mfm-wallet/token/logo/img/" + domain + ".svg')"
-            img['background-size'] = '100% 100%'
-        }
-        return img
-    }
-
-    $scope.getTexture = function (domain, width) {
-        if (width == null)
-            width = 32
-        var img = {
-            'width': width + 'px',
-            'height': width + 'px',
-            'min-width': width + 'px',
-            'min-height': width + 'px',
-        }
-        if (domain != null){
-            img['background-image'] =  "url('/mfm-world/assets/block/" + domain + ".png')"
+            img['background-image'] =  "url('https://storage.mytoken.space/" + domain + ".png')"
             img['background-size'] = '100% 100%'
         }
         return img

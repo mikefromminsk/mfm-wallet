@@ -102,7 +102,7 @@ function addTokens($scope) {
             }
         });
 
-    subscribe("place", function (data) {
+    subscribe("price", function (data) {
         function updateTokens(tokenList, domain, price) {
             if (tokenList != null)
                 for (let token of tokenList) {
