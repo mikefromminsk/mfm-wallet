@@ -1,6 +1,6 @@
 <?php
 
-include_once $_SERVER["DOCUMENT_ROOT"] . "/mfm-data/utils.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/mfm-token/utils.php";
 
 onlyInDebug();
 
@@ -8,7 +8,7 @@ $address = get_required(wallet_admin_address);
 $password = get_required(wallet_admin_password);
 $token = get_config_required(mytoken_space_bot_token);
 
-requestEquals("/mfm-token/init.php", [
+requestEquals("/mfm-data/init.php", [
     wallet_admin_address => $address,
     wallet_admin_password => $password
 ]);
