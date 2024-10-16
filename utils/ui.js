@@ -3,7 +3,13 @@ function controller(callback) {
     app.config(function ($mdThemingProvider) {
         $mdThemingProvider.disableTheming();
     })
-    app.controller("Controller", callback)
+    app.controller("Controller", function ($scope, $mdBottomSheet, $mdDialog, $mdToast) {
+        addFormats($scope)
+        window.$mdToast = $mdToast
+        window.$mdBottomSheet = $mdBottomSheet
+        window.$mdDialog = $mdDialog
+        callback($scope)
+    })
 }
 
 function showDialog(templateUrl, onClose, controller) {
@@ -20,6 +26,22 @@ function showDialog(templateUrl, onClose, controller) {
             onClose(result)
     })
 }
+
+function showBottomSheet(templateUrl, onClose, controller) {
+    window.$mdBottomSheet.show({
+        templateUrl: templateUrl,
+        escapeToClose: false,
+        multiple: true,
+        controller: function ($scope) {
+            addFormats($scope)
+            controller($scope)
+        }
+    }).then(function (result) {
+        if (onClose)
+            onClose(result)
+    })
+}
+
 
 function selectFile(success, accept) {
     var input = document.createElement('input')

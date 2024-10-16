@@ -1,5 +1,8 @@
 
 
+
+удалить вызов conntroller(main)
+test unsubscribe in bottomsheet
 мультиокна при диалогах
 отписаться от сокетов когда выходишь с экрана
 

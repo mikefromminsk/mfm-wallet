@@ -228,13 +228,16 @@ input::placeholder {
 
 
 .footer_background {
+    min-height: 1000px;
     background: radial-gradient(43.65% 30.04% at 100% 34.32%, rgba(25, 161, 102, .188) 0, rgba(25, 161, 102, 0) 96.22%), radial-gradient(54.83% 54.7% at 4.44% 100%, rgba(53, 101, 229, .3) 0, rgba(53, 101, 229, 0) 100%), radial-gradient(69.52% 87.02% at 97.18% 100%, rgba(8, 150, 252, .4) 0, rgba(53, 101, 229, 0) 100%), #13151a;
 }
 
 .footer_up_background {
+    min-height: 1000px;
     background: radial-gradient(47.62% 93.46% at 64.87% 2.03%, rgba(156, 38, 80, .45) 0, rgba(156, 38, 80, 0) 100%), #13151a;
 }
 
 .header_background {
+    min-height: 1000px;
     background: radial-gradient(154.16% 36.43% at 46.78% 100%, rgba(52, 170, 255, .4) 0, rgba(0, 102, 255, .132) 52.6%, rgba(0, 102, 255, 0) 100%), radial-gradient(74.9% 52.95% at 75.44% 1.97%, rgba(156, 38, 80, .45) 0, rgba(156, 38, 80, 0) 100%), radial-gradient(179.13% 86.27% at 94.11% 1.87%, rgba(53, 101, 229, .75) 0, rgba(53, 101, 229, .133) 73.12%, rgba(53, 101, 229, 0) 100%), radial-gradient(47.31% 33.89% at 35.7% 100%, rgba(53, 101, 229, .4) 0, rgba(53, 101, 229, 0) 100%), radial-gradient(33.07% 52.27% at 37.24% 100%, #24314f 0, rgba(36, 49, 79, 0) 100%), #0f1115;
 }

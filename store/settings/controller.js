@@ -1,7 +1,5 @@
 function openAppSettings(domain, success) {
-    window.$mdDialog.show({
-        templateUrl: '/mfm-wallet/store/settings/index.html',
-        controller: function ($scope) {
+    showDialog('/mfm-wallet/store/settings/index.html', success, function ($scope) {
             addFormats($scope)
 
             $scope.title = ""
@@ -63,9 +61,5 @@ function openAppSettings(domain, success) {
             }
 
             init()
-        }
-    }).then(function () {
-        if (success)
-            success()
     })
 }

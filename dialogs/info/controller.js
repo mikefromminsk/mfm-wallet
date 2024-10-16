@@ -1,13 +1,6 @@
 function showInfoDialog(message, success) {
-    window.$mdBottomSheet.show({
-        templateUrl: '/mfm-wallet/dialogs/info/index.html',
-        controller: function ($scope) {
-            addFormats($scope)
-            $scope.message = message
-        }
-    }).then(function () {
-        if (success)
-            success()
+    showBottomSheet('/mfm-wallet/dialogs/info/index.html', success, function ($scope) {
+        $scope.message = message
     })
 }
 

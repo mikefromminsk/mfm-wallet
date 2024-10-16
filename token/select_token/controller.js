@@ -1,7 +1,5 @@
 function openSelectToken(success) {
-    window.$mdBottomSheet.show({
-        templateUrl: '/mfm-wallet/token/select_token/index.html',
-        controller: function ($scope) {
+    showBottomSheet('/mfm-wallet/token/select_token/index.html', success, function ($scope) {
             addFormats($scope)
 
             postContract("mfm-wallet", "token/api/tokens.php", {
@@ -9,9 +7,5 @@ function openSelectToken(success) {
             }, (response) => {
                 $scope.activeTokens = response.active
             })
-        }
-    }).then(function (scene) {
-        if (success)
-            success(scene)
     })
 }

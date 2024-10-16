@@ -1,7 +1,5 @@
 function openLaunchDialog(domain, success) {
-    window.$mdDialog.show({
-        templateUrl: "/mfm-wallet/token/launch/index.html",
-        controller: function ($scope) {
+    showDialog("/mfm-wallet/token/launch/index.html", success, function ($scope) {
             addFormats($scope)
             $scope.domain = domain
             $scope.amount = 1000000
@@ -78,9 +76,5 @@ function openLaunchDialog(domain, success) {
             }
 
 
-        }
-    }).then(function () {
-        if (success)
-            success()
     })
 }

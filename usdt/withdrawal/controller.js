@@ -1,7 +1,5 @@
 function openWithdrawal(success) {
-    window.$mdBottomSheet.show({
-        templateUrl: '/mfm-wallet/usdt/withdrawal/index.html',
-        controller: function ($scope) {
+    showBottomSheet('/mfm-wallet/usdt/withdrawal/index.html', success, function ($scope) {
             addFormats($scope)
 
             $scope.withdrawal_address = ""
@@ -64,8 +62,5 @@ function openWithdrawal(success) {
             init()
         }
 
-    }).then(function () {
-        if (success)
-            success()
-    })
+    )
 }

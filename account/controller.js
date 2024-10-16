@@ -1,7 +1,5 @@
 function openAccount(success) {
-    window.$mdDialog.show({
-        templateUrl: '/mfm-wallet/account/index.html',
-        controller: function ($scope) {
+    showDialog('/mfm-wallet/account/index.html', success, function ($scope) {
             addFormats($scope)
             $scope.model = storage.getString("model", window.navigator.userAgent)
 
@@ -26,9 +24,5 @@ function openAccount(success) {
                 showSuccess("Username copied")
             }
 
-        }
-    }).then(function () {
-        if (success)
-            success()
     })
 }

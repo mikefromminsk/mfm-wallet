@@ -71,15 +71,9 @@ function addChart($scope, key) {
 }
 
 function openChart(key, success) {
-    window.$mdBottomSheet.show({
-        templateUrl: '/mfm-wallet/dialogs/chart/index.html',
-        controller: function ($scope) {
+    showBottomSheet('/mfm-wallet/dialogs/chart/index.html', success, function ($scope) {
             $scope.key = key
             addFormats($scope)
             addChart($scope, key)
-        }
-    }).then(function () {
-        if (success)
-            success()
     })
 }

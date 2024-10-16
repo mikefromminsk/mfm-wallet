@@ -1,7 +1,5 @@
 function openTran(domain, txid, success) {
-    window.$mdBottomSheet.show({
-        templateUrl: '/mfm-wallet/token/trans/tran/index.html',
-        controller: function ($scope) {
+    showBottomSheet('/mfm-wallet/token/trans/tran/index.html', success, function ($scope) {
             addFormats($scope)
             $scope.domain = domain
             $scope.username = wallet.address()
@@ -21,9 +19,5 @@ function openTran(domain, txid, success) {
             $scope.getTxLink = function (txid) {
                 return location.origin + "/explorer?domain=" + domain + "&txid=" + txid
             }
-        }
-    }).then(function () {
-        if (success)
-            success()
     })
 }

@@ -1,8 +1,4 @@
-function main($scope, $http, $mdBottomSheet, $mdDialog, $mdToast) {
-    addFormats($scope)
-    window.$mdToast = $mdToast
-    window.$mdBottomSheet = $mdBottomSheet
-    window.$mdDialog = $mdDialog
+function main($scope) {
 
     function setIcon(){
         var link = document.createElement('link');
