@@ -1,23 +1,21 @@
-function openTran(domain, txid, success) {
+function openTran(next_hash, success) {
     showBottomSheet('/mfm-wallet/token/trans/tran/index.html', success, function ($scope) {
             addFormats($scope)
-            $scope.domain = domain
-            $scope.username = wallet.address()
 
-            post("/mfm-wallet/api/tran.php", {
-                domain: domain,
-                txid: txid,
+            post("/mfm-token/tran.php", {
+                next_hash: next_hash,
             }, function (response) {
-                $scope.tran = response
+                $scope.tran = response.tran
+                $scope.$apply()
             })
 
-            $scope.copy = function (txid) {
+            /*$scope.copy = function (txid) {
                 $scope.copyText(txid)
                 showSuccess("TxId copied")
             }
 
             $scope.getTxLink = function (txid) {
-                return location.origin + "/explorer?domain=" + domain + "&txid=" + txid
-            }
+                return location.origin + "/explorer?domain=" + $scope.tran[domain] + "&txid=" + txid
+            }*/
     })
 }

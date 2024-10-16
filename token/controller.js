@@ -92,17 +92,17 @@ function addTokens($scope) {
         regAddress(domain, init)
     }
 
-        subscribe("transactions", function (data) {
-            if (data.to == wallet.address()) {
-                showSuccess("You received " + $scope.formatAmount(data.amount, data.domain))
-                setTimeout(function () {
-                    new Audio("/mfm-wallet/dialogs/success/payment_success.mp3").play()
-                })
-                tokens("")
-            }
-        });
+    $scope.subscribe("transactions", function (data) {
+        if (data.to == wallet.address()) {
+            showSuccess("You received " + $scope.formatAmount(data.amount, data.domain))
+            setTimeout(function () {
+                new Audio("/mfm-wallet/dialogs/success/payment_success.mp3").play()
+            })
+            tokens("")
+        }
+    })
 
-    subscribe("price", function (data) {
+    $scope.subscribe("price", function (data) {
         function updateTokens(tokenList, domain, price) {
             if (tokenList != null)
                 for (let token of tokenList) {
@@ -116,7 +116,7 @@ function addTokens($scope) {
 
         updateTokens($scope.activeTokens, data.domain, data.price)
         updateTokens($scope.recTokens, data.domain, data.price)
-    });
+    })
 
     $scope.mode = "tokens"
     $scope.setMode = function (mode) {

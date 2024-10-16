@@ -10,7 +10,7 @@ function addTransactions($scope) {
     }
 
     $scope.openTran = function (tran) {
-        openTran(tran.domain, tran.txid)
+        openTran(tran.next_hash)
     }
 
     loadTrans()

@@ -11,8 +11,8 @@ function main($scope) {
             $scope.$apply()
             if (getParam("domain")) {
                 $scope.selectDomain($scope.searchCoins[0])
-                if (getParam("txid"))
-                    openTran($scope.selectedToken, getParam("txid"))
+                if (getParam("next_hash"))
+                    openTran(getParam("next_hash")) //!!!! next_hash
             }
         })
     })
@@ -33,10 +33,10 @@ function main($scope) {
     }
 
     $scope.openTran = function (tran) {
-        openTran(tran.domain, tran.txid)
+        openTran(tran.next_hash)
     }
 
     $scope.searchTran = function () {
-        openTran($scope.selectedToken, $scope.searchTxid)
+        openTran($scope.next_hash)
     }
 }

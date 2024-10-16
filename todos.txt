@@ -1,6 +1,10 @@
 
 
 
+dapps установка внутри профиля
+transactions как сообщения -20 это мои +20 это аппонент
+addresses аналитика в профиле не рабоатет
+отдельный токен профиль для usdt
 удалить вызов conntroller(main)
 test unsubscribe in bottomsheet
 мультиокна при диалогах

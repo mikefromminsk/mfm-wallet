@@ -3,11 +3,11 @@
         <p class="regular">Transactions</p>
     </div>
 </div>
-<div class="col content align-start-center scroll" ng-hide="in_progress">
-    <div class="col block ph16">
+<div class="flex col content align-start-center scroll" ng-hide="in_progress">
+    <div class="col block ph16 header_background">
         <div ng-repeat="tran in trans"
-             class="col nowrap">
-            <div class="row size10 gray400-text">{{tran.day}}</div>
+             class="col nowrap mt16">
+            <div class="row size10 gray400-text align-center">{{tran.day}}</div>
             <div class="row align-start-center radius10 gray100-back p8 mt8"
                  ng-repeat="item in tran.items"
                  ng-click="openTran(item)">
