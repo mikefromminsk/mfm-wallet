@@ -6,6 +6,21 @@ function controller(callback) {
     app.controller("Controller", callback)
 }
 
+function showDialog(templateUrl, onClose, controller) {
+    window.$mdDialog.show({
+        templateUrl: templateUrl,
+        escapeToClose: false,
+        multiple: true,
+        controller: function ($scope) {
+            addFormats($scope)
+            controller($scope)
+        }
+    }).then(function (result) {
+        if (onClose)
+            onClose(result)
+    })
+}
+
 function selectFile(success, accept) {
     var input = document.createElement('input')
     input.type = 'file'
@@ -26,7 +41,7 @@ function dataURLtoFile(dataurl, filename) {
     while (n--) {
         u8arr[n] = bstr.charCodeAt(n);
     }
-    return new File([u8arr], filename, { type: mime });
+    return new File([u8arr], filename, {type: mime});
 }
 
 function objectToForm(data) {

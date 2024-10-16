@@ -5,9 +5,24 @@ var subscriptions = {}
 function subscribe(channel, callback) {
     if (subscriptions[channel] == null)
         subscriptions[channel] = []
-    subscriptions[channel].push(callback)
+    let subscribe_id = randomString(6)
+    subscriptions[channel].push({
+        subscribe_id: subscribe_id,
+        callback: callback,
+    })
     if (window.conn != null && window.conn.readyState === 1 && subscriptions[channel].length == 1)
-        window.conn.send(JSON.stringify({channel: channel}))
+        window.conn.send(JSON.stringify({subscribe: channel}))
+    return subscribe_id
+}
+
+function unsubscribe(subscribe_id) {
+    for (let channel in subscriptions) {
+        subscriptions[channel] = subscriptions[channel].filter(subscription => subscription.subscribe_id !== subscribe_id);
+        if (subscriptions[channel].length === 0) {
+            window.conn.send(JSON.stringify({unsubscribe: channel}))
+            delete subscriptions[channel];
+        }
+    }
 }
 
 function connectWs() {
@@ -23,8 +38,8 @@ function connectWs() {
         }
         window.conn.onmessage = function (evt) {
             var message = JSON.parse(evt.data)
-            for (let callback of subscriptions[message.channel]) {
-                callback(message.data)
+            for (let subscription of subscriptions[message.channel]) {
+                subscription.callback(message.data)
             }
         }
     }
@@ -208,7 +223,7 @@ var wallet = {
 
             function checkNextRequest(afterCallback) {
                 var nextRequest = wallet.requestQueue.shift()
-                if (nextRequest != null){
+                if (nextRequest != null) {
                     wallet.postContractWithGas(
                         nextRequest.domain,
                         nextRequest.path,

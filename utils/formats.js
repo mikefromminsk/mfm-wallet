@@ -9,6 +9,8 @@ function addFormats($scope) {
         var result
         if (number >= 1000000000)
             result = numberFormat.format($scope.round(number / 1000000, 2)) + "M"
+        else if (number >= 1000)
+            result = numberFormat.format($scope.round(number, 0))
         else
             result = numberFormat.format($scope.round(number, 4))
         return result
@@ -57,15 +59,20 @@ function addFormats($scope) {
     $scope.formatTicker = function (domain) {
         return (domain || "").toUpperCase()
     }
-    $scope.formatPercent = function (number) {
-        if (number == null)
-            number = 0;
-        number = $scope.round(number, 1)
+    $scope.formatChange = function (number, precision) {
+        number = $scope.formatPercent(number, precision)
+        if (number > 0)
+            number = "+" + number;
+        return number;
+    }
+
+    $scope.formatPercent = function (number, precision) {
+        number = $scope.round(number, precision || precision)
         if (number == 0) return "0%";
         if (number < 0)
-            return "-" + number + "%";
+            return number + "%";
         else if (number > 0)
-            return "+" + number + "%";
+            return number + "%";
     }
 
     $scope.percentColor = function (number) {
@@ -124,13 +131,26 @@ function addFormats($scope) {
         return $scope.round(number, 0) + "%";
     }
 
+    $scope.subscription_id_list = []
+    $scope.subscribe = function (channel, callback) {
+        $scope.subscription_id_list.push(subscribe(channel, callback))
+    }
+
+    $scope.unsubscribeAll = function () {
+        for (let subscription_id of $scope.subscription_id_list) {
+            unsubscribe(subscription_id)
+        }
+    }
+
     $scope.back = function (result) {
         window.$mdBottomSheet.hide(result)
+        $scope.unsubscribeAll()
     }
 
     $scope.close = function (result) {
         window.$mdBottomSheet.hide(result)
         window.$mdDialog.hide(result)
+        $scope.unsubscribeAll()
     }
 
     $scope.random = function (from, to) {

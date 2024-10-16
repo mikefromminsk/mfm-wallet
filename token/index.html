@@ -28,7 +28,7 @@
         </div>
     </div>
 </div>
-<div class="col content align-start-center scroll">
+<div class="col content align-start-center scroll footer_background">
     <div class="col block">
 
         <div class="col" ng-show="!searchMode">
@@ -92,7 +92,7 @@
                     <div class="col align-end-end">
                         <p>{{formatPrice(token.price)}}</p>
                         <p class="size10 mt4" ng-class="percentColor(token.price24)">
-                            {{formatPercent(token.price24)}}
+                            {{formatChange(token.price24)}}
                         </p>
                     </div>
                     <div class="col align-end-end" style="min-width: 80px">
@@ -118,7 +118,7 @@
                     <div class="col align-end-end">
                         <p>{{formatPrice(token.price)}}</p>
                         <p class="size10 mt4" ng-class="percentColor(token.price24hChange)">
-                            {{formatPercent(token.price24hChange)}}
+                            {{formatChange(token.price24hChange)}}
                         </p>
                     </div>
                     <div class="row align-end" style="min-width: 80px">
@@ -149,7 +149,7 @@
                     <div class="col align-end-end">
                         <p>{{formatPrice(token.price)}}</p>
                         <p class="size10 mt4" ng-class="percentColor(token.price24)">
-                            {{formatPercent(token.price24)}}
+                            {{formatChange(token.price24)}}
                         </p>
                     </div>
                     <div class="col align-end-end" style="min-width: 80px">
