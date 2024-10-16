@@ -74,6 +74,16 @@
                  ng-click="setMode('recipes')">
                 recipes
             </div>
+            <div class="ml8"
+                 ng-class="{'bold': mode == 'mining'}"
+                 ng-click="setMode('mining')">
+                mining
+            </div>
+            <div class="ml8"
+                 ng-class="{'bold': mode == 'staking'}"
+                 ng-click="setMode('staking')">
+                staking
+            </div>
         </div>
         <div class="col" ng-show="mode == 'tokens'">
             <div class="row mh16 mt16 gray400-text" ng-show="activeTokens.length > 1">

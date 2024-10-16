@@ -1,6 +1,6 @@
 <?php
 include_once $_SERVER["DOCUMENT_ROOT"] . "/mfm-wallet/api/utils.php";
-include_once $_SERVER["DOCUMENT_ROOT"] . "/mfm-data/track.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/mfm-analytics/utils.php";
 
 $domain = get_required(domain);
 $address = get_string(address);

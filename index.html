@@ -64,19 +64,19 @@
         <div class="flex col pv8 align-start-center ripple" ng-click="selectTab(0)">
             <img class="img18" src="/mfm-wallet/img/wallet.svg"
                  ng-class="{'img-black': selectedIndex == 0, 'img-gray300': selectedIndex != 0}">
-            <p class="mt8 size10 "
+            <p class="mt8 size12 "
                ng-class="{'black-text': selectedIndex == 0, 'gray300-text': selectedIndex != 0}">Wallet</p>
         </div>
         <div class="flex col pv8 align-center-center ripple" ng-click="selectTab(1)">
             <img class="img18" src="/mfm-wallet/img/store.svg"
                  ng-class="{'img-black': selectedIndex == 1, 'img-gray300': selectedIndex != 1}">
-            <p class="mt8 size10"
+            <p class="mt8 size12"
                ng-class="{'black-text': selectedIndex == 1, 'gray300-text': selectedIndex != 1}">Apps</p>
         </div>
         <div class="flex col pv8 align-center-center ripple" ng-click="selectTab(2)" ng-show="wallet.address()">
             <img class="img18" src="/mfm-wallet/img/transactions.svg"
                  ng-class="{'img-black': selectedIndex == 2, 'img-gray300': selectedIndex != 2}">
-            <p class="mt8 size10"
+            <p class="mt8 size12"
                ng-class="{'black-text': selectedIndex == 2, 'gray300-text': selectedIndex != 2}">Transactions</p>
         </div>
         <div class="flex col align-center-center" ng-click="newCoin()" ng-show="wallet.address()">

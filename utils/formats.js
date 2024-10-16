@@ -60,14 +60,14 @@ function addFormats($scope) {
         return (domain || "").toUpperCase()
     }
     $scope.formatChange = function (number, precision) {
-        number = $scope.formatPercent(number, precision)
+        let str = $scope.formatPercent(number, precision)
         if (number > 0)
-            number = "+" + number;
-        return number;
+            str = "+" + str;
+        return str;
     }
 
     $scope.formatPercent = function (number, precision) {
-        number = $scope.round(number, precision || precision)
+        number = $scope.round(number, precision || 1)
         if (number == 0) return "0%";
         if (number < 0)
             return number + "%";
