@@ -59,21 +59,21 @@ background-repeat: repeat-x;; height: 1px"></div>
                     </div>
                     <div class="divider"></div>
                     <div class="row mt8">
-                        <p class="flex">Gas</p>
-                        <p class="nowrap">{{formatAmount(tran.gas, wallet.gas_domain)}}</p>
+                        <p class="flex">Fee</p>
+                        <p class="nowrap">{{formatAmount(tran.fee)}}</p>
                     </div>
                     <div class="divider"></div>
                     <!--@SerializedName("valueUSD")
                     @SerializedName("direction")
                     fee
                     -->
-                    <div class="row mt8">
+                    <!--<div class="row mt8">
                         <p class="flex">TxId</p>
                         <div class="row">
                             <a class="nowrap" href="{{getTxLink(tran.txid)}}" target="_blank">{{formatHash(tran.txid)}}</a>
                             <img class="img16 ml4 ripple img-white" src="/mfm-wallet/img/copy.svg" ng-click="copy(tran.txid)">
                         </div>
-                    </div>
+                    </div>-->
                 </div>
             </div>
 

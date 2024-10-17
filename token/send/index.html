@@ -30,8 +30,9 @@
                         <p>MAX {{formatAmount(getMax())}}</p>
                     </div>
                 </div>
-                <div class="mt8 row nowrap">
-                    <p>Net commission: {{formatAmount(gas_recommended, wallet.gas_domain)}}</p>
+                <div class="mt8 col nowrap">
+                    <p>Fee: {{formatPercent(token.fee, 2)}}</p>
+                    <p class="mt4">Receiver get: {{formatAmount(round((amount || 0) * ((100 - token.fee) / 100), 2), domain)}}</p>
                 </div>
             </div>
         </div>

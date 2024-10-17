@@ -14,6 +14,8 @@ $token[created] = $tran[time];
 $token[total] = $tran[amount];
 $token[owner] = $tran[to];
 $token[circulation] = $tran[amount] - tokenBalance($domain, $token[owner]);
+$token[circulation_percent] = $token[circulation] / $tran[amount] * 100;
+$token[fee] = 100 - $token[circulation_percent];
 
 $token[description] = dataGet([wallet, info, $domain, description]);
 $token[balance] = tokenBalance($domain, $address);

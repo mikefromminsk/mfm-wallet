@@ -105,7 +105,12 @@
                     <div class="divider"></div>
                     <div class="row mt4">
                         <p class="flex">Circulation supply</p>
-                        <p>{{formatPercent(token.circulation / token.total, 4)}}</p>
+                        <p>{{formatPercent(token.circulation_percent, 4)}}</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="row mt4">
+                        <p class="flex">Fee</p>
+                        <p>{{formatPercent(token.fee, 4)}}</p>
                     </div>
                     <div class="divider"></div>
                     <div class="row mt4">
