@@ -92,31 +92,34 @@ function addTokens($scope) {
         regAddress(domain, init)
     }
 
-    $scope.subscribe("transactions", function (data) {
-        if (data.to == wallet.address()) {
-            showSuccess("You received " + $scope.formatAmount(data.amount, data.domain))
-            setTimeout(function () {
-                new Audio("/mfm-wallet/dialogs/success/payment_success.mp3").play()
-            })
-            tokens("")
-        }
-    })
+    setTimeout(() => {
+        $scope.subscribe("transactions", function (data) {
+            if (data.to == wallet.address()) {
+                showSuccess("You received " + $scope.formatAmount(data.amount, data.domain))
+                setTimeout(function () {
+                    new Audio("/mfm-wallet/dialogs/success/payment_success.mp3").play()
+                })
+                tokens("")
+            }
+        })
 
-    $scope.subscribe("price", function (data) {
-        function updateTokens(tokenList, domain, price) {
-            if (tokenList != null)
-                for (let token of tokenList) {
-                    if (token.domain == domain) {
-                        token.price = price
-                        $scope.$apply()
-                        break;
+        $scope.subscribe("price", function (data) {
+            function updateTokens(tokenList, domain, price) {
+                if (tokenList != null)
+                    for (let token of tokenList) {
+                        if (token.domain == domain) {
+                            token.price = price
+                            $scope.$apply()
+                            break;
+                        }
                     }
-                }
-        }
+            }
 
-        updateTokens($scope.activeTokens, data.domain, data.price)
-        updateTokens($scope.recTokens, data.domain, data.price)
-    })
+            updateTokens($scope.activeTokens, data.domain, data.price)
+            updateTokens($scope.recTokens, data.domain, data.price)
+        })
+    }, 1000)
+
 
     $scope.mode = "tokens"
     $scope.setMode = function (mode) {

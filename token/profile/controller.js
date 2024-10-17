@@ -76,7 +76,7 @@ function openTokenProfile(domain, success) {
 
         addChart($scope, domain + "_price")
 
-        $scope.subscribe("place", function (data) {
+        $scope.subscribe("price", function (data) {
             if (data.domain == domain) {
                 $scope.token.price = data.price
                 $scope.updateChart()
