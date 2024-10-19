@@ -12,9 +12,6 @@ function openSendDialog(domain, to_address, amount, success) {
         }
 
         $scope.send = function () {
-            if (!$scope.to_address || !$scope.amount) {
-                return
-            }
             getPin(function (pin) {
                 calcPass(domain, pin, function (pass) {
                     postContract("mfm-token", "send.php", {
@@ -22,7 +19,7 @@ function openSendDialog(domain, to_address, amount, success) {
                         from_address: wallet.address(),
                         to_address: $scope.to_address,
                         pass: pass,
-                        amount: $scope.amount,
+                        amount: $scope.getTotal(),
                     }, function () {
                         showSuccessDialog("Sent " + $scope.formatAmount($scope.amount, domain) + " success", success)
                     }, function (message) {
@@ -37,11 +34,15 @@ function openSendDialog(domain, to_address, amount, success) {
         }
 
         $scope.getMax = function () {
-            return $scope.token.balance
+            return $scope.round($scope.token.balance / (1 + $scope.token.fee / 100) * 100, 2)
         }
 
         $scope.setMax = function () {
             $scope.amount = $scope.getMax()
+        }
+
+        $scope.getTotal = function () {
+            return $scope.round(($scope.amount || 0) * (1 + $scope.token.fee / 100), 2)
         }
 
         function init() {

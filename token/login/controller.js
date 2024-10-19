@@ -3,8 +3,7 @@ function openLogin(success) {
         if (success) success()
         return
     }
-    showDialog('/mfm-wallet/token/login/index.html', success, function ($scope) {
-        addFormats($scope)
+    showBottomSheet('/mfm-wallet/token/login/index.html', success, function ($scope) {
         $scope.username = ""
         if (DEBUG) {
             $scope.username = "admin"

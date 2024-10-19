@@ -28,140 +28,142 @@
         </div>
     </div>
 </div>
-<div class="col content align-start-center scroll">
-    <div class="col block footer_background">
+<div class="col content scroll">
+    <div class="col align-start-center footer_background">
+        <div class="col block ">
 
-        <div class="col" ng-show="!searchMode">
-            <div class="col" ng-hide="wallet.address()">
-                <div class="col align-start-center mt16" ng-click="login()">
-                    <p class="size20 bold">Welcome to mytoken.space!</p>
-                    <p class="size16 mt16">Here you can create your own token.</p>
-                </div>
-                <div class="row mh16 mt16" ng-click="login()">
-                    <div class="flex primary-button">
-                        Login or Create account
+            <div class="col" ng-show="!searchMode">
+                <div class="col" ng-hide="wallet.address()">
+                    <div class="col align-start-center mt16" ng-click="login()">
+                        <p class="size20 bold">Welcome to mytoken.space!</p>
+                        <p class="size16 mt16">Here you can create your own token.</p>
                     </div>
-                </div>
-            </div>
-
-            <div class="col" ng-show="wallet.address()">
-                <div class="row mt16 mh16 align-start-end">
-                    <div class="flex col">
-                        <p class="size10">Total balance</p>
-                        <div class="mt4 row align-start-center size32 bold">
-                            {{formatPrice(getTotalBalance())}}
+                    <div class="row mh16 mt16" ng-click="login()">
+                        <div class="flex primary-button">
+                            Login or Create account
                         </div>
                     </div>
-                    <div class="ripple radius10 black-back white-text size14 pv8 ph16 mb4"
-                         style="border: var(--black) solid 2px;"
-                         ng-click="openDeposit()">
-                        Deposit
-                    </div>
-                    <div class="button-gray p8 ml4 mb4" ng-click="openWithdrawal()">
-                        <img class="img14 img-black" src="/mfm-wallet/img/upload.svg">
+                </div>
+
+                <div class="col" ng-show="wallet.address()">
+                    <div class="row mt16 mh16 align-start-end">
+                        <div class="flex col">
+                            <p class="size10">Total balance</p>
+                            <div class="mt4 row align-start-center size32 bold">
+                                {{formatPrice(getTotalBalance())}}
+                            </div>
+                        </div>
+                        <div class="ripple radius10 black-back white-text size14 pv8 ph16 mb4"
+                             style="border: var(--black) solid 2px;"
+                             ng-click="openDeposit()">
+                            Deposit
+                        </div>
+                        <div class="button-gray p8 ml4 mb4" ng-click="openWithdrawal()">
+                            <img class="img14 img-black" src="/mfm-wallet/img/upload.svg">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row mt8 pv8 gray300-back">
-            <div class="ml16"
-                 ng-class="{'bold': mode == 'tokens'}"
-                 ng-click="setMode('tokens')">
-                Tokens
+            <div class="row mt8 pv8 gray300-back">
+                <div class="ml16"
+                     ng-class="{'bold': mode == 'tokens'}"
+                     ng-click="setMode('tokens')">
+                    Tokens
+                </div>
+                <div class="ml8"
+                     ng-class="{'bold': mode == 'recipes'}"
+                     ng-click="setMode('recipes')">
+                    recipes
+                </div>
+                <div class="ml8"
+                     ng-class="{'bold': mode == 'mining'}"
+                     ng-click="setMode('mining')">
+                    mining
+                </div>
+                <div class="ml8"
+                     ng-class="{'bold': mode == 'staking'}"
+                     ng-click="setMode('staking')">
+                    staking
+                </div>
             </div>
-            <div class="ml8"
-                 ng-class="{'bold': mode == 'recipes'}"
-                 ng-click="setMode('recipes')">
-                recipes
-            </div>
-            <div class="ml8"
-                 ng-class="{'bold': mode == 'mining'}"
-                 ng-click="setMode('mining')">
-                mining
-            </div>
-            <div class="ml8"
-                 ng-class="{'bold': mode == 'staking'}"
-                 ng-click="setMode('staking')">
-                staking
-            </div>
-        </div>
-        <div class="col" ng-show="mode == 'tokens'">
-            <div class="row mh16 mt16 gray400-text" ng-show="activeTokens.length > 1">
-                <p class="flex size10">Your tokens</p>
-                <p class="size10">Price</p>
-                <p class="size10 row align-end" style="min-width: 80px">Balance</p>
-            </div>
-            <div class="col" ng-repeat="token in activeTokens">
-                <div class="row ph16 pv8 align-start-center ripple"
+            <div class="col" ng-show="mode == 'tokens'">
+                <div class="row mh16 mt16 gray400-text" ng-show="activeTokens.length > 1">
+                    <p class="flex size10">Your tokens</p>
+                    <p class="size10">Price</p>
+                    <p class="size10 row align-end" style="min-width: 80px">Balance</p>
+                </div>
+                <div class="col" ng-repeat="token in activeTokens">
+                    <div class="row ph16 pv8 align-start-center ripple"
+                         ng-click="openTokenProfile(token.domain)">
+                        <div ng-style="getLogo(token.domain)"></div>
+                        <div class="col flex ml8">
+                            <p class="size16 uppercase medium">{{token.domain}}</p>
+                            <p class="size12 gray400-text">{{token.owner}}</p>
+                        </div>
+                        <div class="col align-end-end">
+                            <p>{{formatPrice(token.price)}}</p>
+                            <p class="size10 mt4" ng-class="percentColor(token.price24)">
+                                {{formatChange(token.price24)}}
+                            </p>
+                        </div>
+                        <div class="col align-end-end" style="min-width: 80px">
+                            <p>{{formatPrice(token.price * token.balance)}}</p>
+                            <p class="size10 mt4">{{formatAmount(token.balance)}}</p>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                </div>
+
+                <div class="mh16 mt16" ng-show="recTokens.length">
+                    <p class="size10 gray400-text">Recommended tokens</p>
+                </div>
+                <div class="col ripple"
+                     ng-repeat="token in recTokens"
                      ng-click="openTokenProfile(token.domain)">
-                    <div ng-style="getLogo(token.domain)"></div>
-                    <div class="col flex ml8">
-                        <p class="size16 uppercase medium">{{token.domain}}</p>
-                        <p class="size12 gray400-text">{{token.owner}}</p>
-                    </div>
-                    <div class="col align-end-end">
-                        <p>{{formatPrice(token.price)}}</p>
-                        <p class="size10 mt4" ng-class="percentColor(token.price24)">
-                            {{formatChange(token.price24)}}
-                        </p>
-                    </div>
-                    <div class="col align-end-end" style="min-width: 80px">
-                        <p>{{formatPrice(token.price * token.balance)}}</p>
-                        <p class="size10 mt4">{{formatAmount(token.balance)}}</p>
-                    </div>
-                </div>
-                <div class="divider"></div>
-            </div>
-
-            <div class="mh16 mt16" ng-show="recTokens.length">
-                <p class="size10 gray400-text">Recommended tokens</p>
-            </div>
-            <div class="col ripple"
-                 ng-repeat="token in recTokens"
-                 ng-click="openTokenProfile(token.domain)">
-                <div class="row pv8 ph16 align-start-center">
-                    <div ng-style="getLogo(token.domain)"></div>
-                    <div class="col flex ml8">
-                        <p class="size16 uppercase medium">{{token.domain}}</p>
-                        <p class="size12 gray400-text">{{token.owner}}</p>
-                    </div>
-                    <div class="col align-end-end">
-                        <p>{{formatPrice(token.price)}}</p>
-                        <p class="size10 mt4" ng-class="percentColor(token.price24hChange)">
-                            {{formatChange(token.price24hChange)}}
-                        </p>
-                    </div>
-                    <div class="row align-end" style="min-width: 80px">
-                        <div class="col ml8 align-center-center button-gray p8"
-                             ng-click="regAddress(token.domain); $event.stopPropagation()">
-                            Add
+                    <div class="row pv8 ph16 align-start-center">
+                        <div ng-style="getLogo(token.domain)"></div>
+                        <div class="col flex ml8">
+                            <p class="size16 uppercase medium">{{token.domain}}</p>
+                            <p class="size12 gray400-text">{{token.owner}}</p>
+                        </div>
+                        <div class="col align-end-end">
+                            <p>{{formatPrice(token.price)}}</p>
+                            <p class="size10 mt4" ng-class="percentColor(token.price24hChange)">
+                                {{formatChange(token.price24hChange)}}
+                            </p>
+                        </div>
+                        <div class="row align-end" style="min-width: 80px">
+                            <div class="col ml8 align-center-center button-gray p8"
+                                 ng-click="regAddress(token.domain); $event.stopPropagation()">
+                                Add
+                            </div>
                         </div>
                     </div>
+                    <div class="divider"></div>
                 </div>
-                <div class="divider"></div>
             </div>
-        </div>
-        <div class="col" ng-show="mode == 'recipes'">
-            <div class="col" ng-repeat="recipe in recipes">
-                <div class="row ph16 pv8 align-start-center ripple"
-                     ng-click="openCraft(recipe.domain)">
-                    <div ng-style="getLogo(recipe.domain)"></div>
-                    <div class="flex col  ml8">
-                        <p class="size16 uppercase medium">{{recipe.domain}}</p>
-                        <p class="size12 gray400-text">{{recipe.owner}}</p>
+            <div class="col" ng-show="mode == 'recipes'">
+                <div class="col" ng-repeat="recipe in recipes">
+                    <div class="row ph16 pv8 align-start-center ripple"
+                         ng-click="openCraft(recipe.domain)">
+                        <div ng-style="getLogo(recipe.domain)"></div>
+                        <div class="flex col  ml8">
+                            <p class="size16 uppercase medium">{{recipe.domain}}</p>
+                            <p class="size12 gray400-text">{{recipe.owner}}</p>
+                        </div>
+                        <div class="col align-end-end">
+                            <p>{{formatPrice(token.price)}}</p>
+                            <p class="size10 mt4" ng-class="percentColor(token.price24)">
+                                {{formatChange(token.price24)}}
+                            </p>
+                        </div>
+                        <div class="col align-end-end" style="min-width: 80px">
+                            <p>{{formatPrice(token.price * token.balance)}}</p>
+                            <p class="size10 mt4">{{formatAmount(token.balance)}}</p>
+                        </div>
                     </div>
-                    <div class="col align-end-end">
-                        <p>{{formatPrice(token.price)}}</p>
-                        <p class="size10 mt4" ng-class="percentColor(token.price24)">
-                            {{formatChange(token.price24)}}
-                        </p>
-                    </div>
-                    <div class="col align-end-end" style="min-width: 80px">
-                        <p>{{formatPrice(token.price * token.balance)}}</p>
-                        <p class="size10 mt4">{{formatAmount(token.balance)}}</p>
-                    </div>
+                    <div class="divider"></div>
                 </div>
-                <div class="divider"></div>
             </div>
         </div>
     </div>

@@ -32,13 +32,13 @@
                 </div>
                 <div class="mt8 col nowrap">
                     <p>Fee: {{formatPercent(token.fee, 2)}}</p>
-                    <p class="mt4">Receiver get: {{formatAmount(round((amount || 0) * ((100 - token.fee) / 100), 2), domain)}}</p>
+                    <p class="mt4">Amount with fee: {{formatAmount(getTotal(), domain)}}</p>
                 </div>
             </div>
         </div>
         <div class="row mh16 mv8">
             <button class="flex primary-button radius4" ng-click="send()"
-                    ng-disabled="!to_address || !amount">
+                    ng-disabled="!to_address || !amount || (token.balance < getTotal())">
                 Send
             </button>
         </div>
