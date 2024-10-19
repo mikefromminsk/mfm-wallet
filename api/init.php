@@ -25,11 +25,11 @@ function launchList($tokens, $address, $password)
 $tokens = [
     [domain => "rock"],
 
-    [domain => "oak_log"],
+/*    [domain => "oak_log"],
     [domain => "stone"],
     [domain => "chest", recipe => [
         "oak_log" => 8
-    ]],
+    ]],*/
 
 ];
 
