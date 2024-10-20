@@ -1,5 +1,5 @@
 function getProfile(domain, success, error) {
-    postContract("mfm-wallet", "api/profile.php", {
+    postContract("mfm-token", "profile.php", {
         domain: domain,
         address: wallet.address(),
     }, success, error)
@@ -23,13 +23,6 @@ function openTokenProfile(domain, success) {
 
         $scope.openMining = function () {
             openWeb(location.origin + "/mining/console?domain=" + domain, init)
-        }
-
-        $scope.openStore = function () {
-            $scope.close({
-                action: "store",
-                domain: domain
-            })
         }
 
         $scope.sell = function () {

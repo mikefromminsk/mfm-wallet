@@ -28,5 +28,7 @@ function main($scope) {
         }
     }
 
+    $scope.selectTab(1)
+
     connectWs();
 }

@@ -1,4 +1,4 @@
-
+telegram-web-app.js load only open in telegram (has bot parameter)
 
 рекомендации токенов строить по аналитике
 кнопка назад должна быть больше

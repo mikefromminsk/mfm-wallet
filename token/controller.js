@@ -31,15 +31,8 @@ function addTokens($scope) {
         openLogin(init)
     }
 
-    $scope.openTokenProfile = function (domain) {
-        openTokenProfile(domain, function (result) {
-            if (result && result.action == "store") {
-                $scope.selectedToken = domain
-                $scope.selectTab(1)
-            } else {
-                init()
-            }
-        })
+    $scope.selectToken = function (domain) {
+        openTokenProfile(domain, init)
     }
 
     $scope.openAccount = function () {

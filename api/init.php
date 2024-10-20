@@ -1,6 +1,7 @@
 <?php
 
 include_once $_SERVER["DOCUMENT_ROOT"] . "/mfm-token/utils.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/mfm-exchange/utils.php";
 
 onlyInDebug();
 
@@ -15,15 +16,30 @@ requestEquals("/mfm-data/init.php", [
 
 function launchList($tokens, $address, $password)
 {
+    $gas_domain = get_required(gas_domain);
     foreach ($tokens as $token) {
         $domain = $token[domain];
         $amount = $token[amount] ?: 1000000;
-        tokenAccountReg($domain, $address, $password, $amount);
+        tokenRegAccount($domain, $address, $password, $amount);
+        if (isset($token[bot])) {
+            foreach ($token[bot] as $strategy => $amount) {
+                $bot_address = "bot_" . $strategy . "_" . $domain;
+                botScriptReg($domain, $bot_address);
+                tokenSendAndCommit($domain, $address, $bot_address, $password, 100);
+                tokenSendAndCommit($gas_domain, $address, $bot_address, $password, 100);
+            }
+        }
+        if (isset($token[mining])) {
+            tokenRegScript($domain, mining, "mfm-mining/mint.php");
+            tokenSendAndCommit($domain, $address, mining, $password, $token[mining]);
+        }
     }
 }
 
 $tokens = [
-    [domain => "rock"],
+    [domain => "oak_log", bot => [spred => 100]],
+    [domain => "rock", mining => 1000000],
+    [domain => "mfm-mining"],
 
 /*    [domain => "oak_log"],
     [domain => "stone"],

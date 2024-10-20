@@ -18,7 +18,7 @@ function hasToken(domain, success, error) {
 
 function hasBalance(domain, success, error) {
     hasToken(domain, function (response) {
-        if (response.amount == null || response.amount == 0) {
+        if (response.balance == null || response.balance == 0) {
             showInfoDialog("You need to buy " + domain.toUpperCase() + " token", error)
         } else {
             if (success)

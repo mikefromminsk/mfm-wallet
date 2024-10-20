@@ -1,36 +1,30 @@
 function addStore($scope) {
 
-    $scope.openAppSettings = function () {
-        openAppSettings($scope.selectedToken, init)
-    }
-
-    $scope.openProfile = function (app) {
-        if (app.installed) {
-            openWeb(location.origin + "/" + app.domain + "?domain=" + $scope.selectedToken, init)
-        } else {
-            //openProfile(app)
+    $scope.openApp = function (app) {
+        if (app.domain == "mfm-mining") {
+            openSelectToken(function (token) {
+                openMining(token)
+            })
         }
-    }
-
-    $scope.installApp = function (app) {
-        postContractWithGas("wallet", "store/api/install.php", {
-            domain: $scope.selectedToken,
-            app_domain: app.domain,
-        }, function () {
-            showSuccess("Install success")
-        })
+        //openWeb(location.origin + "/" + app.domain + "?domain=" + $scope.selectedToken, init)
     }
 
     function loadApps() {
-        postContract("mfm-wallet", "store/api/apps.php", {
-            domain: $scope.selectedToken,
-        }, function (response) {
-            $scope.apps = response.apps || {}
-            $scope.$apply()
-        })
+        $scope.apps = {
+            "mfm-mining": {
+                title: "Mining",
+                domain: "mfm-mining",
+                description: "Earn MFM by mining",
+            },
+        }
     }
 
-    function init(){
+   setTimeout(function () {
+       if (DEBUG)
+           openMining("rock")
+   }, 300)
+
+    function init() {
         loadApps()
     }
 

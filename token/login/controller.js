@@ -21,7 +21,11 @@ function openLogin(success) {
                 address: $scope.username,
             }, function (response) {
                 $scope.in_progress = false
-                if (md5(wallet.calcHash(wallet.gas_domain, $scope.username, $scope.password, response.prev_key)) == response.next_hash) {
+                if (CryptoJS.MD5(wallet.calcHash(
+                    wallet.gas_domain,
+                    $scope.username,
+                    $scope.password,
+                    response.prev_key)).toString() == response.next_hash) {
                     setPin()
                 } else {
                     showError("password invalid")
@@ -33,7 +37,10 @@ function openLogin(success) {
                     from_address: "owner",
                     to_address: $scope.username,
                     amount: 0,
-                    pass: ":" + md5(wallet.calcHash(wallet.gas_domain, $scope.username, $scope.password))
+                    pass: ":" + CryptoJS.MD5(wallet.calcHash(
+                        wallet.gas_domain,
+                        $scope.username,
+                        $scope.password)).toString()
                 }, function () {
                     setPin()
                 })

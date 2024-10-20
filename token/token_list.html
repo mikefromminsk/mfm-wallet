@@ -1,0 +1,53 @@
+<div class="row mh16 mt16 gray400-text" ng-show="activeTokens.length > 1">
+    <p class="flex size10">Your tokens</p>
+    <p class="size10">Price</p>
+    <p class="size10 row align-end" style="min-width: 80px">Balance</p>
+</div>
+<div class="col" ng-repeat="token in activeTokens">
+    <div class="row ph16 pv8 align-start-center ripple"
+         ng-click="selectToken(token.domain)">
+        <div ng-style="getLogo(token.domain)"></div>
+        <div class="col flex ml8">
+            <p class="size16 uppercase medium">{{token.domain}}</p>
+            <p class="size12 gray400-text">{{token.owner}}</p>
+        </div>
+        <div class="col align-end-end">
+            <p>{{formatPrice(token.price)}}</p>
+            <p class="size10 mt4" ng-class="percentColor(token.price24)">
+                {{formatChange(token.price24)}}
+            </p>
+        </div>
+        <div class="col align-end-end" style="min-width: 80px">
+            <p>{{formatPrice(token.price * token.balance)}}</p>
+            <p class="size10 mt4">{{formatAmount(token.balance)}}</p>
+        </div>
+    </div>
+    <div class="divider"></div>
+</div>
+
+<div class="mh16 mt16" ng-show="recTokens.length">
+    <p class="size10 gray400-text">Recommended tokens</p>
+</div>
+<div class="col ripple"
+     ng-repeat="token in recTokens">
+    <div class="row pv8 ph16 align-start-center">
+        <div ng-style="getLogo(token.domain)"></div>
+        <div class="col flex ml8">
+            <p class="size16 uppercase medium">{{token.domain}}</p>
+            <p class="size12 gray400-text">{{token.owner}}</p>
+        </div>
+        <div class="col align-end-end">
+            <p>{{formatPrice(token.price)}}</p>
+            <p class="size10 mt4" ng-class="percentColor(token.price24hChange)">
+                {{formatChange(token.price24hChange)}}
+            </p>
+        </div>
+        <div class="row align-end" style="min-width: 80px">
+            <div class="col ml8 align-center-center button-gray p8"
+                 ng-click="regAddress(token.domain); $event.stopPropagation()">
+                Add
+            </div>
+        </div>
+    </div>
+    <div class="divider"></div>
+</div>
