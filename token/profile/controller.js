@@ -83,6 +83,7 @@ function openTokenProfile(domain, success) {
 
         function init() {
             loadProfile()
+            loadMarkdown("token-readme", "/mfm-token/readme.md")
         }
 
         init()

@@ -58,7 +58,7 @@ function addTokens($scope) {
     function tokens(search_text) {
         postContract("mfm-wallet", "token/api/tokens.php", {
             address: wallet.address(),
-            search_text: search_text,
+            search_text: search_text || "",
         }, function (response) {
             $scope.activeTokens = response.active
             $scope.recTokens = response.recs
@@ -92,7 +92,7 @@ function addTokens($scope) {
                 setTimeout(function () {
                     new Audio("/mfm-wallet/dialogs/success/payment_success.mp3").play()
                 })
-                tokens("")
+                tokens()
             }
         })
 
@@ -118,15 +118,15 @@ function addTokens($scope) {
     $scope.setMode = function (mode) {
         $scope.mode = mode
         if (mode == "tokens") {
-            tokens("")
+            tokens()
         } else if (mode == "recipes") {
-            recipes("")
+            recipes()
         }
     }
 
     $scope.recipes = {}
 
-    function recipes(search_text) {
+    function recipes() {
         post("/mfm-wallet/token/api/recepes.php", {}, function (response) {
             $scope.recipes = response.recipes
             $scope.$apply()
@@ -137,8 +137,13 @@ function addTokens($scope) {
         openCraft(recipe, init)
     }
 
+
+
+
     function init() {
         $scope.setMode($scope.mode)
+        loadMarkdown('markdown-container', "/mfm-wallet/readme.md")
+        tokens()
     }
 
     init()

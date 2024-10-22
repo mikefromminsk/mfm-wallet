@@ -14,7 +14,7 @@
              ng-show="token.owner == wallet.address()"
              ng-click="openTokenSettings()">
     </div>
-    <div class="flex col content scroll">
+    <div class="flex col content scroll pb16">
         <ng-include src="'/mfm-wallet/dialogs/chart/chart.html'"></ng-include>
         <div class="row scrollable-horizontal align-center-start">
             <div class="col align-start-center ripple"
@@ -111,13 +111,6 @@
                 </div>
             </div>
 
-            <div class="col mt16">
-                <p class="bold">Description</p>
-                <p class="mt8" style="white-space: normal;">
-                    {{formatTicker(token.domain)}} = это цифровой актив (сертификат), который представляет определенную
-                    стоимость, функционирует на основе блокчейна или другой децентрализованной сети и гарантирует
-                    обязательства компании перед его владельцем.</p>
-            </div>
             <!--<div class="row gap16 mv16">
                 <div class="button" ng-show="token.ui == 1" ng-click="openSite()">
                     Web site
@@ -129,6 +122,8 @@
                     Transactions
                 </div>
             </div>-->
+
+            <div class="nowrap-disabled" id="token-readme"></div>
         </div>
     </div>
     <div class="col mb16 align-start-center p4" ng-show="token.domain != wallet.gas_domain">

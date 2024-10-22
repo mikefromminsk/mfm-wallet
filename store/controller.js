@@ -19,11 +19,6 @@ function addStore($scope) {
         }
     }
 
-   setTimeout(function () {
-       if (DEBUG)
-           openMining("rock")
-   }, 300)
-
     function init() {
         loadApps()
     }

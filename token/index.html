@@ -6,7 +6,7 @@
             </div>
             <p class="size20 bold regular">SPACE</p>
         </div>
-        <div class="row" ng-show="searchMode">
+        <div class="flex row" ng-show="searchMode">
             <div class="row flex input-wrapper ml16">
                 <img class="img20 img-gray200"
                      style="position: absolute; left: 8px; top: 11px"
@@ -30,8 +30,7 @@
 </div>
 <div class="col content scroll">
     <div class="col align-start-center footer_background">
-        <div class="col block ">
-
+        <div class="col block pb16">
             <div class="col" ng-show="!searchMode">
                 <div class="col" ng-hide="wallet.address()">
                     <div class="col align-start-center mt16" ng-click="login()">
@@ -112,6 +111,7 @@
                     <div class="divider"></div>
                 </div>
             </div>
+            <div class="mh16 nowrap-disabled" id="markdown-container"></div>
         </div>
     </div>
 </div>

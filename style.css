@@ -241,3 +241,10 @@ input::placeholder {
     min-height: 1200px;
     background: radial-gradient(154.16% 36.43% at 46.78% 100%, rgba(52, 170, 255, .4) 0, rgba(0, 102, 255, .132) 52.6%, rgba(0, 102, 255, 0) 100%), radial-gradient(74.9% 52.95% at 75.44% 1.97%, rgba(156, 38, 80, .45) 0, rgba(156, 38, 80, 0) 100%), radial-gradient(179.13% 86.27% at 94.11% 1.87%, rgba(53, 101, 229, .75) 0, rgba(53, 101, 229, .133) 73.12%, rgba(53, 101, 229, 0) 100%), radial-gradient(47.31% 33.89% at 35.7% 100%, rgba(53, 101, 229, .4) 0, rgba(53, 101, 229, 0) 100%), radial-gradient(33.07% 52.27% at 37.24% 100%, #24314f 0, rgba(36, 49, 79, 0) 100%), #0f1115;
 }
+
+
+pre.hljs{
+    display: block;
+    overflow-x: auto;
+    padding: 16px;
+}
