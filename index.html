@@ -58,9 +58,10 @@
         <ng-include class="flex col" src="'/mfm-wallet/token/trans/index.html'"></ng-include>
     </md-tab>
 </md-tabs>
-<div class="row gray100-back pr16 align-center-start">
+<div class="row pr16 align-center-start fill-width blur-black-back"
+     style="position: absolute; bottom: 0;">
     <div class="row block">
-        <div class="flex col pv8 align-start-center ripple" ng-click="selectTab(0)">
+        <div class="flex col pv8 align-start-center" ng-click="selectTab(0)">
             <img class="img18" src="/mfm-wallet/img/wallet.svg"
                  ng-class="{'img-black': selectedIndex == 0, 'img-gray300': selectedIndex != 0}">
             <p class="mt8 size12 "
