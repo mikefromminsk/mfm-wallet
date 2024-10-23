@@ -31,7 +31,8 @@ function addTokens($scope) {
         openLogin(init)
     }
 
-    $scope.selectToken = function (domain) {
+    $scope.selectToken = function ($event, domain) {
+        window.angularEvent = $event
         openTokenProfile(domain, init)
     }
 
@@ -39,7 +40,8 @@ function addTokens($scope) {
         openAccount(init)
     }
 
-    $scope.newCoin = function () {
+    $scope.newCoin = function ($event) {
+        window.angularEvent = $event
         openLaunchDialog($scope.search_text, init)
     }
 

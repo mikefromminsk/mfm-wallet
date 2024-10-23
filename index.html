@@ -79,7 +79,7 @@
             <p class="mt8 size12"
                ng-class="{'black-text': selectedIndex == 2, 'gray300-text': selectedIndex != 2}">Transactions</p>
         </div>
-        <div class="flex col align-center-center" ng-click="newCoin()" ng-show="wallet.address()">
+        <div class="flex col align-center-center" ng-click="newCoin($event)" ng-show="wallet.address()">
             <div class="col radius24 accent-back pv8 align-center-center ripple" style="width: 100px">
                 <p class="bold">New coin</p>
             </div>
@@ -157,6 +157,6 @@
 <script async src="/mfm-exchange/exchange/settings/controller.js"></script>
 <script async src="/mfm-exchange/bot/spred/settings/controller.js"></script>
 <script async src="/mfm-exchange/old/pump/settings/controller.js"></script>
-<script async src="/mfm-exchange/balances/controller.js"></script>
+<script async src="/mfm-exchange/old/balances/controller.js"></script>
 </body>
 </html>
