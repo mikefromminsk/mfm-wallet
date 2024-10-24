@@ -263,3 +263,33 @@ pre.hljs{
     overflow-x: auto;
     padding: 16px;
 }
+
+.styled-checkbox {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #ccc;
+    border-radius: 5px;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+}
+
+.styled-checkbox:checked {
+    background-color: var(--accent);
+}
+
+.styled-checkbox:checked:before {
+    content: "";
+    position: absolute;
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}

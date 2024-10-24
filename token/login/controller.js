@@ -5,11 +5,15 @@ function openLogin(success) {
     }
     showBottomSheet('/mfm-wallet/token/login/index.html', success, function ($scope) {
         $scope.username = ""
+        $scope.agree_with_terms_and_condition = false
         if (DEBUG) {
             $scope.username = "admin"
             $scope.password = "pass"
         }
 
+        $scope.toggleTerms = function () {
+            $scope.agree_with_terms_and_condition = !$scope.agree_with_terms_and_condition
+        }
         // TODO validation
         $scope.login = function () {
             if (!$scope.username || !$scope.password) {

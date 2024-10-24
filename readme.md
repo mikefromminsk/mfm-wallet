@@ -18,3 +18,8 @@ $address = '0x1234567890abcdef';
 $balance = getBalance($address);
 echo "Balance: $balance";
 ```
+
+## References
+- [Term and conditions](https://mytoken.space/mfm-angular-template/docs/?path=/mfm-wallet/docs/terms_and_conditions.md)
+- [GitHub repository](https://github.com/mikefromminsk/mfm-wallet)
+- [NPM repository](https://www.npmjs.com/package/mfm-wallet)

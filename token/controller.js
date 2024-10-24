@@ -143,7 +143,7 @@ function addTokens($scope) {
 
     function init() {
         $scope.setMode($scope.mode)
-       // loadMarkdown('markdown-container', "/mfm-wallet/readme.md")
+        loadMarkdown('markdown-container', "/mfm-wallet/readme.md")
         tokens()
     }
 

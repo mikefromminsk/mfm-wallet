@@ -49,12 +49,6 @@ function connectWs() {
     }
 }
 
-function getParam(paramName) {
-    var uri = window.location.search.substring(1)
-    var params = new URLSearchParams(uri)
-    return params.get(paramName)
-}
-
 function randomString(length) {
     let result = '';
     const characters = 'abcdefghijklmnopqrstuvwxyz';
