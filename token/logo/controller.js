@@ -15,6 +15,17 @@ function openTokenSettings(domain, success) {
             return canvas.toDataURL()
         }
 
+        function selectFile(success, accept) {
+            var input = document.createElement('input')
+            input.type = 'file'
+            input.accept = accept || "*/*"
+            input.onchange = e => {
+                if (success != null)
+                    success(e.target.files[0])
+            }
+            input.click()
+        }
+
         $scope.uploadLogo = function () {
             selectFile(function (file) {
                 post("https://storage.mytoken.space/upload_file.php", {
@@ -60,6 +71,18 @@ function openTokenSettings(domain, success) {
                     context.stroke()
                 }
             return context
+        }
+
+        function dataURLtoFile(dataurl, filename) {
+            var arr = dataurl.split(","),
+                mime = arr[0].match(/:(.*?);/)[1],
+                bstr = atob(arr[arr.length - 1]),
+                n = bstr.length,
+                u8arr = new Uint8Array(n);
+            while (n--) {
+                u8arr[n] = bstr.charCodeAt(n);
+            }
+            return new File([u8arr], filename, {type: mime});
         }
 
         $scope.saveLogo = function () {

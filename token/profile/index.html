@@ -111,17 +111,14 @@
                 </div>
             </div>
 
-            <!--<div class="row gap16 mv16">
-                <div class="button" ng-show="token.ui == 1" ng-click="openSite()">
-                    Web site
-                </div>
-                <a class="button" ng-show="wallet" href="/explorer?domain={{token.domain}}" target="_blank">
+            <div class="row gap16 mv16">
+                <a class="button" href="/explorer?domain={{token.domain}}" target="_blank">
                     Explorer
                 </a>
-                <div class="button" ng-show="wallet" ng-click="openSite()">
-                    Transactions
-                </div>
-            </div>-->
+                <a class="button" href="/mfm-token/docs?domain={{token.domain}}" target="_blank">
+                    Api
+                </a>
+            </div>
 
             <div class="nowrap-disabled" id="token-readme"></div>
         </div>

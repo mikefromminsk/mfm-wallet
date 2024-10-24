@@ -31,8 +31,7 @@ function addTokens($scope) {
         openLogin(init)
     }
 
-    $scope.selectToken = function ($event, domain) {
-        window.angularEvent = $event
+    $scope.selectToken = function (domain) {
         openTokenProfile(domain, init)
     }
 
@@ -144,7 +143,7 @@ function addTokens($scope) {
 
     function init() {
         $scope.setMode($scope.mode)
-        loadMarkdown('markdown-container', "/mfm-wallet/readme.md")
+       // loadMarkdown('markdown-container', "/mfm-wallet/readme.md")
         tokens()
     }
 
