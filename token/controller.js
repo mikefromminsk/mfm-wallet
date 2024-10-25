@@ -1,16 +1,17 @@
 function regAddress(domain, success) {
     getPin(function (pin) {
         calcPass(domain, pin, function (pass) {
-            postContract("mfm-token", "send.php", {
-                domain: domain,
-                from_address: "owner",
-                to_address: wallet.address(),
-                amount: 0,
-                pass: pass
-            }, function () {
-                if (success)
-                    success()
-            })
+            if (pass[0] != ":") {
+                if (success) success()
+            } else {
+                postContract("mfm-token", "send.php", {
+                    domain: domain,
+                    from_address: "owner",
+                    to_address: wallet.address(),
+                    amount: 0,
+                    pass: pass
+                }, success)
+            }
         })
     })
 }
@@ -89,10 +90,12 @@ function addTokens($scope) {
     setTimeout(() => {
         $scope.subscribe("transactions", function (data) {
             if (data.to == wallet.address()) {
-                showSuccess("You received " + $scope.formatAmount(data.amount, data.domain))
-                setTimeout(function () {
-                    new Audio("/mfm-wallet/dialogs/success/payment_success.mp3").play()
-                })
+                if (data.amount != 0) {
+                    showSuccess("You have received " + $scope.formatAmount(data.amount, data.domain))
+                    setTimeout(function () {
+                        new Audio("/mfm-wallet/dialogs/success/payment_success.mp3").play()
+                    })
+                }
                 tokens()
             }
         })

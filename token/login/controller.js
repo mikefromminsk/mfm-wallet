@@ -12,14 +12,15 @@ function openLogin(success) {
             $scope.agree_with_terms_and_condition = true
         }
 
+        setTimeout(function () {
+            document.getElementById('login_address').focus();
+        }, 500)
+
         $scope.toggleTerms = function () {
             $scope.agree_with_terms_and_condition = !$scope.agree_with_terms_and_condition
         }
         // TODO validation
         $scope.login = function () {
-            if (!$scope.username || !$scope.password) {
-                return
-            }
             $scope.in_progress = true
             postContract("mfm-token", "account.php", {
                 domain: wallet.gas_domain,
