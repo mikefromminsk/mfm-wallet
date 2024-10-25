@@ -3,8 +3,8 @@
 
 
 
-
-
+использовать логин телеграма по умолчанию в логине и генерировать пароль случайным образом и отправлять в чат как секретные данные
+You have received 0 сообщение поменять на вы добавили токен в wallet
 
 
 telegram-web-app.js load only open in telegram (has bot parameter)

@@ -134,16 +134,11 @@ function addTokens($scope) {
         })
     }
 
-    $scope.openCraft2 = function (recipe) {
-        openCraft(recipe, init)
-    }
-
-
-
-
     function init() {
         $scope.setMode($scope.mode)
-        loadMarkdown('markdown-container', "/mfm-wallet/readme.md")
+        get("/mfm-wallet/readme.md", function (text) {
+            setMarkdown("markdown-container", text)
+        })
         tokens()
     }
 

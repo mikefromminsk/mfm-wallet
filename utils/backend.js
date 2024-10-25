@@ -61,6 +61,18 @@ function randomString(length) {
     return result;
 }
 
+async function get(url, success, error) {
+    try {
+        const response = await fetch(url);
+        const text = await response.text();
+        if (success)
+            success(text);
+    } catch (e) {
+        if (error)
+            error(e)
+    }
+}
+
 function post(url, params, success, error) {
     const xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);

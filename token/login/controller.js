@@ -9,6 +9,7 @@ function openLogin(success) {
         if (DEBUG) {
             $scope.username = "admin"
             $scope.password = "pass"
+            $scope.agree_with_terms_and_condition = true
         }
 
         $scope.toggleTerms = function () {

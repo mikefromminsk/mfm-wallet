@@ -29,7 +29,8 @@
     <p class="size10 gray400-text">Recommended tokens</p>
 </div>
 <div class="col ripple"
-     ng-repeat="token in recTokens">
+     ng-repeat="token in recTokens"
+     ng-click="selectToken(token.domain)">
     <div class="row pv8 ph16 align-start-center">
         <div ng-style="getLogo(token.domain)"></div>
         <div class="col flex ml8">
