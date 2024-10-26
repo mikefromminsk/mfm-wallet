@@ -12,14 +12,20 @@ function hasToken(domain, success, error) {
         if (success)
             success(response)
     }, function () {
-        showInfoDialog("You need to add " + domain.toUpperCase() + " token", error)
+        if (error)
+            error()
+        else
+            showInfoDialog("You need to add " + domain.toUpperCase() + " token")
     })
 }
 
 function hasBalance(domain, success, error) {
     hasToken(domain, function (response) {
         if (response.balance == null || response.balance == 0) {
-            showInfoDialog("You need to buy " + domain.toUpperCase() + " token", error)
+            if (error)
+                error()
+            else
+                showInfoDialog("You need to buy " + domain.toUpperCase() + " token")
         } else {
             if (success)
                 success()

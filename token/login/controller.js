@@ -19,7 +19,7 @@ function openLogin(success) {
         $scope.toggleTerms = function () {
             $scope.agree_with_terms_and_condition = !$scope.agree_with_terms_and_condition
         }
-        // TODO validation
+
         $scope.login = function () {
             $scope.in_progress = true
             postContract("mfm-token", "account.php", {

@@ -30,11 +30,13 @@ function openTokenProfile(domain, success) {
         }
 
         $scope.buy = function () {
-            openExchange(domain, 0, init)
-        }
-
-        $scope.share = function () {
-            openShare(domain, success)
+            hasBalance(wallet.gas_domain, function () {
+                openExchange(domain, 0, init)
+            }, function () {
+                openCredit(function () {
+                    openExchange(domain, 0, init)
+                })
+            })
         }
 
         $scope.openDeposit = function () {
