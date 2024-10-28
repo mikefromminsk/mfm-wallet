@@ -24,13 +24,13 @@ function launchList($tokens, $address, $password)
             foreach ($token[bot] as $strategy => $amount) {
                 $bot_address = "bot_" . $strategy . "_" . $domain;
                 botScriptReg($domain, $bot_address);
-                tokenSendAndCommit($domain, $address, $bot_address, $password, 100);
-                tokenSendAndCommit($gas_domain, $address, $bot_address, $password, 100);
+                tokenSendAndCommit($domain, $address, $bot_address, 100, $password);
+                tokenSendAndCommit($gas_domain, $address, $bot_address, 100, $password);
             }
         }
         if (isset($token[mining])) {
             tokenRegScript($domain, mining, "mfm-mining/mint.php");
-            tokenSendAndCommit($domain, $address, mining, $password, $token[mining]);
+            tokenSendAndCommit($domain, $address, mining, $token[mining], $password);
         }
     }
 }
@@ -55,6 +55,13 @@ requestEquals("/mfm-exchange/init.php", [
     wallet_admin_address => $address,
     wallet_admin_password => $password
 ]);
+
+
+requestEquals("/mfm-bank/init.php", [
+    wallet_admin_address => $address,
+    wallet_admin_password => $password
+]);
+
 
 $htaccess = file_get_contents($_SERVER[DOCUMENT_ROOT] . "/mfm-root/.htaccess");
 file_put_contents($_SERVER[DOCUMENT_ROOT] . "/.htaccess", $htaccess);
