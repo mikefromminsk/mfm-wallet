@@ -1,6 +1,6 @@
 <?php
-require_once $_SERVER["DOCUMENT_ROOT"] . "/mfm-token/utils.php";
-include_once $_SERVER["DOCUMENT_ROOT"] . "/mfm-exchange/utils.php";
+require_once $_SERVER[DOCUMENT_ROOT] . "/mfm-token/utils.php";
+include_once $_SERVER[DOCUMENT_ROOT] . "/mfm-exchange/utils.php";
 
 onlyInDebug();
 
@@ -56,8 +56,8 @@ requestEquals("/mfm-exchange/init.php", [
     wallet_admin_password => $password
 ]);
 
-$htaccess = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/mfm-root/.htaccess");
-file_put_contents($_SERVER["DOCUMENT_ROOT"] . "/.htaccess", $htaccess);
+$htaccess = file_get_contents($_SERVER[DOCUMENT_ROOT] . "/mfm-root/.htaccess");
+file_put_contents($_SERVER[DOCUMENT_ROOT] . "/.htaccess", $htaccess);
 
 
 $response[success] = true;
