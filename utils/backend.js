@@ -158,7 +158,7 @@ function calcPass(domain, pin, success, error) {
 
 var wallet = {
     quote_domain: "usdt",
-    gas_domain: "usdt",
+    gas_domain: "mfm-usdt",
     logout: function () {
         storage.clear()
     },
