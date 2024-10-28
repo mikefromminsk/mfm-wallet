@@ -1,6 +1,6 @@
 <?php
-require_once $_SERVER[DOCUMENT_ROOT] . "/mfm-token/utils.php";
-include_once $_SERVER[DOCUMENT_ROOT] . "/mfm-exchange/utils.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/mfm-token/utils.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/mfm-exchange/utils.php";
 
 onlyInDebug();
 
