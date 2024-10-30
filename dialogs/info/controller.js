@@ -4,31 +4,26 @@ function showInfoDialog(message, success) {
     })
 }
 
-function hasToken(domain, success, error) {
+function hasGas(success) {
     postContract("mfm-token", "account.php", {
-        domain: domain,
+        domain: wallet.gas_domain,
         address: wallet.address(),
     }, function (response) {
-        if (success)
-            success(response)
-    }, function () {
-        if (error)
-            error()
-        else
-            showInfoDialog("You need to add " + domain.toUpperCase() + " token")
-    })
-}
-
-function hasBalance(domain, success, error) {
-    hasToken(domain, function (response) {
-        if (response.balance == null || response.balance == 0) {
-            if (error)
-                error()
-            else
-                showInfoDialog("You need to buy " + domain.toUpperCase() + " token")
-        } else {
+        if (response.balance > 0) {
             if (success)
                 success()
+        } else {
+            showBottomSheet('/mfm-wallet/dialogs/info/index.html', null, function ($scope) {
+                $scope.openCredit = function () {
+                    $scope.back()
+                    openCredit()
+                }
+
+                $scope.openDeposit = function () {
+                    $scope.back()
+                    openDeposit()
+                }
+            })
         }
     })
 }

@@ -30,12 +30,8 @@ function openTokenProfile(domain, success) {
         }
 
         $scope.buy = function () {
-            hasBalance(wallet.gas_domain, function () {
+            hasGas(function () {
                 openExchange(domain, 0, init)
-            }, function () {
-                openCredit(function () {
-                    openExchange(domain, 0, init)
-                })
             })
         }
 
@@ -56,6 +52,10 @@ function openTokenProfile(domain, success) {
 
         $scope.openWithdrawal = function () {
             openWithdrawal(init)
+        }
+
+        $scope.openCredit = function () {
+            openCredit(init)
         }
 
         $scope.donate = function () {

@@ -4,14 +4,16 @@
             <img src="/mfm-wallet/img/info.svg" style="width: 120px; height: 120px;">
         </div>
     </div>
-    <div class="col">
-        <div class="col input-content">
-            <div class="col align-center-center" style="height: 150px;">
-                <p class="mt16 size14"  style="margin: 30px 0">{{message}}</p>
-            </div>
+    <div class="col input-content">
+        <p>You dont have any usdt. You can:</p>
+        <div class="primary-button green-back" ng-click="openCredit()">
+            Credit
         </div>
-    </div>
-    <div class="primary-button" ng-click="back()">
-        Close
+        <div class="button blue-back-ripple" ng-click="openDeposit()">
+            Deposit
+        </div>
+        <div class="button blue-back-ripple" ng-click="back()">
+            Skip
+        </div>
     </div>
 </md-bottom-sheet>

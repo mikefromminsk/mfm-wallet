@@ -15,7 +15,7 @@
              ng-click="openTokenSettings()">
     </div>
     <div class="flex col content scroll pb16">
-        <ng-include src="'/mfm-wallet/dialogs/chart/chart.html'"></ng-include>
+        <ng-include src="'/mfm-analytics/chart/chart.html'"></ng-include>
         <div class="row scrollable-horizontal align-center-start">
             <div class="col align-start-center ripple"
                  ng-click="sendDialog()">
@@ -39,6 +39,14 @@
                     <img class="img24 img-accent" src="/mfm-wallet/img/upload.svg">
                 </div>
                 <p class="size12 mt4 gray400-text">Withdrawal</p>
+            </div>
+            <div class="col align-start-center ripple"
+                 ng-show="token.domain == 'usdt'"
+                 ng-click="openCredit()">
+                <div class="p8 mt16 mh16 row align-center button-gray radius12">
+                    <img class="img24 img-accent" src="/mfm-wallet/img/upload.svg">
+                </div>
+                <p class="size12 mt4 gray400-text">Credits</p>
             </div>
         </div>
         <div class="mh16 nowrap">

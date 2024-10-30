@@ -1,12 +1,13 @@
 {
     "name": "mfm-wallet",
-    "version": "1.1.29",
+    "version": "1.1.30",
     "author": "x29a100@gmail.com",
     "dependencies": {
         "crypto-js": "latest",
         "mfm-data": "latest",
         "mfm-telegram": "latest",
         "mfm-angular-template": "latest",
+        "mfm-bank": "latest",
         "mfm-root": "latest",
         "mfm-mining": "latest",
         "mfm-exchange": "latest"

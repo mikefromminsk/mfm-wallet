@@ -24,7 +24,7 @@ function openSendDialog(domain, to_address, amount, success) {
                         showSuccessDialog("Sent " + $scope.formatAmount($scope.amount, domain) + " success", success)
                     }, function (message) {
                         if (message.indexOf("receiver doesn't exist") != -1) {
-                            showInfoDialog("This user dosent exist but you can invite him", function () {
+                            showError("This user dosent exist but you can invite him", function () {
                                 openShare(domain, success)
                             })
                         }

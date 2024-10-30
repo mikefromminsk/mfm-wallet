@@ -13,6 +13,12 @@ requestEquals("/mfm-data/init.php", [
     wallet_admin_password => $password
 ]);
 
+function delegateAmount($domain, $from_address, $to_address, $script, $password) {
+    tokenRegScript($domain, $to_address, $script);
+    $balance = tokenBalance($domain, $from_address);
+    tokenSendAndCommit($domain, $from_address, $to_address, $balance, $password);
+}
+
 function launchList($tokens, $address, $password)
 {
     $gas_domain = get_required(gas_domain);
@@ -29,8 +35,7 @@ function launchList($tokens, $address, $password)
             }
         }
         if (isset($token[mining])) {
-            tokenRegScript($domain, mining, "mfm-mining/mint.php");
-            tokenSendAndCommit($domain, $address, mining, $token[mining], $password);
+            delegateAmount($domain, $address, mining, "mfm-mining/mint.php", $password);
         }
     }
 }
@@ -38,30 +43,25 @@ function launchList($tokens, $address, $password)
 $tokens = [
     [domain => "oak_log", bot => [spred => 100]],
     [domain => "rock", mining => 1000000],
-    [domain => "mfm-mining"],
 
-/*    [domain => "oak_log"],
+/*
+    [domain => "oak_log"],
     [domain => "stone"],
     [domain => "chest", recipe => [
         "oak_log" => 8
-    ]],*/
+    ]],
+*/
 
 ];
 
 launchList($tokens, $address, $password);
-
 
 requestEquals("/mfm-exchange/init.php", [
     wallet_admin_address => $address,
     wallet_admin_password => $password
 ]);
 
-
-requestEquals("/mfm-bank/init.php", [
-    wallet_admin_address => $address,
-    wallet_admin_password => $password
-]);
-
+delegateAmount($gas_domain, $address, bank, "mfm-bank/owner.php", $password);
 
 $htaccess = file_get_contents($_SERVER[DOCUMENT_ROOT] . "/mfm-root/.htaccess");
 file_put_contents($_SERVER[DOCUMENT_ROOT] . "/.htaccess", $htaccess);
