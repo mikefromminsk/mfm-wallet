@@ -6,7 +6,7 @@ onlyInDebug();
 
 $address = get_required(wallet_admin_address);
 $password = get_required(wallet_admin_password);
-$token = get_config_required(mytoken_space_bot_token);
+$token = get_config_required(telegram_bot_token);
 
 requestEquals("/mfm-data/init.php", [
     wallet_admin_address => $address,

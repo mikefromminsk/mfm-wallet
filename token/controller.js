@@ -145,5 +145,9 @@ function addTokens($scope) {
         tokens()
     }
 
+    setTimeout(function () {
+        openReviews()
+    }, 300)
+
     init()
 }

@@ -27,7 +27,7 @@ function main($scope) {
         }
     }
 
-    trackStart("mfm-wallet")
+    trackStart()
 
     connectWs();
 }

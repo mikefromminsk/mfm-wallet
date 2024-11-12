@@ -25,6 +25,10 @@ function openAccount(success) {
                 })
             }
 
+            $scope.openReviews = function () {
+                openReviews()
+            }
+
             $scope.openTermsAndConditions = function () {
                 openWeb(location.origin + "/mfm-angular-template/docs?path=/mfm-wallet/docs/terms_and_conditions.md")
             }
