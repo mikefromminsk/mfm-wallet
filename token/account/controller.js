@@ -11,12 +11,22 @@ function openAccount(success) {
                 $scope.back()
                 openLogin(success)
             }
+
             $scope.restart = function () {
                 location.reload(true)
             }
 
-            $scope.openPage = function () {
-                openWeb(location.origin + "/mfm-wallet/docs/clear/index.html")
+            $scope.openBuyFunnel = function () {
+                openFunnel([
+                    "openTokenProfile",
+                    "openExchange",
+                ], function () {
+
+                })
+            }
+
+            $scope.openTermsAndConditions = function () {
+                openWeb(location.origin + "/mfm-angular-template/docs?path=/mfm-wallet/docs/terms_and_conditions.md")
             }
 
             $scope.copy = function () {

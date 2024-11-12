@@ -128,6 +128,60 @@ function dataInfo(path, success, error) {
     }, error)
 }
 
+var session = randomString(6)
+
+function trackEvent(name, from, from_id, to, to_id, value, success, error) {
+    postContract("mfm-analytics", "track.php", {
+        name: name,
+        from: from || "",
+        from_id: from_id || "",
+        to: to || "",
+        to_id: to_id || "",
+        value: value || "",
+        version: window.package_json.version,
+        session: session,
+        username: wallet.address(),
+    }, function (response) {
+        if (success)
+            success(response.info)
+    }, error)
+}
+
+function trackStart(application){
+    get("/mfm-wallet/package.json", function (text) {
+        window.package_json = JSON.parse(text)
+        trackEvent("ui_start",
+            getParam("af_source"),
+            getParam("af_campaign"),
+            application,
+            "")
+    })
+}
+
+function trackOpen(args){
+    trackEvent("ui_open",
+        args.from,
+        args.from_id,
+        args.callee.name,
+        typeof args[0] === "string" ? args[0] : "")
+}
+
+function trackCall(args){
+    trackEvent("ui_call",
+        args.from,
+        args.from_id,
+        args.callee.name,
+        typeof args[0] === "string" ? args[0] : "")
+}
+
+function trackClose(args){
+    trackEvent("ui_close",
+        args.from,
+        args.from_id,
+        args.callee.name,
+        typeof args[0] === "string" ? args[0] : "")
+}
+
 function dataExist(path, success, error) {
     dataInfo(path, success, error)
 }

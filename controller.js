@@ -1,5 +1,4 @@
 function main($scope) {
-
     function setIcon(){
         var link = document.createElement('link');
         link.rel = 'icon';
@@ -27,6 +26,8 @@ function main($scope) {
             addTransactions($scope)
         }
     }
+
+    trackStart("mfm-wallet")
 
     connectWs();
 }

@@ -6,6 +6,7 @@ function getProfile(domain, success, error) {
 }
 
 function openTokenProfile(domain, success) {
+    trackCall(arguments)
     showDialog('/mfm-wallet/token/profile/index.html', success, function ($scope) {
         $scope.siteExist = false
 
@@ -30,9 +31,7 @@ function openTokenProfile(domain, success) {
         }
 
         $scope.buy = function () {
-            hasGas(function () {
-                openExchange(domain, 0, init)
-            })
+            openExchange(domain, 0, init)
         }
 
         $scope.openDeposit = function () {
