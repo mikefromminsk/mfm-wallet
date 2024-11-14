@@ -1,42 +1,44 @@
 function openAccount(success) {
     showDialog('/mfm-wallet/token/settings/index.html', success, function ($scope) {
-            addFormats($scope)
-            $scope.model = storage.getString("model", window.navigator.userAgent)
+        $scope.package = window.package_json
+        $scope.logout = function () {
+            wallet.logout()
+            storage.setString(storageKeys.onboardingShowed, "true")
+        }
+        $scope.login = function () {
+            $scope.back()
+            openLogin(success)
+        }
 
-            $scope.logout = function () {
-                wallet.logout()
-                storage.setString(storageKeys.onboardingShowed, "true")
-            }
-            $scope.login = function () {
-                $scope.back()
-                openLogin(success)
-            }
+        $scope.openBuyFunnel = function () {
+            openFunnel([
+                "openTokenProfile",
+                "openExchange",
+            ], function () {
 
-            $scope.restart = function () {
-                location.reload(true)
-            }
+            })
+        }
 
-            $scope.openBuyFunnel = function () {
-                openFunnel([
-                    "openTokenProfile",
-                    "openExchange",
-                ], function () {
+        $scope.openSupport = function () {
+            window.open("https://t.me/+UWS_ZfqIi1tkNmVi")
+        }
 
-                })
-            }
+        $scope.leaveReview = function () {
+            openReview()
+        }
 
-            $scope.openReviews = function () {
-                openReviews()
-            }
+        $scope.openReviews = function () {
+            openReviews()
+        }
 
-            $scope.openTermsAndConditions = function () {
-                openWeb(location.origin + "/mfm-angular-template/docs?path=/mfm-wallet/docs/terms_and_conditions.md")
-            }
+        $scope.openTermsAndConditions = function () {
+            openWeb(location.origin + "/mfm-angular-template/docs?path=/mfm-wallet/docs/terms_and_conditions.md")
+        }
 
-            $scope.copy = function () {
-                $scope.copyText(wallet.address())
-                showSuccess("Username copied")
-            }
+        $scope.copy = function () {
+            $scope.copyText(wallet.address())
+            showSuccess("Username copied")
+        }
 
     })
 }

@@ -1,6 +1,5 @@
 function openTokenSettings(domain, success) {
     showDialog('/mfm-wallet/token/logo/index.html', success, function ($scope) {
-        addFormats($scope)
         $scope.DEBUG = DEBUG
 
         $scope.domain = domain

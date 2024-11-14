@@ -35,10 +35,6 @@ function addTokens($scope) {
         openWithdrawal(init)
     }
 
-    $scope.openSupport = function () {
-        window.open("https://t.me/+UWS_ZfqIi1tkNmVi", init)
-    }
-
     function tokens(search_text) {
         postContract("mfm-wallet", "token/api/tokens.php", {
             address: wallet.address(),

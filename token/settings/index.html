@@ -5,41 +5,47 @@
     </div>
     <div class="col content align-start-center">
         <div class="flex col input-content">
-            <div class="row mt16 align-start-end"
+            <div class="gray400-text">Account</div>
+            <div class="row align-start-center"
                  ng-show="wallet.address()">
-                <div class="col">
-                    <div class="size10 gray400-text">Username</div>
-                    <div class="size16 black-text">{{wallet.address()}}</div>
-                </div>
+                <img class="img24 mr16 img-black" src="/mfm-wallet/img/user-circle.svg">
+                <div class="col">{{wallet.address()}}</div>
                 <img class="img28 p4 ripple ml8 img-black"
                      src="/mfm-wallet/img/copy.svg"
                      ng-click="copy()">
                 <div class="flex"></div>
                 <div class="button" ng-click="logout()">Logout</div>
             </div>
-            <div class="row"
+            <div class="primary-button"
+                 ng-click="login()"
                  ng-hide="wallet.address()">
-                <div class="flex primary-button" ng-click="login()">
-                    Login or Create account
-                </div>
+                Login or Create account
             </div>
-            <div class="row align-start-center ripple" ng-click="restart()">
-                <img class="img36 p8 img-black" src="/mfm-wallet/img/reload.svg">
-                <p>Reload UI</p>
+            <div class="gray400-text">Help</div>
+            <div class="row align-start-center ripple" ng-click="leaveReview()">
+                <img class="img24 mr16 img-black" src="/mfm-wallet/img/like.svg">
+                <p>Leave review</p>
             </div>
+            <div class="row align-start-center ripple" ng-click="openSupport()">
+                <img class="img24 mr16 img-black" src="/mfm-wallet/img/support.svg">
+                <p>Contact us</p>
+            </div>
+            <div class="row align-start-center ripple" ng-click="openTermsAndConditions()">
+                <img class="img24 mr16 img-black" src="/mfm-wallet/img/doc.svg">
+                <p>Terms and Conditions</p>
+            </div>
+            <div class="gray400-text">Admin panel</div>
             <div class="row align-start-center ripple" ng-click="openReviews()">
-                <img class="img36 p8 img-black" src="/mfm-wallet/img/doc.svg">
+                <img class="img24 mr16 img-black" src="/mfm-wallet/img/like.svg">
                 <p>Reviews</p>
             </div>
             <div class="row align-start-center ripple" ng-click="openBuyFunnel()">
-                <img class="img36 p8 img-black" src="/mfm-wallet/img/doc.svg">
+                <img class="img24 mr16 img-black" src="/mfm-wallet/img/doc.svg">
                 <p>Buy funnel</p>
             </div>
-            <div class="row align-start-center ripple" ng-click="openTermsAndConditions()">
-                <img class="img36 p8 img-black" src="/mfm-wallet/img/doc.svg">
-                <p>Terms and Conditions</p>
+            <div class="col align-center gray400-text" style="text-align: center">
+                <p>{{package.name}} v{{package.version}}</p>
             </div>
-            <p class="gray400-text">{{model}}</p>
         </div>
     </div>
 </md-dialog>

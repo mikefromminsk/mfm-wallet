@@ -19,25 +19,21 @@
                        onkeypress="return event.charCode != 32"
                        ng-model="to_address">
             </div>
-            <div class="col">
-                <div class="row input-wrapper-black">
-                    <div class="input-label">Amount</div>
-                    <input type="number"
-                           autocapitalize="off"
-                           ng-model="amount">
-                    <div class="input-label-right row align-center-center ripple"
-                         ng-click="setMax()">
-                        <p>MAX {{formatAmount(getMax())}}</p>
-                    </div>
-                </div>
-                <div class="mt8 col nowrap">
-                    <p>Fee: {{formatPercent(token.fee, 2)}}</p>
-                    <p class="mt4">Amount with fee: {{formatAmount(getTotal(), domain)}}</p>
+            <div class="row input-wrapper-black">
+                <div class="input-label">Amount</div>
+                <input type="number"
+                       autocapitalize="off"
+                       ng-model="amount">
+                <div class="input-label-right ripple"
+                     ng-click="setMax()">
+                    <p>MAX {{formatAmount(getMax())}}</p>
                 </div>
             </div>
-        </div>
-        <div class="row mh16 mv8">
-            <button class="flex primary-button radius4" ng-click="send()"
+            <div class="mt8 col nowrap">
+                <p>Fee: {{formatPercent(token.fee, 2)}}</p>
+                <p class="mt4">Amount with fee: {{formatAmount(getTotal(), domain)}}</p>
+            </div>
+            <button class="primary-button" ng-click="send()"
                     ng-disabled="!to_address || !amount || (token.balance < getTotal())">
                 Send
             </button>
