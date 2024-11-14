@@ -1,5 +1,5 @@
 function openAccount(success) {
-    showDialog('/mfm-wallet/token/account/index.html', success, function ($scope) {
+    showDialog('/mfm-wallet/token/settings/index.html', success, function ($scope) {
             addFormats($scope)
             $scope.model = storage.getString("model", window.navigator.userAgent)
 
