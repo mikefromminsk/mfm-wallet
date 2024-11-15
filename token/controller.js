@@ -114,7 +114,9 @@ function addTokens($scope) {
     function init() {
         $scope.setMode($scope.mode)
         get("/mfm-wallet/readme.md", function (text) {
-            setMarkdown("markdown-container", text)
+            setTimeout(function () {
+                setMarkdown("markdown-container", text)
+            }, 1000)
         })
         tokens()
     }

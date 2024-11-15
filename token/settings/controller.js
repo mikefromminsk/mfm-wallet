@@ -1,5 +1,5 @@
 function openAccount(success) {
-    showDialog('/mfm-wallet/token/settings/index.html', success, function ($scope) {
+    showDialog('/mfm-wallet/token/settings/index.html?nocache', success, function ($scope) {
         $scope.package = window.package_json
         $scope.logout = function () {
             wallet.logout()
@@ -17,10 +17,6 @@ function openAccount(success) {
             ], function () {
 
             })
-        }
-
-        $scope.openSupport = function () {
-            window.open("https://t.me/+UWS_ZfqIi1tkNmVi")
         }
 
         $scope.leaveReview = function () {
