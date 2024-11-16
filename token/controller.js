@@ -1,21 +1,3 @@
-function regAddress(domain, success) {
-    getPin(function (pin) {
-        calcPass(domain, pin, function (pass) {
-            if (pass[0] != ":") {
-                if (success) success()
-            } else {
-                postContract("mfm-token", "send.php", {
-                    domain: domain,
-                    from_address: "owner",
-                    to_address: wallet.address(),
-                    amount: 0,
-                    pass: pass
-                }, success)
-            }
-        })
-    })
-}
-
 function addTokens($scope) {
     $scope.searchMode = false
     $scope.menuIndex = 0
@@ -53,10 +35,6 @@ function addTokens($scope) {
         openWithdrawal(init)
     }
 
-    $scope.openSupport = function () {
-        window.open("https://t.me/+UWS_ZfqIi1tkNmVi", init)
-    }
-
     function tokens(search_text) {
         postContract("mfm-wallet", "token/api/tokens.php", {
             address: wallet.address(),
@@ -81,10 +59,6 @@ function addTokens($scope) {
             for (const token of $scope.activeTokens)
                 totalBalance += token.price * token.balance
         return totalBalance
-    }
-
-    $scope.regAddress = function (domain) {
-        regAddress(domain, init)
     }
 
     setTimeout(() => {
@@ -140,14 +114,16 @@ function addTokens($scope) {
     function init() {
         $scope.setMode($scope.mode)
         get("/mfm-wallet/readme.md", function (text) {
-            setMarkdown("markdown-container", text)
+            setTimeout(function () {
+                setMarkdown("markdown-container", text)
+            }, 1000)
         })
         tokens()
     }
 
-    setTimeout(function () {
+    /*setTimeout(function () {
         openReviews()
-    }, 300)
+    }, 300)*/
 
     init()
 }

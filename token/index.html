@@ -24,7 +24,6 @@
         </div>
         <div class="flex row align-end-center" ng-hide="searchMode">
             <img class="img40 p8 img-black ripple" src="/mfm-wallet/img/settings.svg" ng-click="openAccount()">
-            <img class="img40 p8 img-black ripple" src="/mfm-wallet/img/support.svg" ng-click="openSupport()">
             <img class="img40 p8 img-black ripple" src="/mfm-wallet/img/search.svg" ng-click="toggleSearchMode()">
         </div>
     </div>
@@ -38,10 +37,8 @@
                         <p class="size20 bold">Welcome to mytoken.space!</p>
                         <p class="size16 mt16">Here you can create your own token.</p>
                     </div>
-                    <div class="row mh16 mt16" ng-click="login()">
-                        <div class="flex primary-button">
-                            Login or Create account
-                        </div>
+                    <div class="flex primary-button" ng-click="login()">
+                        Login or Create account
                     </div>
                 </div>
 
@@ -87,7 +84,7 @@
                 </div>
             </div>
             <div class="col" ng-show="mode == 'tokens'">
-                <ng-include src="'/mfm-wallet/token/token_list.html'"></ng-include>
+                <ng-include src="'/mfm-wallet/token/token_list.html?nocache'"></ng-include>
             </div>
             <div class="col" ng-show="mode == 'recipes'">
                 <div class="col" ng-repeat="recipe in recipes">

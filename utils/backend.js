@@ -184,6 +184,10 @@ function calcPass(domain, pin, success, error) {
     wallet.calcPass(domain, pin, success, error)
 }
 
+function calcPassList(domain, pin, success, error) {
+    wallet.calcPassList(domain, pin, success, error)
+}
+
 var wallet = {
     gas_domain: "usdt",
     logout: function () {
@@ -216,7 +220,15 @@ var wallet = {
             })
         }, function () {
             wallet.calcStartHash(domain, pin, function (next_hash) {
-                success(":" + next_hash, "", next_hash)
+                postContract("mfm-token", "send.php", {
+                    domain: domain,
+                    from_address: "owner",
+                    to_address: wallet.address(),
+                    amount: 0,
+                    pass: ":" + next_hash
+                }, function () {
+                    wallet.calcPass(domain, pin, success, error)
+                })
             })
         })
     },

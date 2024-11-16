@@ -1,0 +1,47 @@
+<md-dialog class="fill col">
+    <div class="row header align-start-center">
+        <img class="ripple" src="/mfm-wallet/img/back.svg" ng-click="close()">
+        <p>Settings</p>
+    </div>
+    <div class="col content align-start-center">
+        <div class="flex col input-content">
+            <div class="gray400-text">Account</div>
+            <div class="row align-start-center"
+                 ng-show="wallet.address()">
+                <img class="img24 mr16 img-black" src="/mfm-wallet/img/user-circle.svg">
+                <div class="col">{{wallet.address()}}</div>
+                <img class="img28 p4 ripple ml8 img-black"
+                     src="/mfm-wallet/img/copy.svg"
+                     ng-click="copy()">
+                <div class="flex"></div>
+                <div class="button" ng-click="logout()">Logout</div>
+            </div>
+            <div class="primary-button"
+                 ng-click="login()"
+                 ng-hide="wallet.address()">
+                Login or Create account
+            </div>
+            <div class="gray400-text">Help</div>
+            <div class="row align-start-center ripple" ng-click="leaveReview()">
+                <img class="img24 mr16 img-black" src="/mfm-wallet/img/like.svg">
+                <p>Leave review</p>
+            </div>
+            <div class="row align-start-center ripple" ng-click="openTermsAndConditions()">
+                <img class="img24 mr16 img-black" src="/mfm-wallet/img/doc.svg">
+                <p>Terms and Conditions</p>
+            </div>
+            <div class="gray400-text">Admin panel</div>
+            <div class="row align-start-center ripple" ng-click="openReviews()">
+                <img class="img24 mr16 img-black" src="/mfm-wallet/img/like.svg">
+                <p>Reviews</p>
+            </div>
+            <div class="row align-start-center ripple" ng-click="openBuyFunnel()">
+                <img class="img24 mr16 img-black" src="/mfm-wallet/img/doc.svg">
+                <p>Buy funnel</p>
+            </div>
+            <div class="col align-center gray400-text" style="text-align: center">
+                <p>{{package.name}} v{{package.version}}</p>
+            </div>
+        </div>
+    </div>
+</md-dialog>

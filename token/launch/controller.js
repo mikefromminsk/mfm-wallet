@@ -1,6 +1,5 @@
 function openLaunchDialog(domain, success) {
     showDialog("/mfm-wallet/token/launch/index.html", success, function ($scope) {
-            addFormats($scope)
             $scope.domain = domain
             $scope.amount = 1000000
             if (DEBUG) {

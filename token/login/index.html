@@ -5,7 +5,7 @@
     </div>
     <div class="col content">
         <div class="col input-content">
-            <div class="row mt16 input-wrapper-black">
+            <div class="row input-wrapper-black">
                 <div class="input-label">Username</div>
                 <input id="login_address"
                        type="text"
@@ -21,15 +21,14 @@
                        autocomplete="off"
                        ng-model="password">
             </div>
-            <div class="row align-start-center" style="height: 24px; margin-top: 0; ">
+            <div class="row align-start-center">
                 <input type="checkbox" ng-click="toggleTerms()" class="styled-checkbox"/>
-                agree to
-                <a href="/mfm-angular-template/docs?path=/mfm-token/readme.md" target="_blank">
+                <p class="mh8">agree to</p>
+                <a href="/mfm-angular-template/docs?path=/mfm-wallet/docs/terms_and_conditions.md" target="_blank">
                     Terms and Conditions
                 </a>
             </div>
             <div class="primary-button" ng-click="login()"
-                 style="margin-top: 0"
                  ng-disabled="!username || !password || in_progress || !agree_with_terms_and_condition">
                 Login or Create account
             </div>

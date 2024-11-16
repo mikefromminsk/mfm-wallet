@@ -130,13 +130,13 @@
             <div class="nowrap-disabled" id="token-readme"></div>
         </div>
     </div>
-    <div class="col mb16 align-start-center p4" ng-show="token.domain != wallet.gas_domain">
-        <div class="row block" style="gap: 4px">
-            <div class="flex primary-button green-back radius4"
+    <div class="col mh16 align-start-center" ng-show="token.domain != wallet.gas_domain">
+        <div class="row block gap16">
+            <div class="flex mh0 primary-button green-back radius4"
                  ng-click="buy()">
                 BUY
             </div>
-            <div class="flex primary-button red-back radius4"
+            <div class="flex mh0 primary-button red-back radius4"
                  ng-click="sell()"
                  ng-hide="token.balance <= 0">
                 SELL
