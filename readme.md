@@ -1,6 +1,6 @@
 ## Хешчейн: Эволюция Блокчейна
 
-![text](http://mytoken.space/mfm-wallet/logo.png)
+![text](/mfm-wallet/logo.png)
 
 ### Введение в Хешчейн
 
@@ -40,8 +40,8 @@
 
 Хешчейн представляет собой эволюцию блокчейн-технологий, предоставляя более гибкую, масштабируемую и безопасную систему. Сфокусированный на индивидуальных транзакциях, он предлагает уникальные возможности для множества отраслей, от финансов до управления данными. Хотя хешчейн еще молод, его потенциал очевиден, и он обещает изменить наше понимание децентрализованных систем.
 
-## Ссылки
-
-- [Term and conditions](https://mytoken.space/mfm-angular-template/docs/?path=/mfm-wallet/docs/terms_and_conditions.md)
-- [GitHub repository](https://github.com/mikefromminsk/mfm-wallet)
-- [NPM repository](https://www.npmjs.com/package/mfm-wallet)
+> ## Ссылки
+> 
+> - [Term and conditions](https://mytoken.space/mfm-angular-template/docs/?path=/mfm-wallet/docs/terms_and_conditions.md)
+> - [GitHub repository](https://github.com/mikefromminsk/mfm-wallet)
+> - [NPM repository](https://www.npmjs.com/package/mfm-wallet)
