@@ -29,7 +29,6 @@ function main($scope) {
     }
 
     trackStart()
-    $scope.selectTab(2)
 
     connectWs();
 }

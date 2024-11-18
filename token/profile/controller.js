@@ -18,7 +18,7 @@ function openTokenProfile(domain, success) {
             $scope.$apply()
         })*/
 
-        $scope.sendDialog = function () {
+        $scope.openSend = function () {
             openSend(domain, "", "", init)
         }
 

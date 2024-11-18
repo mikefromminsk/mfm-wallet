@@ -211,9 +211,13 @@ input::placeholder {
 
 .green-toast .md-toast-content {
     background: #009461;
+    text-wrap: auto;
+    line-height: 18px;
 }
 .red-toast .md-toast-content {
     background: var(--red);
+    text-wrap: auto;
+    line-height: 18px;
 }
 
 @media (max-width: 600px) {
@@ -257,25 +261,25 @@ input::placeholder {
     background: radial-gradient(154.16% 36.43% at 46.78% 100%, rgba(52, 170, 255, .4) 0, rgba(0, 102, 255, .132) 52.6%, rgba(0, 102, 255, 0) 100%), radial-gradient(74.9% 52.95% at 75.44% 1.97%, rgba(156, 38, 80, .45) 0, rgba(156, 38, 80, 0) 100%), radial-gradient(179.13% 86.27% at 94.11% 1.87%, rgba(53, 101, 229, .75) 0, rgba(53, 101, 229, .133) 73.12%, rgba(53, 101, 229, 0) 100%), radial-gradient(47.31% 33.89% at 35.7% 100%, rgba(53, 101, 229, .4) 0, rgba(53, 101, 229, 0) 100%), radial-gradient(33.07% 52.27% at 37.24% 100%, #24314f 0, rgba(36, 49, 79, 0) 100%), #0f1115;
 }
 
-.styled-checkbox {
-    -webkit-appearance: none;
-    -moz-appearance: none;
+input[type="checkbox"] {
+    margin: 0;
     appearance: none;
     width: 25px;
     height: 25px;
-    background: #ccc;
+    background: var(--black);
     border-radius: 5px;
+    border: 1px solid var(--gray400);
     display: inline-block;
     position: relative;
     cursor: pointer;
     outline: none;
 }
 
-.styled-checkbox:checked {
+input[type="checkbox"]:checked {
     background-color: var(--accent);
 }
 
-.styled-checkbox:checked:before {
+input[type="checkbox"]:checked:before {
     content: "";
     position: absolute;
     left: 9px;

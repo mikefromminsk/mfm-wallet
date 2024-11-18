@@ -1,14 +1,13 @@
 <md-bottom-sheet class="col">
-    <div style="position: absolute; right: 29px; top: -50px; z-index: 2">
-        <img src="/mfm-wallet/img/send.png">
-    </div>
     <div class="row header align-start-center">
-        <img class="ripple" src="/mfm-wallet/img/back.svg" ng-click="back()">
+        <div class="row img32 radius-default back-gray align-center-center ripple" ng-click="back()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/down.svg">
+        </div>
         Send {{formatTicker(domain)}}
     </div>
     <div class="col content">
         <div class="col input-content">
-            <div class="row input-wrapper-black">
+            <div class="row input-wrapper">
                 <div class="input-label">To address</div>
                 <input type="text"
                        ng-disabled="block_to_address"
@@ -19,7 +18,7 @@
                        onkeypress="return event.charCode != 32"
                        ng-model="to_address">
             </div>
-            <div class="row input-wrapper-black">
+            <div class="row input-wrapper">
                 <div class="input-label">Amount</div>
                 <input type="number"
                        autocapitalize="off"
@@ -28,10 +27,6 @@
                      ng-click="setMax()">
                     <p>MAX {{formatAmount(getMax())}}</p>
                 </div>
-            </div>
-            <div class="mt8 col nowrap">
-                <p>Fee: {{formatPercent(token.fee, 2)}}</p>
-                <p class="mt4">Amount with fee: {{formatAmount(getTotal(), domain)}}</p>
             </div>
             <button class="primary-button" ng-click="send()"
                     ng-disabled="!to_address || !amount || (token.balance < getTotal())">

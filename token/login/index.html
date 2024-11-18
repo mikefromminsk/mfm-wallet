@@ -1,7 +1,10 @@
 <md-dialog class="col mod-fill">
     <div class="row header align-start-center">
-        <img class="ripple" src="/mfm-wallet/img/back.svg" ng-click="close()">
-        <p>Login</p>
+        <div class="row img32 radius-default back-gray align-center-center ripple" ng-click="close()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/back.svg">
+        </div>
+        <div class="flex row align-center">Login</div>
+        <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/support.svg" ng-click="openSupport()">
     </div>
     <div class="col content">
         <div class="col input-content">
@@ -22,7 +25,7 @@
                        ng-model="password">
             </div>
             <div class="row align-start-center">
-                <input type="checkbox" ng-click="toggleTerms()" class="styled-checkbox"/>
+                <input type="checkbox" ng-model="agree_with_terms_and_condition"/>
                 <p class="mh8">agree to</p>
                 <a href="/mfm-angular-template/docs?path=/mfm-wallet/docs/terms_and_conditions.md" target="_blank">
                     Terms and Conditions

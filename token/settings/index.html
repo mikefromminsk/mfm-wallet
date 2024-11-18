@@ -1,16 +1,17 @@
-<md-dialog class="fill col">
+<md-dialog class="fill col block">
     <div class="row header align-start-center">
-        <img class="ripple" src="/mfm-wallet/img/back.svg" ng-click="close()">
-        <p>Settings</p>
+        <div class="row img32 radius-default back-gray align-center-center ripple" ng-click="close()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/back.svg">
+        </div>
+        Settings
     </div>
     <div class="col content align-start-center">
-        <div class="flex col input-content">
-            <div class="text-gray">Account</div>
+        <div class="col input-content">
             <div class="row align-start-center"
                  ng-show="wallet.address()">
-                <img class="img24 mr16 img-white" src="/mfm-wallet/img/user-circle.svg">
+                <img class="img40 p8 mr16 img-gray" src="/mfm-wallet/img/user-circle.svg">
                 <div class="col">{{wallet.address()}}</div>
-                <img class="img28 p4 ripple ml8 img-white"
+                <img class="img40 p8 ripple ml8 img-white"
                      src="/mfm-wallet/img/copy.svg"
                      ng-click="copy()">
                 <div class="flex"></div>
@@ -21,22 +22,22 @@
                  ng-hide="wallet.address()">
                 Login or Create account
             </div>
-            <div class="text-gray">Help</div>
+            <div class="text1">Help</div>
             <div class="row align-start-center ripple" ng-click="leaveReview()">
-                <img class="img24 mr16 img-white" src="/mfm-wallet/img/like.svg">
+                <img class="img40 p8 mr16 img-gray" src="/mfm-wallet/img/like.svg">
                 <p>Leave review</p>
             </div>
             <div class="row align-start-center ripple" ng-click="openTermsAndConditions()">
-                <img class="img24 mr16 img-white" src="/mfm-wallet/img/doc.svg">
+                <img class="img40 p8 mr16 img-gray" src="/mfm-wallet/img/doc.svg">
                 <p>Terms and Conditions</p>
             </div>
-            <div class="text-gray">Admin panel</div>
+            <div class="text1">Admin panel</div>
             <div class="row align-start-center ripple" ng-click="openReviews()">
-                <img class="img24 mr16 img-white" src="/mfm-wallet/img/like.svg">
+                <img class="img40 p8 mr16 img-gray" src="/mfm-wallet/img/like.svg">
                 <p>Reviews</p>
             </div>
             <div class="row align-start-center ripple" ng-click="openBuyFunnel()">
-                <img class="img24 mr16 img-white" src="/mfm-wallet/img/doc.svg">
+                <img class="img40 p8 mr16 img-gray" src="/mfm-wallet/img/doc.svg">
                 <p>Buy funnel</p>
             </div>
             <div class="col align-center text-gray" style="text-align: center">

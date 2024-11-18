@@ -1,7 +1,7 @@
 <div class="row header align-center-center">
     <div class="row block align-start-center">
         <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/settings.svg" ng-click="openAccount()">
-        <div class="flex row align-center text1">Wallet</div>
+        <div class="flex row align-center">Wallet</div>
         <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/search.svg" ng-click="toggleSearchMode()">
     </div>
 </div>
@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="col input-content" ng-show="wallet.address()">
-            <div class="row align-center size32 bold" style="margin-top: 40px">
+            <div class="row align-center text0" style="margin-top: 40px">
                 {{formatPrice(getTotalBalance())}}
             </div>
             <div class="row align-start-end">
@@ -41,6 +41,5 @@
         <div class="col ph16">
             <ng-include src="'/mfm-wallet/token/token_list.html?nocache'"></ng-include>
         </div>
-        <div style="height: 80px;"></div>
     </div>
 </div>
