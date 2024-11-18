@@ -38,7 +38,7 @@
         }
     </style>
 </head>
-<body class="col" ng-app="App" ng-controller="Controller" style="overflow: hidden; background-color: #000" ng-cloak>
+<body class="col" ng-app="App" ng-controller="Controller" style="overflow: hidden" ng-cloak>
 <div style="position: fixed; left:0; top: 0; width: 100%; height: 100%; background: white; z-index: 1"
      ng-style="{'visibility': showBody ? 'hidden' : 'visible'}">
     <img class="image"
@@ -58,37 +58,27 @@
         <ng-include class="flex col" src="'/mfm-wallet/token/trans/index.html?nocache'"></ng-include>
     </md-tab>
 </md-tabs>
-<div class="col align-start-center fill-width blur-black-back pb16"
+<div class="col align-start-center fill-width p16 pt8 back-black"
      style="position: absolute; bottom: 0;">
     <div class="row block">
-        <div class="flex col pv8 align-start-center" ng-click="selectTab(0)">
+        <div class="flex col pv8 align-start-center ripple"
+             ng-repeat="item in menu"
+             ng-click="selectTab($index)">
             <img class="img18" src="/mfm-wallet/img/wallet.svg"
-                 ng-class="{'img-black': selectedIndex == 0, 'img-gray300': selectedIndex != 0}">
-            <p class="mt8 size12 "
-               ng-class="{'black-text': selectedIndex == 0, 'gray300-text': selectedIndex != 0}">Wallet</p>
+                 ng-class="{'img-accent': selectedIndex == $index, 'img-gray': selectedIndex != $index}">
+            <p class="mt8"
+               ng-class="{'text-accent': selectedIndex == $index, 'text-gray': selectedIndex != $index}">{{item}}</p>
         </div>
-        <div class="flex col pv8 align-center-center ripple" ng-click="selectTab(1)">
-            <img class="img18" src="/mfm-wallet/img/store.svg"
-                 ng-class="{'img-black': selectedIndex == 1, 'img-gray300': selectedIndex != 1}">
-            <p class="mt8 size12"
-               ng-class="{'black-text': selectedIndex == 1, 'gray300-text': selectedIndex != 1}">Apps</p>
-        </div>
-        <div class="flex col pv8 align-center-center ripple" ng-click="selectTab(2)" ng-show="wallet.address()">
-            <img class="img18" src="/mfm-wallet/img/transactions.svg"
-                 ng-class="{'img-black': selectedIndex == 2, 'img-gray300': selectedIndex != 2}">
-            <p class="mt8 size12"
-               ng-class="{'black-text': selectedIndex == 2, 'gray300-text': selectedIndex != 2}">Transactions</p>
-        </div>
-        <div class="flex col align-center-center mr16" ng-click="newCoin($event)" ng-show="wallet.address()">
-            <div class="col radius24 accent-back pv8 align-center-center ripple" style="width: 100px">
+        <!--<div class="flex col align-center-center mr16" ng-click="newCoin($event)" ng-show="wallet.address()">
+            <div class="col radius24 back-accent pv8 align-center-center ripple" style="width: 100px">
                 <p class="bold">New coin</p>
             </div>
         </div>
         <div class="flex col align-center-center mr16" ng-click="login()" ng-hide="wallet.address()">
-            <div class="col radius24 accent-back pv8 align-center-center ripple" style="width: 100px">
+            <div class="col radius24 back-accent pv8 align-center-center ripple" style="width: 100px">
                 <p class="bold">Login</p>
             </div>
-        </div>
+        </div>-->
     </div>
 </div>
 
@@ -107,7 +97,6 @@
 <link href="/mfm-flex/flex.css" rel="stylesheet">
 <link href="/mfm-angular-template/css/shorts.css" rel="stylesheet">
 <link href="/mfm-angular-template/css/colors.css" rel="stylesheet">
-<link href="/mfm-angular-template/css/colors-dark.css" rel="stylesheet">
 <link href="/mfm-angular-template/css/bugfixes.css" rel="stylesheet">
 <link href="style.css" rel="stylesheet">
 

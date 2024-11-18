@@ -13,6 +13,7 @@ function main($scope) {
         openShareReceive(getParam("bonus"))
     }
 
+    $scope.menu = ["Wallet", "Store", "History"]
     $scope.selectTab = function (tab) {
         $scope.selectedIndex = tab
         if (tab == 0) {

@@ -9,7 +9,7 @@
             <p>{{formatPrice(token.price)}}</p>
             <!--<p class="size14" ng-class="percentColor(change24)">{{formatChange(change24)}}</p>-->
         </div>
-        <img class="img40 img-black ripple"
+        <img class="img40 img-white ripple"
              src="/mfm-wallet/img/settings.svg"
              ng-show="token.owner == wallet.address()"
              ng-click="openTokenSettings()">
@@ -22,7 +22,7 @@
                 <div class="p8 mt16 mh16 row align-center button-gray radius12">
                     <img class="img24 img-accent" src="/mfm-wallet/img/send.svg">
                 </div>
-                <p class="size12 mt4 gray400-text">Send</p>
+                <p class="size12 mt4 text-gray">Send</p>
             </div>
             <div class="col align-start-center ripple"
                  ng-show="token.dapps.share"
@@ -30,29 +30,29 @@
                 <div class="p8 mt16 mh16 row align-center button-gray radius12">
                     <img class="img24 img-accent" src="/mfm-wallet/img/share.svg">
                 </div>
-                <p class="size12 mt4 gray400-text">Share</p>
+                <p class="size12 mt4 text-gray">Share</p>
             </div>
             <div class="col align-start-center ripple"
                  ng-show="token.domain == 'usdt'"
                  ng-click="openWithdrawal()">
                 <div class="p8 mt16 mh16 row align-center button-gray radius12">
-                    <img class="img24 img-accent" src="/mfm-wallet/img/upload.svg">
+                    <img class="img24 img-accent" src="../../img/arrow_up.svg">
                 </div>
-                <p class="size12 mt4 gray400-text">Withdrawal</p>
+                <p class="size12 mt4 text-gray">Withdrawal</p>
             </div>
             <div class="col align-start-center ripple"
                  ng-show="token.domain == 'usdt'"
                  ng-click="openCredit()">
                 <div class="p8 mt16 mh16 row align-center button-gray radius12">
-                    <img class="img24 img-accent" src="/mfm-wallet/img/upload.svg">
+                    <img class="img24 img-accent" src="../../img/arrow_up.svg">
                 </div>
-                <p class="size12 mt4 gray400-text">Credits</p>
+                <p class="size12 mt4 text-gray">Credits</p>
             </div>
         </div>
         <div class="mh16 nowrap">
             <div class="row mt16">
                 <p class="vertical-text size16 bold mt4">Tokenomics</p>
-                <div class="flex col ml8 size14 gray400-text">
+                <div class="flex col ml8 size14 text-gray">
                     <div class="row mt4">
                         <p class="flex">Total supply</p>
                         <p>{{formatAmount(token.total, token.domain)}}</p>
@@ -76,8 +76,8 @@
             </div>
 
             <div class="row mt16">
-                <p class="vertical-text size16 bold mt4">Network</p>
-                <div class="flex col ml8 size14 gray400-text">
+                <p class="vertical-text size16 bold mt4">Activity</p>
+                <div class="flex col ml8 size14 text-gray">
                     <div class="row mt4">
                         <div class="flex" ng-click="openChart(token.domain + '_trans')">
                             Transactions <img class="img12" src="/mfm-wallet/img/chart.svg">
@@ -86,8 +86,27 @@
                     </div>
                     <div class="divider"></div>
                     <div class="row mt4">
-                        <div class="flex" ng-click="openChart(token.domain + '_addresses')">
-                            Addresses <img class="img12" src="/mfm-wallet/img/chart.svg">
+                        <div class="flex" ng-click="openChart(token.domain + '_accounts')">
+                            Accounts <img class="img12" src="/mfm-wallet/img/chart.svg">
+                        </div>
+                        <p>{{formatAmount(token.addresses)}}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt16">
+                <p class="vertical-text size16 bold mt4">Total</p>
+                <div class="flex col ml8 size14 text-gray">
+                    <div class="row mt4">
+                        <div class="flex" ng-click="openChart('all_trans')">
+                            Total transactions <img class="img12" src="/mfm-wallet/img/chart.svg">
+                        </div>
+                        <p>{{formatAmount(token.trans)}}</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="row mt4">
+                        <div class="flex" ng-click="openChart('all_accounts')">
+                            Total accounts <img class="img12" src="/mfm-wallet/img/chart.svg">
                         </div>
                         <p>{{formatAmount(token.addresses)}}</p>
                     </div>
@@ -96,7 +115,7 @@
 
             <div class="row mt16">
                 <p class="vertical-text size16 bold mt4">Exchange</p>
-                <div class="flex col ml8 size14 gray400-text">
+                <div class="flex col ml8 size14 text-gray">
                     <div class="row mt4">
                         <div class="flex" ng-click="openChart(token.domain + '_volume')">
                             Volume <img class="img12" src="/mfm-wallet/img/chart.svg">
@@ -108,7 +127,7 @@
 
             <div class="row" style="margin-top: 32px;">
                 <p class="vertical-text size16 bold mt4">DApps</p>
-                <div class="flex col ml8 size14 gray400-text">
+                <div class="flex col ml8 size14 text-gray">
                     <div class="col" ng-repeat="(domain, app) in token.dapps">
                         <div class="row mt4">
                             <p class="flex">{{domain}}</p>
@@ -132,11 +151,11 @@
     </div>
     <div class="col mh16 align-start-center" ng-show="token.domain != wallet.gas_domain">
         <div class="row block gap16">
-            <div class="flex mh0 primary-button green-back radius4"
+            <div class="flex mh0 primary-button back-green radius4"
                  ng-click="buy()">
                 BUY
             </div>
-            <div class="flex mh0 primary-button red-back radius4"
+            <div class="flex mh0 primary-button back-red radius4"
                  ng-click="sell()"
                  ng-hide="token.balance <= 0">
                 SELL

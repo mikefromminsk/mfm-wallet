@@ -98,6 +98,9 @@ function post(url, params, success, error) {
 }
 
 function postContract(domain, path, params, success, error) {
+    params.version = package_json.version
+    params.session = session
+    params.gas_address = wallet.address()
     post("/" + domain + "/" + path, params, success, error)
 }
 
@@ -129,30 +132,28 @@ function dataInfo(path, success, error) {
 }
 
 var session = randomString(6)
+var package_json = {}
 
 function trackEvent(type, name, value, success, error) {
     postContract("mfm-analytics", "track.php", {
         type: type,
         name: name || "",
         value: value || "",
-        version: window.package_json.version,
-        session: session,
-        username: wallet.address(),
     }, function (response) {
         if (success)
             success(response.info)
     }, error)
 }
 
-function trackStart(){
+function trackStart() {
     get("/mfm-wallet/package.json", function (text) {
-        window.package_json = JSON.parse(text)
+        package_json = JSON.parse(text)
         // TODO change in tg bot hook bot param to af_source
         trackEvent("ui_start", getParam("af_source"), getParam("af_campaign"))
     })
 }
 
-function trackCall(args){
+function trackCall(args) {
     trackEvent("ui_call", args.callee.name, typeof args[0] === "string" ? args[0] : "")
 }
 

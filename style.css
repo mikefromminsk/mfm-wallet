@@ -1,19 +1,19 @@
 @font-face {
-    font-family: Gilroy-Light;
-    src: url("font/Gilroy-Light.otf") format("opentype");
+    font-family: FontLight;
+    src: url("font/inter/Inter_18pt-Medium.ttf");
 }
 
 @font-face {
-    font-family: Gilroy-ExtraBold;
-    src: url("font/Gilroy-ExtraBold.otf") format("opentype");
+    font-family: FontBold;
+    src: url("font/inter/Inter_18pt-Bold.ttf");
 }
 
 body {
-    font-family: Gilroy-Light;
+    font-family: FontLight;
 }
 
 .bold {
-    font-family: Gilroy-ExtraBold;
+    font-family: FontBold;
 }
 
 .divider {

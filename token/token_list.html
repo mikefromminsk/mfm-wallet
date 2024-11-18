@@ -1,46 +1,42 @@
-<div class="row mh16 mt16 gray400-text" ng-show="activeTokens.length > 1">
-    <p class="flex size10">Your tokens</p>
-    <p class="size10">Price</p>
-    <p class="size10 row align-end" style="min-width: 80px">Balance</p>
-</div>
-<div class="col" ng-repeat="token in activeTokens">
-    <div class="row ph16 pv8 align-start-center ripple"
+<div class="col back-gray radius-default">
+    <div class="row p16 align-start-center ripple"
+         ng-repeat="token in activeTokens"
          ng-click="selectToken(token.domain)">
         <div ng-style="getLogo(token.domain)"></div>
-        <div class="flex col ml8">
-            <p class="size16 uppercase medium">{{token.domain}}</p>
-            <p class="size12 gray400-text">{{token.owner}}</p>
+        <div class="flex col ml16">
+            <p class="uppercase">{{token.domain}}</p>
+            <div class="row mt4 text2">
+                <p class="">{{formatPrice(token.price)}}</p>
+                <p class="ml4" ng-class="percentColor(token.price24)">
+                    {{formatChange(token.price24)}}
+                </p>
+            </div>
         </div>
         <div class="col align-end-end">
-            <p>{{formatPrice(token.price)}}</p>
-            <p class="size10 mt4" ng-class="percentColor(token.price24)">
-                {{formatChange(token.price24)}}
-            </p>
-        </div>
-        <div class="col align-end-end" style="min-width: 80px">
-            <p>{{formatPrice(token.price * token.balance)}}</p>
-            <p class="size10 mt4">{{formatAmount(token.balance)}}</p>
+            <p>{{formatAmount(token.balance)}}</p>
+            <p class="mt4 text2">{{formatPrice(token.price * token.balance)}}</p>
         </div>
     </div>
 </div>
 
-<div class="mh16 mt16" ng-show="recTokens.length">
-    <p class="size10 gray400-text">Recommended tokens</p>
-</div>
-<div class="col ripple"
-     ng-repeat="token in recTokens"
-     ng-click="selectToken(token.domain)">
-    <div class="row pv8 ph16 align-start-center">
+<p class="mv16 text1" ng-show="recTokens.length">Recommended</p>
+<div class="col back-gray radius-default">
+    <div class="row p16 align-start-center ripple"
+         ng-repeat="token in recTokens"
+         ng-click="selectToken(token.domain)">
         <div ng-style="getLogo(token.domain)"></div>
-        <div class="flex col ml8">
-            <p class="size16 uppercase medium">{{token.domain}}</p>
-            <p class="size12 gray400-text">{{token.owner}}</p>
+        <div class="flex col ml16">
+            <p class="uppercase">{{token.domain}}</p>
+            <div class="row mt4 text2">
+                <p class="">{{formatPrice(token.price)}}</p>
+                <p class="ml4" ng-class="percentColor(token.price24)">
+                    {{formatChange(token.price24)}}
+                </p>
+            </div>
         </div>
         <div class="col align-end-end">
-            <p>{{formatPrice(token.price)}}</p>
-            <p class="size10 mt4" ng-class="percentColor(token.price24hChange)">
-                {{formatChange(token.price24hChange)}}
-            </p>
+            <p>{{formatAmount(token.balance)}}</p>
+            <p class="mt4 text2">{{formatPrice(token.price * token.balance)}}</p>
         </div>
     </div>
 </div>

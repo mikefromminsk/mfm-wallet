@@ -1,4 +1,5 @@
-function openSendDialog(domain, to_address, amount, success) {
+function openSend(domain, to_address, amount, success) {
+    trackCall(arguments)
     showBottomSheet('/mfm-wallet/token/send/index.html', success, function ($scope) {
         $scope.domain = domain
         if ((to_address || "") != "") {

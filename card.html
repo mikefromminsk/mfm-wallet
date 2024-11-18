@@ -23,8 +23,8 @@
         </div>
         <div class="flex"></div>
         <div class="row align-end-end">
-            <p class="flex size16 gray400-text uppercase">{{wallet.address()}}</p>
-            <div class="ripple radius10 black-back white-text size14 pv8 ph16 mb4"
+            <p class="flex size16 text-gray uppercase">{{wallet.address()}}</p>
+            <div class="ripple radius10 back-black text-white size14 pv8 ph16 mb4"
                  style="border: var(--black) solid 2px;"
                  ng-show="coin.domain == 'usdt'"
                  ng-click="openDeposit(); $event.stopPropagation();">

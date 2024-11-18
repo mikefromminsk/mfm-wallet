@@ -3,7 +3,7 @@ function openLogin(success) {
         if (success) success()
         return
     }
-    showBottomSheet('/mfm-wallet/token/login/index.html', success, function ($scope) {
+    showDialog('/mfm-wallet/token/login/index.html', success, function ($scope) {
         $scope.username = ""
         $scope.agree_with_terms_and_condition = false
         if (DEBUG) {
@@ -66,7 +66,7 @@ function openLogin(success) {
             if (window.Telegram != null) {
                 let userData = window.Telegram.WebApp.initDataUnsafe
                 if (userData.user != null) {
-                    postContract("mfm-telegram", "api/link_address.php", {
+                    postContract("mfm-telegram", "link_address.php", {
                         bot: getParam("bot"),
                         address: $scope.username,
                         username: userData.user.username,

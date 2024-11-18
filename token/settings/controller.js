@@ -11,12 +11,7 @@ function openAccount(success) {
         }
 
         $scope.openBuyFunnel = function () {
-            openFunnel([
-                "openTokenProfile",
-                "openExchange",
-            ], function () {
-
-            })
+            openFunnel("buy")
         }
 
         $scope.leaveReview = function () {

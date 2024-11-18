@@ -5,20 +5,20 @@
     </div>
     <div class="col content input-content">
         <div class="row">
-            <div class="flex row align-start-center radius10 gray500-back p8 mt8">
+            <div class="flex row align-start-center radius10 back-gray p8 mt8">
                 <div class="col">
                     <div class="row align-start-end">
-                        <p class="size10 gray100-text">{{tran.from == username ? "to " : "from "}}</p>
+                        <p class="size10 text-gray">{{tran.from == username ? "to " : "from "}}</p>
                         <p class="ml4 size14 bold">{{tran.from == username ? tran.to : tran.from}}</p>
                     </div>
-                    <p class="mt4 size10 gray100-text">{{formatSec(tran.time)}}</p>
+                    <p class="mt4 size10 text-gray">{{formatSec(tran.time)}}</p>
                 </div>
                 <div class="flex mh8" style="background-image: linear-gradient(to right, var(--gray400) 33%, rgba(255,255,255,0) 0%);
 background-position: bottom;
 background-size: 10px 1px;
 background-repeat: repeat-x;; height: 1px"></div>
                 <p class="size16 size16 bold"
-                   ng-class="{'red-text': tran.from == username,'green-text': tran.from != username}">
+                   ng-class="{'text-red': tran.from == username,'text-green': tran.from != username}">
                     {{(tran.from == username ? "-" : "+") + formatAmount(tran.amount, tran.domain)}}
                 </p>
             </div>
@@ -38,14 +38,14 @@ background-repeat: repeat-x;; height: 1px"></div>
                     <div class="divider"></div>
                     <div class="row mt8">
                         <p class="flex">Amount</p>
-                        <p class="nowrap" ng-class="{'green-text': tran.to == wallet.address(), 'red-text': tran.from == wallet.address()}">
+                        <p class="nowrap" ng-class="{'text-green': tran.to == wallet.address(), 'text-red': tran.from == wallet.address()}">
                             {{(tran.to == wallet.address() ? "+" : "-") + formatAmount(tran.amount, tran.domain)}}
                         </p>
                     </div>
                     <div class="divider"></div>
                     <div class="row mt8">
                         <p class="flex">Status</p>
-                        <p class="nowrap green-text">Completed</p>
+                        <p class="nowrap text-green">Completed</p>
                     </div>
                     <div class="divider"></div>
                     <div class="row mt8">
@@ -71,7 +71,7 @@ background-repeat: repeat-x;; height: 1px"></div>
                         <p class="flex">TxId</p>
                         <div class="row">
                             <a class="nowrap" href="{{getTxLink(tran.txid)}}" target="_blank">{{formatHash(tran.txid)}}</a>
-                            <img class="img16 ml4 ripple img-white" src="/mfm-wallet/img/copy.svg" ng-click="copy(tran.txid)">
+                            <img class="img16 ml4 ripple img-black" src="/mfm-wallet/img/copy.svg" ng-click="copy(tran.txid)">
                         </div>
                     </div>-->
                 </div>

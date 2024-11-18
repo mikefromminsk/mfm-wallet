@@ -19,7 +19,7 @@ function openTokenProfile(domain, success) {
         })*/
 
         $scope.sendDialog = function () {
-            openSendDialog(domain, "", "", init)
+            openSend(domain, "", "", init)
         }
 
         $scope.openMining = function () {
@@ -58,7 +58,7 @@ function openTokenProfile(domain, success) {
         }
 
         $scope.donate = function () {
-            openSendDialog(domain, $scope.token.owner, "", init)
+            openSend(domain, $scope.token.owner, "", init)
         }
 
         function loadProfile() {

@@ -18,7 +18,7 @@
             <img class="img32" src="{{genLogo(coin.logo)}}">
             <div class="flex col ml8">
                 <p class="size16 bold uppercase medium">{{coin.domain}}</p>
-                <p class="size12 gray400-text">{{coin.owner}}</p>
+                <p class="size12 text-gray">{{coin.owner}}</p>
             </div>
         </div>
         <div class="divider"></div>
@@ -26,7 +26,7 @@
 </div>
 <div class="flex col">
     <div class="row align-start-center ripple p8">
-        <img class="img24 img-black" src="/explorer/img/{{toImg(info.dir.data_type)}}">
+        <img class="img24 img-white" src="/explorer/img/{{toImg(info.dir.data_type)}}">
         <div class="flex ml4" ng-click="backPath()">{{getPath()}}</div>
         <div class="row input-wrapper">
             <div class="input-label">Subdir</div>
@@ -37,7 +37,7 @@
     <div class="row ml16 align-start-center ripple p8"
          ng-repeat="file in info.children"
          ng-click="addPath(file.data_key)">
-        <img class="img24 img-black" src="/explorer/img/{{toImg(file.data_type)}}">
+        <img class="img24 img-white" src="/explorer/img/{{toImg(file.data_type)}}">
         <div class="ml4">{{file.data_key}}</div>
         <div class="flex row align-end">
             <div class="" ng-click="copyText(file.data_value); $event.stopPropagation();">{{file.data_value}}</div>
