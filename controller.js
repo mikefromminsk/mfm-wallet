@@ -29,7 +29,7 @@ function main($scope) {
     }
 
     trackStart()
-    $scope.selectTab(1)
+    $scope.selectTab(2)
 
     connectWs();
 }

@@ -55,7 +55,7 @@
     </md-tab>
 
     <md-tab label="2">
-        <ng-include class="flex col" src="'/mfm-wallet/token/trans/index.html?nocache'"></ng-include>
+        <ng-include class="flex col" src="'/mfm-wallet/trans/index.html?nocache'"></ng-include>
     </md-tab>
 </md-tabs>
 <div class="col align-start-center fill-width p16 pt8 back-black"
@@ -64,7 +64,7 @@
         <div class="flex col pv8 align-start-center ripple"
              ng-repeat="item in menu"
              ng-click="selectTab($index)">
-            <img class="img18" src="/mfm-wallet/img/wallet.svg"
+            <img class="img18" src="/mfm-wallet/img/{{item}}.svg"
                  ng-class="{'img-accent': selectedIndex == $index, 'img-gray': selectedIndex != $index}">
             <p class="mt8"
                ng-class="{'text-accent': selectedIndex == $index, 'text-gray': selectedIndex != $index}">{{item}}</p>
@@ -114,7 +114,7 @@
 <link href="/mfm-angular-template/css/github-dark.min.css" rel="stylesheet">
 
 <script src="controller.js?nocache"></script>
-<script src="/mfm-wallet/token/trans/controller.js?nocache"></script>
+<script src="/mfm-wallet/trans/controller.js?nocache"></script>
 <script src="/mfm-wallet/token/controller.js?nocache"></script>
 <script src="/mfm-wallet/store/controller.js?nocache"></script>
 <script>
@@ -137,7 +137,7 @@
 <script async src="/mfm-wallet/dialogs/web/controller.js?nocache"></script>
 <script async src="/mfm-bank/deposit/console/controller.js?nocache"></script>
 <script async src="/mfm-bank/withdrawal/console/controller.js?nocache"></script>
-<script async src="/mfm-wallet/token/trans/tran/controller.js?nocache"></script>
+<script async src="/mfm-wallet/trans/tran/controller.js?nocache"></script>
 <script async src="/mfm-wallet/token/select_token/controller.js?nocache"></script>
 <script async src="/mfm-mining/console/controller.js?nocache"></script>
 <!--<script async src="/share/create/controller.js"></script>

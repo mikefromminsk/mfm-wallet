@@ -1,5 +1,5 @@
 function openTran(next_hash, success) {
-    showBottomSheet('/mfm-wallet/token/trans/tran/index.html', success, function ($scope) {
+    showBottomSheet('/mfm-wallet/trans/tran/index.html', success, function ($scope) {
 
             post("/mfm-token/tran.php", {
                 next_hash: next_hash,

@@ -1,0 +1,14 @@
+<div class="row header align-center-center">
+    <div class="row block align-center">
+        <p class="text1">History</p>
+    </div>
+</div>
+<div class="col align-start-center scroll">
+    <div class="col block">
+        <ng-include src="'/mfm-wallet/trans/trans.html'"></ng-include>
+        <div style="height: 80px;"></div>
+    </div>
+</div>
+<div class="fill col align-center-center" ng-show="in_progress">
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+</div>
