@@ -1,28 +1,21 @@
 <div class="row header align-center-center">
-    <div class="row block align-start-center gap16">
-        <p class="flex ml8 size24 bold uppercase">Apps</p>
+    <div class="row block align-center">
+        <p class="text1">Store</p>
     </div>
 </div>
-<div class="flex col content scroll">
-    <div class="col footer_up_background align-start-center">
-        <div class="col block ph8">
-            <div class="col radius24 back-gray p16 mt16 shadow-white ripple"
-                 ng-repeat="app in apps"
-                 ng-click="openApp(app)">
-                <div class="flex row">
-                    <div ng-style="getLogo(app.domain, 64)"></div>
-                    <div class="flex col ml16">
-                        <p class="size14">{{app.title}}</p>
-                    </div>
-                    <div class="col align-center-center">
-                        <div class="row align-start-center" ng-show="app.installed == true">
-                            <div class="button">Open</div>
-                        </div>
-                    </div>
+<div class="col align-start-center scroll">
+    <div class="col block input-content">
+        <p class="text1 bold">Mining</p>
+        <div class="row scroll">
+            <div class="col align-start-center" ng-repeat="domain in mining">
+                <div class="col p16 radius-default back-gray ripple"
+                     ng-click="openMining(domain)">
+                    <div ng-style="getLogo(domain)"></div>
                 </div>
+                <p class="mt4 text2">{{domain}}</p>
             </div>
         </div>
     </div>
-
     <div style="height: 80px;"></div>
 </div>
+

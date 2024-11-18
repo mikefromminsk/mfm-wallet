@@ -1,12 +1,8 @@
 <div class="row header align-center-center">
-    <div class="row block align-start-center gap16">
+    <div class="row block align-start-center">
         <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/settings.svg" ng-click="openAccount()">
-        <div class="flex row align-center">
-            Wallet
-        </div>
-        <div class="row align-end-center">
-            <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/search.svg" ng-click="toggleSearchMode()">
-        </div>
+        <div class="flex row align-center text1">Wallet</div>
+        <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/search.svg" ng-click="toggleSearchMode()">
     </div>
 </div>
 <div class="col align-start-center scroll">
@@ -45,5 +41,6 @@
         <div class="col ph16">
             <ng-include src="'/mfm-wallet/token/token_list.html?nocache'"></ng-include>
         </div>
+        <div style="height: 80px;"></div>
     </div>
 </div>
