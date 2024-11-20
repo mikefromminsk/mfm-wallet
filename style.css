@@ -9,11 +9,11 @@
 }
 
 body {
-    font-family: FontLight;
+    font-family: FontLight, Roboto, "Helvetica Neue", sans-serif;
 }
 
 .bold {
-    font-family: FontBold;
+    font-family: FontBold, Roboto, "Helvetica Neue", sans-serif;
 }
 
 .divider {
