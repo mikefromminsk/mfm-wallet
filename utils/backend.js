@@ -98,7 +98,7 @@ function post(url, params, success, error) {
 }
 
 function postContract(domain, path, params, success, error) {
-    params.version = package_json.version
+    params.version = version
     params.session = session
     params.gas_address = wallet.address()
     post("/" + domain + "/" + path, params, success, error)
@@ -131,8 +131,9 @@ function dataInfo(path, success, error) {
     }, error)
 }
 
+var app_name = "unset"
 var session = randomString(6)
-var package_json = {}
+var version = "unset"
 
 function trackEvent(type, name, value, success, error) {
     postContract("mfm-analytics", "track.php", {
@@ -145,10 +146,14 @@ function trackEvent(type, name, value, success, error) {
     }, error)
 }
 
-function trackStart() {
+function trackStart(application_name) {
+    app_name = application_name
     get("/mfm-wallet/package.json", function (text) {
-        package_json = JSON.parse(text)
-        trackEvent("ui_start", getParam("utm_medium"), getParam("utm_content"))
+        try {
+            version = JSON.parse(text).version
+        } catch (e) {
+        }
+        trackEvent(window.app_name, getParam("utm_medium"), getParam("utm_content"))
     })
 }
 
@@ -165,10 +170,7 @@ const storageKeys = {
     passhash: "STORE_PASSHASH",
     hasPin: "STORE_HAS_PIN",
     hideBalances: "STORE_HIDE_BALANCES",
-    domains: "STORE_DOMAINS",
     bonuses: "STORE_BONUSES",
-    categories: "STORE_CATEGORIES",
-    selectedCoin: "STORE_SELECTED_COIN",
     onboardingShowed: "STORE_ONBOARDING_SHOWED",
 }
 

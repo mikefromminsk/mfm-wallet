@@ -1,10 +1,23 @@
-<div class="row header align-center-center">
-    <div class="row block align-center">
-        <p class="text1">Store</p>
-    </div>
-</div>
 <div class="col align-start-center scroll">
     <div class="col block input-content">
+
+        <div class="slider">
+            <div class="row slides horizontal-scroll"
+                ng-class="{'slide-animation' : !DEBUG}">
+                <div class="col p8"
+                     ng-repeat="domain in slides">
+                    <div class="row p16 align-start-end back-gray radius-default"
+                         ng-click="openTokenProfile(domain)"
+                         style="height: 150px">
+                        <div class="row align-start-center gap16">
+                            <div ng-style="getLogo(domain)"></div>
+                            <p class="text1">{{formatTicker(domain)}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <p class="text1 bold">Top Mining</p>
         <div class="row">
             <div class="col align-start-center" ng-repeat="domain in top_mining">

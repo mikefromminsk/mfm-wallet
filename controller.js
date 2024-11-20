@@ -28,7 +28,7 @@ function main($scope) {
 
     $scope.selectTab($scope.selectedIndex)
 
-    trackStart()
+    trackStart("mfm-wallet")
 
     connectWs();
 }

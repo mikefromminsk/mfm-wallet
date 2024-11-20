@@ -1,0 +1,70 @@
+<div class="row header align-center-center">
+    <div class="row block align-start-center">
+        <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/settings.svg" ng-click="openAccount()">
+        <div class="flex row align-center">Wallet</div>
+        <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/search.svg" ng-click="toggleSearchMode()">
+    </div>
+</div>
+<div class="col align-start-center scroll">
+    <div class="col block">
+        <div class="col" ng-hide="wallet.address()">
+            <div class="col align-start-center mt16" ng-click="login()">
+                <p class="size20 bold">Welcome to mytoken.space!</p>
+                <p class="size16 mt16">Here you can create your own token.</p>
+            </div>
+            <div class="flex primary-button" ng-click="login()">
+                Login or Create account
+            </div>
+        </div>
+        <div class="col input-content" ng-show="wallet.address()">
+            <div class="row align-center text0" style="margin-top: 40px">
+                {{formatPrice(getTotalBalance())}}
+            </div>
+            <div class="row align-start-end">
+                <div class="flex p16 col align-start-center ripple"
+                     ng-click="openDeposit()">
+                    <img class="img16 img-gray" src="/mfm-wallet/img/arrow-down.svg">
+                    <p class="mt8 text2">Deposit</p>
+                </div>
+                <div class="flex p16 col align-start-center ripple"
+                     ng-click="openWithdrawal()">
+                    <img class="img16 img-gray" src="/mfm-wallet/img/arrow-up.svg">
+                    <p class="mt8 text2">Withdrawal</p>
+                </div>
+                <div class="flex p16 col align-start-center ripple"
+                     ng-click="openSend()">
+                    <img class="img16 img-gray" src="/mfm-wallet/img/send.svg">
+                    <p class="mt8 text2">Send</p>
+                </div>
+            </div>
+        </div>
+        <div class="col ph16">
+            <div class="col back-gray radius-default">
+                <div class="row p16 align-start-center ripple"
+                     ng-repeat="token in accounts"
+                     ng-click="openTokenProfile(token.domain)">
+                    <div ng-style="getLogo(token.domain)"></div>
+                    <div class="flex col ml16">
+                        <p class="uppercase">{{token.domain}}</p>
+                        <div class="row mt4 text2">
+                            <p class="">{{formatPrice(token.price)}}</p>
+                            <p class="ml4" ng-class="percentColor(token.change24)">
+                                {{formatChange(token.change24)}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col align-end-end">
+                        <p>{{formatAmount(token.balance)}}</p>
+                        <p class="mt4 text2">{{formatPrice(token.price * token.balance)}}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col align-start-center">
+                <div class="back-pay radius-default m16 pv8 ph16 ripple" ng-click="openLaunchToken()">
+                    Launch token
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

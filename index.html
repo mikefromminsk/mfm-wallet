@@ -49,7 +49,7 @@
             <ng-include class="flex col" src="'/mfm-wallet/home/index.html?nocache'"></ng-include>
         </md-tab>
         <md-tab label="2">
-            <ng-include class="flex col" src="'/mfm-wallet/token/index.html?nocache'"></ng-include>
+            <ng-include class="flex col" src="'/mfm-wallet/wallet/index.html?nocache'"></ng-include>
         </md-tab>
     </md-tabs>
     <div class="col align-start-center fill-width p16 pt8 back-black ng-cloak"
@@ -100,34 +100,27 @@
 
 <script src="controller.js?nocache"></script>
 <script src="/mfm-wallet/trans/controller.js?nocache"></script>
-<script src="/mfm-wallet/token/controller.js?nocache"></script>
+<script src="/mfm-wallet/wallet/controller.js?nocache"></script>
 <script src="/mfm-wallet/home/controller.js?nocache"></script>
 <script>
     controller(main)
     window.Telegram.WebApp.expand()
 </script>
-<script async src="/mfm-wallet/token/login/controller.js?nocache"></script>
-<script async src="/mfm-wallet/token/logo/controller.js?nocache"></script>
-<!--<script async src="/jszip/dist/jszip.min.js"></script>
-<script async src="/qrcodejs/qrcode.min.js"></script>-->
+<script async src="/mfm-wallet/wallet/login/controller.js?nocache"></script>
+<script async src="/mfm-wallet/wallet/launch/emit/controller.js?nocache"></script>
+<script async src="/mfm-wallet/wallet/launch/name/controller.js?nocache"></script>
+<script async src="/mfm-wallet/wallet/launch/logo/controller.js?nocache"></script>
 <script async src="/mfm-wallet/dialogs/pin/controller.js?nocache"></script>
 <script async src="/mfm-analytics/chart/controller.js?nocache"></script>
 <script async src="/mfm-analytics/funnel/controller.js?nocache"></script>
-<script async src="/mfm-wallet/token/profile/controller.js?nocache"></script>
-<script async src="/mfm-wallet/token/launch/controller.js?nocache"></script>
-<script async src="/mfm-wallet/token/send/controller.js?nocache"></script>
-<!--<script async src="/ico/sell/controller.js"></script>
-<script async src="/ico/buy/controller.js"></script>-->
-<script async src="/mfm-wallet/token/settings/controller.js?nocache"></script>
+<script async src="/mfm-wallet/wallet/profile/controller.js?nocache"></script>
+<script async src="/mfm-wallet/wallet/send/controller.js?nocache"></script>
+<script async src="/mfm-wallet/wallet/settings/controller.js?nocache"></script>
 <script async src="/mfm-wallet/dialogs/web/controller.js?nocache"></script>
 <script async src="/mfm-bank/deposit/console/controller.js?nocache"></script>
 <script async src="/mfm-bank/withdrawal/console/controller.js?nocache"></script>
 <script async src="/mfm-wallet/trans/tran/controller.js?nocache"></script>
-<script async src="/mfm-wallet/token/select_token/controller.js?nocache"></script>
 <script async src="/mfm-mining/console/controller.js?nocache"></script>
-<!--<script async src="/share/create/controller.js"></script>
-<script async src="/share/copy/controller.js"></script>
-<script async src="/share/receive/controller.js"></script>-->
 <script async src="/mfm-exchange/exchange/controller.js?nocache"></script>
 <script async src="/mfm-exchange/old/pump/settings/controller.js?nocache"></script>
 <script async src="/mfm-exchange/old/balances/controller.js?nocache"></script>

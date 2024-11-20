@@ -56,11 +56,6 @@ $tokens = [
 
 launchList($tokens, $address, $password);
 
-requestEquals("/mfm-exchange/init.php", [
-    wallet_admin_address => $address,
-    wallet_admin_password => $password
-]);
-
 
 delegateAmount($gas_domain, $address, bank, "mfm-bank/owner.php", $password);
 
