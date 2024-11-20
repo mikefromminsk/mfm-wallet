@@ -148,8 +148,7 @@ function trackEvent(type, name, value, success, error) {
 function trackStart() {
     get("/mfm-wallet/package.json", function (text) {
         package_json = JSON.parse(text)
-        // TODO change in tg bot hook bot param to af_source
-        trackEvent("ui_start", getParam("af_source"), getParam("af_campaign"))
+        trackEvent("ui_start", getParam("utm_medium"), getParam("utm_content"))
     })
 }
 
