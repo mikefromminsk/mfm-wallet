@@ -61,6 +61,7 @@ requestEquals("/mfm-exchange/init.php", [
     wallet_admin_password => $password
 ]);
 
+
 delegateAmount($gas_domain, $address, bank, "mfm-bank/owner.php", $password);
 
 $htaccess = file_get_contents($_SERVER[DOCUMENT_ROOT] . "/mfm-root/.htaccess");
