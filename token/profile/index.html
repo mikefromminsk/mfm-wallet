@@ -50,16 +50,20 @@
                 <p>{{formatPercent(token.circulation_percent, 4)}}</p>
             </div>
             <div class="row">
+                <p class="flex text2">Distribution</p>
+                <p class="uppercase-first-letter">{{token.emitting}}</p>
+            </div>
+            <div class="row">
                 <p class="flex text2">Created</p>
                 <p>{{formatTimeDiff(token.created)}}</p>
             </div>
 
             <p class="text1">Activity</p>
             <div class="row">
-                <p class="text2">Transactions</p>
-                <img class="ml4 img12 img-gray" src="/mfm-wallet/img/chart.svg" ng-click="openChart(token.domain + '_trans')">
+                <p class="text2">Volume</p>
+                <img class="ml4 img12 img-gray" src="/mfm-wallet/img/chart.svg" ng-click="openChart(token.domain + '_volume')">
                 <div class="flex"></div>
-                <p>{{formatAmount(token.trans)}}</p>
+                <p>{{formatAmount(token.volume, token.domain)}}</p>
             </div>
             <div class="row">
                 <p class="text2">Accounts</p>
@@ -68,24 +72,30 @@
                 <p>{{formatAmount(token.accounts)}}</p>
             </div>
             <div class="row">
-                <p class="text2">Volume</p>
-                <img class="ml4 img12 img-gray" src="/mfm-wallet/img/chart.svg" ng-click="openChart(token.domain + '_volume')">
+                <p class="text2">Transactions</p>
+                <img class="ml4 img12 img-gray" src="/mfm-wallet/img/chart.svg" ng-click="openChart(token.domain + '_trans')">
                 <div class="flex"></div>
-                <p>{{formatAmount(token.volume, token.domain)}}</p>
+                <p>{{formatAmount(token.trans)}}</p>
             </div>
 
             <p class="text1">Network</p>
             <div class="row">
-                <p class="text2">All transactions</p>
-                <img class="ml4 img12 img-gray" src="/mfm-wallet/img/chart.svg" ng-click="openChart('all_trans')">
+                <p class="text2">All tokens</p>
+                <img class="ml4 img12 img-gray" src="/mfm-wallet/img/chart.svg" ng-click="openChart('tokens_count')">
                 <div class="flex"></div>
-                <p>{{formatAmount(token.all_trans)}}</p>
+                <p>{{formatAmount(token.tokens_count)}}</p>
             </div>
             <div class="row">
                 <p class="text2">All accounts</p>
-                <img class="ml4 img12 img-gray" src="/mfm-wallet/img/chart.svg" ng-click="openChart('all_accounts')">
+                <img class="ml4 img12 img-gray" src="/mfm-wallet/img/chart.svg" ng-click="openChart('accounts_count')">
                 <div class="flex"></div>
-                <p>{{formatAmount(token.all_accounts)}}</p>
+                <p>{{formatAmount(token.accounts_count)}}</p>
+            </div>
+            <div class="row">
+                <p class="text2">All transactions</p>
+                <img class="ml4 img12 img-gray" src="/mfm-wallet/img/chart.svg" ng-click="openChart('trans_count')">
+                <div class="flex"></div>
+                <p>{{formatAmount(token.trans_count)}}</p>
             </div>
             <div class="nowrap-disabled" id="token-readme"></div>
         </div>
