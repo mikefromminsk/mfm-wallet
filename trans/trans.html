@@ -4,7 +4,7 @@
          ng-repeat="item in tran.items"
          ng-click="openTran(item)">
         <div class="row">
-            <div class="img32 p8 back-black radius-default"  ng-hide="item.from == wallet.address()">
+            <div class="img32 p8 back-black radius-default" ng-hide="item.from == wallet.address()">
                 <img class="img16 img-gray" src="/mfm-wallet/img/arrow-down.svg">
             </div>
             <div class="img32 p8 back-black radius-default" ng-show="item.from == wallet.address()">

@@ -1,4 +1,4 @@
-function addStore($scope) {
+function addHome($scope) {
 
     $scope.openMining = function (domain) {
         openMining(domain)
@@ -9,7 +9,7 @@ function addStore($scope) {
     }
 
     function init() {
-        postContract("mfm-wallet", "store/api/main.php", {
+        postContract("mfm-wallet", "home/api/main.php", {
         }, function (response) {
             $scope.top_mining = response.top_mining
             $scope.top_exchange = response.top_exchange

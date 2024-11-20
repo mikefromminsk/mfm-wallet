@@ -47,15 +47,13 @@
 
 <md-tabs class="flex col" md-selected="selectedIndex" md-swipe-content>
     <md-tab label="0">
-        <ng-include class="flex col" src="'/mfm-wallet/token/index.html?nocache'"></ng-include>
-    </md-tab>
-
-    <md-tab label="1">
-        <ng-include class="flex col" src="'/mfm-wallet/store/index.html?nocache'"></ng-include>
-    </md-tab>
-
-    <md-tab label="2">
         <ng-include class="flex col" src="'/mfm-wallet/trans/index.html?nocache'"></ng-include>
+    </md-tab>
+    <md-tab label="1">
+        <ng-include class="flex col" src="'/mfm-wallet/home/index.html?nocache'"></ng-include>
+    </md-tab>
+    <md-tab label="2">
+        <ng-include class="flex col" src="'/mfm-wallet/token/index.html?nocache'"></ng-include>
     </md-tab>
 </md-tabs>
 <div class="col align-start-center fill-width p16 pt8 back-black"
@@ -69,16 +67,6 @@
             <p class="mt8"
                ng-class="{'text-accent': selectedIndex == $index, 'text-gray': selectedIndex != $index}">{{item}}</p>
         </div>
-        <!--<div class="flex col align-center-center mr16" ng-click="newCoin($event)" ng-show="wallet.address()">
-            <div class="col radius24 back-accent pv8 align-center-center ripple" style="width: 100px">
-                <p class="bold">New coin</p>
-            </div>
-        </div>
-        <div class="flex col align-center-center mr16" ng-click="login()" ng-hide="wallet.address()">
-            <div class="col radius24 back-accent pv8 align-center-center ripple" style="width: 100px">
-                <p class="bold">Login</p>
-            </div>
-        </div>-->
     </div>
 </div>
 
@@ -116,7 +104,7 @@
 <script src="controller.js?nocache"></script>
 <script src="/mfm-wallet/trans/controller.js?nocache"></script>
 <script src="/mfm-wallet/token/controller.js?nocache"></script>
-<script src="/mfm-wallet/store/controller.js?nocache"></script>
+<script src="/mfm-wallet/home/controller.js?nocache"></script>
 <script>
     controller(main)
     window.Telegram.WebApp.expand()

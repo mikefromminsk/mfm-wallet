@@ -4,7 +4,7 @@ function addTransactions($scope) {
         postContract("mfm-token", "trans.php", {
             address: wallet.address(),
         }, function (response) {
-            $scope.trans = $scope.groupByTimePeriod(response.trans)
+            $scope.trans = []
             $scope.$apply()
         })
     }

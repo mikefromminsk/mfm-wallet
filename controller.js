@@ -13,20 +13,20 @@ function main($scope) {
         openShareReceive(getParam("bonus"))
     }
 
-    $scope.menu = ["Wallet", "Store", "History"]
+    $scope.menu = ["History", "Home", "Wallet"]
+    $scope.selectedIndex = 1
     $scope.selectTab = function (tab) {
         $scope.selectedIndex = tab
         if (tab == 0) {
-            //mfm-wallet
             addTokens($scope)
         } else if (tab == 1) {
-            //store
-            addStore($scope)
+            addHome($scope)
         } else if (tab == 2) {
-            //transactions
             addTransactions($scope)
         }
     }
+
+    $scope.selectTab($scope.selectedIndex)
 
     trackStart()
 
