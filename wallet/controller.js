@@ -48,7 +48,7 @@ function addWallet($scope) {
         })
     }, 1000)
 
-    function init() {
+    $scope.init = function () {
         get("/mfm-wallet/readme.md", function (text) {
             setTimeout(function () {
                 setMarkdown("markdown-container", text)
@@ -57,5 +57,5 @@ function addWallet($scope) {
         tokens()
     }
 
-    init()
+    $scope.init()
 }

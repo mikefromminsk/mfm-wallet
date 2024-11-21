@@ -41,7 +41,7 @@
                  ng-show="token.domain == wallet.gas_domain">
                 <div class="flex p16 col align-start-center ripple"
                      ng-click="openDeposit()">
-                    <img class="img16 img-gray" src="/mfm-wallet/img/deposit.svg">
+                    <img class="img16 img-gray" src="/mfm-wallet/img/plus.svg">
                     <p class="mt8 text2">Deposit</p>
                 </div>
                 <div class="flex p16 col align-start-center ripple"
@@ -57,7 +57,8 @@
             </div>
 
 
-            <div class="row align-start-end">
+            <div class="row align-start-end"
+                 ng-show="token.domain != wallet.gas_domain">
                 <div class="flex p16 col align-start-center ripple"
                      ng-click="openStaking()">
                     <img class="img16 img-gray" src="/mfm-wallet/img/staking.svg">
@@ -143,14 +144,14 @@
     </div>
     <div class="col mh16 align-start-center" ng-show="token.domain != wallet.gas_domain">
         <div class="row block gap16">
-            <div class="flex mh0 primary-button back-green radius4"
-                 ng-click="openBuy(domain)">
-                BUY
-            </div>
             <div class="flex mh0 primary-button back-red radius4"
                  ng-click="openSell(domain)"
                  ng-hide="token.balance <= 0">
                 SELL
+            </div>
+            <div class="flex mh0 primary-button back-green radius4"
+                 ng-click="openBuy(domain)">
+                BUY
             </div>
         </div>
     </div>

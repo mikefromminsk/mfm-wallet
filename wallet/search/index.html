@@ -1,0 +1,38 @@
+<md-dialog class="fill col">
+    <div class="row header align-start-center">
+        <div class="img32"></div>
+        <div class="flex row align-center-center">
+            <p>Search</p>
+        </div>
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+        </div>
+    </div>
+    <div class="flex col ph16 content scroll">
+        <div class="col back-gray radius-default">
+            <div class="row p16 align-start-center ripple"
+                 ng-repeat="token in tokens"
+                 ng-click="openTokenProfile(token.domain)">
+                <div ng-style="getLogo(token.domain)"></div>
+                <div class="flex col ml16">
+                    <p class="uppercase">{{token.domain}}</p>
+                    <div class="row mt4 text2">
+                        <p class="">{{formatPrice(token.price)}}</p>
+                        <p class="ml4" ng-class="percentColor(token.change24)">
+                            {{formatChange(token.change24)}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="input-content">
+        <div class="flex row input-wrapper">
+            <input type="text"
+                   id="search_input"
+                   style="border-radius: 32px; padding: 0 16px"
+                   placeholder="Type token name ..."
+                   ng-model="search_text">
+        </div>
+    </div>
+</md-dialog>

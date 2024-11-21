@@ -4,65 +4,66 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/mfm-exchange/utils.php";
 
 onlyInDebug();
 
+requestEquals("/mfm-analytics/init.php");
+requestEquals("/mfm-token/init.php");
+requestEquals("/mfm-exchange/init.php");
+
+$gas_domain = get_required(gas_domain);
 $address = get_required(wallet_admin_address);
 $password = get_required(wallet_admin_password);
 $token = get_config_required(telegram_bot_token);
 
-requestEquals("/mfm-data/init.php", [
-    wallet_admin_address => $address,
-    wallet_admin_password => $password
-]);
+// init gas token
+tokenRegAccount($gas_domain, $address, $password, 100000000);
+tokenRegAccount($gas_domain, user, pass);
+trackLinear($gas_domain . _price, 1); // 1 USDT = 1 USD
 
-function delegateAmount($domain, $from_address, $to_address, $script, $password) {
-    tokenRegScript($domain, $to_address, $script);
+requestEquals("/mfm-data/init.php");
+
+function delegateBalanceToScript($domain, $from_address, $to_address, $script, $password)
+{
     $balance = tokenBalance($domain, $from_address);
+    if ($balance == null) error("balance is null");
+    tokenRegScript($domain, $to_address, $script);
     tokenSendAndCommit($domain, $from_address, $to_address, $balance, $password);
 }
 
 function launchList($tokens, $address, $password)
 {
     $gas_domain = get_required(gas_domain);
-    foreach ($tokens as $token) {
-        $domain = $token[domain];
-        $amount = $token[amount] ?: 1000000;
-        tokenRegAccount($domain, $address, $password, $amount);
-        if (isset($token[bot])) {
-            foreach ($token[bot] as $strategy => $amount) {
-                $bot_address = "bot_" . $strategy . "_" . $domain;
+    foreach ($tokens as $domain => $emit_type) {
+        if (tokenRegAccount($domain, $address, $password, 1000000)) {
+            if ($emit_type == exchange) {
+                $bot_address = "bot_spred_" . $domain;
                 botScriptReg($domain, $bot_address);
                 tokenSendAndCommit($domain, $address, $bot_address, 100, $password);
                 tokenSendAndCommit($gas_domain, $address, $bot_address, 100, $password);
             }
-        }
-        if (isset($token[mining])) {
-            delegateAmount($domain, $address, mining, "mfm-mining/mint.php", $password);
+            if ($emit_type == mining) {
+                delegateBalanceToScript($domain, $address, mining, "mfm-mining/mint.php", $password);
+            }
         }
     }
 }
 
 $tokens = [
-    [domain => "oak_log", bot => [spred => 100]],
-    [domain => "rock", mining => 1000000],
-
-/*
-    [domain => "oak_log"],
-    [domain => "stone"],
-    [domain => "chest", recipe => [
-        "oak_log" => 8
-    ]],
-*/
-
+    oak_log => exchange,
 ];
+
+$token_list = file_get_contents($_SERVER[DOCUMENT_ROOT] . "/mfm-wallet/api/token_list.json");
+$token_list = json_decode($token_list, true);
+
+foreach ($token_list as $domain) {
+    if ($tokens[$domain] != null) continue;
+    $tokens[$domain] = mining;
+}
 
 launchList($tokens, $address, $password);
 
-
-delegateAmount($gas_domain, $address, bank, "mfm-bank/owner.php", $password);
+delegateBalanceToScript($gas_domain, $address, bank, "mfm-bank/owner.php", $password);
 
 $htaccess = file_get_contents($_SERVER[DOCUMENT_ROOT] . "/mfm-root/.htaccess");
 file_put_contents($_SERVER[DOCUMENT_ROOT] . "/.htaccess", $htaccess);
 
 
-$response[success] = true;
-
-echo json_encode($response, JSON_PRETTY_PRINT);
+echo json_encode([success => true]);

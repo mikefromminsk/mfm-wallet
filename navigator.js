@@ -48,6 +48,10 @@ function addNavigator($scope) {
         openExchange(domain, 1)
     }
 
+    $scope.openSearch = function () {
+        openSearch()
+    }
+
     $scope.openTokenSettings = function () {
         openLogoChange(domain, function (result) {
             if (result == "success")

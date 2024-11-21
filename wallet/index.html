@@ -2,7 +2,7 @@
     <div class="row block align-start-center">
         <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/settings.svg" ng-click="openAccount()">
         <div class="flex row align-center">Wallet</div>
-        <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/search.svg" ng-click="toggleSearchMode()">
+        <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/search.svg" ng-click="openSearch()">
     </div>
 </div>
 <div class="col align-start-center scroll">
@@ -51,7 +51,7 @@
                     <p class="mt8 text2">Withdrawal</p>
                 </div>
                 <div class="flex p16 col align-start-center ripple"
-                     ng-click="openCredit()">
+                     ng-click="openCredit(init)">
                     <img class="img16 img-gray" src="/mfm-wallet/img/dollar.svg">
                     <p class="mt8 text2">Credit</p>
                 </div>
