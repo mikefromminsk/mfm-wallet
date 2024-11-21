@@ -8,7 +8,7 @@
 <div class="col align-start-center scroll">
     <div class="col block">
         <div class="col" ng-hide="wallet.address()">
-            <div class="col align-start-center mt16" ng-click="login()">
+            <div class="col align-start-center mt16" ng-click="openLogin()">
                 <p class="size20 bold">Welcome to mytoken.space!</p>
                 <p class="size16 mt16">Here you can create your own token.</p>
             </div>
@@ -20,10 +20,29 @@
             <div class="row align-center text0" style="margin-top: 40px">
                 {{formatPrice(getTotalBalance())}}
             </div>
+
+            <div class="row align-start-end">
+                <div class="flex p16 col align-start-center ripple"
+                     ng-click="openReceive()">
+                    <img class="img16 img-gray" src="/mfm-wallet/img/arrow-down.svg">
+                    <p class="mt8 text2">Receive</p>
+                </div>
+                <div class="flex p16 col align-start-center ripple"
+                     ng-click="openScan()">
+                    <img class="img16 img-gray" src="/mfm-wallet/img/scan.svg">
+                    <p class="mt8 text2">Scan</p>
+                </div>
+                <div class="flex p16 col align-start-center ripple"
+                     ng-click="openSend()">
+                    <img class="img16 img-gray" src="/mfm-wallet/img/send.svg">
+                    <p class="mt8 text2">Send</p>
+                </div>
+            </div>
+
             <div class="row align-start-end">
                 <div class="flex p16 col align-start-center ripple"
                      ng-click="openDeposit()">
-                    <img class="img16 img-gray" src="/mfm-wallet/img/arrow-down.svg">
+                    <img class="img16 img-gray" src="/mfm-wallet/img/plus.svg">
                     <p class="mt8 text2">Deposit</p>
                 </div>
                 <div class="flex p16 col align-start-center ripple"
@@ -32,11 +51,12 @@
                     <p class="mt8 text2">Withdrawal</p>
                 </div>
                 <div class="flex p16 col align-start-center ripple"
-                     ng-click="openSend()">
-                    <img class="img16 img-gray" src="/mfm-wallet/img/send.svg">
-                    <p class="mt8 text2">Send</p>
+                     ng-click="openCredit()">
+                    <img class="img16 img-gray" src="/mfm-wallet/img/dollar.svg">
+                    <p class="mt8 text2">Credit</p>
                 </div>
             </div>
+
         </div>
         <div class="col ph16">
             <div class="col back-gray radius-default">

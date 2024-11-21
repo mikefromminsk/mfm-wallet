@@ -8,7 +8,8 @@
                      ng-repeat="domain in slides">
                     <div class="row p16 align-start-end back-gray radius-default"
                          ng-click="openTokenProfile(domain)"
-                         style="height: 150px">
+                         style="height: 150px;"
+                         ng-style="getLogo('slide' + $index, '100%')">
                         <div class="row align-start-center gap16">
                             <div ng-style="getLogo(domain)"></div>
                             <p class="text1">{{formatTicker(domain)}}</p>
@@ -25,7 +26,7 @@
                      ng-click="openMining(domain)">
                     <div ng-style="getLogo(domain)"></div>
                 </div>
-                <p class="mt4 text2">{{domain}}</p>
+                <p class="mt4 text2">{{formatTicker(domain)}}</p>
             </div>
         </div>
         <p class="text1 bold">Top Exchange</p>
@@ -35,7 +36,7 @@
                      ng-click="openExchange(domain)">
                     <div ng-style="getLogo(domain)"></div>
                 </div>
-                <p class="mt4 text2">{{domain}}</p>
+                <p class="mt4 text2">{{formatTicker(domain)}}</p>
             </div>
         </div>
     </div>

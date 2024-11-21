@@ -1,0 +1,21 @@
+<md-bottom-sheet class="col">
+    <div class="row header align-start-center">
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="back()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/down.svg">
+        </div>
+        Receive
+    </div>
+    <div class="col content">
+        <div class="col input-content">
+            <div class="row input-wrapper">
+                <div class="input-label">Address</div>
+                <input type="text"
+                       ng-model="wallet.address()">
+            </div>
+            <div class="primary-button"
+                 ng-click="copy()">
+                Copy
+            </div>
+        </div>
+    </div>
+</md-bottom-sheet>

@@ -23,10 +23,9 @@
                 <input type="number"
                        autocapitalize="off"
                        ng-model="amount">
-                <div class="input-label-right ripple"
-                     ng-click="setMax()">
-                    <p>MAX {{formatAmount(getMax())}}</p>
-                </div>
+            </div>
+            <div class="text2">
+                Available: {{formatAmount(token.balance, token.domain)}}
             </div>
             <button class="primary-button" ng-click="send()"
                     ng-disabled="!to_address || !amount || (token.balance < getTotal())">

@@ -1,33 +1,5 @@
-function addTokens($scope) {
+function addWallet($scope) {
     $scope.menuIndex = 0
-
-    $scope.login = function () {
-        openLogin(init)
-    }
-
-    $scope.openTokenProfile = function (domain) {
-        openTokenProfile(domain, init)
-    }
-
-    $scope.openAccount = function () {
-        openAccount(init)
-    }
-
-    $scope.openLaunchToken = function () {
-        openLaunchToken(init)
-    }
-
-    $scope.openDeposit = function () {
-        openDeposit(init)
-    }
-
-    $scope.openWithdrawal = function () {
-        openWithdrawal(init)
-    }
-
-    $scope.openSend = function () {
-        openSend()
-    }
 
     function tokens() {
         postContract("mfm-token", "accounts.php", {

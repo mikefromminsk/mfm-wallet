@@ -33,7 +33,7 @@ function openAccount(success) {
 
         $scope.copy = function () {
             $scope.copyText(wallet.address())
-            showSuccess("Username copied")
+            showSuccess("Copied")
         }
 
     })

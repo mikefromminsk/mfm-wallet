@@ -7,7 +7,7 @@ function main($scope) {
     }
     setIcon()
 
-    addTokens($scope)
+    addWallet($scope)
 
     if (getParam("bonus") != null) {
         openShareReceive(getParam("bonus"))
@@ -22,7 +22,7 @@ function main($scope) {
         } else if (tab == 1) {
             addHome($scope)
         } else if (tab == 2) {
-            addTokens($scope)
+            addWallet($scope)
         }
     }
 
