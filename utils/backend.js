@@ -172,6 +172,7 @@ const storageKeys = {
     hideBalances: "STORE_HIDE_BALANCES",
     bonuses: "STORE_BONUSES",
     onboardingShowed: "STORE_ONBOARDING_SHOWED",
+    language: "STORE_LANGUAGE",
 }
 
 function postContractWithGas(domain, path, params, success, error) {

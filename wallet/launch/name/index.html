@@ -3,7 +3,7 @@
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="openSupport()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/support.svg">
         </div>
-        <p class="flex row align-center-center">New coin</p>
+        <p class="flex row align-center-center">{{str.new_token}}</p>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
         </div>
@@ -11,7 +11,7 @@
     <div class="flex content">
         <div class="col input-content">
             <div class="row input-wrapper">
-                <div class="input-label">Token name</div>
+                <div class="input-label">{{str.token_name}}</div>
                 <input type="text"
                        autocapitalize="none"
                        autocomplete="off"
@@ -20,10 +20,10 @@
                        ng-model="domain">
             </div>
             <div class="col text2">
-                <p>min 3 characters</p>
+                <p>{{str.min_3_symbols}}</p>
             </div>
             <div class="primary-button" ng-click="launch()">
-                Launch token
+                {{str.launch_token}}
             </div>
         </div>
     </div>

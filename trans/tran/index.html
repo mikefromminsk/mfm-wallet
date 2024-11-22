@@ -3,34 +3,34 @@
         <div class="row img32 radius-default back-gray align-center-center ripple" ng-click="back()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/down.svg">
         </div>
-        Details
+        {{str.details}}
     </div>
     <div class="col content input-content">
         <div class="p0">
             <ng-include src="'/mfm-wallet/trans/trans.html'"></ng-include>
         </div>
         <div class="row mt8" ng-hide="tran.from == wallet.address()">
-            <p class="flex text2">From</p>
+            <p class="flex text2">{{str.from}}</p>
             <p class="nowrap">{{tran.from}}</p>
         </div>
         <div class="row mt8" ng-hide="tran.to == wallet.address()">
-            <p class="flex text2">To</p>
+            <p class="flex text2">{{str.to}}</p>
             <p class="nowrap">{{tran.to}}</p>
         </div>
         <div class="row mt8">
-            <p class="flex text2">Amount</p>
+            <p class="flex text2">{{str.amount}}</p>
             <p class="nowrap"
                ng-class="{'text-green': tran.to == wallet.address(), 'text-red': tran.from == wallet.address()}">
                 {{(tran.to == wallet.address() ? "+" : "-") + formatAmount(tran.amount, tran.domain)}}
             </p>
         </div>
         <div class="row mt8">
-            <p class="flex text2">Status</p>
-            <p class="nowrap text-green">Completed</p>
+            <p class="flex text2">{{str.status}}</p>
+            <p class="nowrap text-green">{{str.competed}}</p>
         </div>
         <div class="row mt8">
-            <p class="flex text2">Time</p>
-            <p class="nowrap">{{formatTime(tran.time)}} {{formatTimeDiff(tran.time)}}</p>
+            <p class="flex text2">{{str.time}}</p>
+            <p class="nowrap">{{formatTimeDiff(tran.time)}}</p>
         </div>
         <!--@SerializedName("valueUSD")
         @SerializedName("direction")

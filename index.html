@@ -62,7 +62,7 @@
                      ng-class="{'img-accent': selectedIndex == $index, 'img-gray': selectedIndex != $index}">
                 <p class="mt8"
                    ng-class="{'text-accent': selectedIndex == $index, 'text-gray': selectedIndex != $index}">
-                    {{item}}</p>
+                    {{str[item]}}</p>
             </div>
         </div>
     </div>
@@ -92,8 +92,16 @@
 <script src="/crypto-js/crypto-js.js"></script>
 <script src="/mfm-wallet/utils/backend.js"></script>
 
+<script src="/mfm-wallet/strings/default.js"></script>
+<script>
+    let scriptTag = document.createElement('script');
+    scriptTag.async = true;
+    scriptTag.src = "/mfm-wallet/strings/lang/" +
+        (localStorage.getItem("STORE_LANGUAGE") || navigator.language.split("-")[0]) + ".js";
+    document.body.appendChild(scriptTag)
+</script>
+
 <script async src="/mfm-wallet/dialogs/success/controller.js"></script>
-<!--<script src="/mfm-wallet/onboarding/controller.js"></script>-->
 
 <script src="/mfm-angular-template/js/markdown-it.min.js "></script>
 <script src="/mfm-angular-template/js/highlight.min.js"></script>
@@ -118,6 +126,7 @@
 <script async src="/mfm-wallet/wallet/receive/controller.js?nocache"></script>
 <script async src="/mfm-wallet/wallet/send/controller.js?nocache"></script>
 <script async src="/mfm-wallet/wallet/settings/controller.js?nocache"></script>
+<script async src="/mfm-wallet/wallet/settings/lang/controller.js?nocache"></script>
 <script async src="/mfm-wallet/dialogs/web/controller.js?nocache"></script>
 <script async src="/mfm-bank/deposit/console/controller.js?nocache"></script>
 <script async src="/mfm-bank/withdrawal/console/controller.js?nocache"></script>

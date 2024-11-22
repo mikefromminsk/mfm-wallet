@@ -13,7 +13,7 @@ function main($scope) {
         openShareReceive(getParam("bonus"))
     }
 
-    $scope.menu = ["History", "Home", "Wallet"]
+    $scope.menu = ["history", "home", "wallet"]
     $scope.selectedIndex = 1
     $scope.selectTab = function (tab) {
         $scope.selectedIndex = tab

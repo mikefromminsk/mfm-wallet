@@ -1,0 +1,18 @@
+<md-dialog class="fill col block">
+    <div class="row header align-start-center">
+        <div class="row block align-start-center">
+            <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/support.svg" ng-click="openSupport()">
+            <div class="flex row align-center">{{str.language}}</div>
+            <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/close.svg" ng-click="close()">
+        </div>
+    </div>
+    <div class="col content align-start-center">
+        <div class="col input-content">
+            <div class="m8 text2 ripple"
+                 ng-repeat="(key, val) in languages"
+                 ng-click="setLanguage(key)">
+                {{val}}
+            </div>
+        </div>
+    </div>
+</md-dialog>

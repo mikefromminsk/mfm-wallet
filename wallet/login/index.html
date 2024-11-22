@@ -1,7 +1,7 @@
 <md-dialog class="fill col">
     <div class="row header align-start-center">
         <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/support.svg" ng-click="openSupport()">
-        <div class="flex row align-center">Login</div>
+        <div class="flex row align-center">{{str.login}}</div>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
         </div>
@@ -9,7 +9,7 @@
     <div class="col content">
         <div class="col input-content">
             <div class="row input-wrapper">
-                <div class="input-label">Username</div>
+                <div class="input-label">{{str.username}}</div>
                 <input id="login_address"
                        type="text"
                        autocapitalize="off"
@@ -18,7 +18,7 @@
                        ng-model="username">
             </div>
             <div class="row input-wrapper">
-                <div class="input-label">Password</div>
+                <div class="input-label">{{str.password}}</div>
                 <input type="password"
                        autocapitalize="off"
                        autocomplete="off"
@@ -26,14 +26,14 @@
             </div>
             <div class="row align-start-center">
                 <input type="checkbox" ng-model="agree_with_terms_and_condition"/>
-                <p class="mh8">agree to</p>
+                <p class="mh8">{{str.agree_to}}</p>
                 <a href="/mfm-angular-template/docs?path=/mfm-wallet/docs/terms_and_conditions.md" target="_blank">
-                    Terms and Conditions
+                    {{str.terms_and_conditions}}
                 </a>
             </div>
             <div class="primary-button" ng-click="login()"
                  ng-disabled="!username || !password || in_progress || !agree_with_terms_and_condition">
-                Login or Create account
+                {{str.login_or_create_account}}
             </div>
         </div>
     </div>

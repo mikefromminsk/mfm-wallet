@@ -1,6 +1,8 @@
 function openAccount(success) {
     showDialog('/mfm-wallet/wallet/settings/index.html?nocache', success, function ($scope) {
 
+        $scope.version = version
+
         $scope.login = function () {
             $scope.back()
             openLogin(function () {
@@ -34,6 +36,10 @@ function openAccount(success) {
         $scope.copy = function () {
             $scope.copyText(wallet.address())
             showSuccess("Copied")
+        }
+
+        $scope.openLanguages = function () {
+            openLanguages()
         }
 
     })

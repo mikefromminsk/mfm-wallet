@@ -23,17 +23,17 @@
                 <div class="flex p16 col align-start-center ripple"
                      ng-click="openReceive()">
                     <img class="img16 img-gray" src="/mfm-wallet/img/arrow-down.svg">
-                    <p class="mt8 text2">Receive</p>
+                    <p class="mt8 text2">{{str.receive}}</p>
                 </div>
                 <div class="flex p16 col align-start-center ripple"
                      ng-click="openScan()">
                     <img class="img16 img-gray" src="/mfm-wallet/img/scan.svg">
-                    <p class="mt8 text2">Scan</p>
+                    <p class="mt8 text2">{{str.scan}}</p>
                 </div>
                 <div class="flex p16 col align-start-center ripple"
                      ng-click="openSend()">
                     <img class="img16 img-gray" src="/mfm-wallet/img/send.svg">
-                    <p class="mt8 text2">Send</p>
+                    <p class="mt8 text2">{{str.send}}</p>
                 </div>
             </div>
 
@@ -42,17 +42,17 @@
                 <div class="flex p16 col align-start-center ripple"
                      ng-click="openDeposit()">
                     <img class="img16 img-gray" src="/mfm-wallet/img/plus.svg">
-                    <p class="mt8 text2">Deposit</p>
+                    <p class="mt8 text2">{{str.deposit}}</p>
                 </div>
                 <div class="flex p16 col align-start-center ripple"
                      ng-click="openWithdrawal()">
                     <img class="img16 img-gray" src="/mfm-wallet/img/arrow-up.svg">
-                    <p class="mt8 text2">Withdrawal</p>
+                    <p class="mt8 text2">{{str.withdrawal}}</p>
                 </div>
                 <div class="flex p16 col align-start-center ripple"
                      ng-click="openCredit()">
                     <img class="img16 img-gray" src="/mfm-wallet/img/dollar.svg">
-                    <p class="mt8 text2">Credit</p>
+                    <p class="mt8 text2">{{str.credit}}</p>
                 </div>
             </div>
 
@@ -62,79 +62,79 @@
                 <div class="flex p16 col align-start-center ripple"
                      ng-click="openStaking()">
                     <img class="img16 img-gray" src="/mfm-wallet/img/staking.svg">
-                    <p class="mt8 text2">Staking</p>
+                    <p class="mt8 text2">{{str.staking}}</p>
                 </div>
                 <div class="flex p16 col align-start-center ripple"
                      ng-click="openBuy(domain)">
                     <img class="img16 img-gray" src="/mfm-wallet/img/exchange.svg">
-                    <p class="mt8 text2">Exchange</p>
+                    <p class="mt8 text2">{{str.exchange}}</p>
                 </div>
                 <div class="flex p16 col align-start-center ripple"
                      ng-click="openMining(domain)">
                     <img class="img16 img-gray" src="/mfm-wallet/img/mining.svg">
-                    <p class="mt8 text2">Mining</p>
+                    <p class="mt8 text2">{{str.mining}}</p>
                 </div>
             </div>
         </div>
 
 
         <div class="input-content nowrap">
-            <p class="text1">Tokenomics</p>
+            <p class="text1">{{str.tokenomics}}</p>
             <div class="row">
-                <p class="flex text2">Total supply</p>
+                <p class="flex text2">{{str.total_sypply}}</p>
                 <p>{{formatAmount(token.total, token.domain)}}</p>
             </div>
             <div class="row">
-                <p class="flex text2">Circulation supply</p>
+                <p class="flex text2">{{str.circulation_supply}}</p>
                 <p>{{formatPercent(token.circulation_percent, 4)}}</p>
             </div>
             <div class="row">
-                <p class="flex text2">Distribution</p>
+                <p class="flex text2">{{str.distribution}}</p>
                 <p class="uppercase-first-letter">{{token.emitting}}</p>
             </div>
             <div class="row">
-                <p class="flex text2">Created</p>
+                <p class="flex text2">{{str.created}}</p>
                 <p>{{formatTimeDiff(token.created)}}</p>
             </div>
 
-            <p class="text1">Activity</p>
+            <p class="text1">{{str.activity}}</p>
             <div class="row">
-                <p class="text2">Volume</p>
+                <p class="text2">{{str.volume}}</p>
                 <img class="ml4 img12 img-gray" src="/mfm-wallet/img/chart.svg"
                      ng-click="openChart(token.domain + '_volume')">
                 <div class="flex"></div>
                 <p>{{formatAmount(token.volume, token.domain)}}</p>
             </div>
             <div class="row">
-                <p class="text2">Accounts</p>
+                <p class="text2">{{str.accounts}}</p>
                 <img class="ml4 img12 img-gray" src="/mfm-wallet/img/chart.svg"
                      ng-click="openChart(token.domain + '_accounts')">
                 <div class="flex"></div>
                 <p>{{formatAmount(token.accounts)}}</p>
             </div>
             <div class="row">
-                <p class="text2">Transactions</p>
+                <p class="text2">{{str.transactions}}</p>
                 <img class="ml4 img12 img-gray" src="/mfm-wallet/img/chart.svg"
                      ng-click="openChart(token.domain + '_trans')">
                 <div class="flex"></div>
                 <p>{{formatAmount(token.trans)}}</p>
             </div>
 
-            <p class="text1">Network</p>
+            <p class="text1">{{str.network}}</p>
             <div class="row">
-                <p class="text2">All tokens</p>
+                <p class="text2">{{str.all_tokens}}</p>
                 <img class="ml4 img12 img-gray" src="/mfm-wallet/img/chart.svg" ng-click="openChart('tokens_count')">
                 <div class="flex"></div>
                 <p>{{formatAmount(token.tokens_count)}}</p>
             </div>
             <div class="row">
-                <p class="text2">All accounts</p>
+                <p class="text2">{{str.all_accounts}}</p>
                 <img class="ml4 img12 img-gray" src="/mfm-wallet/img/chart.svg" ng-click="openChart('accounts_count')">
                 <div class="flex"></div>
                 <p>{{formatAmount(token.accounts_count)}}</p>
             </div>
             <div class="row">
-                <p class="text2">All transactions</p>
+                <p class="text2">{{str.all_transactions}}</p>
                 <img class="ml4 img12 img-gray" src="/mfm-wallet/img/chart.svg" ng-click="openChart('trans_count')">
                 <div class="flex"></div>
                 <p>{{formatAmount(token.trans_count)}}</p>
@@ -144,14 +144,14 @@
     </div>
     <div class="col mh16 align-start-center" ng-show="token.domain != wallet.gas_domain">
         <div class="row block gap16">
-            <div class="flex mh0 primary-button back-red radius4"
+            <div class="flex mh0 primary-button back-red radius4 uppercase"
                  ng-click="openSell(domain)"
                  ng-hide="token.balance <= 0">
-                SELL
+                {{str.sell}}
             </div>
-            <div class="flex mh0 primary-button back-green radius4"
+            <div class="flex mh0 primary-button back-green radius4 uppercase"
                  ng-click="openBuy(domain)">
-                BUY
+                {{str.buy}}
             </div>
         </div>
     </div>
