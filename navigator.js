@@ -1,5 +1,19 @@
 function addNavigator($scope) {
 
+    $scope.back = function (result) {
+        setTimeout(function () {
+            window.$mdBottomSheet.hide(result)
+            $scope.unsubscribeAll()
+        }, 100)
+    }
+
+    $scope.close = function (result) {
+        setTimeout(function () {
+            window.$mdDialog.hide(result)
+            $scope.unsubscribeAll()
+        }, 100)
+    }
+
     $scope.openLogin = function (init) {
         openLogin(init)
     }
@@ -14,6 +28,10 @@ function addNavigator($scope) {
 
     $scope.openLaunchToken = function () {
         openLaunchToken()
+    }
+
+    $scope.openDistribution = function () {
+        openDistribution()
     }
 
     $scope.openDeposit = function () {

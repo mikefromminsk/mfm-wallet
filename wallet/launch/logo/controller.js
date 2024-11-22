@@ -31,13 +31,13 @@ function openLogoChange(domain, success) {
                         $scope.logoLink = $scope.getLogoLink($scope.domain) + '?' + randomString(4)
                         $scope.$apply()
                     }, 1000)
-                    showSuccess("Logo uploaded successfully")
+                    showSuccess(str.logo_uploaded)
                 })
             }, ".png")
         }
 
-        $scope.next = function () {
-            $scope.close()
+        $scope.openDistribution = function () {
+            openDistribution($scope.domain)
         }
 
         function init() {

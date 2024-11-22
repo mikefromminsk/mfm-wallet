@@ -1,108 +1,117 @@
-window.str = {
-    ...window.str,
-    wallet: "Кошелек",
-    history: "История",
-    home: "Главная",
-    there_is_no_history_yet: "Истории пока нет",
-    M: "М",
-    H: "Ч",
-    D: "Д",
-    W: "Н",
-    funnel: "Воронка",
-    please_leave_feedback: "Пожалуйста, оставьте отзыв",
-    reviews: "Отзывы",
-    you_can_get_credit: "Вы можете получить кредит",
-    total: "Итого",
-    percent: "Процент",
-    credit_rules: "Правила кредита",
-    agree_to: "Согласен с",
-    accept: "Принять",
-    decline: "Отклонить",
-    deposit: "Депозит",
-    tron_address: "Адрес TRON (TRC-20)",
-    copy: "Копировать",
-    deposit_deadline: "Срок депозита",
-    deposit_check: "Проверка депозита",
-    amount: "Сумма",
-    commission: "Комиссия",
-    withdrawal: "Вывод",
-    orders: "Заказы",
-    filled: "Заполнено",
-    there_is_no_orders_yet: "Заказов пока нет",
-    mining: "Майнинг",
-    last_reward: "Последняя награда",
-    in_bank: "В банке",
-    difficulty: "Сложность",
-    start: "Начать",
-    stop: "Остановить",
-    skip: "Пропустить",
-    success: "Успех",
-    close: "Закрыть",
-    top_mining: "Топ майнинг",
-    top_exchange: "Топ обмен",
-    sent: "Отправлено",
-    received: "Получено",
-    from: "От",
-    to: "К",
-    status: "Статус",
-    competed: "Завершено",
-    time: "Время",
-    welcome: "Добро пожаловать в MFM Кошелек",
-    welcome_subject: "Здесь вы можете создать свой собственный токен.",
-    login_or_create_account: "Войти или создать аккаунт",
-    receive: "Получить",
-    scan: "Сканировать",
-    send: "Отправить",
-    credit: "Кредит",
-    launch_token: "Запустить токен",
-    logo: "Логотип",
-    upload_logo: "Загрузить логотип",
-    save: "Сохранить",
-    new_token: "Новый токен",
-    token_name: "Название токена",
-    min_3_symbols: "Минимум 3 символа",
-    terms_and_conditions: "Условия и положения",
-    login: "Войти",
-    username: "Имя пользователя",
-    password: "Пароль",
-    staking: "Стейкинг",
-    exchange: "Обмен",
-    tokenomics: "Токеномика",
-    total_sypply: "Общее предложение",
-    circulation_supply: "Циркуляционное предложение",
-    distribution: "Распределение",
-    created: "Создано",
-    activity: "Активность",
-    volume: "Объем",
-    accounts: "Аккаунты",
-    transactions: "Транзакции",
-    network: "Сеть",
-    all_tokens: "Все токены",
-    all_accounts: "Все аккаунты",
-    all_transactions: "Все транзакции",
-    sell: "Продать",
-    buy: "Купить",
-    search: "Поиск",
-    settings: "Настройки",
-    leave_review: "Оставить отзыв",
-    logout: "Выйти",
-    admin_panel: "Админ панель",
-    details: "Детали",
-    second: "Секунда",
-    seconds: "Секунды",
-    minute: "Минута",
-    minutes: "Минуты",
-    hour: "Час",
-    hours: "Часы",
-    day: "День",
-    days: "Дни",
-    month: "Месяц",
-    months: "Месяцы",
-    week: "Неделя",
-    weeks: "Недели",
-    year: "Год",
-    years: "Годы",
-    ago: "Назад",
-    today: "Сегодня",
-    type_token_name: "Введите название токена",
-};
+str.wallet = "Кошелек";
+str.history = "История";
+str.home = "Главная";
+str.there_is_no_history_yet = "Истории пока нет";
+str.M = "М";
+str.H = "Ч";
+str.D = "Д";
+str.W = "Н";
+str.funnel = "Воронка";
+str.please_leave_feedback = "Пожалуйста, оставьте отзыв";
+str.reviews = "Отзывы";
+str.you_can_get_credit = "Вы можете получить кредит";
+str.total = "Итого";
+str.percent = "Процент";
+str.credit_rules = "Правила кредита";
+str.agree_to = "Согласен с";
+str.accept = "Принять";
+str.decline = "Отклонить";
+str.deposit = "Депозит";
+str.tron_address = "TRON адрес (TRC-20)";
+str.copy = "Копировать";
+str.deposit_deadline = "Срок депозита";
+str.deposit_check = "Проверка депозита";
+str.amount = "Сумма";
+str.commission = "Комиссия";
+str.withdrawal = "Вывод";
+str.orders = "Заказы";
+str.filled = "Заполнено";
+str.there_is_no_orders_yet = "Заказов пока нет";
+str.mining = "Майнинг";
+str.last_reward = "Последняя награда";
+str.in_bank = "В банке";
+str.difficulty = "Сложность";
+str.start = "Начать";
+str.stop = "Остановить";
+str.skip = "Пропустить";
+str.success = "Успех";
+str.close = "Закрыть";
+str.top_mining = "Топ майнинг";
+str.top_exchange = "Топ обмен";
+str.sent = "Отправлено";
+str.received = "Получено";
+str.from = "От";
+str.to = "Кому";
+str.status = "Статус";
+str.competed = "Завершено";
+str.time = "Время";
+str.welcome = "Добро пожаловать в MFM Кошелек";
+str.welcome_subject = "Здесь вы можете создать свой собственный токен.";
+str.login_or_create_account = "Войти или создать аккаунт";
+str.receive = "Получить";
+str.scan = "Сканировать";
+str.send = "Отправить";
+str.credit = "Кредит";
+str.launch_token = "Запустить токен";
+str.logo = "Логотип";
+str.upload_logo = "Загрузить логотип";
+str.save = "Сохранить";
+str.new_token = "Новый токен";
+str.token_name = "Название токена";
+str.min_3_symbols = "Минимум 3 символа";
+str.terms_and_conditions = "Условия и положения";
+str.login = "Вход";
+str.username = "Имя пользователя";
+str.password = "Пароль";
+str.staking = "Ставка";
+str.exchange = "Обмен";
+str.tokenomics = "Токеномика";
+str.total_sypply = "Общий запас";
+str.circulation_supply = "Циркуляционный запас";
+str.distribution = "Распределение";
+str.created = "Создано";
+str.activity = "Активность";
+str.volume = "Объем";
+str.accounts = "Счета";
+str.transactions = "Сделки";
+str.network = "Сеть";
+str.all_tokens = "Все токены";
+str.all_accounts = "Все счета";
+str.all_transactions = "Все сделки";
+str.sell = "Продать";
+str.buy = "Купить";
+str.search = "Поиск";
+str.settings = "Настройки";
+str.leave_review = "Оставить отзыв";
+str.logout = "Выйти";
+str.admin_panel = "Панель администратора";
+str.details = "Детали";
+str.second = "Секунда";
+str.seconds = "Секунды";
+str.minute = "Минута";
+str.minutes = "Минуты";
+str.hour = "Час";
+str.hours = "Часы";
+str.day = "День";
+str.days = "Дни";
+str.month = "Месяц";
+str.months = "Месяцы";
+str.week = "Неделя";
+str.weeks = "Недели";
+str.year = "Год";
+str.years = "Годы";
+str.ago = "Назад";
+str.today = "Сегодня";
+str.type_token_name = "Введите название токена";
+str.language = "Язык";
+str.help = "Помощь";
+str.airdrop = "Аирдроп";
+str.trust = "Доверие";
+str.need_hardware = "Нужен аппарат";
+str.dont_need_hardware = "Аппарат не нужен";
+str.your_token_created = "Ваш токен создан";
+str.logo_uploaded = "Логотип загружен";
+str.you_have_received = "Вы получили";
+str.available = "Доступно";
+str.get_credit = "Получить кредит";
+str.price = "Цена";

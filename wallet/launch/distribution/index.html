@@ -1,0 +1,27 @@
+<md-dialog class="fill col">
+    <div class="row header align-start-center">
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="openSupport()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/support.svg">
+        </div>
+        <p class="flex">{{str.distribution}}</p>
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+        </div>
+    </div>
+    <div class="flex col content">
+        <div class="flex row align-center-center">
+            <div class="flex col gap16 p16">
+                <div class="col input-content back-gray radius-default ripple" ng-click="close()">
+                    <p class="text1">{{str.airdrop}}</p>
+                    <p class="text2">- {{str.trust}}</p>
+                    <p class="text2">+ {{str.dont_need_hardware}}</p>
+                </div>
+                <div class="col input-content back-gray radius-default ripple" ng-click="mining()">
+                    <p class="text1">{{str.mining}}</p>
+                    <p class="text2">+ {{str.trust}}</p>
+                    <p class="text2">- {{str.need_hardware}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</md-dialog>

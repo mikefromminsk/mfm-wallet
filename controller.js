@@ -1,17 +1,18 @@
 function main($scope) {
-    function setIcon(){
+    function setIcon() {
         var link = document.createElement('link');
         link.rel = 'icon';
         link.href = DEBUG ? 'logo-debug.png' : 'logo.png';
         document.head.appendChild(link);
     }
+
     setIcon()
 
-    addWallet($scope)
 
-    if (getParam("bonus") != null) {
-        openShareReceive(getParam("bonus"))
+    function setLanguage() {
     }
+
+    addWallet($scope)
 
     $scope.menu = ["history", "home", "wallet"]
     $scope.selectedIndex = 1
@@ -25,6 +26,7 @@ function main($scope) {
             addWallet($scope)
         }
     }
+
 
     $scope.selectTab($scope.selectedIndex)
 

@@ -1,110 +1,118 @@
-window.str = {
-    ...window.str,
-    wallet: "Wallet",
-    history: "History",
-    home: "Home",
-    there_is_no_history_yet: "There is no history yet",
-    M: "M",
-    H: "H",
-    D: "D",
-    W: "W",
-    funnel: "Funnel",
-    please_leave_feedback: "Please leave feedback",
-    reviews: "Reviews",
-    you_can_get_credit: "You can get credit",
-    total: "Total",
-    percent: "Percent",
-    credit_rules: "Credit Rules",
-    agree_to: "Agree to",
-    accept: "Accept",
-    decline: "Decline",
-    deposit: "Deposit",
-    tron_address: "TRON Address (TRC-20)",
-    copy: "Copy",
-    deposit_deadline: "Deposit Deadline",
-    deposit_check: "Deposit Check",
-    amount: "Amount",
-    commission: "Commission",
-    withdrawal: "Withdrawal",
-    orders: "Orders",
-    filled: "Filled",
-    there_is_no_orders_yet: "There are no orders yet",
-    mining: "Mining",
-    last_reward: "Last Reward",
-    in_bank: "In Bank",
-    difficulty: "Difficulty",
-    start: "Start",
-    stop: "Stop",
-    skip: "Skip",
-    success: "Success",
-    close: "Close",
-    top_mining: "Top Mining",
-    top_exchange: "Top Exchange",
-    sent: "Sent",
-    received: "Received",
-    from: "From",
-    to: "To",
-    status: "Status",
-    competed: "Competed",
-    time: "Time",
-    welcome: "Welcome to MFM Wallet",
-    welcome_subject: "Here you can create your own token.",
-    login_or_create_account: "Login or Create Account",
-    receive: "Receive",
-    scan: "Scan",
-    send: "Send",
-    credit: "Credit",
-    launch_token: "Launch Token",
-    logo: "Logo",
-    upload_logo: "Upload Logo",
-    save: "Save",
-    new_token: "New Token",
-    token_name: "Token Name",
-    min_3_symbols: "Minimum 3 symbols",
-    terms_and_conditions: "Terms and Conditions",
-    login: "Login",
-    username: "Username",
-    password: "Password",
-    staking: "Staking",
-    exchange: "Exchange",
-    tokenomics: "Tokenomics",
-    total_sypply: "Total Supply",
-    circulation_supply: "Circulation Supply",
-    distribution: "Distribution",
-    created: "Created",
-    activity: "Activity",
-    volume: "Volume",
-    accounts: "Accounts",
-    transactions: "Transactions",
-    network: "Network",
-    all_tokens: "All Tokens",
-    all_accounts: "All Accounts",
-    all_transactions: "All Transactions",
-    sell: "Sell",
-    buy: "Buy",
-    search: "Search",
-    settings: "Settings",
-    leave_review: "Leave a Review",
-    logout: "Logout",
-    admin_panel: "Admin Panel",
-    details: "Details",
-    second: "Second",
-    seconds: "Seconds",
-    minute: "Minute",
-    minutes: "Minutes",
-    hour: "Hour",
-    hours: "Hours",
-    day: "Day",
-    days: "Days",
-    month: "Month",
-    months: "Months",
-    week: "Week",
-    weeks: "Weeks",
-    year: "Year",
-    years: "Years",
-    ago: "Ago",
-    today: "Today",
-    type_token_name: "Type token name",
-    language: "Language",
-    help: "Help",
-};
+window.str = {}
+str.wallet = "Wallet"
+str.history = "History"
+str.home = "Home"
+str.there_is_no_history_yet = "There is no history yet"
+str.M = "M"
+str.H = "H"
+str.D = "D"
+str.W = "W"
+str.funnel = "Funnel"
+str.please_leave_feedback = "Please leave feedback"
+str.reviews = "Reviews"
+str.you_can_get_credit = "You can get credit"
+str.total = "Total"
+str.percent = "Percent"
+str.credit_rules = "Credit Rules"
+str.agree_to = "Agree to"
+str.accept = "Accept"
+str.decline = "Decline"
+str.deposit = "Deposit"
+str.tron_address = "TRON Address (TRC-20)"
+str.copy = "Copy"
+str.deposit_deadline = "Deposit Deadline"
+str.deposit_check = "Deposit Check"
+str.amount = "Amount"
+str.commission = "Commission"
+str.withdrawal = "Withdrawal"
+str.orders = "Orders"
+str.filled = "Filled"
+str.there_is_no_orders_yet = "There are no orders yet"
+str.mining = "Mining"
+str.last_reward = "Last Reward"
+str.in_bank = "In Bank"
+str.difficulty = "Difficulty"
+str.start = "Start"
+str.stop = "Stop"
+str.skip = "Skip"
+str.success = "Success"
+str.close = "Close"
+str.top_mining = "Top Mining"
+str.top_exchange = "Top Exchange"
+str.sent = "Sent"
+str.received = "Received"
+str.from = "From"
+str.to = "To"
+str.status = "Status"
+str.competed = "Competed"
+str.time = "Time"
+str.welcome = "Welcome to MFM Wallet"
+str.welcome_subject = "Here you can create your own token."
+str.login_or_create_account = "Login or Create Account"
+str.receive = "Receive"
+str.scan = "Scan"
+str.send = "Send"
+str.credit = "Credit"
+str.launch_token = "Launch Token"
+str.logo = "Logo"
+str.upload_logo = "Upload Logo"
+str.save = "Save"
+str.new_token = "New Token"
+str.token_name = "Token Name"
+str.min_3_symbols = "Minimum 3 symbols"
+str.terms_and_conditions = "Terms and Conditions"
+str.login = "Login"
+str.username = "Username"
+str.password = "Password"
+str.staking = "Staking"
+str.exchange = "Exchange"
+str.tokenomics = "Tokenomics"
+str.total_sypply = "Total Supply"
+str.circulation_supply = "Circulation Supply"
+str.distribution = "Distribution"
+str.created = "Created"
+str.activity = "Activity"
+str.volume = "Volume"
+str.accounts = "Accounts"
+str.transactions = "Transactions"
+str.network = "Network"
+str.all_tokens = "All Tokens"
+str.all_accounts = "All Accounts"
+str.all_transactions = "All Transactions"
+str.sell = "Sell"
+str.buy = "Buy"
+str.search = "Search"
+str.settings = "Settings"
+str.leave_review = "Leave a Review"
+str.logout = "Logout"
+str.admin_panel = "Admin Panel"
+str.details = "Details"
+str.second = "Second"
+str.seconds = "Seconds"
+str.minute = "Minute"
+str.minutes = "Minutes"
+str.hour = "Hour"
+str.hours = "Hours"
+str.day = "Day"
+str.days = "Days"
+str.month = "Month"
+str.months = "Months"
+str.week = "Week"
+str.weeks = "Weeks"
+str.year = "Year"
+str.years = "Years"
+str.ago = "Ago"
+str.today = "Today"
+str.type_token_name = "Type token name"
+str.language = "Language"
+str.help = "Help"
+str.airdrop = "Airdrop"
+str.trust = "Trust"
+str.need_hardware = "Need Hardware"
+str.dont_need_hardware = "Don't Need Hardware"
+str.your_token_created = "Your token has been created"
+str.logo_uploaded = "Logo uploaded"
+str.you_have_received = "You have received"
+str.available = "Available"
+str.get_credit = "Get Credit"
+str.price = "Price"

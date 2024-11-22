@@ -92,15 +92,13 @@
 <script src="/crypto-js/crypto-js.js"></script>
 <script src="/mfm-wallet/utils/backend.js"></script>
 
-<script src="/mfm-wallet/strings/default.js"></script>
+<script id="lang_id" src="/mfm-wallet/strings/default.js"></script>
 <script>
+    let lang = getParam('lang', storage.getString(storageKeys.language, navigator.language.split("-")[0]))
     let scriptTag = document.createElement('script');
-    scriptTag.async = true;
-    scriptTag.src = "/mfm-wallet/strings/lang/" +
-        (localStorage.getItem("STORE_LANGUAGE") || navigator.language.split("-")[0]) + ".js";
+    scriptTag.src = "/mfm-wallet/strings/lang/" + lang + ".js";
     document.body.appendChild(scriptTag)
 </script>
-
 <script async src="/mfm-wallet/dialogs/success/controller.js"></script>
 
 <script src="/mfm-angular-template/js/markdown-it.min.js "></script>
@@ -116,7 +114,7 @@
     window.Telegram.WebApp.expand()
 </script>
 <script async src="/mfm-wallet/wallet/login/controller.js?nocache"></script>
-<script async src="/mfm-wallet/wallet/launch/emit/controller.js?nocache"></script>
+<script async src="/mfm-wallet/wallet/launch/distribution/controller.js?nocache"></script>
 <script async src="/mfm-wallet/wallet/launch/name/controller.js?nocache"></script>
 <script async src="/mfm-wallet/wallet/launch/logo/controller.js?nocache"></script>
 <script async src="/mfm-wallet/dialogs/pin/controller.js?nocache"></script>

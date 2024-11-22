@@ -222,6 +222,7 @@ var wallet = {
                 success(key + ":" + next_hash, key, next_hash)
             })
         }, function () {
+            // reg account in other tokens
             wallet.calcStartHash(domain, pin, function (next_hash) {
                 postContract("mfm-token", "send.php", {
                     domain: domain,

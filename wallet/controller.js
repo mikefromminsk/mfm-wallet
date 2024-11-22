@@ -12,9 +12,9 @@ function addWallet($scope) {
 
     $scope.getTotalBalance = function () {
         let totalBalance = 0
-        if ($scope.activeTokens != null)
-            for (const token of $scope.activeTokens)
-                totalBalance += token.price * token.balance
+        if ($scope.accounts != null)
+            for (const account of $scope.accounts)
+                totalBalance += account.price * account.balance
         return totalBalance
     }
 
@@ -22,7 +22,7 @@ function addWallet($scope) {
         $scope.subscribe("transactions", function (data) {
             if (data.to == wallet.address()) {
                 if (data.amount != 0) {
-                    showSuccess("You have received " + $scope.formatAmount(data.amount, data.domain))
+                    showSuccess(str.you_have_received + " " + $scope.formatAmount(data.amount, data.domain))
                     setTimeout(function () {
                         new Audio("/mfm-wallet/dialogs/success/payment_success.mp3").play()
                     })
@@ -32,19 +32,15 @@ function addWallet($scope) {
         })
 
         $scope.subscribe("price", function (data) {
-            function updateTokens(tokenList, domain, price) {
-                if (tokenList != null)
-                    for (let token of tokenList) {
-                        if (token.domain == domain) {
-                            token.price = price
-                            $scope.$apply()
-                            break;
-                        }
+            if ($scope.accounts != null) {
+                for (let account of $scope.accounts) {
+                    if (account.domain == data.domain) {
+                        account.price = data.price
+                        $scope.$apply()
+                        break;
                     }
+                }
             }
-
-            updateTokens($scope.activeTokens, data.domain, data.price)
-            updateTokens($scope.recTokens, data.domain, data.price)
         })
     }, 1000)
 
