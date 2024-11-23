@@ -33,11 +33,6 @@ function openAccount(success) {
             openWeb(location.origin + "/mfm-angular-template/docs?path=/mfm-wallet/docs/terms_and_conditions.md")
         }
 
-        $scope.copy = function () {
-            $scope.copyText(wallet.address())
-            showSuccess("Copied")
-        }
-
         $scope.openLanguages = function () {
             openLanguages()
         }

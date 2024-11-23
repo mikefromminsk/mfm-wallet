@@ -32,6 +32,9 @@
             <p class="flex text2">{{str.time}}</p>
             <p class="nowrap">{{formatTimeDiff(tran.time)}}</p>
         </div>
+        <div class="primary-button" ng-click="copy(tran.next_hash)">
+            {{str.copy}} ID
+        </div>
         <!--@SerializedName("valueUSD")
         @SerializedName("direction")
         fee

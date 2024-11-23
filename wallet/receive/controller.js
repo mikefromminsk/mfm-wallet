@@ -1,9 +1,5 @@
-function openReceive(domain, to_address, amount, success) {
+function openReceive(success) {
     trackCall(arguments)
     showBottomSheet('/mfm-wallet/wallet/receive/index.html', success, function ($scope) {
-        $scope.copy = function () {
-            $scope.copyText(wallet.address())
-            showSuccess("Copied", $scope.back)
-        }
     })
 }
