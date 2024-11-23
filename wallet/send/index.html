@@ -1,14 +1,14 @@
 <md-bottom-sheet class="col">
     <div class="row header align-start-center">
+        <p class="flex">{{str.send}} {{formatTicker(domain)}}</p>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="back()">
-            <img class="img16 img-gray400" src="/mfm-wallet/img/down.svg">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
         </div>
-        Send {{formatTicker(domain)}}
     </div>
     <div class="col content">
         <div class="col input-content">
             <div class="row input-wrapper">
-                <div class="input-label">To address</div>
+                <div class="input-label">{{str.address}}</div>
                 <input type="text"
                        ng-disabled="block_to_address"
                        autocapitalize="none"
@@ -19,17 +19,17 @@
                        ng-model="to_address">
             </div>
             <div class="row input-wrapper">
-                <div class="input-label">Amount</div>
+                <div class="input-label">{{str.amount}}</div>
                 <input type="number"
                        autocapitalize="off"
                        ng-model="amount">
             </div>
             <div class="text2">
-                Available: {{formatAmount(token.balance, token.domain)}}
+                {{str.available}}: {{formatAmount(token.balance, token.domain)}}
             </div>
             <button class="primary-button" ng-click="send()"
                     ng-disabled="!to_address || !amount || (token.balance < getTotal())">
-                Send
+                {{str.send}}
             </button>
         </div>
     </div>

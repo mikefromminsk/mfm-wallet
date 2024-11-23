@@ -1,11 +1,20 @@
-<md-bottom-sheet class="col">
+<md-dialog class="fill col">
     <div class="row header align-start-center">
-        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="back()">
-            <img class="img16 img-gray400" src="/mfm-wallet/img/down.svg">
+        <p class="flex">{{str.details}}</p>
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
         </div>
-        {{str.details}}
     </div>
-    <div class="col content input-content">
+    <div class="flex col input-content scroll">
+        <div class="col mv16 align-center-center">
+            <div class="success-animation">
+                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                    <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                    <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                </svg>
+            </div>
+        </div>
+
         <div class="p0">
             <ng-include src="'/mfm-wallet/trans/trans.html'"></ng-include>
         </div>
@@ -32,9 +41,6 @@
             <p class="flex text2">{{str.time}}</p>
             <p class="nowrap">{{formatTimeDiff(tran.time)}}</p>
         </div>
-        <div class="primary-button" ng-click="copy(tran.next_hash)">
-            {{str.copy}} ID
-        </div>
         <!--@SerializedName("valueUSD")
         @SerializedName("direction")
         fee
@@ -47,4 +53,7 @@
             </div>
         </div>-->
     </div>
-</md-bottom-sheet>
+    <div class="primary-button" ng-click="copy(tran.next_hash)">
+        {{str.copy}} ID
+    </div>
+</md-dialog>

@@ -22,7 +22,7 @@
             <div class="col text2">
                 <p>{{str.min_3_symbols}}</p>
             </div>
-            <div class="primary-button" ng-click="launch()">
+            <div class="primary-button" ng-disabled="!domain" ng-click="launch()">
                 {{str.launch_token}}
             </div>
         </div>

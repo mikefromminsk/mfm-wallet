@@ -15,7 +15,7 @@
 
         <div class="col ml16">
             <p class="">{{item.from == wallet.address() ? str.sent : str.received}}</p>
-            <p class="mt4 text2">{{item.from == wallet.address() ? str.to + " " + item.to : str.from + " " + item.from}}</p>
+            <p class="mt4 text2 nowrap lowercase">{{item.from == wallet.address() ? str.to + " " + item.to : str.from + " " + item.from}}</p>
         </div>
 
         <div class="flex col align-start-end">

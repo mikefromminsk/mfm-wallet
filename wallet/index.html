@@ -1,8 +1,8 @@
 <div class="row header align-center-center">
     <div class="row block align-start-center">
-        <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/settings.svg" ng-click="openAccount()">
+        <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/settings.svg" ng-click="openAccount(walletInit)">
         <div class="flex row align-center">{{str.wallet}}</div>
-        <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/search.svg" ng-click="openSearch()">
+        <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/search.svg" ng-click="openSearch(walletInit)">
     </div>
 </div>
 <div class="col align-start-center scroll">
@@ -33,7 +33,7 @@
                     <p class="mt8 text2">{{str.scan}}</p>
                 </div>
                 <div class="flex p16 col align-start-center ripple"
-                     ng-click="openSend()">
+                     ng-click="openSend(wallet.gas_domain, null, null, walletInit)">
                     <img class="img16 img-gray" src="/mfm-wallet/img/send.svg">
                     <p class="mt8 text2">{{str.send}}</p>
                 </div>
@@ -41,17 +41,17 @@
 
             <div class="row align-start-end">
                 <div class="flex p16 col align-start-center ripple"
-                     ng-click="openDeposit()">
+                     ng-click="openDeposit(walletInit)">
                     <img class="img16 img-gray" src="/mfm-wallet/img/plus.svg">
                     <p class="mt8 text2">{{str.deposit}}</p>
                 </div>
                 <div class="flex p16 col align-start-center ripple"
-                     ng-click="openWithdrawal()">
+                     ng-click="openWithdrawal(walletInit)">
                     <img class="img16 img-gray" src="/mfm-wallet/img/arrow-up.svg">
                     <p class="mt8 text2">{{str.withdrawal}}</p>
                 </div>
                 <div class="flex p16 col align-start-center ripple"
-                     ng-click="openGetCredit()">
+                     ng-click="openGetCredit(walletInit)">
                     <img class="img16 img-gray" src="/mfm-wallet/img/dollar.svg">
                     <p class="mt8 text2">{{str.credit}}</p>
                 </div>
@@ -84,7 +84,7 @@
             <div class="col back-gray radius-default">
                 <div class="row p16 align-start-center ripple"
                      ng-show="credit > 0"
-                     ng-click="openCredit()">
+                     ng-click="openCredit(walletInit)">
                     <div ng-style="getLogo(wallet.gas_domain)"></div>
                     <div class="flex col ml16">
                         <p>{{formatTicker(wallet.gas_domain)}}</p>

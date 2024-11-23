@@ -20,8 +20,9 @@ function openSend(domain, to_address, amount, success) {
                         to_address: $scope.to_address,
                         pass: pass,
                         amount: $scope.getTotal(),
-                    }, function () {
-                        showSuccessDialog("Sent " + $scope.formatAmount($scope.amount, domain) + " success", success)
+                    }, function (response) {
+                        $scope.back()
+                        openTran(response.next_hash, success)
                     }, function (message) {
                         if (message.indexOf("receiver doesn't exist") != -1) {
                             showError("This user dosent exist but you can invite him", function () {
@@ -34,7 +35,7 @@ function openSend(domain, to_address, amount, success) {
         }
 
         $scope.getMax = function () {
-            return $scope.round($scope.token.balance / (1 + $scope.token.fee / 100) * 100, 2)
+            return $scope.round($scope.token.balance)
         }
 
         $scope.setMax = function () {
@@ -42,7 +43,7 @@ function openSend(domain, to_address, amount, success) {
         }
 
         $scope.getTotal = function () {
-            return $scope.round(($scope.amount || 0) * (1 + $scope.token.fee / 100), 2)
+            return $scope.round($scope.amount || 0, 2)
         }
 
         function init() {

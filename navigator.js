@@ -10,6 +10,7 @@ function addNavigator($scope) {
     $scope.close = function (result) {
         setTimeout(function () {
             window.$mdDialog.hide(result)
+            window.$mdBottomSheet.hide(result)
             $scope.unsubscribeAll()
         }, 100)
     }
@@ -28,44 +29,44 @@ function addNavigator($scope) {
         showSuccess(str.copied)
     }
 
-    $scope.openLogin = function (init) {
-        openLogin(init)
+    $scope.openLogin = function (success) {
+        openLogin(success)
     }
 
     $scope.openTokenProfile = function (domain) {
         openTokenProfile(domain)
     }
 
-    $scope.openAccount = function () {
-        openAccount()
+    $scope.openAccount = function (success) {
+        openAccount(success)
     }
 
-    $scope.openLaunchToken = function () {
-        openLaunchToken()
+    $scope.openLaunchToken = function (domain, success) {
+        openLaunchToken(domain, success)
     }
 
-    $scope.openDistribution = function () {
-        openDistribution()
+    $scope.openDistribution = function (domain, success) {
+        openDistribution(domain, success)
     }
 
-    $scope.openDeposit = function () {
-        openDeposit()
+    $scope.openDeposit = function (success) {
+        openDeposit(success)
     }
 
-    $scope.openWithdrawal = function () {
-        openWithdrawal()
+    $scope.openWithdrawal = function (success) {
+        openWithdrawal(success)
     }
 
     $scope.openSend = function (domain, to_address, amount, success) {
         openSend(domain, to_address, amount, success)
     }
 
-    $scope.openGetCredit = function () {
-        openGetCredit()
+    $scope.openGetCredit = function (success) {
+        openGetCredit(success)
     }
 
-    $scope.openReceive = function () {
-        openReceive()
+    $scope.openReceive = function (success) {
+        openReceive(success)
     }
 
     $scope.openMining = function (domain) {
@@ -80,8 +81,8 @@ function addNavigator($scope) {
         openExchange(domain, 1)
     }
 
-    $scope.openSearch = function () {
-        openSearch()
+    $scope.openSearch = function (success) {
+        openSearch(success)
     }
 
     $scope.openTokenSettings = function () {
@@ -103,8 +104,8 @@ function addNavigator($scope) {
         openChart(key, success)
     }
 
-    $scope.openCredit = function () {
-        openCredit()
+    $scope.openCredit = function (success) {
+        openCredit(success)
     }
 
     $scope.openDoc = function (path) {
