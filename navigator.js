@@ -108,7 +108,15 @@ function addNavigator($scope) {
         openCredit(success)
     }
 
+    $scope.openTran = function (next_hash, success) {
+        openTran(next_hash, success)
+    }
+
     $scope.openDoc = function (path) {
         openWeb(location.origin + "/mfm-angular-template/docs?path=" + path)
+    }
+
+    $scope.openExchange = function (domain) {
+        openExchange(domain)
     }
 }

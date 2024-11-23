@@ -3,7 +3,7 @@
     <div class="text0" ng-hide="tran.day">Need groupByTimePeriod</div>
     <div class="row mt16 p16 radius-default back-gray"
          ng-repeat="item in tran.items"
-         ng-click="openTran(item)">
+         ng-click="openTran(item.next_hash)">
         <div class="row">
             <div class="img32 p8 back-black radius-default" ng-hide="item.from == wallet.address()">
                 <img class="img16 img-gray" src="/mfm-wallet/img/arrow-down.svg">

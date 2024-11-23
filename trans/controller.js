@@ -9,9 +9,5 @@ function addHistory($scope) {
         })
     }
 
-    $scope.openTran = function (tran) {
-        openTran(tran.next_hash)
-    }
-
     loadTrans()
 }

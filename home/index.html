@@ -1,7 +1,7 @@
 <div class="col align-start-center scroll">
     <div class="col block input-content">
         <md-tabs md-selected="slideIndex" class="col p0" md-swipe-content md-dynamic-height>
-            <md-tab label="$index" ng-repeat="domain in slides">
+            <md-tab label="$index" ng-repeat="domain in main.top_exchange">
                 <div class="col" style="min-height: 200px; padding: 16px">
                     <div class="flex row align-start-end back-gray radius-default"
                          ng-click="openTokenProfile(domain)"
@@ -15,24 +15,16 @@
             </md-tab>
         </md-tabs>
 
-        <p class="text1 bold">{{str.top_mining}}</p>
-        <div class="row">
-            <div class="col mr16 align-start-center" ng-repeat="domain in top_mining">
-                <div class="col p16 radius-default back-gray ripple"
-                     ng-click="openMining(domain)">
-                    <div ng-style="getLogo(domain)"></div>
+        <div class="div" ng-repeat="category in ['top_mining', 'top_exchange', 'top_search']">
+            <p class="text1 bold">{{str[category]}}</p>
+            <div class="row mt16">
+                <div class="col mr16 align-start-center" ng-repeat="domain in main[category]">
+                    <div class="col p16 radius-default back-gray ripple"
+                         ng-click="openExchange(domain)">
+                        <div ng-style="getLogo(domain)"></div>
+                    </div>
+                    <p class="mt4 text2">{{formatTicker(domain)}}</p>
                 </div>
-                <p class="mt4 text2">{{formatTicker(domain)}}</p>
-            </div>
-        </div>
-        <p class="text1 bold">{{str.top_exchange}}</p>
-        <div class="row">
-            <div class="col mr16 align-start-center" ng-repeat="domain in top_exchange">
-                <div class="col p16 radius-default back-gray ripple"
-                     ng-click="openExchange(domain)">
-                    <div ng-style="getLogo(domain)"></div>
-                </div>
-                <p class="mt4 text2">{{formatTicker(domain)}}</p>
             </div>
         </div>
     </div>

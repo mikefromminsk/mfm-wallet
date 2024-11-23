@@ -173,6 +173,7 @@ const storageKeys = {
     bonuses: "STORE_BONUSES",
     onboardingShowed: "STORE_ONBOARDING_SHOWED",
     language: "STORE_LANGUAGE",
+    search_history: "STORE_SEARCH_HISTORY",
 }
 
 function postContractWithGas(domain, path, params, success, error) {

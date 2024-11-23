@@ -12,7 +12,7 @@
         <div class="col back-gray radius-default">
             <div class="row p16 align-start-center ripple"
                  ng-repeat="token in tokens"
-                 ng-click="openTokenProfile(token.domain)">
+                 ng-click="openToken(token.domain)">
                 <div ng-style="getLogo(token.domain)"></div>
                 <div class="flex col ml16">
                     <p class="uppercase">{{token.domain}}</p>
@@ -25,12 +25,26 @@
                 </div>
             </div>
         </div>
+        <div class="col align-center-center text1 text-gray"
+             ng-hide="tokens.length > 0"
+             style="min-height: 100px">
+            {{str.nothing_found}}
+        </div>
     </div>
-    <div class="input-content">
+    <div class="row wrap ph8">
+        <div class="text2 ml8 mt8 p8 back-gray radius-default ripple"
+             ng-repeat="item in recent"
+             ng-click="openToken(item)">
+            {{formatTicker(item)}}
+        </div>
+    </div>
+    <div class="input-content m0">
         <div class="flex row input-wrapper">
             <input type="text"
+                   class="ph16"
                    id="search_input"
-                   style="border-radius: 32px; padding: 0 16px"
+                   autocomplete="off"
+                   style="border-radius: 32px;"
                    placeholder="{{str.type_token_name}}"
                    ng-model="search_text">
         </div>

@@ -15,6 +15,17 @@ function openSearch(success) {
                 $scope.search()
         })
 
+        $scope.openToken = function found(domain) {
+            trackCall(arguments)
+            let recent = storage.getStringArray(storageKeys.search_history)
+            if (recent.indexOf(domain) == -1) {
+                if (recent.length >= 4)
+                    storage.removeFromArray(storageKeys.search_history, recent[0])
+                storage.pushToArray(storageKeys.search_history, domain)
+            }
+            openTokenProfile(domain,init)
+        }
+
         setTimeout(function () {
             document.getElementById('search_input').focus()
         }, 500)
@@ -27,6 +38,12 @@ function openSearch(success) {
                 $scope.$apply()
             })
         }
-        $scope.search()
+
+        function init() {
+            $scope.recent = storage.getStringArray(storageKeys.search_history).reverse()
+            $scope.search()
+        }
+
+        init()
     })
 }
