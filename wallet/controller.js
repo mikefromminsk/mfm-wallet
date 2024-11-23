@@ -1,11 +1,29 @@
 function addWallet($scope) {
     $scope.menuIndex = 0
 
-    function tokens() {
+    function getTokens() {
         postContract("mfm-token", "accounts.php", {
             address: wallet.address(),
         }, function (response) {
             $scope.accounts = response.accounts
+            $scope.$apply()
+        })
+    }
+
+    function getCredits() {
+        postContract("mfm-token", "trans.php", {
+            domain: wallet.gas_domain,
+            from_address: wallet.address(),
+            to_address: $scope.bank_address,
+        }, function (response) {
+            $scope.credit = 0
+            $scope.pay_off = 0
+            for (const tran of response.trans) {
+                if (tran.from == $scope.bank_address)
+                    $scope.credit += tran.amount
+                if (tran.to == $scope.bank_address)
+                    $scope.pay_off += tran.amount
+            }
             $scope.$apply()
         })
     }
@@ -27,7 +45,7 @@ function addWallet($scope) {
                         new Audio("/mfm-wallet/dialogs/success/payment_success.mp3").play()
                     })
                 }
-                tokens()
+                getTokens()
             }
         })
 
@@ -50,7 +68,8 @@ function addWallet($scope) {
                 setMarkdown("markdown-container", text)
             }, 1000)
         })
-        tokens()
+        getTokens()
+        getCredits()
     }
 
     $scope.init()

@@ -56,6 +56,7 @@
          style="position: absolute; bottom: 0;">
         <div class="row block">
             <div class="flex col pv8 align-start-center ripple"
+                 style="padding-bottom: 0;"
                  ng-repeat="item in menu"
                  ng-click="selectTab($index)">
                 <img class="img18" src="/mfm-wallet/img/{{item}}.svg"
@@ -92,7 +93,7 @@
 <script src="/crypto-js/crypto-js.js"></script>
 <script src="/mfm-wallet/utils/backend.js"></script>
 
-<script id="lang_id" src="/mfm-wallet/strings/default.js"></script>
+<script src="/mfm-wallet/strings/default.js"></script>
 <script>
     let lang = getParam('lang', storage.getString(storageKeys.language, navigator.language.split("-")[0]))
     let scriptTag = document.createElement('script');
@@ -134,6 +135,7 @@
 <script async src="/mfm-exchange/exchange/controller.js?nocache"></script>
 <script async src="/mfm-analytics/review/controller.js?nocache"></script>
 <script async src="/mfm-analytics/reviews/controller.js?nocache"></script>
+<script async src="/mfm-bank/get_credit/controller.js?nocache"></script>
 <script async src="/mfm-bank/credit/controller.js?nocache"></script>
 </body>
 </html>

@@ -272,7 +272,7 @@ input[type="checkbox"]:checked {
 input[type="checkbox"]:checked:before {
     content: "";
     position: absolute;
-    left: 9px;
+    left: 7px;
     top: 5px;
     width: 5px;
     height: 10px;

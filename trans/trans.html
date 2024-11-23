@@ -1,5 +1,6 @@
-<div class="col mh16" ng-repeat="tran in trans">
+<div class="col mh16 text-green" ng-repeat="tran in trans">
     <div class="text1 mt16">{{tran.day}}</div>
+    <div class="text0" ng-hide="tran.day">Need groupByTimePeriod</div>
     <div class="row mt16 p16 radius-default back-gray"
          ng-repeat="item in tran.items"
          ng-click="openTran(item)">
@@ -14,7 +15,7 @@
 
         <div class="col ml16">
             <p class="">{{item.from == wallet.address() ? str.sent : str.received}}</p>
-            <p class="mt4 text2">{{item.from == wallet.address() ? item.to : item.from}}</p>
+            <p class="mt4 text2">{{item.from == wallet.address() ? str.to + " " + item.to : str.from + " " + item.from}}</p>
         </div>
 
         <div class="flex col align-start-end">

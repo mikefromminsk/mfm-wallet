@@ -56,12 +56,12 @@ function addNavigator($scope) {
         openWithdrawal()
     }
 
-    $scope.openSend = function () {
-        openSend()
+    $scope.openSend = function (domain, to_address, amount, success) {
+        openSend(domain, to_address, amount, success)
     }
 
-    $scope.openCredit = function () {
-        openCredit()
+    $scope.openGetCredit = function () {
+        openGetCredit()
     }
 
     $scope.openReceive = function () {
@@ -97,5 +97,17 @@ function addNavigator($scope) {
 
     $scope.openSupport = function () {
         window.open("https://t.me/mytoken_space_bot")
+    }
+
+    $scope.openChart = function (key, success) {
+        openChart(key, success)
+    }
+
+    $scope.openCredit = function () {
+        openCredit()
+    }
+
+    $scope.openDoc = function (path) {
+        openWeb(location.origin + "/mfm-angular-template/docs?path=" + path)
     }
 }

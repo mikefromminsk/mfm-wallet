@@ -51,21 +51,21 @@
                     <p class="mt8 text2">{{str.withdrawal}}</p>
                 </div>
                 <div class="flex p16 col align-start-center ripple"
-                     ng-click="openCredit(init)">
+                     ng-click="openGetCredit()">
                     <img class="img16 img-gray" src="/mfm-wallet/img/dollar.svg">
                     <p class="mt8 text2">{{str.credit}}</p>
                 </div>
             </div>
 
         </div>
-        <div class="col ph16">
+        <div class="col ph16 gap16">
             <div class="col back-gray radius-default">
                 <div class="row p16 align-start-center ripple"
                      ng-repeat="token in accounts"
                      ng-click="openTokenProfile(token.domain)">
                     <div ng-style="getLogo(token.domain)"></div>
                     <div class="flex col ml16">
-                        <p class="uppercase">{{token.domain}}</p>
+                        <p>{{formatTicker(token.domain)}}</p>
                         <div class="row mt4 text2">
                             <p class="">{{formatPrice(token.price)}}</p>
                             <p class="ml4" ng-class="percentColor(token.change24)">
@@ -80,8 +80,26 @@
                 </div>
             </div>
 
+            <p ng-show="credit > 0">{{str.credit}}</p>
+            <div class="col back-gray radius-default">
+                <div class="row p16 align-start-center ripple"
+                     ng-show="credit > 0"
+                     ng-click="openCredit()">
+                    <div ng-style="getLogo(wallet.gas_domain)"></div>
+                    <div class="flex col ml16">
+                        <p>{{formatTicker(wallet.gas_domain)}}</p>
+                        <p class="mt4 text2">{{formatPrice(token.price)}}</p>
+                    </div>
+                    <div class="col align-end-end">
+                        <p>{{formatAmount(credit, wallet.gas_domain)}}</p>
+                        <p class="mt4 text2 nowrap">{{str.pay_offed}} {{formatPrice(pay_off)}}</p>
+                    </div>
+                </div>
+            </div>
+
+
             <div class="col align-start-center">
-                <div class="back-pay radius-default m16 pv8 ph16 ripple" ng-click="openLaunchToken()">
+                <div class="back-pay radius-default pv8 ph16 ripple" ng-click="openLaunchToken()">
                     {{str.launch_token}}
                 </div>
             </div>
