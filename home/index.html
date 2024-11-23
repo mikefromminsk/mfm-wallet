@@ -1,23 +1,19 @@
 <div class="col align-start-center scroll">
     <div class="col block input-content">
-
-        <div class="slider">
-            <div class="row slides horizontal-scroll"
-                ng-class="{'slide-animation' : !DEBUG}">
-                <div class="col p8"
-                     ng-repeat="domain in slides">
-                    <div class="row p16 align-start-end back-gray radius-default"
+        <md-tabs md-selected="slideIndex" class="col p0" md-swipe-content md-dynamic-height>
+            <md-tab label="$index" ng-repeat="domain in slides">
+                <div class="col" style="min-height: 200px; padding: 16px">
+                    <div class="flex row align-start-end back-gray radius-default"
                          ng-click="openTokenProfile(domain)"
-                         style="height: 150px;"
                          ng-style="getLogo('slide' + $index, '100%')">
-                        <div class="row align-start-center gap16">
+                        <div class="row m16 align-start-center gap16">
                             <div ng-style="getLogo(domain)"></div>
                             <p class="text1">{{formatTicker(domain)}}</p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </md-tab>
+        </md-tabs>
 
         <p class="text1 bold">{{str.top_mining}}</p>
         <div class="row">
