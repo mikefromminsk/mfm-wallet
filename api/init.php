@@ -51,13 +51,12 @@ $tokens = [
     oak_log => exchange,
 ];
 
-$token_list = file_get_contents($_SERVER[DOCUMENT_ROOT] . "/mfm-wallet/api/token_list.json");
+/*$token_list = file_get_contents($_SERVER[DOCUMENT_ROOT] . "/mfm-wallet/api/token_list.json");
 $token_list = json_decode($token_list, true);
-
 foreach ($token_list as $domain) {
     if ($tokens[$domain] != null) continue;
     $tokens[$domain] = mining;
-}
+}*/
 
 launchList($tokens, $address, $password);
 

@@ -65,6 +65,10 @@ function openPro(domain, success) {
                         amount: $scope.pro_max_price - $scope.pro_price,
                         pass: pass,
                     }, function () {
+                        function slide_payment(domain) {
+                            trackCall(arguments)
+                        }
+                        slide_payment(domain)
                         $scope.pro(pin)
                     })
                 })

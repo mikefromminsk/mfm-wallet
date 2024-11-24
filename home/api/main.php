@@ -5,11 +5,10 @@ $gas_domain = get_required(gas_domain);
 
 $week_ago = (time() - 60 * 60 * 24 * 7);
 
-$response[slides] = selectList("select t2.`domain` from trans t1"
-    . " left join tokens t2 on t1.`from` = t2.`owner`"
-    . "   and t2.`domain` = (select `domain` from tokens t3 where t3.`owner` = t1.`from` order by t3.`created` desc limit 1)"
-    . " where t1.`to` like 'slides'"
-    . " order by t1.`time` desc limit 5") ?: [];
+$response[slides] = selectList("select distinct `value` from events"
+    . " where `type` like 'ui_call'"
+    . " and `name` like 'slide_payment'"
+    . " order by `time` desc limit 5") ?: [];
 
 $response[tops][top_mining] = selectList("select `domain`, count(*) tran_count from trans"
     . " where `from` like 'mining'"
