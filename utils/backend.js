@@ -1,23 +1,26 @@
 const DEBUG = location.hostname == "localhost"
 
-var subscriptions = {}
+let subscriptions = {}
+function connectChannel(channel) {
+    if (window.conn != null && window.conn.readyState === WebSocket.OPEN && subscriptions[channel].length == 1)
+        window.conn.send(JSON.stringify({subscribe: channel}))
+}
 
 function subscribe(channel, callback) {
     if (subscriptions[channel] == null)
         subscriptions[channel] = []
-    let subscribe_id = randomString(6)
+    let subscriber_id = randomString(6)
     subscriptions[channel].push({
-        subscribe_id: subscribe_id,
+        subscriber_id: subscriber_id,
         callback: callback,
     })
-    if (window.conn != null && window.conn.readyState === WebSocket.OPEN && subscriptions[channel].length == 1)
-        window.conn.send(JSON.stringify({subscribe: channel}))
-    return subscribe_id
+    connectChannel(channel)
+    return subscriber_id
 }
 
-function unsubscribe(subscribe_id) {
+function unsubscribe(subscriber_id) {
     for (let channel in subscriptions) {
-        subscriptions[channel] = subscriptions[channel].filter(subscription => subscription.subscribe_id !== subscribe_id);
+        subscriptions[channel] = subscriptions[channel].filter(subscription => subscription.subscriber_id !== subscriber_id);
         if (subscriptions[channel].length === 0) {
             window.conn.send(JSON.stringify({unsubscribe: channel}))
             delete subscriptions[channel];
@@ -33,15 +36,14 @@ function connectWs() {
             window.conn = new WebSocket("ws://" + document.location.host + ":8887")
         }
         window.conn.onopen = function () {
-            //showSuccess("Websocket connected")
-            for (var channel of Object.keys(subscriptions))
-                window.conn.send(JSON.stringify({channel: channel}))
+            for (let channel of Object.keys(subscriptions))
+                connectChannel(channel)
         }
         window.conn.onclose = function () {
-            showError("Websocket disconnected")
+            setTimeout(connectWs, 5000)
         }
         window.conn.onmessage = function (evt) {
-            var message = JSON.parse(evt.data)
+            let message = JSON.parse(evt.data)
             for (let subscription of subscriptions[message.channel]) {
                 subscription.callback(message.data)
             }
@@ -83,8 +85,12 @@ function post(url, params, success, error) {
                     success(JSON.parse(xhr.response))
             } else {
                 try {
-                    var response = JSON.parse(xhr.response)
-                    window.showError(response.message, error)
+                    let response = JSON.parse(xhr.response)
+                    if (error) {
+                        error(response)
+                    } else {
+                        window.showError(response.message, error)
+                    }
                 } catch (e) {
                     window.showError(xhr.responseText, error)
                 }

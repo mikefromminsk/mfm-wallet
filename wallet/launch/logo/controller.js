@@ -1,16 +1,15 @@
+let logoRefreshInterval = null
 function openLogoChange(domain, success) {
-    let interval = null
     showDialog('/mfm-wallet/wallet/launch/logo/index.html', function () {
-        if (interval != null)
-            clearInterval(interval)
+        if (logoRefreshInterval != null)
+            clearInterval(logoRefreshInterval)
         if (success)
             success()
     }, function ($scope) {
-        $scope.DEBUG = DEBUG
         $scope.domain = domain
 
         function selectFile(success, accept) {
-            var input = document.createElement('input')
+            let input = document.createElement('input')
             input.type = 'file'
             input.accept = accept || "*/*"
             input.onchange = e => {
@@ -27,7 +26,7 @@ function openLogoChange(domain, success) {
                     filename: domain + ".png",
                     file: file,
                 }, function () {
-                    interval = setInterval(function () {
+                    logoRefreshInterval = setInterval(function () {
                         $scope.logoLink = $scope.getLogoLink($scope.domain) + '?' + randomString(4)
                         $scope.$apply()
                     }, 1000)
@@ -45,4 +44,9 @@ function openLogoChange(domain, success) {
 
         init()
     })
+}
+
+function logoLoaded() {
+    if (logoRefreshInterval != null)
+        clearInterval(logoRefreshInterval)
 }

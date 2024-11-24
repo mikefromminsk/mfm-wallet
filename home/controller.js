@@ -3,7 +3,8 @@ function addHome($scope) {
 
     function init() {
         postContract("mfm-wallet", "home/api/main.php", {}, function (response) {
-            $scope.main = response
+            $scope.slides = response.slides
+            $scope.tops = response.tops
             $scope.showBody = true
             if (!DEBUG)
                 startAnimation()

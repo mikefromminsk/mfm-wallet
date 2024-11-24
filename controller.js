@@ -5,12 +5,8 @@ function main($scope) {
         link.href = DEBUG ? 'logo-debug.png' : 'logo.png';
         document.head.appendChild(link);
     }
-
     setIcon()
 
-
-    function setLanguage() {
-    }
 
     addWallet($scope)
 
@@ -26,8 +22,6 @@ function main($scope) {
             addWallet($scope)
         }
     }
-
-
     $scope.selectTab($scope.selectedIndex)
 
     trackStart("mfm-wallet")

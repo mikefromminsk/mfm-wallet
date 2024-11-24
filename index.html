@@ -94,12 +94,6 @@
 <script src="/mfm-wallet/utils/backend.js"></script>
 
 <script src="/mfm-wallet/strings/default.js"></script>
-<script>
-    let lang = getParam('lang', storage.getString(storageKeys.language, navigator.language.split("-")[0]))
-    let scriptTag = document.createElement('script');
-    scriptTag.src = "/mfm-wallet/strings/lang/" + lang + ".js";
-    document.body.appendChild(scriptTag)
-</script>
 <script async src="/mfm-wallet/dialogs/success/controller.js"></script>
 
 <script src="/mfm-angular-template/js/markdown-it.min.js "></script>

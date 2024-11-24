@@ -34,7 +34,7 @@ function openLogin(success) {
                     response.prev_key)).toString() == response.next_hash) {
                     setPin()
                 } else {
-                    showError("password invalid")
+                    showError(str.password_invalid)
                 }
             }, function () {
                 $scope.in_progress = false

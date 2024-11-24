@@ -1,11 +1,11 @@
 <div class="col align-start-center scroll">
-    <div class="col block input-content">
+    <div class="col block ">
         <md-tabs md-selected="slideIndex" class="col p0" md-swipe-content md-dynamic-height>
-            <md-tab label="$index" ng-repeat="domain in main.top_exchange">
+            <md-tab label="$index" ng-repeat="domain in slides">
                 <div class="col" style="min-height: 200px; padding: 16px">
                     <div class="flex row align-start-end back-gray radius-default"
                          ng-click="openTokenProfile(domain)"
-                         ng-style="getLogo('slide' + $index, '100%')">
+                         ng-style="getLogo(domain + '_promo', '100%')">
                         <div class="row m16 align-start-center gap16">
                             <div ng-style="getLogo(domain)"></div>
                             <p class="text1">{{formatTicker(domain)}}</p>
@@ -16,9 +16,9 @@
         </md-tabs>
 
         <div class="div" ng-repeat="category in ['top_mining', 'top_exchange', 'top_search']">
-            <p class="text1 bold">{{str[category]}}</p>
-            <div class="row mt16">
-                <div class="col mr16 align-start-center" ng-repeat="domain in main[category]">
+            <p class="text1 ml16 bold">{{str[category]}}</p>
+            <div class="row mt16 scroll-horizontal">
+                <div class="col ml16 align-start-center" ng-repeat="domain in tops[category]">
                     <div class="col p16 radius-default back-gray ripple"
                          ng-click="openExchange(domain)">
                         <div ng-style="getLogo(domain)"></div>

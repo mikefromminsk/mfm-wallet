@@ -16,7 +16,7 @@
                          ng-click="uploadLogo()"
                          src="/mfm-wallet/img/upload-circle.svg">
                 </div>
-                <img class="img64" src="{{logoLink}}" ng-show="logoLink">
+                <img class="img64" src="{{logoLink}}" onload="logoLoaded()" ng-show="logoLink">
                 <p class="mt16 text2">{{formatTicker(domain)}}</p>
             </div>
         </div>

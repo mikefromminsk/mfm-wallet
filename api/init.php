@@ -17,6 +17,7 @@ $token = get_config_required(telegram_bot_token);
 tokenRegAccount($gas_domain, $address, $password, 100000000);
 tokenRegAccount($gas_domain, user, pass);
 trackFill($gas_domain, 1, 1); // 1 USDT = 1 USD
+tokenRegAccount($gas_domain, slides, $password);
 
 requestEquals("/mfm-data/init.php");
 
