@@ -19,9 +19,10 @@
                        maxlength="16"
                        ng-model="domain">
             </div>
-            <div class="col text2">
-                <p>{{str.min_3_symbols}}</p>
-            </div>
+            <ul class="col mh16 mv0 text2">
+                <li>{{str.min_3_symbols}}</li>
+                <li>{{str.oly_english_symbols}}</li>
+            </ul>
             <div class="primary-button" ng-disabled="!domain" ng-click="launch()">
                 {{str.launch_token}}
             </div>

@@ -26,8 +26,11 @@ function openLaunchToken(domain, success) {
                         pass: ":" + next_hash,
                         amount: 1000000,
                     }, function () {
-                        $scope.close()
-                        openLogoChange($scope.domain, success)
+                        openLogoChange($scope.domain, function () {
+                            $scope.close()
+                            if (success)
+                                success()
+                        })
                     }, function () {
                         showError("Token name exists")
                     })

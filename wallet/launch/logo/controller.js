@@ -36,10 +36,6 @@ function openLogoChange(domain, success) {
             }, ".png")
         }
 
-        $scope.openDistribution = function () {
-            openDistribution($scope.domain)
-        }
-
         function init() {
             getProfile(domain, function (response) {
                 $scope.profile = response

@@ -119,4 +119,15 @@ function addNavigator($scope) {
     $scope.openExchange = function (domain) {
         openExchange(domain)
     }
+
+    $scope.openDistribution = function (domain, success) {
+        openDistribution(domain, success)
+    }
+
+    $scope.openPro = function (domain, success) {
+        openPro(domain, success)
+    }
+    $scope.openAskCredit = function (success) {
+        openAskCredit(success)
+    }
 }
