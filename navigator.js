@@ -41,8 +41,8 @@ function addNavigator($scope) {
         openAccount(success)
     }
 
-    $scope.openLaunchToken = function (domain, success) {
-        openLaunchToken(domain, success)
+    $scope.openLaunchToken = function (success) {
+        openLaunchToken(success)
     }
 
     $scope.openDistribution = function (domain, success) {

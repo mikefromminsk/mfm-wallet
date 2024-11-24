@@ -1,6 +1,6 @@
-function openLaunchToken(domain, success) {
+function openLaunchToken(success) {
     showDialog("/mfm-wallet/wallet/launch/name/index.html", success, function ($scope) {
-        $scope.domain = domain
+        $scope.domain = ""
         $scope.amount = 1000000
         if (DEBUG) {
             $scope.domain = "super"
