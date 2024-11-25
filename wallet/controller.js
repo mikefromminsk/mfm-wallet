@@ -72,5 +72,7 @@ function addWallet($scope) {
         getCredits()
     }
 
+    //openMining("super22")
+
     $scope.walletInit()
 }

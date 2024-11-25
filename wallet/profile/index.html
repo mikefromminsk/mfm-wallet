@@ -1,13 +1,15 @@
 <md-dialog class="fill col block">
     <div class="row header align-start-center">
-        <div ng-style="getLogo(token.domain)"></div>
-        <div class="flex col">
-            <p class="uppercase text1">{{token.domain}}</p>
-            <div class="row mt4 text2">
-                <p class="">{{formatPrice(token.price)}}</p>
-                <p class="ml4" ng-class="percentColor(token.price24)">
-                    {{formatChange(token.price24)}}
-                </p>
+        <div class="flex row gap16 align-start-center">
+            <div ng-style="getLogo(token.domain)"></div>
+            <div class="col">
+                <p class="uppercase text1">{{token.domain}}</p>
+                <div class="row mt4 text2">
+                    <p class="">{{formatPrice(token.price)}}</p>
+                    <p class="ml4" ng-class="percentColor(token.price24)">
+                        {{formatChange(token.price24)}}
+                    </p>
+                </div>
             </div>
         </div>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">

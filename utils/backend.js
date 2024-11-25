@@ -87,7 +87,7 @@ function post(url, params, success, error) {
                 try {
                     let response = JSON.parse(xhr.response)
                     if (error) {
-                        error(response)
+                        error(response.message)
                     } else {
                         window.showError(response.message, error)
                     }
@@ -258,7 +258,7 @@ var wallet = {
     requestInProcess: false,
     postContractWithGas: function (domain, path, params, success, error) {
         wallet.requestInProcess = true
-        var isParamsFunction = typeof params === 'function'
+        let isParamsFunction = typeof params === 'function'
         getPin(function (pin) {
             if (isParamsFunction) {
                 calcPass(domain, pin, function (pass, key) {
@@ -281,8 +281,8 @@ var wallet = {
                 })
             }
 
-            function checkNextRequest(afterCallback) {
-                var nextRequest = wallet.requestQueue.shift()
+            function checkNextRequest(afterCallback, data) {
+                let nextRequest = wallet.requestQueue.shift()
                 if (nextRequest != null) {
                     wallet.postContractWithGas(
                         nextRequest.domain,
@@ -293,7 +293,7 @@ var wallet = {
                 } else {
                     wallet.requestInProcess = false
                     if (afterCallback)
-                        afterCallback()
+                        afterCallback(data)
                 }
             }
 
@@ -301,10 +301,10 @@ var wallet = {
                 if (params == null) return
                 params.gas_address = wallet.address()
                 params.gas_pass = pass
-                postContract(domain, path, params, () => {
-                    checkNextRequest(success)
-                }, () => {
-                    checkNextRequest(error)
+                postContract(domain, path, params, (data) => {
+                    checkNextRequest(success, data)
+                }, (data) => {
+                    checkNextRequest(error, data)
                 })
             }
         })

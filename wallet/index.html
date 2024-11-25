@@ -6,7 +6,7 @@
     </div>
 </div>
 <div class="col align-start-center scroll">
-    <div class="col block">
+    <div class="col block input-content">
         <div class="col" ng-hide="wallet.address()">
             <div class="col align-start-center mt16" ng-click="openLogin()">
                 <p class="size20 bold">{{str.welcome}}</p>
@@ -58,7 +58,7 @@
             </div>
 
         </div>
-        <div class="col ph16 gap16">
+        <div class="col gap16">
             <div class="col back-gray radius-default">
                 <div class="row p16 align-start-center ripple"
                      ng-repeat="token in accounts"
@@ -79,11 +79,10 @@
                     </div>
                 </div>
             </div>
-
             <p ng-show="credit > 0">{{str.credit}}</p>
-            <div class="col back-gray radius-default">
+            <div class="col back-gray radius-default"
+                 ng-show="credit > 0">
                 <div class="row p16 align-start-center ripple"
-                     ng-show="credit > 0"
                      ng-click="openCredit(walletInit)">
                     <div ng-style="getLogo(wallet.gas_domain)"></div>
                     <div class="flex col ml16">
@@ -96,13 +95,10 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-
-            <div class="col align-start-center">
-                <div class="back-pay radius-default pv8 ph16 ripple" ng-click="openLaunchToken(walletInit)">
-                    {{str.launch_token}}
-                </div>
-            </div>
+        <div class="primary-button back-pay" ng-click="openLaunchToken(walletInit)">
+            {{str.launch_token}}
         </div>
     </div>
 </div>
