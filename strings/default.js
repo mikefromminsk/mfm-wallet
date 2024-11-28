@@ -1,4 +1,4 @@
-window.str = {}
+window.str = window.str || {}
 str.wallet = "Wallet"
 str.history = "History"
 str.home = "Home"
