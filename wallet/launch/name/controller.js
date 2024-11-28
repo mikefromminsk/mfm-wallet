@@ -37,5 +37,9 @@ function openLaunchToken(success) {
                 })
             })
         }
+
+        setTimeout(function () {
+            document.getElementById("launch_name_input").focus()
+        }, 500)
     })
 }

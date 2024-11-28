@@ -13,13 +13,14 @@
             <div class="row input-wrapper">
                 <div class="input-label">{{str.token_name}}</div>
                 <input type="text"
+                       id="launch_name_input"
                        autocapitalize="none"
                        autocomplete="off"
                        minlength="3"
                        maxlength="16"
                        ng-model="domain">
             </div>
-            <ul class="col mh16 mv0 text2">
+            <ul class="col mh16 mv0 text2 text-align-start">
                 <li>{{str.min_3_symbols}}</li>
                 <li>{{str.oly_english_symbols}}</li>
             </ul>

@@ -12,6 +12,10 @@ body {
     font-family: FontMedium, Roboto, "Helvetica Neue", sans-serif;
 }
 
+.text-align-center {
+    text-align: center;
+}
+
 .bold {
     font-family: FontBold, Roboto, "Helvetica Neue", sans-serif;
 }

@@ -48,7 +48,9 @@ function launchList($tokens, $address, $password)
 }
 
 $tokens = [
-    oak_log => exchange,
+    gold => mining,
+    gold => mining,
+    amethyst => exchange,
 ];
 
 /*$token_list = file_get_contents($_SERVER[DOCUMENT_ROOT] . "/mfm-wallet/api/token_list.json");
