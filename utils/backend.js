@@ -1,6 +1,7 @@
 const DEBUG = location.hostname == "localhost"
 
 let subscriptions = {}
+
 function connectChannel(channel) {
     if (window.conn != null && window.conn.readyState === WebSocket.OPEN && subscriptions[channel].length == 1)
         window.conn.send(JSON.stringify({subscribe: channel}))
@@ -159,7 +160,11 @@ function trackStart(application_name) {
             version = JSON.parse(text).version
         } catch (e) {
         }
-        trackEvent(window.app_name, getParam("utm_medium"), getParam("utm_content"))
+        trackEvent(window.app_name, getParam("utm_medium"), getParam("utm_content"), function () {
+            /*if (getParam("redirect") != null) {
+                window.location.href = getParam("redirect")
+            }*/
+        })
     })
 }
 
