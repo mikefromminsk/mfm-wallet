@@ -1,0 +1,15 @@
+<md-bottom-sheet class="col">
+    <div class="row header align-center-center">
+        <p>{{str.are_you_sure}}</p>
+    </div>
+    <div class="col content input-content">
+        <div class="row gap16">
+            <div class="flex m0 primary-button back-red" ng-click="no(message)">
+                {{str.no}}
+            </div>
+            <div class="flex m0 primary-button back-green" ng-click="yes(message)">
+                {{str.yes}}
+            </div>
+        </div>
+    </div>
+</md-bottom-sheet>

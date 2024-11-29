@@ -13,8 +13,10 @@ function openAccount(success) {
         }
 
         $scope.logout = function () {
-            wallet.logout()
-            storage.setString(storageKeys.onboardingShowed, "true")
+            openAskSure(function () {
+                wallet.logout()
+                storage.setString(storageKeys.onboardingShowed, "true")
+            })
         }
 
         $scope.openBuyFunnel = function () {
