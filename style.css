@@ -403,10 +403,6 @@ md-dialog {
     stroke-miterlimit: 10;
     box-shadow: inset 0px 0px 0px var(--green);
     animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
-    position: relative;
-    top: 5px;
-    right: 5px;
-    margin: 0 auto;
 }
 
 .checkmark__circle {
@@ -499,3 +495,5 @@ md-dialog {
         transform: rotate(360deg);
     }
 }
+
+

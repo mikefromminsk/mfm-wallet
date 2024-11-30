@@ -4,6 +4,7 @@ function addNavigator($scope) {
         setTimeout(function () {
             window.$mdBottomSheet.hide(result)
             $scope.unsubscribeAll()
+            $scope.removePressEnter()
         }, 100)
     }
 
@@ -12,6 +13,7 @@ function addNavigator($scope) {
             window.$mdDialog.hide(result)
             window.$mdBottomSheet.hide(result)
             $scope.unsubscribeAll()
+            $scope.removePressEnter()
         }, 100)
     }
 

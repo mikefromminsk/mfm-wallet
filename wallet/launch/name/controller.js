@@ -37,6 +37,7 @@ function openLaunchToken(success) {
                 })
             })
         }
+        $scope.pressEnter($scope.launch)
 
         setTimeout(function () {
             document.getElementById("launch_name_input").focus()

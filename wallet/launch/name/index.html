@@ -16,7 +16,6 @@
                        id="launch_name_input"
                        autocapitalize="none"
                        autocomplete="off"
-                       minlength="3"
                        maxlength="16"
                        ng-model="domain">
             </div>
@@ -24,7 +23,9 @@
                 <li>{{str.min_3_symbols}}</li>
                 <li>{{str.oly_english_symbols}}</li>
             </ul>
-            <div class="primary-button" ng-disabled="!domain" ng-click="launch()">
+            <div class="primary-button"
+                 ng-disabled="!domain || domain.length < 3"
+                 ng-click="launch()">
                 {{str.launch_token}}
             </div>
         </div>

@@ -20,8 +20,10 @@ function openLogin(success) {
             $scope.agree_with_terms_and_condition = !$scope.agree_with_terms_and_condition
         }
 
+
         $scope.login = function () {
             $scope.in_progress = true
+            clearFocus()
             postContract("mfm-token", "account.php", {
                 domain: wallet.gas_domain,
                 address: $scope.username,
@@ -52,6 +54,7 @@ function openLogin(success) {
                 })
             })
         }
+        $scope.pressEnter($scope.login)
 
         $scope.$watch(function () {
             return $scope.username

@@ -11,6 +11,16 @@ function openSend(domain, to_address, amount, success) {
             $scope.amount = amount
         }
 
+        $scope.$watch('to_address', function (newValue, oldValue) {
+            if (newValue == null) return
+            if (newValue != newValue.toLowerCase())
+                $scope.to_address = newValue.toLowerCase()
+            if (newValue.match(new RegExp("\\W")))
+                $scope.to_address = oldValue
+            if (newValue.indexOf(' ') != -1)
+                $scope.to_address = oldValue
+        })
+
         $scope.send = function () {
             getPin(function (pin) {
                 calcPass(domain, pin, function (pass) {
@@ -19,7 +29,7 @@ function openSend(domain, to_address, amount, success) {
                         from_address: wallet.address(),
                         to_address: $scope.to_address,
                         pass: pass,
-                        amount: $scope.getTotal(),
+                        amount: $scope.amount,
                     }, function (response) {
                         $scope.back()
                         openTran(response.next_hash, success)
@@ -34,16 +44,12 @@ function openSend(domain, to_address, amount, success) {
             })
         }
 
-        $scope.getMax = function () {
-            return $scope.round($scope.token.balance)
-        }
+        $scope.$watch('amount', function () {
+            $scope.amount = $scope.round($scope.amount, 2)
+        })
 
         $scope.setMax = function () {
-            $scope.amount = $scope.getMax()
-        }
-
-        $scope.getTotal = function () {
-            return $scope.round($scope.amount || 0, 2)
+            $scope.amount = $scope.token.balance
         }
 
         function init() {
