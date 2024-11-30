@@ -1,10 +1,18 @@
 <div class="col align-start-center scroll">
-    <div class="col block ">
-        <md-tabs md-selected="slideIndex" class="col p0" md-swipe-content md-dynamic-height>
+    <div class="col block">
+        <div class="row mt16 align-center-center" ng-show="wallet.address()">
+            <div class="row block align-center-center">
+                <div class="ph16 pv8 back-gray radius-default ripple"
+                     ng-click="openSettings()">
+                    {{wallet.address()}}
+                </div>
+            </div>
+        </div>
+        <md-tabs md-selected="slideIndex" class="col p0 mt16" md-swipe-content md-dynamic-height>
             <md-tab label="$index" ng-repeat="domain in slides">
-                <div class="col" style="min-height: 200px; padding: 16px">
+                <div class="col" style="min-height: 200px; padding: 0 16px">
                     <div class="flex row align-start-end back-gray radius-default"
-                         ng-click="openTokenProfile(domain)"
+                         ng-click="openSlide(domain)"
                          ng-style="getBack(domain)">
                         <div class="row m16 align-start-center gap16">
                             <div ng-style="getLogo(domain)"></div>

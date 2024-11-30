@@ -1,6 +1,6 @@
 <div class="row header align-center-center">
     <div class="row block align-start-center">
-        <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/settings.svg" ng-click="openAccount(walletInit)">
+        <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/settings.svg" ng-click="openSettings(walletInit)">
         <div class="flex row align-center">{{str.wallet}}</div>
         <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/search.svg" ng-click="openSearch(walletInit)">
     </div>
@@ -8,7 +8,7 @@
 <div class="col align-start-center scroll">
     <div class="col block input-content">
         <div class="col" ng-hide="wallet.address()">
-            <div class="col align-start-center mt16">
+            <div class="col align-start-center mt16 text-align-center">
                 <p class="size20 bold">{{str.welcome}}</p>
                 <p class="size16 mt16">{{str.welcome_subject}}</p>
             </div>

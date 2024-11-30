@@ -7,9 +7,6 @@ function main($scope) {
     }
     setIcon()
 
-
-    addWallet($scope)
-
     $scope.menu = ["history", "home", "wallet"]
     $scope.selectedIndex = 1
     $scope.selectTab = function (tab) {
@@ -22,6 +19,7 @@ function main($scope) {
             addWallet($scope)
         }
     }
+
     $scope.selectTab($scope.selectedIndex)
 
     trackStart("mfm-wallet")

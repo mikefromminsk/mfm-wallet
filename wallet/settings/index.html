@@ -20,6 +20,7 @@
             </div>
             <div class="primary-button"
                  ng-click="login()"
+                 ng-disabled="in_progress"
                  ng-hide="wallet.address()">
                 {{str.login_or_create_account}}
             </div>

@@ -144,11 +144,11 @@
             <div class="nowrap-disabled" id="token-readme"></div>
         </div>
     </div>
-    <div class="col mh16 align-start-center" ng-show="token.domain != wallet.gas_domain">
+    <div class="col mh16 align-start-center" ng-show="domain != wallet.gas_domain">
         <div class="row block gap16">
             <div class="flex mh0 primary-button back-red radius4 uppercase"
                  ng-click="openSell(domain)"
-                 ng-hide="token.balance <= 0">
+                 ng-show="token.balance > 0">
                 {{str.sell}}
             </div>
             <div class="flex mh0 primary-button back-green radius4 uppercase"

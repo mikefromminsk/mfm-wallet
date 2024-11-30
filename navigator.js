@@ -1,19 +1,22 @@
 function addNavigator($scope) {
 
+    $scope.finish = function (result) {
+        window.$mdBottomSheet.hide(result)
+        $scope.unsubscribeAll()
+        $scope.removePressEnter()
+        clearFocus()
+    }
+
     $scope.back = function (result) {
         setTimeout(function () {
-            window.$mdBottomSheet.hide(result)
-            $scope.unsubscribeAll()
-            $scope.removePressEnter()
+            $scope.finish(result)
         }, 100)
     }
 
     $scope.close = function (result) {
         setTimeout(function () {
             window.$mdDialog.hide(result)
-            window.$mdBottomSheet.hide(result)
-            $scope.unsubscribeAll()
-            $scope.removePressEnter()
+            $scope.finish(result)
         }, 100)
     }
 
@@ -39,8 +42,8 @@ function addNavigator($scope) {
         openTokenProfile(domain)
     }
 
-    $scope.openAccount = function (success) {
-        openAccount(success)
+    $scope.openSettings = function (success) {
+        openSettings(success)
     }
 
     $scope.openLaunchToken = function (success) {

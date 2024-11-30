@@ -1,27 +1,35 @@
 function addHome($scope) {
-    $scope.DEBUG = DEBUG
-
     function init() {
         postContract("mfm-wallet", "home/api/main.php", {}, function (response) {
             $scope.slides = response.slides
             $scope.tops = response.tops
             $scope.showBody = true
-            if (!DEBUG)
+            //if (!DEBUG)
                 startAnimation()
             $scope.$apply()
         })
     }
 
-    $scope.slideIndex = 0
-    let interval = null
+    $scope.openSlide = function (domain) {
+        trackCall(arguments)
+        openTokenProfile(domain)
+        clearInterval($scope.interval)
+    }
 
+    $scope.slideIndex = 0
+    $scope.lastAutoIndex = 0
     function startAnimation() {
-        if (interval != null)
-            clearInterval(interval)
-        interval = setInterval(function () {
-            $scope.slideIndex = ($scope.slideIndex + 1) % $scope.slides.length
-            $scope.$apply()
-        }, 3000)
+        if ($scope.interval == null){
+            $scope.interval = setInterval(function () {
+                if ($scope.lastAutoIndex != $scope.slideIndex){
+                    clearInterval($scope.interval)
+                } else {
+                    $scope.slideIndex = ($scope.slideIndex + 1) % $scope.slides.length
+                    $scope.lastAutoIndex = $scope.slideIndex
+                    $scope.$apply()
+                }
+            }, 4000)
+        }
     }
 
     init()

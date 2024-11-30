@@ -184,6 +184,7 @@ const storageKeys = {
     bonuses: "STORE_BONUSES",
     onboardingShowed: "STORE_ONBOARDING_SHOWED",
     language: "STORE_LANGUAGE",
+    send_history: "STORE_SEND_HISTORY",
     search_history: "STORE_SEARCH_HISTORY",
 }
 
@@ -344,18 +345,20 @@ var storage = {
         storage.setString(key, JSON.stringify(obj))
     },
     getStringArray: function (key) {
-        var string = this.getString(key)
+        let string = this.getString(key)
         return string == null || string == "" ? [] : string.split(',')
     },
-    pushToArray: function (key, value) {
+    pushToArray: function (key, value, limit) {
         if (this.isArrayItemExist(key, value)) return;
-        var array = this.getStringArray(key)
+        let array = this.getStringArray(key)
+        if (limit != null && array.length >= limit)
+            array.shift()
         array.push(value)
         this.setString(key, array.join(","))
     },
     removeFromArray: function (key, value) {
         if (!this.getStringArray(key, value)) return;
-        var array = this.getStringArray(key)
+        let array = this.getStringArray(key)
         array.splice(array.indexOf(value), 1);
         this.setString(key, array.join(","))
     },

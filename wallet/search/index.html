@@ -1,9 +1,23 @@
 <md-dialog class="fill col">
-    <div class="row header align-start-center">
-        <div class="img32"></div>
-        <p class="flex row align-center-center">
-            {{str.search}}
-        </p>
+    <div class="row p16 align-start-center gap16">
+        <div class="flex col">
+            <div class="row wrap ph8">
+                <div class="text2 ml8 mt8 p8 back-gray radius-default ripple"
+                     ng-repeat="item in recent"
+                     ng-click="openToken(item)">
+                    {{formatTicker(item)}}
+                </div>
+            </div>
+            <div class="flex row input-wrapper">
+                <input type="text"
+                       class="ph16"
+                       id="search_input"
+                       autocomplete="off"
+                       style="border-radius: 32px;"
+                       placeholder="{{str.type_token_name}}"
+                       ng-model="search_text">
+            </div>
+        </div>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
         </div>
@@ -29,24 +43,6 @@
              ng-hide="tokens.length > 0"
              style="min-height: 100px">
             {{str.nothing_found}}
-        </div>
-    </div>
-    <div class="row wrap ph8">
-        <div class="text2 ml8 mt8 p8 back-gray radius-default ripple"
-             ng-repeat="item in recent"
-             ng-click="openToken(item)">
-            {{formatTicker(item)}}
-        </div>
-    </div>
-    <div class="input-content m0">
-        <div class="flex row input-wrapper">
-            <input type="text"
-                   class="ph16"
-                   id="search_input"
-                   autocomplete="off"
-                   style="border-radius: 32px;"
-                   placeholder="{{str.type_token_name}}"
-                   ng-model="search_text">
         </div>
     </div>
 </md-dialog>

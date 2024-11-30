@@ -1,5 +1,3 @@
-
-
 function createOdometer(el, value) {
     const odometer = new Odometer({
         el: el,
@@ -28,8 +26,6 @@ function createOdometer(el, value) {
 }
 
 function addWallet($scope) {
-    $scope.menuIndex = 0
-
     function getTokens() {
         postContract("mfm-token", "accounts.php", {
             address: wallet.address(),
@@ -104,7 +100,9 @@ function addWallet($scope) {
         getCredits()
     }
 
-    //openMining("super22")
-
-    $scope.walletInit()
+    if (wallet.address() == "") {
+        openLogin($scope.walletInit)
+    } else {
+        $scope.walletInit()
+    }
 }

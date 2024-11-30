@@ -12,23 +12,31 @@ function openLogin(success) {
             $scope.agree_with_terms_and_condition = true
         }
 
-        setTimeout(function () {
-            document.getElementById('login_address').focus();
-        }, 500)
+        if (window.Telegram != null) {
+            setTimeout(function () {
+                let userData = window.Telegram.WebApp.initDataUnsafe
+                if (userData.user != null) {
+                    $scope.username = userData.user.username
+                    $scope.$apply()
+                }
+                document.getElementById('login_password').focus();
+            })
+        } else {
+            setTimeout(function () {
+                document.getElementById('login_address').focus();
+            }, 500)
+        }
 
         $scope.toggleTerms = function () {
             $scope.agree_with_terms_and_condition = !$scope.agree_with_terms_and_condition
         }
 
-
         $scope.login = function () {
             $scope.in_progress = true
-            clearFocus()
             postContract("mfm-token", "account.php", {
                 domain: wallet.gas_domain,
                 address: $scope.username,
             }, function (response) {
-                $scope.in_progress = false
                 if (CryptoJS.MD5(wallet.calcHash(
                     wallet.gas_domain,
                     $scope.username,
@@ -36,10 +44,10 @@ function openLogin(success) {
                     response.prev_key)).toString() == response.next_hash) {
                     setPin()
                 } else {
+                    $scope.in_progress = false
                     showError(str.password_invalid)
                 }
             }, function () {
-                $scope.in_progress = false
                 postContract("mfm-token", "send.php", {
                     domain: wallet.gas_domain,
                     from_address: "owner",

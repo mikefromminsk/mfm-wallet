@@ -21,7 +21,9 @@ function openSend(domain, to_address, amount, success) {
                 $scope.to_address = oldValue
         })
 
-        $scope.send = function () {
+        $scope.send = function send(domain) {
+            trackCall(arguments)
+            $scope.in_progress = true
             getPin(function (pin) {
                 calcPass(domain, pin, function (pass) {
                     postContract("mfm-token", "send.php", {
@@ -31,14 +33,12 @@ function openSend(domain, to_address, amount, success) {
                         pass: pass,
                         amount: $scope.amount,
                     }, function (response) {
+                        storage.pushToArray(storageKeys.send_history, $scope.to_address, 3)
                         $scope.back()
                         openTran(response.next_hash, success)
                     }, function (message) {
-                        if (message.indexOf("receiver doesn't exist") != -1) {
-                            showError("This user dosent exist but you can invite him", function () {
-                                openShare(domain, success)
-                            })
-                        }
+                        $scope.in_progress = false
+                        showError(message)
                     })
                 })
             })
@@ -52,7 +52,12 @@ function openSend(domain, to_address, amount, success) {
             $scope.amount = $scope.token.balance
         }
 
+        $scope.setToAddress = function (to_address) {
+            $scope.to_address = to_address
+        }
+
         function init() {
+            $scope.recent = storage.getStringArray(storageKeys.send_history).reverse()
             getProfile(domain, function (response) {
                 $scope.token = response
                 $scope.$apply()

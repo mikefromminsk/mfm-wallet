@@ -17,8 +17,6 @@
             <ng-include src="'/mfm-wallet/trans/trans.html'"></ng-include>
         </div>
         <div class="mh16">
-
-
             <div class="row mt8" ng-hide="tran.from == wallet.address()">
                 <p class="flex text2">{{str.from}}</p>
                 <p class="nowrap">{{tran.from}}</p>
@@ -58,5 +56,10 @@
     </div>
     <div class="primary-button" ng-click="copy(tran.next_hash)">
         {{str.copy}} ID
+    </div>
+    <div class="primary-button back-black"
+         style="margin: 0 16px 16px 16px"
+         ng-click="close()">
+        {{str.close}}
     </div>
 </md-dialog>

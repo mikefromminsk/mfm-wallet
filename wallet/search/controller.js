@@ -17,12 +17,7 @@ function openSearch(success) {
 
         $scope.openToken = function found(domain) {
             trackCall(arguments)
-            let recent = storage.getStringArray(storageKeys.search_history)
-            if (recent.indexOf(domain) == -1) {
-                if (recent.length >= 4)
-                    storage.removeFromArray(storageKeys.search_history, recent[0])
-                storage.pushToArray(storageKeys.search_history, domain)
-            }
+            storage.pushToArray(storageKeys.search_history, domain, 4)
             openTokenProfile(domain,init)
         }
 
