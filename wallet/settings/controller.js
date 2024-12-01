@@ -19,8 +19,8 @@ function openSettings(success) {
             })
         }
 
-        $scope.openBuyFunnel = function () {
-            openFunnel("buy")
+        $scope.openAnalytics = function () {
+            openAnalytics()
         }
 
         $scope.leaveReview = function () {
