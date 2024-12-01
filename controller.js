@@ -26,10 +26,7 @@ function start($scope) {
     $scope.selectTab($scope.selectedIndex)
 
     if (getParam("o")) {
-        function referer(object) {
-            trackCall(arguments)
-        }
-        referer(getParam("o"))
+        trackEvent("referer", getParam("o"), getParam("email"))
         window.history.pushState({}, document.title, "/mfm-wallet");
     }
 

@@ -108,12 +108,12 @@ function postContract(domain, path, params, success, error) {
     post("/" + domain + "/" + path, params, success, error)
 }
 
-function trackEvent(name, value, success, error) {
+function trackEvent(name, value, user_id, success, error) {
     postContract("mfm-analytics", "track.php", {
         app: "ui",
         name: name,
         value: value || "",
-        user_id: wallet.address(),
+        user_id: user_id || "",
     }, function (response) {
         if (success)
             success(response.info)
@@ -121,7 +121,7 @@ function trackEvent(name, value, success, error) {
 }
 
 function trackCall(args) {
-    trackEvent(args.callee.name, typeof args[0] === "string" ? args[0] : "")
+    trackEvent(args.callee.name, typeof args[0] === "string" ? args[0] : "", wallet.address())
 }
 
 const storageKeys = {
