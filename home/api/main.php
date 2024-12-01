@@ -5,11 +5,6 @@ $gas_domain = get_required(gas_domain);
 
 $week_ago = (time() - 60 * 60 * 24 * 7);
 
-$response[slides] = selectList("select distinct `value` from events"
-    . " where `type` like 'ui_call'"
-    . " and `name` like 'slide_payment'"
-    . " order by `time` desc limit 5") ?: [];
-
 $response[tops][top_mining] = selectList("select `domain`, count(*) tran_count from trans"
     . " where `from` like 'mining'"
     . " and `time` > $week_ago"
@@ -21,7 +16,7 @@ $response[tops][top_exchange] = selectList("select `domain` from tokens"
     . " order by volume24 desc limit 8") ?: [];
 
 $response[tops][top_search] = selectList("select `value`, count(*) found_count from events"
-    . " where `type` like 'ui_call'"
+    . " where `app` like 'ui'"
     . " and `name` like 'found'"
     . " and `name` <> '$gas_domain'"
     . " and `time` > $week_ago"

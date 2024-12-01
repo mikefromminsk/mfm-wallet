@@ -1,10 +1,13 @@
-function main($scope) {
+function start($scope) {
+    trackCall(arguments)
+
     function setIcon() {
-        var link = document.createElement('link');
+        let link = document.createElement('link');
         link.rel = 'icon';
         link.href = DEBUG ? 'logo-debug.png' : 'logo.png';
         document.head.appendChild(link);
     }
+
     setIcon()
 
     $scope.menu = ["history", "home", "wallet"]
@@ -22,7 +25,14 @@ function main($scope) {
 
     $scope.selectTab($scope.selectedIndex)
 
-    trackStart("mfm-wallet")
+    if (getParam("o")) {
+        function referer(object) {
+            trackCall(arguments)
+        }
+        referer(getParam("o"))
+        window.history.pushState({}, document.title, "/mfm-wallet");
+    }
+
 
     connectWs();
 }

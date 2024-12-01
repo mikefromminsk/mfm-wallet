@@ -1,4 +1,5 @@
 let logoRefreshInterval = null
+
 function openLogoChange(domain, success) {
     showDialog('/mfm-wallet/wallet/launch/logo/index.html', function () {
         if (logoRefreshInterval != null)
@@ -33,6 +34,27 @@ function openLogoChange(domain, success) {
                     showSuccess(str.logo_uploaded)
                 })
             }, ".png")
+        }
+
+        $scope.logos = []
+        for (let i = 0; i < 20; i++) {
+            let randomIndex = Math.floor(Math.random() * 199) + 1;
+            let logoName = 'logo' + randomIndex
+            if ($scope.logos.indexOf(logoName) == -1)
+                $scope.logos.push(logoName)
+        }
+
+        $scope.copyLogo = function (logo) {
+            post("https://storage.mytoken.space/copy_file.php", {
+                from: logo + ".png",
+                to: domain + ".png",
+            }, function () {
+                logoRefreshInterval = setInterval(function () {
+                    $scope.logoLink = $scope.getLogoLink($scope.domain) + '?' + randomString(4)
+                    $scope.$apply()
+                }, 1000)
+                showSuccess(str.logo_uploaded)
+            })
         }
 
         function init() {

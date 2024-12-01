@@ -105,75 +105,23 @@ function post(url, params, success, error) {
 }
 
 function postContract(domain, path, params, success, error) {
-    params.version = version
-    params.session = session
-    params.gas_address = wallet.address()
     post("/" + domain + "/" + path, params, success, error)
 }
 
-function dataObject(path, success, error) {
-    postContract("mfm-data", "object.php", {
-        path: path,
-    }, (response) => {
-        if (success)
-            success(response.object)
-    }, error)
-}
-
-function dataGet(path, success, error) {
-    postContract("mfm-data", "get.php", {
-        path: path,
-    }, function (response) {
-        if (success)
-            success(response.value)
-    }, error)
-}
-
-function dataInfo(path, success, error) {
-    postContract("mfm-data", "info.php", {
-        path: path,
-    }, function (response) {
-        if (success)
-            success(response.info)
-    }, error)
-}
-
-var app_name = "unset"
-var session = randomString(6)
-var version = "unset"
-
-function trackEvent(type, name, value, success, error) {
+function trackEvent(name, value, success, error) {
     postContract("mfm-analytics", "track.php", {
-        type: type,
-        name: name || "",
+        app: "ui",
+        name: name,
         value: value || "",
+        user_id: wallet.address(),
     }, function (response) {
         if (success)
             success(response.info)
     }, error)
-}
-
-function trackStart(application_name) {
-    app_name = application_name
-    get("/mfm-wallet/package.json", function (text) {
-        try {
-            version = JSON.parse(text).version
-        } catch (e) {
-        }
-        trackEvent(window.app_name, getParam("utm_medium"), getParam("utm_content"), function () {
-            /*if (getParam("redirect") != null) {
-                window.location.href = getParam("redirect")
-            }*/
-        })
-    })
 }
 
 function trackCall(args) {
-    trackEvent("ui_call", args.callee.name, typeof args[0] === "string" ? args[0] : "")
-}
-
-function dataExist(path, success, error) {
-    dataInfo(path, success, error)
+    trackEvent(args.callee.name, typeof args[0] === "string" ? args[0] : "")
 }
 
 const storageKeys = {
