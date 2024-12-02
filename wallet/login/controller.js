@@ -4,7 +4,7 @@ function openLogin(success) {
         return
     }
     showDialog('/mfm-wallet/wallet/login/index.html', success, function ($scope) {
-            $scope.username = ""
+            $scope.username = window.telegram_username || ""
             $scope.agree_with_terms_and_condition = false
             if (DEBUG) {
                 $scope.username = "admin"
@@ -12,19 +12,13 @@ function openLogin(success) {
                 $scope.agree_with_terms_and_condition = true
             }
 
-            if (window.Telegram != null) {
-                setTimeout(function () {
-                    let userData = window.Telegram.WebApp.initDataUnsafe
-                    if (userData.user != null) {
-                        $scope.telegram_username = userData.user.username
-                        $scope.username = $scope.telegram_username
-                        $scope.$apply()
-                    }
-                    //document.getElementById('login_password').focus();
-                })
-            } else {
+            if ($scope.username == "") {
                 setTimeout(function () {
                     document.getElementById('login_address').focus();
+                }, 500)
+            } else if ($scope.password == "") {
+                setTimeout(function () {
+                    document.getElementById('login_password').focus();
                 }, 500)
             }
 
@@ -72,7 +66,7 @@ function openLogin(success) {
                     $scope.username = oldValue
             })
 
-            function linkTelegram(username) {
+            function tg_link(username) {
                 if (username != null)
                     trackCall(arguments)
             }
@@ -83,13 +77,13 @@ function openLogin(success) {
                     storage.setString(storageKeys.passhash, encode($scope.password, pin))
                     if (pin != null)
                         storage.setString(storageKeys.hasPin, true)
-                    linkTelegram($scope.telegram_username)
+                    tg_link(window.telegram_username)
                     if (success) success()
                     $scope.close()
                 }, function () {
                     storage.setString(storageKeys.username, $scope.username)
                     storage.setString(storageKeys.passhash, $scope.password)
-                    linkTelegram($scope.telegram_username)
+                    tg_link($scope.telegram_username)
                     if (success) success()
                     $scope.close()
                 })

@@ -26,8 +26,18 @@ function start($scope) {
     $scope.selectTab($scope.selectedIndex)
 
     if (getParam("o")) {
-        trackEvent("referer", getParam("o"), getParam("email"))
+        trackEvent("email_referer", getParam("o"), getParam("email"))
         window.history.pushState({}, document.title, "/mfm-wallet");
+    }
+
+    if (window.Telegram != null) {
+        setTimeout(function () {
+            let userData = window.Telegram.WebApp.initDataUnsafe
+            if (userData.user != null) {
+                window.telegram_username = userData.user.username
+                trackEvent("tg_referer", null, window.telegram_username)
+            }
+        })
     }
 
 
