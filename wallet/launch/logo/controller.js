@@ -25,6 +25,8 @@ function openLogoChange(domain, success) {
             selectFile(function (file) {
                 post("https://storage.mytoken.space/upload_file.php", {
                     filename: domain + ".png",
+                    width: 64,
+                    height: 64,
                     file: file,
                 }, function () {
                     logoRefreshInterval = setInterval(function () {
