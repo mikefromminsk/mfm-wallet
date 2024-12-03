@@ -6,18 +6,14 @@
             <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/search.svg" ng-click="openSearch(walletInit)">
         </div>
     </div>
-    <div class="flex col scroll">
+    <div class="flex col align-center-center" ng-hide="wallet.address()">
+        <div class="primary-button" ng-click="openLogin()">
+            {{str.login_or_create_account}}
+        </div>
+    </div>
+    <div class="flex col scroll" ng-show="wallet.address()">
         <div class="flex col block input-content">
-            <div class="col" ng-hide="wallet.address()">
-                <div class="col align-start-center mt16 text-align-center">
-                    <p class="size20 bold">{{str.welcome}}</p>
-                    <p class="size16 mt16">{{str.welcome_subject}}</p>
-                </div>
-                <div class="flex primary-button" ng-click="openLogin()">
-                    {{str.login_or_create_account}}
-                </div>
-            </div>
-            <div class="col input-content text-align-center" ng-show="wallet.address()">
+            <div class="col input-content text-align-center">
                 <div  class="row align-center text0" style="margin-top: 40px;">
                     $<div id="total">0</div>
                 </div>
