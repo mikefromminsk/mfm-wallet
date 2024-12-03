@@ -41,5 +41,7 @@ function start($scope) {
         })
     }
 
+    openMining("eg4")
+
     connectWs();
 }

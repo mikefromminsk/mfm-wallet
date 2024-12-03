@@ -11,6 +11,7 @@
         opacity: 1;
     }
 }
+
 @keyframes fly--up {
     0% {
         transform: translateY(10px);
@@ -27,6 +28,7 @@
         opacity: 0;
     }
 }
+
 @keyframes fly--down {
     0% {
         transform: translateY(-10px);
@@ -43,6 +45,7 @@
         opacity: 0;
     }
 }
+
 @keyframes fly--left {
     0% {
         transform: translateX(10px);
@@ -59,6 +62,7 @@
         opacity: 0;
     }
 }
+
 @keyframes fly--right {
     0% {
         transform: translateX(-10px);
@@ -75,6 +79,7 @@
         opacity: 0;
     }
 }
+
 @keyframes fly--up--left {
     0% {
         transform: rotate(135deg) translate(0vw, 0vw);
@@ -88,6 +93,7 @@
         opacity: 0;
     }
 }
+
 @keyframes fly--up--right {
     0% {
         transform: rotate(45deg);
@@ -101,6 +107,7 @@
         opacity: 0;
     }
 }
+
 @keyframes fly--down--left {
     0% {
         transform: rotate(45deg) translate(0vw, 0vw);
@@ -114,6 +121,7 @@
         opacity: 0;
     }
 }
+
 @keyframes fly--down--right {
     0% {
         transform: rotate(135deg) translate(0vw, 0vw);
@@ -136,6 +144,7 @@
     height: 100vh;
     outline: solid 1px red;
 }
+
 .trophy {
     z-index: 1;
     background-color: #fff;
@@ -144,6 +153,7 @@
     border-radius: 100%;
     animation: trophy 0.5s 1 forwards;
 }
+
 .success-anim-action {
     position: absolute;
     top: 50%;
@@ -154,6 +164,7 @@
     max-width: 300px;
     width: 25vw;
 }
+
 .success-anim-action .confetti,
 .success-anim-action .confetti--purple {
     z-index: -1;
@@ -167,6 +178,7 @@
     transform-origin: center middle;
     opacity: 0;
 }
+
 .success-anim-action .confetti {
     top: 0;
     left: calc(50% - 5px);
@@ -174,11 +186,13 @@
     animation-name: fly--up;
     animation-delay: 0.35s;
 }
+
 .success-anim-action .confetti.two {
     top: auto;
     bottom: 0;
     animation-name: fly--down;
 }
+
 .success-anim-action .confetti.three,
 .success-anim-action .confetti.four {
     top: calc(50% - 5px);
@@ -187,9 +201,11 @@
     width: 50px;
     animation-name: fly--left;
 }
+
 .success-anim-action .confetti.four {
     animation-name: fly--right;
 }
+
 .success-anim-action .confetti--purple {
     background-color: #6200ea;
     animation-name: fly--up--left;
@@ -198,18 +214,21 @@
     left: 20%;
     top: 20%;
 }
+
 .success-anim-action .confetti--purple.two {
     animation-name: fly--up--right;
     left: auto;
     right: 20%;
     transform: rotate(45deg);
 }
+
 .success-anim-action .confetti--purple.three {
     top: auto;
     bottom: 20%;
     transform: rotate(45deg);
     animation-name: fly--down--left;
 }
+
 .success-anim-action .confetti--purple.four {
     top: auto;
     bottom: 20%;
@@ -218,10 +237,6 @@
     transform: rotate(135deg);
     animation-name: fly--down--right;
 }
-
-
-
-
 
 
 input[type="range"] {
@@ -240,7 +255,7 @@ input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 12px;
     height: 12px;
-    background-color: #D5D4D8 ;
+    background-color: #D5D4D8;
     border-radius: 50%;
 }
 
@@ -248,7 +263,8 @@ input[type="range"]::-webkit-slider-thumb {
 .range-container {
     position: relative;
 }
-.romb{
+
+.romb {
     position: absolute;
     left: 25%;
     top: 1px;
@@ -256,4 +272,49 @@ input[type="range"]::-webkit-slider-thumb {
     height: 5px;
     rotate: 45deg;
     z-index: -1;
+}
+
+
+.circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: transparent;
+    position: relative;
+}
+
+
+svg {
+    height: auto;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+
+.st0, .st1, .st2, .st3 {
+    fill: none;
+    stroke: var(--green);
+    stroke-width: 32;
+    stroke-miterlimit: 10;
+}
+
+.st0 {
+    stroke-dasharray: 12.1947, 12.1947, 12.1947, 12.1947, 12.1947, 12.1947;
+}
+
+
+.st1 {
+    stroke-dasharray: 50, 90, 200, 30, 40, 0
+}
+
+.st2 {
+    stroke-linecap: square;
+    stroke-dasharray: 120, 20, 110, 20, 140;
+}
+
+.st3 {
+    stroke-width: 16;
+    stroke-linecap: square;
 }
