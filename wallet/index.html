@@ -82,7 +82,7 @@
                 <div class="col back-gray radius-default"
                      ng-show="credit > 0">
                     <div class="row p16 align-start-center ripple"
-                         ng-click="openCredit(walletInit)">
+                         ng-click="openPayOffCredit(walletInit)">
                         <div ng-style="getLogo(wallet.gas_domain)"></div>
                         <div class="flex col ml16">
                             <p>{{formatTicker(wallet.gas_domain)}}</p>
@@ -98,7 +98,6 @@
                     {{str.launch_token}}
                 </div>
             </div>
-
         </div>
     </div>
 </div>

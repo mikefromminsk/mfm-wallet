@@ -109,8 +109,8 @@ function addNavigator($scope) {
         openChart(key, success)
     }
 
-    $scope.openCredit = function (success) {
-        openCredit(success)
+    $scope.openPayOffCredit = function (success) {
+        openPayOffCredit(success)
     }
 
     $scope.openTran = function (next_hash, success) {
