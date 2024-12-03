@@ -1,7 +1,7 @@
 function getPin(success, cancel) {
     if (DEBUG){
         success("2222")
-    }else if (cancel == null && storage.getString(storageKeys.hasPin) == "") {
+    } else if (cancel == null && storage.getString(storageKeys.hasPin) == "") {
         // No pin
         if (success)
             success()

@@ -54,27 +54,8 @@
                 </div>
             </div>
             <div class="col gap16" ng-hide="!wallet.address()">
-                <div class="col back-gray radius-default">
-                    <div class="row p16 align-start-center ripple"
-                         ng-repeat="token in accounts"
-                         ng-click="openTokenProfile(token.domain)">
-                        <div ng-style="getLogo(token.domain)"></div>
-                        <div class="flex col ml16">
-                            <p>{{formatTicker(token.domain)}}</p>
-                            <div class="row mt4 text2">
-                                <p class="">{{formatPrice(token.price)}}</p>
-                                <p class="ml4" ng-class="percentColor(token.price24)">
-                                    {{formatChange(token.price24)}}
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col align-end-end">
-                            <p>{{formatAmount(token.balance)}}</p>
-                            <p class="mt4 text2">{{formatPrice(token.price * token.balance)}}</p>
-                        </div>
-                    </div>
-                </div>
-                <p ng-show="credit > 0">{{str.credit}}</p>
+                <ng-include src="'/mfm-wallet/wallet/accounts.html?nocache'"></ng-include>
+                <p class="text1" ng-show="credit > 0">{{str.credit}}</p>
                 <div class="col back-gray radius-default"
                      ng-show="credit > 0">
                     <div class="row p16 align-start-center ripple"
