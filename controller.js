@@ -1,6 +1,3 @@
-
-
-
 function start($scope) {
     trackCall(arguments)
 

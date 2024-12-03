@@ -1,6 +1,8 @@
 function openSettings(success) {
     showDialog('/mfm-wallet/wallet/settings/index.html?nocache', success, function ($scope) {
 
+        $scope.language = getLanguage()
+
         $scope.login = function () {
             $scope.in_progress = true
             $scope.back()
