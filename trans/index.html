@@ -1,15 +1,17 @@
-<div class="row header align-center-center">
-    <div class="row block align-center">
-        <p class="text1">{{str.history}}</p>
+<div class="flex col">
+    <div class="row header align-center-center">
+        <div class="row block align-center">
+            <p class="text1">{{str.history}}</p>
+        </div>
     </div>
-</div>
-<div class="col align-start-center scroll">
-    <div class="col block">
-        <ng-include src="'/mfm-wallet/trans/trans.html'"></ng-include>
-        <div class="col align-center-center text1 text-gray"
-             ng-hide="trans.length > 0"
-             style="height: 500px">
-            {{str.there_is_no_history_yet}}
+    <div class="flex col scroll">
+        <div class="flex col block">
+            <ng-include src="'/mfm-wallet/trans/trans.html'"></ng-include>
+            <div class="col align-center-center text1 text-gray"
+                 ng-hide="trans.length > 0"
+                 style="height: 500px">
+                {{str.there_is_no_history_yet}}
+            </div>
         </div>
     </div>
 </div>

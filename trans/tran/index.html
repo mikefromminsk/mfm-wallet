@@ -5,54 +5,56 @@
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
         </div>
     </div>
-    <div class="flex col input-content scroll">
-        <div class="col align-center-center">
-            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
-                <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
-            </svg>
-        </div>
-
-        <div class="p0">
-            <ng-include src="'/mfm-wallet/trans/trans.html'"></ng-include>
-        </div>
-        <div class="mh16">
-            <div class="row mt8" ng-hide="tran.from == wallet.address()">
-                <p class="flex text2">{{str.from}}</p>
-                <p class="nowrap">{{tran.from}}</p>
-            </div>
-            <div class="row mt8" ng-hide="tran.to == wallet.address()">
-                <p class="flex text2">{{str.to}}</p>
-                <p class="nowrap">{{tran.to}}</p>
-            </div>
-            <div class="row mt8">
-                <p class="flex text2">{{str.amount}}</p>
-                <p class="nowrap"
-                   ng-class="{'text-green': tran.to == wallet.address(), 'text-red': tran.from == wallet.address()}">
-                    {{(tran.to == wallet.address() ? "+" : "-") + formatAmount(tran.amount, tran.domain)}}
-                </p>
-            </div>
-            <div class="row mt8">
-                <p class="flex text2">{{str.status}}</p>
-                <p class="nowrap text-green">{{str.competed}}</p>
-            </div>
-            <div class="row mt8">
-                <p class="flex text2">{{str.time}}</p>
-                <p class="nowrap">{{formatTimeDiff(tran.time)}}</p>
+    <div class="flex col scroll">
+        <div class="flex col input-content block">
+            <div class="col align-center-center">
+                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                    <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                    <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                </svg>
             </div>
 
-        </div>
-        <!--@SerializedName("valueUSD")
-        @SerializedName("direction")
-        fee
-        -->
-        <!--<div class="row mt8">
-            <p class="flex">TxId</p>
-            <div class="row">
-                <a class="nowrap" href="{{getTxLink(tran.txid)}}" target="_blank">{{formatHash(tran.txid)}}</a>
-                <img class="img16 ml4 ripple img-black" src="/mfm-wallet/img/copy.svg" ng-click="copy(tran.txid)">
+            <div class="p0">
+                <ng-include src="'/mfm-wallet/trans/trans.html'"></ng-include>
             </div>
-        </div>-->
+            <div class="mh16">
+                <div class="row mt8" ng-hide="tran.from == wallet.address()">
+                    <p class="flex text2">{{str.from}}</p>
+                    <p class="nowrap">{{tran.from}}</p>
+                </div>
+                <div class="row mt8" ng-hide="tran.to == wallet.address()">
+                    <p class="flex text2">{{str.to}}</p>
+                    <p class="nowrap">{{tran.to}}</p>
+                </div>
+                <div class="row mt8">
+                    <p class="flex text2">{{str.amount}}</p>
+                    <p class="nowrap"
+                       ng-class="{'text-green': tran.to == wallet.address(), 'text-red': tran.from == wallet.address()}">
+                        {{(tran.to == wallet.address() ? "+" : "-") + formatAmount(tran.amount, tran.domain)}}
+                    </p>
+                </div>
+                <div class="row mt8">
+                    <p class="flex text2">{{str.status}}</p>
+                    <p class="nowrap text-green">{{str.competed}}</p>
+                </div>
+                <div class="row mt8">
+                    <p class="flex text2">{{str.time}}</p>
+                    <p class="nowrap">{{formatTimeDiff(tran.time)}}</p>
+                </div>
+
+            </div>
+            <!--@SerializedName("valueUSD")
+            @SerializedName("direction")
+            fee
+            -->
+            <!--<div class="row mt8">
+                <p class="flex">TxId</p>
+                <div class="row">
+                    <a class="nowrap" href="{{getTxLink(tran.txid)}}" target="_blank">{{formatHash(tran.txid)}}</a>
+                    <img class="img16 ml4 ripple img-black" src="/mfm-wallet/img/copy.svg" ng-click="copy(tran.txid)">
+                </div>
+            </div>-->
+        </div>
     </div>
     <div class="primary-button" ng-click="copy(tran.next_hash)">
         {{str.copy}} ID

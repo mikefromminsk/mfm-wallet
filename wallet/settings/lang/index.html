@@ -1,18 +1,18 @@
 <md-dialog class="fill col">
     <div class="row header align-start-center">
-        <div class="row block align-start-center">
-            <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/support.svg" ng-click="openSupport()">
-            <div class="flex row align-center">{{getTitle(languages)}}</div>
-            <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/close.svg" ng-click="close()">
-        </div>
+        <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/support.svg" ng-click="openSupport()">
+        <div class="flex row align-center">{{getTitle(languages)}}</div>
+        <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/close.svg" ng-click="close()">
     </div>
-    <div class="col scroll">
-        <div class="col input-content">
-            <div class="m8 text2 ripple"
-                 ng-repeat="(key, val) in languages"
-                 ng-show="key != 'title'"
-                 ng-click="setLanguage(key, val)">
-                {{getTitle(val)}}
+    <div class="flex col scroll">
+        <div class="flex col block">
+            <div class="col input-content">
+                <div class="m8 text2 ripple"
+                     ng-repeat="(key, val) in languages"
+                     ng-show="key != 'title'"
+                     ng-click="setLanguage(key, val)">
+                    {{getTitle(val)}}
+                </div>
             </div>
         </div>
     </div>

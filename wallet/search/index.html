@@ -10,39 +10,41 @@
                        placeholder="{{str.type_token_name}}"
                        ng-model="search_text">
             </div>
-            <div class="row wrap ph8">
-                <div class="text2 ml8 mt8 p8 back-gray radius-default ripple"
-                     ng-repeat="item in recent"
-                     ng-click="openToken(item)">
-                    {{formatTicker(item)}}
-                </div>
-            </div>
         </div>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
         </div>
     </div>
-    <div class="flex col ph16 scroll">
-        <div class="col back-gray radius-default">
-            <div class="row p16 align-start-center ripple"
-                 ng-repeat="token in tokens"
-                 ng-click="openToken(token.domain)">
-                <div ng-style="getLogo(token.domain)"></div>
-                <div class="flex col ml16">
-                    <p class="uppercase">{{token.domain}}</p>
-                    <div class="row mt4 text2">
-                        <p class="">{{formatPrice(token.price)}}</p>
-                        <p class="ml4" ng-class="percentColor(token.price24)">
-                            {{formatChange(token.price24)}}
-                        </p>
+    <div class="row wrap p8 pt0">
+        <div class="text2 ml8 p8 back-gray radius-default ripple"
+             ng-repeat="item in recent"
+             ng-click="openToken(item)">
+            {{formatTicker(item)}}
+        </div>
+    </div>
+    <div class="flex col scroll">
+        <div class="flex col block ph16">
+            <div class="col back-gray radius-default">
+                <div class="row p16 align-start-center ripple"
+                     ng-repeat="token in tokens"
+                     ng-click="openToken(token.domain)">
+                    <div ng-style="getLogo(token.domain)"></div>
+                    <div class="flex col ml16">
+                        <p class="uppercase">{{token.domain}}</p>
+                        <div class="row mt4 text2">
+                            <p class="">{{formatPrice(token.price)}}</p>
+                            <p class="ml4" ng-class="percentColor(token.price24)">
+                                {{formatChange(token.price24)}}
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col align-center-center text1 text-gray"
-             ng-hide="tokens.length > 0"
-             style="min-height: 100px">
-            {{str.nothing_found}}
+            <div class="col align-center-center text1 text-gray"
+                 ng-hide="tokens.length > 0"
+                 style="min-height: 100px">
+                {{str.nothing_found}}
+            </div>
         </div>
     </div>
 </md-dialog>

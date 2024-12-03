@@ -1,102 +1,104 @@
-<div class="row header align-center-center">
-    <div class="row block align-start-center">
-        <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/settings.svg" ng-click="openSettings(walletInit)">
-        <div class="flex row align-center">{{str.wallet}}</div>
-        <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/search.svg" ng-click="openSearch(walletInit)">
+<div class="flex col">
+    <div class="row header align-center-center">
+        <div class="row block align-start-center">
+            <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/settings.svg" ng-click="openSettings(walletInit)">
+            <div class="flex row align-center">{{str.wallet}}</div>
+            <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/search.svg" ng-click="openSearch(walletInit)">
+        </div>
     </div>
-</div>
-<div class="col align-start-center scroll ">
-    <div class="col block input-content">
-        <div class="col" ng-hide="wallet.address()">
-            <div class="col align-start-center mt16 text-align-center">
-                <p class="size20 bold">{{str.welcome}}</p>
-                <p class="size16 mt16">{{str.welcome_subject}}</p>
-            </div>
-            <div class="flex primary-button" ng-click="openLogin()">
-                {{str.login_or_create_account}}
-            </div>
-        </div>
-        <div class="col input-content text-align-center" ng-show="wallet.address()">
-            <div  class="row align-center text0" style="margin-top: 40px;">
-                $<div id="total">0</div>
-            </div>
-            <div class="row align-start-end">
-                <div class="flex p16 col align-start-center ripple"
-                     ng-click="openReceive()">
-                    <img class="img16 img-gray" src="/mfm-wallet/img/arrow-down.svg">
-                    <p class="mt8 text2">{{str.receive}}</p>
+    <div class="flex col scroll">
+        <div class="flex col block input-content">
+            <div class="col" ng-hide="wallet.address()">
+                <div class="col align-start-center mt16 text-align-center">
+                    <p class="size20 bold">{{str.welcome}}</p>
+                    <p class="size16 mt16">{{str.welcome_subject}}</p>
                 </div>
-                <div class="flex p16 col align-start-center ripple"
-                     ng-click="openScan()">
-                    <img class="img16 img-gray" src="/mfm-wallet/img/scan.svg">
-                    <p class="mt8 text2">{{str.scan}}</p>
-                </div>
-                <div class="flex p16 col align-start-center ripple"
-                     ng-click="openSend(wallet.gas_domain, null, null, walletInit)">
-                    <img class="img16 img-gray" src="/mfm-wallet/img/send.svg">
-                    <p class="mt8 text2">{{str.send}}</p>
+                <div class="flex primary-button" ng-click="openLogin()">
+                    {{str.login_or_create_account}}
                 </div>
             </div>
+            <div class="col input-content text-align-center" ng-show="wallet.address()">
+                <div  class="row align-center text0" style="margin-top: 40px;">
+                    $<div id="total">0</div>
+                </div>
+                <div class="row align-start-end">
+                    <div class="flex p16 col align-start-center ripple"
+                         ng-click="openReceive()">
+                        <img class="img16 img-gray" src="/mfm-wallet/img/arrow-down.svg">
+                        <p class="mt8 text2">{{str.receive}}</p>
+                    </div>
+                    <div class="flex p16 col align-start-center ripple"
+                         ng-click="openScan()">
+                        <img class="img16 img-gray" src="/mfm-wallet/img/scan.svg">
+                        <p class="mt8 text2">{{str.scan}}</p>
+                    </div>
+                    <div class="flex p16 col align-start-center ripple"
+                         ng-click="openSend(wallet.gas_domain, null, null, walletInit)">
+                        <img class="img16 img-gray" src="/mfm-wallet/img/send.svg">
+                        <p class="mt8 text2">{{str.send}}</p>
+                    </div>
+                </div>
 
-            <div class="row align-start-end">
-                <div class="flex p16 col align-start-center ripple"
-                     ng-click="openDeposit(walletInit)">
-                    <img class="img16 img-gray" src="/mfm-wallet/img/plus.svg">
-                    <p class="mt8 text2">{{str.deposit}}</p>
-                </div>
-                <div class="flex p16 col align-start-center ripple"
-                     ng-click="openWithdrawal(walletInit)">
-                    <img class="img16 img-gray" src="/mfm-wallet/img/arrow-up.svg">
-                    <p class="mt8 text2">{{str.withdrawal}}</p>
-                </div>
-                <div class="flex p16 col align-start-center ripple"
-                     ng-click="openGetCredit(walletInit)">
-                    <img class="img16 img-gray" src="/mfm-wallet/img/dollar.svg">
-                    <p class="mt8 text2">{{str.credit}}</p>
+                <div class="row align-start-end">
+                    <div class="flex p16 col align-start-center ripple"
+                         ng-click="openDeposit(walletInit)">
+                        <img class="img16 img-gray" src="/mfm-wallet/img/plus.svg">
+                        <p class="mt8 text2">{{str.deposit}}</p>
+                    </div>
+                    <div class="flex p16 col align-start-center ripple"
+                         ng-click="openWithdrawal(walletInit)">
+                        <img class="img16 img-gray" src="/mfm-wallet/img/arrow-up.svg">
+                        <p class="mt8 text2">{{str.withdrawal}}</p>
+                    </div>
+                    <div class="flex p16 col align-start-center ripple"
+                         ng-click="openGetCredit(walletInit)">
+                        <img class="img16 img-gray" src="/mfm-wallet/img/dollar.svg">
+                        <p class="mt8 text2">{{str.credit}}</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col gap16" ng-hide="!wallet.address()">
-            <div class="col back-gray radius-default">
-                <div class="row p16 align-start-center ripple"
-                     ng-repeat="token in accounts"
-                     ng-click="openTokenProfile(token.domain)">
-                    <div ng-style="getLogo(token.domain)"></div>
-                    <div class="flex col ml16">
-                        <p>{{formatTicker(token.domain)}}</p>
-                        <div class="row mt4 text2">
-                            <p class="">{{formatPrice(token.price)}}</p>
-                            <p class="ml4" ng-class="percentColor(token.price24)">
-                                {{formatChange(token.price24)}}
-                            </p>
+            <div class="col gap16" ng-hide="!wallet.address()">
+                <div class="col back-gray radius-default">
+                    <div class="row p16 align-start-center ripple"
+                         ng-repeat="token in accounts"
+                         ng-click="openTokenProfile(token.domain)">
+                        <div ng-style="getLogo(token.domain)"></div>
+                        <div class="flex col ml16">
+                            <p>{{formatTicker(token.domain)}}</p>
+                            <div class="row mt4 text2">
+                                <p class="">{{formatPrice(token.price)}}</p>
+                                <p class="ml4" ng-class="percentColor(token.price24)">
+                                    {{formatChange(token.price24)}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col align-end-end">
+                            <p>{{formatAmount(token.balance)}}</p>
+                            <p class="mt4 text2">{{formatPrice(token.price * token.balance)}}</p>
                         </div>
                     </div>
-                    <div class="col align-end-end">
-                        <p>{{formatAmount(token.balance)}}</p>
-                        <p class="mt4 text2">{{formatPrice(token.price * token.balance)}}</p>
+                </div>
+                <p ng-show="credit > 0">{{str.credit}}</p>
+                <div class="col back-gray radius-default"
+                     ng-show="credit > 0">
+                    <div class="row p16 align-start-center ripple"
+                         ng-click="openCredit(walletInit)">
+                        <div ng-style="getLogo(wallet.gas_domain)"></div>
+                        <div class="flex col ml16">
+                            <p>{{formatTicker(wallet.gas_domain)}}</p>
+                            <p class="mt4 text2">{{formatPrice(token.price)}}</p>
+                        </div>
+                        <div class="col align-end-end">
+                            <p>{{formatAmount(credit, wallet.gas_domain)}}</p>
+                            <p class="mt4 text2 nowrap">{{str.pay_offed}} {{formatPrice(pay_off)}}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <p ng-show="credit > 0">{{str.credit}}</p>
-            <div class="col back-gray radius-default"
-                 ng-show="credit > 0">
-                <div class="row p16 align-start-center ripple"
-                     ng-click="openCredit(walletInit)">
-                    <div ng-style="getLogo(wallet.gas_domain)"></div>
-                    <div class="flex col ml16">
-                        <p>{{formatTicker(wallet.gas_domain)}}</p>
-                        <p class="mt4 text2">{{formatPrice(token.price)}}</p>
-                    </div>
-                    <div class="col align-end-end">
-                        <p>{{formatAmount(credit, wallet.gas_domain)}}</p>
-                        <p class="mt4 text2 nowrap">{{str.pay_offed}} {{formatPrice(pay_off)}}</p>
-                    </div>
+                <div class="primary-button back-pay" ng-click="openLaunchToken(walletInit)">
+                    {{str.launch_token}}
                 </div>
             </div>
-            <div class="primary-button back-pay" ng-click="openLaunchToken(walletInit)">
-                {{str.launch_token}}
-            </div>
-        </div>
 
+        </div>
     </div>
 </div>
