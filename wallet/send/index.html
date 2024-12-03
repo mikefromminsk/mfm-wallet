@@ -5,45 +5,43 @@
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
         </div>
     </div>
-    <div class="col content">
-        <div class="col input-content">
-            <div class="row input-wrapper">
-                <div class="input-label">{{str.address}}</div>
-                <input type="text"
-                       ng-disabled="block_to_address"
-                       autocapitalize="none"
-                       autocomplete="off"
-                       maxlength="50"
-                       ng-model="to_address">
+    <div class="col input-content">
+        <div class="row input-wrapper">
+            <div class="input-label">{{str.address}}</div>
+            <input type="text"
+                   ng-disabled="block_to_address"
+                   autocapitalize="none"
+                   autocomplete="off"
+                   maxlength="50"
+                   ng-model="to_address">
+        </div>
+        <div class="row wrap ph8 pt0">
+            <div class="text2 ml8 p8 back-gray radius-default ripple"
+                 ng-repeat="item in recent"
+                 ng-click="setToAddress(item)">
+                {{item}}
             </div>
-            <div class="row wrap ph8 pt0">
-                <div class="text2 ml8 p8 back-gray radius-default ripple"
-                     ng-repeat="item in recent"
-                     ng-click="setToAddress(item)">
-                    {{item}}
-                </div>
-            </div>
-            <div class="flex row input-wrapper">
-                <div class="input-label">{{str.amount}}</div>
-                <input type="number"
-                       autocapitalize="off"
-                       autocomplete="off"
-                       ng-model="amount">
-                <button class="button"
-                        ng-click="setMax()"
-                        ng-disabled="token.balance == 0">
-                    {{str.max}}
-                </button>
-            </div>
-            <div class="text2"
-                 ng-class="{'text-red': token.balance < amount}">
-                {{str.available}}: {{formatAmount(token.balance, token.domain)}}
-            </div>
-            <button class="primary-button"
-                    ng-click="send(domain)"
-                    ng-disabled="in_progress || !to_address || !amount || (token.balance < getTotal()) || to_address.length < 3">
-                {{str.send}}
+        </div>
+        <div class="flex row input-wrapper">
+            <div class="input-label">{{str.amount}}</div>
+            <input type="number"
+                   autocapitalize="off"
+                   autocomplete="off"
+                   ng-model="amount">
+            <button class="button"
+                    ng-click="setMax()"
+                    ng-disabled="token.balance == 0">
+                {{str.max}}
             </button>
         </div>
+        <div class="text2"
+             ng-class="{'text-red': token.balance < amount}">
+            {{str.available}}: {{formatAmount(token.balance, token.domain)}}
+        </div>
+        <button class="primary-button"
+                ng-click="send(domain)"
+                ng-disabled="in_progress || !to_address || !amount || (token.balance < getTotal()) || to_address.length < 3">
+            {{str.send}}
+        </button>
     </div>
 </md-bottom-sheet>

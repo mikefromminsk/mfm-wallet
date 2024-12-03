@@ -497,3 +497,6 @@ md-dialog {
 }
 
 
+md-slider-container md-input-container input[type=number] {
+    color: var(--white);
+}

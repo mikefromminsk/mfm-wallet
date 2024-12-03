@@ -87,6 +87,7 @@ function start($scope) {
         })
     }
 
+    openLaunchToken()
 
     connectWs();
 }

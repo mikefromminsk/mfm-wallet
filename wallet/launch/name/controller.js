@@ -1,46 +1,48 @@
 function openLaunchToken(success) {
     showDialog("/mfm-wallet/wallet/launch/name/index.html", success, function ($scope) {
-        $scope.domain = ""
-        $scope.amount = 1000000
-        if (DEBUG) {
-            $scope.domain = "super"
-        }
-
-        $scope.$watch('domain', function (newValue, oldValue) {
+        $scope.search_text = ''
+        $scope.$watch('search_text', function (newValue, oldValue) {
             if (newValue == null) return
             if (newValue != newValue.toLowerCase())
-                $scope.domain = newValue.toLowerCase()
+                $scope.search_text = newValue.toLowerCase()
             if (newValue.match(new RegExp("\\W")))
-                $scope.domain = oldValue
+                $scope.search_text = oldValue
             if (newValue.indexOf(' ') != -1)
-                $scope.domain = oldValue
+                $scope.search_text = oldValue
+            if (newValue != oldValue)
+                $scope.search()
         })
 
-        $scope.launch = function () {
-            getPin(function (pin) {
-                wallet.calcStartHash($scope.domain, pin, function (next_hash) {
-                    postContract("mfm-token", "send.php", {
-                        domain: $scope.domain,
-                        from_address: "owner",
-                        to_address: wallet.address(),
-                        pass: ":" + next_hash,
-                        amount: 1000000,
-                    }, function () {
-                        openLogoChange($scope.domain, function () {
-                            $scope.close()
-                            if (success)
-                                success()
-                        })
-                    }, function () {
-                        showError("Token name exists")
-                    })
+        $scope.search = function () {
+            if ($scope.search_text.length < 3) {
+                $scope.tokens = []
+            } else {
+                postContract("mfm-token", "search.php", {
+                    search_text: $scope.search_text,
+                    size: 1,
+                }, function (response) {
+                    $scope.tokens = response.tokens
+                    $scope.$apply()
                 })
+            }
+        }
+
+        $scope.hasTheSameToken = function () {
+            return ($scope.tokens || []).filter(function(token) {
+                return token.domain === $scope.search_text;
+            }).length == 0;
+        }
+
+        $scope.selectName = function () {
+            openLogoChange($scope.search_text, function () {
+                $scope.close()
             })
         }
-        $scope.pressEnter($scope.launch)
+
+        $scope.pressEnter($scope.selectName)
 
         setTimeout(function () {
-            document.getElementById("launch_name_input").focus()
+            document.getElementById('search_input').focus()
         }, 500)
     })
 }

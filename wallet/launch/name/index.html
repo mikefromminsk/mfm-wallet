@@ -8,24 +8,42 @@
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
         </div>
     </div>
-    <div class="flex content">
+    <div class="flex col">
         <div class="col input-content">
             <div class="row input-wrapper">
                 <div class="input-label">{{str.token_name}}</div>
                 <input type="text"
-                       id="launch_name_input"
+                       id="search_input"
                        autocapitalize="none"
                        autocomplete="off"
                        maxlength="16"
-                       ng-model="domain">
+                       ng-model="search_text">
             </div>
             <ul class="col mh16 mv0 text2 text-align-start">
                 <li>{{str.min_3_symbols}}</li>
                 <li>{{str.oly_english_symbols}}</li>
             </ul>
+            <div class="col">
+                <div class="col back-gray radius-default">
+                    <div class="row p16 align-start-center ripple"
+                         ng-repeat="token in tokens"
+                         ng-click="openToken(token.domain)">
+                        <div ng-style="getLogo(token.domain)"></div>
+                        <div class="flex col ml16">
+                            <p class="uppercase">{{token.domain}}</p>
+                            <div class="row mt4 text2">
+                                <p class="">{{formatPrice(token.price)}}</p>
+                                <p class="ml4" ng-class="percentColor(token.price24)">
+                                    {{formatChange(token.price24)}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="primary-button"
-                 ng-disabled="!domain || domain.length < 3"
-                 ng-click="launch()">
+                 ng-disabled="!hasTheSameToken() || !search_text || search_text.length < 3"
+                 ng-click="selectName()">
                 {{str.launch_token}}
             </div>
         </div>

@@ -129,8 +129,8 @@ function addNavigator($scope) {
         openDistribution(domain, success)
     }
 
-    $scope.openPro = function (domain, success) {
-        openPro(domain, success)
+    $scope.openSupply = function (domain, success) {
+        openSupply(domain, success)
     }
     $scope.openAskCredit = function (success) {
         openAskCredit(success)

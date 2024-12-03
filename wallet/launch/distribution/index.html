@@ -8,19 +8,44 @@
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
         </div>
     </div>
-    <div class="flex col content">
-        <div class="flex row align-center-center">
-            <div class="flex col gap16 p16">
-                <div class="col input-content back-gray radius-default border-accent ripple" ng-click="openPro(domain, close)">
-                    <p class="text1">{{str.airdrop}}</p>
-                    <p class="text2">- {{str.trust}}</p>
-                    <p class="text2">+ {{str.dont_need_hardware}}</p>
-                </div>
-                <div class="col input-content back-gray radius-default ripple" ng-click="mining()">
-                    <p class="text1">{{str.mining}}</p>
-                    <p class="text2">+ {{str.trust}}</p>
-                    <p class="text2">- {{str.need_hardware}}</p>
-                </div>
+    <div class="flex col scroll">
+        <div class="flex col block input-content text-white">
+            <div class="row align-start-center gap8">
+                <div ng-style="getLogo(domain)"></div>
+                <p>{{formatTicker(domain)}}</p>
+                <p>tokens</p>
+            </div>
+            <md-slider-container>
+                <md-slider class="md-primary" ng-model="amount_step" min="0" max="9"></md-slider>
+                <md-input-container style="max-width: 100%">
+                    {{formatAmount(amount)}}
+                </md-input-container>
+            </md-slider-container>
+            <p>Airdrops</p>
+            <md-slider-container>
+                <md-slider class="md-primary" ng-model="user_percent" min="0" max="100"></md-slider>
+                <md-input-container>
+                    {{formatPercent(user_percent, 2)}}
+                </md-input-container>
+            </md-slider-container>
+            <p>Mining</p>
+            <md-slider-container>
+                <md-slider class="md-primary" ng-model="mining_percent" min="0" max="100"></md-slider>
+                <md-input-container>
+                    {{formatPercent(mining_percent, 2)}}
+                </md-input-container>
+            </md-slider-container>
+            <p>Exchange</p>
+            <md-slider-container>
+                <md-slider class="md-primary" ng-model="exchange_percent" min="0" max="100"></md-slider>
+                <md-input-container>
+                    {{formatPercent(exchange_percent, 2)}}
+                </md-input-container>
+            </md-slider-container>
+            <div class="primary-button"
+                 ng-disabled="in_progress"
+                 ng-click="launch()">
+                {{str.launch_token}}
             </div>
         </div>
     </div>

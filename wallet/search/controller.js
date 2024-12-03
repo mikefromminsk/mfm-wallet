@@ -4,7 +4,6 @@ function openSearch(success) {
 
         $scope.search_text = ''
         $scope.$watch('search_text', function (newValue, oldValue) {
-            if (newValue == null) return
             if (newValue != newValue.toLowerCase())
                 $scope.search_text = newValue.toLowerCase()
             if (newValue.match(new RegExp("\\W")))
