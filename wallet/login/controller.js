@@ -5,11 +5,9 @@ function openLogin(success) {
     }
     showDialog('/mfm-wallet/wallet/login/index.html', success, function ($scope) {
             $scope.username = window.telegram_username || ""
-            $scope.agree_with_terms_and_condition = false
             if (DEBUG) {
                 $scope.username = "admin"
                 $scope.password = "pass"
-                $scope.agree_with_terms_and_condition = true
             }
 
             if ($scope.username == "") {
@@ -20,10 +18,6 @@ function openLogin(success) {
                 setTimeout(function () {
                     document.getElementById('login_password').focus();
                 }, 500)
-            }
-
-            $scope.toggleTerms = function () {
-                $scope.agree_with_terms_and_condition = !$scope.agree_with_terms_and_condition
             }
 
             $scope.login = function () {

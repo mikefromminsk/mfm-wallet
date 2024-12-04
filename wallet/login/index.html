@@ -25,17 +25,16 @@
                        autocomplete="off"
                        ng-model="password">
             </div>
-            <div class="row align-start-center">
-                <input type="checkbox" ng-model="agree_with_terms_and_condition"/>
-                <p class="mh8">{{str.agree_to}}</p>
-                <a href="/mfm-angular-template/docs?path=/mfm-wallet/docs/terms_and_conditions.md" target="_blank">
+            <div class="row align-start-center gap8">
+                <p>{{str.agree_to}}</p>
+                <p class="text-accent" ng-click="openDoc('/mfm-wallet/docs/terms_and_conditions.md')">
                     {{str.terms_and_conditions}}
-                </a>
+                </p>
             </div>
             <div class="primary-button"
                  ng-click="login()"
-                 ng-disabled="in_progress || !username || !password || in_progress || !agree_with_terms_and_condition">
-                {{str.login_or_create_account}}
+                 ng-disabled="in_progress || !username || !password || in_progress">
+                {{str.accept_and_login}}
             </div>
         </div>
     </div>

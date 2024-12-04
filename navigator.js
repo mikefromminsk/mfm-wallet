@@ -118,7 +118,7 @@ function addNavigator($scope) {
     }
 
     $scope.openDoc = function (path) {
-        openWeb(location.origin + "/mfm-angular-template/docs?path=" + path)
+        openDoc(path)
     }
 
     $scope.openExchange = function (domain) {
