@@ -5,51 +5,51 @@
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
         </div>
     </div>
-    <div class="flex col scroll">
+    <div class="flex col scroll align-start-center">
         <div class="flex col block input-content">
             <div class="primary-button"
-                 ng-click="login()"
+                 ng-click="openLogin(close)"
                  ng-disabled="in_progress"
                  ng-hide="wallet.address()">
                 {{str.login_or_create_account}}
             </div>
             <div class="text1">{{str.account}}</div>
-            <div class="row align-start-center ripple" ng-show="wallet.address()">
+            <div class="row align-start-center ripple"
+                 ng-show="wallet.address()"
+                 ng-click="copy(wallet.address())">
                 <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/user-circle.svg">
-                <div class="flex text2">{{wallet.address()}}</div>
-                <img class="img40 p8 ripple img-white"
-                     src="/mfm-wallet/img/copy.svg"
-                     ng-click="copy(wallet.address())">
+                <div class="flex">{{wallet.address()}}</div>
+                <img class="img20 img-white" src="/mfm-wallet/img/copy.svg">
             </div>
             <div class="row align-start-center ripple" ng-click="openLanguages()">
-                <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/like.svg">
-                <p class="flex text2">{{str.language}}</p>
-                <p class="text2">{{language}}</p>
+                <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/language.svg">
+                <p class="flex">{{str.language}}</p>
+                <p class="">{{language}}</p>
             </div>
             <div class="row align-start-center ripple" ng-click="logout()" ng-show="wallet.address()">
                 <img class="img32 p8 mr8 img-red" src="/mfm-wallet/img/arrow-right.svg">
-                <p class="text2 text-red">{{str.logout}}</p>
+                <p class=" text-red">{{str.logout}}</p>
             </div>
 
             <div class="text1">{{str.help}}</div>
             <div class="row align-start-center ripple" ng-click="leaveReview()">
                 <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/like.svg">
-                <p class="text2">{{str.leave_review}}</p>
+                <p class="">{{str.leave_review}}</p>
             </div>
             <div class="row align-start-center ripple" ng-click="openDoc('/mfm-wallet/docs/terms_and_conditions.md')">
                 <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/doc.svg">
-                <p class="text2">{{str.terms_and_conditions}}</p>
+                <p class="">{{str.terms_and_conditions}}</p>
             </div>
 
 
             <div class="text1">{{str.admin_panel}}</div>
             <div class="row align-start-center ripple" ng-click="openReviews()">
                 <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/like.svg">
-                <p class="text2">{{str.reviews}}</p>
+                <p class="">{{str.reviews}}</p>
             </div>
             <div class="row align-start-center ripple" ng-click="openAnalytics()">
                 <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/chart.svg">
-                <p class="text2">{{str.analytics}}</p>
+                <p class="">{{str.analytics}}</p>
             </div>
             <div class="col align-center" style="text-align: center">
                 <p class="text2">mfm-wallet 2023</p>

@@ -3,17 +3,6 @@ function openSettings(success) {
 
         $scope.language = getLanguage()
 
-        $scope.login = function () {
-            $scope.in_progress = true
-            $scope.back()
-            openLogin(function () {
-                $scope.in_progress = false
-                $scope.close()
-                if (success)
-                    success()
-            })
-        }
-
         $scope.logout = function () {
             openAskSure(function () {
                 wallet.logout()

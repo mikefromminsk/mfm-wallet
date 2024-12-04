@@ -1,13 +1,17 @@
-<div class="flex col scroll">
+<div class="flex col scroll align-start-center">
     <div class="flex col block">
-        <div class="row mt16 align-center-center" ng-show="wallet.address()">
-            <div class="row align-center-center">
+        <div class="row header align-start-center">
+            <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/support.svg" ng-click="openSupport()">
+            <div class="flex row align-center-center" ng-show="wallet.address()">
                 <div class="ph16 pv8 back-gray radius-default ripple"
                      ng-click="openSettings()">
                     {{wallet.address()}}
                 </div>
             </div>
+            <div class="flex" ng-hide="wallet.address()"></div>
+            <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/search.svg" ng-click="openSearch()">
         </div>
+
         <md-tabs md-selected="slideIndex" class="col p0 mt16" md-swipe-content md-dynamic-height>
             <md-tab label="$index" ng-repeat="domain in tops.top_search">
                 <div class="col" style="min-height: 200px; padding: 0 16px">
@@ -23,7 +27,7 @@
             </md-tab>
         </md-tabs>
 
-        <div class="div mt16" ng-repeat="category in ['top_search', 'top_exchange', 'top_mining']">
+        <div class="col mt16" ng-repeat="category in ['top_search', 'top_exchange', 'top_mining']">
             <p class="text1 ml16 bold">{{str[category]}}</p>
             <div class="row mt16 scroll-horizontal">
                 <div class="col ml16 align-start-center" ng-repeat="domain in tops[category]">

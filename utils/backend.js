@@ -134,6 +134,7 @@ const storageKeys = {
     language: "STORE_LANGUAGE",
     send_history: "STORE_SEND_HISTORY",
     search_history: "STORE_SEARCH_HISTORY",
+    first_review: "STORE_FIRST_REVIEW",
 }
 
 function postContractWithGas(domain, path, params, success, error) {

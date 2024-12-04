@@ -1,17 +1,15 @@
 <div class="flex col">
-    <div class="row header align-center-center">
-        <div class="row block align-start-center">
-            <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/settings.svg" ng-click="openSettings(walletInit)">
-            <div class="flex row align-center">{{str.wallet}}</div>
-            <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/search.svg" ng-click="openSearch(walletInit)">
-        </div>
+    <div class="row header align-start-center">
+        <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/settings.svg" ng-click="openSettings(walletInit)">
+        <div class="flex row align-center">{{str.wallet}}</div>
+        <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/search.svg" ng-click="openSearch(walletInit)">
     </div>
     <div class="flex col align-center-center" ng-hide="wallet.address()">
-        <div class="primary-button" ng-click="openLogin()">
+        <div class="primary-button" ng-click="openLogin(walletInit)">
             {{str.login_or_create_account}}
         </div>
     </div>
-    <div class="flex col scroll" ng-show="wallet.address()">
+    <div class="flex col scroll align-start-center" ng-show="wallet.address()">
         <div class="flex col block input-content">
             <div class="col input-content text-align-center">
                 <div  class="row align-center text0" style="margin-top: 40px;">
@@ -19,12 +17,12 @@
                 </div>
                 <div class="row align-start-end">
                     <div class="flex p16 col align-start-center ripple"
-                         ng-click="openReceive()">
+                         ng-click="openReceive(walletInit)">
                         <img class="img16 img-gray" src="/mfm-wallet/img/arrow-down.svg">
                         <p class="mt8 text2">{{str.receive}}</p>
                     </div>
                     <div class="flex p16 col align-start-center ripple"
-                         ng-click="openScan()">
+                         ng-click="openScan(walletInit)">
                         <img class="img16 img-gray" src="/mfm-wallet/img/scan.svg">
                         <p class="mt8 text2">{{str.scan}}</p>
                     </div>
@@ -71,7 +69,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="primary-button back-pay" ng-click="openLaunchToken(walletInit)">
+                <div class="primary-button back-pay mh0" ng-click="openLaunchToken(walletInit)">
                     {{str.launch_token}}
                 </div>
             </div>
