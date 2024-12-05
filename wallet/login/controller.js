@@ -60,27 +60,37 @@ function openLogin(success) {
                     $scope.username = oldValue
             })
 
+            function loginSuccess() {
+                getPin(function (pin) {
+                    // set pin
+                    storage.setString(storageKeys.username, $scope.username)
+                    storage.setString(storageKeys.passhash, encode($scope.password, pin))
+                    if (pin != null)
+                        storage.setString(storageKeys.hasPin, true)
+                    loginFinish()
+                }, function () {
+                    // skip pin
+                    storage.setString(storageKeys.username, $scope.username)
+                    storage.setString(storageKeys.passhash, $scope.password)
+                    loginFinish()
+                })
+            }
+
             function tg_link(username) {
                 if (username != null)
                     trackCall(arguments)
             }
 
-            function loginSuccess() {
-                getPin(function (pin) {
-                    storage.setString(storageKeys.username, $scope.username)
-                    storage.setString(storageKeys.passhash, encode($scope.password, pin))
-                    if (pin != null)
-                        storage.setString(storageKeys.hasPin, true)
-                    tg_link(window.telegram_username)
-                    if (success) success()
-                    $scope.close()
-                }, function () {
-                    storage.setString(storageKeys.username, $scope.username)
-                    storage.setString(storageKeys.passhash, $scope.password)
-                    tg_link($scope.telegram_username)
-                    if (success) success()
-                    $scope.close()
-                })
+            function email_link(email_address) {
+                if (email_address != null)
+                    trackCall(arguments)
+            }
+
+            function loginFinish() {
+                tg_link(window.telegram_username)
+                email_link(window.email_address)
+                if (success) success()
+                $scope.close()
             }
         }
     )

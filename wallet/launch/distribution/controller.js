@@ -104,13 +104,7 @@ function openDistribution(domain, success) {
                         amount: $scope.round($scope.amount * $scope.exchange_percent / 100, 2),
                         pass: pass,
                     }, function () {
-                        showSuccessDialog(str.your_token_created, function () {
-                            openSpredBot(domain, function () {
-                                $scope.close()
-                                if (success)
-                                    success()
-                            })
-                        })
+                        showSuccessDialog(str.your_token_created, $scope.close)
                     }, showError)
                 })
             })

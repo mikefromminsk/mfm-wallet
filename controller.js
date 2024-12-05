@@ -26,7 +26,8 @@ function start($scope) {
 
     $scope.selectTab($scope.selectedIndex)
 
-    if (getParam("o")) {
+    if (getParam("email")) {
+        window.email_address = getParam("email")
         trackEvent("email_referer", getParam("o"), getParam("email"))
         window.history.pushState({}, document.title, "/mfm-wallet");
     }

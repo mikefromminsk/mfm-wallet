@@ -105,6 +105,18 @@ function addNavigator($scope) {
         window.open("https://t.me/mytoken_space_bot")
     }
 
+    $scope.openShareLink = function (title, text, url) {
+        if (navigator.share) {
+            navigator.share({
+                title: title,
+                text: text,
+                url: url,
+            })
+                .then(() => console.log('Successful share'))
+                .catch((error) => console.log('Error sharing', error));
+        }
+    }
+
     $scope.openChart = function (key, success) {
         openChart(key, success)
     }
