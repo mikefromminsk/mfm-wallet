@@ -24,11 +24,11 @@ function addHome($scope) {
                 if ($scope.lastAutoIndex != $scope.slideIndex){
                     clearInterval($scope.interval)
                 } else {
-                    $scope.slideIndex = ($scope.slideIndex + 1) % $scope.slides.length
+                    $scope.slideIndex = ($scope.slideIndex + 1) % $scope.tops.top_search.length
                     $scope.lastAutoIndex = $scope.slideIndex
                     $scope.$apply()
                 }
-            }, 4000)
+            }, 5000)
         }
     }
 

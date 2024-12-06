@@ -92,6 +92,8 @@ function addWallet($scope) {
         getCredits()
     }
 
+    $scope.swipeToRefresh = $scope.walletInit
+
     if (wallet.address() == "") {
         openLogin($scope.walletInit)
     } else {

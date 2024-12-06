@@ -7,6 +7,8 @@ function openDistribution(domain, success) {
         $scope.mining_percent = 25;
         $scope.exchange_percent = 25;
 
+        $scope.swipeToRefreshDisable()
+
         $scope.$watch('amount_step', function (newValue) {
             $scope.amount = Math.pow(10, parseInt(newValue))
         })

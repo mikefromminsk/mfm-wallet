@@ -1,11 +1,13 @@
 function start($scope) {
     trackCall(arguments)
 
+    document.title = window.location.hostname
+
     function setIcon() {
-        let link = document.createElement('link');
-        link.rel = 'icon';
-        link.href = DEBUG ? 'logo-debug.png' : 'logo.png';
-        document.head.appendChild(link);
+        let link = document.createElement('link')
+        link.rel = 'icon'
+        link.href = DEBUG ? 'logo-debug.png' : 'logo.png'
+        document.head.appendChild(link)
     }
 
     setIcon()
@@ -21,15 +23,20 @@ function start($scope) {
         } else if (tab == 2) {
             addWallet($scope)
         }
-        swipeToRefresh()
+        swipeToRefresh($scope.swipeToRefresh)
+    }
+
+    $scope.swipeToRefresh = function () {
+        $scope.selectTab($scope.selectedIndex)
     }
 
     $scope.selectTab($scope.selectedIndex)
 
+
     if (getParam("email")) {
         window.email_address = getParam("email")
         trackEvent("email_referer", getParam("o"), getParam("email"))
-        window.history.pushState({}, document.title, "/mfm-wallet");
+        window.history.pushState({}, document.title, "/mfm-wallet")
     }
 
     if (window.Telegram != null) {
@@ -42,5 +49,5 @@ function start($scope) {
         })
     }
 
-    connectWs();
+    connectWs()
 }

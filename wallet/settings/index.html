@@ -33,7 +33,7 @@
 
             <div class="text1">{{str.help}}</div>
             <div class="row align-start-center ripple" ng-click="openSupport()">
-                <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/like.svg">
+                <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/support.svg">
                 <p class="">{{str.support}}</p>
             </div>
             <div class="row align-start-center ripple" ng-click="leaveReview()">
@@ -56,8 +56,8 @@
 
 
             <div class="text1">{{str.admin_panel}}</div>
-            <div class="row align-start-center ripple" ng-click="openReviews()">
-                <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/like.svg">
+            <div class="row align-start-center ripple" ng-click="openReviews()" ng-show="wallet.address() == 'support'">
+                <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/star.svg">
                 <p class="">{{str.reviews}}</p>
             </div>
             <div class="row align-start-center ripple" ng-click="openAnalytics()">

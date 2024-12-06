@@ -1,7 +1,7 @@
 <div class="col back-gray radius-default">
     <div class="row p16 align-start-center ripple"
          ng-repeat="token in accounts"
-         ng-click="openTokenProfile(token.domain)">
+         ng-click="openTokenProfile(token.domain, walletInit)">
         <div ng-style="getLogo(token.domain)"></div>
         <div class="flex col ml16">
             <p>{{formatTicker(token.domain)}}</p>

@@ -28,7 +28,7 @@
                    autocapitalize="off"
                    autocomplete="off"
                    ng-model="amount">
-            <button class="button"
+            <button class="border-none"
                     ng-click="setMax()"
                     ng-disabled="token.balance == 0">
                 {{str.max}}
@@ -40,7 +40,7 @@
         </div>
         <button class="primary-button"
                 ng-click="send(domain)"
-                ng-disabled="in_progress || !to_address || !amount || (token.balance < getTotal()) || to_address.length < 3">
+                ng-disabled="in_progress || !to_address || to_address.length < 3 || !amount || (token.balance < amount)">
             {{str.send}}
         </button>
     </div>

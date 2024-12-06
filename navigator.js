@@ -19,6 +19,9 @@ function addNavigator($scope) {
             $scope.finish(result)
         }, 100)
     }
+    $scope.swipeToRefreshDisable = function () {
+        $scope.swipeToCloseDisabled = true
+    }
 
     $scope.copy = function (text) {
         let textArea = document.createElement("textarea");

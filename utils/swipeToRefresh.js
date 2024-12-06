@@ -23,7 +23,7 @@ function swipeToRefresh(onRefresh) {
                 })
 
                 container.addEventListener('touchend', function () {
-                    if (currentY - startY > 50) {
+                    if (currentY - startY > 150) {
                         if (onRefresh)
                             onRefresh()
                     }
