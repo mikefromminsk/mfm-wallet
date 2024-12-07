@@ -17,7 +17,9 @@
                        autocapitalize="none"
                        autocomplete="off"
                        maxlength="16"
-                       ng-model="search_text">
+                       oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();"
+                       ng-model="search_text"
+                       ng-change="search()">
             </div>
             <ul class="col mh16 mv0 text2 text-align-start">
                 <li>{{str.min_3_symbols}}</li>

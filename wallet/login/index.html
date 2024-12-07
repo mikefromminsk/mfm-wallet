@@ -14,7 +14,8 @@
                        type="text"
                        autocapitalize="off"
                        autocomplete="off"
-                       maxlength="20"
+                       maxlength="16"
+                       oninput="this.value = this.value.replace(/[^a-zA-Z0-9_]/g, '').toLowerCase();"
                        ng-model="username">
             </div>
             <div class="row input-wrapper">

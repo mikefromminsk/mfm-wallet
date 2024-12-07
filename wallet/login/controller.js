@@ -39,7 +39,7 @@ function openLogin(success) {
                 }, function () {
                     postContract("mfm-token", "send.php", {
                         domain: wallet.gas_domain,
-                        from_address: "owner",
+                        from_address: wallet.genesis_address,
                         to_address: $scope.username,
                         amount: 0,
                         pass: ":" + CryptoJS.MD5(wallet.calcHash(
@@ -50,15 +50,6 @@ function openLogin(success) {
                 })
             }
             $scope.pressEnter($scope.login)
-
-            $scope.$watch(function () {
-                return $scope.username
-            }, function (newValue, oldValue) {
-                if (newValue != newValue.toLowerCase())
-                    $scope.username = oldValue
-                if (newValue.match(new RegExp("\\W")))
-                    $scope.username = oldValue
-            })
 
             function loginSuccess() {
                 getPin(function (pin) {

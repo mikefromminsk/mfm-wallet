@@ -9,20 +9,21 @@ function swipeToRefresh(onRefresh) {
 
             if (!container.swipeEventAttached) {
                 container.addEventListener('touchstart', function (event) {
-                    if (container.scrollTop > 0) return
+                    if (container.scrollTop > 0 || container.classList.contains('no-swipe')) return
                     startY = event.touches[0].clientY
                     isTouching = true
                     content.style.transition = 'none'
                 })
 
                 container.addEventListener('touchmove', function (event) {
-                    if (!isTouching) return
+                    if (!isTouching || container.classList.contains('no-swipe')) return
                     currentY = event.touches[0].clientY
                     const translateY = Math.min(100, Math.max(0, currentY - startY))
                     content.style.transform = `translateY(${translateY}px)`
                 })
 
                 container.addEventListener('touchend', function () {
+                    if (container.classList.contains('no-swipe')) return
                     if (currentY - startY > 150) {
                         if (onRefresh)
                             onRefresh()
@@ -33,6 +34,7 @@ function swipeToRefresh(onRefresh) {
                 })
 
                 container.addEventListener('touchcancel', function () {
+                    if (container.classList.contains('no-swipe')) return
                     content.style.transition = 'transform 0.3s ease'
                     content.style.transform = 'translateY(0px)'
                     isTouching = false

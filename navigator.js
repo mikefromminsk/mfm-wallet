@@ -150,4 +150,23 @@ function addNavigator($scope) {
     $scope.openAskCredit = function (success) {
         openAskCredit(success)
     }
+    $scope.openStaking = function (domain, success) {
+        openStaking(domain, success)
+    }
+
+    $scope.openAnalytics = function () {
+        openAnalytics()
+    }
+
+    $scope.openReview = function () {
+        openReview()
+    }
+
+    $scope.openReviews = function () {
+        openReviews()
+    }
+
+    $scope.openLanguages = function () {
+        openLanguages()
+    }
 }

@@ -26,6 +26,10 @@
                 <p class="flex">{{str.language}}</p>
                 <p class="">{{language}}</p>
             </div>
+            <div class="row align-start-center ripple" ng-click="deleteAccount()" ng-show="wallet.address()">
+                <img class="img32 p8 mr8 img-red" src="/mfm-wallet/img/arrow-right.svg">
+                <p class=" text-red">{{str.delete_accout}}</p>
+            </div>
             <div class="row align-start-center ripple" ng-click="logout()" ng-show="wallet.address()">
                 <img class="img32 p8 mr8 img-red" src="/mfm-wallet/img/arrow-right.svg">
                 <p class=" text-red">{{str.logout}}</p>
@@ -36,7 +40,7 @@
                 <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/support.svg">
                 <p class="">{{str.support}}</p>
             </div>
-            <div class="row align-start-center ripple" ng-click="leaveReview()">
+            <div class="row align-start-center ripple" ng-click="openReview()">
                 <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/like.svg">
                 <p class="">{{str.leave_review}}</p>
             </div>

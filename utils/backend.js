@@ -108,12 +108,15 @@ function postContract(domain, path, params, success, error) {
     post("/" + domain + "/" + path, params, success, error)
 }
 
+const session = randomString(8)
+
 function trackEvent(name, value, user_id, success, error) {
     postContract("mfm-analytics", "track.php", {
         app: "ui",
         name: name,
         value: value || "",
         user_id: user_id || "",
+        session: window.session,
     }, function (response) {
         if (success)
             success(response.info)
@@ -155,6 +158,7 @@ function calcPassList(domain, pin, success, error) {
 
 var wallet = {
     gas_domain: "usdt",
+    genesis_address: "owner",
     logout: function () {
         storage.clear()
     },
@@ -188,7 +192,7 @@ var wallet = {
             wallet.calcStartHash(domain, pin, function (next_hash) {
                 postContract("mfm-token", "send.php", {
                     domain: domain,
-                    from_address: "owner",
+                    from_address: wallet.genesis_address,
                     to_address: wallet.address(),
                     amount: 0,
                     pass: ":" + next_hash

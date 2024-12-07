@@ -1,17 +1,6 @@
 function openLaunchToken(success) {
     showDialog("/mfm-wallet/wallet/launch/name/index.html", success, function ($scope) {
         $scope.search_text = ''
-        $scope.$watch('search_text', function (newValue, oldValue) {
-            if (newValue == null) return
-            if (newValue != newValue.toLowerCase())
-                $scope.search_text = newValue.toLowerCase()
-            if (newValue.match(new RegExp("\\W")))
-                $scope.search_text = oldValue
-            if (newValue.indexOf(' ') != -1)
-                $scope.search_text = oldValue
-            if (newValue != oldValue)
-                $scope.search()
-        })
 
         $scope.search = function () {
             if ($scope.search_text.length < 3) {
@@ -28,7 +17,7 @@ function openLaunchToken(success) {
         }
 
         $scope.hasTheSameToken = function () {
-            return ($scope.tokens || []).filter(function(token) {
+            return ($scope.tokens || []).filter(function (token) {
                 return token.domain === $scope.search_text;
             }).length == 0;
         }
