@@ -53,11 +53,23 @@ function addWallet($scope) {
         })
     }
 
+    function getStaked() {
+        postContract("mfm-bank", "staked.php", {
+            address: wallet.address(),
+        }, function (response) {
+            $scope.staked = response.staked
+            $scope.$apply()
+        })
+    }
+
     $scope.getTotalBalance = function () {
         let totalBalance = 0
         if ($scope.accounts != null)
             for (const account of $scope.accounts)
                 totalBalance += account.price * account.balance
+        if ($scope.staked != null)
+            for (const stake of $scope.staked)
+                totalBalance += stake.price * stake.amount
         return totalBalance
     }
 
@@ -90,6 +102,7 @@ function addWallet($scope) {
     $scope.walletInit = function () {
         getTokens()
         getCredits()
+        getStaked()
     }
 
     $scope.swipeToRefresh = $scope.walletInit

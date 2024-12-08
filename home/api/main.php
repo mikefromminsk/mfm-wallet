@@ -1,7 +1,7 @@
 <?php
 require_once $_SERVER["DOCUMENT_ROOT"] . "/mfm-analytics/utils.php";
 
-$gas_domain = get_required(gas_domain);
+$gas_domain = gas_domain;
 
 $week_ago = (time() - 60 * 60 * 24 * 7);
 

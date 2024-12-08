@@ -8,17 +8,16 @@ requestEquals("/mfm-analytics/init.php");
 requestEquals("/mfm-token/init.php");
 requestEquals("/mfm-exchange/init.php");
 
-$gas_domain = get_required(gas_domain);
 $address = get_required(wallet_admin_address);
 $password = get_required(wallet_admin_password);
 $token = get_config_required(telegram_bot_token);
 
 // init gas token
-tokenRegAccount($gas_domain, $address, $password, 100000000);
-tokenRegAccount($gas_domain, user, pass);
-tokenRegAccount($gas_domain, support, pass);
-trackFill($gas_domain, 1, 1); // 1 USDT = 1 USD
-tokenRegAccount($gas_domain, slides, $password);
+tokenRegAccount(gas_domain, $address, $password, 100000000);
+tokenRegAccount(gas_domain, user, pass);
+tokenRegAccount(gas_domain, support, pass);
+trackFill(gas_domain, 1, 1); // 1 USDT = 1 USD
+tokenRegAccount(gas_domain, slides, $password);
 
 requestEquals("/mfm-data/init.php");
 
@@ -32,28 +31,35 @@ function delegateBalanceToScript($domain, $from_address, $to_address, $script, $
 
 function launchList($tokens, $address, $password)
 {
-    $gas_domain = get_required(gas_domain);
-    foreach ($tokens as $domain => $emit_type) {
-        if (tokenRegAccount($domain, $address, $password, 1_000_000)) {
-            if ($emit_type == exchange) {
+    foreach ($tokens as $domain => $params) {
+        $total = $params[total] ?: 1_000_000;
+        tokenRegAccount($domain, $address, $password, $total);
+        foreach ($params as $name => $value) {
+            if ($name == exchange) {
                 $bot_address = "bot_spred_" . $domain;
                 botScriptReg($domain, $bot_address);
-                tokenSendAndCommit($domain, $address, $bot_address, 100, $password);
-                tokenSendAndCommit($gas_domain, $address, $bot_address, 100, $password);
+                tokenSendAndCommit($domain, $address, $bot_address, round($total * $value / 100, 2), $password);
+                tokenSendAndCommit(gas_domain, $address, $bot_address, 100, $password);
             }
-            if ($emit_type == mining) {
-                delegateBalanceToScript($domain, $address, mining, "mfm-mining/mint.php", $password);
+            if ($name == mining) {
+                tokenRegScript($domain, mining, "mfm-mining/mint.php");
+                tokenSendAndCommit($domain, $address, mining, round($total * $value / 100, 2), $password);
+            }
+            if ($name == staking) {
+                tokenRegScript($domain, staking_address, "mfm-mining/unstake.php");
+                tokenSendAndCommit($domain, $address, staking_address, round($total * $value / 100, 2), $password);
             }
         }
     }
 }
 
 $tokens = [
-    gold => mining,
-    iron => mining,
-    diamond => mining,
-    redstone => mining,
-    emerald => exchange,
+    diamond => [total => 100_000, mining => 100],
+    gold => [total => 1_000_000, mining => 100],
+    redstone => [total => 5_000_000, mining => 100],
+    iron => [total => 100_000_000, mining => 100], // need 1_000_000_000
+    bee_nest => [staking => 90, exchange => 10],
+    emerald => [exchange => 100],
 ];
 
 /*$token_list = file_get_contents($_SERVER[DOCUMENT_ROOT] . "/mfm-wallet/api/token_list.json");
@@ -65,7 +71,7 @@ foreach ($token_list as $domain) {
 
 launchList($tokens, $address, $password);
 
-delegateBalanceToScript($gas_domain, $address, bank, "mfm-bank/owner.php", $password);
+delegateBalanceToScript(gas_domain, $address, bank, "mfm-bank/owner.php", $password);
 
 $htaccess = file_get_contents($_SERVER[DOCUMENT_ROOT] . "/mfm-root/.htaccess");
 file_put_contents($_SERVER[DOCUMENT_ROOT] . "/.htaccess", $htaccess);

@@ -53,6 +53,22 @@
             </div>
             <div class="col gap16" ng-hide="!wallet.address()">
                 <ng-include src="'/mfm-wallet/wallet/accounts.html?nocache'"></ng-include>
+                <p class="text1" ng-show="staked > 0">{{str.staking}}</p>
+                <div class="col back-gray radius-default"
+                     ng-show="staked > 0">
+                    <div class="row p16 align-start-center ripple"
+                         ng-repeat="item in staked"
+                         ng-click="openStaking(item.domain)">
+                        <div ng-style="getLogo(item.domain)"></div>
+                        <div class="flex col ml16">
+                            <p>{{formatTicker(item.domain)}}</p>
+                            <p class="mt4 text2">{{formatPrice(item.price)}}</p>
+                        </div>
+                        <div class="col align-end-end">
+                            <p>{{formatAmount(item.amount, item.domain)}}</p>
+                        </div>
+                    </div>
+                </div>
                 <p class="text1" ng-show="credit > 0">{{str.credit}}</p>
                 <div class="col back-gray radius-default"
                      ng-show="credit > 0">
