@@ -17,7 +17,7 @@ function openTokenProfile(domain, success) {
             })
         }
 
-        addChart($scope, domain + "_price")
+        addChart($scope, domain + "_price", domain + "_volume")
 
         $scope.subscribe("price", function (data) {
             if (data.domain == domain) {

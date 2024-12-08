@@ -34,7 +34,7 @@ function launchList($tokens, $address, $password)
 {
     $gas_domain = get_required(gas_domain);
     foreach ($tokens as $domain => $emit_type) {
-        if (tokenRegAccount($domain, $address, $password, 1000000)) {
+        if (tokenRegAccount($domain, $address, $password, 1_000_000)) {
             if ($emit_type == exchange) {
                 $bot_address = "bot_spred_" . $domain;
                 botScriptReg($domain, $bot_address);
@@ -50,8 +50,10 @@ function launchList($tokens, $address, $password)
 
 $tokens = [
     gold => mining,
-    gold => mining,
-    amethyst => exchange,
+    iron => mining,
+    diamond => mining,
+    redstone => mining,
+    emerald => exchange,
 ];
 
 /*$token_list = file_get_contents($_SERVER[DOCUMENT_ROOT] . "/mfm-wallet/api/token_list.json");

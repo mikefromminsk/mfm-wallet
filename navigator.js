@@ -121,7 +121,15 @@ function addNavigator($scope) {
     }
 
     $scope.openChart = function (key, success) {
-        openChart(key, success)
+        openChartWithAccomulate(key, null, success)
+    }
+
+    $scope.openChartWithAccomulate = function (key, accomulate, success) {
+        openChartWithAccomulate(key, accomulate, success)
+    }
+
+    $scope.openChartAccomulate = function (key, success) {
+        openChartWithAccomulate(key, key, success)
     }
 
     $scope.openPayOffCredit = function (success) {
