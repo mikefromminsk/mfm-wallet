@@ -6,7 +6,7 @@ function openLogin(success) {
     showDialog('/mfm-wallet/wallet/login/index.html', success, function ($scope) {
             $scope.username = window.telegram_username || ""
             if (DEBUG) {
-                $scope.username = "admin"
+                $scope.username = "user"
                 $scope.password = "pass"
             }
 

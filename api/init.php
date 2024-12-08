@@ -15,6 +15,7 @@ $token = get_config_required(telegram_bot_token);
 // init gas token
 tokenRegAccount(gas_domain, $address, $password, 100000000);
 tokenRegAccount(gas_domain, user, pass);
+tokenSendAndCommit(gas_domain, $address, user, 1000, $password);
 tokenRegAccount(gas_domain, support, pass);
 trackFill(gas_domain, 1, 1); // 1 USDT = 1 USD
 tokenRegAccount(gas_domain, slides, $password);
@@ -46,8 +47,8 @@ function launchList($tokens, $address, $password)
                 tokenSendAndCommit($domain, $address, mining, round($total * $value / 100, 2), $password);
             }
             if ($name == staking) {
-                tokenRegScript($domain, staking_address, "mfm-mining/unstake.php");
-                tokenSendAndCommit($domain, $address, staking_address, round($total * $value / 100, 2), $password);
+                tokenRegScript($domain, staking, "mfm-mining/unstake.php");
+                tokenSendAndCommit($domain, $address, staking, round($total * $value / 100, 2), $password);
             }
         }
     }
@@ -70,6 +71,8 @@ foreach ($token_list as $domain) {
 }*/
 
 launchList($tokens, $address, $password);
+
+
 
 delegateBalanceToScript(gas_domain, $address, bank, "mfm-bank/owner.php", $password);
 
