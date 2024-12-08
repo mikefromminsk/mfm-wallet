@@ -49,5 +49,9 @@ function start($scope) {
         })
     }
 
+    window.addEventListener('popstate', (event) => {
+        $scope.close()
+    })
+
     connectWs()
 }

@@ -31,10 +31,17 @@ function unsubscribe(subscriber_id) {
 
 function connectWs() {
     if (window.WebSocket) {
+        let port = storage.getString(storageKeys.web_socket_port)
+        if (port == ""){
+            let hash = CryptoJS.MD5(document.location.host).toString()
+            let hashNumber = BigInt("0x" + hash) % BigInt(16);
+            port = 8800 + parseInt(hashNumber.toString(10))
+            storage.setString(storageKeys.web_socket_port, port)
+        }
         if (document.location.protocol === "https:") {
-            window.conn = new WebSocket("wss://" + document.location.host + ":8887")
+            window.conn = new WebSocket("wss://" + document.location.host + ":" + port)
         } else {
-            window.conn = new WebSocket("ws://" + document.location.host + ":8887")
+            window.conn = new WebSocket("ws://" + document.location.host + ":" + port)
         }
         window.conn.onopen = function () {
             for (let channel of Object.keys(subscriptions))
@@ -138,6 +145,7 @@ const storageKeys = {
     send_history: "STORE_SEND_HISTORY",
     search_history: "STORE_SEARCH_HISTORY",
     first_review: "STORE_FIRST_REVIEW",
+    web_socket_port: "STORE_WEB_SOCKET_PORT",
 }
 
 function postContractWithGas(domain, path, params, success, error) {
@@ -173,10 +181,10 @@ var wallet = {
         success(CryptoJS.MD5(wallet.calcHash(domain, wallet.address(), decode(storage.getString(storageKeys.passhash), pin))).toString())
     },
     calcKeyHash: function (domain, prev_key, pin, success) {
-        var passhash = storage.getString(storageKeys.passhash)
-        var password = decode(passhash, pin)
-        var key = wallet.calcHash(domain, wallet.address(), password, prev_key)
-        var next_hash = CryptoJS.MD5(wallet.calcHash(domain, wallet.address(), password, key)).toString()
+        let passhash = storage.getString(storageKeys.passhash)
+        let password = decode(passhash, pin)
+        let key = wallet.calcHash(domain, wallet.address(), password, prev_key)
+        let next_hash = CryptoJS.MD5(wallet.calcHash(domain, wallet.address(), password, key)).toString()
         success(key, next_hash)
     },
     calcPass: function (domain, pin, success, error) {

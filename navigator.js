@@ -20,7 +20,7 @@ function addNavigator($scope) {
         }, 100)
     }
     $scope.swipeToRefreshDisable = function () {
-        $scope.swipeToCloseDisabled = true
+        $scope.swipeToRefreshDisabled = true
     }
 
     $scope.copy = function (text) {
