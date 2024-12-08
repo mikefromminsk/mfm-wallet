@@ -123,7 +123,7 @@ function trackEvent(name, value, user_id, success, error) {
         name: name,
         value: value || "",
         user_id: user_id || "",
-        session: window.session,
+        session: session,
     }, function (response) {
         if (success)
             success(response.info)
