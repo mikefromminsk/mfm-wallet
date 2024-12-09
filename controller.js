@@ -53,7 +53,5 @@ function start($scope) {
         $scope.close()
     })
 
-    openStaking("bee_nest")
-
     connectWs()
 }

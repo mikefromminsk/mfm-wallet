@@ -41,8 +41,8 @@ function addNavigator($scope) {
         openLogin(success)
     }
 
-    $scope.openTokenProfile = function (domain) {
-        openTokenProfile(domain)
+    $scope.openTokenProfile = function (domain, success) {
+        openTokenProfile(domain, success)
     }
 
     $scope.openSettings = function (success) {
