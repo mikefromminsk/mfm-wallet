@@ -47,7 +47,7 @@ function launchList($tokens, $address, $password)
                 tokenSendAndCommit($domain, $address, mining, round($total * $value / 100, 2), $password);
             }
             if ($name == staking) {
-                tokenRegScript($domain, staking, "mfm-mining/unstake.php");
+                tokenRegScript($domain, staking, "mfm-bank/unstake.php");
                 tokenSendAndCommit($domain, $address, staking, round($total * $value / 100, 2), $password);
             }
         }

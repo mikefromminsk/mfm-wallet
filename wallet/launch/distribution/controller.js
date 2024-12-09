@@ -111,14 +111,5 @@ function openDistribution(domain, success) {
                 })
             })
         }
-
-        function init() {
-            getProfile(domain, function (response) {
-                $scope.profile = response
-                $scope.$apply()
-            })
-        }
-
-        init()
     })
 }

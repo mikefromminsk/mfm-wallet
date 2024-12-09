@@ -58,15 +58,6 @@ function openLogoChange(domain, success) {
                 showSuccess(str.logo_uploaded)
             })
         }
-
-        function init() {
-            getProfile(domain, function (response) {
-                $scope.profile = response
-                $scope.$apply()
-            })
-        }
-
-        init()
     })
 }
 
