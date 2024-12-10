@@ -22,9 +22,9 @@
                         <p class="mt8 text2">{{str.receive}}</p>
                     </div>
                     <div class="flex p16 col align-start-center ripple"
-                         ng-click="openScan(walletInit)">
-                        <img class="img16 img-gray" src="/mfm-wallet/img/scan.svg">
-                        <p class="mt8 text2">{{str.scan}}</p>
+                         ng-click="openShare(wallet.gas_domain, walletInit)">
+                        <img class="img16 img-gray" src="/mfm-wallet/img/share.svg">
+                        <p class="mt8 text2">{{str.share}}</p>
                     </div>
                     <div class="flex p16 col align-start-center ripple"
                          ng-click="openSend(wallet.gas_domain, null, null, walletInit)">

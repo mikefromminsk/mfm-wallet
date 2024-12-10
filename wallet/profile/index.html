@@ -27,9 +27,9 @@
                         <p class="mt8 text2">{{str.receive}}</p>
                     </div>
                     <div class="flex p16 col align-start-center ripple"
-                         ng-click="openScan()">
-                        <img class="img16 img-gray" src="/mfm-wallet/img/scan.svg">
-                        <p class="mt8 text2">{{str.scan}}</p>
+                         ng-click="openShare(domain)">
+                        <img class="img16 img-gray" src="/mfm-wallet/img/share.svg">
+                        <p class="mt8 text2">{{str.share}}</p>
                     </div>
                     <div class="flex p16 col align-start-center ripple"
                          ng-click="openSend(domain)">
@@ -83,7 +83,7 @@
                 <p class="text1">{{str.tokenomics}}</p>
                 <div class="row">
                     <p class="flex text2">{{str.total_sypply}}</p>
-                    <p>{{formatAmount(token.amount, token.domain)}}</p>
+                    <p>{{formatAmount(token.supply, token.domain)}}</p>
                 </div>
                 <div class="row">
                     <p class="flex text2">{{str.circulation_supply}}</p>
