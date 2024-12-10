@@ -1,5 +1,5 @@
 function openLaunchToken(success) {
-    showDialog("/mfm-wallet/wallet/launch/name/index.html", success, function ($scope) {
+    showDialog("/mfm-wallet/wallet/launch/name/index.html?nocache", success, function ($scope) {
         $scope.search_text = ''
 
         $scope.search = function () {

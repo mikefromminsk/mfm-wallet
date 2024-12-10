@@ -63,9 +63,12 @@ function start($scope) {
     }
     connectWs(port)
 
+}
 
+window.finishAutoOpening = false
 
-    function navigate() {
+function loaded() {
+    if (!finishAutoOpening) {
         const hash = window.location.hash.substring(1);
         const params = new URLSearchParams(hash);
         for (const [key, value] of params) {
@@ -73,11 +76,11 @@ function start($scope) {
                 const functionName = key;
                 if (typeof window[functionName] === 'function') {
                     window[functionName](value);
+                    finishAutoOpening = true;
                 } else {
                     console.log(`Function ${functionName} not found`);
                 }
             }
         }
     }
-    navigate()
 }

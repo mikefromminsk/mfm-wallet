@@ -1,8 +1,5 @@
 function getPin(success, cancel) {
-    if (DEBUG){
-        success("2222")
-    } else if (cancel == null && storage.getString(storageKeys.hasPin) == "") {
-        // No pin
+    if (cancel == null && storage.getString(storageKeys.hasPin) == "") {
         if (success)
             success()
     } else {
@@ -10,12 +7,13 @@ function getPin(success, cancel) {
             if (success)
                 success(window.pinForSesstion)
         } else {
-            showBottomSheet("/mfm-wallet/dialogs/pin/index.html", function (result) {
+            showBottomSheet("/mfm-wallet/dialogs/pin/index.html?nocache", function (result) {
                 window.pinForSesstion = result
                 if (success)
                     success(result)
             }, function ($scope) {
                 $scope.pin = ""
+                $scope.setMode = cancel != null
 
                 $scope.add = function (symbol) {
                     $scope.pin += symbol
