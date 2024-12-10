@@ -76,9 +76,7 @@ function loaded() {
                 const functionName = key;
                 if (typeof window[functionName] === 'function') {
                     window[functionName](value);
-                    finishAutoOpening = true;
-                } else {
-                    console.log(`Function ${functionName} not found`);
+                    window.finishAutoOpening = true;
                 }
             }
         }

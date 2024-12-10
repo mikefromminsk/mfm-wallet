@@ -5,6 +5,8 @@ function addNavigator($scope) {
         $scope.unsubscribeAll()
         $scope.removePressEnter()
         clearFocus()
+        historyStack.pop()
+        window.history.pushState({}, document.title, historyStack[historyStack.length - 1])
     }
 
     $scope.back = function (result) {

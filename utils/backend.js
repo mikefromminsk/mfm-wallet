@@ -125,11 +125,15 @@ function trackEvent(name, value, user_id, success, error) {
     }, error)
 }
 
+let historyStack = ["#"]
 function trackCall(args) {
     let funcName = args.callee.name
     let funcParam = typeof args[0] === "string" ? args[0] : ""
-    if (args.callee.name.startsWith("open"))
-        history.pushState({page: 1}, '', "#" + funcName + (funcParam != "" ? "=" + funcParam : ""))
+    if (args.callee.name.startsWith("open")){
+        let anhor = "#" + funcName + (funcParam != "" ? "=" + funcParam : "")
+        historyStack.push(anhor)
+        history.pushState({}, '', anhor)
+    }
     trackEvent(funcName, funcParam, wallet.address())
 }
 
