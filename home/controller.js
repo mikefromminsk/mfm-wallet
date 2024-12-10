@@ -5,10 +5,11 @@ function addHome($scope) {
             $scope.tops = response.tops
             $scope.showBody = true
             //if (!DEBUG)
-                startAnimation()
+            startAnimation()
             $scope.$apply()
         })
     }
+
 
     $scope.openSlide = function (domain) {
         trackCall(arguments)
@@ -18,10 +19,11 @@ function addHome($scope) {
 
     $scope.slideIndex = 0
     $scope.lastAutoIndex = 0
+
     function startAnimation() {
-        if ($scope.interval == null){
+        if ($scope.interval == null) {
             $scope.interval = setInterval(function () {
-                if ($scope.lastAutoIndex != $scope.slideIndex){
+                if ($scope.lastAutoIndex != $scope.slideIndex) {
                     clearInterval($scope.interval)
                 } else {
                     $scope.slideIndex = ($scope.slideIndex + 1) % $scope.tops.top_search.length

@@ -23,4 +23,8 @@ $response[tops][top_search] = selectList("select `value`, count(*) found_count f
     . " group by `value`"
     . " order by found_count desc limit 8") ?: [];
 
+$response[tops][top_staked] = selectList("select `domain` from tokens"
+    . " where `domain` <> '$gas_domain'"
+    . " order by volume24 desc limit 8") ?: [];
+
 echo json_encode($response);

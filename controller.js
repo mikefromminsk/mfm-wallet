@@ -53,5 +53,31 @@ function start($scope) {
         $scope.close()
     })
 
-    connectWs()
+
+    let port = storage.getString(storageKeys.web_socket_port)
+    if (port == "") {
+        let hash = CryptoJS.MD5(document.location.host).toString()
+        let hashNumber = BigInt("0x" + hash) % BigInt(16);
+        port = 8800 + parseInt(hashNumber.toString(10))
+        storage.setString(storageKeys.web_socket_port, port)
+    }
+    connectWs(port)
+
+
+
+    function navigate() {
+        const hash = window.location.hash.substring(1);
+        const params = new URLSearchParams(hash);
+        for (const [key, value] of params) {
+            if (key.startsWith('open')) {
+                const functionName = key;
+                if (typeof window[functionName] === 'function') {
+                    window[functionName](value);
+                } else {
+                    console.log(`Function ${functionName} not found`);
+                }
+            }
+        }
+    }
+    navigate()
 }

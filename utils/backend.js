@@ -29,15 +29,8 @@ function unsubscribe(subscriber_id) {
     }
 }
 
-function connectWs() {
+function connectWs(port, onOpen) {
     if (window.WebSocket) {
-        let port = storage.getString(storageKeys.web_socket_port)
-        if (port == ""){
-            let hash = CryptoJS.MD5(document.location.host).toString()
-            let hashNumber = BigInt("0x" + hash) % BigInt(16);
-            port = 8800 + parseInt(hashNumber.toString(10))
-            storage.setString(storageKeys.web_socket_port, port)
-        }
         if (document.location.protocol === "https:") {
             window.conn = new WebSocket("wss://" + document.location.host + ":" + port)
         } else {
@@ -46,6 +39,8 @@ function connectWs() {
         window.conn.onopen = function () {
             for (let channel of Object.keys(subscriptions))
                 connectChannel(channel)
+            if (onOpen)
+                onOpen()
         }
         window.conn.onclose = function () {
             setTimeout(connectWs, 5000)
@@ -131,7 +126,11 @@ function trackEvent(name, value, user_id, success, error) {
 }
 
 function trackCall(args) {
-    trackEvent(args.callee.name, typeof args[0] === "string" ? args[0] : "", wallet.address())
+    let funcName = args.callee.name
+    let funcParam = typeof args[0] === "string" ? args[0] : ""
+    if (args.callee.name.startsWith("open"))
+        history.pushState({page: 1}, '', "#" + funcName + (funcParam != "" ? "=" + funcParam : ""))
+    trackEvent(funcName, funcParam, wallet.address())
 }
 
 const storageKeys = {
@@ -281,10 +280,8 @@ var wallet = {
 
 var storage = {
     getString: function (key, def) {
-        var value = new URLSearchParams(window.location.search).get(key)
-        if ((value == null || value == "") && window.NativeAndroid != null) {
-            value = window.NativeAndroid.getItem(key)
-        } else if ((value == null || value == "") && localStorage != null) {
+        let value = new URLSearchParams(window.location.search).get(key)
+        if ((value == null || value == "") && localStorage != null) {
             value = localStorage.getItem(key)
         }
         if (value == null) value = ""
@@ -293,11 +290,7 @@ var storage = {
         return value
     },
     setString: function (key, val) {
-        if (window.NativeAndroid != null) {
-            window.NativeAndroid.setItem(key, val)
-        } else {
-            localStorage.setItem(key, val)
-        }
+        localStorage.setItem(key, val)
     },
     getObject: function (key, def) {
         return JSON.parse(storage.getString(key, JSON.stringify(def)))
@@ -327,11 +320,7 @@ var storage = {
         return this.getStringArray(key).indexOf(value) != -1
     },
     clear: function () {
-        if (window.NativeAndroid != null) {
-            window.NativeAndroid.clear()
-        } else {
-            localStorage.clear()
-        }
+        localStorage.clear()
     }
 }
 
