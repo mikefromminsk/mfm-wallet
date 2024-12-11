@@ -32,10 +32,7 @@ function start($scope) {
 
     $scope.selectTab($scope.selectedIndex)
 
-
-    if (getParam("email")) {
-        window.email_address = getParam("email")
-        trackEvent("email_referer", getParam("o"), getParam("email"))
+    if (window.location.search != "") {
         window.history.pushState({}, document.title, "/mfm-wallet")
     }
 
@@ -49,10 +46,9 @@ function start($scope) {
         })
     }
 
-    window.addEventListener('popstate', (event) => {
+    window.addEventListener('popstate', () => {
         $scope.close()
     })
-
 
     let port = storage.getString(storageKeys.web_socket_port)
     if (port == "") {
@@ -62,7 +58,6 @@ function start($scope) {
         storage.setString(storageKeys.web_socket_port, port)
     }
     connectWs(port)
-
 }
 
 window.finishAutoOpening = false

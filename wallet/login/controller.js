@@ -72,14 +72,8 @@ function openLogin(success) {
                     trackCall(arguments)
             }
 
-            function email_link(email_address) {
-                if (email_address != null)
-                    trackCall(arguments)
-            }
-
             function loginFinish() {
                 tg_link(window.telegram_username)
-                email_link(window.email_address)
                 if (success) success()
                 $scope.close()
             }

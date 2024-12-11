@@ -110,7 +110,13 @@ function postContract(domain, path, params, success, error) {
     post("/" + domain + "/" + path, params, success, error)
 }
 
-const session = randomString(8)
+function getParam(paramName, def) {
+    let uri = window.location.search.substring(1)
+    let params = new URLSearchParams(uri)
+    return params.get(paramName) || def
+}
+
+const session = getParam("o") || randomString(8)
 
 function trackEvent(name, value, user_id, success, error) {
     postContract("mfm-analytics", "track.php", {

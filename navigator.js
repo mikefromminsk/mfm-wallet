@@ -21,6 +21,7 @@ function addNavigator($scope) {
             $scope.finish(result)
         }, 100)
     }
+
     $scope.swipeToRefreshDisable = function () {
         $scope.swipeToRefreshDisabled = true
     }

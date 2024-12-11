@@ -5,8 +5,8 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/mfm-exchange/utils.php";
 onlyInDebug();
 
 requestEquals("/mfm-analytics/init.php");
-requestEquals("/mfm-token/init.php");
 requestEquals("/mfm-exchange/init.php");
+requestEquals("/mfm-token/init.php");
 
 $address = get_required(wallet_admin_address);
 $password = get_required(wallet_admin_password);
