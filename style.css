@@ -363,6 +363,10 @@ md-dialog {
     max-width: 980px;
 }
 
+md-dialog > *:last-child {
+    padding-bottom: 60px;
+}
+
 
 .checkmark {
     border-radius: 50%;

@@ -1,9 +1,9 @@
 <md-bottom-sheet class="col size24">
     <div class="row header align-start-center">
         <p class="flex">{{str.enter_pin_code}}</p>
-        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="back()">
-            <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
-        </div>
+        <button class="" ng-click="back()">
+            {{str.skip}}
+        </button>
     </div>
     <div class="col align-start-center">
         <div class="col block" style="width: 400px">
@@ -33,9 +33,7 @@
                 <div class="flex col align-center-center ripple pv16" ng-click="add('9')">9</div>
             </div>
             <div class="row">
-                <div class="flex col align-center-center ripple pv16 uppercase">
-                    <p ng-click="back()" ng-show="setMode">{{str.skip}}</p>
-                </div>
+                <div class="flex col align-center-center ripple pv16"></div>
                 <div class="flex col align-center-center ripple pv16" ng-click="add('1')">0</div>
                 <div class="flex col align-center-center ripple pv16" ng-click="remove()">
                     <img class="img36 img-white" src="/mfm-wallet/img/delete.svg">
