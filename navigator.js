@@ -181,7 +181,7 @@ function addNavigator($scope) {
         openLanguages()
     }
 
-    $scope.openShare = function (domain, success) {
-        openShare(domain, success)
+    $scope.openDrop = function (domain, success) {
+        openDrop(domain, success)
     }
 }
