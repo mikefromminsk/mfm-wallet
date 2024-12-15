@@ -8,9 +8,10 @@
     <div class="col">
         <div class="col input-content">
             <div class="row input-wrapper">
-                <div class="input-label">{{str.share_link}}</div>
+                <img class="img-white" src="/mfm-wallet/img/share.svg">
                 <input type="text"
-                       ng-model="share_pass">
+                       ng-model="share_pass"
+                       placeholder="{{str.share_link}}">
             </div>
             <div class="primary-button"
                  ng-disabled="!share_pass"

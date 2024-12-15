@@ -7,13 +7,14 @@
     </div>
     <div class="col input-content">
         <div class="row input-wrapper">
-            <div class="input-label">{{str.address}}</div>
+            <img class="img-white" src="/mfm-wallet/img/user-circle.svg">
             <input type="text"
                    ng-disabled="block_to_address"
                    autocapitalize="none"
                    autocomplete="off"
                    maxlength="50"
-                   ng-model="to_address">
+                   ng-model="to_address"
+                   placeholder="{{str.address}}">
         </div>
         <div class="row wrap ph8 pt0">
             <div class="text2 ml8 p8 back-gray radius-default ripple"
@@ -23,11 +24,12 @@
             </div>
         </div>
         <div class="flex row input-wrapper">
-            <div class="input-label">{{str.amount}}</div>
+            <div ng-style="getLogo(domain)"></div>
             <input type="number"
                    autocapitalize="off"
                    autocomplete="off"
-                   ng-model="amount">
+                   ng-model="amount"
+                   placeholder="{{str.amount}}">
             <button class="border-none"
                     ng-click="setMax()"
                     ng-disabled="token.balance == 0">
