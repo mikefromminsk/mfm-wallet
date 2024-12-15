@@ -8,7 +8,7 @@
     <div class="flex col scroll align-start-center">
         <div class="flex col block input-content">
             <div class="primary-button"
-                 ng-click="openLogin(close)"
+                 ng-click="openLogin(init)"
                  ng-disabled="in_progress"
                  ng-hide="wallet.address()">
                 {{str.login_or_create_account}}
@@ -20,6 +20,11 @@
                 <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/user-circle.svg">
                 <div class="flex">{{wallet.address()}}</div>
                 <img class="img20 img-white" src="/mfm-wallet/img/copy.svg">
+            </div>
+            <div class="row align-start-center ripple">
+                <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/arrow-up.svg">
+                <p class="flex">{{str.delegated}}</p>
+                <p>{{account.delegate}}</p>
             </div>
             <div class="row align-start-center ripple" ng-click="openLanguages()">
                 <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/language.svg">
