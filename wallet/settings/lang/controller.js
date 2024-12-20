@@ -10,7 +10,7 @@ window.languages = {
 }
 
 function openLanguages(languages, success) {
-    showDialog('/mfm-wallet/wallet/settings/lang/index.html?nocache', success, function ($scope) {
+    showDialog("wallet/settings/lang", success, function ($scope) {
         $scope.languages = languages || window.languages
 
         $scope.getTitle = function (lang) {

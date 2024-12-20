@@ -7,12 +7,18 @@ function getProfile(domain, success, error) {
 
 function openTokenProfile(domain, success) {
     trackCall(arguments)
-    showDialog('/mfm-wallet/wallet/profile/index.html', success, function ($scope) {
+    showDialog("wallet/profile", success, function ($scope) {
         $scope.domain = domain
 
         function loadProfile() {
-            getProfile(domain, function (response) {
-                $scope.token = response
+            postContract("mfm-token", "token_info.php", {
+                domain: domain,
+                address: wallet.address()
+            }, function (response) {
+                $scope.token = response.token
+                $scope.owner = response.owner
+                $scope.account = response.account
+                $scope.analytics = response.analytics
                 $scope.$apply()
             })
         }

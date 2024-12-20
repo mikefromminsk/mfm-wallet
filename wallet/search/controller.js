@@ -1,6 +1,6 @@
 function openSearch(success) {
     trackCall(arguments)
-    showDialog('/mfm-wallet/wallet/search/index.html', success, function ($scope) {
+    showDialog("wallet/search", success, function ($scope) {
 
         $scope.search_text = ''
         $scope.$watch('search_text', function (newValue, oldValue) {

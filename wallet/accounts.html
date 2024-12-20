@@ -1,20 +1,20 @@
 <div class="col back-gray radius-default">
     <div class="row p16 align-start-center ripple"
-         ng-repeat="token in accounts"
-         ng-click="openTokenProfile(token.domain, walletInit)">
-        <div ng-style="getLogo(token.domain)"></div>
+         ng-repeat="account in accounts"
+         ng-click="openTokenProfile(account.domain, walletInit)">
+        <div ng-style="getLogo(account.domain)"></div>
         <div class="flex col ml16">
-            <p>{{formatTicker(token.domain)}}</p>
+            <p>{{formatTicker(account.domain)}}</p>
             <div class="row mt4 text2">
-                <p class="">{{formatPrice(token.price)}}</p>
-                <p class="ml4" ng-class="percentColor(token.price24)">
-                    {{formatChange(token.price24)}}
+                <p class="">{{formatPrice(account.token.price)}}</p>
+                <p class="ml4" ng-class="percentColor(account.token.price24)">
+                    {{formatChange(account.token.price24)}}
                 </p>
             </div>
         </div>
         <div class="col align-end-end">
-            <p>{{formatAmount(token.balance)}}</p>
-            <p class="mt4 text2">{{formatPrice(token.price * token.balance)}}</p>
+            <p>{{formatAmount(account.balance)}}</p>
+            <p class="mt4 text2">{{formatPrice(account.token.price * account.balance)}}</p>
         </div>
     </div>
 </div>

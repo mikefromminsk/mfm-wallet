@@ -1,6 +1,8 @@
 function addHome($scope) {
     function init() {
-        postContract("mfm-wallet", "home/api/main.php", {}, function (response) {
+        postContract("mfm-wallet", "home/api/main.php", {
+            empty: true,
+        }, function (response) {
             $scope.slides = response.tops.top_exchange
             $scope.tops = response.tops
             $scope.showBody = true

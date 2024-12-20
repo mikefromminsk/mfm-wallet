@@ -1,0 +1,61 @@
+md-content {
+    background-color: transparent;
+}
+
+md-switch {
+    margin: 0;
+    overflow: hidden;
+}
+
+.md-ripple-container {
+    margin: 0;
+}
+
+md-menu-item {
+    min-height: auto;
+    height: auto;
+}
+
+md-menu-content {
+    padding: 0;
+}
+
+md-bottom-sheet {
+    bottom: 80px;
+    z-index: 10000;
+}
+
+md-bottom-sheet > .header {
+    background: none;
+}
+
+    md-dialog {
+    max-width: none;
+    max-height: none;
+}
+
+md-toast {
+    z-index: 10001;
+}
+
+md-tabs-wrapper {
+    display: none;
+}
+
+md-tabs-content-wrapper {
+    top: 0;
+}
+
+pre.hljs{
+    display: block;
+    overflow-x: auto;
+    padding: 16px;
+}
+
+md-input-container{
+    margin: 0;
+}
+
+.md-errors-spacer{
+    display: none;
+}

@@ -1,5 +1,5 @@
 function openSettings(success) {
-    showDialog('/mfm-wallet/wallet/settings/index.html?nocache', success, function ($scope) {
+    showDialog("wallet/settings", success, function ($scope) {
         $scope.language = getLanguage()
 
         $scope.logout = function () {
@@ -14,7 +14,7 @@ function openSettings(success) {
                 domain: wallet.gas_domain,
                 address: wallet.address(),
             }, function (response) {
-                $scope.account = response
+                $scope.account = response.account
                 $scope.$apply()
             })
         }

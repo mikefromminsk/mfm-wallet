@@ -1,7 +1,7 @@
 let logoRefreshInterval = null
 
 function openLogoChange(domain, success) {
-    showDialog('/mfm-wallet/wallet/launch/logo/index.html', function () {
+    showDialog("wallet/launch/logo", function () {
         if (logoRefreshInterval != null)
             clearInterval(logoRefreshInterval)
         if (success)

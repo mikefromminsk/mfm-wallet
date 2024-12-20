@@ -101,13 +101,31 @@ function post(url, params, success, error) {
         }
     };
     const formData = new FormData()
-    for (var key of Object.keys(params))
+    for (let key of Object.keys(params))
         formData.append(key, params[key])
     xhr.send(formData)
 }
 
+function hashMod(str, mod) {
+    return Number(BigInt("0x" + CryptoJS.MD5(str).toString()) % BigInt(mod))
+}
+
+let nodePortOffsets = {}
+function getPortOffset() {
+    let host = location.host == "localhost" ? "mytoken.space" : location.host
+    let offset = nodePortOffsets[host]
+    if (offset == null) {
+        offset = hashMod(host, 16)
+        nodePortOffsets[host] = offset
+    }
+    return offset
+}
+
 function postContract(domain, path, params, success, error) {
-    post("/" + domain + "/" + path, params, success, error)
+    let port = (
+        domain != "mfm-bank"
+    ) ? ":" + (8000 + getPortOffset()) : ""
+    post(location.origin + port + "/" + domain + "/" + path, params, success, error)
 }
 
 function getParam(paramName, def) {
@@ -154,7 +172,6 @@ const storageKeys = {
     send_history: "STORE_SEND_HISTORY",
     search_history: "STORE_SEARCH_HISTORY",
     first_review: "STORE_FIRST_REVIEW",
-    web_socket_port: "STORE_WEB_SOCKET_PORT",
     mining_auto_start: "STORE_MINING_AUTO_START",
 }
 
@@ -202,7 +219,7 @@ var wallet = {
             domain: domain,
             address: wallet.address(),
         }, function (response) {
-            wallet.calcKeyHash(domain, response.prev_key, pin, function (key, next_hash) {
+            wallet.calcKeyHash(domain, response.account.prev_key, pin, function (key, next_hash) {
                 success(key + ":" + next_hash, key, next_hash)
             })
         }, function () {

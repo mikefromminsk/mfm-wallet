@@ -7,7 +7,7 @@ function getPin(success, cancel) {
             if (success)
                 success(window.pinForSesstion)
         } else {
-            showBottomSheet("/mfm-wallet/dialogs/pin/index.html?nocache", function (result) {
+            showBottomSheet("dialogs/pin", function (result) {
                 window.pinForSesstion = result
                 if (success)
                     success(result)

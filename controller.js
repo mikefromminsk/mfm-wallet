@@ -50,14 +50,7 @@ function start($scope) {
         $scope.close()
     })
 
-    let port = storage.getString(storageKeys.web_socket_port)
-    if (port == "") {
-        let hash = CryptoJS.MD5(document.location.host).toString()
-        let hashNumber = BigInt("0x" + hash) % BigInt(16);
-        port = 8800 + parseInt(hashNumber.toString(10))
-        storage.setString(storageKeys.web_socket_port, port)
-    }
-    connectWs(port)
+    connectWs(8800 + getPortOffset())
 }
 
 window.finishAutoOpening = false

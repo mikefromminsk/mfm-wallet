@@ -1,0 +1,89 @@
+<md-dialog class="fill p0 col">
+    <md-tabs class="flex col" md-selected="pageIndex">
+        <md-tab label="questions.indexOf(item)" ng-repeat="item in questions">
+            <div class="fill col">
+                <div class="row header align-start-center">
+                    <p class="flex"></p>
+                    <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
+                        <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+                    </div>
+                </div>
+                <div class="flex col p16 align-center input-content nowrap-disabled">
+                    <p class="text1">{{item.question}}</p>
+                    <div class="mt16 p16 back-gray radius-default"
+                         ng-repeat="answer in item.answers"
+                         ng-style="{'background-color': item.answer === answer ? 'var(--gray200)' : 'var(--gray100)'}"
+                         ng-click="setAnswer(item, answer)">
+                        <p>{{answer}}</p>
+                    </div>
+                </div>
+                <div class="primary-button m16 back-black" ng-click="next()">{{str.skip}}</div>
+            </div>
+        </md-tab>
+        <md-tab label="'accept_credit'">
+            <div class="fill col">
+                <div class="row header align-start-center">
+                    <p class="flex"></p>
+                    <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
+                        <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+                    </div>
+                </div>
+                <div class="flex col scroll align-start-center">
+                    <div class="flex col block input-content">
+                        <div class="row align-center-center">
+                            <div class="img100" style="position: relative">
+                                <svg class="img100 checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                                    <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                                    <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="row gap8 align-start-center">
+                            <img class="img40 p8 img-gray" src="/mfm-wallet/img/success.svg">
+                            <p class="text2">{{str.approved}}:</p>
+                            <p class="text1">{{formatAmount(rating, wallet.gas_domain)}}</p>
+                        </div>
+                        <div class="row gap8 align-start-center">
+                            <img class="img40 p8 img-gray" src="/mfm-wallet/img/staking.svg">
+                            <p class="text2">{{str.interest_rate}}:</p>
+                            <p class="text1">{{formatPercent(percent)}}</p>
+                        </div>
+                        <div class="row gap8 align-start-center">
+                            <img class="img40 p8 img-gray" src="/mfm-wallet/img/back.svg">
+                            <p class="text2">{{str.you_have_to_return}}:</p>
+                            <p class="text1">{{formatAmount(rating * (1 + percent / 100), wallet.gas_domain, 2)}}</p>
+                        </div>
+                        <div class="row gap8 align-start-center">
+                            <img class="img40 p8 img-gray" src="/mfm-wallet/img/history.svg">
+                            <p class="text2">{{str.pay_off}}:</p>
+                            <p class="text1">{{formatAmount(pay_off_period_days)}}</p>
+                            <p class="text2">{{str.days}}</p>
+                        </div>
+                        <div class="row gap8 align-start-center">
+                            <img class="img40 p8 img-gray" src="/mfm-wallet/img/attention.svg">
+                            <p class="text2">{{str.you_cannot_withdrawal_while_you_paying_off_credit}}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="">
+                    <div class="row align-start-center ph16 gap8">
+                        <p>{{str.agree_to}}</p>
+                        <p class="text-accent" ng-click="openDoc('/mfm-bank/docs/credit_rules.md')">
+                            {{str.credit_rules}}
+                        </p>
+                    </div>
+                    <div class="primary-button back-pay"
+                         ng-disabled="in_progress"
+                         ng-click="getCredit(rating)">
+                        {{str.accept}}
+                    </div>
+                    <div class="primary-button back-black"
+                         ng-click="close()">
+                        {{str.decline}}
+                    </div>
+                </div>
+            </div>
+        </md-tab>
+    </md-tabs>
+</md-dialog>

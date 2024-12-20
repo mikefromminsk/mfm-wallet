@@ -3,7 +3,7 @@ function openLogin(success) {
         if (success) success()
         return
     }
-    showDialog('/mfm-wallet/wallet/login/index.html', success, function ($scope) {
+    showDialog("wallet/login", success, function ($scope) {
             $scope.username = window.telegram_username || ""
             if (DEBUG) {
                 $scope.username = "user"
@@ -21,7 +21,7 @@ function openLogin(success) {
             }
 
             $scope.login = function () {
-                $scope.in_progress = true
+                $scope.startRequest()
                 postContract("mfm-token", "account.php", {
                     domain: wallet.gas_domain,
                     address: $scope.username,
@@ -30,10 +30,10 @@ function openLogin(success) {
                         wallet.gas_domain,
                         $scope.username,
                         $scope.password,
-                        response.prev_key)).toString() == response.next_hash) {
+                        response.account.prev_key)).toString() == response.account.next_hash) {
                         loginSuccess()
                     } else {
-                        $scope.in_progress = false
+                        $scope.finishRequest()
                         showError(str.password_invalid)
                     }
                 }, function () {

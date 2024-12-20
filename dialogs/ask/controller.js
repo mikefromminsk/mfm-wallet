@@ -1,5 +1,5 @@
 function openAskSure(success) {
-    showBottomSheet('/mfm-wallet/dialogs/ask/index.html', null, function ($scope) {
+    showBottomSheet("dialogs/ask", null, function ($scope) {
         $scope.yes = function like() {
             trackCall(arguments)
             $scope.back()

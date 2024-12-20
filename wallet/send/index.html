@@ -32,17 +32,17 @@
                    placeholder="{{str.amount}}">
             <button class="border-none"
                     ng-click="setMax()"
-                    ng-disabled="token.balance == 0">
+                    ng-disabled="account.balance == 0">
                 {{str.max}}
             </button>
         </div>
         <div class="text2"
-             ng-class="{'text-red': token.balance < amount}">
-            {{str.available}}: {{formatAmount(token.balance, token.domain)}}
+             ng-class="{'text-red': account.balance < amount}">
+            {{str.available}}: {{formatAmount(account.balance, token.domain)}}
         </div>
         <button class="primary-button"
                 ng-click="send(domain)"
-                ng-disabled="in_progress || !to_address || to_address.length < 3 || !amount || (token.balance < amount)">
+                ng-disabled="in_progress || !to_address || to_address.length < 3 || !amount || (account.balance < amount)">
             {{str.send}}
         </button>
     </div>

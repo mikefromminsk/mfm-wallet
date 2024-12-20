@@ -54,7 +54,7 @@ function addWallet($scope) {
     }
 
     function getStaked() {
-        postContract("mfm-bank", "staked.php", {
+        postContract("mfm-bank", "staking/staked.php", {
             address: wallet.address(),
         }, function (response) {
             $scope.staked = response.staked

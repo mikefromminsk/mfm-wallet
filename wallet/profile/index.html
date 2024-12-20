@@ -87,11 +87,11 @@
                 </div>
                 <div class="row">
                     <p class="flex text2">{{str.circulation_supply}}</p>
-                    <p>{{formatPercent(token.circulation_percent, 4)}}</p>
+                    <p>{{formatPercent((1 - (owner.balance / token.supply)) * 100, 4)}}</p>
                 </div>
                 <div class="row">
                     <p class="flex text2">{{str.distribution}}</p>
-                    <p class="uppercase-first-letter">{{token.emitting}}</p>
+                    <p class="uppercase-first-letter">...</p>
                 </div>
                 <div class="row">
                     <p class="flex text2">{{str.created}}</p>
@@ -100,25 +100,25 @@
 
                 <p class="text1">{{str.activity}}</p>
                 <div class="row">
-                    <p class="text2">{{str.volume}}</p>
+                    <p class="text2">{{str.volume24}}</p>
                     <img class="ml4 img12 img-gray" src="/mfm-wallet/img/chart.svg"
                          ng-click="openChartAccomulate(token.domain + '_volume')">
                     <div class="flex"></div>
-                    <p>{{formatAmount(token.volume, token.domain)}}</p>
+                    <p>{{formatAmount(token.volume24, token.domain)}}</p>
                 </div>
                 <div class="row">
                     <p class="text2">{{str.accounts}}</p>
                     <img class="ml4 img12 img-gray" src="/mfm-wallet/img/chart.svg"
                          ng-click="openChartAccomulate(token.domain + '_accounts')">
                     <div class="flex"></div>
-                    <p>{{formatAmount(token.accounts)}}</p>
+                    <p>{{formatAmount(analytics.accounts)}}</p>
                 </div>
                 <div class="row">
                     <p class="text2">{{str.transactions}}</p>
                     <img class="ml4 img12 img-gray" src="/mfm-wallet/img/chart.svg"
                          ng-click="openChartAccomulate(token.domain + '_trans')">
                     <div class="flex"></div>
-                    <p>{{formatAmount(token.trans)}}</p>
+                    <p>{{formatAmount(analytics.trans)}}</p>
                 </div>
 
                 <p class="text1">{{str.network}}</p>
@@ -127,20 +127,20 @@
                     <img class="ml4 img12 img-gray" src="/mfm-wallet/img/chart.svg"
                          ng-click="openChartAccomulate('tokens_count')">
                     <div class="flex"></div>
-                    <p>{{formatAmount(token.tokens_count)}}</p>
+                    <p>{{formatAmount(analytics.tokens_count)}}</p>
                 </div>
                 <div class="row">
                     <p class="text2">{{str.all_accounts}}</p>
                     <img class="ml4 img12 img-gray" src="/mfm-wallet/img/chart.svg"
                          ng-click="openChartAccomulate('accounts_count')">
                     <div class="flex"></div>
-                    <p>{{formatAmount(token.accounts_count)}}</p>
+                    <p>{{formatAmount(analytics.accounts_count)}}</p>
                 </div>
                 <div class="row">
                     <p class="text2">{{str.all_transactions}}</p>
                     <img class="ml4 img12 img-gray" src="/mfm-wallet/img/chart.svg" ng-click="openChartAccomulate('trans_count')">
                     <div class="flex"></div>
-                    <p>{{formatAmount(token.trans_count)}}</p>
+                    <p>{{formatAmount(analytics.trans_count)}}</p>
                 </div>
                 <div class="nowrap-disabled" id="token-readme"></div>
             </div>
@@ -150,7 +150,7 @@
         <div class="row block gap16">
             <div class="flex mh0 primary-button back-red radius4 uppercase"
                  ng-click="openSell(domain)"
-                 ng-show="token.balance > 0">
+                 ng-show="account.balance > 0">
                 {{str.sell}}
             </div>
             <div class="flex mh0 primary-button back-green radius4 uppercase"

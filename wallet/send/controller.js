@@ -1,6 +1,6 @@
 function openSend(domain, to_address, amount, success) {
     trackCall(arguments)
-    showBottomSheet('/mfm-wallet/wallet/send/index.html', success, function ($scope) {
+    showBottomSheet("wallet/send", success, function ($scope) {
         $scope.domain = domain
         if ((to_address || "") != "") {
             $scope.to_address = to_address
@@ -23,7 +23,7 @@ function openSend(domain, to_address, amount, success) {
 
         $scope.send = function send(domain) {
             trackCall(arguments)
-            $scope.in_progress = true
+            $scope.startRequest()
             getPin(function (pin) {
                 calcPass(domain, pin, function (pass) {
                     postContract("mfm-token", "send.php", {
@@ -36,10 +36,7 @@ function openSend(domain, to_address, amount, success) {
                         storage.pushToArray(storageKeys.send_history, $scope.to_address, 3)
                         $scope.back()
                         openTran(response.next_hash, success)
-                    }, function (message) {
-                        $scope.in_progress = false
-                        showError(message)
-                    })
+                    }, $scope.finishRequest)
                 })
             })
         }
@@ -49,7 +46,7 @@ function openSend(domain, to_address, amount, success) {
         })
 
         $scope.setMax = function () {
-            $scope.amount = $scope.token.balance
+            $scope.amount = $scope.account.balance
         }
 
         $scope.setToAddress = function (to_address) {
@@ -59,7 +56,8 @@ function openSend(domain, to_address, amount, success) {
         function init() {
             $scope.recent = storage.getStringArray(storageKeys.send_history).reverse()
             getProfile(domain, function (response) {
-                $scope.token = response
+                $scope.token = response.token
+                $scope.account = response.account
                 $scope.$apply()
             })
         }

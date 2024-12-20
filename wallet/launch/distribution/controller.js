@@ -1,5 +1,5 @@
 function openDistribution(domain, success) {
-    showDialog('/mfm-wallet/wallet/launch/distribution/index.html', success, function ($scope) {
+    showDialog("wallet/launch/distribution", success, function ($scope) {
         $scope.domain = domain
         $scope.amount_step = 6
         $scope.amount = 1000000
@@ -46,14 +46,8 @@ function openDistribution(domain, success) {
             }
         })
 
-        function showError(message) {
-            showError(message)
-            $scope.in_progress = false
-            $scope.$apply()
-        }
-
         $scope.launch = function () {
-            $scope.in_progress = true
+            $scope.startRequest()
             getPin(function (pin) {
                 wallet.calcStartHash($scope.domain, pin, function (next_hash) {
                     postContract("mfm-token", "send.php", {
@@ -64,7 +58,7 @@ function openDistribution(domain, success) {
                         amount: $scope.amount,
                     }, function () {
                         mining($scope.domain, pin)
-                    }, showError)
+                    }, $scope.finishRequest)
                 })
             })
         }
@@ -88,7 +82,7 @@ function openDistribution(domain, success) {
                             amount: $scope.round($scope.amount * $scope.mining_percent / 100, 2)
                         }, function () {
                             exchange(domain, pin)
-                        }, showError)
+                        }, $scope.finishRequest)
                     })
                 })
             })
@@ -107,7 +101,7 @@ function openDistribution(domain, success) {
                         pass: pass,
                     }, function () {
                         showSuccessDialog(str.your_token_created, $scope.close)
-                    }, showError)
+                    }, $scope.finishRequest)
                 })
             })
         }

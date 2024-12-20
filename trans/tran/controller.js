@@ -1,6 +1,5 @@
 function openTran(next_hash, success) {
-    showDialog('/mfm-wallet/trans/tran/index.html?nocache', success, function ($scope) {
-
+    showDialog("trans/tran", success, function ($scope) {
         let tryCount = 0
 
         function getTran() {

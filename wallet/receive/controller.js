@@ -1,6 +1,6 @@
 function openReceive(success) {
     trackCall(arguments)
-    showBottomSheet('/mfm-wallet/wallet/receive/index.html', success, function ($scope) {
+    showBottomSheet("wallet/receive", success, function ($scope) {
 
         $scope.receive = function () {
             let bonus = $scope.share_pass.split(":")
