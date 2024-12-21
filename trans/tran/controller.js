@@ -4,7 +4,7 @@ function openTran(next_hash, success) {
 
         function getTran() {
             if (tryCount < 3)
-                post("/mfm-token/tran.php", {
+                post("/mfm-token/tran", {
                     next_hash: next_hash,
                 }, function (response) {
                     $scope.tran = response.tran

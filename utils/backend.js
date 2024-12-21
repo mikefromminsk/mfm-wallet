@@ -111,6 +111,7 @@ function hashMod(str, mod) {
 }
 
 let nodePortOffsets = {}
+
 function getPortOffset() {
     let host = location.host == "localhost" ? "mytoken.space" : location.host
     let offset = nodePortOffsets[host]
@@ -122,10 +123,7 @@ function getPortOffset() {
 }
 
 function postContract(domain, path, params, success, error) {
-    let port = (
-        domain != "mfm-bank"
-    ) ? ":" + (8000 + getPortOffset()) : ""
-    post(location.origin + port + "/" + domain + "/" + path, params, success, error)
+    post(location.origin + ":" + (8000 + getPortOffset()) + "/" + domain + "/" + path + ".php", params, success, error)
 }
 
 function getParam(paramName, def) {
@@ -137,7 +135,7 @@ function getParam(paramName, def) {
 const session = getParam("o") || randomString(8)
 
 function trackEvent(name, value, user_id, success, error) {
-    postContract("mfm-analytics", "track.php", {
+    postContract("mfm-analytics", "track", {
         app: "ui",
         name: name,
         value: value || "",
@@ -150,10 +148,11 @@ function trackEvent(name, value, user_id, success, error) {
 }
 
 let historyStack = ["#"]
+
 function trackCall(args) {
     let funcName = args.callee.name
     let funcParam = typeof args[0] === "string" ? args[0] : ""
-    if (args.callee.name.startsWith("open")){
+    if (args.callee.name.startsWith("open")) {
         let anhor = "#" + funcName + (funcParam != "" ? "=" + funcParam : "")
         historyStack.push(anhor)
         history.pushState({}, '', anhor)
@@ -215,7 +214,7 @@ var wallet = {
         success(key, next_hash)
     },
     calcPass: function (domain, pin, success, error) {
-        postContract("mfm-token", "account.php", {
+        postContract("mfm-token", "account", {
             domain: domain,
             address: wallet.address(),
         }, function (response) {
@@ -225,7 +224,7 @@ var wallet = {
         }, function () {
             // reg account in other tokens
             wallet.calcStartHash(domain, pin, function (next_hash) {
-                postContract("mfm-token", "send.php", {
+                postContract("mfm-token", "send", {
                     domain: domain,
                     from_address: wallet.genesis_address,
                     to_address: wallet.address(),

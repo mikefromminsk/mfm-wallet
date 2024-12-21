@@ -63,7 +63,7 @@ function addChart($scope, key, accomulate_key) {
     $scope.period_name = 'M'
     $scope.setPeriod = function (period_name) {
         $scope.period_name = period_name
-        postContract("mfm-analytics", "candles.php", {
+        postContract("mfm-analytics", "candles", {
             key: key,
             accomulate_key: accomulate_key,
             period_name: period_name,

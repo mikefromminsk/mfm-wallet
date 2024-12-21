@@ -27,17 +27,17 @@ function openExchange(domain, is_sell) {
                 $scope.amount = $scope.round($scope.total / $scope.price, 2)
         }
 
-        $scope.$watch('price', function () {
+        $scope.$watch("price", function () {
             $scope.price = $scope.round($scope.price, 2)
         })
-        $scope.$watch('amount', function () {
+        $scope.$watch("amount", function () {
             $scope.amount = $scope.round($scope.amount, 2)
         })
-        $scope.$watch('total', function () {
+        $scope.$watch("total", function () {
             $scope.total = $scope.round($scope.total, 2)
         })
         $scope.portion = 0
-        $scope.$watch('portion', function (new_value, old_value) {
+        $scope.$watch("portion", function (new_value, old_value) {
             if (new_value == old_value) return;
             if ($scope.is_sell) {
                 $scope.changeAmount($scope.account.balance * (new_value / 100))
@@ -51,9 +51,8 @@ function openExchange(domain, is_sell) {
             $scope.startRequest()
             getPin(function (pin) {
                 calcPassList([domain, wallet.gas_domain], pin, function (passes) {
-                    postContract("mfm-exchange", "owner.php", {
-                        redirect: '/mfm-exchange/place.php',
-                        order_type: 'limit',
+                    postContract("mfm-exchange", "place", {
+                        order_type: "limit",
                         domain: domain,
                         is_sell: $scope.is_sell ? 1 : 0,
                         address: wallet.address(),
@@ -83,8 +82,7 @@ function openExchange(domain, is_sell) {
 
         $scope.cancel = function (order_id) {
             openAskSure(function () {
-                postContract("mfm-exchange", "owner.php", {
-                    redirect: '/mfm-exchange/cancel.php',
+                postContract("mfm-exchange", "cancel", {
                     order_id: order_id,
                 }, function () {
                     loadOrders()
@@ -97,7 +95,7 @@ function openExchange(domain, is_sell) {
 
         function loadOrders() {
             if (wallet.address() != "")
-                postContract("mfm-exchange", "orders.php", {
+                postContract("mfm-exchange", "orders", {
                     domain: domain,
                     address: wallet.address(),
                 }, function (response) {
@@ -125,7 +123,7 @@ function openExchange(domain, is_sell) {
 
         function loadQuoteBalance() {
             if (wallet.address() != "") {
-                postContract("mfm-token", "account.php", {
+                postContract("mfm-token", "account", {
                     domain: wallet.gas_domain,
                     address: wallet.address(),
                 }, function (response) {
@@ -136,7 +134,7 @@ function openExchange(domain, is_sell) {
         }
 
         function loadOrderbook() {
-            postContract("mfm-exchange", "orderbook.php", {
+            postContract("mfm-exchange", "orderbook", {
                 domain: domain,
             }, function (response) {
                 $scope.sell = (response.sell || []).reverse()

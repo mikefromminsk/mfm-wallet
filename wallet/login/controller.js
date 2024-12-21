@@ -22,7 +22,7 @@ function openLogin(success) {
 
             $scope.login = function () {
                 $scope.startRequest()
-                postContract("mfm-token", "account.php", {
+                postContract("mfm-token", "account", {
                     domain: wallet.gas_domain,
                     address: $scope.username,
                 }, function (response) {
@@ -37,7 +37,7 @@ function openLogin(success) {
                         showError(str.password_invalid)
                     }
                 }, function () {
-                    postContract("mfm-token", "send.php", {
+                    postContract("mfm-token", "send", {
                         domain: wallet.gas_domain,
                         from_address: wallet.genesis_address,
                         to_address: $scope.username,

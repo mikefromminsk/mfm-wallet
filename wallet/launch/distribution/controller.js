@@ -50,7 +50,7 @@ function openDistribution(domain, success) {
             $scope.startRequest()
             getPin(function (pin) {
                 wallet.calcStartHash($scope.domain, pin, function (next_hash) {
-                    postContract("mfm-token", "send.php", {
+                    postContract("mfm-token", "send", {
                         domain: $scope.domain,
                         from_address: wallet.genesis_address,
                         to_address: wallet.address(),
@@ -65,16 +65,16 @@ function openDistribution(domain, success) {
 
         function mining(domain, pin) {
             wallet.calcStartHash(domain, pin, function (next_hash) {
-                postContract("mfm-token", "send.php", {
+                postContract("mfm-token", "send", {
                     domain: domain,
                     from_address: wallet.genesis_address,
                     to_address: "mining",
                     amount: "0",
                     pass: ":" + next_hash,
-                    delegate: "mfm-mining/mint.php",
+                    delegate: "mfm-mining/mint",
                 }, function () {
                     calcPass(domain, pin, function (pass) {
-                        postContract("mfm-token", "send.php", {
+                        postContract("mfm-token", "send", {
                             domain: domain,
                             from_address: wallet.address(),
                             to_address: "mining",
@@ -89,11 +89,11 @@ function openDistribution(domain, success) {
         }
 
         function exchange(domain, pin) {
-            postContract("mfm-exchange", "spred.php", {
+            postContract("mfm-exchange", "spred", {
                 domain: domain,
             }, function () {
                 wallet.calcPass(domain, pin, function (pass) {
-                    postContract("mfm-token", "send.php", {
+                    postContract("mfm-token", "send", {
                         domain: domain,
                         from_address: wallet.address(),
                         to_address: "bot_spred_" + domain,

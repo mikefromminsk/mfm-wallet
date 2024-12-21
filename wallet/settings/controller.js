@@ -10,7 +10,7 @@ function openSettings(success) {
         }
 
         $scope.init = function () {
-            postContract("mfm-token", "account.php", {
+            postContract("mfm-token", "account", {
                 domain: wallet.gas_domain,
                 address: wallet.address(),
             }, function (response) {

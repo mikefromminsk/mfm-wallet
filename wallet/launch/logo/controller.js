@@ -23,7 +23,7 @@ function openLogoChange(domain, success) {
         $scope.logoLink = ""
         $scope.uploadLogo = function () {
             selectFile(function (file) {
-                post("https://storage.mytoken.space/upload_file.php", {
+                post("https://storage.mytoken.space/upload_file", {
                     filename: domain + ".png",
                     width: 64,
                     height: 64,
@@ -47,7 +47,7 @@ function openLogoChange(domain, success) {
         }
 
         $scope.copyLogo = function (logo) {
-            post("https://storage.mytoken.space/copy_file.php", {
+            post("https://storage.mytoken.space/copy_file", {
                 from: logo + ".png",
                 to: domain + ".png",
             }, function () {

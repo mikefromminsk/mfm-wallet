@@ -19,7 +19,7 @@ function openMining(domain, success) {
             }
 
             function loadMiningInfo(startMiningAfterRequest) {
-                postContract("mfm-mining", "info.php", {
+                postContract("mfm-mining", "info", {
                     domain: domain,
                     address: wallet.address(),
                 }, function (response) {
@@ -45,7 +45,7 @@ function openMining(domain, success) {
                     }, 1000 * 60 * 10)
                     window.pinForSesstion = pin
                     wallet.calcPass(domain, pin, function (pass) { // reg domain account
-                        postContract("mfm-token", "account.php", {
+                        postContract("mfm-token", "account", {
                             domain: wallet.gas_domain,
                             address: wallet.address(),
                         }, function (response) {
@@ -62,11 +62,11 @@ function openMining(domain, success) {
             function startMiningProcess(last_hash, difficulty) {
                 if (worker != null)
                     worker.terminate()
-                worker = new Worker('/mfm-mining/console/worker.js');
+                worker = new Worker('/mfm-wallet/products/mining/worker.js');
                 worker.addEventListener('message', function (e) {
                     $scope.speed = e.data.speed
                     if ($scope.last_hash == e.data.last_hash) {
-                        postContractWithGas("mfm-mining", "mint.php", {
+                        postContractWithGas("mfm-mining", "mint", {
                             domain: domain,
                             nonce: e.data.nonce,
                             str: e.data.str,
@@ -120,7 +120,7 @@ function openMining(domain, success) {
             }
 
             function loadAccounts() {
-                postContract("mfm-token", "accounts.php", {
+                postContract("mfm-token", "accounts", {
                     address: wallet.address(),
                 }, function (response) {
                     let accounts = []
@@ -133,7 +133,7 @@ function openMining(domain, success) {
             }
 
             function loadTrans() {
-                postContract("mfm-token", "trans.php", {
+                postContract("mfm-token", "trans", {
                     from_address: "mining",
                     to_address: wallet.address(),
                     domain: domain,

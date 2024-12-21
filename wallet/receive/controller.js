@@ -4,7 +4,7 @@ function openReceive(success) {
 
         $scope.receive = function () {
             let bonus = $scope.share_pass.split(":")
-            postContractWithGas("mfm-bank",  "receive.php", {
+            postContractWithGas("mfm-data",  "airdrop/receive", {
                 domain: bonus[0],
                 to_address: wallet.address(),
                 invite_key: bonus[1],

@@ -25,7 +25,7 @@ function openSearch(success) {
         }, 500)
 
         $scope.search = function () {
-            postContract("mfm-token", "search.php", {
+            postContract("mfm-token", "search", {
                 search_text: $scope.search_text,
             }, function (response) {
                 $scope.tokens = response.tokens

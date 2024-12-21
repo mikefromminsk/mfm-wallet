@@ -14,7 +14,7 @@ function openStaking(domain, success) {
             getPin(function (pin) {
                 calcPass(domain, pin, function (pass) {
                     $scope.startRequest()
-                    postContract("mfm-bank", "stake.php", {
+                    postContract("mfm-data", "staking/stake", {
                         domain: domain,
                         amount: $scope.amount,
                         address: wallet.address(),
@@ -31,7 +31,7 @@ function openStaking(domain, success) {
             getPin(function (pin) {
                 calcPass(domain, pin, function (pass) {
                     $scope.startRequest()
-                    postContract("mfm-bank", "unstake.php", {
+                    postContract("mfm-data", "staking/unstake", {
                         domain: domain,
                         address: wallet.address(),
                         pass: pass,
@@ -48,7 +48,7 @@ function openStaking(domain, success) {
         }
 
         function getStakes() {
-            postContract("mfm-bank", "staking/staked.php", {
+            postContract("mfm-data", "staking/staked", {
                 address: wallet.address(),
             }, function (response) {
                 for (const stake_tran of response.staked) {

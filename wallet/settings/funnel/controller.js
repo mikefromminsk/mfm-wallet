@@ -44,7 +44,7 @@ function openAnalytics(success) {
         ]
 
         for (let funnel of $scope.funnels) {
-            postContract("mfm-analytics", "funnel.php", {
+            postContract("mfm-analytics", "funnel", {
                 funnel: funnel.events.join(","),
             }, function (response) {
                 funnel.response = response

@@ -3,7 +3,7 @@ function openPayOffCredit(success) {
     showDialog("products/credit/pay_off_credit", success, function ($scope) {
 
         function getCredits() {
-            postContract("mfm-token", "trans.php", {
+            postContract("mfm-token", "trans", {
                 domain: wallet.gas_domain,
                 from_address: wallet.address(),
                 to_address: $scope.bank_address,

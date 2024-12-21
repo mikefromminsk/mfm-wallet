@@ -24,7 +24,7 @@ function createOdometer(el, value) {
 
 function addWallet($scope) {
     function getTokens() {
-        postContract("mfm-token", "accounts.php", {
+        postContract("mfm-token", "accounts", {
             address: wallet.address(),
         }, function (response) {
             $scope.accounts = response.accounts
@@ -36,7 +36,7 @@ function addWallet($scope) {
     }
 
     function getCredits() {
-        postContract("mfm-token", "trans.php", {
+        postContract("mfm-token", "trans", {
             domain: wallet.gas_domain,
             from_address: wallet.address(),
             to_address: $scope.bank_address,
@@ -54,7 +54,7 @@ function addWallet($scope) {
     }
 
     function getStaked() {
-        postContract("mfm-bank", "staking/staked.php", {
+        postContract("mfm-data", "staking/staked", {
             address: wallet.address(),
         }, function (response) {
             $scope.staked = response.staked

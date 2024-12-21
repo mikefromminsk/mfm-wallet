@@ -6,7 +6,7 @@ function openLaunchToken(success) {
             if ($scope.search_text.length < 3) {
                 $scope.tokens = []
             } else {
-                postContract("mfm-token", "search.php", {
+                postContract("mfm-token", "search", {
                     search_text: $scope.search_text,
                     size: 1,
                 }, function (response) {

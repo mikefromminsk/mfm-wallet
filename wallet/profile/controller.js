@@ -1,5 +1,5 @@
 function getProfile(domain, success, error) {
-    postContract("mfm-token", "profile.php", {
+    postContract("mfm-token", "profile", {
         domain: domain,
         address: wallet.address(),
     }, success, error)
@@ -11,7 +11,7 @@ function openTokenProfile(domain, success) {
         $scope.domain = domain
 
         function loadProfile() {
-            postContract("mfm-token", "token_info.php", {
+            postContract("mfm-token", "token_info", {
                 domain: domain,
                 address: wallet.address()
             }, function (response) {

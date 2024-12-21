@@ -2,7 +2,7 @@ function addHistory($scope) {
 
     function loadTrans() {
         if (wallet.address() != "") {
-            postContract("mfm-token", "trans.php", {
+            postContract("mfm-token", "trans", {
                 from_address: wallet.address(),
             }, function (response) {
                 $scope.trans = $scope.groupByTimePeriod(response.trans)

@@ -4,7 +4,7 @@ function openReviews(success) {
         $scope.reviews = []
         let likes = []
         let dislikes = []
-        postContract("mfm-analytics", "events.php", {
+        postContract("mfm-analytics", "events", {
             app: "ui",
             name: "dislike",
         }, function (response) {
@@ -12,7 +12,7 @@ function openReviews(success) {
             $scope.reviews = dislikes.concat(likes)
             $scope.$apply()
         })
-        postContract("mfm-analytics", "events.php", {
+        postContract("mfm-analytics", "events", {
             app: "ui",
             name: "like",
         }, function (response) {
@@ -23,7 +23,7 @@ function openReviews(success) {
 
         $scope.sendAnswer = function reviewAnswer(item) {
             trackCall(arguments)
-            postContract("mfm-messages", "send_to_address.php", {
+            postContract("mfm-messages", "send_to_address", {
                 from_address: wallet.address(),
                 to_address: item.user_id,
                 message: item.answer,

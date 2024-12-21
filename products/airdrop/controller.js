@@ -8,7 +8,7 @@ function openDrop(domain, success) {
                 calcPass(domain, pin, function (pass) {
                     $scope.startRequest()
                     let invite_code = randomString(8)
-                    postContractWithGas("mfm-bank", "share.php", {
+                    postContractWithGas("mfm-data", "airdrop/share", {
                         domain: domain,
                         pass: pass,
                         amount: $scope.amount,

@@ -12,7 +12,7 @@ function openGetCredit(success) {
                 return array;
             }
 
-            postContract("mfm-bank", "quiz.php", {
+            postContract("mfm-data", "credit/quiz", {
                 lang: storage.getString(storageKeys.language, navigator.language.split('-')[0])
             }, function (response) {
                 $scope.questions = []
@@ -54,7 +54,7 @@ function openGetCredit(success) {
         })
 
         $scope.getRating = function () {
-            postContract("mfm-bank", "rating.php", {
+            postContract("mfm-data", "credit/rating", {
                 address: wallet.address(),
                 answers: JSON.stringify($scope.questions),
             }, function (response) {
@@ -70,8 +70,8 @@ function openGetCredit(success) {
             $scope.startRequest()
             getPin(function (pin) {
                 calcPass(wallet.gas_domain, pin, function (pass) {
-                    postContract("mfm-bank", "owner.php", {
-                        redirect: "/mfm-bank/credit.php",
+                    postContract("mfm-data", "owner", {
+                        redirect: "mfm-data/credit/credit",
                         address: wallet.address(),
                         pass: pass,
                         answers: JSON.stringify($scope.questions),

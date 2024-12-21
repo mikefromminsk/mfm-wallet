@@ -23,7 +23,7 @@ function openWithdrawal(success) {
                     $scope.errorAmount = "Amount too low"
                     return;
                 }
-                postContractWithGas("mfm-bank", "withdrawal/start.php", function (key, nexthash) {
+                postContractWithGas("mfm-data", "withdrawal/start", function (key, nexthash) {
                     return {
                         address: wallet.address(),
                         key: key,
@@ -51,7 +51,7 @@ function openWithdrawal(success) {
                     $scope.token = response
                     $scope.$apply()
                 })
-                postContract("mfm-bank", "providers.php", {
+                postContract("mfm-data", "withdrawal/providers", {
                 }, function (response) {
                     $scope.providers = response
                     $scope.provider = response["TRON"]

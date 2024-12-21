@@ -10,7 +10,7 @@ function openDeposit(success) {
         $scope.chain = "TRON"
 
         function getDepositAddress() {
-            postContract("mfm-bank", "deposit/start.php", {
+            postContract("mfm-data", "deposit/start", {
                 address: wallet.address(),
                 chain: $scope.chain,
             }, function (response) {
@@ -48,8 +48,8 @@ function openDeposit(success) {
         }
 
         function depositCheck() {
-            postContract("mfm-bank", "owner.php", {
-                redirect: "mfm-bank/deposit/check.php",
+            postContract("mfm-data", "owner", {
+                redirect: "mfm-data/deposit/check",
                 deposit_address: $scope.deposit_address,
                 chain: $scope.chain,
             }, function (response) {
