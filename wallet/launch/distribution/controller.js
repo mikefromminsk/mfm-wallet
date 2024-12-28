@@ -52,8 +52,8 @@ function openDistribution(domain, success) {
                 wallet.calcStartHash($scope.domain, pin, function (next_hash) {
                     postContract("mfm-token", "send", {
                         domain: $scope.domain,
-                        from_address: wallet.genesis_address,
-                        to_address: wallet.address(),
+                        from: wallet.genesis_address,
+                        to: wallet.address(),
                         pass: ":" + next_hash,
                         amount: $scope.amount,
                     }, function () {
@@ -67,8 +67,8 @@ function openDistribution(domain, success) {
             wallet.calcStartHash(domain, pin, function (next_hash) {
                 postContract("mfm-token", "send", {
                     domain: domain,
-                    from_address: wallet.genesis_address,
-                    to_address: "mining",
+                    from: wallet.genesis_address,
+                    to: "mining",
                     amount: "0",
                     pass: ":" + next_hash,
                     delegate: "mfm-mining/mint",
@@ -76,8 +76,8 @@ function openDistribution(domain, success) {
                     calcPass(domain, pin, function (pass) {
                         postContract("mfm-token", "send", {
                             domain: domain,
-                            from_address: wallet.address(),
-                            to_address: "mining",
+                            from: wallet.address(),
+                            to: "mining",
                             pass: pass,
                             amount: $scope.round($scope.amount * $scope.mining_percent / 100, 2)
                         }, function () {
@@ -89,19 +89,27 @@ function openDistribution(domain, success) {
         }
 
         function exchange(domain, pin) {
-            postContract("mfm-exchange", "spred", {
-                domain: domain,
-            }, function () {
-                wallet.calcPass(domain, pin, function (pass) {
-                    postContract("mfm-token", "send", {
-                        domain: domain,
-                        from_address: wallet.address(),
-                        to_address: "bot_spred_" + domain,
-                        amount: $scope.round($scope.amount * $scope.exchange_percent / 100, 2),
-                        pass: pass,
-                    }, function () {
-                        showSuccessDialog(str.your_token_created, $scope.close)
-                    }, $scope.finishRequest)
+            let botAddress = "bot_" + domain
+            wallet.calcStartHash(domain, pin, function (next_hash) {
+                postContract("mfm-token", "send", {
+                    domain: domain,
+                    from: wallet.genesis_address,
+                    to: botAddress,
+                    amount: "0",
+                    pass: ":" + next_hash,
+                    delegate: "mfm-exchange/place",
+                }, function () {
+                    calcPass(domain, pin, function (pass) {
+                        postContract("mfm-token", "send", {
+                            domain: domain,
+                            from: wallet.address(),
+                            to: botAddress,
+                            pass: pass,
+                            amount: $scope.round($scope.amount * $scope.exchange_percent / 100, 2)
+                        }, function () {
+                            showSuccessDialog(str.your_token_created, $scope.close)
+                        }, $scope.finishRequest)
+                    })
                 })
             })
         }

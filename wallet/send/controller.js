@@ -28,8 +28,8 @@ function openSend(domain, to_address, amount, success) {
                 calcPass(domain, pin, function (pass) {
                     postContract("mfm-token", "send", {
                         domain: domain,
-                        from_address: wallet.address(),
-                        to_address: $scope.to_address,
+                        from: wallet.address(),
+                        to: $scope.to_address,
                         pass: pass,
                         amount: $scope.amount,
                     }, function (response) {

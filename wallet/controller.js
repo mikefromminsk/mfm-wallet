@@ -38,7 +38,7 @@ function addWallet($scope) {
     function getCredits() {
         postContract("mfm-token", "trans", {
             domain: wallet.gas_domain,
-            from_address: wallet.address(),
+            address: wallet.address(),
             to_address: $scope.bank_address,
         }, function (response) {
             $scope.credit = 0
@@ -54,12 +54,12 @@ function addWallet($scope) {
     }
 
     function getStaked() {
-        postContract("mfm-data", "staking/staked", {
+        /*postContract("mfm-data", "staking/staked", {
             address: wallet.address(),
         }, function (response) {
             $scope.staked = response.staked
             $scope.$apply()
-        })
+        })*/
     }
 
     $scope.getTotalBalance = function () {

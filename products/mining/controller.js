@@ -134,7 +134,7 @@ function openMining(domain, success) {
 
             function loadTrans() {
                 postContract("mfm-token", "trans", {
-                    from_address: "mining",
+                    address: "mining",
                     to_address: wallet.address(),
                     domain: domain,
                 }, function (response) {

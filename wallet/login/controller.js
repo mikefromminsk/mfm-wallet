@@ -39,8 +39,8 @@ function openLogin(success) {
                 }, function () {
                     postContract("mfm-token", "send", {
                         domain: wallet.gas_domain,
-                        from_address: wallet.genesis_address,
-                        to_address: $scope.username,
+                        from: wallet.genesis_address,
+                        to: $scope.username,
                         amount: 0,
                         pass: ":" + CryptoJS.MD5(wallet.calcHash(
                             wallet.gas_domain,

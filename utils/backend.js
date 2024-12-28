@@ -113,7 +113,7 @@ function hashMod(str, mod) {
 let nodePortOffsets = {}
 
 function getPortOffset() {
-    let host = location.host == "localhost" ? "mytoken.space" : location.host
+    let host = location.host
     let offset = nodePortOffsets[host]
     if (offset == null) {
         offset = hashMod(host, 16)
@@ -123,7 +123,7 @@ function getPortOffset() {
 }
 
 function postContract(domain, path, params, success, error) {
-    post(location.origin + ":" + (8000 + getPortOffset()) + "/" + domain + "/" + path + ".php", params, success, error)
+    post(location.origin + ":" + (8000 + getPortOffset()) + "/" + domain + "/" + path/* + ".php"*/, params, success, error)
 }
 
 function getParam(paramName, def) {
@@ -226,8 +226,8 @@ var wallet = {
             wallet.calcStartHash(domain, pin, function (next_hash) {
                 postContract("mfm-token", "send", {
                     domain: domain,
-                    from_address: wallet.genesis_address,
-                    to_address: wallet.address(),
+                    from: wallet.genesis_address,
+                    to: wallet.address(),
                     amount: 0,
                     pass: ":" + next_hash
                 }, function () {
