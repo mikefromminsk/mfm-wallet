@@ -8,6 +8,16 @@
     src: url("font/Inter_18pt-Bold.ttf");
 }
 
+@font-face {
+    font-family: FontMonoMedium;
+    src: url("font/RobotoMono-Medium.ttf");
+}
+
+@font-face {
+    font-family: FontMonoBold;
+    src: url("font/RobotoMono-Bold.ttf");
+}
+
 body {
     font-family: FontMedium, Roboto, "Helvetica Neue", sans-serif;
 }
@@ -19,11 +29,20 @@ md-bottom-sheet {
     max-width: 600px;
     background: var(--black);
     color: var(--white);
-    box-shadow: 4px 0 4px rgba(255,255,255,0.2);
+    box-shadow: 4px 0 4px rgba(255, 255, 255, 0.2);
 }
+
 body {
     white-space: nowrap;
     font-size: 14px;
+}
+
+.mono {
+    font-family: FontMonoMedium, Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mono.bold {
+    font-family: FontMonoBold, Roboto, "Helvetica Neue", sans-serif;
 }
 
 html, body, md-dialog {
@@ -279,6 +298,7 @@ button {
     font-size: 16px;
     font-family: FontBold;
 }
+
 .scroll-horizontal {
     overflow-x: scroll;
     overflow-y: hidden;
@@ -344,7 +364,7 @@ md-radio-button.md-default-theme .md-on, md-radio-button .md-on {
     background-color: var(--accent);
 }
 
-.md-track-container{
+.md-track-container {
     background-color: var(--accent);
 }
 
@@ -592,7 +612,6 @@ md-radio-button.md-default-theme .md-on, md-radio-button .md-on {
 }
 
 
-
 .slider {
     width: 100%;
     overflow: hidden;
@@ -697,10 +716,6 @@ md-radio-button.md-default-theme .md-on, md-radio-button .md-on {
 
 md-dialog {
     max-width: 980px;
-}
-
-md-dialog > *:last-child {
-    padding-bottom: 60px;
 }
 
 

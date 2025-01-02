@@ -115,15 +115,15 @@
                     </div>
 
                     <!--orderbook-->
-                    <div class="col align-end" style="height: calc(20px * 6)">
+                    <div class="col align-end mono" style="height: calc(20px * 6)">
                         <div class="row align-start-center ripple"
                              ng-repeat="item in sell"
                              style="height: 20px; position: relative"
                              ng-click="changePrice(item.price)">
                             <div class="back-red" style="position: absolute; height: 100%; opacity: 0.19;"
                                  ng-style="{'min-width': item.percent + '%'}"></div>
-                            <div class="flex text-red">{{formatPrice(item.price)}}</div>
-                            <div class="text-red">{{formatAmount(item.amount)}}</div>
+                            <div class="flex text-red">${{item.price.toFixed(4)}}</div>
+                            <div class="text-red">{{item.amount.toFixed(4)}}</div>
                         </div>
                     </div>
 
@@ -132,20 +132,15 @@
                         <p class="text2 lowercase">{{str.volume24}} ${{formatAmount(token.volume24, '', 0)}}</p>
                     </div>
 
-                    <div class="col align-start" style="height: calc(20px * 6)">
+                    <div class="col align-start mono" style="height: calc(20px * 6)">
                         <div class="row align-start-center ripple"
                              ng-repeat="item in buy" style="height: 20px; position: relative"
                              ng-click="changePrice(item.price)">
                             <div class="back-green" style="position: absolute; height: 100%; opacity: 0.19;"
                                  ng-style="{'min-width': item.percent + '%'}"></div>
-                            <div class="flex text-green">{{formatPrice(item.price)}}</div>
-                            <div>{{formatAmount(item.amount)}}</div>
+                            <div class="flex text-green">${{item.price.toFixed(4)}}</div>
+                            <div>{{item.amount.toFixed(4)}}</div>
                         </div>
-                    </div>
-                    <div class="button"
-                         ng-show="token.owner == wallet.address()"
-                         ng-click="openSpredBot(token.domain)">
-                        Bot console
                     </div>
                 </div>
             </div>

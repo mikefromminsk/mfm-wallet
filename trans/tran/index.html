@@ -42,6 +42,11 @@
                     <p class="flex text2">{{str.time}}</p>
                     <p>{{formatTimeDiff(tran.time)}}</p>
                 </div>
+                <div class="row mt8">
+                    <p class="flex text2">ID</p>
+                    <p class="">
+                        {{tran.next_hash.substring(0, 4) + ".." + tran.next_hash.substring(tran.next_hash.length - 4)}}</p>
+                </div>
 
             </div>
             <!--@SerializedName("valueUSD")
@@ -60,8 +65,7 @@
     <div class="primary-button" ng-click="copy(tran.next_hash)">
         {{str.copy}} ID
     </div>
-    <div class="primary-button back-black"
-         style="margin: 0 16px 16px 16px"
+    <div class="primary-button mt0 back-black"
          ng-click="close()">
         {{str.close}}
     </div>

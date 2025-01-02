@@ -24,17 +24,17 @@ function openExchange(domain, is_sell) {
 
         $scope.changeTotal = function () {
             if ($scope.price != null && $scope.total != null)
-                $scope.amount = $scope.round($scope.total / $scope.price, 2)
+                $scope.amount = $scope.round($scope.total / $scope.price, 4)
         }
 
         $scope.$watch("price", function () {
-            $scope.price = $scope.round($scope.price, 2)
+            $scope.price = $scope.round($scope.price, 4)
         })
         $scope.$watch("amount", function () {
-            $scope.amount = $scope.round($scope.amount, 2)
+            $scope.amount = $scope.round($scope.amount, 4)
         })
         $scope.$watch("total", function () {
-            $scope.total = $scope.round($scope.total, 2)
+            $scope.total = $scope.round($scope.total, 4)
         })
         $scope.portion = 0
         $scope.$watch("portion", function (new_value, old_value) {

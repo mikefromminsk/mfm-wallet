@@ -1,3 +1,7 @@
+.space {
+    height: 60px;
+}
+
 @keyframes trophy {
     0% {
         transform: translateY(500px);

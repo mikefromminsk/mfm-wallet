@@ -4,7 +4,7 @@ function addFormats($scope) {
     }
 
     function shortNumber(number, precision) {
-        if (precision == null) precision = 2
+        if (precision == null) precision = 4
         number = $scope.round(number, precision)
         let numberFormat = new Intl.NumberFormat()
         let result
@@ -75,6 +75,12 @@ function addFormats($scope) {
         if (number > 0)
             str = "+" + str;
         return str;
+    }
+
+    $scope.formatZeros = function (number, precision) {
+        if (number == 0)
+            return "0";
+        return x.toFixed(2)
     }
 
     $scope.formatPercent = function (number, precision) {
@@ -198,7 +204,7 @@ function addFormats($scope) {
     // this is not a formats
 
     $scope.getLogoLink = function (domain) {
-        return "https://storage.mytoken.space/" + domain + ".png"
+        return "https://storage.vavilon.org/" + domain + ".png"
     }
 
     $scope.getLogo = function (domain, width) {

@@ -13,29 +13,29 @@
             <div class="row align-start-center gap8">
                 <div ng-style="getLogo(domain)"></div>
                 <p>{{formatTicker(domain)}}</p>
-                <p>tokens</p>
             </div>
+            <p>{{str.total_sypply}}</p>
             <md-slider-container>
                 <md-slider class="md-primary" ng-model="amount_step" min="0" max="8"></md-slider>
                 <md-input-container style="max-width: 100%">
                     {{formatAmount(amount)}}
                 </md-input-container>
             </md-slider-container>
-            <p>Airdrops</p>
+            <p>{{str.you_will_receive}}</p>
             <md-slider-container>
                 <md-slider class="md-primary" ng-model="user_percent" min="0" max="100"></md-slider>
                 <md-input-container>
                     {{formatPercent(user_percent, 2)}}
                 </md-input-container>
             </md-slider-container>
-            <p>Mining</p>
+            <p>{{str.mining}}</p>
             <md-slider-container>
                 <md-slider class="md-primary" ng-model="mining_percent" min="0" max="100"></md-slider>
                 <md-input-container>
                     {{formatPercent(mining_percent, 2)}}
                 </md-input-container>
             </md-slider-container>
-            <p>Exchange</p>
+            <p>{{str.exchange}}</p>
             <md-slider-container>
                 <md-slider class="md-primary" ng-model="exchange_percent" min="0" max="100"></md-slider>
                 <md-input-container>
@@ -49,5 +49,5 @@
          ng-click="launch()">
         {{str.launch_token}}
     </div>
-    <div></div>
+    <div class="space"></div>
 </md-dialog>

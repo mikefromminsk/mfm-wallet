@@ -155,12 +155,10 @@ function addNavigator($scope) {
         openDistribution(domain, success)
     }
 
-    $scope.openSpredBot = function (domain, success) {
-        openSpredBot(domain, success)
-    }
     $scope.openAskCredit = function (success) {
         openAskCredit(success)
     }
+
     $scope.openStaking = function (domain, success) {
         openStaking(domain, success)
     }
