@@ -1,6 +1,6 @@
 function openSend(domain, to_address, amount, success) {
     trackCall(arguments)
-    showBottomSheet("wallet/send", success, function ($scope) {
+    showDialog("wallet/send", success, function ($scope) {
         $scope.domain = domain
         if ((to_address || "") != "") {
             $scope.to_address = to_address
@@ -34,7 +34,7 @@ function openSend(domain, to_address, amount, success) {
                         amount: $scope.amount,
                     }, function (response) {
                         storage.pushToArray(storageKeys.send_history, $scope.to_address, 3)
-                        $scope.back()
+                        $scope.close()
                         openTran(response.next_hash, success)
                     }, $scope.finishRequest)
                 })
@@ -63,5 +63,9 @@ function openSend(domain, to_address, amount, success) {
         }
 
         init()
+
+        setTimeout(function () {
+            document.getElementById('send_address').focus()
+        }, 500)
     })
 }

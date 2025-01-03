@@ -71,16 +71,10 @@ function addFormats($scope) {
     $scope.formatChange = function (number) {
         if (number == 0)
             return ""
-        let str = $scope.formatPercent(number, 2)
+        let str = $scope.formatPercent(number, 0)
         if (number > 0)
             str = "+" + str;
         return str;
-    }
-
-    $scope.formatZeros = function (number, precision) {
-        if (number == 0)
-            return "0";
-        return x.toFixed(2)
     }
 
     $scope.formatPercent = function (number, precision) {

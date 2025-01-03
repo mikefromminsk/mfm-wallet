@@ -136,7 +136,6 @@ const session = getParam("o") || randomString(8)
 
 function trackEvent(name, value, user_id, success, error) {
     postContract("mfm-analytics", "track", {
-        app: "ui",
         name: name,
         value: value || "",
         user_id: user_id || "",

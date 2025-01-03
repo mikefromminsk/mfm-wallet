@@ -96,8 +96,7 @@ input:disabled {
     left: 26px;
 }
 
-.input-wrapper > input,
-textarea {
+.input-wrapper > input{
     padding-left: 52px;
     background-color: var(--black);
     color: var(--white);
@@ -108,6 +107,18 @@ textarea {
     font-size: 16px;
     padding-top: 4px;
     border: 1px solid var(--gray300);
+}
+
+textarea {
+    padding: 16px;
+    width: 100%;
+    background-color: var(--black);
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 16px;
+    border: 1px solid var(--gray300);
+    box-sizing: border-box;
+    resize: vertical;
 }
 
 .input-wrapper > input:disabled {

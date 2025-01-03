@@ -1,44 +1,44 @@
 function openAnalytics(success) {
     trackCall(arguments)
     showDialog("wallet/settings/funnel", success, function ($scope) {
-        $scope.funnels = [
+        $scope.funnels = [/*
             {
                 "title": "Telegram open",
                 "events": [
-                    "tg:start",
-                    "ui:tg_referer",
-                    "ui:tg_link",
+                    "tg_start",
+                    "tg_referer",
+                    "tg_link",
                 ]
-            },
+            },*//*
             {
                 "title": "Email open test_invite2",
                 "events": [
-                    "email:send=test_invite2",
-                    "email:readed",
-                    "ui:start",
+                    "email_send=test_invite2",
+                    "email_readed",
+                    "start",
                 ]
-            },
+            },*/
             {
                 "title": "Place orders",
                 "events": [
-                    "ui:start",
-                    "ui:openTokenProfile",
-                    "ui:place",
+                    "start",
+                    "openTokenProfile",
+                    "place",
                 ]
             },
             {
                 "title": "Get credits",
                 "events": [
-                    "ui:start",
-                    "ui:openGetCredit",
-                    "ui:getCredit",
+                    "start",
+                    "openGetCredit",
+                    "getCredit",
                 ]
             }/*,
             {
                 "title": "Answer reviews",
                 "events": [
-                    "ui:start",
-                    "ui:reviewAnswer",
+                    "start",
+                    "reviewAnswer",
                 ]
             }*/
         ]
@@ -52,6 +52,6 @@ function openAnalytics(success) {
             })
         }
 
-        addChart($scope, "ui:start", "ui:start")
+        addChart($scope, "start", "start")
     })
 }

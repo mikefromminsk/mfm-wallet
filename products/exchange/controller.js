@@ -3,6 +3,7 @@ function openExchange(domain, is_sell) {
     showDialog("products/exchange", null, function ($scope) {
         $scope.domain = domain
         $scope.is_sell = is_sell == 1
+        $scope.price = null
 
         $scope.openLogin = function () {
             openLogin(init)
@@ -137,9 +138,10 @@ function openExchange(domain, is_sell) {
             postContract("mfm-exchange", "orderbook", {
                 domain: domain,
             }, function (response) {
+                if ($scope.sell == null && response.sell.length > 0)
+                        $scope.changePrice(response.sell[0].price)
                 $scope.sell = (response.sell || []).reverse()
                 $scope.buy = response.buy
-                $scope.orderbook = response
                 $scope.$apply()
             })
         }

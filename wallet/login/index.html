@@ -8,25 +8,16 @@
     </div>
     <div class="flex col">
         <div class="col input-content">
-            <div class="row input-wrapper">
-                <img class="img-white" src="/mfm-wallet/img/user-circle.svg">
-                <input id="login_address"
-                       type="text"
-                       autocapitalize="off"
-                       autocomplete="off"
-                       maxlength="16"
-                       oninput="this.value = this.value.replace(/[^a-zA-Z0-9_]/g, '').toLowerCase();"
-                       ng-model="username"
-                       placeholder="{{str.username}}">
+            <div>
+                {{str.save_this_phrase_for_access_the_wallet}}
             </div>
-            <div class="row input-wrapper">
-                <img class="img-white" src="/mfm-wallet/img/password.svg">
-                <input id="login_password"
-                       type="password"
-                       autocapitalize="off"
-                       autocomplete="off"
-                       ng-model="password"
-                       placeholder="{{str.password}}">
+            <div class="m0 p16">
+            <textarea id="seed_phrase"
+                      type="text"
+                      autocapitalize="off"
+                      autocomplete="off"
+                      ng-model="mnemonic"
+                      placeholder="{{str.seed_phrase}}"></textarea>
             </div>
             <div class="row align-start-center gap8">
                 <p>{{str.agree_to}}</p>
@@ -36,7 +27,7 @@
             </div>
             <div class="primary-button"
                  ng-click="login()"
-                 ng-disabled="in_progress || !username || !password || in_progress">
+                 ng-disabled="in_progress || !validateBip39(mnemonic)">
                 {{str.accept_and_login}}
             </div>
         </div>

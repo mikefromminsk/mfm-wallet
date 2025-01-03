@@ -12,6 +12,8 @@ function addHome($scope) {
         })
     }
 
+    $scope.host = location.host
+
 
     $scope.openSlide = function (domain) {
         trackCall(arguments)
