@@ -8,7 +8,7 @@ function start($scope) {
     $scope.selectTab = function (tab) {
         $scope.selectedIndex = tab
         if (tab == 0) {
-            addHistory($scope)
+            addDialogs($scope)
         } else if (tab == 1) {
             addHome($scope)
         } else if (tab == 2) {

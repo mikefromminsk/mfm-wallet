@@ -18,7 +18,7 @@
                  ng-show="wallet.address()"
                  ng-click="copy(wallet.address())">
                 <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/user-circle.svg">
-                <div class="flex">{{wallet.address()}}</div>
+                <div class="flex">{{formatAddress(wallet.address())}}</div>
                 <img class="img20 img-white" src="/mfm-wallet/img/copy.svg">
             </div>
             <div class="row align-start-center ripple" ng-click="openLanguages()">

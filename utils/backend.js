@@ -209,8 +209,8 @@ var wallet = {
     calcStartHash: function (domain, pin, success) {
         success(md5(wallet.calcHash(domain, wallet.address(), decode(storage.getString(storageKeys.passhash), pin))))
     },
-    calcStartPass: function (domain, address, password, prev_key) {
-        return ":" + md5(wallet.calcHash(domain, address, password, prev_key))
+    calcStartPass: function (domain, address, password) {
+        return ":" + md5(wallet.calcHash(domain, address, password || address))
     },
     calcKeyHash: function (domain, prev_key, pin, success) {
         let passhash = storage.getString(storageKeys.passhash)

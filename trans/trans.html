@@ -3,7 +3,7 @@
     <div class="text0" ng-hide="tran.day">Need groupByTimePeriod</div>
     <div class="row mt16 p16 radius-default back-gray ripple"
          ng-repeat="item in tran.items"
-         ng-click="openTran(item.next_hash)">
+         ng-click="selectTran(item)">
         <div class="row">
             <div class="img32 p8 back-black radius-default" ng-hide="item.from == wallet.address()">
                 <img class="img16 img-gray" src="/mfm-wallet/img/arrow-down.svg">
@@ -15,7 +15,8 @@
 
         <div class="col ml16">
             <p class="">{{item.from == wallet.address() ? str.sent : str.received}}</p>
-            <p class="mt4 text2 lowercase">{{item.from == wallet.address() ? str.to + " " + item.to : str.from + " " + item.from}}</p>
+            <p class="mt4 text2 lowercase">
+                {{item.from == wallet.address() ? str.to + " " + formatAddress(item.to) : str.from + " " + formatAddress(item.from)}}</p>
         </div>
 
         <div class="flex col align-start-end">

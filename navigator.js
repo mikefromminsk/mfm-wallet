@@ -80,6 +80,10 @@ function addNavigator($scope) {
         openPromo(promo, success)
     }
 
+    $scope.openChat = function (to, success) {
+        openChat(to, success)
+    }
+
     $scope.openMining = function (domain) {
         openMining(domain)
     }

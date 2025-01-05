@@ -48,6 +48,12 @@ function addFormats($scope) {
         return result
     }
 
+    $scope.formatAddress = function (address) {
+        if (address == null) return ""
+        if (address.length < 10) return address
+        return address.substr(0, 5) + "..." + address.substr(-5)
+    }
+
     $scope.watchAmount = function (newValue, oldValue) {
         if (newValue == null) return;
         if (newValue != oldValue && $scope.formatAmount(newValue, '', 2) != newValue) {

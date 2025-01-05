@@ -1,14 +1,18 @@
-function addHistory($scope) {
+function addDialogs($scope) {
 
     function loadTrans() {
         if (wallet.address() != "") {
-            postContract("mfm-token", "trans", {
+            postContract("mfm-token", "tran_dialogs", {
                 address: wallet.address(),
             }, function (response) {
-                $scope.trans = $scope.groupByTimePeriod(response.trans)
+                $scope.trans = $scope.groupByTimePeriod(response.dialogs)
                 $scope.$apply()
             })
         }
+    }
+
+    $scope.selectTran = function (tran) {
+        openChat(tran.from == wallet.address() ? tran.to : tran.from)
     }
 
     if (wallet.address() == "") {
