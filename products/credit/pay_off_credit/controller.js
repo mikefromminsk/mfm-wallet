@@ -5,8 +5,8 @@ function openPayOffCredit(success) {
         function getCredits() {
             postContract("mfm-token", "trans", {
                 domain: wallet.gas_domain,
-                address: wallet.address(),
-                to_address: $scope.bank_address,
+                from: wallet.address(),
+                to: $scope.bank_address,
             }, function (response) {
                 $scope.trans = $scope.groupByTimePeriod(response.trans)
                 $scope.credit = 0

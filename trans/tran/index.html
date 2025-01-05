@@ -22,11 +22,11 @@
             <div class="input-content">
                 <div class="row mt8" ng-hide="tran.from == wallet.address()">
                     <p class="flex text2">{{str.from}}</p>
-                    <p>{{tran.from}}</p>
+                    <p>{{formatAddress(tran.from)}}</p>
                 </div>
                 <div class="row mt8" ng-hide="tran.to == wallet.address()">
                     <p class="flex text2">{{str.to}}</p>
-                    <p>{{tran.to}}</p>
+                    <p>{{formatAddress(tran.to)}}</p>
                 </div>
                 <div class="row mt8">
                     <p class="flex text2">{{str.amount}}</p>
@@ -44,8 +44,7 @@
                 </div>
                 <div class="row mt8">
                     <p class="flex text2">ID</p>
-                    <p class="">
-                        {{tran.next_hash.substring(0, 4) + ".." + tran.next_hash.substring(tran.next_hash.length - 4)}}</p>
+                    <p>{{formatAddress(tran.next_hash)}}</p>
                 </div>
 
             </div>

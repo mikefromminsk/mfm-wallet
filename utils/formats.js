@@ -51,7 +51,22 @@ function addFormats($scope) {
     $scope.formatAddress = function (address) {
         if (address == null) return ""
         if (address.length < 10) return address
-        return address.substr(0, 5) + "..." + address.substr(-5)
+        return address.substr(0, 4) + "..." + address.substr(-4)
+    }
+
+    $scope.getIdenticon = function (address) {
+        if (address.length < 32)
+            address = CryptoJS.MD5(address).toString()
+        return {
+            "min-width": "32px",
+            "min-height": "32px",
+            "background-image": "url(data:image/png;base64,"
+                + new Identicon(address, {
+                    background: [255, 255, 255, 0],         // rgba white
+                    margin: 0.2,                              // 20% margin
+                    size: 32,                                // 420px square
+                }).toString() + ")",
+        }
     }
 
     $scope.watchAmount = function (newValue, oldValue) {
@@ -267,7 +282,7 @@ function addFormats($scope) {
         }
     }
     $scope.pressEnter = function (callback) {
-        if (callback){
+        if (callback) {
             keyPressCallback = callback
             document.addEventListener('keypress', keyPressListener);
         }

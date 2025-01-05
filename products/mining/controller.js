@@ -134,9 +134,9 @@ function openMining(domain, success) {
 
             function loadTrans() {
                 postContract("mfm-token", "trans", {
-                    address: "mining",
-                    to_address: wallet.address(),
                     domain: domain,
+                    from: "mining",
+                    to: wallet.address(),
                 }, function (response) {
                     $scope.trans = $scope.groupByTimePeriod(response.trans)
                     $scope.$apply()

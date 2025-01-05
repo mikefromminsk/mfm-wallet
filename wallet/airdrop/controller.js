@@ -39,7 +39,7 @@ function openDrop(domain, success) {
                         }, $scope.finishRequest)
                     }, $scope.finishRequest)
                 }, $scope.finishRequest)
-            })
+            }, $scope.finishRequest)
         }
 
         $scope.copyUrl = function () {
