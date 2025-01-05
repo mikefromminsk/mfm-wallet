@@ -20,10 +20,6 @@ function openSearch(success) {
             openTokenProfile(domain,init)
         }
 
-        setTimeout(function () {
-            document.getElementById('search_input').focus()
-        }, 500)
-
         $scope.search = function () {
             postContract("mfm-token", "search", {
                 search_text: $scope.search_text,
@@ -39,5 +35,9 @@ function openSearch(success) {
         }
 
         init()
+
+        setTimeout(function () {
+            document.getElementById('search_input').focus()
+        }, 500)
     })
 }

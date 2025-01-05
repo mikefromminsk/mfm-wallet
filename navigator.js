@@ -76,8 +76,8 @@ function addNavigator($scope) {
         openGetCredit(success)
     }
 
-    $scope.openReceive = function (success) {
-        openReceive(success)
+    $scope.openPromo = function (promo, success) {
+        openPromo(promo, success)
     }
 
     $scope.openMining = function (domain) {

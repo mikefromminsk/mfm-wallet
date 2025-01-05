@@ -106,8 +106,12 @@ function post(url, params, success, error) {
     xhr.send(formData)
 }
 
+function md5(str) {
+    return CryptoJS.MD5(str).toString()
+}
+
 function hashMod(str, mod) {
-    return Number(BigInt("0x" + CryptoJS.MD5(str).toString()) % BigInt(mod))
+    return Number(BigInt("0x" + md5(str)) % BigInt(mod))
 }
 
 let nodePortOffsets = {}
@@ -200,16 +204,19 @@ var wallet = {
     },
     // rename to calcKey
     calcHash: function (domain, username, password, prev_key) {
-        return CryptoJS.MD5(domain + username + password + (prev_key || "")).toString()
+        return md5(domain + username + password + (prev_key || ""))
     },
     calcStartHash: function (domain, pin, success) {
-        success(CryptoJS.MD5(wallet.calcHash(domain, wallet.address(), decode(storage.getString(storageKeys.passhash), pin))).toString())
+        success(md5(wallet.calcHash(domain, wallet.address(), decode(storage.getString(storageKeys.passhash), pin))))
+    },
+    calcStartPass: function (domain, address, password, prev_key) {
+        return ":" + md5(wallet.calcHash(domain, address, password, prev_key))
     },
     calcKeyHash: function (domain, prev_key, pin, success) {
         let passhash = storage.getString(storageKeys.passhash)
         let password = decode(passhash, pin)
         let key = wallet.calcHash(domain, wallet.address(), password, prev_key)
-        let next_hash = CryptoJS.MD5(wallet.calcHash(domain, wallet.address(), password, key)).toString()
+        let next_hash = md5(wallet.calcHash(domain, wallet.address(), password, key))
         success(key, next_hash)
     },
     calcPass: function (domain, pin, success, error) {
@@ -234,6 +241,9 @@ var wallet = {
                 })
             })
         })
+    },
+    reg: function (domain, pin, success, error) {
+        calcPass(domain, pin, success, error)
     },
     calcPassList: function (domains, pin, success, error) {
         var passes = {}

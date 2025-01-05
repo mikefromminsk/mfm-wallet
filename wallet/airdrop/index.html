@@ -1,0 +1,47 @@
+<md-dialog class="fill col">
+    <div class="row header align-start-center">
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="openSupport()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/support.svg">
+        </div>
+        <p class="flex row align-center">{{str.airdrop}}</p>
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+        </div>
+    </div>
+    <div class="flex col scroll align-start-center">
+        <div class="col block input-content">
+            <div class="row input-wrapper">
+                <img class="img-white" src="/mfm-wallet/img/password.svg">
+                <input type="text"
+                       id="promo"
+                       autocapitalize="off"
+                       autocomplete="off"
+                       minlength="3"
+                       maxlength="32"
+                       ng-model="promoCode"
+                       placeholder="{{str.promo_code}}">
+            </div>
+            <div class="row input-wrapper">
+                <div ng-style="getLogo(domain)"></div>
+                <input type="number"
+                       autocapitalize="off"
+                       autocomplete="off"
+                       ng-model="amount"
+                       placeholder="{{str.amount}}">
+                <button ng-click="setMax()"
+                        ng-hide="account.balance == 0">
+                    {{str.max}}
+                </button>
+            </div>
+            <div ng-class="{'text-red': account.balance < amount}">
+                {{str.available}}: {{formatAmount(account.balance, token.domain)}}
+            </div>
+            <div class="primary-button"
+                 ng-click="create()"
+                 ng-disabled="!amount || !promoCode || in_progress">
+                {{str.share}}
+            </div>
+            <div></div>
+        </div>
+    </div>
+</md-dialog>

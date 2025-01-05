@@ -3,15 +3,6 @@ function start($scope) {
 
     document.title = window.location.hostname
 
-    function setIcon() {
-        let link = document.createElement('link')
-        link.rel = 'icon'
-        link.href = DEBUG ? 'logo-debug.png' : 'logo.png'
-        document.head.appendChild(link)
-    }
-
-    setIcon()
-
     $scope.menu = ["history", "home", "wallet"]
     $scope.selectedIndex = 1
     $scope.selectTab = function (tab) {

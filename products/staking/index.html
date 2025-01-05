@@ -45,9 +45,8 @@
                    autocomplete="off"
                    ng-model="amount"
                    placeholder="{{domain}}">
-            <button class="border-none nowrap"
-                    ng-click="setMax()"
-                    ng-disabled="account.balance == 0">
+            <button ng-click="setMax()"
+                    ng-hide="account.balance == 0">
                 {{str.max}}
             </button>
         </div>

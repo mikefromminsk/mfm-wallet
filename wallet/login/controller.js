@@ -16,17 +16,17 @@ function openLogin(success) {
 
             $scope.login = function () {
                 $scope.startRequest()
-                let password = CryptoJS.MD5($scope.mnemonic).toString()
-                let address = CryptoJS.MD5(password).toString()
+                let password = md5($scope.mnemonic)
+                let address = md5(password)
                 postContract("mfm-token", "account", {
                     domain: wallet.gas_domain,
                     address: address,
                 }, function (response) {
-                    if (CryptoJS.MD5(wallet.calcHash(
+                    if (wallet.calcStartPass(
                         wallet.gas_domain,
                         address,
                         password,
-                        response.account.prev_key)).toString() == response.account.next_hash) {
+                        response.account.prev_key) == response.account.next_hash) {
                         loginSuccess()
                     } else {
                         $scope.finishRequest()
@@ -38,10 +38,7 @@ function openLogin(success) {
                         from: wallet.genesis_address,
                         to: address,
                         amount: 0,
-                        pass: ":" + CryptoJS.MD5(wallet.calcHash(
-                            wallet.gas_domain,
-                            address,
-                            $scope.password)).toString()
+                        pass: wallet.calcStartPass(wallet.gas_domain, address, password)
                     }, loginSuccess, $scope.finishRequest)
                 })
 
@@ -62,6 +59,7 @@ function openLogin(success) {
                 }
 
                 function loginFinish() {
+                    showSuccess(str.login_success)
                     if (success) success()
                     $scope.close()
                 }

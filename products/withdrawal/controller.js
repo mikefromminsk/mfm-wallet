@@ -48,7 +48,7 @@ function openWithdrawal(success) {
 
             function init() {
                 getProfile(wallet.gas_domain, function (response) {
-                    $scope.token = response
+                    $scope.token = response.token
                     $scope.$apply()
                 })
                 postContract("mfm-data", "withdrawal/providers", {

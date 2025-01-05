@@ -32,14 +32,12 @@
                        autocomplete="off"
                        ng-model="amount"
                        placeholder="{{str.amount}}">
-                <button class="border-none"
-                        ng-click="setMax()"
-                        ng-disabled="account.balance == 0">
+                <button ng-click="setMax()"
+                        ng-hide="account.balance == 0">
                     {{str.max}}
                 </button>
             </div>
-            <div class="text2"
-                 ng-class="{'text-red': account.balance < amount}">
+            <div ng-class="{'text-red': account.balance < amount}">
                 {{str.available}}: {{formatAmount(account.balance, token.domain)}}
             </div>
             <button class="primary-button"

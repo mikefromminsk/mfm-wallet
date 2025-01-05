@@ -109,6 +109,11 @@ input:disabled {
     border: 1px solid var(--gray300);
 }
 
+.input-wrapper > button{
+    border: none;
+    position: absolute; right: 20px; top: 17px;
+}
+
 textarea {
     padding: 16px;
     width: 100%;

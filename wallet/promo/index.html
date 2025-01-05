@@ -1,0 +1,28 @@
+<md-dialog class="fill col">
+    <div class="row header align-start-center">
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="openSupport()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/support.svg">
+        </div>
+        <p class="flex row align-center">{{str.receive}}</p>
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+        </div>
+    </div>
+    <div class="flex col scroll">
+        <div class="flex col block input-content">
+            <div class="row input-wrapper">
+                <img class="img-white" src="/mfm-wallet/img/share.svg"  ng-hide="parseDomain()">
+                <div ng-style="getLogo(parseDomain())" ng-show="parseDomain()"></div>
+                <input type="text"
+                       ng-model="promo"
+                       placeholder="{{str.promo_code}}">
+            </div>
+            <div class="primary-button"
+                 ng-disabled="!promo || in_progress"
+                 ng-click="receive()">
+                {{str.receive}}
+            </div>
+            <div></div>
+        </div>
+    </div>
+</md-dialog>
