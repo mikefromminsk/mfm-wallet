@@ -43,6 +43,7 @@
             <input type="number"
                    autocapitalize="off"
                    autocomplete="off"
+                   maxlength="16"
                    ng-model="amount"
                    placeholder="{{domain}}">
             <button ng-click="setMax()"
@@ -53,7 +54,7 @@
         <p>{{str.available}} {{formatAmount(account.balance, domain)}}</p>
         <div class="primary-button"
              ng-click="openStake()"
-             ng-disabled="account.balance == 0 || in_progress">
+             ng-disabled="account.balance == 0 || in_progress || !amount">
             {{str.stake}}
         </div>
     </div>
@@ -63,12 +64,16 @@
             <p class="size12 uppercase">{{str.reward}}</p>
             <p class="size40 bold">{{formatAmount(reward, domain, 8)}}</p>
         </div>
-        <p>{{str.you_have_staked}} {{formatAmount(stake.amount, domain)}}</p>
+        <div class="row align-center-center">
+            <p>{{str.you_have_staked}} {{formatAmount(stake.amount, domain)}}</p>
+        </div>
         <div class="primary-button"
              ng-disabled="in_progress"
              ng-click="openUnstake()">
             {{str.unstake}}
         </div>
     </div>
-    <div></div>
+    <div class="primary-button back-black" ng-click="close()">
+        {{str.close}}
+    </div>
 </md-dialog>
