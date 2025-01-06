@@ -3,7 +3,7 @@
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="openSupport()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/support.svg">
         </div>
-        <p class="flex row align-center">{{str.receive}}</p>
+        <p class="flex row align-center">{{str.promo_code}}</p>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
         </div>
@@ -11,9 +11,10 @@
     <div class="flex col scroll">
         <div class="flex col block input-content">
             <div class="row input-wrapper">
-                <img class="img-white" src="/mfm-wallet/img/share.svg"  ng-hide="parseDomain()">
+                <img class="img-white" src="/mfm-wallet/img/qr.svg"  ng-hide="parseDomain()">
                 <div ng-style="getLogo(parseDomain())" ng-show="parseDomain()"></div>
                 <input type="text"
+                       id="enter_promo"
                        ng-model="promo"
                        placeholder="{{str.promo_code}}">
             </div>

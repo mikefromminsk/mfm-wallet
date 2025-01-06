@@ -31,11 +31,17 @@ function openDrop(domain, success) {
                             amount: $scope.amount
                         }, function () {
                             let link = location.origin + "/mfm-wallet#openPromo=" + domain + ":" + $scope.promoCode
-                            $scope.copy(link)
-                            showSuccessDialog(link, function () {
-                                $scope.finishRequest()
-                                success()
-                            })
+                            showSuccessDialog(str.promo_link_was_generated, async () => {
+                                try {
+                                    await navigator.share({
+                                        title: str.share,
+                                        text: str.click_on_the_link_and_win + " " + $scope.amount + " " + $scope.formatTicker(domain),
+                                        url: link,
+                                    });
+                                    $scope.close()
+                                } catch (err) {
+                                }
+                            }, str.share)
                         }, $scope.finishRequest)
                     }, $scope.finishRequest)
                 }, $scope.finishRequest)

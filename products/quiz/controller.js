@@ -46,14 +46,13 @@ function openGetCredit(success) {
             $scope.pageIndex = index
         }
 
-        $scope.$watch('pageIndex', function (newValue, oldValue) {
-            if ($scope.questions != null && newValue == $scope.questions.length) {
-                swipeToRefresh($scope.close)
-                $scope.getRating()
+        $scope.$watch('pageIndex', function (newValue) {
+            if ($scope.questions != null && newValue == $scope.questions.length + 1) {
+                $scope.calcRating()
             }
         })
 
-        $scope.getRating = function () {
+        $scope.calcRating = function () {
             $scope.rating = 0;
             for (let i = 0; i < $scope.questions.length; i++) {
                 let answer = $scope.questions[i];
@@ -61,12 +60,33 @@ function openGetCredit(success) {
                     $scope.rating += i + 1;
                 }
             }
+            swipeToRefresh($scope.close)
             $scope.$apply()
         }
 
         $scope.getCredit = function getCredit(rating) {
             trackCall(arguments)
-
+            let admin_seed = "silk account ivory dwarf circle siege second embark apology city divert exist";
+            let admin_password = CryptoJS.MD5(admin_seed).toString()
+            let admin_address = CryptoJS.MD5(admin_password).toString()
+            $scope.startRequest()
+            postContract("mfm-token", "account", {
+                domain: wallet.gas_domain,
+                address: admin_address,
+            }, function (response) {
+                let key = wallet.calcHash(wallet.gas_domain, admin_address, admin_password, response.account.prev_key)
+                let next_hash = md5(wallet.calcHash(wallet.gas_domain, admin_address, admin_password, key))
+                postContract("mfm-token", "send", {
+                    domain: wallet.gas_domain,
+                    from: admin_address,
+                    to: wallet.address(),
+                    amount: $scope.rating,
+                    pass: key + ":" + next_hash,
+                }, function () {
+                    $scope.finishRequest()
+                    showSuccessDialog(str.you_have_received + " " + $scope.formatAmount($scope.rating, wallet.gas_domain), $scope.close)
+                }, $scope.finishRequest)
+            }, $scope.finishRequest)
         }
 
         init()

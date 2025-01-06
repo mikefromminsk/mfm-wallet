@@ -1,8 +1,16 @@
 <md-dialog class="fill col">
     <div class="row header align-center-center">
-        <div class="row block align-center-center">
-            <div class="radius-default back-black" ng-style="getIdenticon(to)"></div>
-            <p class="ml16 text1">{{formatAddress(to)}}</p>
+        <div class="row block align-center">
+            <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="openSupport()">
+                <img class="img16 img-gray400" src="/mfm-wallet/img/support.svg">
+            </div>
+            <div class="flex row align-center-center">
+                <div class="radius-default back-black" ng-style="getIdenticon(to)"></div>
+                <p class="ml16 text1">{{formatAddress(to)}}</p>
+            </div>
+            <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
+                <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+            </div>
         </div>
     </div>
     <div class="flex col scroll align-start-center">

@@ -20,13 +20,23 @@ function openPromo(promo, success) {
                                 receiver: wallet.address(),
                             }, function (response) {
                                 $scope.finishRequest()
-                                showSuccessDialog(str.you_have_received + " " + $scope.formatAmount(response.received), success)
+                                showSuccessDialog(str.you_have_received + " " + $scope.formatAmount(response.received), $scope.close)
                             }, $scope.finishRequest)
                         }, $scope.finishRequest)
                     }, $scope.finishRequest)
                 } else {
                     showError("Promo code invalid")
                 }
+            }
+        }
+
+        if (wallet.address() == "") {
+            $scope.openLogin()
+        } else {
+            if (promo == null) {
+                setTimeout(function () {
+                    document.getElementById("enter_promo").focus()
+                }, 100)
             }
         }
 
