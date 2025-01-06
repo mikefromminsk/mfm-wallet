@@ -44,7 +44,7 @@ function openMining(domain, success) {
                         window.location.reload()
                     }, 1000 * 60 * 10)
                     window.pinForSesstion = pin
-                    wallet.calcPass(domain, pin, function (pass) { // reg domain account
+                    wallet.reg(domain, pin, function () {
                         postContract("mfm-token", "account", {
                             domain: wallet.gas_domain,
                             address: wallet.address(),
@@ -52,7 +52,7 @@ function openMining(domain, success) {
                             if (response.account.balance > 0) {
                                 loadMiningInfo(true)
                             } else {
-                                openAskCredit(wallet.gas_domain, init)
+                                openGetCredit(init)
                             }
                         })
                     })
@@ -146,7 +146,7 @@ function openMining(domain, success) {
             function init() {
                 loadProfile()
                 loadMiningInfo()
-                get("/mfm-mining/readme.md", function (text) {
+                get("/mfm-wallet/docs/mining.md", function (text) {
                     setMarkdown("mfm-mining-readme", text)
                 })
             }

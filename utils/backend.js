@@ -127,7 +127,7 @@ function getPortOffset() {
 }
 
 function postContract(domain, path, params, success, error) {
-    post(location.origin + ":" + (8000 + getPortOffset()) + "/" + domain + "/" + path/* + ".php"*/, params, success, error)
+    post(location.origin + ":" + (8000 + getPortOffset()) + "/" + domain + "/" + path, params, success, error)
 }
 
 function getParam(paramName, def) {
