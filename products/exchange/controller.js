@@ -63,8 +63,7 @@ function openExchange(domain, is_sell) {
                         pass: passes[$scope.is_sell ? domain : wallet.gas_domain]
                     }, function () {
                         $scope.finishRequest()
-                        loadOrders()
-                        showSuccess(str.order_placed, function () {
+                        showSuccessDialog(str.order_placed, function () {
                             loadOrderbook()
                             /*if (storage.getString(storageKeys.first_review) == "") {
                                 storage.setString(storageKeys.first_review, "1")
@@ -86,23 +85,20 @@ function openExchange(domain, is_sell) {
                 postContract("mfm-exchange", "cancel", {
                     order_id: order_id,
                 }, function () {
-                    loadOrders()
+                    loadOrderbook()
                     showSuccess(str.order_canceled, loadOrderbook)
                 })
             })
         }
 
         $scope.orders = []
-
         function loadOrders() {
             if (wallet.address() != "")
                 postContract("mfm-exchange", "orders", {
                     domain: domain,
                     address: wallet.address(),
                 }, function (response) {
-                    $scope.orders = []
-                    $scope.orders.push.apply($scope.orders, response.active)
-                    $scope.orders.push.apply($scope.orders, response.history)
+                    $scope.orders = [].concat(response.active, response.history)
                     $scope.$apply()
                 })
         }
@@ -111,7 +107,6 @@ function openExchange(domain, is_sell) {
             loadBaseProfile()
             loadQuoteBalance()
             loadOrderbook()
-            loadOrders()
         }
 
         function loadBaseProfile() {
@@ -144,6 +139,8 @@ function openExchange(domain, is_sell) {
                 $scope.buy = response.buy
                 $scope.$apply()
             })
+            if (wallet.address() != "")
+                loadOrders()
         }
 
         //addChart($scope, domain + "_price")

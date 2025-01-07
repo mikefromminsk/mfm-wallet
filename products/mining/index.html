@@ -1,8 +1,10 @@
 <md-dialog class="fill col block">
     <div class="row header align-start-center">
-        <div class="flex row align-start-center">
-            <div ng-style="getLogo(domain)"></div>
-            <p class="ml16">{{formatTicker(domain)}}</p>
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="openSupport()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/support.svg">
+        </div>
+        <div class="flex row align-center">
+            {{str.mining}}
         </div>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">

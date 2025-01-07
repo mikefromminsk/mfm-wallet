@@ -9,8 +9,10 @@
                        id="search_input"
                        autocomplete="off"
                        style="border-radius: 32px;"
-                       placeholder="{{str.type_token_name}}"
-                       ng-model="search_text">
+                       oninput="this.value = this.value.replace(/[^a-zA-Z0-9_]/g, '').toLowerCase();"
+                       ng-model="search_text"
+                       ng-change="search()"
+                       placeholder="{{str.type_token_name}}">
             </div>
         </div>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">

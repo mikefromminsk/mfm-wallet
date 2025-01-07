@@ -1,7 +1,11 @@
 <md-dialog class="fill col">
     <div class="row header align-start-center">
-        <div ng-style="getLogo(domain)"></div>
-        <p class="flex">{{formatTicker(domain)}} {{str.staking}}</p>
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="openSupport()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/support.svg">
+        </div>
+        <div class="flex row align-center">
+            {{str.staking}}</p>
+        </div>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
         </div>
@@ -25,7 +29,7 @@
             <div class="row gap8 align-start-center">
                 <img class="img40 p8 img-gray" src="/mfm-wallet/img/star.svg">
                 <p class="text2">{{str.min_clame_reward}}:</p>
-                <p class="text1">{{formatAmount(.01, domain)}}</p>
+                <p class="text1">{{formatAmount(.0001, domain)}}</p>
             </div>
             <div class="row gap8 align-start-center"
                  ng-show="stake.to == staking_address">

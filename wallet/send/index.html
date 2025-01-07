@@ -1,6 +1,11 @@
 <md-dialog class="fill col">
     <div class="row header align-start-center">
-        <p class="flex">{{str.send}} {{formatTicker(domain)}}</p>
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="openSupport()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/support.svg">
+        </div>
+        <div class="flex row align-center">
+            {{str.send}}
+        </div>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="back()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
         </div>

@@ -1,6 +1,6 @@
 <md-dialog class="fill col">
     <div class="row header align-start-center">
-        <div class="row gap16 align-start-center" ng-click="openTokenProfile(token.domain)">
+        <div class="row gap16 align-start-center">
             <div ng-style="getLogo(token.domain)"></div>
             <div class="col">
                 <p class="uppercase text1">{{token.domain}}</p>
@@ -11,6 +11,7 @@
                     </p>
                 </div>
             </div>
+            <button ng-click="openTokenProfile(token.domain)">{{str.profile}}</button>
         </div>
         <div class="flex"></div>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
@@ -148,8 +149,10 @@
                 <p class="mt16">{{str.orders}}</p>
                 <div class="row mt16 size12 align-start-center" ng-repeat="item in orders">
                     <div class="row align-end-end" ng-style="getLogo(domain)">
-                        <p class="ph4 size10 back-green text-white radius-default" ng-show="item.is_sell == 0">{{str.buy}}</p>
-                        <p class="ph4 size10 back-red text-white radius-default" ng-show="item.is_sell == 1">{{str.sell}}</p>
+                        <p class="ph4 size10 back-green text-white radius-default" ng-show="item.is_sell == 0">
+                            {{str.buy}}</p>
+                        <p class="ph4 size10 back-red text-white radius-default" ng-show="item.is_sell == 1">
+                            {{str.sell}}</p>
                     </div>
                     <div class="flex col ml8">
                         <p>{{formatTicker(domain)}}</p>
@@ -167,19 +170,20 @@
                             <p class="">{{formatPrice(item.amount * item.price)}}</p>
                             <p class="mt4 size10 text-gray">{{formatPrice(item.price)}}</p>
                         </div>
-                        <img class="img16 img-green" src="/mfm-wallet/img/success.svg" ng-show="item.status != 0">
+                        <img class="img16 img-green"
+                             src="/mfm-wallet/img/success.svg"
+                             ng-hide="item.status == 0">
                         <img class="img16 img-red ripple"
                              src="/mfm-wallet/img/close.svg"
                              ng-show="item.status == 0"
                              ng-click="cancel(item.order_id)">
                     </div>
-                </div>
-                <div class="col align-center-center text1 text-gray"
-                     ng-hide="orders.length > 0"
-                     style="height: 200px">
-                    {{str.there_is_no_orders_yet}}
+                    <div class="col align-center-center text1 text-gray"
+                         ng-hide="orders.length > 0"
+                         style="height: 200px">
+                        {{str.there_is_no_orders_yet}}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 </md-dialog>
