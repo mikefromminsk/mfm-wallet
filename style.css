@@ -96,7 +96,7 @@ input:disabled {
     left: 26px;
 }
 
-.input-wrapper > input{
+.input-wrapper > input {
     padding-left: 52px;
     background-color: var(--black);
     color: var(--white);
@@ -109,9 +109,11 @@ input:disabled {
     border: 1px solid var(--gray300);
 }
 
-.input-wrapper > button{
+.input-wrapper > button {
     border: none;
-    position: absolute; right: 20px; top: 17px;
+    position: absolute;
+    right: 20px;
+    top: 17px;
 }
 
 textarea {
@@ -838,4 +840,10 @@ md-dialog {
 
 md-slider-container md-input-container input[type=number] {
     color: var(--white);
+}
+
+
+li {
+    margin-top: 8px;
+    line-height: 1.4em;
 }

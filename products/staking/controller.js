@@ -55,12 +55,14 @@ function openStaking(domain, success) {
             postContract("mfm-token", "staked", {
                 address: wallet.address(),
             }, function (response) {
+                $scope.stake = null
                 for (const stake_tran of response.staked) {
                     if (stake_tran.domain == domain) {
                         $scope.stake = stake_tran
                         if (rewardTimer == null)
                             rewardTimer = setInterval(function () {
-                                let period_percent = Math.min(1, (new Date() / 1000 - stake_tran.time) / (60 * 60 * 24) / $scope.period_days)
+                                let SEC_IN_DAY = 60 * 60 * 24
+                                let period_percent = (new Date() / 1000 - stake_tran.time) / SEC_IN_DAY / $scope.period_days
                                 $scope.reward = $scope.stake.amount * response.percent / 100 * period_percent
                                 $scope.$apply()
                             }, 1000)

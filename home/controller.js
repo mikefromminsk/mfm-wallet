@@ -1,6 +1,6 @@
 function addHome($scope) {
     function init() {
-        postContract("mfm-wallet", "home/api/main", {
+        postContract("mfm-analytics", "home", {
             empty: true,
         }, function (response) {
             $scope.slides = response.tops.top_exchange
@@ -37,6 +37,10 @@ function addHome($scope) {
             }, 5000)
         }
     }
+
+    get("/mfm-wallet/docs/white_paper.md", function (text) {
+        setMarkdown("white_paper", text)
+    })
 
     init()
 }

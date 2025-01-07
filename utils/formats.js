@@ -76,19 +76,23 @@ function addFormats($scope) {
         }
         return newValue;
     }
+
     $scope.formatHash = function (hash) {
         if (hash == null) return ""
         return hash.substr(0, 5) + "..." + hash.substr(-5)
     }
+
     $scope.formatTickerShort = function (domain) {
         if (domain == null) return ""
         if (domain.length > 8)
             domain = domain.substr(0, 7) + ".."
         return $scope.formatTicker(domain)
     }
+
     $scope.formatTicker = function (domain) {
         return (domain || "").toUpperCase()
     }
+
     $scope.formatChange = function (number) {
         if (number == 0)
             return ""
@@ -193,15 +197,15 @@ function addFormats($scope) {
     }
 
     $scope.groupByTimePeriod = function (obj) {
-        var objPeriod = {};
-        var oneDay = 24 * 60 * 60;
-        for (var i = 0; i < obj.length; i++) {
-            var d = new Date(obj[i]['time']);
+        let objPeriod = {};
+        let oneDay = 24 * 60 * 60;
+        for (let i = 0; i < obj.length; i++) {
+            let d = new Date(obj[i]['time']);
             d = Math.floor(d.getTime() / oneDay);
             objPeriod[d] = objPeriod[d] || [];
             objPeriod[d].push(obj[i]);
         }
-        var result = []
+        let result = []
         for (day of Object.keys(objPeriod).sort().reverse()) {
             result.push({
                 day: $scope.formatDate(day * 24 * 60 * 60),
@@ -214,7 +218,6 @@ function addFormats($scope) {
     $scope.max = function (a, b) {
         return Math.max(a, b)
     }
-
 
     // this is not a formats
 
@@ -281,6 +284,7 @@ function addFormats($scope) {
                 keyPressCallback()
         }
     }
+
     $scope.pressEnter = function (callback) {
         if (callback) {
             keyPressCallback = callback
