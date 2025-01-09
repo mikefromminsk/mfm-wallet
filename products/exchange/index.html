@@ -178,11 +178,11 @@
                              ng-show="item.status == 0"
                              ng-click="cancel(item.order_id)">
                     </div>
-                    <div class="col align-center-center text1 text-gray"
-                         ng-hide="orders.length > 0"
-                         style="height: 200px">
-                        {{str.there_is_no_orders_yet}}
-                    </div>
+                </div>
+                <div class="col align-center-center text1 text-gray"
+                     ng-show="orders.length == 0"
+                     style="height: 200px">
+                    {{str.there_is_no_orders_yet}}
                 </div>
             </div>
         </div>

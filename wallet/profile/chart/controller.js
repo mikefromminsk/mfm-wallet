@@ -70,6 +70,15 @@ function addChart($scope, key, accomulate_key) {
         }, function (response) {
             if (response.candles != null) {
                 $scope.candleSeries.setData(response.candles)
+                for (const volume of response.accomulate) {
+                    for (const candle of response.candles) {
+                        if (candle.time == volume.time) {
+                            if (candle.open > candle.close)
+                                volume.color = "#FF3347";
+                            break
+                        }
+                    }
+                }
                 $scope.accomulateSeries.setData(response.accomulate)
                 $scope.showNoData = false
             } else {

@@ -35,41 +35,31 @@ function addWallet($scope) {
         })
     }
 
-    function getCredits() {
-        postContract("mfm-token", "trans", {
-            domain: wallet.gas_domain,
-            from: wallet.address(),
-            to: $scope.bank_address,
-        }, function (response) {
-            $scope.credit = 0
-            $scope.pay_off = 0
-            for (const tran of response.trans) {
-                if (tran.from == $scope.bank_address)
-                    $scope.credit += tran.amount
-                if (tran.to == $scope.bank_address)
-                    $scope.pay_off += tran.amount
-            }
-            $scope.$apply()
-        })
+    $scope.getPrice = function (domain) {
+        for (const account of $scope.accounts) {
+            if (account.domain == domain)
+                return account.token.price
+        }
+        return 0
     }
 
     function getStaked() {
-        /*postContract("mfm-data", "staking/staked", {
+        postContract("mfm-token", "staked", {
             address: wallet.address(),
         }, function (response) {
             $scope.staked = response.staked
             $scope.$apply()
-        })*/
+        })
     }
 
     $scope.getTotalBalance = function () {
         let totalBalance = 0
         if ($scope.accounts != null)
             for (const account of $scope.accounts)
-                totalBalance += account.price * account.balance
+                totalBalance += account.token.price * account.balance
         if ($scope.staked != null)
             for (const stake of $scope.staked)
-                totalBalance += stake.price * stake.amount
+                totalBalance += $scope.getPrice(stake.domain) * stake.amount
         return totalBalance
     }
 
@@ -90,7 +80,7 @@ function addWallet($scope) {
             if ($scope.accounts != null) {
                 for (let account of $scope.accounts) {
                     if (account.domain == data.domain) {
-                        account.price = data.price
+                        account.token.price = data.price
                         $scope.$apply()
                         break
                     }
@@ -101,7 +91,6 @@ function addWallet($scope) {
 
     $scope.walletInit = function () {
         getTokens()
-        getCredits()
         getStaked()
     }
 

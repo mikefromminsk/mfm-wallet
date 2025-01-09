@@ -56,17 +56,22 @@ function openStaking(domain, success) {
                 address: wallet.address(),
             }, function (response) {
                 $scope.stake = null
-                for (const stake_tran of response.staked) {
-                    if (stake_tran.domain == domain) {
-                        $scope.stake = stake_tran
-                        if (rewardTimer == null)
-                            rewardTimer = setInterval(function () {
-                                let SEC_IN_DAY = 60 * 60 * 24
-                                let period_percent = (new Date() / 1000 - stake_tran.time) / SEC_IN_DAY / $scope.period_days
-                                $scope.reward = $scope.stake.amount * response.percent / 100 * period_percent
-                                $scope.$apply()
-                            }, 1000)
-                        break
+                $scope.reward = null
+                if ($scope.token.owner == wallet.address()) {
+                    showError(str.you_cannot_stake_your_own_token)
+                } else {
+                    for (const stake_tran of response.staked) {
+                        if (stake_tran.domain == domain) {
+                            $scope.stake = stake_tran
+                            if (rewardTimer == null)
+                                rewardTimer = setInterval(function () {
+                                    let SEC_IN_DAY = 60 * 60 * 24
+                                    let period_percent = (new Date() / 1000 - stake_tran.time) / SEC_IN_DAY / $scope.period_days
+                                    $scope.reward = $scope.stake.amount * response.percent / 100 * period_percent
+                                    $scope.$apply()
+                                }, 1000)
+                            break
+                        }
                     }
                 }
                 $scope.period_days = response.period_days
@@ -76,8 +81,8 @@ function openStaking(domain, success) {
         }
 
         function init() {
-            getStakes()
             getProfile(domain, function (response) {
+                getStakes()
                 $scope.token = response.token
                 $scope.account = response.account
                 $scope.$apply()

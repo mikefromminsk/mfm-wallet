@@ -196,6 +196,8 @@ function calcPassList(domain, pin, success, error) {
 var wallet = {
     gas_domain: "usdt",
     genesis_address: "owner",
+    STAKING_ADDRESS: "de4e3daf6acddab48fe5cb446e1dc80b",
+    MINING_ADDRESS: "e1c0a6007e8f45c96d4b9f2d0df0551c",
     logout: function () {
         storage.clear()
     },

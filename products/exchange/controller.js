@@ -93,14 +93,15 @@ function openExchange(domain, is_sell) {
 
         $scope.orders = []
         function loadOrders() {
-            if (wallet.address() != "")
+            if (wallet.address() != ""){
                 postContract("mfm-exchange", "orders", {
                     domain: domain,
                     address: wallet.address(),
                 }, function (response) {
-                    $scope.orders = [].concat(response.active, response.history)
+                    $scope.orders = [].concat(response.active || [], response.history || [])
                     $scope.$apply()
                 })
+            }
         }
 
         function init() {

@@ -103,12 +103,9 @@ function addFormats($scope) {
     }
 
     $scope.formatPercent = function (number, precision) {
-        number = $scope.round(number, precision || 1)
         if (number == 0) return "0%";
-        if (number < 0)
-            return number + "%";
-        else if (number > 0)
-            return number + "%";
+        if (number < 1 && number > -1) return "<1%";
+        return $scope.round(number, precision || 1) + "%";
     }
 
     $scope.percentColor = function (number) {

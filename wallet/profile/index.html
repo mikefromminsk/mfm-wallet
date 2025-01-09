@@ -87,11 +87,19 @@
                 </div>
                 <div class="row">
                     <p class="flex text2">{{str.circulation_supply}}</p>
-                    <p>{{formatPercent((1 - (owner.balance / token.supply)) * 100, 4)}}</p>
+                    <p>{{formatPercent((1 - (owner.balance / token.supply)) * 100, 2)}}</p>
                 </div>
                 <div class="row">
-                    <p class="flex text2">{{str.distribution}}</p>
-                    <p class="uppercase-first-letter">...</p>
+                    <p class="flex text2">{{str.exchange}}</p>
+                    <p>{{formatPercent((exchange.balance || 0) / token.supply * 100, 2)}}</p>
+                </div>
+                <div class="row">
+                    <p class="flex text2">{{str.mining}}</p>
+                    <p>{{formatPercent((mining.balance || 0) / token.supply * 100, 2)}}</p>
+                </div>
+                <div class="row">
+                    <p class="flex text2">{{str.staking}}</p>
+                    <p>{{formatPercent((staking.balance || 0) / token.supply * 100, 2)}}</p>
                 </div>
                 <div class="row">
                     <p class="flex text2">{{str.created}}</p>

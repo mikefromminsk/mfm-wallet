@@ -17,6 +17,9 @@ function openTokenProfile(domain, success) {
             }, function (response) {
                 $scope.token = response.token
                 $scope.owner = response.owner
+                $scope.mining = response.mining
+                $scope.staking = response.staking
+                $scope.exchange = response.exchange
                 $scope.account = response.account
                 $scope.analytics = response.analytics
                 $scope.$apply()
