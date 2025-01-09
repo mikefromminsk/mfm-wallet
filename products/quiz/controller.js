@@ -80,7 +80,7 @@ function openGetCredit(success) {
                     domain: wallet.gas_domain,
                     from: admin_address,
                     to: wallet.address(),
-                    amount: $scope.rating,
+                    amount: $scope.rating * 100,
                     pass: key + ":" + next_hash,
                 }, function () {
                     $scope.finishRequest()

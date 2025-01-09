@@ -1,29 +1,29 @@
-# Privacy Policy
+# Политика конфиденциальности
 
-mytoken.space ("we", "us", "our") respects your privacy and is committed to protecting your personal data. This Privacy Policy explains how we collect, use, and protect your information.
+vavilon.org ("мы", "нас", "наш") уважает вашу конфиденциальность и стремится защищать ваши персональные данные. Эта Политика конфиденциальности объясняет, как мы собираем, используем и защищаем вашу информацию.
 
-## 1. Information Collection
-We may collect the following information:
-- Name and contact details (e.g., email address)
-- Information about your use of our website
+## 1. Сбор информации
+Мы можем собирать следующую информацию:
+- Имя и контактные данные (например, адрес электронной почты)
+- Информация о вашем использовании нашего веб-сайта
 
-## 2. Use of Information
-We use the collected information to:
-- Provide and improve our services
-- Send you updates and news
-- Respond to your inquiries and comments
+## 2. Использование информации
+Мы используем собранную информацию для:
+- Предоставления и улучшения наших услуг
+- Отправки вам обновлений и новостей
+- Ответов на ваши запросы и комментарии
 
-## 3. Data Protection
-We implement appropriate security measures to protect your information from unauthorized access, alteration, or destruction.
+## 3. Защита данных
+Мы внедряем соответствующие меры безопасности для защиты вашей информации от несанкционированного доступа, изменения или уничтожения.
 
-## 4. Disclosure to Third Parties
-We do not sell, trade, or transfer your information to third parties except where necessary to provide our services or comply with legal requirements.
+## 4. Раскрытие третьим сторонам
+Мы не продаем, не обмениваем и не передаем вашу информацию третьим сторонам, за исключением случаев, когда это необходимо для предоставления наших услуг или соблюдения юридических требований.
 
-## 5. Your Rights
-You have the right to access, modify, and delete your personal data. If you have any questions or requests, please contact us at x29a100@gmail.com.
+## 5. Ваши права
+Вы имеете право на доступ, изменение и удаление ваших персональных данных. Если у вас есть какие-либо вопросы или запросы, пожалуйста, свяжитесь с нами по адресу x29a100@gmail.com.
 
-## 6. Changes to the Privacy Policy
-We may update this Privacy Policy from time to time. We will notify you of any changes by posting the updated Policy on our website.
+## 6. Изменения в Политике конфиденциальности
+Мы можем время от времени обновлять эту Политику конфиденциальности. Мы уведомим вас о любых изменениях, разместив обновленную Политику на нашем веб-сайте.
 
-## Contact Us
-If you have any questions about this Privacy Policy, please contact us at x29a100@gmail.com.
+## Свяжитесь с нами
+Если у вас есть какие-либо вопросы по поводу этой Политики конфиденциальности, пожалуйста, свяжитесь с нами по адресу x29a100@gmail.com.

@@ -1,7 +1,9 @@
 <md-dialog class="fill col">
     <div class="row header align-start-center">
+        <div class="row align-center-center img32 back-gray radius4 ripple" ng-click="openTokenProfile(token.domain)">
+            <img class="img16 img-white" src="/mfm-wallet/img/chart.svg">
+        </div>
         <div class="row gap16 align-start-center">
-            <div ng-style="getLogo(token.domain)"></div>
             <div class="col">
                 <p class="uppercase text1">{{token.domain}}</p>
                 <div class="row mt4 text2">
@@ -11,7 +13,6 @@
                     </p>
                 </div>
             </div>
-            <button ng-click="openTokenProfile(token.domain)">{{str.profile}}</button>
         </div>
         <div class="flex"></div>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
@@ -94,7 +95,7 @@
                          ng-click="place()"
                          ng-disabled="in_progress"
                          ng-show="wallet.address() && (quote.prev_key || quote.balance != 0)">
-                        {{is_sell ? 'Sell' : 'Buy'}} {{formatTickerShort(domain)}}
+                        {{is_sell ? str.sell : str.buy}} {{formatTickerShort(domain)}}
                     </div>
 
                     <div class="primary-button uppercase back-pay p8 text1"

@@ -1,48 +1,48 @@
-# Terms and Conditions
+# Условия и положения
 
-## 1. Introduction
+## 1. Введение
 
-Welcome to mytoken.space. These Terms and Conditions ("Terms", "Terms and Conditions") govern your relationship with mytoken.space website (the "Service") operated by Mike Haiduk ("us", "we", or "our").
+Добро пожаловать на vavilon.org. Эти Условия и положения ("Условия", "Условия и положения") регулируют ваши отношения с веб-сайтом vavilon.org ("Сервис"), управляемым Майком Хайдуком ("мы", "нас" или "наш").
 
-## 2. Acceptance of Terms
+## 2. Принятие условий
 
-By accessing or using our Service, you agree to be bound by these Terms. If you disagree with any part of the terms, then you may not access the Service.
+Получая доступ или используя наш Сервис, вы соглашаетесь соблюдать эти Условия. Если вы не согласны с какой-либо частью условий, то вы не можете получить доступ к Сервису.
 
-## 3. Changes to Terms
+## 3. Изменения условий
 
-We reserve the right to modify or replace these Terms at any time. We will provide notice of any changes by posting the new Terms on the Service. Your continued use of the Service after any such changes constitutes your acceptance of the new Terms.
+Мы оставляем за собой право изменять или заменять эти Условия в любое время. Мы предоставим уведомление о любых изменениях, разместив новые Условия на Сервисе. Ваше продолжение использования Сервиса после таких изменений означает ваше согласие с новыми Условиями.
 
-## 4. Eligibility
+## 4. Право на использование
 
-You must be at least 18 years old to use our Service. By using the Service, you represent and warrant that you are at least 18 years old.
+Вам должно быть не менее 18 лет, чтобы использовать наш Сервис. Используя Сервис, вы заявляете и гарантируете, что вам не менее 18 лет.
 
-## 5. Account Registration
+## 5. Регистрация аккаунта
 
-To access certain features of the Service, you must register for an account. You agree to provide accurate, current, and complete information during the registration process and to update such information to keep it accurate, current, and complete.
+Для доступа к определенным функциям Сервиса вы должны зарегистрировать аккаунт. Вы соглашаетесь предоставлять точную, актуальную и полную информацию в процессе регистрации и обновлять такую информацию, чтобы она оставалась точной, актуальной и полной.
 
-## 6. User Responsibilities
+## 6. Обязанности пользователя
 
-You are responsible for maintaining the confidentiality of your account and password and for restricting access to your computer. You agree to accept responsibility for all activities that occur under your account or password.
+Вы несете ответственность за сохранение конфиденциальности вашего аккаунта и пароля и за ограничение доступа к вашему компьютеру. Вы соглашаетесь принимать на себя ответственность за все действия, которые происходят под вашим аккаунтом или паролем.
 
-## 7. Prohibited Activities
+## 7. Запрещенные действия
 
-You agree not to engage in any of the following prohibited activities:
-- Violating any applicable laws or regulations.
-- Engaging in fraudulent or deceptive practices.
-- Interfering with the proper functioning of the Service.
+Вы соглашаетесь не заниматься любыми из следующих запрещенных действий:
+- Нарушение любых применимых законов или правил.
+- Участие в мошеннических или обманных действиях.
+- Вмешательство в правильное функционирование Сервиса.
 
-## 8. Intellectual Property
+## 8. Интеллектуальная собственность
 
-The Service and its original content, features, and functionality are and will remain the exclusive property of Mike Haiduk and its licensors.
+Сервис и его оригинальное содержание, функции и функциональность являются и останутся исключительной собственностью Майка Хайдука и его лицензиаров.
 
-## 9. Termination
+## 9. Прекращение
 
-We may terminate or suspend your account and bar access to the Service immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms.
+Мы можем прекратить или приостановить ваш аккаунт и запретить доступ к Сервису немедленно, без предварительного уведомления или ответственности, по любой причине, включая, без ограничений, если вы нарушите Условия.
 
-## 10. Limitation of Liability
+## 10. Ограничение ответственности
 
-In no event shall Mike Haiduk, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from (i) your use or inability to use the Service; (ii) any unauthorized access to or use of our servers and/or any personal information stored therein.
+Ни при каких обстоятельствах Майк Хайдук, его директора, сотрудники, партнеры, агенты, поставщики или аффилированные лица не несут ответственности за любые косвенные, случайные, специальные, последующие или штрафные убытки, включая, без ограничений, потерю прибыли, данных, использования, доброй воли или других нематериальных потерь, возникающих в результате (i) вашего использования или невозможности использования Сервиса; (ii) любого несанкционированного доступа к нашим серверам и/или любой личной информации, хранящейся в них.
 
-## 11. Contact Us
+## 11. Свяжитесь с нами
 
-If you have any questions about these Terms, please contact us at x29a100@gmail.com.
+Если у вас есть вопросы по поводу этих Условий, пожалуйста, свяжитесь с нами по адресу x29a100@gmail.com.

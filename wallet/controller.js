@@ -66,7 +66,7 @@ function addWallet($scope) {
     setTimeout(() => {
         $scope.subscribe("transactions", function (data) {
             if (data.to == wallet.address()) {
-                if (data.amount != 0) {
+                if ((data.amount || 0) != 0) {
                     showSuccess(str.you_have_received + " " + $scope.formatAmount(data.amount, data.domain))
                     setTimeout(function () {
                         new Audio("/mfm-wallet/dialogs/success/payment_success.mp3").play()

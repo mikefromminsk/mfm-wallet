@@ -142,8 +142,6 @@ function openExchange(domain, is_sell) {
             postContract("mfm-exchange", "orderbook", {
                 domain: domain,
             }, function (response) {
-                if ($scope.sell == null && response.sell.length > 0)
-                        $scope.changePrice(response.sell[0].price)
                 $scope.sell = (response.sell || []).reverse()
                 $scope.buy = response.buy
                 $scope.$apply()
