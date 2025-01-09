@@ -121,7 +121,8 @@
                              ng-repeat="item in sell"
                              style="height: 20px; position: relative"
                              ng-click="changePrice(item.price)">
-                            <div class="back-red" style="position: absolute; height: 100%; opacity: 0.19;"
+                            <div class="back-red"
+                                 style="position: absolute; height: 100%; opacity: 0.19;"
                                  ng-style="{'min-width': item.percent + '%'}"></div>
                             <div class="flex text-red">${{item.price.toFixed(4)}}</div>
                             <div class="text-red">{{item.amount.toFixed(4)}}</div>
@@ -135,14 +136,21 @@
 
                     <div class="col align-start mono" style="height: calc(20px * 6)">
                         <div class="row align-start-center ripple"
-                             ng-repeat="item in buy" style="height: 20px; position: relative"
+                             ng-repeat="item in buy"
+                             style="height: 20px; position: relative"
                              ng-click="changePrice(item.price)">
-                            <div class="back-green" style="position: absolute; height: 100%; opacity: 0.19;"
+                            <div class="back-green"
+                                 style="position: absolute; height: 100%; opacity: 0.19;"
                                  ng-style="{'min-width': item.percent + '%'}"></div>
                             <div class="flex text-green">${{item.price.toFixed(4)}}</div>
                             <div>{{item.amount.toFixed(4)}}</div>
                         </div>
                     </div>
+
+                    <button ng-show="token.owner == wallet.address() || (sell || []).length == 0 || (buy || []).length == 0"
+                        ng-click="sendToBot()">
+                        {{str.send_to_bot}}
+                    </button>
                 </div>
             </div>
             <div class="col mh16">

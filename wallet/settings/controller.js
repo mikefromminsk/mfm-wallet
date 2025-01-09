@@ -3,7 +3,7 @@ function openSettings(success) {
         $scope.language = getLanguage()
 
         $scope.logout = function () {
-            openAskSure(function () {
+            openAskSure(str.are_you_sure, str.yes, str.no, function () {
                 wallet.logout()
                 storage.setString(storageKeys.onboardingShowed, "true")
             })

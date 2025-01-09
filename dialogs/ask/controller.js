@@ -1,15 +1,18 @@
-function openAskSure(success) {
+function openAskSure(title, yes, no, yesCallback, noCallback) {
     showBottomSheet("dialogs/ask", null, function ($scope) {
-        $scope.yes = function like() {
-            trackCall(arguments)
+        $scope.title = title
+        $scope.yes = yes
+        $scope.no = no
+        $scope.answerYes = function () {
             $scope.back()
-            if (success)
-                success()
+            if (yesCallback)
+                yesCallback()
         }
 
-        $scope.no = function dislike(message) {
-            trackCall(arguments)
+        $scope.answerNo = function () {
             $scope.back()
+            if (noCallback)
+                noCallback()
         }
     })
 }

@@ -81,13 +81,21 @@ function openExchange(domain, is_sell) {
         }
 
         $scope.cancel = function (order_id) {
-            openAskSure(function () {
+            openAskSure(str.are_you_sure, str.yes, str.no, function () {
                 postContract("mfm-exchange", "cancel", {
                     order_id: order_id,
                 }, function () {
                     loadOrderbook()
                     showSuccess(str.order_canceled, loadOrderbook)
                 })
+            })
+        }
+
+        $scope.sendToBot = function () {
+            openAskSure(str.are_you_support_buy_or_sale, str.buy, str.sell, function () {
+                openSend(wallet.gas_domain, "bot_" + domain, null, init)
+            }, function () {
+                openSend(domain, "bot_" + domain, null, init)
             })
         }
 
