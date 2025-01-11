@@ -1,0 +1,34 @@
+<div class="flex col">
+    <div class="col input-content">
+        <p>{{str.save_this_phrase_for_access_the_wallet}}</p>
+        <div class="m0 p16">
+            <div class="row">
+                    <textarea id="seed_phrase"
+                              type="text"
+                              autocapitalize="off"
+                              aria-multiline="false"
+                              rows="3"
+                              autocomplete="off"
+                              ng-model="mnemonic"
+                              placeholder="{{str.seed_phrase}}"></textarea>
+                <div class="row align-start-center ripple"
+                     ng-class="{'primary-button m0': !copied, 'p16': copied}"
+                     ng-click="copy(mnemonic); copied = true">
+                    <img class="img32 img-white" src="/mfm-wallet/img/copy.svg">
+                </div>
+            </div>
+            <p class="text-red" ng-show="!validateBip39(mnemonic)">{{str.phrase_must_have_12_words}}</p>
+        </div>
+        <div class="row align-start-center gap8">
+            <p>{{str.agree_to}}</p>
+            <p class="text-accent" ng-click="openDoc('/mfm-wallet/docs/terms_and_conditions.md')">
+                {{str.terms_and_conditions}}
+            </p>
+        </div>
+        <div class="primary-button"
+             ng-click="login()"
+             ng-disabled="in_progress || !validateBip39(mnemonic) || !copied">
+            {{str.accept_and_login}}
+        </div>
+    </div>
+</div>

@@ -6,32 +6,7 @@
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
         </div>
     </div>
-    <div class="flex col">
-        <div class="col input-content">
-            <div>
-                {{str.save_this_phrase_for_access_the_wallet}}
-            </div>
-            <div class="m0 p16">
-            <textarea id="seed_phrase"
-                      type="text"
-                      autocapitalize="off"
-                      autocomplete="off"
-                      ng-model="mnemonic"
-                      placeholder="{{str.seed_phrase}}"></textarea>
-            </div>
-            <div class="row align-start-center gap8">
-                <p>{{str.agree_to}}</p>
-                <p class="text-accent" ng-click="openDoc('/mfm-wallet/docs/terms_and_conditions.md')">
-                    {{str.terms_and_conditions}}
-                </p>
-            </div>
-            <div class="primary-button"
-                 ng-click="login()"
-                 ng-disabled="in_progress || !validateBip39(mnemonic)">
-                {{str.accept_and_login}}
-            </div>
-        </div>
-    </div>
+    <ng-include src="'/mfm-wallet/wallet/login/login.html?nocache'"></ng-include>
 </md-dialog>
 
 <!--

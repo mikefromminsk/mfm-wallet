@@ -119,13 +119,14 @@ input:disabled {
 textarea {
     padding: 16px;
     width: 100%;
+    height: auto;
     background-color: var(--black);
     color: var(--white);
     border-radius: 4px;
     font-size: 16px;
     border: 1px solid var(--gray300);
     box-sizing: border-box;
-    resize: vertical;
+    resize: none;
 }
 
 .input-wrapper > input:disabled {

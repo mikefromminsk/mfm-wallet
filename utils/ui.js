@@ -83,12 +83,16 @@ function showBottomSheet(templateUrl, onClose, callback) {
         window.$mdBottomSheet.show({
             templateUrl: "/mfm-wallet/" + templateUrl + "/index.html?nocache",
             escapeToClose: false,
+            clickOutsideToClose: false,
             controller: function ($scope) {
                 addGlobalVars($scope, callback)
             }
         }).then(function (result) {
             if (onClose)
                 onClose(result)
+        }).catch(function () {
+            if (onClose)
+                onClose()
         })
     }, 100)
 }
@@ -98,7 +102,7 @@ function showMessage(message, toastClass, callback) {
     if (message == null) message = ""
     let spaceCount = message.split(' ').length + 1
     let delay = spaceCount / 4 * 1000
-    if (delay < 1000) delay = 1000
+    if (delay < 2000) delay = 2000
     if (delay > 5000) delay = 5000
     if (window.$mdToast != null) {
         window.$mdToast.show(window.$mdToast.simple()

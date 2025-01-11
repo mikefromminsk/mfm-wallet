@@ -17,7 +17,6 @@ function addDialogs($scope) {
 
     if (wallet.address() == "") {
         $scope.trans = []
-        openLogin(loadTrans)
     } else {
         loadTrans()
     }

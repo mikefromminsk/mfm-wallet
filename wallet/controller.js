@@ -25,6 +25,8 @@ function createOdometer(el, value) {
 function addWallet($scope) {
     $scope.domain = "usdt"
 
+    addLogin($scope)
+
     function getTokens() {
         postContract("mfm-token", "accounts", {
             address: wallet.address(),
@@ -98,9 +100,7 @@ function addWallet($scope) {
 
     $scope.swipeToRefresh = $scope.walletInit
 
-    if (wallet.address() == "") {
-        openLogin($scope.walletInit)
-    } else {
+    if (wallet.address() != "") {
         $scope.walletInit()
     }
 }

@@ -51,12 +51,22 @@ function openStaking(domain, success) {
             $scope.amount = $scope.account.balance
         }
 
+        function updateReward() {
+            if ($scope.stake == null) return
+            let SEC_IN_DAY = 60 * 60 * 24
+            let period_percent = (new Date() / 1000 - $scope.stake.time) / SEC_IN_DAY / $scope.period_days
+            $scope.reward = $scope.stake.amount * $scope.percent / 100 * period_percent
+            $scope.$apply()
+        }
+
         function getStakes() {
             postContract("mfm-token", "staked", {
                 address: wallet.address(),
             }, function (response) {
                 $scope.stake = null
                 $scope.reward = null
+                $scope.period_days = response.period_days
+                $scope.percent = response.percent
                 if ($scope.token.owner == wallet.address()) {
                     showError(str.you_cannot_stake_your_own_token)
                 } else {
@@ -64,18 +74,12 @@ function openStaking(domain, success) {
                         if (stake_tran.domain == domain) {
                             $scope.stake = stake_tran
                             if (rewardTimer == null)
-                                rewardTimer = setInterval(function () {
-                                    let SEC_IN_DAY = 60 * 60 * 24
-                                    let period_percent = (new Date() / 1000 - stake_tran.time) / SEC_IN_DAY / $scope.period_days
-                                    $scope.reward = $scope.stake.amount * response.percent / 100 * period_percent
-                                    $scope.$apply()
-                                }, 1000)
+                                rewardTimer = setInterval(updateReward, 1000)
+                            updateReward()
                             break
                         }
                     }
                 }
-                $scope.period_days = response.period_days
-                $scope.percent = response.percent
                 $scope.$apply()
             })
         }

@@ -4,10 +4,8 @@
         <div class="flex row align-center">{{str.wallet}}</div>
         <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/search.svg" ng-click="openSearch(walletInit)">
     </div>
-    <div class="flex col align-center-center" ng-hide="wallet.address()">
-        <div class="primary-button" ng-click="openLogin(walletInit)">
-            {{str.login_or_create_account}}
-        </div>
+    <div class="flex col" ng-hide="wallet.address()">
+        <ng-include src="'/mfm-wallet/wallet/login/login.html?nocache'"></ng-include>
     </div>
     <div class="flex col scroll align-start-center" ng-show="wallet.address()">
         <div class="flex col block input-content">
