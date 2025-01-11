@@ -18,7 +18,7 @@
             <input type="number"
                    ng-model="amount"
                    ng-change="calcTotal()"
-                   placeholder="{{str.amount}} {{wallet.gas_domain}}">
+                   placeholder="{{str.amount}} {{formatAmount(wallet.gas_domain)}}">
             <!--<div class="input-label-right row align-center-center ripple" ng-click="setMax()">
                 <p>MAX {{formatAmount(coin.balance)}}</p>
             </div>-->

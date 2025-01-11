@@ -5,7 +5,7 @@
         </div>
         <div class="row gap16 align-start-center">
             <div class="col">
-                <p class="uppercase text1">{{token.domain}}</p>
+                <p class="uppercase text1">{{formatDomain(token.domain)}}</p>
                 <div class="row mt4 text2">
                     <p class="">{{formatPrice(token.price)}}</p>
                     <p class="ml4" ng-class="percentColor(token.price24)">
@@ -86,7 +86,7 @@
 
                     <div class="primary-button uppercase back-accent p8 text1"
                          ng-click="openLogin()"
-                         ng-show="!wallet.address()">
+                         ng-hide="wallet.address()">
                         {{str.login}}
                     </div>
 
@@ -94,14 +94,8 @@
                          ng-class="{'back-red': is_sell, ' back-green': !is_sell}"
                          ng-click="place()"
                          ng-disabled="in_progress"
-                         ng-show="wallet.address() && (quote.prev_key || quote.balance != 0)">
-                        {{is_sell ? str.sell : str.buy}} {{formatTickerShort(domain)}}
-                    </div>
-
-                    <div class="primary-button uppercase back-pay p8 text1"
-                         ng-click="getCredit()"
-                         ng-show="wallet.address() && !quote.prev_key && quote.balance == 0">
-                        {{str.get_credit}}
+                         ng-show="wallet.address()">
+                        {{is_sell ? str.sell : str.buy}} {{formatDomainShort(domain)}}
                     </div>
                 </div>
 
@@ -113,7 +107,7 @@
                     </div>-->
                     <div class="row text2 mv16">
                         <div class="flex">{{str.price}}</div>
-                        <div>{{formatTickerShort(domain)}}</div>
+                        <div>{{formatDomainShort(domain)}}</div>
                     </div>
 
                     <!--orderbook-->
@@ -131,7 +125,10 @@
                     </div>
 
                     <div class="row pv16">
-                        <p class="flex bold">{{formatPrice(token.price)}}</p>
+                        <p class="flex bold"
+                           ng-click="changePrice(token.price)">
+                            {{formatPrice(token.price)}}
+                        </p>
                         <p class="text2 lowercase">{{str.volume24}} ${{formatAmount(token.volume24, '', 0)}}</p>
                     </div>
 
@@ -164,7 +161,7 @@
                             {{str.sell}}</p>
                     </div>
                     <div class="flex col ml8">
-                        <p>{{formatTicker(domain)}}</p>
+                        <p>{{formatDomain(domain)}}</p>
                         <p class="mt4 size10 text-gray">{{formatTime(item.timestamp)}}</p>
                     </div>
                     <div class="flex col align-start-end">

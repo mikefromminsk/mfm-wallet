@@ -35,7 +35,7 @@ function openDrop(domain, success) {
                                 try {
                                     await navigator.share({
                                         title: str.share,
-                                        text: str.click_on_the_link_and_win + " " + $scope.amount + " " + $scope.formatTicker(domain),
+                                        text: str.click_on_the_link_and_win + " " + $scope.amount + " " + $scope.formatDomain(domain),
                                         url: link,
                                     });
                                     $scope.close()

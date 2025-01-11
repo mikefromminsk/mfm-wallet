@@ -33,7 +33,7 @@
                          ng-click="openToken(token.domain)">
                         <div ng-style="getLogo(token.domain)"></div>
                         <div class="flex col ml16">
-                            <p class="uppercase">{{token.domain}}</p>
+                            <p>{{formatDomain(token.domain)}}</p>
                             <div class="row mt4 text2">
                                 <p class="">{{formatPrice(token.price)}}</p>
                                 <p class="ml4" ng-class="percentColor(token.price24)">

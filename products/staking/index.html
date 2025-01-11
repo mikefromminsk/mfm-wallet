@@ -50,7 +50,7 @@
                    maxlength="16"
                    ng-model="amount"
                    ng-disabled="token.owner == wallet.address()"
-                   placeholder="{{domain}}">
+                   placeholder="{{formatAmount(domain)}}">
             <button ng-click="setMax()"
                     ng-hide="account.balance == 0 || token.owner == wallet.address()">
                 {{str.max}}

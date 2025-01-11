@@ -1,6 +1,7 @@
 function addFormats($scope) {
     $scope.round = function (num, precision) {
-        return +(Math.round(num + "e+" + precision) + "e-" + precision);
+        const factor = Math.pow(10, precision)
+        return (Math.ceil(num * factor) / factor)
     }
 
     function shortNumber(number, precision) {
@@ -82,15 +83,15 @@ function addFormats($scope) {
         return hash.substr(0, 5) + "..." + hash.substr(-5)
     }
 
-    $scope.formatTickerShort = function (domain) {
+    $scope.formatDomainShort = function (domain) {
         if (domain == null) return ""
         if (domain.length > 8)
             domain = domain.substr(0, 7) + ".."
-        return $scope.formatTicker(domain)
+        return $scope.formatDomain(domain)
     }
 
-    $scope.formatTicker = function (domain) {
-        return (domain || "").toUpperCase()
+    $scope.formatDomain = function (domain) {
+        return (domain || "").replace("_", " ").toUpperCase()
     }
 
     $scope.formatChange = function (number) {
@@ -104,7 +105,6 @@ function addFormats($scope) {
 
     $scope.formatPercent = function (number, precision) {
         if (number == 0) return "0%";
-        if (number < 1 && number > -1) return "<1%";
         return $scope.round(number, precision || 1) + "%";
     }
 

@@ -3,7 +3,7 @@
         <div class="flex row gap16 align-start-center">
             <div ng-style="getLogo(token.domain)"></div>
             <div class="col">
-                <p class="uppercase text1">{{token.domain}}</p>
+                <p class="uppercase text1">{{formatDomain(token.domain)}}</p>
                 <div class="row mt4 text2">
                     <p class="">{{formatPrice(token.price)}}</p>
                     <p class="ml4" ng-class="percentColor(token.price24)">

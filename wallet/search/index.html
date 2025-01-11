@@ -23,7 +23,7 @@
         <div class="text2 ml8 p8 back-gray radius-default ripple"
              ng-repeat="item in recent"
              ng-click="openToken(item)">
-            {{formatTicker(item)}}
+            {{formatDomain(item)}}
         </div>
     </div>
     <div class="flex col scroll align-start-center">
@@ -34,7 +34,7 @@
                      ng-click="openToken(token.domain)">
                     <div ng-style="getLogo(token.domain)"></div>
                     <div class="flex col ml16">
-                        <p class="uppercase">{{token.domain}}</p>
+                        <p class="uppercase">{{formatDomain(token.domain)}}</p>
                         <div class="row mt4 text2">
                             <p class="">{{formatPrice(token.price)}}</p>
                             <p class="ml4" ng-class="percentColor(token.price24)">
