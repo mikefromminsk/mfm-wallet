@@ -52,7 +52,7 @@ function openMining(domain, success) {
                             if (response.account.balance > 0) {
                                 loadMiningInfo(true)
                             } else {
-                                openGetCredit(init)
+                                openEarn(init)
                             }
                         })
                     })

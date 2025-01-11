@@ -30,7 +30,7 @@ function openAnalytics(success) {
                 "title": "Get credits",
                 "events": [
                     "start",
-                    "openGetCredit",
+                    "openEarn",
                     "getCredit",
                 ]
             }/*,

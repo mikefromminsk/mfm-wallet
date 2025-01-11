@@ -72,8 +72,8 @@ function addNavigator($scope) {
         openSend(domain, to_address, amount, success)
     }
 
-    $scope.openGetCredit = function (success) {
-        openGetCredit(success)
+    $scope.openEarn = function (success) {
+        openEarn(success)
     }
 
     $scope.openPromo = function (promo, success) {
@@ -112,7 +112,7 @@ function addNavigator($scope) {
     }
 
     $scope.openSupport = function () {
-        window.open("https://t.me/mytoken_space_bot")
+        window.open("https://t.me/vavilon_org_bot")
     }
 
     $scope.openShareLink = function (title, text, url) {

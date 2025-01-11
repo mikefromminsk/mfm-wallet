@@ -50,7 +50,7 @@ function addFormats($scope) {
 
     $scope.formatAddress = function (address) {
         if (address == null) return ""
-        if (address.length < 10) return address
+        if (address.length < 32) return address
         return address.substr(0, 4) + "..." + address.substr(-4)
     }
 

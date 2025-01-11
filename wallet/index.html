@@ -11,50 +11,14 @@
     </div>
     <div class="flex col scroll align-start-center" ng-show="wallet.address()">
         <div class="flex col block input-content">
-            <div class="col input-content text-align-center">
+            <div class="col text-align-center">
                 <div  class="row align-center text0" style="margin-top: 40px;">
                     $<div id="total">0</div>
                 </div>
-                <div class="row align-start-end">
-                    <div class="flex p16 col align-start-center ripple"
-                         ng-click="openPromo(null, walletInit)">
-                        <img class="img16 img-gray" src="/mfm-wallet/img/qr.svg">
-                        <p class="mt8 text2">{{str.promo_code}}</p>
-                    </div>
-                    <div class="flex p16 col align-start-center ripple"
-                         ng-click="openDrop(wallet.gas_domain, walletInit)">
-                        <img class="img16 img-gray" src="/mfm-wallet/img/drop.svg">
-                        <p class="mt8 text2">{{str.airdrop}}</p>
-                    </div>
-                    <div class="flex p16 col align-start-center ripple"
-                         ng-click="openSend(wallet.gas_domain, null, null, walletInit)">
-                        <img class="img16 img-gray" src="/mfm-wallet/img/send.svg">
-                        <p class="mt8 text2">{{str.send}}</p>
-                    </div>
-                </div>
-
-                <div class="row align-start-end">
-                    <div class="flex p16 col align-start-center ripple"
-                         ng-click="openDeposit(walletInit)">
-                        <img class="img16 img-gray" src="/mfm-wallet/img/plus.svg">
-                        <p class="mt8 text2">{{str.deposit}}</p>
-                    </div>
-                    <div class="flex p16 col align-start-center ripple"
-                         ng-click="openWithdrawal(walletInit)">
-                        <img class="img16 img-gray" src="/mfm-wallet/img/arrow-up.svg">
-                        <p class="mt8 text2">{{str.withdrawal}}</p>
-                    </div>
-                    <div class="flex p16 col align-start-center ripple"
-                         ng-click="openGetCredit(walletInit)">
-                        <img class="img16 img-gray" src="/mfm-wallet/img/dollar.svg">
-                        <p class="mt8 text2">{{str.credit}}</p>
-                    </div>
-                </div>
+                <ng-include src="'/mfm-wallet/wallet/profile/options.html?nocache'"></ng-include>
             </div>
             <div class="col gap16" ng-hide="!wallet.address()">
-
                 <ng-include src="'/mfm-wallet/wallet/accounts.html?nocache'"></ng-include>
-
                 <p class="text1" ng-show="staked.length > 0">{{str.staking}}</p>
                 <div class="col back-gray radius-default"
                      ng-show="staked.length > 0">

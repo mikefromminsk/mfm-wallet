@@ -27,7 +27,7 @@
                 <div class="text2 ml8 p8 back-gray radius-default ripple"
                      ng-repeat="item in recent"
                      ng-click="setToAddress(item)">
-                    {{item}}
+                    {{formatAddress(item)}}
                 </div>
             </div>
             <div class="row input-wrapper">
@@ -38,11 +38,11 @@
                        ng-model="amount"
                        placeholder="{{str.amount}}">
                 <button ng-click="setMax()"
-                        ng-hide="account.balance == 0">
+                        ng-hide="!account || account.balance == 0">
                     {{str.max}}
                 </button>
             </div>
-            <div ng-class="{'text-red': account.balance < amount}">
+            <div ng-class="{'text-red': !account || account.balance < amount || account.balance == 0}">
                 {{str.available}}: {{formatAmount(account.balance, token.domain)}}
             </div>
             <button class="primary-button"

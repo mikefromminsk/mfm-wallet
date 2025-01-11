@@ -56,14 +56,15 @@
     <div class="col align-start-center fill-width p16 pt8 back-black ng-cloak"
          style="position: absolute; bottom: 0;">
         <div class="row block">
-            <div class="flex col pv16 align-start-center ripple"
+            <div class="flex col pv8 align-start-center ripple"
                  ng-repeat="item in menu"
                  ng-click="selectTab($index)">
                 <img class="img18" src="/mfm-wallet/img/{{item}}.svg"
                      ng-class="{'img-accent': selectedIndex == $index, 'img-gray': selectedIndex != $index}">
                 <p class="mt8"
                    ng-class="{'text-accent': selectedIndex == $index, 'text-gray': selectedIndex != $index}">
-                    {{str[item]}}</p>
+                    {{str[item]}}
+                </p>
             </div>
         </div>
     </div>
@@ -119,7 +120,6 @@
 <script async src="/mfm-wallet/utils/identicon.js"></script>
 <script async onload="loaded()" src="/mfm-wallet/wallet/login/controller.js?nocache"></script>
 <script async onload="loaded()" src="/mfm-wallet/wallet/launch/distribution/controller.js?nocache"></script>
-<script async onload="loaded()" src="/mfm-wallet/products/credit/ask_credit/controller.js?nocache"></script>
 <script async onload="loaded()" src="/mfm-wallet/wallet/launch/name/controller.js?nocache"></script>
 <script async onload="loaded()" src="/mfm-wallet/wallet/launch/logo/controller.js?nocache"></script>
 <script async onload="loaded()" src="/mfm-wallet/dialogs/pin/controller.js?nocache"></script>
@@ -140,8 +140,7 @@
 <script async onload="loaded()" src="/mfm-wallet/wallet/search/controller.js?nocache"></script>
 <script async onload="loaded()" src="/mfm-wallet/wallet/settings/review/controller.js?nocache"></script>
 <script async onload="loaded()" src="/mfm-wallet/wallet/settings/reviews/controller.js?nocache"></script>
-<script async onload="loaded()" src="/mfm-wallet/products/quiz/controller.js?nocache"></script>
-<script async onload="loaded()" src="/mfm-wallet/products/credit/pay_off_credit/controller.js?nocache"></script>
+<script async onload="loaded()" src="/mfm-wallet/products/earn/controller.js?nocache"></script>
 <script async onload="loaded()" src="/mfm-wallet/wallet/airdrop/controller.js?nocache"></script>
 <script async onload="loaded()" src="/mfm-wallet/products/mining/controller.js?nocache"></script>
 <script async onload="loaded()" src="/mfm-wallet/products/exchange/controller.js?nocache"></script>

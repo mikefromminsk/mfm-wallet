@@ -23,6 +23,8 @@ function createOdometer(el, value) {
 }
 
 function addWallet($scope) {
+    $scope.domain = "usdt"
+
     function getTokens() {
         postContract("mfm-token", "accounts", {
             address: wallet.address(),

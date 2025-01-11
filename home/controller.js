@@ -3,7 +3,6 @@ function addHome($scope) {
         postContract("mfm-analytics", "home", {
             empty: true,
         }, function (response) {
-            $scope.slides = response.tops.top_exchange
             $scope.tops = response.tops
             $scope.showBody = true
             //if (!DEBUG)
@@ -14,12 +13,18 @@ function addHome($scope) {
 
     $scope.host = location.host
 
-
-    $scope.openSlide = function (domain) {
-        trackCall(arguments)
-        openTokenProfile(domain)
-        clearInterval($scope.interval)
+    $scope.slides = []
+    $scope.addSlide = function (title, text, image) {
+        $scope.slides.push({
+            title: title,
+            text: text,
+            image: image,
+        })
     }
+    $scope.addSlide("VAVILON.org", "Innovate HashChain network.")
+    $scope.addSlide("0% fees", "Only miners pays fees.")
+    $scope.addSlide("1000 TPS", "HashChain solve scale problems.")
+
 
     $scope.slideIndex = 0
     $scope.lastAutoIndex = 0
@@ -36,6 +41,12 @@ function addHome($scope) {
                 }
             }, 5000)
         }
+    }
+
+    $scope.scrollToReadme = function () {
+        setTimeout(function () {
+            document.getElementById('white_paper').scrollIntoView({ behavior: 'smooth' })
+        }, 100)
     }
 
     get("/mfm-wallet/docs/white_paper.md", function (text) {

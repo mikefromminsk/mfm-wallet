@@ -77,7 +77,7 @@ function openExchange(domain, is_sell) {
 
         $scope.getCredit = function getCredit() {
             trackCall(arguments)
-            openGetCredit(init)
+            openEarn(init)
         }
 
         $scope.cancel = function (order_id) {

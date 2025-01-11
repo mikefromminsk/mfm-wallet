@@ -19,7 +19,12 @@
         <md-tab label="questions.indexOf(item)" ng-repeat="item in questions">
             <div class="fill col">
                 <div class="row header align-start-center">
-                    <p class="flex"></p>
+                    <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
+                        <img class="img16 img-gray400" src="/mfm-wallet/img/history.svg">
+                    </div>
+                    <div class="flex row align-center">
+                        <p class="text1">{{str.question}} {{questions.indexOf(item) + 1}}/{{questions.length}}</p>
+                    </div>
                     <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
                         <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
                     </div>
@@ -33,7 +38,7 @@
                         <p>{{answer}}</p>
                     </div>
                 </div>
-                <div class="primary-button m16 back-black" ng-click="next()">{{str.complete}}</div>
+                <div class="primary-button m16 back-black" ng-click="next()">{{str.skip}}</div>
             </div>
         </md-tab>
         <md-tab label="'accept_credit'">

@@ -1,6 +1,6 @@
-function openGetCredit(success) {
+function openEarn(success) {
     trackCall(arguments)
-    showDialog("products/quiz", success, function ($scope) {
+    showDialog("products/earn", success, function ($scope) {
         $scope.pageIndex = 0
 
         function init() {
@@ -12,7 +12,7 @@ function openGetCredit(success) {
                 return array;
             }
 
-            post("/mfm-wallet/products/quiz/text/" +
+            post("/mfm-wallet/products/earn/quiz/" +
                 storage.getString(storageKeys.language, navigator.language.split('-')[0]) + ".json", {},
                 function (response) {
                     $scope.questions = []
@@ -33,12 +33,7 @@ function openGetCredit(success) {
         }
 
         $scope.next = function () {
-            let question = $scope.questions[$scope.pageIndex - 1]
-            if (question.answer == question.correct) {
-                $scope.openTab($scope.pageIndex + 1)
-            } else {
-                $scope.openTab($scope.questions.length + 1)
-            }
+            $scope.openTab($scope.pageIndex + 1)
             $scope.$apply()
         }
 

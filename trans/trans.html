@@ -4,7 +4,8 @@
     <div class="row mt16 p16 radius-default back-gray ripple"
          ng-repeat="item in tran.items"
          ng-click="selectTran(item)">
-        <div class="radius-default back-black" ng-style="getIdenticon(item.from == wallet.address() ? item.to : item.from)"></div>
+        <div class="radius-default back-black"
+             ng-style="getIdenticon(item.from == wallet.address() ? item.to : item.from)"></div>
 
         <div class="col ml16">
             <p class="">{{item.from == wallet.address() ? formatAddress(item.to) : formatAddress(item.from)}}</p>
@@ -13,9 +14,14 @@
         </div>
 
         <div class="flex col align-start-end">
-            <p ng-class="{'text-red': item.from == wallet.address(),'text-green': item.from != username}">
-                {{(item.from == wallet.address() ? "-" : "+") + item.amount + " " + formatTicker(item.domain)}}
-            </p>
+            <div ng-class="{'text-red': item.from == wallet.address(),'text-green': item.from != username}">
+                <p ng-show="item.amount == 0">
+                    {{str.registration}}
+                </p>
+                <p ng-hide="item.amount == 0">
+                    {{(item.from == wallet.address() ? "-" : "+") + formatAmount(item.amount, item.domain)}}
+                </p>
+            </div>
             <p class="mt4 text2">{{formatPrice(item.amount * item.token.price)}}</p>
         </div>
     </div>

@@ -1,26 +1,31 @@
 <div class="flex col scroll align-start-center">
     <div class="flex col block">
         <div class="row header align-start-center">
-            <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/support.svg" ng-click="openSupport()">
-            <div class="flex row align-center-center" ng-show="wallet.address()">
-                <div class="ph16 pv8 back-gray radius-default ripple"
+            <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/info.svg" ng-click="scrollToReadme()">
+            <div class="flex row align-center-center">
+                <div class="row align-start-center p8 back-gray radius-default ripple"
+                     ng-show="wallet.address()"
                      ng-click="openSettings()">
-                    {{host}}
+                    <div class="radius-default back-black" ng-style="getIdenticon(wallet.address())"></div>
+                    <p class="ml8">{{formatAddress(wallet.address())}}</p>
+                </div>
+                <div class="ph16 pv8 back-gray radius-default ripple"
+                     ng-hide="wallet.address()"
+                     ng-click="openLogin()">
+                    <p>{{str.login}}</p>
                 </div>
             </div>
-            <div class="flex" ng-hide="wallet.address()"></div>
             <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/search.svg" ng-click="openSearch()">
         </div>
 
         <md-tabs md-selected="slideIndex" class="col p0 mt16 no-swipe" md-swipe-content md-dynamic-height>
-            <md-tab label="$index" ng-repeat="domain in slides">
-                <div class="col" style="min-height: 200px; padding: 0 16px">
-                    <div class="flex row align-start-end back-gray radius-default"
-                         ng-click="openSlide(domain)"
-                         ng-style="getBack(domain)">
-                        <div class="row m16 align-start-center gap16">
-                            <div ng-style="getLogo(domain)"></div>
-                            <p class="text1">{{formatTicker(domain)}}</p>
+            <md-tab label="$index" ng-repeat="item in slides">
+                <div class="col" style="min-height: 200px; padding: 0 16px; text-shadow: #000000 1px 0 30px;">
+                    <div class="flex col p16 back-gray radius-default nowrap-disabled align-center-center"
+                         ng-style="getBack('usdt')">
+                        <div class="col gap16 align-start-center">
+                            <p class="size40 bold">{{item.title}}</p>
+                            <p class="text1">{{item.text}}</p>
                         </div>
                     </div>
                 </div>
