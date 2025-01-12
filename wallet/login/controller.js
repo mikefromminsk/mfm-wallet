@@ -9,7 +9,7 @@ function openLogin(success) {
     })
 }
 
-function addLogin($scope) {
+function addLogin($scope, success) {
     $scope.validateBip39 = function (mnemonic) {
         return mnemonic.split(" ").length == 12
     }
@@ -24,9 +24,9 @@ function addLogin($scope) {
         $scope.mnemonic = $scope.mnemonic.trim()
     }
 
-    $scope.login = function () {
+    $scope.login = function (mnemonic) {
         $scope.startRequest()
-        let password = md5($scope.mnemonic)
+        let password = md5(mnemonic)
         let address = md5(password)
         postContract("mfm-token", "account", {
             domain: wallet.gas_domain,
@@ -59,18 +59,15 @@ function addLogin($scope) {
                 storage.setString(storageKeys.passhash, encode(password, pin))
                 if (pin != null)
                     storage.setString(storageKeys.hasPin, true)
-                loginFinish()
+                showSuccess(str.login_success, success)
+                $scope.close()
             }, function () {
                 // skip pin
                 storage.setString(storageKeys.username, address)
                 storage.setString(storageKeys.passhash, password)
-                loginFinish()
+                showSuccess(str.login_success, success)
+                $scope.close()
             })
-        }
-
-        function loginFinish() {
-            showSuccess(str.login_success)
-            $scope.close()
         }
     }
 }

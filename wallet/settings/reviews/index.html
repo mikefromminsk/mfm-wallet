@@ -17,7 +17,8 @@
                 </div>
                 <p class="mv8">{{item.value}}</p>
                 <div class="row mv16">
-                <textarea class="flex" ng-model="item.answer"
+                <textarea class="flex"
+                          ng-model="item.answer"
                           oninput="this.style['min-height'] = ''; this.style['min-height'] = this.scrollHeight +'px'"></textarea>
                     <div class="row">
                         <button ng-click="sendAnswer(item)"

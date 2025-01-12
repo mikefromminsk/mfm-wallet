@@ -28,12 +28,10 @@ function openTokenProfile(domain, success) {
 
         addChart($scope, domain + "_price", domain + "_volume")
 
-        $scope.subscribe("price", function (data) {
-            if (data.domain == domain) {
-                $scope.token.price = data.price
-                $scope.updateChart()
-                $scope.$apply()
-            }
+        $scope.subscribe("price:" + domain, function (data) {
+            $scope.token.price = data.price
+            $scope.updateChart()
+            $scope.$apply()
         })
 
         $scope.init = function () {

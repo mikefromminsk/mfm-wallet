@@ -9,6 +9,12 @@ function addNavigator($scope) {
         window.history.pushState({}, document.title, historyStack[historyStack.length - 1])
     }
 
+    $scope.scrollToReadme = function (id) {
+        setTimeout(function () {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' })
+        }, 100)
+    }
+
     $scope.back = function (result) {
         setTimeout(function () {
             $scope.finish(result)
@@ -76,8 +82,8 @@ function addNavigator($scope) {
         openEarn(success)
     }
 
-    $scope.openPromo = function (promo, success) {
-        openPromo(promo, success)
+    $scope.openAirdrop = function (promo, success) {
+        openAirdrop(promo, success)
     }
 
     $scope.openChat = function (to, success) {
@@ -183,7 +189,11 @@ function addNavigator($scope) {
         openLanguages()
     }
 
-    $scope.openDrop = function (domain, success) {
-        openDrop(domain, success)
+    $scope.openAirdropCreate = function (domain, success) {
+        openAirdropCreate(domain, success)
+    }
+
+    $scope.openExchangeBot = function (domain, success) {
+        openExchangeBot(domain, success)
     }
 }

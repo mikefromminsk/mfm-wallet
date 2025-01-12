@@ -848,3 +848,13 @@ li {
     margin-top: 8px;
     line-height: 1.4em;
 }
+
+
+md-toast .md-toast-content {
+    padding: 16px;
+    min-height: 0;
+}
+
+md-toast .md-toast-content::before {
+    min-height: 0;
+}

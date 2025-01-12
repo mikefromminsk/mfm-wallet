@@ -25,7 +25,10 @@ function createOdometer(el, value) {
 function addWallet($scope) {
     $scope.domain = "usdt"
 
-    addLogin($scope)
+    addLogin($scope, function () {
+        $scope.refresh()
+        subscribeAccount()
+    })
 
     function getTokens() {
         postContract("mfm-token", "accounts", {
@@ -67,40 +70,27 @@ function addWallet($scope) {
         return totalBalance
     }
 
-    setTimeout(() => {
-        $scope.subscribe("transactions", function (data) {
-            if (data.to == wallet.address()) {
-                if ((data.amount || 0) != 0) {
-                    showSuccess(str.you_have_received + " " + $scope.formatAmount(data.amount, data.domain))
-                    setTimeout(function () {
-                        new Audio("/mfm-wallet/dialogs/success/payment_success.mp3").play()
-                    })
-                }
-                getTokens()
+    function subscribeAccount() {
+        $scope.subscribe("account:" + wallet.address(), function (data) {
+            if (data.amount != 0) {
+                showSuccess(str.you_have_received + " " + $scope.formatAmount(data.amount, data.domain))
+                setTimeout(function () {
+                    new Audio("/mfm-wallet/dialogs/success/payment_success.mp3").play()
+                })
             }
+            $scope.refresh()
         })
+    }
 
-        $scope.subscribe("price", function (data) {
-            if ($scope.accounts != null) {
-                for (let account of $scope.accounts) {
-                    if (account.domain == data.domain) {
-                        account.token.price = data.price
-                        $scope.$apply()
-                        break
-                    }
-                }
-            }
-        })
-    }, 1000)
-
-    $scope.walletInit = function () {
+    $scope.refresh = function () {
         getTokens()
         getStaked()
     }
 
-    $scope.swipeToRefresh = $scope.walletInit
+    $scope.swipeToRefresh = $scope.refresh
 
     if (wallet.address() != "") {
-        $scope.walletInit()
+        $scope.refresh()
+        subscribeAccount()
     }
 }

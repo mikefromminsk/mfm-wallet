@@ -1,8 +1,8 @@
 <div class="flex col">
     <div class="row header align-start-center">
-        <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/settings.svg" ng-click="openSettings(walletInit)">
+        <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/settings.svg" ng-click="openSettings(refresh)">
         <div class="flex row align-center">{{str.wallet}}</div>
-        <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/search.svg" ng-click="openSearch(walletInit)">
+        <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/search.svg" ng-click="openSearch(refresh)">
     </div>
     <div class="flex col" ng-hide="wallet.address()">
         <ng-include src="'/mfm-wallet/wallet/login/login.html?nocache'"></ng-include>
@@ -22,7 +22,7 @@
                      ng-show="staked.length > 0">
                     <div class="row p16 align-start-center ripple"
                          ng-repeat="item in staked"
-                         ng-click="openStaking(item.domain, walletInit)">
+                         ng-click="openStaking(item.domain, refresh)">
                         <div ng-style="getLogo(item.domain)"></div>
                         <div class="flex col ml16">
                             <p>{{formatDomain(item.domain)}}</p>
@@ -35,7 +35,7 @@
                     </div>
                 </div>
 
-                <div class="primary-button back-pay mh0" ng-click="openLaunchToken(walletInit)">
+                <div class="primary-button back-pay mh0" ng-click="openLaunchToken(refresh)">
                     {{str.launch_token}}
                 </div>
             </div>

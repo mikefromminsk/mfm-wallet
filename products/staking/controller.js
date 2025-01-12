@@ -67,17 +67,13 @@ function openStaking(domain, success) {
                 $scope.reward = null
                 $scope.period_days = response.period_days
                 $scope.percent = response.percent
-                if ($scope.token.owner == wallet.address()) {
-                    showError(str.you_cannot_stake_your_own_token)
-                } else {
-                    for (const stake_tran of response.staked) {
-                        if (stake_tran.domain == domain) {
-                            $scope.stake = stake_tran
-                            if (rewardTimer == null)
-                                rewardTimer = setInterval(updateReward, 1000)
-                            updateReward()
-                            break
-                        }
+                for (const stake_tran of response.staked) {
+                    if (stake_tran.domain == domain) {
+                        $scope.stake = stake_tran
+                        if (rewardTimer == null)
+                            rewardTimer = setInterval(updateReward, 1000)
+                        updateReward()
+                        break
                     }
                 }
                 $scope.$apply()

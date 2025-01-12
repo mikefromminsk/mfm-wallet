@@ -1,0 +1,26 @@
+<md-dialog class="fill col">
+    <div class="row header align-start-center">
+        <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/info.svg" ng-click="scrollToReadme('bot_faq')">
+        <p class="flex row align-center-center">
+            {{str.bot_settings}}
+        </p>
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+        </div>
+    </div>
+    <div class="flex col scroll align-start-center">
+        <div class="flex col block input-content">
+            <div class="row gap8 align-start-center">
+                <p class="flex">{{str.buy}} {{str.account}}</p>
+                <p>{{formatAmount(quote.balance, wallet.gas_domain)}}</p>
+                <button ng-click="openSend(wallet.gas_domain, bot_address)">{{str.top_up}}</button>
+            </div>
+            <div class="row gap8 align-start-center">
+                <p class="flex">{{str.sell}} {{str.account}}</p>
+                <p>{{formatAmount(base.balance, domain)}}</p>
+                <button ng-click="openSend(domain, bot_address)">{{str.top_up}}</button>
+            </div>
+
+            <div class="nowrap-disabled" id="bot_faq"></div>
+        </div>
+</md-dialog>

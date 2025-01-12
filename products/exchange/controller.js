@@ -3,10 +3,13 @@ function openExchange(domain, is_sell) {
     showDialog("products/exchange", null, function ($scope) {
         $scope.domain = domain
         $scope.is_sell = is_sell == 1
-        $scope.price = null
 
         $scope.openLogin = function () {
             openLogin(init)
+        }
+
+        $scope.setIsSell = function (is_sell) {
+            $scope.is_sell = !is_sell
         }
 
         $scope.changePrice = function (price) {
@@ -91,17 +94,10 @@ function openExchange(domain, is_sell) {
             })
         }
 
-        $scope.sendToBot = function () {
-            openAskSure(str.are_you_support_buy_or_sale, str.buy, str.sell, function () {
-                openSend(wallet.gas_domain, "bot_" + domain, null, init)
-            }, function () {
-                openSend(domain, "bot_" + domain, null, init)
-            })
-        }
-
         $scope.orders = []
+
         function loadOrders() {
-            if (wallet.address() != ""){
+            if (wallet.address() != "") {
                 postContract("mfm-exchange", "orders", {
                     domain: domain,
                     address: wallet.address(),
@@ -134,6 +130,8 @@ function openExchange(domain, is_sell) {
                 }, function (response) {
                     $scope.quote = response.account
                     $scope.$apply()
+                }, function (message) {
+                    console.log(message)
                 })
             }
         }
@@ -152,22 +150,17 @@ function openExchange(domain, is_sell) {
 
         //addChart($scope, domain + "_price")
 
-        $scope.subscribe("price", function (data) {
-            if (data.domain == domain) {
-                $scope.token.price = data.price
-                //$scope.updateChart()
-                $scope.$apply()
-            }
+        $scope.subscribe("price:" + domain, function (data) {
+            $scope.token.price = data.price
+            $scope.$apply()
         });
 
         $scope.subscribe("orderbook:" + domain, function (data) {
             loadOrderbook() // get orderbook from data
         });
 
-        $scope.subscribe("transactions", function (data) {
-            if (data.to == wallet.address() || data.from == wallet.address()) {
-                init()
-            }
+        $scope.subscribe("account:" + wallet.address(), function (data) {
+            init()
         })
 
         init()

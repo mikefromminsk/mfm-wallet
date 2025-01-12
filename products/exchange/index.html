@@ -1,7 +1,7 @@
 <md-dialog class="fill col">
     <div class="row header align-start-center">
         <div class="row align-center-center img32 back-gray radius4 ripple" ng-click="openTokenProfile(token.domain)">
-            <img class="img16 img-white" src="/mfm-wallet/img/chart.svg">
+            <img class="img16" src="/mfm-wallet/img/chart.svg">
         </div>
         <div class="row gap16 align-start-center">
             <div class="col">
@@ -26,12 +26,12 @@
                     <div class="row radius3">
                         <div class="flex p4 row align-center-center radius3"
                              ng-class="{'back-green static-text-white': !is_sell, 'text-green': is_sell}"
-                             ng-click="is_sell = false">
+                             ng-click="setIsSell(false)">
                             {{str.buy}}
                         </div>
                         <div class="flex p4 row align-center-center radius3"
                              ng-class="{'back-red static-text-white': is_sell, 'text-red': !is_sell}"
-                             ng-click="is_sell = true">
+                             ng-click="setIsSell(true)">
                             {{str.sell}}
                         </div>
                     </div>
@@ -120,7 +120,7 @@
                                  style="position: absolute; height: 100%; opacity: 0.19;"
                                  ng-style="{'min-width': item.percent + '%'}"></div>
                             <div class="flex text-red">${{item.price.toFixed(4)}}</div>
-                            <div class="text-red">{{item.amount.toFixed(4)}}</div>
+                            <div>{{item.amount.toFixed(4)}}</div>
                         </div>
                     </div>
 
@@ -145,10 +145,11 @@
                         </div>
                     </div>
 
-                    <button ng-show="token.owner == wallet.address() || (sell || []).length == 0 || (buy || []).length == 0"
-                        ng-click="sendToBot()">
-                        {{str.send_to_bot}}
-                    </button>
+                    <div ng-show="token.owner == wallet.address() || (sell || []).length == 0 || (buy || []).length == 0"
+                         class="primary-button m0 pv4 mt4"
+                         ng-click="openExchangeBot(domain)">
+                        {{str.bot_settings}}
+                    </div>
                 </div>
             </div>
             <div class="col mh16">

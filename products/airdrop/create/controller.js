@@ -1,5 +1,5 @@
-function openDrop(domain, success) {
-    showDialog("wallet/airdrop", success, function ($scope) {
+function openAirdropCreate(domain, success) {
+    showDialog("products/airdrop/create", success, function ($scope) {
         domain = domain || wallet.gas_domain
         $scope.domain = domain
         $scope.receivers = 3
@@ -30,7 +30,7 @@ function openDrop(domain, success) {
                             pass: pass,
                             amount: $scope.amount
                         }, function () {
-                            let link = location.origin + "/mfm-wallet#openPromo=" + domain + ":" + $scope.promoCode
+                            let link = location.origin + "/mfm-wallet#openGirftbox=" + domain + ":" + $scope.promoCode
                             showSuccessDialog(str.promo_link_was_generated, async () => {
                                 try {
                                     await navigator.share({
@@ -64,10 +64,8 @@ function openDrop(domain, success) {
             })
         }
 
-        subscribe("transactions", function (data) {
-            if (data.from == wallet.address()) {
-                init()
-            }
+        subscribe("account:" + wallet.address(), function (data) {
+            init()
         })
 
         init()

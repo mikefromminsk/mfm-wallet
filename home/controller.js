@@ -43,12 +43,6 @@ function addHome($scope) {
         }
     }
 
-    $scope.scrollToReadme = function () {
-        setTimeout(function () {
-            document.getElementById('white_paper').scrollIntoView({ behavior: 'smooth' })
-        }, 100)
-    }
-
     get("/mfm-wallet/docs/white_paper.md", function (text) {
         setMarkdown("white_paper", text)
     })

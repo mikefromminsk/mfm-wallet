@@ -101,14 +101,12 @@ function openMining(domain, success) {
                     clearTimeout(restartTimer)
             }
 
-            $scope.subscribe("mining", function (data) {
-                if (data.domain == domain) {
-                    $scope.balance = data.balance
-                    $scope.difficulty = data.difficulty
-                    $scope.last_reward = data.reward
-                    $scope.$apply()
-                    startMiningProcess(data.last_hash, data.difficulty)
-                }
+            $scope.subscribe("mining:" + domain, function (data) {
+                $scope.balance = data.balance
+                $scope.difficulty = data.difficulty
+                $scope.last_reward = data.reward
+                $scope.$apply()
+                startMiningProcess(data.last_hash, data.difficulty)
             })
 
             function loadProfile() {

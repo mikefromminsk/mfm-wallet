@@ -39,9 +39,16 @@ function addChart($scope, key, accomulate_key) {
         setTimeout(function () {
             if ($scope.candleSeries == null) {
                 let chart = createChart("chart")
-                $scope.candleSeries = chart.addCandlestickSeries()
+                $scope.candleSeries = chart.addCandlestickSeries({
+                    upColor: '#45be88', // Цвет свечей, когда цена растет
+                    downColor: '#FF3347', // Цвет свечей, когда цена падает
+                    borderUpColor: '#45be88', // Цвет границ свечей, когда цена растет
+                    borderDownColor: '#FF3347', // Цвет границ свечей, когда цена падает
+                    wickUpColor: '#45be88', // Цвет фитиля свечей, когда цена растет
+                    wickDownColor: '#FF3347' // Цвет фитиля свечей, когда цена падает
+                })
                 $scope.accomulateSeries = chart.addHistogramSeries({
-                    color: '#26a69a',
+                    color: '#45be88',
                     priceFormat: {
                         type: 'volume',
                     },

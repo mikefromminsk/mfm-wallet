@@ -1,6 +1,6 @@
-function openPromo(promo, success) {
+function openAirdrop(promo, success) {
     trackCall(arguments)
-    showDialog("wallet/promo", success, function ($scope) {
+    showDialog("products/airdrop", success, function ($scope) {
         $scope.promo = promo
 
         $scope.parseDomain = function () {
