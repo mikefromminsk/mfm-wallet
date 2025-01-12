@@ -84,7 +84,18 @@ function openStaking(domain, success) {
             })
         }
 
+        function getBank() {
+            postContract("mfm-token", "account", {
+                domain: domain,
+                address: wallet.STAKING_ADDRESS,
+            }, function (response) {
+                $scope.bank = response.account
+                $scope.$apply()
+            })
+        }
+
         function init() {
+            getBank()
             getProfile(domain, function (response) {
                 getStakes()
                 $scope.token = response.token

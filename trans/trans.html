@@ -14,7 +14,7 @@
         </div>
 
         <div class="flex col align-start-end">
-            <div ng-class="{'text-red': item.from == wallet.address(),'text-green': item.from != username}">
+            <div ng-class="{'text-red': item.from == wallet.address(), 'text-green': item.from != username}">
                 <p ng-show="item.amount == 0">
                     {{str.registration}}
                 </p>

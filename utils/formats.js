@@ -4,7 +4,7 @@ function addFormats($scope) {
         return (Math.ceil(num * factor) / factor)
     }
 
-    function shortNumber(number, precision) {
+    $scope.shortNumber = function (number, precision) {
         if (precision == null) precision = 4
         number = $scope.round(number, precision)
         let numberFormat = new Intl.NumberFormat()
@@ -35,12 +35,12 @@ function addFormats($scope) {
     $scope.formatPrice = function (number, precision) {
         if (number == null)
             number = 0;
-        return "$" + shortNumber(number, precision)
+        return "$" + $scope.shortNumber(number, precision)
     }
     $scope.formatAmount = function (number, domain, precision) {
         if (number == null)
             number = 0;
-        let result = shortNumber(number, precision)
+        let result = $scope.shortNumber(number, precision)
         if (domain != null && domain.length > 0) {
             if (domain.length > 5)
                 domain = domain.substr(0, 3)
