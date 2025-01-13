@@ -1,12 +1,7 @@
 window.languages = {
     "title": "Languages",
     "en": "English",
-    "ru": {
-        "title": "Русский",
-        "ru": "Стандартный",
-        "ru-ussr": "СССР",
-        "ru-goblin": "Перевод Гоблина",
-    },
+    "ru": "Русский",
 }
 
 function openLanguages(languages, success) {

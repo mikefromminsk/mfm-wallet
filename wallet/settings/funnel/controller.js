@@ -53,5 +53,12 @@ function openAnalytics(success) {
         }
 
         addChart($scope, "start", "start")
+        postContract("mfm-analytics", "candles", {
+            key: "start",
+            period_name: "D",
+        }, function (response) {
+            $scope.dau = response.change24
+            $scope.$apply()
+        })
     })
 }

@@ -1,4 +1,5 @@
 function createOdometer(el, value) {
+    if (el == null) return
     const odometer = new Odometer({
         el: el,
         value: 0,
@@ -87,10 +88,10 @@ function addWallet($scope) {
         getStaked()
     }
 
-    $scope.swipeToRefresh = $scope.refresh
-
     if (wallet.address() != "") {
         $scope.refresh()
         subscribeAccount()
     }
+
+    trackEvent("start")
 }

@@ -225,3 +225,4 @@ str.only_delegated_script_can_use_account = "Only delegated script can use accou
 str.access_denied = "Access denied"
 str.value_too_long = "Value too long"
 str.not_enough_gas = "Not enough gas"
+str.daily_active_sessions = "Daily Active Sessions"

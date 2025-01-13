@@ -70,14 +70,6 @@ function addFormats($scope) {
         }
     }
 
-    $scope.watchAmount = function (newValue, oldValue) {
-        if (newValue == null) return;
-        if (newValue != oldValue && $scope.formatAmount(newValue, '', 2) != newValue) {
-            newValue = $scope.formatAmount(newValue, '', 2)
-        }
-        return newValue;
-    }
-
     $scope.formatHash = function (hash) {
         if (hash == null) return ""
         return hash.substr(0, 5) + "..." + hash.substr(-5)

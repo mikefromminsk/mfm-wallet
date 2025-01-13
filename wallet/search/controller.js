@@ -16,6 +16,10 @@ function openSearch(success) {
             })
         }
 
+        $scope.clear = function () {
+            $scope.search_text = ""
+        }
+
         function init() {
             $scope.recent = storage.getStringArray(storageKeys.search_history).reverse()
             $scope.search()

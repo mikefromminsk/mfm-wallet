@@ -154,15 +154,6 @@ input::-webkit-inner-spin-button {
     font-size: 12px;
 }
 
-.input-label-right {
-    position: absolute;
-    top: 32px;
-    right: 24px;
-    font-size: 14px;
-    background-color: var(--gray500);
-    color: var(--accent);
-}
-
 .input:hover, .input:focus {
     border: 1px solid var(--gray300);
 }

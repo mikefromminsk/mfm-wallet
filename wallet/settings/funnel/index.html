@@ -6,19 +6,12 @@
         </div>
     </div>
     <div class="flex col scroll align-start-center">
-        <div class="flex col block p16">
-            <p class="text1">Daily active users</p>
-            <div id="chart"
-                 style="width: 100%; min-height: 300px; max-height: 300px;">
+        <div class="flex col block ph16">
+            <div class="col size50 align-center-center">
+                <p>{{dau}}</p>
+                <p class="text1 mv16">{{str.daily_active_sessions}}</p>
             </div>
-            <div class="row align-center pv8">
-                <div class="row ph16 pv8 mh16"
-                     ng-class="{'back-gray radius-default': period == period_name}"
-                     ng-repeat="period in periods"
-                     ng-click="setPeriod(period)">
-                    <p class="text2">{{str[period]}}</p>
-                </div>
-            </div>
+            <ng-include src="'/mfm-wallet/wallet/profile/chart/chart.html'"></ng-include>
             <div class="mt16 col border-accent"
                  ng-repeat="funnel in funnels">
                 <p class="text1 p8 border-accent">{{funnel.title}}</p>

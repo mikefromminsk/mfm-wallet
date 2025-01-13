@@ -5,19 +5,18 @@ function getParam(paramName, def) {
 }
 
 function getLanguage() {
-    return getParam('lang', storage.getString(storageKeys.language, navigator.language))
+    return getParam('lang', storage.getString(storageKeys.language, navigator.language.split("-")[0]))
 }
 
-function getBaseLanguage() {
-    return getBaseLanguage().split("-")[0]
-}
-
-function loadDialect($scope) {
+function loadTranslations($scope) {
     let scriptTag = document.createElement('script')
     scriptTag.src = "/mfm-wallet/strings/lang/" + getLanguage() + ".js"
     scriptTag.onload = function () {
         $scope.str = window.str
         $scope.$apply()
+    }
+    scriptTag.onerror = function () {
+        storage.setString(storageKeys.language, "en")
     }
     document.body.appendChild(scriptTag)
 }
@@ -37,7 +36,7 @@ function controller(callback) {
         window.$mdBottomSheet = $mdBottomSheet
         window.$mdDialog = $mdDialog
         addGlobalVars($scope, callback)
-        loadDialect($scope)
+        loadTranslations($scope)
     })
 }
 

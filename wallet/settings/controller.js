@@ -1,6 +1,7 @@
 function openSettings(success) {
     showDialog("wallet/settings", success, function ($scope) {
         $scope.language = getLanguage()
+        $scope.languages = window.languages
 
         $scope.logout = function () {
             openAskSure(str.are_you_sure, str.yes, str.no, function () {

@@ -13,6 +13,11 @@
                        ng-model="search_text"
                        ng-change="search()"
                        placeholder="{{str.type_token_name}}">
+                <img class="img14 img-gray"
+                     ng-show="search_text"
+                     style="position: absolute; right: 14px; top: 18px"
+                     ng-click="clear()"
+                     src="/mfm-wallet/img/close.svg"/>
             </div>
         </div>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
@@ -46,9 +51,10 @@
             </div>
             <div class="col align-center-center text1 text-gray"
                  ng-hide="tokens.length > 0"
-                 style="min-height: 100px">
-                {{str.nothing_found}}
+                 style="height: 100px">
+                <p>{{str.nothing_found}}</p>
             </div>
+            <div></div>
         </div>
     </div>
 </md-dialog>
