@@ -8,11 +8,11 @@ function start($scope) {
     $scope.selectTab = function (tab) {
         $scope.selectedIndex = tab
         if (tab == 0) {
-            addDialogs($scope)
+            openDialogs($scope)
         } else if (tab == 1) {
-            addHome($scope)
+            openHome($scope)
         } else if (tab == 2) {
-            addWallet($scope)
+            openWallet($scope)
         }
         swipeToRefresh($scope.swipeToRefresh)
     }

@@ -22,7 +22,7 @@
             <md-tab label="$index" ng-repeat="item in slides">
                 <div class="col" style="min-height: 200px; padding: 0 16px; text-shadow: #000000 1px 0 30px;">
                     <div class="flex col p16 back-gray radius-default nowrap-disabled align-center-center"
-                         ng-style="getBack('usdt')">
+                         ng-style="getBack(item.text)">
                         <div class="col gap16 align-start-center">
                             <p class="size40 bold">{{item.title}}</p>
                             <p class="text1">{{item.text}}</p>

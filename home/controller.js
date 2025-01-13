@@ -1,4 +1,5 @@
-function addHome($scope) {
+function openHome($scope) {
+
     function init() {
         postContract("mfm-analytics", "home", {
             empty: true,
@@ -21,9 +22,9 @@ function addHome($scope) {
             image: image,
         })
     }
-    $scope.addSlide("VAVILON.org", "Innovate HashChain network.")
-    $scope.addSlide("0% fees", "Only miners pays fees.")
-    $scope.addSlide("1000 TPS", "HashChain solve scale problems.")
+    $scope.addSlide("VAVILON.org", str.innovate_hashchain_network)
+    $scope.addSlide("0%", str.only_miners_pays_fees)
+    $scope.addSlide("1000 TPS", str.on_one_core)
 
 
     $scope.slideIndex = 0

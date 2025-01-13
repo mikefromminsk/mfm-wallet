@@ -1,5 +1,4 @@
-function addDialogs($scope) {
-
+function openDialogs($scope) {
     function loadTrans() {
         if (wallet.address() != "") {
             postContract("mfm-token", "tran_dialogs", {

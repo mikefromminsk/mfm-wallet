@@ -23,7 +23,8 @@ function createOdometer(el, value) {
     observer.observe(el)
 }
 
-function addWallet($scope) {
+function openWallet($scope) {
+
     $scope.domain = "usdt"
 
     addLogin($scope, function () {
@@ -117,6 +118,4 @@ function addWallet($scope) {
         $scope.refresh()
         subscribeAccount()
     }
-
-    trackEvent("start")
 }
