@@ -1,5 +1,10 @@
 <div class="row align-start-end">
     <div class="flex p16 col align-start-center ripple"
+         ng-click="openEarn(init)">
+        <img class="img16 img-gray" src="/mfm-wallet/img/dollar.svg">
+        <p class="mt8 text2">{{str.earn}}</p>
+    </div>
+    <div class="flex p16 col align-start-center ripple"
          ng-click="openAirdrop()">
         <img class="img16 img-gray" src="/mfm-wallet/img/giftbox.svg">
         <p class="mt8 text2">{{str.airdrop}}</p>
@@ -11,7 +16,7 @@
     </div>
 </div>
 
-<div class="row align-start-end"
+<!--<div class="row align-start-end"
      ng-show="domain == wallet.gas_domain">
     <div class="flex p16 col align-start-center ripple"
          ng-click="openDeposit()">
@@ -23,12 +28,7 @@
         <img class="img16 img-gray" src="/mfm-wallet/img/arrow-up.svg">
         <p class="mt8 text2">{{str.withdrawal}}</p>
     </div>
-    <div class="flex p16 col align-start-center ripple"
-         ng-click="openEarn(init)">
-        <img class="img16 img-gray" src="/mfm-wallet/img/dollar.svg">
-        <p class="mt8 text2">{{str.earn}}</p>
-    </div>
-</div>
+</div>-->
 
 <div class="row align-start-end"
      ng-show="domain != wallet.gas_domain">

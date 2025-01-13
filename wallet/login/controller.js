@@ -15,7 +15,7 @@ function addLogin($scope, success) {
     }
 
     if (DEBUG) {
-        $scope.mnemonic = "card wing home athlete regular post notice paddle isolate zone payment chef"
+        $scope.mnemonic = "nation finger unable fade exist visa arch awake anchor surround paddle riot"
     } else {
         $scope.mnemonic = ""
         for (let i = 0; i < 12; i++) {

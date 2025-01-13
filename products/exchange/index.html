@@ -117,8 +117,8 @@
                              style="height: 20px; position: relative"
                              ng-click="changePrice(item.price)">
                             <div class="back-red"
-                                 style="position: absolute; height: 100%; opacity: 0.19;"
-                                 ng-style="{'min-width': item.percent + '%'}"></div>
+                                 style="position: absolute; height: 100%"
+                                 ng-style="{'min-width': item.percent + '%', 'opacity': hasMyOrder(item.price) ? 0.5 : 0.2}"></div>
                             <div class="flex text-red">${{item.price.toFixed(4)}}</div>
                             <div>{{item.amount.toFixed(4)}}</div>
                         </div>
@@ -138,8 +138,8 @@
                              style="height: 20px; position: relative"
                              ng-click="changePrice(item.price)">
                             <div class="back-green"
-                                 style="position: absolute; height: 100%; opacity: 0.19;"
-                                 ng-style="{'min-width': item.percent + '%'}"></div>
+                                 style="position: absolute; height: 100%"
+                                 ng-style="{'min-width': item.percent + '%', 'opacity': hasMyOrder(item.price) ? 0.3 : 0.2}"></div>
                             <div class="flex text-green">${{item.price.toFixed(4)}}</div>
                             <div>{{item.amount.toFixed(4)}}</div>
                         </div>
@@ -153,41 +153,51 @@
                 </div>
             </div>
             <div class="col mh16">
-                <p class="mt16">{{str.orders}}</p>
-                <div class="row mt16 size12 align-start-center" ng-repeat="item in orders">
-                    <div class="row align-end-end" ng-style="getLogo(domain)">
-                        <p class="ph4 size10 back-green text-white radius-default" ng-show="item.is_sell == 0">
-                            {{str.buy}}</p>
-                        <p class="ph4 size10 back-red text-white radius-default" ng-show="item.is_sell == 1">
-                            {{str.sell}}</p>
-                    </div>
-                    <div class="flex col ml8">
-                        <p>{{formatDomain(domain)}}</p>
-                        <p class="mt4 size10 text-gray">{{formatTime(item.timestamp)}}</p>
-                    </div>
-                    <div class="flex col align-start-end">
-                        <p>{{formatAmount(item.amount, domain)}}</p>
-                        <p class="mt4 size10" ng-show="is_sell == 1">{{str.filled}}
-                            {{formatPercent(item.amount_filled / item.amount * 100)}}</p>
-                        <p class="mt4 size10 text-gray" ng-show="is_sell == 0">{{str.filled}}
-                            {{formatPercent(item.total_filled / item.total * 100)}}</p>
-                    </div>
-                    <div class="flex-30 row align-end-center">
-                        <div class="mr16 col align-end-end">
-                            <p class="">{{formatPrice(item.amount * item.price)}}</p>
-                            <p class="mt4 size10 text-gray">{{formatPrice(item.price)}}</p>
+                <div class="col" ng-repeat="orders in [active_orders, history_orders]">
+                    <div class="row mt16 align-start-end" ng-show="orders.length > 0 && $index == 0">
+                        <p class="">{{str.active_orders}}</p>
+                        <p class="flex row align-end text2">{{str.amount}}</p>
+                        <div class="flex-30 row align-end-end">
+                            <p class="text2">{{str.total}}</p>
+                            <div class="mh16"></div>
                         </div>
-                        <img class="img16 img-green"
-                             src="/mfm-wallet/img/success.svg"
-                             ng-hide="item.status == 0">
-                        <img class="img16 img-red ripple"
-                             src="/mfm-wallet/img/close.svg"
-                             ng-show="item.status == 0"
-                             ng-click="cancel(item.order_id)">
+                    </div>
+                    <p class="mt16" ng-show="orders.length > 0 && $index == 1">{{str.history}}</p>
+                    <div class="row mt16 size12 align-start-center" ng-repeat="item in orders">
+                        <div class="row align-end-end" ng-style="getLogo(domain)">
+                            <p class="ph4 size10 back-green text-white radius-default" ng-show="item.is_sell == 0">
+                                {{str.buy}}</p>
+                            <p class="ph4 size10 back-red text-white radius-default" ng-show="item.is_sell == 1">
+                                {{str.sell}}</p>
+                        </div>
+                        <div class="flex col ml8">
+                            <p>{{formatDomain(domain)}}</p>
+                            <p class="mt4 size10 text-gray">{{formatTime(item.timestamp)}}</p>
+                        </div>
+                        <div class="flex col align-start-end">
+                            <p>{{formatAmount(item.amount, domain)}}</p>
+                            <p class="mt4 size10" ng-show="is_sell == 1">{{str.filled}}
+                                {{formatPercent(item.amount_filled / item.amount * 100)}}</p>
+                            <p class="mt4 size10 text-gray" ng-show="is_sell == 0">{{str.filled}}
+                                {{formatPercent(item.total_filled / item.total * 100)}}</p>
+                        </div>
+                        <div class="flex-30 row align-end-center">
+                            <div class="mr16 col align-end-end">
+                                <p class="">{{formatPrice(item.amount * item.price)}}</p>
+                                <p class="mt4 size10 text-gray">{{formatPrice(item.price)}}</p>
+                            </div>
+                            <img class="img16 img-green"
+                                 src="/mfm-wallet/img/success.svg"
+                                 ng-hide="item.status == 0">
+                            <img class="img16 img-red ripple"
+                                 src="/mfm-wallet/img/close.svg"
+                                 ng-show="item.status == 0"
+                                 ng-click="cancel(item.order_id)">
+                        </div>
                     </div>
                 </div>
                 <div class="col align-center-center text1 text-gray"
-                     ng-show="orders.length == 0"
+                     ng-show="active_orders.length == 0 && history_orders.length == 0"
                      style="height: 200px">
                     {{str.there_is_no_orders_yet}}
                 </div>

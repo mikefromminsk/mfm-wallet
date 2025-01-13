@@ -89,10 +89,17 @@ function post(url, params, success, error) {
             } else {
                 try {
                     let response = JSON.parse(xhr.response)
+                    let message = response.message
+                    if (message.length < 100) {
+                        try {
+                            message = window.str[message.replaceAll(" ", "_").toLowerCase()]
+                        } catch (e) {
+                        }
+                    }
                     if (error) {
-                        error(response.message)
+                        error(message)
                     } else {
-                        window.showError(response.message, error)
+                        window.showError(message, error)
                     }
                 } catch (e) {
                     window.showError(xhr.responseText, error)

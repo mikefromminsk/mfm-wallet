@@ -9,12 +9,19 @@
     </div>
     <div class="flex col scroll align-start-center" ng-show="wallet.address()">
         <div class="flex col block input-content">
-            <div class="col text-align-center">
-                <div  class="row align-center text0" style="margin-top: 40px;">
+            <div class="col align-center-center">
+                <div class="row align-center text0" style="margin-top: 40px;">
                     $<div id="total">0</div>
                 </div>
-                <ng-include src="'/mfm-wallet/wallet/profile/options.html?nocache'"></ng-include>
+                <div class="row align-start-center mt8">
+                    <div class="radius-default back-black" ng-style="getIdenticon(wallet.address())"></div>
+                    <p class="ml8">{{formatAddress(wallet.address())}}</p>
+                    <div class="radius-default p8 ripple" ng-click="copy(wallet.address())">
+                        <img class="img22 img-gray400" src="/mfm-wallet/img/copy.svg">
+                    </div>
+                </div>
             </div>
+            <ng-include src="'/mfm-wallet/wallet/profile/options.html?nocache'"></ng-include>
             <div class="col gap16" ng-hide="!wallet.address()">
                 <ng-include src="'/mfm-wallet/wallet/accounts.html?nocache'"></ng-include>
                 <p class="text1" ng-show="staked.length > 0">{{str.staking}}</p>

@@ -7,10 +7,10 @@ function getPin(success, cancel) {
             if (success)
                 success(window.pinForSesstion)
         } else {
-            showBottomSheet("dialogs/pin", function (result) {
-                window.pinForSesstion = result
+            showBottomSheet("dialogs/pin", function (pin) {
+                window.pinForSesstion = pin
                 if (success)
-                    success(result)
+                    success(pin)
             }, function ($scope) {
                 $scope.pin = ""
                 $scope.setMode = cancel != null

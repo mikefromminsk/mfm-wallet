@@ -94,18 +94,24 @@ function openExchange(domain, is_sell) {
             })
         }
 
-        $scope.orders = []
-
         function loadOrders() {
             if (wallet.address() != "") {
                 postContract("mfm-exchange", "orders", {
                     domain: domain,
                     address: wallet.address(),
                 }, function (response) {
-                    $scope.orders = [].concat(response.active || [], response.history || [])
+                    $scope.active_orders = response.active
+                    $scope.history_orders = response.history
                     $scope.$apply()
                 })
             }
+        }
+
+        $scope.hasMyOrder = function (price) {
+            if ($scope.active_orders == null) return false
+            for (const order of $scope.active_orders)
+                if (order.price == price) return true
+            return false
         }
 
         function init() {
