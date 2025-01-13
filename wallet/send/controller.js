@@ -11,16 +11,6 @@ function openSend(domain, to_address, amount, success) {
             $scope.amount = amount
         }
 
-        $scope.$watch('to_address', function (newValue, oldValue) {
-            if (newValue == null) return
-            if (newValue != newValue.toLowerCase())
-                $scope.to_address = newValue.toLowerCase()
-            if (newValue.match(new RegExp("\\W")))
-                $scope.to_address = oldValue
-            if (newValue.indexOf(' ') != -1)
-                $scope.to_address = oldValue
-        })
-
         $scope.send = function send(domain) {
             trackCall(arguments)
             $scope.startRequest()

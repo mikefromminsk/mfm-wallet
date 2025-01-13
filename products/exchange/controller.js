@@ -5,11 +5,11 @@ function openExchange(domain, is_sell) {
         $scope.is_sell = is_sell == 1
 
         $scope.openLogin = function () {
-            openLogin(init)
+            openLogin($scope.refresh)
         }
 
         $scope.setIsSell = function (is_sell) {
-            $scope.is_sell = !is_sell
+            $scope.is_sell = is_sell
         }
 
         $scope.changePrice = function (price) {
@@ -80,7 +80,7 @@ function openExchange(domain, is_sell) {
 
         $scope.getCredit = function getCredit() {
             trackCall(arguments)
-            openEarn(init)
+            openEarn($scope.refresh)
         }
 
         $scope.cancel = function (order_id) {
@@ -88,8 +88,7 @@ function openExchange(domain, is_sell) {
                 postContract("mfm-exchange", "cancel", {
                     order_id: order_id,
                 }, function () {
-                    loadOrderbook()
-                    showSuccess(str.order_canceled, loadOrderbook)
+                    showSuccess(str.order_canceled, $scope.refresh)
                 })
             })
         }
@@ -114,7 +113,7 @@ function openExchange(domain, is_sell) {
             return false
         }
 
-        function init() {
+        $scope.refresh = function () {
             loadBaseProfile()
             loadQuoteBalance()
             loadOrderbook()
@@ -166,9 +165,9 @@ function openExchange(domain, is_sell) {
         });
 
         $scope.subscribe("account:" + wallet.address(), function (data) {
-            init()
+            $scope.refresh()
         })
 
-        init()
+        $scope.refresh()
     })
 }

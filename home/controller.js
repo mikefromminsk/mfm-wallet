@@ -35,17 +35,16 @@ function addHome($scope) {
                 if ($scope.lastAutoIndex != $scope.slideIndex) {
                     clearInterval($scope.interval)
                 } else {
-                    $scope.slideIndex = ($scope.slideIndex + 1) % $scope.tops.top_search.length
-                    $scope.lastAutoIndex = $scope.slideIndex
-                    $scope.$apply()
+                    if (($scope.tops.top_search || []).length > 0){
+                        $scope.slideIndex = ($scope.slideIndex + 1) % $scope.tops.top_search.length
+                        $scope.lastAutoIndex = $scope.slideIndex
+                        $scope.$apply()
+                    }
                 }
             }, 5000)
         }
     }
 
-    get("/mfm-wallet/docs/white_paper.md", function (text) {
-        setMarkdown("white_paper", text)
-    })
 
     init()
 }

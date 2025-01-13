@@ -5,7 +5,8 @@ function getParam(paramName, def) {
 }
 
 function getLanguage() {
-    return getParam('lang', storage.getString(storageKeys.language, navigator.language.split("-")[0]))
+    let lang = getParam('lang', storage.getString(storageKeys.language, navigator.language.split("-")[0]))
+    return ["ru"].indexOf(lang) === -1 ? "en" : lang
 }
 
 function loadTranslations($scope) {
@@ -121,29 +122,6 @@ function showSuccess(message, success) {
     showMessage(message, 'green-toast', success)
 }
 
-function setMarkdown(divId, text) {
-    try {
-        var defaults = {}
-        defaults.highlight = function (str, lang) {
-            if (lang && hljs.getLanguage(lang)) {
-                try {
-                    return '<pre class="hljs"><code>' +
-                        hljs.highlight(lang, str, true).value +
-                        '</code></pre>'
-                } catch (__) {
-                }
-            } else {
-                return '<pre class="hljs"><code>'
-                    + md.utils.escapeHtml(str)
-                    + '</code></pre>'
-            }
-        }
-        let md = window.markdownit(defaults)
-        document.getElementById(divId).innerHTML = md.render(text)
-    } catch (error) {
-        console.error('Ошибка загрузки данных:', error)
-    }
-}
 
 function clearFocus() {
     document.body.focus()

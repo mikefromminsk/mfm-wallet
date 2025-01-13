@@ -26,10 +26,6 @@ function openExchangeBot(domain, success) {
             })
         }
 
-        get("/mfm-wallet/docs/bot_faq.md", function (text) {
-            setMarkdown("bot_faq", text)
-        })
-
         init()
     })
 }

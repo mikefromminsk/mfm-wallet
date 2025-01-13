@@ -144,9 +144,6 @@ function openMining(domain, success) {
             function init() {
                 loadProfile()
                 loadMiningInfo()
-                get("/mfm-wallet/docs/mining.md", function (text) {
-                    setMarkdown("mfm-mining-readme", text)
-                })
             }
 
             init()

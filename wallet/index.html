@@ -41,6 +41,8 @@
                         </div>
                     </div>
                 </div>
+                <p class="text1" ng-show="orders.length > 0">{{str.active_orders}}</p>
+                <ng-include src="'/mfm-wallet/products/exchange/orders.html'"></ng-include>
 
                 <div class="primary-button back-pay mh0" ng-click="openLaunchToken(refresh)">
                     {{str.launch_token}}

@@ -16,6 +16,7 @@
                 <input type="text"
                        id="enter_promo"
                        ng-model="promo"
+                       oninput="this.value = this.value.toLowerCase().replace(/[^a-z0-9_]/g, '')"
                        placeholder="{{str.promo_code}}">
             </div>
             <div class="primary-button"

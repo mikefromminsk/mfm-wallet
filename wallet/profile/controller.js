@@ -18,8 +18,8 @@ function openTokenProfile(domain, success) {
                 $scope.token = response.token
                 $scope.owner = response.owner
                 $scope.mining = response.mining
+                $scope.exchange_bot = response.exchange_bot
                 $scope.staking = response.staking
-                $scope.exchange = response.exchange
                 $scope.account = response.account
                 $scope.analytics = response.analytics
                 $scope.$apply()
@@ -36,9 +36,6 @@ function openTokenProfile(domain, success) {
 
         $scope.init = function () {
             loadProfile()
-            get("/mfm-token/readme.md", function (text) {
-                setMarkdown("token-readme", text)
-            })
         }
 
         $scope.init()

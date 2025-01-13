@@ -17,30 +17,30 @@
                     {{formatAmount(amount)}}
                 </md-input-container>
             </md-slider-container>
-            <p>{{str.you_will_receive}}</p>
+            <p class="size24 text-green">{{str.you_will_receive}}</p>
             <md-slider-container>
-                <md-slider class="md-primary" ng-model="user_percent" min="0" max="100"></md-slider>
+                <md-slider class="md-primary" ng-model="user_percent" min="1" max="100"></md-slider>
                 <md-input-container>
                     {{formatPercent(user_percent, 2)}}
                 </md-input-container>
             </md-slider-container>
             <p>{{str.send_to}} {{str.mining}}</p>
             <md-slider-container>
-                <md-slider class="md-primary" ng-model="mining_percent" min="0" max="100"></md-slider>
+                <md-slider class="md-primary" ng-model="mining_percent" min="1" max="100"></md-slider>
                 <md-input-container>
                     {{formatPercent(mining_percent, 2)}}
                 </md-input-container>
             </md-slider-container>
-            <p>{{str.exchange}}</p>
+            <p>{{str.exchange_bot}}</p>
             <md-slider-container>
-                <md-slider class="md-primary" ng-model="exchange_percent" min="0" max="100"></md-slider>
+                <md-slider class="md-primary" ng-model="exchange_percent" min="1" max="100"></md-slider>
                 <md-input-container>
                     {{formatPercent(exchange_percent, 2)}}
                 </md-input-container>
             </md-slider-container>
             <p>{{str.staking}}</p>
             <md-slider-container>
-                <md-slider class="md-primary" ng-model="staking_percent" min="0" max="100"></md-slider>
+                <md-slider class="md-primary" ng-model="staking_percent" min="1" max="100"></md-slider>
                 <md-input-container>
                     {{formatPercent(staking_percent, 2)}}
                 </md-input-container>

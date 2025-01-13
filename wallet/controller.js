@@ -31,7 +31,7 @@ function addWallet($scope) {
         subscribeAccount()
     })
 
-    function getTokens() {
+    function loadTokens() {
         postContract("mfm-token", "accounts", {
             address: wallet.address(),
         }, function (response) {
@@ -51,7 +51,7 @@ function addWallet($scope) {
         return 0
     }
 
-    function getStaked() {
+    function loadStaked() {
         postContract("mfm-token", "staked", {
             address: wallet.address(),
         }, function (response) {
@@ -68,6 +68,9 @@ function addWallet($scope) {
         if ($scope.staked != null)
             for (const stake of $scope.staked)
                 totalBalance += $scope.getPrice(stake.domain) * stake.amount
+        if ($scope.orders != null)
+            for (const order of $scope.orders)
+                totalBalance += order.total
         return totalBalance
     }
 
@@ -83,9 +86,31 @@ function addWallet($scope) {
         })
     }
 
+    function loadOrders() {
+        if (wallet.address() != "") {
+            postContract("mfm-exchange", "all_orders", {
+                address: wallet.address(),
+            }, function (response) {
+                $scope.orders = response.orders
+                $scope.$apply()
+            })
+        }
+    }
+
+    $scope.cancel = function (order_id) {
+        openAskSure(str.are_you_sure, str.yes, str.no, function () {
+            postContract("mfm-exchange", "cancel", {
+                order_id: order_id,
+            }, function () {
+                showSuccess(str.order_canceled, $scope.refresh)
+            })
+        })
+    }
+
     $scope.refresh = function () {
-        getTokens()
-        getStaked()
+        loadTokens()
+        loadStaked()
+        loadOrders()
     }
 
     if (wallet.address() != "") {

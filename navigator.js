@@ -1,5 +1,9 @@
 function addNavigator($scope) {
 
+    $scope.getLanguage = function () {
+        return getLanguage()
+    }
+
     $scope.finish = function (result) {
         window.$mdBottomSheet.hide(result)
         $scope.unsubscribeAll()

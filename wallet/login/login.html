@@ -10,6 +10,7 @@
                               rows="3"
                               autocomplete="off"
                               ng-model="mnemonic"
+                              oninput="this.value = this.value.toLowerCase().replace(/[^a-z0-9_]/g, '')"
                               placeholder="{{str.seed_phrase}}"></textarea>
                 <div class="row align-start-center ripple"
                      ng-class="{'primary-button m0': !copied, 'p16': copied}"
@@ -21,9 +22,9 @@
         </div>
         <div class="row align-start-center gap8">
             <p>{{str.agree_to}}</p>
-            <p class="text-accent" ng-click="openDoc('/mfm-wallet/docs/terms_and_conditions.md')">
+            <a href="/mfm-wallet/wallet/login/terms_and_conditions/{{getLanguage()}}" target="_blank">
                 {{str.terms_and_conditions}}
-            </p>
+            </a>
         </div>
         <div class="primary-button"
              ng-click="login(mnemonic)"

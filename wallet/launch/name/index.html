@@ -17,7 +17,7 @@
                        autocapitalize="none"
                        autocomplete="off"
                        maxlength="16"
-                       oninput="this.value = this.value.replace(/[^a-zA-Z0-9_]/g, '').toLowerCase();"
+                       oninput="this.value = this.value.toLowerCase().replace(/[^a-z0-9_]/g, '')"
                        ng-model="search_text"
                        ng-change="search()"
                        placeholder="{{str.token_name}}">
