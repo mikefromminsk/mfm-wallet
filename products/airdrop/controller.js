@@ -11,17 +11,28 @@ function openAirdrop(promo, success) {
         $scope.receive = function () {
             if ($scope.promo != null && $scope.promo != "") {
                 if ($scope.promo.indexOf(":") != -1) {
+                    let domain = $scope.promo.split(":")[0]
+                    let promoCode = $scope.promo.split(":")[1]
+                    let password = md5(promoCode)
+                    let address = md5(password)
                     $scope.startRequest()
                     getPin(function (pin) {
                         wallet.reg($scope.domain, pin, function () {
-                            postContract("mfm-token", "airdrop/receive3", {
-                                domain: $scope.promo.split(":")[0],
-                                address: md5(md5($scope.promo.split(":")[1])),
-                                receiver: wallet.address(),
+                            postContract("mfm-token", "account", {
+                                domain: domain,
+                                address: address,
                             }, function (response) {
-                                $scope.finishRequest()
-                                showSuccessDialog(str.you_have_received + " " + $scope.formatAmount(response.received), $scope.close)
-                            }, $scope.finishRequest)
+                                let path = response.account.delegate.split("/")
+                                let app = path.shift()
+                                postContract(app, path.join("/"), {
+                                    domain: domain,
+                                    address: address,
+                                    receiver: wallet.address(),
+                                }, function (response) {
+                                    $scope.finishRequest()
+                                    showSuccessDialog(str.you_have_received + " " + $scope.formatAmount(response.received), $scope.back)
+                                }, $scope.finishRequest)
+                            })
                         }, $scope.finishRequest)
                     }, $scope.finishRequest)
                 } else {

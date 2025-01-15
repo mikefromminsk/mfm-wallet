@@ -10,7 +10,8 @@ function openStaking(domain, success) {
         $scope.domain = domain
         $scope.staking_address = 'de4e3daf6acddab48fe5cb446e1dc80b'
 
-        $scope.$watch("amount", function () {
+        $scope.$watch("amount", function (newValue) {
+            if (newValue != null)
             $scope.amount = $scope.round($scope.amount, 4)
         })
 

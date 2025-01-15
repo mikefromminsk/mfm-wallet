@@ -1,12 +1,14 @@
 function openAirdropCreate(domain, success) {
+    trackCall(arguments)
     showDialog("products/airdrop/create", success, function ($scope) {
         domain = domain || wallet.gas_domain
         $scope.domain = domain
-        $scope.receivers = 3
+        $scope.receivers = 1
         $scope.promoCode = ""
 
-        $scope.$watch("amount", function () {
-            $scope.amount = $scope.round($scope.amount, 4)
+        $scope.$watch("amount", function (newValue) {
+            if (newValue != null)
+                $scope.amount = $scope.round(newValue, 4)
         })
 
         $scope.create = function () {
@@ -30,8 +32,9 @@ function openAirdropCreate(domain, success) {
                             pass: pass,
                             amount: $scope.amount
                         }, function () {
-                            let link = location.origin + "/mfm-wallet#openGirftbox=" + domain + ":" + $scope.promoCode
+                            let link = location.origin + "/mfm-wallet#openAirdrop=" + domain + ":" + $scope.promoCode
                             showSuccessDialog(str.promo_link_was_generated, async () => {
+                                $scope.copy(link)
                                 try {
                                     await navigator.share({
                                         title: str.share,
@@ -41,7 +44,7 @@ function openAirdropCreate(domain, success) {
                                     $scope.close()
                                 } catch (err) {
                                 }
-                            }, str.share)
+                            }, str.copy_and_share)
                         }, $scope.finishRequest)
                     }, $scope.finishRequest)
                 }, $scope.finishRequest)
@@ -54,6 +57,10 @@ function openAirdropCreate(domain, success) {
 
         $scope.setMax = function () {
             $scope.amount = $scope.account.balance
+        }
+
+        $scope.setReceivers = function (receivers) {
+            $scope.receivers = receivers
         }
 
         function init() {

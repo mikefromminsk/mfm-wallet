@@ -1,4 +1,5 @@
-<div class="row mt16 size12 align-start-center" ng-repeat="item in orders">
+<div class="row mt16 size12 align-start-center ripple"
+     ng-repeat="item in orders">
     <div class="row align-end-end" ng-style="getLogo(domain)">
         <p class="ph4 size10 back-green text-white radius-default" ng-show="item.is_sell == 0">
             {{str.buy}}</p>

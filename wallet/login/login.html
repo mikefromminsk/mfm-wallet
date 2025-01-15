@@ -10,7 +10,7 @@
                               rows="3"
                               autocomplete="off"
                               ng-model="mnemonic"
-                              oninput="this.value = this.value.toLowerCase().replace(/[^a-z0-9_]/g, '')"
+                              oninput="this.value = this.value.toLowerCase().replace(/[^a-z0-9 ]/g, '')"
                               placeholder="{{str.seed_phrase}}"></textarea>
                 <div class="row align-start-center ripple"
                      ng-class="{'primary-button m0': !copied, 'p16': copied}"

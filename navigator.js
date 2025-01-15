@@ -204,4 +204,12 @@ function addNavigator($scope) {
     $scope.openP2P = function (domain, success) {
         openP2P(domain, success)
     }
+
+    $scope.openP2PPlace = function (domain, is_sell, success) {
+        openP2PPlace(domain, is_sell, success)
+    }
+
+    $scope.openP2PFill = function (order, success) {
+        openP2PFill(order, success)
+    }
 }
