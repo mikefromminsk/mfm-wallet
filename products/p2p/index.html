@@ -1,0 +1,48 @@
+<md-dialog class="fill col">
+    <div class="row header align-start-center">
+        <div class="row align-center-center img32 back-gray radius-default ripple"
+             ng-click="openAirdropCreate(wallet.gas_domain)">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/plus.svg">
+        </div>
+        <p class="flex row align-center">{{str.airdrop}}</p>
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+        </div>
+    </div>
+    <div class="flex col scroll">
+        <div class="flex col block input-content">
+            <div class="row">
+                <div class="flex-50 row">
+                    <div class="row radius3">
+                        <div class="flex p4 row align-center-center radius3"
+                             ng-class="{'back-green static-text-white': !is_sell, 'text-green': is_sell}"
+                             ng-click="setIsSell(false)">
+                            {{str.buy}}
+                        </div>
+                        <div class="flex p4 row align-center-center radius3"
+                             ng-class="{'back-red static-text-white': is_sell, 'text-red': !is_sell}"
+                             ng-click="setIsSell(true)">
+                            {{str.sell}}
+                        </div>
+                    </div>
+                </div>
+                <div class="flex row">
+                    <button>{{domain}}</button>
+                </div>
+            </div>
+            <div class="col" ng-repeat="orders in [my_orders, p2p_orders]">
+                <p class="mt16" ng-show="orders.length > 0 && $index == 0">{{str.active_orders}}</p>
+                <div class="row mt16 align-start-end" ng-show="orders.length > 0 && $index == 1">
+                    <p class="">{{str.p2p_orders}}</p>
+                    <p class="flex row align-end text2">{{str.amount}}</p>
+                    <div class="flex-30 row align-end-end">
+                        <p class="text2">{{str.total}}</p>
+                        <div class="mh16"></div>
+                    </div>
+                </div>
+                <ng-include src="'/mfm-wallet/products/exchange/orders.html'"></ng-include>
+            </div>
+            <div></div>
+        </div>
+    </div>
+</md-dialog>

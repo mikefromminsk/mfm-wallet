@@ -89,7 +89,7 @@ function openWallet($scope) {
 
     function loadOrders() {
         if (wallet.address() != "") {
-            postContract("mfm-exchange", "all_orders", {
+            postContract("mfm-exchange", "user_orders_active", {
                 address: wallet.address(),
             }, function (response) {
                 $scope.orders = response.orders

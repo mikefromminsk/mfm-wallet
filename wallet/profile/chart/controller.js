@@ -77,7 +77,7 @@ function addChart($scope, key, accumulate_key) {
         }, function (response) {
             if (response.candles != null) {
                 $scope.candleSeries.setData(response.candles)
-                for (const volume of response.accomulate) {
+                for (const volume of response.accumulate) {
                     for (const candle of response.candles) {
                         if (candle.time == volume.time) {
                             if (candle.open > candle.close)
@@ -86,7 +86,7 @@ function addChart($scope, key, accumulate_key) {
                         }
                     }
                 }
-                $scope.accomulateSeries.setData(response.accomulate)
+                $scope.accomulateSeries.setData(response.accumulate)
                 $scope.showNoData = false
             } else {
                 $scope.showNoData = true

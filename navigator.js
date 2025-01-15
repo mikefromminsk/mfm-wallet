@@ -13,7 +13,7 @@ function addNavigator($scope) {
         window.history.pushState({}, document.title, historyStack[historyStack.length - 1])
     }
 
-    $scope.scrollToReadme = function (id) {
+    $scope.scrollTo = function (id) {
         setTimeout(function () {
             document.getElementById(id).scrollIntoView({ behavior: 'smooth' })
         }, 100)
@@ -199,5 +199,9 @@ function addNavigator($scope) {
 
     $scope.openExchangeBot = function (domain, success) {
         openExchangeBot(domain, success)
+    }
+
+    $scope.openP2P = function (domain, success) {
+        openP2P(domain, success)
     }
 }

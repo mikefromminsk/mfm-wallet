@@ -1,7 +1,7 @@
 <div class="flex col scroll align-start-center">
     <div class="flex col block">
         <div class="row header align-start-center">
-            <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/info.svg" ng-click="scrollToReadme('white_paper')">
+            <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/info.svg" ng-click="scrollTo('home_faq')">
             <div class="flex row align-center-center">
                 <div class="row align-start-center p8 back-gray radius-default ripple"
                      ng-show="wallet.address()"
@@ -45,7 +45,7 @@
             </div>
         </div>
 
-        <div class="nowrap-disabled m16" ng-include="'/mfm-wallet/home/landing/' + getLanguage()"></div>
+        <div class="nowrap-disabled m16" id="home_faq" ng-include="'/mfm-wallet/wallet/profile/white_paper/' + getLanguage()"></div>
     </div>
 </div>
 

@@ -95,7 +95,7 @@ function openExchange(domain, is_sell) {
 
         function loadOrders() {
             if (wallet.address() != "") {
-                postContract("mfm-exchange", "orders", {
+                postContract("mfm-exchange", "user_orders", {
                     domain: domain,
                     address: wallet.address(),
                 }, function (response) {

@@ -1,7 +1,7 @@
 function openHome($scope) {
 
     function init() {
-        postContract("mfm-analytics", "home", {
+            postContract("mfm-analytics", "home", {
             empty: true,
         }, function (response) {
             $scope.tops = response.tops

@@ -1,6 +1,6 @@
 <md-dialog class="fill col">
     <div class="row header align-start-center">
-        <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/info.svg" ng-click="scrollToReadme('bot_faq')">
+        <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/info.svg" ng-click="scrollTo('bot_faq')">
         <p class="flex row align-center-center">
             {{str.bot_settings}}
         </p>
@@ -21,6 +21,6 @@
                 <button ng-click="openSend(domain, bot_address)">{{str.top_up}}</button>
             </div>
 
-            <div class="nowrap-disabled" ng-include="'/mfm-wallet/products/exchange/bot/faq/' + getLanguage()"></div>
+            <div class="nowrap-disabled" id="bot_faq" ng-include="'/mfm-wallet/products/exchange/bot/faq/' + getLanguage()"></div>
         </div>
 </md-dialog>
