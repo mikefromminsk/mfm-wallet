@@ -211,7 +211,7 @@ function addFormats($scope) {
     // this is not a formats
 
     $scope.getLogoLink = function (domain) {
-        return "https://storage.vavilon.org/" + domain + ".png"
+        return "/storage/" + domain + ".png"
     }
 
     $scope.getLogo = function (domain, width) {

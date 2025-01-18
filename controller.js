@@ -41,7 +41,7 @@ function start($scope) {
         $scope.close()
     })
 
-    connectWs(8800 + getPortOffset())
+    connectWs(8443)
 }
 
 window.finishAutoOpening = false

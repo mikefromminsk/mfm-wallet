@@ -21,6 +21,7 @@
                 <button ng-click="openSend(domain, bot_address)">{{str.top_up}}</button>
             </div>
 
-            <div class="nowrap-disabled" id="bot_faq" ng-include="'/mfm-wallet/products/exchange/bot/faq/' + getLanguage()"></div>
+            <div class="nowrap-disabled" id="bot_faq"
+                 ng-include="'/mfm-wallet/products/exchange/bot/faq/' + getLanguage() + '.html'"></div>
         </div>
 </md-dialog>

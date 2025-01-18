@@ -47,7 +47,7 @@ function openLogoChange(domain, success) {
         }
 
         $scope.copyLogo = function (logo) {
-            post("https://storage.vavilon.org/copy_file", {
+            postContract("mfm-storage", "copy", {
                 from: logo + ".png",
                 to: domain + ".png",
             }, function () {

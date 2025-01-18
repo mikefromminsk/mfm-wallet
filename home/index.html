@@ -20,7 +20,7 @@
 
         <md-tabs md-selected="slideIndex" class="col p0 mt16 no-swipe" md-swipe-content md-dynamic-height>
             <md-tab label="$index" ng-repeat="item in slides">
-                <div class="col" style="min-height: 200px; padding: 0 16px; text-shadow: #000000 1px 0 30px;">
+                <div class="col" style="min-height: 200px; padding: 0 16px;">
                     <div class="flex col p16 back-gray radius-default nowrap-disabled align-center-center"
                          ng-style="getBack(item.text)">
                         <div class="col gap16 align-start-center">
@@ -45,7 +45,8 @@
             </div>
         </div>
 
-        <div class="nowrap-disabled m16" id="home_faq" ng-include="'/mfm-wallet/wallet/profile/white_paper/' + getLanguage()"></div>
+        <div class="nowrap-disabled m16" id="home_faq"
+             ng-include="'/mfm-wallet/wallet/profile/white_paper/' + getLanguage() + '.html'"></div>
     </div>
 </div>
 

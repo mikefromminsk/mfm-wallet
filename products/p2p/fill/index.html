@@ -42,7 +42,8 @@
                  ng-disabled="in_progress">
                 {{is_sell ? str.sell : str.buy}} {{formatDomainShort(domain)}}
             </div>
-            <div id="p2p_faq" class="nowrap-disabled" ng-include="'/mfm-wallet/products/p2p/place/rules/' + getLanguage()"></div>
+            <div id="p2p_faq" class="nowrap-disabled"
+                 ng-include="'/mfm-wallet/products/p2p/place/rules/' + getLanguage() + '.html'"></div>
 
             <div></div>
         </div>

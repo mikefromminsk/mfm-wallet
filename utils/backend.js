@@ -107,34 +107,15 @@ function post(url, params, success, error) {
             }
         }
     };
-    const formData = new FormData()
-    for (let key of Object.keys(params))
-        formData.append(key, params[key])
-    xhr.send(formData)
+    xhr.send(JSON.stringify(params))
 }
 
 function md5(str) {
     return CryptoJS.MD5(str).toString()
 }
 
-function hashMod(str, mod) {
-    return Number(BigInt("0x" + md5(str)) % BigInt(mod))
-}
-
-let nodePortOffsets = {}
-
-function getPortOffset() {
-    let host = location.host
-    let offset = nodePortOffsets[host]
-    if (offset == null) {
-        offset = hashMod(host, 16)
-        nodePortOffsets[host] = offset
-    }
-    return offset
-}
-
 function postContract(domain, path, params, success, error) {
-    post(location.origin + ":" + (8000 + getPortOffset()) + "/" + domain + "/" + path, params, success, error)
+    post(location.origin + "/" + domain + "/" + path, params, success, error)
 }
 
 function getParam(paramName, def) {
