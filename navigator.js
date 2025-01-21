@@ -201,15 +201,31 @@ function addNavigator($scope) {
         openExchangeBot(domain, success)
     }
 
-    $scope.openP2P = function (domain, success) {
-        openP2P(domain, success)
+    $scope.openDirect = function (domain, success) {
+        openDirect(domain, success)
     }
 
-    $scope.openP2PPlace = function (domain, is_sell, success) {
-        openP2PPlace(domain, is_sell, success)
+    $scope.openDirectPlace = function (domain, success) {
+        openDirectPlace(domain, success)
     }
 
-    $scope.openP2PFill = function (order, success) {
-        openP2PFill(order, success)
+    $scope.openPaymentAdd = function (domain, success) {
+        openPaymentAdd(domain, success)
+    }
+
+    $scope.openDirectBlock = function (order_id, success) {
+        openDirectBlock("" + order_id, success)
+    }
+
+    $scope.openDirectFill = function (order_id, success) {
+        openDirectFill("" + order_id, success)
+    }
+
+    $scope.openChat = function (order_id, success) {
+        openChat("" + order_id, success)
+    }
+
+    $scope.openDirectProfile = function (address, success) {
+        openDirectProfile(address, success)
     }
 }

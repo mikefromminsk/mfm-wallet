@@ -6,14 +6,7 @@ function openExchange(domain, is_sell) {
     })
 }
 
-function addExchange($scope, domain, is_sell) {
-    $scope.domain = domain
-    $scope.is_sell = is_sell == 1
-
-    $scope.openLogin = function () {
-        openLogin($scope.refresh)
-    }
-
+function addPriceAmountTotal($scope) {
     $scope.setIsSell = function (is_sell) {
         $scope.is_sell = is_sell
     }
@@ -49,6 +42,17 @@ function addExchange($scope, domain, is_sell) {
         if (newValue != null)
             $scope.total = $scope.round($scope.total, 4)
     })
+}
+
+function addExchange($scope, domain, is_sell) {
+    $scope.domain = domain
+    $scope.is_sell = is_sell == 1
+
+    addPriceAmountTotal($scope)
+
+    $scope.openLogin = function () {
+        openLogin($scope.refresh)
+    }
     $scope.portion = 0
     $scope.$watch("portion", function (new_value, old_value) {
         if (new_value == old_value) return;

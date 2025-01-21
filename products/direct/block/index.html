@@ -15,12 +15,13 @@
                 <img class="img-white" src="/mfm-wallet/img/dollar.svg">
                 <input type="number"
                        ng-model="price"
+                       disabled
                        ng-change="changePrice()"
                        placeholder="{{str.price}}">
             </div>
 
             <div class="row input-wrapper">
-                <div ng-style="getLogo(domain)"></div>
+                <div ng-style="getLogo(order.domain)"></div>
                 <input type="number"
                        ng-model="amount"
                        ng-change="changeAmount()"
@@ -37,12 +38,12 @@
 
             <div class="primary-button uppercase p8 text1"
                  ng-class="{'back-red': is_sell, ' back-green': !is_sell}"
-                 ng-click="placeP2P()"
+                 ng-click="place()"
                  ng-disabled="in_progress">
                 {{is_sell ? str.sell : str.buy}} {{formatDomainShort(domain)}}
             </div>
             <div id="p2p_faq" class="nowrap-disabled"
-                 ng-include="'/mfm-wallet/products/p2p/place/rules/' + getLanguage() + '.html'"></div>
+                 ng-include="'/mfm-wallet/products/direct/place/rules/' + getLanguage() + '.html'"></div>
 
             <div></div>
         </div>

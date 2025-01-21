@@ -4,7 +4,7 @@
              ng-click="scrollTo('p2p_faq')">
             <img class="img16 img-gray400" src="/mfm-wallet/img/info.svg">
         </div>
-        <p class="flex row align-center">{{str.new_order}}</p>
+        <p class="flex row align-center">{{str.new_offer}}</p>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
         </div>
@@ -15,7 +15,6 @@
                 <img class="img-white" src="/mfm-wallet/img/dollar.svg">
                 <input type="number"
                        ng-model="price"
-                       disabled
                        ng-change="changePrice()"
                        placeholder="{{str.price}}">
             </div>
@@ -36,15 +35,28 @@
                        placeholder="{{str.total}}">
             </div>
 
+            <div class="row input-wrapper">
+                <div class="img32 row align-center-center">m</div>
+                <input type="number"
+                       ng-model="min"
+                       placeholder="{{str.minimum}}">
+            </div>
+
+            <div class="row input-wrapper">
+                <div class="img32 row align-center-center">M</div>
+                <input type="number"
+                       ng-model="max"
+                       placeholder="{{str.maximum}}">
+            </div>
+
             <div class="primary-button uppercase p8 text1"
                  ng-class="{'back-red': is_sell, ' back-green': !is_sell}"
-                 ng-click="placeP2P()"
+                 ng-click="place()"
                  ng-disabled="in_progress">
                 {{is_sell ? str.sell : str.buy}} {{formatDomainShort(domain)}}
             </div>
             <div id="p2p_faq" class="nowrap-disabled"
-                 ng-include="'/mfm-wallet/products/p2p/place/rules/' + getLanguage() + '.html'"></div>
-
+                 ng-include="'/mfm-wallet/products/direct/place/rules/' + getLanguage() + '.html'"></div>
             <div></div>
         </div>
     </div>

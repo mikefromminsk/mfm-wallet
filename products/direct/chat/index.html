@@ -1,0 +1,22 @@
+<md-dialog class="fill col">
+    <div class="row header align-start-center">
+        <p class="flex row align-center">{{str.order}}</p>
+        <button ng-click="appelation()">
+            {{str.appelation}}
+        </button>
+    </div>
+    <div class="flex col scroll">
+        <div class="flex col block input-content">
+            {{chat}}
+            <div></div>
+        </div>
+    </div>
+    <div class="row input-wrapper">
+        <div ng-style="getLogo(domain)"></div>
+        <input type="number"
+               ng-model="message">
+        <button ng-click="send()">
+            {{str.send}}
+        </button>
+    </div>
+</md-dialog>

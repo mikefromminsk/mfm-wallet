@@ -300,6 +300,10 @@ button {
     border: 1px solid var(--accent);
 }
 
+.border-gray {
+    border: 1px solid var(--gray200);
+}
+
 .header {
     padding: 16px;
     min-height: 60px;

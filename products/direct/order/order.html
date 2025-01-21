@@ -1,0 +1,30 @@
+<div class="row gap4">
+    <p ng-show="order.is_sell" class="text-red">{{str.sell}}</p>
+    <p ng-hide="order.is_sell" class="text-green">{{str.buy}}</p>
+    <p class="flex uppercase">{{order.domain}}</p>
+    <p ng-show="order.status == 'active'" class="text-green">{{str.active}}</p>
+    <p ng-show="order.status == 'cancel'" class="text-red">{{str.canceled}}</p>
+    <p ng-show="order.status == 'filled'" class="text-green">{{str.filled}}</p>
+    <p ng-show="order.status == 'appeal'" class="text-white">{{str.appeal}}</p>
+</div>
+<div class="row mt16 align-start-end">
+    <p class="flex text2">{{str.total}}</p>
+    <p>{{formatAmount(order.parent.amount * order.parent.price, order.domain, 2)}}</p>
+</div>
+<div class="row mt8 align-start-end">
+    <p class="flex text2">{{str.price}}</p>
+    <p>{{formatAmount(order.parent.price, order.domain, 2)}}</p>
+</div>
+<div class="row mt8 align-start-end">
+    <p class="flex text2">{{str.amount}}</p>
+    <p>{{formatAmount(order.parent.amount, wallet.gas_domain, 2)}}</p>
+</div>
+<div class="row mv8 align-start-end">
+    <p class="flex text2">{{str.id}}</p>
+    <div class="row gap8">
+        <p>{{order.id}}</p>
+        <img class="img14 img-white"
+             src="/mfm-wallet/img/copy.svg"
+             ng-click="copy(order.id)">
+    </div>
+</div>

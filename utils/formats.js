@@ -96,7 +96,7 @@ function addFormats($scope) {
     }
 
     $scope.formatPercent = function (number, precision) {
-        if (number == 0) return "0%";
+        if (number == 0 || isNaN(number)) return "0%";
         return $scope.round(number, precision || 1) + "%";
     }
 
@@ -110,17 +110,14 @@ function addFormats($scope) {
             return {'text-red': true}
     }
 
-    $scope.formatTime = function (number) {
-        return new Date(number * 1000).toLocaleString()
-    }
+    $scope.formatTime = function (seconds) {
 
-    $scope.formatTimeDiff = function (seconds) {
         function round(num, precision) {
             return +(Math.round(num + "e+" + precision) + "e-" + precision);
         }
 
-        var diff = new Date().getTime() / 1000 - seconds
-        var string = ""
+        let diff = new Date().getTime() / 1000 - seconds
+        let string = ""
         if (diff < 60) {
             string = round(diff, 0)
             string += " " + (string == 1 ? str.second : str.seconds)
@@ -143,15 +140,21 @@ function addFormats($scope) {
             string = round(diff / 60 / 60 / 24 / 365, 0)
             string += " " + (string == 1 ? str.year : str.years)
         }
-        return (string + " " + str.ago).toLowerCase()
+        return string
     }
+
+    $scope.formatTimeDiff = function (seconds) {
+        return ($scope.formatTimeDiff(seconds) + " " + str.ago).toLowerCase()
+    }
+
+
 
     function padTo2Digits(num) {
         return num.toString().padStart(2, '0');
     }
 
     $scope.formatDate = function (number) {
-        if (number == "") return ""
+        if (number == "") return str.unset
         let date = new Date(number * 1000)
         if (new Date().toDateString() === date.toDateString())
             return str.today
@@ -231,28 +234,30 @@ function addFormats($scope) {
         return style
     }
 
+    let colors = [
+        "#F44336",
+        "#E91E63",
+        "#9C27B0",
+        "#673AB7",
+        "#3F51B5",
+        "#2196F3",
+        "#03A9F4",
+        "#00BCD4",
+        "#009688",
+        "#4CAF50",
+        "#CDDC39",
+        "#FFEB3B",
+        "#FFC107",
+        "#FF9800",
+        "#FF5722",
+    ]
+
+    $scope.getColor = function (domain) {
+        return colors[domain.charCodeAt(0) % colors.length]
+    }
+
     $scope.getBack = function (domain) {
         if (domain == null) return {}
-        let colors = [
-            "#F44336",
-            "#E91E63",
-            "#9C27B0",
-            "#673AB7",
-            "#3F51B5",
-            "#2196F3",
-            "#03A9F4",
-            "#00BCD4",
-            "#009688",
-            "#4CAF50",
-            "#CDDC39",
-            "#FFEB3B",
-            "#FFC107",
-            "#FF9800",
-            "#FF5722",
-            "#795548",
-            "#607D8B",
-            "#9E9E9E",
-        ]
         let random4colors = []
         for (let i = 0; i < 4; i++) {
             random4colors.push(colors[domain.charCodeAt(i) % colors.length])
