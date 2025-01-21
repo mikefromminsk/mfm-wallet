@@ -1,6 +1,13 @@
 <div class="fill col">
     <div class="row header align-start-center">
-        <p class="flex row align-center">{{str.my_orders}}</p>
+        <div class="row align-center-center img32 back-gray radius-default ripple"
+             ng-click="openDirectPlace(domain, swipeToRefresh)">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/plus.svg">
+        </div>
+        <p class="flex row align-center-center">{{str.history}}</p>
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+        </div>
     </div>
     <div class="row ph16 gap8 scroll-horizontal">
         <button ng-repeat="item in orderMenu"

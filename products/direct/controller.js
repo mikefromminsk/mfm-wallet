@@ -1,16 +1,16 @@
-function openDirect(domain, success) {
+function openDirect(success) {
     trackCall(arguments)
     showDialog("products/direct", success, function ($scope) {
-        $scope.domain = domain
+        $scope.domain = storage.getString(storageKeys.defaultOfferDomain, wallet.gas_domain)
 
         $scope.menu = ["history", "offers", "profile"]
         $scope.selectedIndex = 1
         $scope.selectTab = function (tab) {
             $scope.selectedIndex = tab
             if (tab == 0) {
-                openMyOrders($scope, domain)
+                openMyOrders($scope)
             } else if (tab == 1) {
-                openAllOrders($scope, domain)
+                openAllOrders($scope)
             } else if (tab == 2) {
                 addDirectProfile($scope, wallet.address())
             }
@@ -21,7 +21,7 @@ function openDirect(domain, success) {
     })
 }
 
-function openAllOrders($scope, domain, success) {
+function openAllOrders($scope) {
     $scope.orders = []
     $scope.sell = []
     $scope.buy = []
@@ -34,13 +34,20 @@ function openAllOrders($scope, domain, success) {
 
     $scope.loadOrderbook = function () {
         postContract("mfm-direct", "orderbook", {
-            domain: domain,
+            domain: $scope.domain,
         }, function (response) {
             $scope.sell = (response.sell || []).reverse()
             $scope.buy = response.buy
             $scope.setIsSell($scope.is_sell)
             $scope.$apply()
         })
+    }
+
+    $scope.selectDomain = function (domain) {
+        $scope.domain = domain
+        storage.setString(storageKeys.defaultOfferDomain, domain)
+        $scope.$apply()
+        $scope.loadOrderbook()
     }
 
     $scope.swipeToRefresh = function () {
@@ -52,7 +59,7 @@ function openAllOrders($scope, domain, success) {
 
 function openMyOrders($scope) {
 
-    $scope.orderMenu = ["offers", "active", "finish", "cancel", "appeal"]
+    $scope.orderMenu = ["offers", "active", "sent", "appeal", "finish", "cancel"]
     $scope.orderMenuSelected = "active"
     $scope.selectOrderMenu = function (menu) {
         $scope.orderMenuSelected = menu

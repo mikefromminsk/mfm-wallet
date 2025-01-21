@@ -201,8 +201,8 @@ function addNavigator($scope) {
         openExchangeBot(domain, success)
     }
 
-    $scope.openDirect = function (domain, success) {
-        openDirect(domain, success)
+    $scope.openDirect = function (success) {
+        openDirect(success)
     }
 
     $scope.openDirectPlace = function (domain, success) {
@@ -227,5 +227,8 @@ function addNavigator($scope) {
 
     $scope.openDirectProfile = function (address, success) {
         openDirectProfile(address, success)
+    }
+    $scope.openDirectDomain = function (success) {
+        openDirectDomain(success)
     }
 }

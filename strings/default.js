@@ -264,4 +264,5 @@ str.offers = "Offers"
 str.i_received_money = "I received money"
 str.new_offer = "New Offer"
 str.i_sent_money = "I sent money"
+str.status_updated = "Status updated"
 

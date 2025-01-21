@@ -163,6 +163,7 @@ const storageKeys = {
     search_history: "STORE_SEARCH_HISTORY",
     first_review: "STORE_FIRST_REVIEW",
     mining_auto_start: "STORE_MINING_AUTO_START",
+    defaultOfferDomain: "STORE_DEFAULT_OFFER_DOMAIN",
 }
 
 function postContractWithGas(domain, path, params, success, error) {

@@ -11,7 +11,7 @@ function openDirectFill(order_id, success) {
                         pass: pass
                     }, function () {
                         $scope.finishRequest()
-                        showSuccessDialog(str.order_filled, $scope.refresh)
+                        showSuccessDialog(str.status_updated, $scope.refresh)
                     }, $scope.finishRequest)
                 })
             }, $scope.finishRequest)
@@ -26,7 +26,7 @@ function openDirectFill(order_id, success) {
                         pass: pass
                     }, function () {
                         $scope.finishRequest()
-                        showSuccessDialog(str.order_filled, $scope.refresh)
+                        showSuccessDialog(str.status_updated, $scope.refresh)
                     }, $scope.finishRequest)
                 })
             }, $scope.finishRequest)
@@ -37,7 +37,7 @@ function openDirectFill(order_id, success) {
                 postContract("mfm-direct", "order_fill_cancel", {
                     order_id: order_id
                 }, function () {
-                    showSuccessDialog(str.order_canceled, $scope.refresh)
+                    showSuccessDialog(str.status_updated, $scope.refresh)
                 })
             })
         }
