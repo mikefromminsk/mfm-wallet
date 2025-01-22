@@ -1,0 +1,19 @@
+<div class="row" ng-hide="item.from == wallet.address()">
+  <div class="row mt16 p16 radius-default back-gray ripple">
+    <div ng-style="getLogo(item.domain)"></div>
+    <div class="col ml8">
+      <p>+{{formatAmount(item.amount, item.domain)}}</p>
+      <p class="mt4 text2">{{formatSec(item.time)}}</p>
+    </div>
+  </div>
+</div>
+<div class="row" ng-show="item.from == wallet.address()">
+  <div class="flex"></div>
+  <div class="row mt16 p16 radius-default back-gray ripple">
+    <div class="col align-start-end">
+      <p>{{formatAmount(item.amount, item.domain)}}</p>
+      <p class="mt4 text2">{{formatSec(item.time)}}</p>
+    </div>
+    <div class="ml8" ng-style="getLogo(item.domain)"></div>
+  </div>
+</div>

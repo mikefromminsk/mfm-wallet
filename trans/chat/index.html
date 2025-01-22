@@ -19,32 +19,7 @@
                 <div class="row align-center text1 mt16">{{tran.day}}</div>
                 <div ng-repeat="item in tran.items"
                      ng-click="openTran(item.next_hash)">
-                    <div class="row" ng-hide="item.from == wallet.address()">
-                        <div class="row mt16 p16 radius-default back-gray ripple">
-                            <div ng-style="getLogo(item.domain)"></div>
-                            <div class="col ml8">
-                                <p class="text-red" ng-show="item.amount == 0">
-                                    {{str.registration}}
-                                </p>
-                                <p class="text-red" ng-hide="item.amount == 0">
-                                    +{{formatAmount(item.amount, item.domain)}}
-                                </p>
-                                <p class="mt4 text2">{{str.received + " " + formatSec(item.time)}}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row" ng-show="item.from == wallet.address()">
-                        <div class="flex"></div>
-                        <div class="row mt16 p16 radius-default back-gray ripple">
-                            <div class="col align-start-end">
-                                <p class="text-red" ng-hide="item.amount == 0">
-                                    -{{formatAmount(item.amount, item.domain)}}
-                                </p>
-                                <p class="mt4 text2">{{str.sent + " " + formatSec(item.time)}}</p>
-                            </div>
-                            <div class="ml8" ng-style="getLogo(item.domain)"></div>
-                        </div>
-                    </div>
+                    <ng-include src="'/mfm-wallet/trans/chat/tran_message.html'" ></ng-include>
                 </div>
             </div>
         </div>

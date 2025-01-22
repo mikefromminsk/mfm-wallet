@@ -21,6 +21,7 @@ function addNavigator($scope) {
 
     $scope.back = function (result) {
         setTimeout(function () {
+            window.$mdBottomSheet.hide(result)
             $scope.finish(result)
         }, 100)
     }
@@ -221,8 +222,8 @@ function addNavigator($scope) {
         openDirectFill("" + order_id, success)
     }
 
-    $scope.openChat = function (order_id, success) {
-        openChat("" + order_id, success)
+    $scope.openDirectChat = function (order_id, success) {
+        openDirectChat("" + order_id, success)
     }
 
     $scope.openDirectProfile = function (address, success) {

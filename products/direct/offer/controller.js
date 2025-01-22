@@ -1,6 +1,6 @@
 function openDirectPlace(domain, success) {
     trackCall(arguments)
-    showDialog("products/direct/place", success, function ($scope) {
+    showDialog("products/direct/offer", success, function ($scope) {
         addExchange($scope, domain, 0)
 
         if (DEBUG) {
@@ -27,7 +27,7 @@ function openDirectPlace(domain, success) {
                         showSuccessDialog(str.order_placed, $scope.close)
                     }, $scope.finishRequest)
                 }, $scope.finishRequest)
-            }, $scope.finishRequest)
+            })
         }
 
         function init() {
@@ -35,9 +35,8 @@ function openDirectPlace(domain, success) {
                 address: wallet.address(),
             }, function (response) {
                 $scope.profile = response.profile
-                $scope.place()
             }, function () {
-                openPaymentAdd($scope.place)
+                openPaymentAdd()
             })
         }
 

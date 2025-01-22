@@ -265,4 +265,6 @@ str.i_received_money = "I received money"
 str.new_offer = "New Offer"
 str.i_sent_money = "I sent money"
 str.status_updated = "Status updated"
+str.there_is_no_messages_yet = "There is no messages yet"
+str.type_message = "Type message"
 

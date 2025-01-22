@@ -19,8 +19,8 @@ function openDirectBlock(order_id, success) {
                             openDirectFill(response.order_id)
                         })
                     }, $scope.finishRequest)
-                })
-            }, $scope.finishRequest)
+                }, $scope.finishRequest)
+            })
         }
 
         postContract("mfm-direct", "order", {

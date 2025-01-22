@@ -55,17 +55,19 @@ function addFormats($scope) {
         return address.substr(0, 4) + "..." + address.substr(-4)
     }
 
-    $scope.getIdenticon = function (address) {
+    $scope.getIdenticon = function (address, size) {
+        if (size == null)
+            size = 32
         if (address.length < 32)
             address = CryptoJS.MD5(address).toString()
         return {
-            "min-width": "32px",
-            "min-height": "32px",
+            "min-width": size + "px",
+            "min-height": size + "px",
             "background-image": "url(data:image/png;base64,"
                 + new Identicon(address, {
                     background: [255, 255, 255, 0],         // rgba white
                     margin: 0.2,                              // 20% margin
-                    size: 32,                                // 420px square
+                    size: size,                                // 420px square
                 }).toString() + ")",
         }
     }

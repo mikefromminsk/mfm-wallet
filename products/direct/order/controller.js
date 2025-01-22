@@ -14,7 +14,7 @@ function openDirectFill(order_id, success) {
                         showSuccessDialog(str.status_updated, $scope.refresh)
                     }, $scope.finishRequest)
                 })
-            }, $scope.finishRequest)
+            })
         }
 
         $scope.finishOrder = function () {
@@ -29,7 +29,7 @@ function openDirectFill(order_id, success) {
                         showSuccessDialog(str.status_updated, $scope.refresh)
                     }, $scope.finishRequest)
                 })
-            }, $scope.finishRequest)
+            })
         }
 
         $scope.cancelOrder = function () {
