@@ -14,7 +14,7 @@ function openDirectPlace(domain, success) {
             $scope.startRequest()
             getPin(function (pin) {
                 calcPass(wallet.gas_domain, pin, function (pass) {
-                    postContract("mfm-direct", "place", {
+                    postContract("mfm-direct", "offer_place", {
                         domain: domain,
                         address: wallet.address(),
                         price: $scope.price,

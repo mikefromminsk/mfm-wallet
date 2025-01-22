@@ -17,7 +17,7 @@ function openDirectChat(order_id, success) {
 
         $scope.send = function () {
             getPin(function (pin) {
-                calcPass(wallet.address(), pin, function (pass) {
+                calcPass(wallet.gas_domain, pin, function (pass) {
                     postContract("mfm-direct", "chat_send", {
                         order_id: order_id,
                         address: wallet.address(),

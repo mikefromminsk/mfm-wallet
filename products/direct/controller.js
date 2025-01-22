@@ -33,7 +33,7 @@ function openAllOrders($scope) {
     }
 
     $scope.loadOrderbook = function () {
-        postContract("mfm-direct", "orderbook", {
+        postContract("mfm-direct", "offers", {
             domain: $scope.domain,
         }, function (response) {
             $scope.sell = (response.sell || []).reverse()

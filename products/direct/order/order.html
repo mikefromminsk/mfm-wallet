@@ -10,15 +10,15 @@
 </div>
 <div class="row mt16 align-start-end">
     <p class="flex text2">{{str.total}}</p>
-    <p>{{formatAmount(order.parent.amount * order.parent.price, order.domain, 2)}}</p>
+    <p>{{formatAmount(order.offer.amount * order.offer.price, order.domain, 2)}}</p>
 </div>
 <div class="row mt8 align-start-end">
     <p class="flex text2">{{str.price}}</p>
-    <p>{{formatAmount(order.parent.price, order.domain, 2)}}</p>
+    <p>{{formatAmount(order.offer.price, order.domain, 2)}}</p>
 </div>
 <div class="row mt8 align-start-end">
     <p class="flex text2">{{str.amount}}</p>
-    <p>{{formatAmount(order.parent.amount, wallet.gas_domain, 2)}}</p>
+    <p>{{formatAmount(order.offer.amount, wallet.gas_domain, 2)}}</p>
 </div>
 <div class="row mv8 align-start-end">
     <p class="flex text2">{{str.id}}</p>

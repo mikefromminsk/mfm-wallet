@@ -36,8 +36,8 @@
                  ng-click="openDirectFill(order.id)">
                 <ng-include src="'/mfm-wallet/products/direct/order/order.html'"></ng-include>
                 <div class="row mt8 align-start-end mb16">
-                    <p class="flex">{{formatAddress(order.parent.address)}}</p>
-                    <p>{{formatDate(order.parent.created)}}</p>
+                    <p class="flex">{{formatAddress(order.offer.address)}}</p>
+                    <p>{{formatDate(order.offer.created)}}</p>
                 </div>
                 <div class="divider mt16"></div>
             </div>
