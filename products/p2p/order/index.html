@@ -12,11 +12,11 @@
                 <div class="row mt8 mb16 align-start-center gap8">
                     <div class="radius-default back-black" ng-style="getIdenticon(order.offer.address)"></div>
                     <p class="flex">{{formatAddress(order.offer.address)}}</p>
-                    <button ng-click="openDirectChat(order.id)">{{str.chat}}</button>
+                    <button ng-click="openP2PChat(order.id)">{{str.chat}}</button>
                 </div>
             </div>
             <div class="col m16 border-gray radius8">
-                <ng-include src="'/mfm-wallet/products/direct/order/order.html'"></ng-include>
+                <ng-include src="'/mfm-wallet/products/p2p/order/order.html'"></ng-include>
             </div>
             <div></div>
         </div>

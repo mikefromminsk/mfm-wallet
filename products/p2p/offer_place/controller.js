@@ -1,6 +1,6 @@
-function openDirectPlace(domain, success) {
+function openOfferPlace(domain, success) {
     trackCall(arguments)
-    showDialog("products/direct/offer", success, function ($scope) {
+    showDialog("products/p2p/offer_place", success, function ($scope) {
         addExchange($scope, domain, 0)
 
         if (DEBUG) {

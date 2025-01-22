@@ -1,6 +1,6 @@
-function openDirectDomain(success) {
+function openSelectDomain(success) {
     trackCall(arguments)
-    showDialog("products/direct/domain", success, function ($scope) {
+    showDialog("products/p2p/domain", success, function ($scope) {
         $scope.domains = [
             "usdt",
             "pln",

@@ -1,6 +1,6 @@
-function openDirectBlock(offer_id, success) {
+function openOrderPlace(offer_id, success) {
     trackCall(arguments)
-    showDialog("products/direct/block", success, function ($scope) {
+    showDialog("products/p2p/order_place", success, function ($scope) {
         addPriceAmountTotal($scope)
 
         $scope.place = function () {
@@ -16,7 +16,7 @@ function openDirectBlock(offer_id, success) {
                         $scope.finishRequest()
                         showSuccessDialog(str.order_placed, function () {
                             $scope.close()
-                            openDirectFill(response.order_id)
+                            openOrder(response.order_id)
                         })
                     }, $scope.finishRequest)
                 }, $scope.finishRequest)

@@ -56,6 +56,8 @@ function addFormats($scope) {
     }
 
     $scope.getIdenticon = function (address, size) {
+        if (address == null)
+            return ""
         if (size == null)
             size = 32
         if (address.length < 32)

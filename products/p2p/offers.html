@@ -1,7 +1,7 @@
 <div class="fill col">
     <div class="row header align-start-center">
         <div class="row align-center-center img32 back-gray radius-default ripple"
-             ng-click="openDirectPlace(domain, swipeToRefresh)">
+             ng-click="openOfferPlace(domain, swipeToRefresh)">
             <img class="img16 img-gray400" src="/mfm-wallet/img/plus.svg">
         </div>
         <p class="flex row align-center-center">{{str.p2p}}</p>
@@ -25,15 +25,17 @@
                     </div>
                 </div>
                 <div class="flex row align-end">
-                    <button class="uppercase" ng-click="openDirectDomain(selectDomain)">{{domain}}</button>
+                    <button class="uppercase" ng-click="openSelectDomain(selectDomain)">{{domain}}</button>
                 </div>
             </div>
 
-            <div class="col mt16" ng-repeat="item in orders">
+            <div class="col mt16" ng-repeat="item in offers">
                 <div class="row size12 align-start-center">
                     <div class="col">
-                        <div class="row align-start-center">
-                            <div class="radius-default back-black" ng-style="getIdenticon(item.address)"></div>
+                        <div class="row align-start-center"
+                             ng-click="openP2PProfile(item.address)">
+                            <div class="radius-default back-black"
+                                 ng-style="getIdenticon(item.address)"></div>
                             <div class="col ml8">
                                 <div class="row gap4">
                                     <p>{{formatAddress(item.address)}}</p>
@@ -75,7 +77,7 @@
                         </div>
                         <div class="primary-button uppercase p8 size12 m0 mt8"
                              ng-class="{'back-red': is_sell, ' back-green': !is_sell}"
-                             ng-click="openDirectBlock(item.id)">
+                             ng-click="openOrderPlace(item.id)">
                             {{is_sell ? str.sell : str.buy}}
                         </div>
                     </div>
@@ -84,9 +86,9 @@
             </div>
 
             <div class="row align-center-center text1 text-gray"
-                 ng-show="orders.length == 0"
+                 ng-show="offers.length == 0"
                  style="height: 200px">
-                {{str.there_is_no_orders_yet}}
+                {{str.there_is_no_offers_yet}}
             </div>
             <div></div>
         </div>

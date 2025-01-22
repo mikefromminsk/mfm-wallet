@@ -1,6 +1,6 @@
 function openPaymentAdd(success) {
     trackCall(arguments)
-    showDialog("products/direct/payment", success, function ($scope) {
+    showDialog("products/p2p/payment", success, function ($scope) {
 
         $scope.payments = [
             "blik",

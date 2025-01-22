@@ -1,7 +1,7 @@
 <div class="fill col">
     <div class="row header align-start-center">
         <div class="row align-center-center img32 back-gray radius-default ripple"
-             ng-click="openDirectPlace(domain, swipeToRefresh)">
+             ng-click="openOfferPlace(domain, swipeToRefresh)">
             <img class="img16 img-gray400" src="/mfm-wallet/img/plus.svg">
         </div>
         <p class="flex row align-center-center">{{str.history}}</p>
@@ -20,23 +20,24 @@
         <div class="flex col block input-content">
             <div class="primary-button"
                  ng-show="orderMenuSelected == 'offers'"
-                 ng-click="openDirectPlace(domain, swipeToRefresh)">
+                 ng-click="openOfferPlace(domain, swipeToRefresh)">
                 {{str.new_order}}
             </div>
 
             <div class="col ripple"
                  ng-show="orderMenuSelected == 'offers'"
                  ng-repeat="order in orders[orderMenuSelected]">
-                <ng-include src="'/mfm-wallet/products/direct/order/order.html'"></ng-include>
+                <ng-include src="'/mfm-wallet/products/p2p/order/order.html'"></ng-include>
                 <div class="divider mt16"></div>
             </div>
             <div class="col mt16 ripple"
                  ng-show="orderMenuSelected != 'offers'"
                  ng-repeat="order in orders[orderMenuSelected]"
-                 ng-click="openDirectFill(order.id)">
-                <ng-include src="'/mfm-wallet/products/direct/order/order.html'"></ng-include>
+                 ng-click="openOrder(order.id)">
+                <ng-include src="'/mfm-wallet/products/p2p/order/order.html'"></ng-include>
                 <div class="row mt8 align-start-end mb16">
-                    <p class="flex">{{formatAddress(order.offer.address)}}</p>
+                    <p class="flex"
+                       ng-click="openP2PProfile(order.offer.address)">{{formatAddress(order.offer.address)}}</p>
                     <p>{{formatDate(order.offer.created)}}</p>
                 </div>
                 <div class="divider mt16"></div>

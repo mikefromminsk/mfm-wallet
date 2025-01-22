@@ -1,6 +1,6 @@
-function openDirect(success) {
+function openP2P(success) {
     trackCall(arguments)
-    showDialog("products/direct", success, function ($scope) {
+    showDialog("products/p2p", success, function ($scope) {
         $scope.domain = storage.getString(storageKeys.defaultOfferDomain, wallet.gas_domain)
 
         $scope.menu = ["history", "offers", "profile"]
@@ -8,9 +8,9 @@ function openDirect(success) {
         $scope.selectTab = function (tab) {
             $scope.selectedIndex = tab
             if (tab == 0) {
-                openMyOrders($scope)
+                openOrders($scope)
             } else if (tab == 1) {
-                openAllOrders($scope)
+                openOffers($scope)
             } else if (tab == 2) {
                 addDirectProfile($scope, wallet.address())
             }
@@ -21,15 +21,15 @@ function openDirect(success) {
     })
 }
 
-function openAllOrders($scope) {
-    $scope.orders = []
+function openOffers($scope) {
+    $scope.offers = []
     $scope.sell = []
     $scope.buy = []
     $scope.is_sell = true
 
     $scope.setIsSell = function (is_sell) {
         $scope.is_sell = is_sell
-        $scope.orders = is_sell ? $scope.buy : $scope.sell
+        $scope.offers = is_sell ? $scope.buy : $scope.sell
     }
 
     $scope.loadOrderbook = function () {
@@ -57,7 +57,7 @@ function openAllOrders($scope) {
     $scope.swipeToRefresh()
 }
 
-function openMyOrders($scope) {
+function openOrders($scope) {
 
     $scope.orderMenu = ["offers", "active", "sent", "appeal", "finish", "cancel"]
     $scope.orderMenuSelected = "active"
@@ -86,9 +86,9 @@ function openMyOrders($scope) {
     $scope.loadOrders()
 }
 
-function openDirectProfile(address, success) {
+function openP2PProfile(address, success) {
     trackCall(arguments)
-    showDialog("products/direct/profile", success, function ($scope) {
+    showDialog("products/p2p/profile", success, function ($scope) {
         addDirectProfile($scope, address)
     })
 }

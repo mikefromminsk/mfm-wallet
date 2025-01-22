@@ -1,6 +1,6 @@
-function openDirectFill(order_id, success) {
+function openOrder(order_id, success) {
     trackCall(arguments)
-    showDialog("products/direct/order", success, function ($scope) {
+    showDialog("products/p2p/order", success, function ($scope) {
 
         $scope.sentMoney = function () {
             $scope.startRequest()

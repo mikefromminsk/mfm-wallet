@@ -19,7 +19,6 @@
                        ng-change="changePrice()"
                        placeholder="{{str.price}}">
             </div>
-
             <div class="row input-wrapper">
                 <div ng-style="getLogo(offer.domain)"></div>
                 <input type="number"
@@ -27,7 +26,6 @@
                        ng-change="changeAmount()"
                        placeholder="{{str.amount}}">
             </div>
-
             <div class="row input-wrapper">
                 <div ng-style="getLogo(wallet.gas_domain)"></div>
                 <input type="number"
@@ -35,16 +33,12 @@
                        ng-change="changeTotal()"
                        placeholder="{{str.total}}">
             </div>
-
-            <div class="primary-button uppercase text1"
+            <div class="primary-button"
                  ng-class="{'back-red': is_sell, ' back-green': !is_sell}"
                  ng-click="place()"
                  ng-disabled="in_progress">
                 {{is_sell ? str.sell : str.buy}} {{formatDomainShort(offer.domain)}}
             </div>
-            <div id="p2p_faq" class="nowrap-disabled"
-                 ng-include="'/mfm-wallet/products/direct/place/rules/' + getLanguage() + '.html'"></div>
-
             <div></div>
         </div>
     </div>
