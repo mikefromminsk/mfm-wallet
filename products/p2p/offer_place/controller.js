@@ -4,14 +4,6 @@ function openOfferPlace(domain, success) {
         addPriceAmountTotal($scope, domain, 0)
         $scope.domain = domain
 
-        $scope.changeAntiPrice = function () {
-            if ($scope.is_sell)
-                $scope.price = $scope.anti_price
-            else
-                $scope.price = 1 / $scope.anti_price
-            $scope.changePrice()
-        }
-
         $scope.place = function () {
             $scope.startRequest()
             getPin(function (pin) {
@@ -43,13 +35,6 @@ function openOfferPlace(domain, success) {
             }, function () {
                 openPaymentAdd()
             })
-        }
-
-
-        if (DEBUG) {
-            $scope.antiPrice = 4
-            $scope.amount = 100
-            $scope.changeAntiPrice()
         }
 
         init()

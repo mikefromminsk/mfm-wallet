@@ -14,14 +14,12 @@
 </div>
 <div class="row mt16 align-start-end">
     <p class="flex text2">{{str.total}}</p>
-    <p>{{formatAmount(order.offer.amount * formatAntiPrice(order.offer.price), order.domain, 2)}}</p>
+    <p>{{formatAmount(order.offer.amount * order.offer.price, order.domain, 2)}}</p>
 </div>
 <div class="row mt8 align-start-end">
     <p class="flex text2">{{str.price}}</p>
     <div class="row gap8 align-start-end">
-        <p class="uppercase text-gray">{{order.offer.domain}}</p>
-        <p class="size32">{{formatAntiPrice(order.offer.price)}}</p>
-        <p class="uppercase text-gray">/{{wallet.gas_domain}}</p>
+        <p class="size32">{{formatPrice(order.offer.price)}}</p>
     </div>
 </div>
 <div class="row mt8 align-start-end">
