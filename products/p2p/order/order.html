@@ -1,6 +1,10 @@
 <div class="row gap4">
-    <p ng-show="order.is_sell" class="text-red">{{str.sell}} {{formatDomain(wallet.gas_domain)}}</p>
-    <p ng-hide="order.is_sell" class="text-green">{{str.buy}} {{formatDomain(wallet.gas_domain)}}</p>
+    <p ng-show="(order.offer.is_sell == 1 && order.offer.address == wallet.address()) ||
+                (order.offer.is_sell == 0 && order.offer.address != wallet.address())"
+       class="text-red">{{str.sell}} {{formatDomain(wallet.gas_domain)}}</p>
+    <p ng-hide="(order.offer.is_sell == 1 && order.offer.address == wallet.address()) ||
+                (order.offer.is_sell == 0 && order.offer.address != wallet.address())"
+       class="text-green">{{str.buy}} {{formatDomain(wallet.gas_domain)}}</p>
     <p class="flex uppercase">{{order.domain}}</p>
     <p ng-show="order.status == 'active'" class="text-green">{{str.active}}</p>
     <p ng-show="order.status == 'cancel'" class="text-red">{{str.canceled}}</p>

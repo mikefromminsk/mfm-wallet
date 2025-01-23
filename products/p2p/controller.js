@@ -25,7 +25,7 @@ function openOffers($scope) {
     $scope.offers = []
     $scope.sell = []
     $scope.buy = []
-    $scope.is_sell = true
+    $scope.is_sell = false
 
     $scope.setIsSell = function (is_sell) {
         $scope.is_sell = is_sell

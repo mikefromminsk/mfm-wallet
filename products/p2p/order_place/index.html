@@ -11,7 +11,7 @@
     </div>
     <div class="flex col scroll">
         <div class="flex col block input-content">
-            <div class="col input-content p0 m0" ng-show="offer.is_sell == 0">
+            <div class="col input-content p0 m0" ng-show="offer.is_sell == 1">
                 <p>{{str.you_give}}</p>
                 <div class="flex row input-wrapper">
                     <div ng-style="getLogo(offer.domain)"></div>
@@ -31,7 +31,7 @@
                     <button class="text-gray">{{formatDomain(wallet.gas_domain)}}</button>
                 </div>
             </div>
-            <div class="col input-content p0 m0" ng-hide="offer.is_sell == 0">
+            <div class="col input-content p0 m0" ng-show="offer.is_sell == 0">
                 <p>{{str.you_give}}</p>
                 <div class="flex row input-wrapper">
                     <div ng-style="getLogo(wallet.gas_domain)"></div>
@@ -69,10 +69,10 @@
             <div></div>
         </div>
         <div class="primary-button"
-             ng-class="{'back-red': offer.is_sell, ' back-green': !offer.is_sell}"
+             ng-class="{'back-red': offer.is_sell == 0, ' back-green': offer.is_sell == 1}"
              ng-click="place()"
              ng-disabled="!offer || !payment || in_progress">
-            {{is_sell ? str.sell : str.buy}} {{formatDomainShort(wallet.gas_domain)}}
+            {{offer.is_sell == 1 ? str.buy : str.sell}} {{formatDomainShort(wallet.gas_domain)}}
         </div>
     </div>
 </md-dialog>
