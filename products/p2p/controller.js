@@ -46,8 +46,8 @@ function openOffers($scope) {
     $scope.selectDomain = function (domain) {
         $scope.domain = domain
         storage.setString(storageKeys.defaultOfferDomain, domain)
-        $scope.$apply()
         $scope.loadOrderbook()
+        $scope.$apply()
     }
 
     $scope.swipeToRefresh = function () {
@@ -76,6 +76,7 @@ function openOrders($scope) {
             $scope.orders.finish = response.finish
             $scope.orders.cancel = response.cancel
             $scope.orders.appeal = response.appeal
+            $scope.orders.sent = response.sent
             $scope.$apply()
         })
     }

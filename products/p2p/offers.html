@@ -32,8 +32,7 @@
             <div class="col mt16" ng-repeat="item in offers">
                 <div class="row size12 align-start-center">
                     <div class="col">
-                        <div class="row align-start-center"
-                             ng-click="openP2PProfile(item.address)">
+                        <div class="row align-start-center">
                             <div class="radius-default back-black"
                                  ng-style="getIdenticon(item.address)"></div>
                             <div class="col ml8">
@@ -50,14 +49,14 @@
                         </div>
                         <div class="row gap8 align-start-end">
                             <p class="uppercase text-gray">{{item.domain}}</p>
-                            <p class="size32">{{formatAmount(item.price)}}</p>
+                            <p class="size32">{{formatAntiPrice(item.price)}}</p>
                             <p class="uppercase text-gray">/{{wallet.gas_domain}}</p>
                         </div>
 
                         <div class="row mt8 size12 gap8">
                             <p class="text-gray">{{str.limits}}</p>
-                            {{formatAmount(item.min * item.price, domain)}} -
-                            {{formatAmount(item.max * item.price, domain)}}
+                            {{formatAmount(item.min, domain)}} -
+                            {{formatAmount(item.max, domain)}}
                         </div>
                         <div class="row mt8 size12 gap8">
                             <p class="text-gray">{{str.available}}</p>

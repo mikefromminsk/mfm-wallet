@@ -1,13 +1,15 @@
 function openOfferPlace(domain, success) {
     trackCall(arguments)
     showDialog("products/p2p/offer_place", success, function ($scope) {
-        addExchange($scope, domain, 0)
+        addPriceAmountTotal($scope, domain, 0)
+        $scope.domain = domain
 
-        if (DEBUG) {
-            $scope.price = 4
-            $scope.amount = 100
-            $scope.min = 10
-            $scope.max = 1000
+        $scope.changeAntiPrice = function () {
+            if ($scope.is_sell)
+                $scope.price = $scope.anti_price
+            else
+                $scope.price = 1 / $scope.anti_price
+            $scope.changePrice()
         }
 
         $scope.place = function () {
@@ -18,9 +20,10 @@ function openOfferPlace(domain, success) {
                         domain: domain,
                         address: wallet.address(),
                         price: $scope.price,
+                        is_sell: $scope.is_sell ? 1 : 0,
                         amount: $scope.amount,
-                        min: $scope.min,
-                        max: $scope.max,
+                        min: ($scope.min_order || 0),
+                        max: ($scope.max_order || $scope.amount),
                         pass: pass,
                     }, function () {
                         $scope.finishRequest()
@@ -35,9 +38,18 @@ function openOfferPlace(domain, success) {
                 address: wallet.address(),
             }, function (response) {
                 $scope.profile = response.profile
+                if (storage.getString(storageKeys.default_payment_type) == "")
+                    openPaymentAdd()
             }, function () {
                 openPaymentAdd()
             })
+        }
+
+
+        if (DEBUG) {
+            $scope.antiPrice = 4
+            $scope.amount = 100
+            $scope.changeAntiPrice()
         }
 
         init()

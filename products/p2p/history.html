@@ -18,12 +18,6 @@
     </div>
     <div class="flex col scroll">
         <div class="flex col block input-content">
-            <div class="primary-button"
-                 ng-show="orderMenuSelected == 'offers'"
-                 ng-click="openOfferPlace(domain, swipeToRefresh)">
-                {{str.new_order}}
-            </div>
-
             <div class="col ripple"
                  ng-show="orderMenuSelected == 'offers'"
                  ng-repeat="order in orders[orderMenuSelected]">

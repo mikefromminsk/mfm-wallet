@@ -30,6 +30,7 @@ function openWallet($scope) {
     addLogin($scope, function () {
         $scope.refresh()
         subscribeAccount()
+        subscribeNewOrders()
     })
 
     function loadTokens() {
@@ -87,6 +88,15 @@ function openWallet($scope) {
         })
     }
 
+    function subscribeNewOrders() {
+        $scope.subscribe("new_order:" + wallet.address(), function (data) {
+            showSuccess(str.new_p2p_order)
+            setTimeout(function () {
+                new Audio("/mfm-wallet/dialogs/success/payment_success.mp3").play()
+            })
+        })
+    }
+
     function loadOrders() {
         if (wallet.address() != "") {
             postContract("mfm-exchange", "user_orders_active", {
@@ -117,5 +127,6 @@ function openWallet($scope) {
     if (wallet.address() != "") {
         $scope.refresh()
         subscribeAccount()
+        subscribeNewOrders()
     }
 }

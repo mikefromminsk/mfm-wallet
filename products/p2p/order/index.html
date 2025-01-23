@@ -18,6 +18,14 @@
             <div class="col m16 border-gray radius8">
                 <ng-include src="'/mfm-wallet/products/p2p/order/order.html'"></ng-include>
             </div>
+            <div class="row input-wrapper">
+                <div ng-style="getLogo(order.payment)"></div>
+                <input type="text"
+                       ng-model="order.payment"
+                       disabled
+                       placeholder="{{str.payment_type}}">
+                <button class="text-gray">{{payments[order.payment]}}</button>
+            </div>
             <div></div>
         </div>
     </div>

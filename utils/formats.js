@@ -152,7 +152,6 @@ function addFormats($scope) {
     }
 
 
-
     function padTo2Digits(num) {
         return num.toString().padStart(2, '0');
     }
@@ -230,7 +229,7 @@ function addFormats($scope) {
             'min-width': width,
         }
         if (domain != null) {
-            style['background-image'] = "url('" + $scope.getLogoLink(domain) + "')"
+            style['background-image'] = "url('" + $scope.getLogoLink(domain.toLowerCase()) + "')"
             style['background-size'] = 'cover'
             style['background-repeat'] = 'no-repeat'
             style['background-position'] = 'center center'
@@ -293,5 +292,12 @@ function addFormats($scope) {
     $scope.removePressEnter = function () {
         if (keyPressCallback)
             document.removeEventListener('keypress', keyPressListener);
+    }
+
+    $scope.formatAntiPrice = function (number, precision) {
+        if (precision == null) precision = 2
+        if (number < 1)
+            return $scope.formatPrice(1 / number, precision).substr(1)
+        return $scope.formatPrice(number, precision).substr(1)
     }
 }

@@ -11,44 +11,61 @@
     </div>
     <div class="flex col scroll">
         <div class="flex col block input-content">
+            <div class="row align-center-center"
+                 ng-class="{'row-reverse': is_sell}">
+                <div class="row align-start-center gap8">
+                    <div ng-style="getLogo(domain)"></div>
+                    <p>{{formatDomain(domain)}}</p>
+                </div>
+                <img class="img32 img-white m16"
+                     src="/mfm-wallet/img/arrow-right.svg"
+                     ng-click="setIsSell(!is_sell)">
+                <div class="row align-start-center gap8">
+                    <div ng-style="getLogo(wallet.gas_domain)"></div>
+                    <p>{{formatDomain(wallet.gas_domain)}}</p>
+                </div>
+            </div>
             <div class="row input-wrapper">
                 <img class="img-white" src="/mfm-wallet/img/dollar.svg">
                 <input type="number"
-                       ng-model="price"
-                       ng-change="changePrice()"
+                       ng-model="anti_price"
+                       ng-change="changeAntiPrice()"
                        placeholder="{{str.price}}">
             </div>
-            <div class="row input-wrapper">
-                <div ng-style="getLogo(domain)"></div>
-                <input type="number"
-                       ng-model="amount"
-                       ng-change="changeAmount()"
-                       placeholder="{{str.amount}}">
+            <div class="row gap8"
+                 ng-class="{'row-reverse': is_sell}">
+                <div class="row input-wrapper">
+                    <div ng-style="getLogo(domain)"></div>
+                    <input type="number"
+                           ng-model="amount"
+                           ng-change="changeAmount()"
+                           placeholder="{{str.amount}}">
+                </div>
+                <div class="row input-wrapper">
+                    <div ng-style="getLogo(wallet.gas_domain)"></div>
+                    <input type="number"
+                           ng-model="total"
+                           ng-change="changeTotal()"
+                           placeholder="{{str.total}}  {{formatDomain(wallet.gas_domain)}}">
+                </div>
             </div>
             <div class="row input-wrapper">
-                <div ng-style="getLogo(wallet.gas_domain)"></div>
+                <img class="img-white" src="/mfm-wallet/img/min.svg">
                 <input type="number"
-                       ng-model="total"
-                       ng-change="changeTotal()"
-                       placeholder="{{str.total}}">
+                       ng-model="min_order"
+                       placeholder="{{str.minimum}} {{formatDomain(domain)}}">
             </div>
             <div class="row input-wrapper">
-                <div class="img32 row align-center-center">m</div>
+                <img class="img-white" src="/mfm-wallet/img/max.svg">
                 <input type="number"
-                       ng-model="min"
-                       placeholder="{{str.minimum}}">
-            </div>
-            <div class="row input-wrapper">
-                <div class="img32 row align-center-center">M</div>
-                <input type="number"
-                       ng-model="max"
-                       placeholder="{{str.maximum}}">
+                       ng-model="max_order"
+                       placeholder="{{str.maximum}} {{formatDomain(domain)}}">
             </div>
             <div class="primary-button"
                  ng-class="{'back-red': is_sell, ' back-green': !is_sell}"
                  ng-click="place()"
                  ng-disabled="in_progress">
-                {{is_sell ? str.sell : str.buy}} {{formatDomainShort(domain)}}
+                {{is_sell ? str.sell : str.buy}} {{formatDomainShort(wallet.gas_domain)}}
             </div>
             <div id="p2p_faq" class="nowrap-disabled"
                  ng-include="'/mfm-wallet/products/p2p/place/rules/' + getLanguage() + '.html'"></div>

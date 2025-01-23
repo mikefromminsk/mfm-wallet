@@ -3,6 +3,9 @@ function openOrderPlace(offer_id, success) {
     showDialog("products/p2p/order_place", success, function ($scope) {
         addPriceAmountTotal($scope)
 
+        $scope.payment = storage.getString(storageKeys.default_payment_type)
+        $scope.payments = window.payment_types
+
         $scope.place = function () {
             $scope.startRequest()
             getPin(function (pin) {
@@ -11,6 +14,7 @@ function openOrderPlace(offer_id, success) {
                         order_id: offer_id,
                         address: wallet.address(),
                         amount: $scope.amount,
+                        payment: $scope.payment,
                         pass: pass
                     }, function (response) {
                         $scope.finishRequest()
@@ -30,5 +34,20 @@ function openOrderPlace(offer_id, success) {
             $scope.changePrice($scope.offer.price)
             $scope.changeAmount($scope.offer.amount)
         })
+
+        function init() {
+            postContract("mfm-direct", "profile", {
+                address: wallet.address(),
+            }, function (response) {
+                $scope.profile = response.profile
+            }, function () {
+                openPaymentAdd(function () {
+                    $scope.payment = storage.getString(storageKeys.default_payment_type)
+                    $scope.$apply()
+                })
+            })
+        }
+
+        init()
     })
 }

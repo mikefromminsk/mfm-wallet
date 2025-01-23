@@ -92,7 +92,8 @@ function post(url, params, success, error) {
                     let message = response.message
                     if (message.length < 100) {
                         try {
-                            message = window.str[message.replaceAll(" ", "_").toLowerCase()]
+                            let translate_key = message.replaceAll(" ", "_").toLowerCase()
+                            message = window.str[translate_key] || message
                         } catch (e) {
                         }
                     }
@@ -164,6 +165,7 @@ const storageKeys = {
     first_review: "STORE_FIRST_REVIEW",
     mining_auto_start: "STORE_MINING_AUTO_START",
     defaultOfferDomain: "STORE_DEFAULT_OFFER_DOMAIN",
+    default_payment_type: "STORE_DEFAULT_PAYMENT_TYPE",
 }
 
 function postContractWithGas(domain, path, params, success, error) {

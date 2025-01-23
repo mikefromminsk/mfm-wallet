@@ -93,11 +93,15 @@ input:disabled {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    left: 8px;
+}
+
+.input-content > .input-wrapper > *:first-child {
     left: 26px;
 }
 
 .input-wrapper > input {
-    padding-left: 52px;
+    padding-left: 48px;
     background-color: var(--black);
     color: var(--white);
     height: 50px;
@@ -107,6 +111,10 @@ input:disabled {
     font-size: 16px;
     padding-top: 4px;
     border: 1px solid var(--gray300);
+}
+
+.input-content > .input-wrapper > input {
+    padding-left: 52px;
 }
 
 .input-wrapper > button {
