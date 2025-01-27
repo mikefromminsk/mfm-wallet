@@ -153,7 +153,7 @@ function trackCall(args) {
 }
 
 const storageKeys = {
-    username: "STORE_USERNAME",
+    address: "STORE_ADDRESS",
     passhash: "STORE_PASSHASH",
     hasPin: "STORE_HAS_PIN",
     hideBalances: "STORE_HIDE_BALANCES",
@@ -186,6 +186,7 @@ function calcPassList(domain, pin, success, error) {
 
 var wallet = {
     gas_domain: "usdt",
+    stocks_domain: "vavilon",
     genesis_address: "owner",
     STAKING_ADDRESS: "de4e3daf6acddab48fe5cb446e1dc80b",
     MINING_ADDRESS: "e1c0a6007e8f45c96d4b9f2d0df0551c",
@@ -194,7 +195,7 @@ var wallet = {
         storage.clear()
     },
     address: function () {
-        return storage.getString(storageKeys.username)
+        return storage.getString(storageKeys.address)
     },
     // rename to calcKey
     calcHash: function (domain, username, password, prev_key) {

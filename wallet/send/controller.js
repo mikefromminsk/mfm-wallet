@@ -1,6 +1,8 @@
 function openSend(domain, to_address, amount, success) {
     trackCall(arguments)
     showDialog("wallet/send", success, function ($scope) {
+        addPriceAmountTotal($scope)
+
         $scope.domain = domain
         if ((to_address || "") != "") {
             $scope.to_address = to_address
@@ -30,10 +32,6 @@ function openSend(domain, to_address, amount, success) {
                 })
             })
         }
-
-        $scope.$watch('amount', function () {
-            $scope.amount = $scope.round($scope.amount, 2)
-        })
 
         $scope.setMax = function () {
             $scope.amount = $scope.account.balance

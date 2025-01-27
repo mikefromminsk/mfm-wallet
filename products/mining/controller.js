@@ -16,6 +16,9 @@ function openMining(domain, success) {
 
             if (window.conn != null && window.conn.readyState !== WebSocket.OPEN) {
                 showError(str.web_socket_not_connected)
+                connectWs(8443, function () {
+                    showSuccess(str.web_socket_connection_restored)
+                })
             }
 
             function loadMiningInfo(startMiningAfterRequest) {
@@ -131,7 +134,7 @@ function openMining(domain, success) {
             }
 
             function loadTrans() {
-                postContract("mfm-token", "trans", {
+                postContract("mfm-token", "dialog_trans", {
                     domain: domain,
                     from: "mining",
                     to: wallet.address(),

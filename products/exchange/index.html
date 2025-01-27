@@ -21,6 +21,7 @@
     </div>
     <div class="flex col scroll align-start-center">
         <div class="flex col block">
+            <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
             <div class="row">
                 <div class="col input-content" style="min-width: 200px;">
                     <div class="row radius3">
@@ -124,7 +125,14 @@
                         </div>
                     </div>
 
-                    <div class="row pv16">
+
+                    <div ng-show="token.owner == wallet.address() || sell.length == 0 || buy.length == 0"
+                         class="primary-button m0 pv4 mt4"
+                         ng-click="openExchangeBot(domain)">
+                        {{str.bot_settings}}
+                    </div>
+                    <div class="row pv16"
+                         ng-hide="token.owner == wallet.address() || sell.length == 0 || buy.length == 0">
                         <p class="flex bold"
                            ng-click="changePrice(token.price)">
                             {{formatPrice(token.price)}}
@@ -143,12 +151,6 @@
                             <div class="flex text-green">${{item.price.toFixed(4)}}</div>
                             <div>{{item.amount.toFixed(4)}}</div>
                         </div>
-                    </div>
-
-                    <div ng-show="token.owner == wallet.address() || (sell || []).length == 0 || (buy || []).length == 0"
-                         class="primary-button m0 pv4 mt4"
-                         ng-click="openExchangeBot(domain)">
-                        {{str.bot_settings}}
                     </div>
                 </div>
             </div>

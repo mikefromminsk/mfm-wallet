@@ -1,6 +1,8 @@
 function openSearch(success) {
     trackCall(arguments)
     showDialog("wallet/search", success, function ($scope) {
+        $scope.recent = storage.getStringArray(storageKeys.search_history).reverse()
+
         $scope.openToken = function found(domain) {
             trackCall(arguments)
             storage.pushToArray(storageKeys.search_history, domain, 4)
@@ -19,13 +21,6 @@ function openSearch(success) {
         $scope.clear = function () {
             $scope.search_text = ""
         }
-
-        function init() {
-            $scope.recent = storage.getStringArray(storageKeys.search_history).reverse()
-            $scope.search()
-        }
-
-        init()
 
         setTimeout(function () {
             document.getElementById('search_input').focus()

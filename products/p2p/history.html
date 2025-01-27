@@ -18,6 +18,7 @@
     </div>
     <div class="flex col scroll">
         <div class="flex col block input-content">
+            <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
             <div class="col ripple"
                  ng-show="orderMenuSelected == 'offers'"
                  ng-repeat="order in orders[orderMenuSelected]">
@@ -30,8 +31,7 @@
                  ng-click="openOrder(order.id)">
                 <ng-include src="'/mfm-wallet/products/p2p/order/order.html'"></ng-include>
                 <div class="row mt8 align-start-end mb16">
-                    <p class="flex"
-                       ng-click="openP2PProfile(order.offer.address)">{{formatAddress(order.offer.address)}}</p>
+                    <p class="flex">{{formatAddress(order.offer.address)}}</p>
                     <p>{{formatDate(order.offer.created)}}</p>
                 </div>
                 <div class="divider mt16"></div>

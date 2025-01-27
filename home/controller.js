@@ -22,9 +22,11 @@ function openHome($scope) {
             image: image,
         })
     }
-    $scope.addSlide("VAVILON.org", str.first_hashchain_network)
+    $scope.addSlide("VAVILON.org", str.first_tranchain_network)
     $scope.addSlide("0%", str.only_miners_pays_fees)
     $scope.addSlide("1000 TPS", str.on_one_core)
+    $scope.addSlide("5 min", str.need_for_integration)
+    $scope.addSlide("WEB 3.0", str.start_now)
 
 
     $scope.slideIndex = 0

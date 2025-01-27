@@ -11,7 +11,7 @@ function openOrderPlace(offer_id, success) {
             getPin(function (pin) {
                 calcPass(wallet.gas_domain, pin, function (pass) {
                     postContract("mfm-direct", "order_place", {
-                        order_id: offer_id,
+                        offer_id: offer_id,
                         address: wallet.address(),
                         amount: $scope.amount,
                         payment: $scope.payment,

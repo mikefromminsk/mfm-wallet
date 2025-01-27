@@ -12,15 +12,16 @@
                               ng-model="mnemonic"
                               oninput="this.value = this.value.toLowerCase().replace(/[^a-z0-9 ]/g, '')"
                               placeholder="{{str.seed_phrase}}"></textarea>
-                <div class="row align-start-center ripple"
-                     ng-class="{'primary-button m0': !copied, 'p16': copied}"
+                <div class="row primary-button ripple m0 align-center-center"
+                     ng-style="{'background-color': copied ? 'var(--black)' : 'var(--accent)'}"
                      ng-click="copy(mnemonic); copied = true">
+                    <div class="focus" ng-hide="copied"></div>
                     <img class="img32 img-white" src="/mfm-wallet/img/copy.svg">
                 </div>
             </div>
             <p class="text-red" ng-show="!validateBip39(mnemonic)">{{str.phrase_must_have_12_words}}</p>
         </div>
-        <div class="row align-start-center gap8">
+        <div class="row align-start-center gap4">
             <p>{{str.agree_to}}</p>
             <a href="/mfm-wallet/wallet/login/terms_and_conditions/{{getLanguage()}}" target="_blank">
                 {{str.terms_and_conditions}}

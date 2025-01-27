@@ -5,6 +5,7 @@ window.languages = {
 }
 
 function openLanguages(languages, success) {
+    trackCall(arguments)
     showDialog("wallet/settings/lang", success, function ($scope) {
         $scope.languages = languages || window.languages
 

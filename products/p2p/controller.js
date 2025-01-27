@@ -12,7 +12,7 @@ function openP2P(success) {
             } else if (tab == 1) {
                 openOffers($scope)
             } else if (tab == 2) {
-                addDirectProfile($scope, wallet.address())
+                addP2PProfile($scope, wallet.address())
             }
             swipeToRefresh($scope.swipeToRefresh)
         }
@@ -90,11 +90,11 @@ function openOrders($scope) {
 function openP2PProfile(address, success) {
     trackCall(arguments)
     showDialog("products/p2p/profile", success, function ($scope) {
-        addDirectProfile($scope, address)
+        addP2PProfile($scope, address)
     })
 }
 
-function addDirectProfile($scope, address) {
+function addP2PProfile($scope, address) {
     $scope.swipeToRefresh = function () {
         postContract("mfm-direct", "profile", {
             address: address,

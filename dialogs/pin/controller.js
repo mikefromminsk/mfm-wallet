@@ -3,7 +3,12 @@ function getPin(success, cancel) {
         if (success)
             success()
     } else {
-        showBottomSheet("dialogs/pin", success, function ($scope) {
+        showBottomSheet("dialogs/pin", function (result) {
+            if (result == null)
+                cancel()
+            else
+                success(result)
+        }, function ($scope) {
             $scope.pin = ""
             $scope.setMode = cancel != null
 

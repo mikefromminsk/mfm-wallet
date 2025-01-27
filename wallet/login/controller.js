@@ -28,21 +28,7 @@ function addLogin($scope, success) {
         $scope.startRequest()
         let password = md5(mnemonic)
         let address = md5(password)
-        postContract("mfm-token", "account", {
-            domain: wallet.gas_domain,
-            address: address,
-        }, function (response) {
-            if (md5(wallet.calcHash(
-                wallet.gas_domain,
-                address,
-                password,
-                response.account.prev_key)) == response.account.next_hash) {
-                loginSuccess()
-            } else {
-                $scope.finishRequest()
-                showError(str.password_invalid)
-            }
-        }, function () {
+        authorize(address, password, loginSuccess, $scope.finishRequest, function () {
             postContract("mfm-token", "send", {
                 domain: wallet.gas_domain,
                 from: wallet.genesis_address,
@@ -55,7 +41,7 @@ function addLogin($scope, success) {
         function loginSuccess() {
             getPin(function (pin) {
                 // set pin
-                storage.setString(storageKeys.username, address)
+                storage.setString(storageKeys.address, address)
                 storage.setString(storageKeys.passhash, encode(password, pin))
                 if (pin != null)
                     storage.setString(storageKeys.hasPin, true)
@@ -63,11 +49,28 @@ function addLogin($scope, success) {
                 $scope.close()
             }, function () {
                 // skip pin
-                storage.setString(storageKeys.username, address)
+                storage.setString(storageKeys.address, address)
                 storage.setString(storageKeys.passhash, password)
                 showSuccess(str.login_success, success)
                 $scope.close()
             })
         }
     }
+}
+
+function authorize(address, password, success, invalid_pass, error) {
+    postContract("mfm-token", "account", {
+        domain: wallet.gas_domain,
+        address: address,
+    }, function (response) {
+        if (md5(wallet.calcHash(
+            wallet.gas_domain,
+            address,
+            password,
+            response.account.prev_key)) == response.account.next_hash) {
+            success()
+        } else {
+            showError(str.password_invalid, invalid_pass)
+        }
+    }, error)
 }

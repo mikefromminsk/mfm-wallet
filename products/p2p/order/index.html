@@ -8,11 +8,13 @@
     </div>
     <div class="flex col scroll">
         <div class="flex col block input-content">
-            <div class="col m16 border-gray radius8">
+            <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
+            <div class="col m16 border-gray radius8"
+                 ng-click="openP2PProfile(order.offer.address)">
                 <div class="row mt8 mb16 align-start-center gap8">
                     <div class="radius-default back-black" ng-style="getIdenticon(order.offer.address)"></div>
                     <p class="flex">{{formatAddress(order.offer.address)}}</p>
-                    <button ng-click="openP2PChat(order.id)">{{str.chat}}</button>
+                    <button ng-click="openP2PChat(order.id); $event.stopPropagation()">{{str.chat}}</button>
                 </div>
             </div>
             <div class="col m16 border-gray radius8">

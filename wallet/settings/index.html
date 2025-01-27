@@ -7,6 +7,7 @@
     </div>
     <div class="flex col scroll align-start-center">
         <div class="flex col block input-content">
+            <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
             <div class="primary-button"
                  ng-click="openLogin(init)"
                  ng-disabled="in_progress"
@@ -25,6 +26,10 @@
                 <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/language.svg">
                 <p class="flex">{{str.language}}</p>
                 <p class="">{{languages[language]}}</p>
+            </div>
+            <div class="row align-start-center ripple" ng-click="openChangePin()" ng-show="wallet.address()">
+                <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/password.svg">
+                <p class="">{{str.change_pin}}</p>
             </div>
             <div class="row align-start-center ripple" ng-click="logout()" ng-show="wallet.address()">
                 <img class="img32 p8 mr8 img-red" src="/mfm-wallet/img/arrow-right.svg">
@@ -53,7 +58,6 @@
                 <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/doc.svg">
                 <p class="">{{str.terms_and_conditions}}</p>
             </div>
-
 
             <div class="text1">{{str.admin_panel}}</div>
             <div class="row align-start-center ripple" ng-click="openReviews()" ng-show="wallet.address() == 'support'">

@@ -1,5 +1,6 @@
 <div class="flex col scroll align-start-center">
     <div class="flex col block">
+        <img class="refresh-icon img-gray" src="/mfm-wallet/img/reload.svg">
         <div class="row header align-start-center">
             <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/info.svg" ng-click="scrollTo('home_faq')">
             <div class="flex row align-center-center">
@@ -31,6 +32,13 @@
                 </div>
             </md-tab>
         </md-tabs>
+        <div class="row align-center-center mt2">
+            <div ng-repeat="item in slides">
+                <img class="img4 ml4"
+                     ng-class="{'img-gray': slideIndex != $index, 'img-accent': slideIndex == $index}"
+                     src="/mfm-wallet/img/circle.svg">
+            </div>
+        </div>
 
         <div class="col mt16" ng-repeat="category in ['top_search', 'top_exchange', 'top_mining', 'top_staking']">
             <p class="text1 ml16 bold">{{str[category]}}</p>

@@ -148,7 +148,7 @@ function addFormats($scope) {
     }
 
     $scope.formatTimeDiff = function (seconds) {
-        return ($scope.formatTimeDiff(seconds) + " " + str.ago).toLowerCase()
+        return ($scope.formatTime(seconds) + " " + str.ago).toLowerCase()
     }
 
 
