@@ -1,0 +1,27 @@
+<div class="flex col">
+    <div class="row header align-center-center">
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="openNodeAdd(refresh)">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/plus.svg">
+        </div>
+        <div class="flex row align-center-center text1">
+            {{str.nodes}}
+        </div>
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+        </div>
+    </div>
+    <div class="flex col scroll align-start-center">
+        <div class="flex col block">
+            <img class="refresh-icon img-gray" src="/mfm-wallet/img/reload.svg">
+            <div ng-repeat="item in nodes">
+                {{item}}
+            </div>
+            <div class="col align-center-center text1 text-gray"
+                 ng-hide="trans.length > 0"
+                 style="height: 500px">
+                {{str.there_is_no_history_yet}}
+            </div>
+            <div></div>
+        </div>
+    </div>
+</div>

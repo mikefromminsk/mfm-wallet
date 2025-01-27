@@ -233,4 +233,8 @@ function addNavigator($scope) {
     $scope.openSelectDomain = function (success) {
         openSelectDomain(success)
     }
+
+    $scope.openNodeAdd = function (success) {
+        openNodeAdd(success)
+    }
 }

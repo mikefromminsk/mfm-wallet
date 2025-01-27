@@ -1,0 +1,24 @@
+инструкция по поднятию ноды
+
+2. покупаем хостинг и получаем креды для ssh
+3. скачать ноду с сайта https://minter.network/
+загружаем ноду с помощью WinSCP на сервер в /root
+6. добавление в автозапуск
+скопировать скрипт автозапуска start.sh в /root
+- /api/v1/node/start - запуск ноды
+- /api/v1/node/stop - остановка ноды
+- /api/v1/node/restart - перезапуск ноды
+6. Открываем порты
+    sudo ufw allow 21
+    sudo ufw allow 80
+    sudo ufw allow 443
+    sudo ufw allow 8843
+7. Генерируем сертификат
+    install certbot
+    sudo apt-get update
+    keystore.jks
+    + auto renew
+7. Обновления публикуются в канале @minter_network
+    в каждой вперсии есть огнаничение на кооличество времени ноды
+8. При возникновении проблем с нодой обратитесь в vavilon.net
+    логи находятся в файле errors.log

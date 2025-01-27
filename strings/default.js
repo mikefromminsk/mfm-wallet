@@ -286,4 +286,6 @@ str.pin_changed = "Pin changed"
 str.pin_removed = "Pin removed"
 str.all = "All"
 str.web_socket_connection_restored = "WebSocket connection restored"
+str.nodes = "Nodes"
+str.ip_address = "IP Address"
 
