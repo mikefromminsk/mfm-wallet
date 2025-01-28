@@ -48,6 +48,7 @@ function addGlobalVars($scope, callback) {
     $scope.str = window.str
     $scope.bank_address = "bank"
     $scope.staking_address = "staking"
+    $scope.in_progress = false
     $scope.startRequest = function () {
         $scope.in_progress = true
     }

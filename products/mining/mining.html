@@ -12,13 +12,13 @@
   </div>
   <div class="flex col scroll align-start-center">
     <div class="flex col block">
-      <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
+      <img class="refresh-icon img-gray" src="/mfm-wallet/img/reload.svg">
       <div class="col mh16 align-start-center"
            style="position: relative; padding-top: 100px">
         <p class="size12 uppercase">{{str.last_reward}}</p>
         <p class="size40 bold">{{formatAmount(last_reward, domain, 0)}}</p>
         <p class="size12"
-           ng-class="{'text-red': bank == 0}">
+           ng-class="{'text-red': !bank || bank == 0}">
           {{formatAmount(bank, domain)}} {{str.in_bank}}
         </p>
         <p class="size10 mt8">{{str.difficulty}} {{formatAmount(difficulty, '', 2)}}</p>

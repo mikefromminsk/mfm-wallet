@@ -4,32 +4,35 @@ function addNavigator($scope) {
         return getLanguage()
     }
 
-    $scope.finish = function (result) {
-        window.$mdBottomSheet.hide(result)
-        $scope.unsubscribeAll()
-        $scope.removePressEnter()
-        clearFocus()
+    function historyBack() {
         historyStack.pop()
         window.history.pushState({}, document.title, historyStack[historyStack.length - 1])
     }
 
+    function finish() {
+        $scope.unsubscribeAll()
+        $scope.removePressEnter()
+        clearFocus()
+    }
+
     $scope.scrollTo = function (id) {
         setTimeout(function () {
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth' })
+            document.getElementById(id).scrollIntoView({behavior: 'smooth'})
         }, 100)
     }
 
     $scope.back = function (result) {
         setTimeout(function () {
             window.$mdBottomSheet.hide(result)
-            $scope.finish(result)
+            finish()
         }, 100)
     }
 
     $scope.close = function (result) {
         setTimeout(function () {
             window.$mdDialog.hide(result)
-            $scope.finish(result)
+            finish()
+            historyBack()
         }, 100)
     }
 

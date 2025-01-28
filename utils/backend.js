@@ -163,7 +163,6 @@ const storageKeys = {
     send_history: "STORE_SEND_HISTORY",
     search_history: "STORE_SEARCH_HISTORY",
     first_review: "STORE_FIRST_REVIEW",
-    mining_auto_start: "STORE_MINING_AUTO_START",
     defaultOfferDomain: "STORE_DEFAULT_OFFER_DOMAIN",
     default_payment_type: "STORE_DEFAULT_PAYMENT_TYPE",
 }

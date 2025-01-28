@@ -1,17 +1,15 @@
+let worker;
+
 function openMining(domain, success) {
     trackCall(arguments)
-    let worker;
-    let restartTimer;
     if (domain == null) return;
     showDialog("products/mining", function () {
             if (worker)
                 worker.terminate()
-            if (restartTimer)
-                clearTimeout(restartTimer)
             if (success)
                 success()
         }, function ($scope) {
-
+            $scope.domain = domain
             $scope.menu = ["history", "mining", "nodes"]
             $scope.selectedIndex = 1
             $scope.selectTab = function (tab) {
@@ -25,22 +23,15 @@ function openMining(domain, success) {
                 }
                 swipeToRefresh($scope.swipeToRefresh)
             }
-
             $scope.swipeToRefresh = function () {
                 $scope.selectTab($scope.selectedIndex)
             }
-
             $scope.selectTab($scope.selectedIndex)
-
         }
     )
 }
 
 function addMining($scope, domain) {
-
-    $scope.domain = domain
-    $scope.speed = 0
-
     if (window.conn != null && window.conn.readyState !== WebSocket.OPEN) {
         showError(str.web_socket_not_connected)
         connectWs(8443, function () {
@@ -49,7 +40,7 @@ function addMining($scope, domain) {
     }
 
     function loadMiningInfo(startMiningAfterRequest) {
-        postContract("mfm-mining", "info", {
+        postContract("mfm-mining", "mining_info", {
             domain: domain,
             address: wallet.address(),
         }, function (response) {
@@ -68,10 +59,6 @@ function addMining($scope, domain) {
     $scope.startMining = function () {
         $scope.startRequest()
         getPin(function (pin) {
-            storage.setString(storageKeys.mining_auto_start, "1")
-            restartTimer = setTimeout(function () {
-                window.location.reload()
-            }, 1000 * 60 * 10)
             window.pinForSesstion = pin
             wallet.reg(domain, pin, function () {
                 postContract("mfm-token", "account", {
@@ -81,7 +68,7 @@ function addMining($scope, domain) {
                     if (response.account.balance > 0) {
                         loadMiningInfo(true)
                     } else {
-                        openEarn(init)
+                        showError($scope.formatDomain(wallet.gas_domain) + " " + str.balance_is_not_enough)
                     }
                 })
             })
@@ -101,6 +88,7 @@ function addMining($scope, domain) {
                     str: e.data.str,
                     hash: e.data.hash,
                     last_hash: e.data.last_hash,
+                    time: Math.ceil(new Date().getTime() / 1000),
                 }, function () {
                     loadMiningInfo(true)
                 }, function (message) {
@@ -125,9 +113,6 @@ function addMining($scope, domain) {
         if (worker != null)
             worker.terminate()
         $scope.finishRequest(message)
-        storage.setString(storageKeys.mining_auto_start, "")
-        if (restartTimer)
-            clearTimeout(restartTimer)
     }
 
     $scope.subscribe("mining:" + domain, function (data) {
@@ -135,7 +120,10 @@ function addMining($scope, domain) {
         $scope.difficulty = data.difficulty
         $scope.last_reward = data.reward
         $scope.$apply()
-        startMiningProcess(data.last_hash, data.difficulty)
+        if (data.gas_address == wallet.address())
+            loadAccounts()
+        if ($scope.in_progress)
+            startMiningProcess(data.last_hash, data.difficulty)
     })
 
     function loadProfile() {
@@ -161,14 +149,14 @@ function addMining($scope, domain) {
 
     function init() {
         loadProfile()
-        loadMiningInfo()
+        loadMiningInfo(false)
+    }
+
+    $scope.swipeToRefresh = function () {
+        init()
     }
 
     init()
-
-    if (storage.getString(storageKeys.mining_auto_start) != "") {
-        $scope.startMining()
-    }
 }
 
 
