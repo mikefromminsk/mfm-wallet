@@ -76,6 +76,10 @@ function openWallet($scope) {
         return totalBalance
     }
 
+    $scope.selectAccount = function (domain) {
+        openTokenProfile(domain, $scope.refresh)
+    }
+
     function subscribeAccount() {
         $scope.subscribe("account:" + wallet.address(), function (data) {
             if (data.amount != 0 && data.to == wallet.address()) {

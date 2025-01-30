@@ -96,7 +96,7 @@
                          ng-click="place()"
                          ng-disabled="in_progress"
                          ng-show="wallet.address()">
-                        {{is_sell ? str.sell : str.buy}} {{formatDomainShort(domain)}}
+                        {{is_sell ? str.sell : str.buy}}
                     </div>
                 </div>
 
@@ -126,13 +126,13 @@
                     </div>
 
 
-                    <div ng-show="token.owner == wallet.address() || sell.length == 0 || buy.length == 0"
+                    <div ng-show="token.owner == wallet.address()"
                          class="primary-button m0 pv4 mt4"
                          ng-click="openExchangeBot(domain)">
                         {{str.bot_settings}}
                     </div>
                     <div class="row pv16"
-                         ng-hide="token.owner == wallet.address() || sell.length == 0 || buy.length == 0">
+                         ng-hide="token.owner == wallet.address()">
                         <p class="flex bold"
                            ng-click="changePrice(token.price)">
                             {{formatPrice(token.price)}}

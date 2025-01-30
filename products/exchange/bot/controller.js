@@ -4,24 +4,25 @@ function openExchangeBot(domain, success) {
         $scope.domain = domain
         $scope.bot_address = wallet.BOT_PREFIX + domain
 
+        $scope.selectAccount = function (domain) {
+            openSend(domain, $scope.bot_address, null, init)
+        }
+
         function init() {
             getProfile(domain, function (response) {
                 $scope.token = response.token
                 $scope.account = response.account
                 $scope.$apply()
             })
-            postContract("mfm-token", "account", {
+            postContract("mfm-token", "accounts", {
                 domain: wallet.gas_domain,
-                address: wallet.address(),
+                address: $scope.bot_address,
             }, function (response) {
-                $scope.quote = response.account
-                $scope.$apply()
-            })
-            postContract("mfm-token", "account", {
-                domain: domain,
-                address: wallet.address(),
-            }, function (response) {
-                $scope.base = response.account
+                let accounts = []
+                for (const account of response.accounts)
+                    if (account.domain == domain || account.domain == wallet.gas_domain)
+                        accounts.push(account)
+                $scope.accounts = accounts
                 $scope.$apply()
             })
         }

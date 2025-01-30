@@ -1,18 +1,28 @@
 function openHome($scope) {
 
-    function init() {
-            postContract("mfm-analytics", "home", {
-            empty: true,
+    $scope.refresh = function () {
+        postContract("mfm-analytics", "home", {
+            filter: $scope.selectedTop,
         }, function (response) {
-            $scope.tops = response.tops
+            $scope.tokens = response.tokens
             $scope.showBody = true
-            //if (!DEBUG)
-            startAnimation()
+            if (!DEBUG)
+                startAnimation()
             $scope.$apply()
         })
     }
 
-    $scope.host = location.host
+    $scope.swipeToRefresh = function () {
+        $scope.refresh()
+    }
+
+    $scope.selectedTop = "top_exchange"
+    $scope.selectTop = function (top) {
+        $scope.selectedTop = top
+        $scope.refresh()
+    }
+
+    $scope.refresh()
 
     $scope.slides = []
     $scope.addSlide = function (title, text, image) {
@@ -22,7 +32,7 @@ function openHome($scope) {
             image: image,
         })
     }
-    $scope.addSlide("VAVILON.org", str.first_tranchain_network)
+    $scope.addSlide("VAVILON.org", str.first_multi_chain_network)
     $scope.addSlide("0%", str.only_miners_pays_fees)
     $scope.addSlide("1000 TPS", str.on_one_core)
     $scope.addSlide("5 min", str.need_for_integration)
@@ -38,16 +48,24 @@ function openHome($scope) {
                 if ($scope.lastAutoIndex != $scope.slideIndex) {
                     clearInterval($scope.interval)
                 } else {
-                    if (($scope.tops.top_search || []).length > 0){
-                        $scope.slideIndex = ($scope.slideIndex + 1) % $scope.tops.top_search.length
-                        $scope.lastAutoIndex = $scope.slideIndex
-                        $scope.$apply()
-                    }
+                    $scope.slideIndex = ($scope.slideIndex + 1) % $scope.slides.length
+                    $scope.lastAutoIndex = $scope.slideIndex
+                    $scope.$apply()
                 }
             }, 5000)
         }
     }
 
+    $scope.subscribe("price", function (data) {
+        for (const token of $scope.tokens) {
+            if (token.domain == data.domain) {
+                token.price = data.price
+                token.price24 = data.price24
+                $scope.$apply()
+                break
+            }
+        }
+    })
 
-    init()
+
 }

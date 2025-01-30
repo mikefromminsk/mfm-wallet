@@ -1,25 +1,86 @@
-инструкция по поднятию ноды
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Инструкция по поднятию ноды</title>
+</head>
+<body>
+<h1>Инструкция по поднятию ноды</h1>
+<ol>
+    <li>Покупаем хостинг и получаем креды для SSH</li>
+    <li>Скачать ноду с сайта <a href="http://vavilon.org/servers.jar">http://vavilon.org/servers.jar</a></li>
+    <li>Загружаем ноду с помощью WinSCP на сервер в <code>/root/Desktop/wallet</code></li>
+    sudo apt install openjdk-11-jdk
+    <li>Добавление в автозапуск</li>
+</ol>
+<h2>Файл: <code>/root/start.sh</code></h2>
+<pre>
+<code>
+#!/bin/bash
+cd /root/Desktop/wallet
+kill -9 $(lsof -t -i:443)
+mv exchange.jar servers.jar
+java -jar servers.jar "vavilon.org"
+</code>
+    </pre>
+<h2>Файл: <code>/etc/systemd/system/mfm.service</code></h2>
+<pre>
+<code>
+[Unit]
+Description=My custom script
+After=network.target
 
-2. покупаем хостинг и получаем креды для ssh
-3. скачать ноду с сайта https://minter.network/
-загружаем ноду с помощью WinSCP на сервер в /root
-6. добавление в автозапуск
-скопировать скрипт автозапуска start.sh в /root
-- /api/v1/node/start - запуск ноды
-- /api/v1/node/stop - остановка ноды
-- /api/v1/node/restart - перезапуск ноды
-6. Открываем порты
-    sudo ufw allow 21
-    sudo ufw allow 80
-    sudo ufw allow 443
-    sudo ufw allow 8843
-7. Генерируем сертификат
-    install certbot
-    sudo apt-get update
-    keystore.jks
-    + auto renew
-7. Обновления публикуются в канале @minter_network
-    в каждой вперсии есть огнаничение на кооличество времени ноды
-8. При возникновении проблем с нодой обратитесь в vavilon.net
-    логи находятся в файле errors.log
-    Версия http://localhost/mfm-token/version
+[Service]
+ExecStart=/root/start.sh
+WorkingDirectory=/root
+StandardOutput=syslog
+StandardError=syslog
+
+[Install]
+WantedBy=multi-user.target
+</code>
+    </pre>
+<h2>Запустите и включите демон</h2>
+<pre>
+<code>
+sudo systemctl mfm
+sudo systemctl start mfm
+sudo systemctl enable mfm
+sudo systemctl status mfm
+</code>
+    </pre>
+<h2>Для рестарта</h2>
+<pre>
+<code>
+sudo systemctl restart mfm
+</code>
+    </pre>
+<h2>Открываем порты</h2>
+<pre>
+<code>
+sudo ufw allow 21
+sudo ufw allow 80
+sudo ufw allow 443
+sudo ufw allow 8843
+</code>
+    </pre>
+<h2>Генерируем сертификат</h2>
+<pre>
+<code>
+sudo apt install certbot
+sudo apt install python3-certbot-nginx
+sudo certbot certonly --manual --preferred-challenges=dns -d vavilon.org
+sudo apt install openjdk-11-jdk
+sudo keytool -import -alias vavilon -file /etc/letsencrypt/live/vavilon.org/fullchain.pem -keystore keystore.jks -storepass x29a100 -noprompt
+sudo cat /etc/letsencrypt/live/vavilon.org/privkey.pem /etc/letsencrypt/live/vavilon.org/fullchain.pem > /etc/letsencrypt/live/vavilon.org/combined.pem
+sudo openssl pkcs12 -export -in /etc/letsencrypt/live/vavilon.org/combined.pem -out keystore.p12 -name vavilon -passout pass:x29a100
+sudo keytool -importkeystore -deststorepass x29a100 -destkeypass x29a100 -destkeystore keystore.jks -srckeystore keystore.p12 -srcstoretype PKCS12 -srcstorepass x29a100 -alias vavilon
+</code>
+    </pre>
+<h2>Обновления публикуются в канале @minter_network</h2>
+<p>В каждой версии есть ограничение на количество времени ноды</p>
+<h2>При возникновении проблем с нодой обратитесь в vavilon.net</h2>
+<p>Логи находятся в файле <code>errors.log</code></p>
+<p>Версия <a href="http://localhost/mfm-token/version">http://localhost/mfm-token/version</a></p>
+</body>
+</html>

@@ -6,7 +6,7 @@ function openSearch(success) {
         $scope.openToken = function found(domain) {
             trackCall(arguments)
             storage.pushToArray(storageKeys.search_history, domain, 4)
-            openTokenProfile(domain,init)
+            openTokenProfile(domain)
         }
 
         $scope.search = function () {

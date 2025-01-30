@@ -2,7 +2,7 @@
     <div class="flex col block">
         <img class="refresh-icon img-gray" src="/mfm-wallet/img/reload.svg">
         <div class="row header align-start-center">
-            <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/info.svg" ng-click="scrollTo('home_faq')">
+            <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/support.svg" ng-click="openSupport()">
             <div class="flex row align-center-center">
                 <div class="row align-start-center p8 back-gray radius-default ripple"
                      ng-show="wallet.address()"
@@ -40,21 +40,42 @@
             </div>
         </div>
 
-        <div class="col mt16" ng-repeat="category in ['top_search', 'top_exchange', 'top_mining', 'top_staking']">
-            <p class="text1 ml16 bold">{{str[category]}}</p>
-            <div class="row mt16 scroll-horizontal">
-                <div class="col ml16 align-start-center" ng-repeat="domain in tops[category]">
-                    <div class="col p16 radius-default back-gray ripple"
-                         ng-click="openExchange(domain)">
-                        <div ng-style="getLogo(domain)"></div>
-                    </div>
-                    <p class="mt4 text2" style="max-width: 64px">{{formatDomainShort(domain)}}</p>
-                </div>
+        <div class="row mt16 ph16 scroll-horizontal" style="min-height: 40px">
+            <div class="col" ng-repeat="top in ['top_exchange', 'top_new', 'top_search', 'top_mining']"
+                 ng-click="selectTop(top)">
+                <p class="pb8 ph16"
+                   ng-class="{'text-gray': selectedTop != top}">{{str[top]}}</p>
+                <div style="height: 3px; width: 100%"
+                     ng-class="{'back-accent': selectedTop == top, 'back-gray': selectedTop != top}"></div>
             </div>
         </div>
 
-        <div class="nowrap-disabled m16" id="home_faq"
-             ng-include="'/mfm-wallet/wallet/profile/white_paper/' + getLanguage() + '.html'"></div>
+        <div class="row ph16 mt8 align-start-center">
+            <p style="min-width: 20px">#</p>
+            <p class="flex ml8">{{str.name}}</p>
+            <p class="flex-10 row align-end">{{str.price}}</p>
+            <p class="flex-20 row align-end">{{str._24h}}</p>
+        </div>
+        <div class="mt8 mh16 divider"></div>
+        <div class="col">
+            <div class="row p16 align-start-center ripple gap8"
+                 ng-repeat="token in tokens"
+                 ng-click="openExchange(token.domain)">
+                <p style="min-width: 20px">{{$index + 1}}</p>
+                <div ng-style="getLogo(token.domain)"></div>
+                <p class="flex">{{formatDomain(token.domain)}}</p>
+                <p class="flex-10 row align-end">{{formatPrice(token.price)}}</p>
+                <p class="flex-20 row align-end" ng-class="percentColor(token.price24)">
+                    {{formatChange(token.price24)}}
+                </p>
+            </div>
+        </div>
+        <div class="col align-center-center text1 text-gray"
+             ng-hide="tokens.length > 0"
+             style="height: 500px">
+            {{str.there_is_no_tokens_yet}}
+        </div>
+        <div></div>
     </div>
 </div>
 

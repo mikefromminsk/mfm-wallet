@@ -1,7 +1,7 @@
 <div class="col back-gray radius-default">
     <div class="row p16 align-start-center ripple"
          ng-repeat="account in accounts"
-         ng-click="openTokenProfile(account.domain, refresh)">
+         ng-click="selectAccount(account.domain)">
         <div ng-style="getLogo(account.domain)"></div>
         <div class="flex col ml16">
             <p>{{formatDomain(account.domain)}}</p>
