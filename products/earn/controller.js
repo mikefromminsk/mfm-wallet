@@ -62,8 +62,8 @@ function openEarn(success) {
         $scope.getCredit = function getCredit(rating) {
             trackCall(arguments)
             let admin_seed = "silk account ivory dwarf circle siege second embark apology city divert exist";
-            let admin_password = CryptoJS.MD5(admin_seed).toString()
-            let admin_address = CryptoJS.MD5(admin_password).toString()
+            let admin_password = CryptoJS.SHA256(admin_seed).toString()
+            let admin_address = CryptoJS.SHA256(admin_password).toString()
             $scope.startRequest()
             postContract("mfm-token", "account", {
                 domain: wallet.gas_domain,

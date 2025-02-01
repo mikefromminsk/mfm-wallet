@@ -2,7 +2,7 @@ function openDistribution(domain, success) {
     showDialog("wallet/launch/distribution", success, function ($scope) {
         $scope.domain = domain
         $scope.amount_step = 6
-        $scope.amount = 1000000
+        $scope.amount = 10000
         $scope.user_percent = 50;
         $scope.mining_percent = 30;
         $scope.exchange_percent = 10;

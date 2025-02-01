@@ -61,7 +61,7 @@ function addFormats($scope) {
         if (size == null)
             size = 32
         if (address.length < 32)
-            address = CryptoJS.MD5(address).toString()
+            address = CryptoJS.SHA256(address).toString()
         return {
             "min-width": size + "px",
             "min-height": size + "px",
@@ -91,8 +91,6 @@ function addFormats($scope) {
     }
 
     $scope.formatChange = function (number) {
-        if (number == 0)
-            return ""
         let str = $scope.formatPercent(number, 0)
         if (number > 0)
             str = "+" + str;

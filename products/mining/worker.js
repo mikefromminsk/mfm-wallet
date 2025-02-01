@@ -7,14 +7,14 @@ addEventListener('message', function (e) {
     for (let i = 0; i >= 0; i++) {
         let nonce = Math.floor(Math.random() * 100000000)
         //if (last_hash != currentLastHash || $scope.inProgress == false) return;
-        let hash = CryptoJS.MD5(last_hash + domain + nonce).toString()
+        let hash = CryptoJS.SHA256(last_hash + domain + nonce).toString()
         let hashMod = Number(BigInt("0x" + hash) % BigInt(difficulty))
         if (hashMod == 0) {
             postMessage({
                 nonce: nonce,
                 last_hash: last_hash,
                 str: last_hash + domain + nonce,
-                hash: CryptoJS.MD5(last_hash + domain + nonce).toString(),
+                hash: CryptoJS.SHA256(last_hash + domain + nonce).toString(),
                 speed: i / (new Date().getTime() - startTime) * 1000,
             });
             break;

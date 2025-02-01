@@ -112,7 +112,7 @@ function post(url, params, success, error) {
 }
 
 function md5(str) {
-    return CryptoJS.MD5(str).toString()
+    return CryptoJS.SHA256(str).toString()
 }
 
 function postContract(domain, path, params, success, error) {
