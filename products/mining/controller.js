@@ -186,16 +186,16 @@ function addMiningHistory($scope, domain) {
 
 
 function addNodes($scope) {
-    $scope.refresh = function () {
-        postContract("mfm-mining", "nodes", {}, function (response) {
-            $scope.nodes = response.nodes
+    $scope.loadVersion = function () {
+        postContract("mfm-token", "version", {}, function (response) {
+            $scope.node = response
             $scope.$apply()
         })
     }
 
     $scope.swipeToRefresh = function () {
-        $scope.refresh()
+        $scope.loadVersion()
     }
 
-    $scope.refresh()
+    $scope.loadVersion()
 }

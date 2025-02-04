@@ -17,38 +17,11 @@
                 </div>
             </div>
 
-            <div class="p0">
+            <div class="ph16">
                 <ng-include src="'/mfm-wallet/trans/trans.html'"></ng-include>
             </div>
-            <div class="input-content">
-                <div class="row mt8" ng-hide="tran.from == wallet.address()">
-                    <p class="flex text2">{{str.from}}</p>
-                    <p>{{formatAddress(tran.from)}}</p>
-                </div>
-                <div class="row mt8" ng-hide="tran.to == wallet.address()">
-                    <p class="flex text2">{{str.to}}</p>
-                    <p>{{formatAddress(tran.to)}}</p>
-                </div>
-                <div class="row mt8">
-                    <p class="flex text2">{{str.amount}}</p>
-                    <p ng-class="{'text-green': tran.to == wallet.address(), 'text-red': tran.from == wallet.address()}">
-                        {{(tran.to == wallet.address() ? "+" : "-") + formatAmount(tran.amount, tran.domain)}}
-                    </p>
-                </div>
-                <div class="row mt8">
-                    <p class="flex text2">{{str.status}}</p>
-                    <p class="text-green">{{str.competed}}</p>
-                </div>
-                <div class="row mt8">
-                    <p class="flex text2">{{str.time}}</p>
-                    <p>{{formatTimeDiff(tran.time)}}</p>
-                </div>
-                <div class="row mt8">
-                    <p class="flex text2">ID</p>
-                    <p>{{formatAddress(tran.next_hash)}}</p>
-                </div>
+            <ng-include src="'/mfm-wallet/trans/tran/tran.html'"></ng-include>
 
-            </div>
             <!--@SerializedName("valueUSD")
             @SerializedName("direction")
             fee
@@ -62,8 +35,8 @@
             </div>-->
         </div>
     </div>
-    <div class="primary-button" ng-click="copy(tran.next_hash)">
-        {{str.copy}} ID
+    <div class="primary-button" ng-click="copy(location.origin + '/mfm-landing/explorer?txid=' + tran.next_hash)">
+        {{str.copy_tran_link}}
     </div>
     <div class="primary-button mt0 back-black"
          ng-click="close()">

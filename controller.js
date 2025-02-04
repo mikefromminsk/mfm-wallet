@@ -8,7 +8,7 @@ function start($scope) {
     $scope.selectTab = function (tab) {
         $scope.selectedIndex = tab
         if (tab == 0) {
-            openDialogs($scope)
+            openTrans($scope)
         } else if (tab == 1) {
             openHome($scope)
         } else if (tab == 2) {

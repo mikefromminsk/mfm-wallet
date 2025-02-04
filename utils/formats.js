@@ -65,6 +65,8 @@ function addFormats($scope) {
         return {
             "min-width": size + "px",
             "min-height": size + "px",
+            "max-width": size + "px",
+            "max-height": size + "px",
             "background-image": "url(data:image/png;base64,"
                 + new Identicon(address, {
                     background: [255, 255, 255, 0],         // rgba white

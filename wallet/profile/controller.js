@@ -10,23 +10,8 @@ function openTokenProfile(domain, success) {
     showDialog("wallet/profile", success, function ($scope) {
         $scope.domain = domain
 
-        function loadProfile() {
-            postContract("mfm-token", "token_info", {
-                domain: domain,
-                address: wallet.address()
-            }, function (response) {
-                $scope.token = response.token
-                $scope.owner = response.owner
-                $scope.mining = response.mining
-                $scope.exchange_bot = response.exchange_bot
-                $scope.staking = response.staking
-                $scope.account = response.account
-                $scope.analytics = response.analytics
-                $scope.$apply()
-            })
-        }
-
         addChart($scope, domain + "_price", domain + "_volume")
+        addTokenProfile($scope, domain)
 
         $scope.subscribe("price:" + domain, function (data) {
             $scope.token.price = data.price
@@ -35,9 +20,28 @@ function openTokenProfile(domain, success) {
         })
 
         $scope.init = function () {
-            loadProfile()
+            $scope.loadTokenProfile(domain)
         }
 
         $scope.init()
     })
+}
+
+function addTokenProfile($scope) {
+
+    $scope.loadTokenProfile = function (domain) {
+        postContract("mfm-token", "token_info", {
+            domain: domain,
+            address: wallet.address()
+        }, function (response) {
+            $scope.token = response.token
+            $scope.owner = response.owner
+            $scope.mining = response.mining
+            $scope.exchange_bot = response.exchange_bot
+            $scope.staking = response.staking
+            $scope.account = response.account
+            $scope.analytics = response.analytics
+            $scope.$apply()
+        })
+    }
 }

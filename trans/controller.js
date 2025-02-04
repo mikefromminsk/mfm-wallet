@@ -1,14 +1,5 @@
-function openDialogs($scope) {
-    function loadTrans() {
-        if (wallet.address() != "") {
-            postContract("mfm-token", "trans", {
-                address: wallet.address(),
-            }, function (response) {
-                $scope.trans = $scope.groupByTimePeriod(response.trans)
-                $scope.$apply()
-            })
-        }
-    }
+function openTrans($scope) {
+    addTrans($scope)
 
     $scope.selectTran = function (tran) {
         openTran(tran.next_hash)
@@ -17,6 +8,19 @@ function openDialogs($scope) {
     if (wallet.address() == "") {
         $scope.trans = []
     } else {
-        loadTrans()
+        $scope.loadTrans(wallet.address())
+    }
+}
+
+function addTrans($scope) {
+    $scope.loadTrans = function (address) {
+        if (address != "") {
+            postContract("mfm-token", "trans", {
+                address: address,
+            }, function (response) {
+                $scope.trans = $scope.groupByTimePeriod(response.trans)
+                $scope.$apply()
+            })
+        }
     }
 }
