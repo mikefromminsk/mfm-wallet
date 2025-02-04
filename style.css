@@ -249,6 +249,8 @@ button {
 }
 
 .back-blur {
+    position: fixed;
+    width: 100%;
     backdrop-filter: blur(10px);
     background: rgba(0, 0, 0, 0.4);
 }
@@ -759,4 +761,24 @@ md-toast .md-toast-content {
 
 md-toast .md-toast-content::before {
     min-height: 0;
+}
+
+
+
+
+
+.hover-accent{
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.hover-accent:hover {
+    background-color: var(--accent);
+}
+
+.hover-scale {
+    transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+    transform: scale(1.1);
 }
