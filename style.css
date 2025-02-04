@@ -186,7 +186,6 @@ input::-webkit-inner-spin-button {
     text-align: center;
     border-radius: 4px;
     white-space: normal;
-    word-break: break-word;
 }
 
 .primary-button > * {
@@ -288,7 +287,7 @@ button {
 
 
 .block {
-    width: 980px;
+    width: 1180px;
 }
 
 @media (max-width: 600px) {
@@ -633,113 +632,9 @@ md-radio-button.md-default-theme .md-on, md-radio-button .md-on {
     background: radial-gradient(154.16% 36.43% at 46.78% 100%, rgba(52, 170, 255, .4) 0, rgba(0, 102, 255, .132) 52.6%, rgba(0, 102, 255, 0) 100%), radial-gradient(74.9% 52.95% at 75.44% 1.97%, rgba(156, 38, 80, .45) 0, rgba(156, 38, 80, 0) 100%), radial-gradient(179.13% 86.27% at 94.11% 1.87%, rgba(53, 101, 229, .75) 0, rgba(53, 101, 229, .133) 73.12%, rgba(53, 101, 229, 0) 100%), radial-gradient(47.31% 33.89% at 35.7% 100%, rgba(53, 101, 229, .4) 0, rgba(53, 101, 229, 0) 100%), radial-gradient(33.07% 52.27% at 37.24% 100%, #24314f 0, rgba(36, 49, 79, 0) 100%), #0f1115;
 }
 
-
-.slider {
-    width: 100%;
-    overflow: hidden;
-}
-
-.slides {
-    display: flex;
-    width: 500%;
-}
-
-.slide-animation {
-    animation: slide 18s infinite;
-}
-
-.slides > * {
-    width: 100%;
-}
-
-@keyframes slide {
-    0% {
-        transform: translateX(0%);
-    }
-    5% {
-        transform: translateX(-20%);
-    }
-    20% {
-        transform: translateX(-20%);
-    }
-    25% {
-        transform: translateX(-40%);
-    }
-    40% {
-        transform: translateX(-40%);
-    }
-    45% {
-        transform: translateX(-60%);
-    }
-    60% {
-        transform: translateX(-60%);
-    }
-    65% {
-        transform: translateX(-80%);
-    }
-    80% {
-        transform: translateX(-80%);
-    }
-    85% {
-        transform: translateX(0%);
-    }
-    100% {
-        transform: translateX(0%);
-    }
-}
-
-
-.step {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    height: 64px;
-    width: 64px;
-    border-radius: 100%;
-    background-color: var(--black);
-}
-
-.step::after {
-    opacity: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    content: '';
-    height: 100%;
-    width: 100%;
-    background: var(--accent);
-    border-radius: 100%;
-    animation-name: ripple;
-    animation-duration: 3s;
-    animation-delay: 0s;
-    animation-iteration-count: infinite;
-    animation-timing-function: cubic-bezier(0.65, 0, 0.34, 1);
-    z-index: -1;
-}
-
-@keyframes ripple {
-    from {
-        opacity: 1;
-        transform: scale3d(0.75, 0.75, 1);
-    }
-    to {
-        opacity: 0;
-        transform: scale3d(2, 2, 1);
-    }
-}
-
 md-dialog {
     max-width: 980px;
 }
-
 
 .checkmark {
     border-radius: 50%;
@@ -806,6 +701,10 @@ md-dialog {
 
 ::-webkit-scrollbar {
     display: none;
+}
+
+.show-scrollbar::-webkit-scrollbar {
+    display: block;
 }
 
 

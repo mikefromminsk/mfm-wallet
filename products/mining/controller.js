@@ -54,6 +54,7 @@ function addMining($scope, domain) {
                 startMiningProcess($scope.last_hash, $scope.difficulty)
         })
         loadAccounts()
+        loadTrans()
     }
 
     $scope.startMining = function () {
@@ -147,6 +148,17 @@ function addMining($scope, domain) {
         })
     }
 
+    function loadTrans() {
+        postContract("mfm-token", "dialog_trans", {
+            domain: domain,
+            from: wallet.MINING_ADDRESS,
+            to: wallet.address(),
+        }, function (response) {
+            $scope.trans = $scope.groupByTimePeriod(response.trans)
+            $scope.$apply()
+        })
+    }
+
     function init() {
         loadProfile()
         loadMiningInfo(false)
@@ -162,14 +174,7 @@ function addMining($scope, domain) {
 
 function addMiningHistory($scope, domain) {
     $scope.refresh = function () {
-        postContract("mfm-token", "dialog_trans", {
-            domain: domain,
-            from: "mining",
-            to: wallet.address(),
-        }, function (response) {
-            $scope.trans = $scope.groupByTimePeriod(response.trans)
-            $scope.$apply()
-        })
+
     }
 
     $scope.swipeToRefresh = function () {
