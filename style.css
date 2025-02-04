@@ -309,6 +309,10 @@ button {
     border: 1px solid var(--accent);
 }
 
+.border-white {
+    border: 1px solid var(--white);
+}
+
 .border-gray {
     border: 1px solid var(--gray200);
 }
