@@ -41,7 +41,7 @@ function start($scope) {
         $scope.close()
     })
 
-    connectWs(8443)
+    connectWs()
 }
 
 window.finishAutoOpening = false

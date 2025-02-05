@@ -29,12 +29,12 @@ function unsubscribe(subscriber_id) {
     }
 }
 
-function connectWs(port, onOpen) {
+function connectWs(onOpen) {
     if (window.WebSocket) {
         if (document.location.protocol === "https:") {
-            window.conn = new WebSocket("wss://" + document.location.host + ":" + port)
+            window.conn = new WebSocket("wss://" + document.location.host + "/ws")
         } else {
-            window.conn = new WebSocket("ws://" + document.location.host + ":" + port)
+            window.conn = new WebSocket("ws://" + document.location.host + "/ws")
         }
         window.conn.onopen = function () {
             for (let channel of Object.keys(subscriptions))

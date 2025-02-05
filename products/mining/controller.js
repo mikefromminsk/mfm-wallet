@@ -34,7 +34,7 @@ function openMining(domain, success) {
 function addMining($scope, domain) {
     if (window.conn != null && window.conn.readyState !== WebSocket.OPEN) {
         showError(str.web_socket_not_connected)
-        connectWs(8443, function () {
+        connectWs(function () {
             showSuccess(str.web_socket_connection_restored)
         })
     }
