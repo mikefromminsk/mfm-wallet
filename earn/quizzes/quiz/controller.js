@@ -1,6 +1,6 @@
-function openEarn(success) {
+function openQuiz(success) {
     trackCall(arguments)
-    showDialog("products/earn", success, function ($scope) {
+    showDialog("earn/quizzes/quiz", success, function ($scope) {
         $scope.pageIndex = 0
 
         function init() {
@@ -12,9 +12,10 @@ function openEarn(success) {
                 return array;
             }
 
-            post("/mfm-wallet/products/earn/quiz/" +
-                storage.getString(storageKeys.language, navigator.language.split('-')[0]) + ".json", {},
+            get("/mfm-wallet/earn/quizzes/quiz/questions/" +
+                storage.getString(storageKeys.language, navigator.language.split('-')[0]) + ".json",
                 function (response) {
+                    response = JSON.parse(response)
                     $scope.questions = []
                     for (const level of response) {
                         let question = level.questions[Math.floor(Math.random() * level.questions.length)]

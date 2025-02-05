@@ -1,7 +1,7 @@
-<div class="flex col">
+<md-dialog class="fill col">
     <div class="row header align-center-center">
-        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="openNodeAdd(refresh)">
-            <img class="img16 img-gray400" src="/mfm-wallet/img/plus.svg">
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="openSupport()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/support.svg">
         </div>
         <div class="flex row align-center-center text1">
             {{str.node_profile}}
@@ -12,9 +12,9 @@
     </div>
     <div class="flex col scroll align-start-center">
         <div class="flex col block">
-            <img class="refresh-icon img-gray" src="/mfm-wallet/img/reload.svg">
-            <div ng-include="'/mfm-wallet/products/mining/node.html'"></div>
+            <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
+            <div ng-include="'/mfm-wallet/wallet/settings/version/node.html?nocache'"></div>
             <div></div>
         </div>
     </div>
-</div>
+</md-dialog>

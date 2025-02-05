@@ -265,7 +265,7 @@ button {
 
 
 /* Ripple effect */
-.ripple:active, .ripple:hover {
+.ripple:active {
     background-color: var(--gray200);
     border-radius: 16px;
 }

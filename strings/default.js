@@ -301,4 +301,6 @@ str.node_version = "Node Version"
 str.max_data_history_count = "Max Data History Count"
 str.data_history_count = "Data History Count"
 str.node_profile = "Node Profile"
+str.version = "Version"
+str.quiz = "Quiz"
 

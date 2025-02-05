@@ -47,6 +47,7 @@ function connectWs(onOpen) {
         }
         window.conn.onmessage = function (evt) {
             let message = JSON.parse(evt.data)
+            if (subscriptions == null || subscriptions[message.channel] == null) return
             for (let subscription of subscriptions[message.channel]) {
                 subscription.callback(message.data)
             }
@@ -186,9 +187,8 @@ function calcPassList(domain, pin, success, error) {
 var wallet = {
     gas_domain: "usdt",
     stocks_domain: "vavilon",
-    genesis_address: "owner",
-    STAKING_ADDRESS: "de4e3daf6acddab48fe5cb446e1dc80b",
-    MINING_ADDRESS: "e1c0a6007e8f45c96d4b9f2d0df0551c",
+    STAKING_ADDRESS: "cba1ac1c73a9d6b717484e774ff85845d343713580cc46b9ae57f801aef729d3",
+    MINING_ADDRESS: "e40d3d5318cc88b3874561521992c580300eeb3cc2e2a0c6c7b1a574dc1ae99c",
     BOT_PREFIX: "bot_",
     logout: function () {
         storage.clear()
@@ -226,7 +226,6 @@ var wallet = {
             wallet.calcStartHash(domain, pin, function (next_hash) {
                 postContract("mfm-token", "send", {
                     domain: domain,
-                    from: wallet.genesis_address,
                     to: wallet.address(),
                     amount: 0,
                     pass: ":" + next_hash

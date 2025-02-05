@@ -54,9 +54,13 @@
                 <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/star.svg">
                 <p class="">{{str.rate_us}}</p>
             </a>
-            <div class="row align-start-center ripple" ng-click="openDoc('/mfm-wallet/docs/terms_and_conditions.md')">
+            <a class="row align-start-center ripple" href="/mfm-landing/docs?doc=terms">
                 <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/doc.svg">
                 <p class="">{{str.terms_and_conditions}}</p>
+            </a>
+            <div class="row align-start-center ripple" ng-click="openVersion()">
+                <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/info.svg">
+                <p class="">{{str.version}}</p>
             </div>
 
             <div class="text1">{{str.admin_panel}}</div>

@@ -5,9 +5,10 @@
         <p class="mt8 text2">{{str.p2p}}</p>
     </div>
     <div class="flex p16 col align-start-center ripple"
-         ng-click="openAirdrop()">
-        <img class="img16 img-gray" src="/mfm-wallet/img/giftbox.svg">
-        <p class="mt8 text2">{{str.airdrop}}</p>
+         ng-click="openEarn(domain, refresh)" style="position: relative">
+        <div class="focus"></div>
+        <img class="img16 img-gray" src="/mfm-wallet/img/mining.svg">
+        <p class="mt8 text2">{{str.earn}}</p>
     </div>
     <div class="flex p16 col align-start-center ripple"
          ng-click="openSend(domain)">
@@ -29,22 +30,3 @@
         <p class="mt8 text2">{{str.withdrawal}}</p>
     </div>
 </div>-->
-
-<div class="row align-start-end"
-     ng-show="domain != wallet.gas_domain">
-    <div class="flex p16 col align-start-center ripple"
-         ng-click="openStaking(domain)">
-        <img class="img16 img-gray" src="/mfm-wallet/img/staking.svg">
-        <p class="mt8 text2">{{str.staking}}</p>
-    </div>
-    <div class="flex p16 col align-start-center ripple"
-         ng-click="openBuy(domain)">
-        <img class="img16 img-gray" src="/mfm-wallet/img/exchange.svg">
-        <p class="mt8 text2">{{str.exchange}}</p>
-    </div>
-    <div class="flex p16 col align-start-center ripple"
-         ng-click="openMining(domain)">
-        <img class="img16 img-gray" src="/mfm-wallet/img/mining.svg">
-        <p class="mt8 text2">{{str.mining}}</p>
-    </div>
-</div>

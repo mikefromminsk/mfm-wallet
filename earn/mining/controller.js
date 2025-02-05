@@ -1,36 +1,5 @@
 let worker;
 
-function openMining(domain, success) {
-    trackCall(arguments)
-    if (domain == null) return;
-    showDialog("products/mining", function () {
-            if (worker)
-                worker.terminate()
-            if (success)
-                success()
-        }, function ($scope) {
-            $scope.domain = domain
-            $scope.menu = ["history", "mining", "nodes"]
-            $scope.selectedIndex = 1
-            $scope.selectTab = function (tab) {
-                $scope.selectedIndex = tab
-                if (tab == 0) {
-                    addMiningHistory($scope, domain)
-                } else if (tab == 1) {
-                    addMining($scope, domain)
-                } else if (tab == 2) {
-                    addNodes($scope)
-                }
-                swipeToRefresh($scope.swipeToRefresh)
-            }
-            $scope.swipeToRefresh = function () {
-                $scope.selectTab($scope.selectedIndex)
-            }
-            $scope.selectTab($scope.selectedIndex)
-        }
-    )
-}
-
 function addMining($scope, domain) {
     if (window.conn != null && window.conn.readyState !== WebSocket.OPEN) {
         showError(str.web_socket_not_connected)
@@ -79,7 +48,7 @@ function addMining($scope, domain) {
     function startMiningProcess(last_hash, difficulty) {
         if (worker != null)
             worker.terminate()
-        worker = new Worker('/mfm-wallet/products/mining/worker.js');
+        worker = new Worker('/mfm-wallet/earn/mining/worker.js');
         worker.addEventListener('message', function (e) {
             $scope.speed = e.data.speed
             if ($scope.last_hash == e.data.last_hash) {
@@ -119,7 +88,6 @@ function addMining($scope, domain) {
     $scope.subscribe("mining:" + domain, function (data) {
         $scope.balance = data.balance
         $scope.difficulty = data.difficulty
-        $scope.last_reward = data.reward
         $scope.$apply()
         if (data.gas_address == wallet.address())
             loadAccounts()
@@ -164,38 +132,5 @@ function addMining($scope, domain) {
         loadMiningInfo(false)
     }
 
-    $scope.swipeToRefresh = function () {
-        init()
-    }
-
     init()
-}
-
-
-function addMiningHistory($scope, domain) {
-    $scope.refresh = function () {
-
-    }
-
-    $scope.swipeToRefresh = function () {
-        $scope.refresh()
-    }
-
-    $scope.refresh()
-}
-
-
-function addNodes($scope) {
-    $scope.loadVersion = function () {
-        postContract("mfm-token", "version", {}, function (response) {
-            $scope.node = response
-            $scope.$apply()
-        })
-    }
-
-    $scope.swipeToRefresh = function () {
-        $scope.loadVersion()
-    }
-
-    $scope.loadVersion()
 }

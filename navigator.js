@@ -173,14 +173,6 @@ function addNavigator($scope) {
         openDistribution(domain, success)
     }
 
-    $scope.openAskCredit = function (success) {
-        openAskCredit(success)
-    }
-
-    $scope.openStaking = function (domain, success) {
-        openStaking(domain, success)
-    }
-
     $scope.openAnalytics = function () {
         openAnalytics()
     }
@@ -237,7 +229,11 @@ function addNavigator($scope) {
         openSelectDomain(success)
     }
 
-    $scope.openNodeAdd = function (success) {
-        openNodeAdd(success)
+    $scope.openVersion = function (success) {
+        openVersion(success)
+    }
+
+    $scope.openQuiz = function (success) {
+        openQuiz(success)
     }
 }

@@ -31,7 +31,6 @@ function addLogin($scope, success) {
         authorize(address, password, loginSuccess, $scope.finishRequest, function () {
             postContract("mfm-token", "send", {
                 domain: wallet.gas_domain,
-                from: wallet.genesis_address,
                 to: address,
                 amount: 0,
                 pass: wallet.calcStartPass(wallet.gas_domain, address, password)

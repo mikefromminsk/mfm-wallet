@@ -12,17 +12,18 @@
     </div>
     <div class="flex col scroll align-start-center">
         <div class="flex col block">
-            <img class="refresh-icon img-gray" src="/mfm-wallet/img/reload.svg">
+            <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
             <div class="col mh16 align-start-center"
                  style="position: relative; padding-top: 100px">
                 <p class="size12 uppercase">{{str.last_reward}}</p>
-                <p class="size40 bold">{{formatAmount(last_reward, domain, 0)}}</p>
+                <p class="size40 bold">{{formatAmount(last_reward, null, 4)}}</p>
                 <p class="size12"
                    ng-class="{'text-red': !bank || bank == 0}">
                     {{formatAmount(bank, domain)}} {{str.in_bank}}
                 </p>
                 <p class="size10 mt8">{{str.difficulty}} {{formatAmount(difficulty, '', 2)}}</p>
-                <p class="size10 mt8">{{str.speed}} {{formatAmount(speed, '', 2)}} h/s</p>
+                <p class="size10 mt8" ng-show="speed > 0">{{str.speed}} {{formatAmount(speed, '', 2)}} h/s</p>
+                <p class="size10 mt8 text-black" ng-hide="speed > 0">.</p>
 
                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                      xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -77,12 +78,10 @@
                     </div>
                 </div>
             </div>
-            <div class="col mh16 mt16">
-                <ng-include src="'/mfm-wallet/wallet/accounts.html?nocache'"></ng-include>
-            </div>
-            <ng-include src="'/mfm-wallet/trans/trans.html'"></ng-include>
+            <ng-include class="col mh16 mt16" src="'/mfm-wallet/wallet/accounts.html?nocache'"></ng-include>
+            <ng-include class="ph16" src="'/mfm-wallet/trans/trans.html'"></ng-include>
             <div class="nowrap-disabled m16"
-                 ng-include="'/mfm-wallet/products/mining/faq/' + getLanguage() + '.html'"></div>
+                 ng-include="'/mfm-wallet/earn/mining/faq/' + getLanguage() + '.html'"></div>
         </div>
     </div>
 </div>

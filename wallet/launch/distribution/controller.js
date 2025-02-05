@@ -64,7 +64,6 @@ function openDistribution(domain, success) {
                 wallet.calcStartHash($scope.domain, pin, function (next_hash) {
                     postContract("mfm-token", "send", {
                         domain: $scope.domain,
-                        from: wallet.genesis_address,
                         to: wallet.address(),
                         pass: ":" + next_hash,
                         amount: $scope.amount,
@@ -78,7 +77,6 @@ function openDistribution(domain, success) {
         function mining(domain, pin) {
             postContract("mfm-token", "send", {
                 domain: domain,
-                from: wallet.genesis_address,
                 to: wallet.MINING_ADDRESS,
                 amount: 0,
                 pass: wallet.calcStartPass(domain, wallet.MINING_ADDRESS),
@@ -102,7 +100,6 @@ function openDistribution(domain, success) {
             let botAddress = wallet.BOT_PREFIX + domain
             postContract("mfm-token", "send", {
                 domain: domain,
-                from: wallet.genesis_address,
                 to: botAddress,
                 amount: 0,
                 pass: wallet.calcStartPass(domain, botAddress),
@@ -125,7 +122,6 @@ function openDistribution(domain, success) {
         function staking(domain, pin) {
             postContract("mfm-token", "send", {
                 domain: domain,
-                from: wallet.genesis_address,
                 to: wallet.STAKING_ADDRESS,
                 amount: 0,
                 pass: wallet.calcStartPass(domain, wallet.STAKING_ADDRESS),

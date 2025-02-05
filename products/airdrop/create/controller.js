@@ -17,7 +17,6 @@ function openAirdropCreate(domain, success) {
             $scope.startRequest()
             postContract("mfm-token", "send", {
                 domain: domain,
-                from: wallet.genesis_address,
                 to: address,
                 amount: 0,
                 pass: wallet.calcStartPass(domain, address, password),

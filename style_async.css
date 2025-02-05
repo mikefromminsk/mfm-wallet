@@ -373,9 +373,10 @@ svg {
     height: 100px;
     width: 100px;
     position: absolute;
+    left: calc(50% - 50px);
+    top: calc(50% - 50px);
     opacity: 0;
 }
-
 
 .refresh-icon {
     position: absolute;
