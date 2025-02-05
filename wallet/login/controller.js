@@ -55,6 +55,11 @@ function addLogin($scope, success) {
             })
         }
     }
+    $scope.copied = false
+    $scope.copySeed = function () {
+        $scope.copy($scope.mnemonic)
+        $scope.copied = true
+    }
 }
 
 function authorize(address, password, success, invalid_pass, error) {

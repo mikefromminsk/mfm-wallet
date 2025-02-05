@@ -12,10 +12,10 @@
                               ng-model="mnemonic"
                               oninput="this.value = this.value.toLowerCase().replace(/[^a-z0-9 ]/g, '')"
                               placeholder="{{str.seed_phrase}}"></textarea>
-                <div class="row primary-button ripple m0 align-center-center"
+                <div class="row primary-button ripple m0 align-center-center relative"
                      ng-style="{'background-color': copied ? 'var(--black)' : 'var(--accent)'}"
-                     ng-click="copy(mnemonic); copied = true">
-                    <div class="focus" ng-hide="copied"></div>
+                     ng-click="copySeed(mnemonic)">
+                    <div class="focus" ng-show="!copied"></div>
                     <img class="img32 img-white" src="/mfm-wallet/img/copy.svg">
                 </div>
             </div>
@@ -27,9 +27,10 @@
                 {{str.terms_and_conditions}}
             </a>
         </div>
-        <div class="primary-button"
+        <div class="primary-button relative"
              ng-click="login(mnemonic)"
              ng-disabled="in_progress || !validateBip39(mnemonic) || !copied">
+            <div class="focus" ng-show="copied"></div>
             {{str.accept_and_login}}
         </div>
     </div>

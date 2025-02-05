@@ -370,8 +370,8 @@ svg {
     animation: growAndFade 1.5s infinite ease-out;
     background-color: white;
     border-radius: 50%;
-    height: 100px;
-    width: 100px;
+    min-height: 100px;
+    min-width: 100px;
     position: absolute;
     left: calc(50% - 50px);
     top: calc(50% - 50px);
