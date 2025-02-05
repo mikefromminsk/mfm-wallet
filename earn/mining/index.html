@@ -21,7 +21,11 @@
                    ng-class="{'text-red': !bank || bank == 0}">
                     {{formatAmount(bank, domain)}} {{str.in_bank}}
                 </p>
-                <p class="size10 mt8">{{str.difficulty}} {{formatAmount(difficulty, '', 2)}}</p>
+                <div class="row mt8 align-start-center">
+                    <p class="size10">{{str.difficulty}} {{formatAmount(difficulty, '', 2)}}</p>
+                    <img class="ml4 img12 img-gray" src="/mfm-wallet/img/chart.svg"
+                         ng-click="openChartWithAccumulate(token.domain + '_difficulty')">
+                </div>
                 <p class="size10 mt8" ng-show="speed > 0">{{str.speed}} {{formatAmount(speed, '', 2)}} h/s</p>
                 <p class="size10 mt8 text-black" ng-hide="speed > 0">.</p>
 
