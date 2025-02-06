@@ -13,9 +13,10 @@
     <div class="col align-start-center fill-width p16 pt8 back-black ng-cloak"
          style="position: absolute; bottom: 0;">
         <div class="row block">
-            <div class="flex col pv8 align-start-center ripple"
+            <div class="flex col pv8 align-start-center ripple relative"
                  ng-repeat="item in menu"
                  ng-click="selectTab($index)">
+                <div class="focus" ng-show="item == 'quiz'"></div>
                 <img class="img18" src="/mfm-wallet/img/{{item}}.svg"
                      ng-class="{'img-accent': selectedIndex == $index, 'img-gray': selectedIndex != $index}">
                 <p class="mt8"
