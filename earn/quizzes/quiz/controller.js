@@ -76,7 +76,7 @@ function openQuiz(success) {
                     domain: wallet.gas_domain,
                     from: admin_address,
                     to: wallet.address(),
-                    amount: $scope.rating * 100,
+                    amount: $scope.rating,
                     pass: key + ":" + next_hash,
                 }, function () {
                     $scope.finishRequest()
