@@ -45,6 +45,7 @@ function openSettings(success) {
             }, function (response) {
                 $scope.account = response.account
                 $scope.$apply()
+            }, function () {
             })
         }
 

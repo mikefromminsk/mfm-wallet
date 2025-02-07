@@ -21,6 +21,9 @@
 body {
     font-family: FontMedium, Roboto, "Helvetica Neue", sans-serif;
 }
+body {
+    overflow-anchor: none;
+}
 
 md-bottom-sheet {
     padding: 10px 0 60px 0;
