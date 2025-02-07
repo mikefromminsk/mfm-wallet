@@ -26,8 +26,8 @@ function addLogin($scope, success) {
 
     $scope.login = function (mnemonic) {
         $scope.startRequest()
-        let password = md5(mnemonic)
-        let address = md5(password)
+        let password = hash(mnemonic)
+        let address = hash(password)
         authorize(address, password, loginSuccess, $scope.finishRequest, function () {
             postContract("mfm-token", "send", {
                 domain: wallet.gas_domain,
@@ -67,7 +67,7 @@ function authorize(address, password, success, invalid_pass, error) {
         domain: wallet.gas_domain,
         address: address,
     }, function (response) {
-        if (md5(wallet.calcHash(
+        if (hash(wallet.calcHash(
             wallet.gas_domain,
             address,
             password,

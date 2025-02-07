@@ -112,7 +112,7 @@ function post(url, params, success, error) {
     xhr.send(JSON.stringify(params))
 }
 
-function md5(str) {
+function hash(str) {
     return CryptoJS.SHA256(str).toString()
 }
 
@@ -191,6 +191,9 @@ var wallet = {
     STAKING_ADDRESS: "cba1ac1c73a9d6b717484e774ff85845d343713580cc46b9ae57f801aef729d3",
     MINING_ADDRESS: "e40d3d5318cc88b3874561521992c580300eeb3cc2e2a0c6c7b1a574dc1ae99c",
     BOT_PREFIX: "bot_",
+    getBotAddress: function (domain) {
+        return hash(this.BOT_PREFIX + domain)
+    },
     logout: function () {
         storage.clear()
     },
@@ -199,19 +202,19 @@ var wallet = {
     },
     // rename to calcKey
     calcHash: function (domain, username, password, prev_key) {
-        return md5(domain + username + password + (prev_key || ""))
+        return hash(domain + username + password + (prev_key || ""))
     },
     calcStartHash: function (domain, pin, success) {
-        success(md5(wallet.calcHash(domain, wallet.address(), decode(storage.getString(storageKeys.passhash), pin))))
+        success(hash(wallet.calcHash(domain, wallet.address(), decode(storage.getString(storageKeys.passhash), pin))))
     },
     calcStartPass: function (domain, address, password, prev_key) {
-        return ":" + md5(wallet.calcHash(domain, address, password || address, prev_key))
+        return ":" + hash(wallet.calcHash(domain, address, password || address, prev_key))
     },
     calcKeyHash: function (domain, prev_key, pin, success) {
         let passhash = storage.getString(storageKeys.passhash)
         let password = decode(passhash, pin)
         let key = wallet.calcHash(domain, wallet.address(), password, prev_key)
-        let next_hash = md5(wallet.calcHash(domain, wallet.address(), password, key))
+        let next_hash = hash(wallet.calcHash(domain, wallet.address(), password, key))
         success(key, next_hash)
     },
     calcPass: function (domain, pin, success, error) {

@@ -46,7 +46,7 @@
                     <div class="row mt16 gap8">
                         <p class="text-gray">{{str.per_person}}:</p>
                         <div ng-class="{'text-red': amount > account.balance}">
-                            {{formatAmount(round((amount || 0) / receivers, 4), token.domain)}}
+                            {{formatAmount(round((amount || 0) / receivers), token.domain)}}
                         </div>
                     </div>
                 </div>

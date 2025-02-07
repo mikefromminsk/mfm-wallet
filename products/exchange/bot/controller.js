@@ -2,14 +2,14 @@ function openExchangeBot(domain, success) {
     trackCall(arguments)
     showDialog("products/exchange/bot", success, function ($scope) {
         $scope.domain = domain
-        $scope.bot_address = wallet.BOT_PREFIX + domain
+        $scope.bot_address = wallet.getBotAddress(domain)
 
         $scope.selectAccount = function (domain) {
             openSend(domain, $scope.bot_address, null, init)
         }
 
         function init() {
-            getProfile(domain, function (response) {
+            getAccount(domain, function (response) {
                 $scope.token = response.token
                 $scope.account = response.account
                 $scope.$apply()

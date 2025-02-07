@@ -768,10 +768,7 @@ md-toast .md-toast-content::before {
 }
 
 
-
-
-
-.hover-accent{
+.hover-accent {
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
@@ -785,4 +782,9 @@ md-toast .md-toast-content::before {
 
 .hover-scale:hover {
     transform: scale(1.1);
+}
+
+
+a[title="Charting by TradingView"] {
+    display: none;
 }

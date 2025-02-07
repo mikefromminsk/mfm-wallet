@@ -43,7 +43,7 @@ function openSend(domain, to_address, amount, success) {
 
         function init() {
             $scope.recent = storage.getStringArray(storageKeys.send_history).reverse()
-            getProfile(domain, function (response) {
+            getAccount(domain, function (response) {
                 $scope.token = response.token
                 $scope.account = response.account
                 $scope.$apply()

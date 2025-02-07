@@ -1,6 +1,6 @@
 function addFormats($scope) {
     $scope.round = function (num, precision) {
-        const factor = Math.pow(10, precision)
+        const factor = Math.pow(10, precision || 4)
         return (Math.ceil(num * factor) / factor)
     }
 

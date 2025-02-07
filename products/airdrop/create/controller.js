@@ -8,12 +8,12 @@ function openAirdropCreate(domain, success) {
 
         $scope.$watch("amount", function (newValue) {
             if (newValue != null)
-                $scope.amount = $scope.round(newValue, 4)
+                $scope.amount = $scope.round(newValue)
         })
 
         $scope.create = function () {
-            let password = md5($scope.promoCode)
-            let address = md5(password)
+            let password = hash($scope.promoCode)
+            let address = hash(password)
             $scope.startRequest()
             postContract("mfm-token", "send", {
                 domain: domain,
@@ -63,7 +63,7 @@ function openAirdropCreate(domain, success) {
         }
 
         function init() {
-            getProfile(domain, function (response) {
+            getAccount(domain, function (response) {
                 $scope.token = response.token
                 $scope.account = response.account
                 $scope.$apply()

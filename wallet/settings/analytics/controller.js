@@ -60,19 +60,5 @@ function openAnalytics(success) {
             $scope.dau = response.change24
             $scope.$apply()
         })
-
-        postContract("mfm-token", "token_info", {
-            domain: wallet.stocks_domain,
-            address: wallet.address()
-        }, function (response) {
-            $scope.token = response.token
-            $scope.owner = response.owner
-            $scope.mining = response.mining
-            $scope.exchange_bot = response.exchange_bot
-            $scope.staking = response.staking
-            $scope.account = response.account
-            $scope.analytics = response.analytics
-            $scope.$apply()
-        })
     })
 }

@@ -73,8 +73,11 @@
                                placeholder="{{str.total}}">
                     </div>
 
-                    <div class="row pb0">
-                        <div class="flex text-gray">{{str.available}}</div>
+                    <div class="row pb0"
+                         ng-click="setPortion(100)">
+                        <div class="flex text-gray">
+                            {{str.available}}
+                        </div>
                         <div ng-show="is_sell"
                              ng-class="{'text-red': amount > account.balance}">
                             {{formatAmount(account.balance, domain)}}

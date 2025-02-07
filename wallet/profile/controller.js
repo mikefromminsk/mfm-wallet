@@ -1,4 +1,4 @@
-function getProfile(domain, success, error) {
+function getAccount(domain, success, error) {
     postContract("mfm-token", "profile", {
         domain: domain,
         address: wallet.address(),

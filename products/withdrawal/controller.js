@@ -47,7 +47,7 @@ function openWithdrawal(success) {
             }
 
             function init() {
-                getProfile(wallet.gas_domain, function (response) {
+                getAccount(wallet.gas_domain, function (response) {
                     $scope.token = response.token
                     $scope.$apply()
                 })

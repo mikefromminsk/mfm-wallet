@@ -4,7 +4,7 @@ function addStaking($scope, domain) {
 
     $scope.$watch("amount", function (newValue) {
         if (newValue != null)
-            $scope.amount = $scope.round($scope.amount, 4)
+            $scope.amount = $scope.round($scope.amount)
     })
 
     $scope.openStake = function () {
@@ -85,7 +85,7 @@ function addStaking($scope, domain) {
 
     $scope.refresh = function () {
         $scope.getBank()
-        getProfile(domain, function (response) {
+        getAccount(domain, function (response) {
             $scope.getStakes()
             $scope.token = response.token
             $scope.account = response.account

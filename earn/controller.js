@@ -30,6 +30,10 @@ function openEarn(domain, success) {
                 $scope.selectTab($scope.selectedIndex)
             }*/
             $scope.selectTab($scope.selectedIndex)
+
+            $scope.backToMining = function () {
+                $scope.selectTab(1)
+            }
         }
     )
 }

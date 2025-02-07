@@ -13,8 +13,8 @@ function openAirdrop(promo, success) {
                 if ($scope.promo.indexOf(":") != -1) {
                     let domain = $scope.promo.split(":")[0]
                     let promoCode = $scope.promo.split(":")[1]
-                    let password = md5(promoCode)
-                    let address = md5(password)
+                    let password = hash(promoCode)
+                    let address = hash(password)
                     $scope.startRequest()
                     getPin(function (pin) {
                         wallet.reg($scope.domain, pin, function () {

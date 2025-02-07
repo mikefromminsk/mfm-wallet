@@ -71,7 +71,7 @@ function openQuiz(success) {
                 address: admin_address,
             }, function (response) {
                 let key = wallet.calcHash(wallet.gas_domain, admin_address, admin_password, response.account.prev_key)
-                let next_hash = md5(wallet.calcHash(wallet.gas_domain, admin_address, admin_password, key))
+                let next_hash = hash(wallet.calcHash(wallet.gas_domain, admin_address, admin_password, key))
                 postContract("mfm-token", "send", {
                     domain: wallet.gas_domain,
                     from: admin_address,

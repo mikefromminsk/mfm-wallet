@@ -97,7 +97,7 @@ function addMining($scope, domain) {
     })
 
     function loadProfile() {
-        getProfile(domain, function (response) {
+        getAccount(domain, function (response) {
             $scope.token = response.token
             $scope.account = response.account
             $scope.$apply()
@@ -115,6 +115,10 @@ function addMining($scope, domain) {
             $scope.accounts = accounts
             $scope.$apply()
         })
+    }
+
+    $scope.selectAccount = function () {
+        $scope.openTokenProfile(domain, loadAccounts)
     }
 
     function loadTrans() {

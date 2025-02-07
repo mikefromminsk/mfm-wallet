@@ -17,12 +17,17 @@ function openExchange(domain, is_sell) {
         $scope.portion = 0
         $scope.$watch("portion", function (new_value, old_value) {
             if (new_value == old_value) return;
+            $scope.setPortion(new_value)
+        })
+
+        $scope.setPortion = function (new_value) {
+            $scope.portion = new_value
             if ($scope.is_sell) {
                 $scope.changeAmount($scope.account.balance * (new_value / 100))
             } else {
-                $scope.changeAmount($scope.quote.balance / $scope.price * (new_value / 100))
+                $scope.changeTotal($scope.quote.balance)
             }
-        })
+        }
 
         $scope.place = function place() {
             trackCall(arguments)
@@ -77,7 +82,7 @@ function openExchange(domain, is_sell) {
         }
 
         $scope.loadBaseProfile = function () {
-            getProfile(domain, function (response) {
+            getAccount(domain, function (response) {
                 $scope.token = response.token
                 $scope.account = response.account
                 $scope.$apply()
@@ -104,6 +109,13 @@ function openExchange(domain, is_sell) {
             }, function (response) {
                 $scope.sell = (response.sell || []).reverse()
                 $scope.buy = response.buy
+                if ($scope.is_sell){
+                    if (response.buy.length > 0)
+                        $scope.price = $scope.round(response.buy[0].price * 0.95)
+                } else {
+                    if (response.sell.length > 0)
+                        $scope.price = $scope.round(response.sell[0].price * 1.05)
+                }
                 $scope.$apply()
             })
             if (wallet.address() != "")
@@ -143,31 +155,33 @@ function addPriceAmountTotal($scope) {
         if (price != null)
             $scope.price = price
         if ($scope.price != null && $scope.amount != null)
-            $scope.total = $scope.round($scope.price * $scope.amount, 4)
+            $scope.total = $scope.round($scope.price * $scope.amount)
     }
 
     $scope.changeAmount = function (amount) {
         if (amount != null)
             $scope.amount = amount
         if ($scope.price != null && $scope.amount != null)
-            $scope.total = $scope.round($scope.price * $scope.amount, 4)
+            $scope.total = $scope.round($scope.price * $scope.amount)
     }
 
-    $scope.changeTotal = function () {
+    $scope.changeTotal = function (total) {
+        if (total != null)
+            $scope.total = total
         if ($scope.price != null && $scope.total != null)
-            $scope.amount = $scope.round($scope.total / $scope.price, 4)
+            $scope.amount = $scope.round($scope.total / $scope.price)
     }
 
     $scope.$watch("price", function (newValue) {
         if (newValue != null)
-            $scope.price = $scope.round($scope.price, 4)
+            $scope.price = $scope.round($scope.price)
     })
     $scope.$watch("amount", function (newValue) {
         if (newValue != null)
-            $scope.amount = $scope.round($scope.amount, 4)
+            $scope.amount = $scope.round($scope.amount)
     })
     $scope.$watch("total", function (newValue) {
         if (newValue != null)
-            $scope.total = $scope.round($scope.total, 4)
+            $scope.total = $scope.round($scope.total)
     })
 }

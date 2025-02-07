@@ -97,7 +97,7 @@ function openDistribution(domain, success) {
         }
 
         function exchange(domain, pin) {
-            let botAddress = wallet.BOT_PREFIX + domain
+            let botAddress = wallet.getBotAddress(domain)
             postContract("mfm-token", "send", {
                 domain: domain,
                 to: botAddress,
