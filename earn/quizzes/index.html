@@ -15,8 +15,8 @@
                         <p class="text2">7 quiestion</p>
                         <p class="text2">Level: HARD</p>
                     </div>
-                    <div class="primary-button m0 mt16 nowrap relative" ng-click="openQuiz()">
-                        <div class="focus" ng-show="isNotChecked('open_quiz')" ng-click="check('open_quiz')"></div>
+                    <div class="primary-button m0 mt16 nowrap relative" ng-click="openQuiz(); check('open_quiz')">
+                        <div class="focus" ng-show="isNotChecked('open_quiz')"></div>
                         Open quiz
                     </div>
                 </div>
