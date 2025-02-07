@@ -6,9 +6,7 @@ function openExchange(domain, is_sell) {
         $scope.is_sell = is_sell == 1
 
         if (window.conn != null && window.conn.readyState !== WebSocket.OPEN) {
-            connectWs(function () {
-                showSuccess(str.web_socket_connection_restored)
-            })
+            connectWs()
         }
 
         $scope.openLogin = function () {

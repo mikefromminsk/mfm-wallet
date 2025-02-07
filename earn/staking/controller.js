@@ -93,9 +93,5 @@ function addStaking($scope, domain) {
         })
     }
 
-    $scope.swipeToRefresh = function () {
-        $scope.refresh()
-    }
-
     $scope.refresh()
 }

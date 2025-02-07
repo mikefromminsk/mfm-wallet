@@ -14,7 +14,14 @@ function openP2P(success) {
             } else if (tab == 2) {
                 addP2PProfile($scope, wallet.address())
             }
-            swipeToRefresh($scope.swipeToRefresh)
+            swipeToRefresh($scope.backToMain)
+        }
+
+        $scope.backToMain = function () {
+            if ($scope.selectedIndex != 1)
+                $scope.selectTab(1)
+            else
+                $scope.close()
         }
 
         $scope.selectTab($scope.selectedIndex)

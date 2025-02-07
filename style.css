@@ -616,12 +616,23 @@ md-radio-button.md-default-theme .md-on, md-radio-button .md-on {
     text-align: center;
     font-size: 70px;
     line-height: 90px;
+    position: relative;
+}
+
+.pin-unfilled::after {
+    content: '';
+    display: block;
+    width: calc(75px - 32px);
+    height: 2px;
+    background: var(--gray200);
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
 }
 
 .pin-filled {
     border: 1px solid var(--green);
 }
-
 
 .footer_background {
     min-height: 1200px;

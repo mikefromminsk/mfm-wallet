@@ -15,6 +15,14 @@ function openEarn(domain, success) {
             $scope.domain = domain
             $scope.menu = ["staking", "mining", "quiz"]
             $scope.selectedIndex = 1
+
+            $scope.backToMain = function () {
+                if ($scope.selectedIndex != 1)
+                    $scope.selectTab(1)
+                else
+                    $scope.close()
+            }
+
             $scope.selectTab = function (tab) {
                 $scope.selectedIndex = tab
                 if (tab == 0) {
@@ -24,16 +32,10 @@ function openEarn(domain, success) {
                 } else if (tab == 2) {
                     addPools($scope, $scope.domain)
                 }
-                //swipeToRefresh($scope.swipeToRefresh)
+                swipeToRefresh($scope.backToMain)
             }
-            /*$scope.swipeToRefresh = function () {
-                $scope.selectTab($scope.selectedIndex)
-            }*/
             $scope.selectTab($scope.selectedIndex)
 
-            $scope.backToMining = function () {
-                $scope.selectTab(1)
-            }
         }
     )
 }
