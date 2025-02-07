@@ -6,7 +6,7 @@
     </div>
     <div class="flex p16 col align-start-center ripple"
          ng-click="openEarn(domain, refresh)" style="position: relative">
-        <div class="focus"></div>
+        <div class="focus" ng-show="isNotChecked('earn')" ng-click="check('earn')"></div>
         <img class="img16 img-gray" src="/mfm-wallet/img/mining.svg">
         <p class="mt8 text2">{{str.earn}}</p>
     </div>

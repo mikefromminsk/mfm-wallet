@@ -166,6 +166,7 @@ const storageKeys = {
     first_review: "STORE_FIRST_REVIEW",
     defaultOfferDomain: "STORE_DEFAULT_OFFER_DOMAIN",
     default_payment_type: "STORE_DEFAULT_PAYMENT_TYPE",
+    check_prefix: "STORE_CHECK_PREFIX_",
 }
 
 function postContractWithGas(domain, path, params, success, error) {

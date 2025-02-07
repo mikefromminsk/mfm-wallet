@@ -93,6 +93,7 @@ function addFormats($scope) {
     }
 
     $scope.formatChange = function (number) {
+        if (number == 0) return ""
         let str = $scope.formatPercent(number, 0)
         if (number > 0)
             str = "+" + str;

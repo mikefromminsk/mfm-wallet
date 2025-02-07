@@ -378,6 +378,19 @@ svg {
     opacity: 0;
 }
 
+.focus::before {
+    content: '';
+    position: absolute;
+    left: calc(50% - 50px);
+    top: calc(50% - 50px);
+    min-height: 100px;
+    min-width: 100px;
+    background-color: rgba(255, 255, 255, 0); /* Прозрачный фон */
+    border-radius: 50%;
+    z-index: 1;
+    cursor: pointer; /* Указывает на то, что элемент кликабелен */
+}
+
 .refresh-icon {
     position: absolute;
     top: -50px;

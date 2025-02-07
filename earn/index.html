@@ -16,7 +16,8 @@
             <div class="flex col pv8 align-start-center ripple relative"
                  ng-repeat="item in menu"
                  ng-click="selectTab($index)">
-                <div class="focus" ng-show="item == 'quiz'"></div>
+                <div class="focus" ng-show="item == 'quiz' && isNotChecked('quiz')" ng-click="check('quiz')"></div>
+                <div class="focus" ng-show="item == 'mining' && isChecked('finish_quiz') && isNotChecked('goto_mining')" ng-click="check('goto_mining')"></div>
                 <img class="img18" src="/mfm-wallet/img/{{item}}.svg"
                      ng-class="{'img-accent': selectedIndex == $index, 'img-gray': selectedIndex != $index}">
                 <p class="mt8"

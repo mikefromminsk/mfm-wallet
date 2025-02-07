@@ -1,21 +1,5 @@
 <md-dialog class="fill p0 col">
     <md-tabs class="flex col" md-selected="pageIndex">
-        <md-tab label="'ask credit'">
-            <div class="fill col">
-                <div class="flex col align-center-center input-content">
-                    <p class="text1">{{str.do_you_wanna_get_credit}}</p>
-                    <p class="text1">{{str.pass_quiz_and_get_up_to_30_usdt}}</p>
-                </div>
-                <div class="col input-content">
-                    <div class="col gap16">
-                        <div class="flex m0 primary-button" ng-click="openTab(1)">
-                            {{str.yes}}
-                        </div>
-                        <div class="primary-button m16 back-black" ng-click="close()">{{str.close}}</div>
-                    </div>
-                </div>
-            </div>
-        </md-tab>
         <md-tab label="questions.indexOf(item)" ng-repeat="item in questions">
             <div class="fill col">
                 <div class="row header align-start-center">
@@ -61,9 +45,10 @@
                         <p class="text1">{{formatAmount(rating, wallet.gas_domain)}}</p>
                     </div>
                 </div>
-                <div class="primary-button back-pay"
+                <div class="primary-button back-pay relative"
                      ng-disabled="in_progress"
-                     ng-click="getCredit(rating)">
+                     ng-click="getCredit(rating); check('finish_quiz')">
+                    <div class="focus" ng-show="rating > 0 && isNotChecked('finish_quiz')"></div>
                     {{str.receive}}
                 </div>
                 <div class="primary-button back-black"

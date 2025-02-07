@@ -54,6 +54,18 @@ function addNavigator($scope) {
         showSuccess(str.copied)
     }
 
+    $scope.check = function (value) {
+        storage.setString(storageKeys.check_prefix + value, "true")
+    }
+
+    $scope.isChecked = function (value) {
+        return storage.getString(storageKeys.check_prefix + value) == "true"
+    }
+
+    $scope.isNotChecked = function (value) {
+        return !$scope.isChecked(value)
+    }
+
     $scope.openLogin = function (success) {
         openLogin(success)
     }

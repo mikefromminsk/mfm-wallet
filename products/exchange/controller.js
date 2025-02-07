@@ -116,7 +116,9 @@ function openExchange(domain, is_sell) {
         });
 
         $scope.subscribe("orderbook:" + domain, function (data) {
-            $scope.loadOrderbook() // get orderbook from data
+            $scope.sell = (data.sell || []).reverse()
+            $scope.buy = data.buy
+            $scope.$apply()
         });
 
         $scope.subscribe("account:" + wallet.address(), function (data) {

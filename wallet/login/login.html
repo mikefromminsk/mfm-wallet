@@ -15,7 +15,7 @@
                 <div class="row primary-button ripple m0 align-center-center relative"
                      ng-style="{'background-color': copied ? 'var(--black)' : 'var(--accent)'}"
                      ng-click="copySeed(mnemonic)">
-                    <div class="focus" ng-show="!copied"></div>
+                    <div class="focus" ng-show="!copied  && isNotChecked('copy_seed')" ng-click="check('copy_seed')"></div>
                     <img class="img32 img-white" src="/mfm-wallet/img/copy.svg">
                 </div>
             </div>
@@ -30,7 +30,7 @@
         <div class="primary-button relative"
              ng-click="login(mnemonic)"
              ng-disabled="in_progress || !validateBip39(mnemonic) || !copied">
-            <div class="focus" ng-show="copied"></div>
+            <div class="focus" ng-show="copied && isNotChecked('login')" ng-click="check('login')"></div>
             {{str.accept_and_login}}
         </div>
     </div>

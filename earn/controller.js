@@ -20,7 +20,7 @@ function openEarn(domain, success) {
                 if (tab == 0) {
                     addStaking($scope, $scope.domain)
                 } else if (tab == 1) {
-                    addMining($scope,  $scope.domain)
+                    addMining($scope, $scope.domain)
                 } else if (tab == 2) {
                     addPools($scope, $scope.domain)
                 }

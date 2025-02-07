@@ -43,7 +43,7 @@ function openQuiz(success) {
         }
 
         $scope.$watch('pageIndex', function (newValue) {
-            if ($scope.questions != null && newValue == $scope.questions.length + 1) {
+            if ($scope.questions != null && newValue == $scope.questions.length) {
                 $scope.calcRating()
             }
         })

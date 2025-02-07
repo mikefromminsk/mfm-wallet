@@ -18,8 +18,8 @@
                 <p class="size12 uppercase">{{str.last_reward}}</p>
                 <p class="size40 bold">{{formatAmount(last_reward, null, 4)}}</p>
                 <p class="size12"
-                   ng-class="{'text-red': !bank || bank == 0}">
-                    {{formatAmount(bank, domain)}} {{str.in_bank}}
+                   ng-class="{'text-red': !bank || bank.balance == 0}">
+                    {{formatAmount(bank.balance, domain)}} {{str.in_bank}}
                 </p>
                 <div class="row mt8 align-start-center">
                     <p class="size10">{{str.difficulty}} {{formatAmount(difficulty, '', 2)}}</p>
@@ -69,10 +69,11 @@
             </div>
             <div class="col">
                 <div class="row">
-                    <div class="flex primary-button"
+                    <div class="flex primary-button relative"
                          ng-click="startMining()"
-                         ng-disabled="balance == 0 || bank == 0 || !loaded"
+                         ng-disabled="account.balance == 0 || bank == 0 || !loaded"
                          ng-hide="in_progress">
+                        <div class="focus" ng-show="isChecked('finish_quiz') && isNotChecked('start_mining')" ng-click="check('start_mining')"></div>
                         {{str.start}}
                     </div>
                     <div class="flex primary-button back-red"

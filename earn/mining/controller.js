@@ -18,6 +18,7 @@ function addMining($scope, domain) {
             $scope.difficulty = response.difficulty || 1
             $scope.last_reward = response.last_reward
             $scope.bank = response.bank
+            $scope.account = response.account
             $scope.$apply()
             if ($scope.in_progress && startMiningAfterRequest)
                 startMiningProcess($scope.last_hash, $scope.difficulty)
