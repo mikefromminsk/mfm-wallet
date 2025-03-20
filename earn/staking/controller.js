@@ -11,7 +11,7 @@ function addStaking($scope, domain) {
         getPin(function (pin) {
             calcPass(domain, pin, function (pass) {
                 $scope.startRequest()
-                postContract("mfm-token", "stake", {
+                postContract("mfm-contract", "stake", {
                     domain: domain,
                     amount: $scope.amount,
                     address: wallet.address(),
@@ -28,7 +28,7 @@ function addStaking($scope, domain) {
         getPin(function (pin) {
             calcPass(domain, pin, function (pass) {
                 $scope.startRequest()
-                postContract("mfm-token", "unstake", {
+                postContract("mfm-contract", "unstake", {
                     domain: domain,
                     address: wallet.address(),
                     pass: pass,
@@ -53,7 +53,7 @@ function addStaking($scope, domain) {
     }
 
     $scope.getStakes = function () {
-        postContract("mfm-token", "staked", {
+        postContract("mfm-contract", "staked", {
             address: wallet.address(),
         }, function (response) {
             $scope.stake = null

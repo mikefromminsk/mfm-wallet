@@ -9,7 +9,7 @@ function addMining($scope, domain) {
     }
 
     function loadMiningInfo(startMiningAfterRequest) {
-        postContract("mfm-mining", "mining_info", {
+        postContract("mfm-contract", "mining_info", {
             domain: domain,
             address: wallet.address(),
         }, function (response) {
@@ -53,7 +53,7 @@ function addMining($scope, domain) {
         worker.addEventListener('message', function (e) {
             $scope.speed = e.data.speed
             if ($scope.last_hash == e.data.last_hash) {
-                postContractWithGas("mfm-mining", "mint20", {
+                postContractWithGas("mfm-contract", "mint20", {
                     domain: domain,
                     nonce: e.data.nonce,
                     str: e.data.str,

@@ -106,14 +106,6 @@ function addNavigator($scope) {
         openAirdrop(promo, success)
     }
 
-    $scope.openChat = function (to, success) {
-        openChat(to, success)
-    }
-
-    $scope.openMining = function (domain) {
-        openMining(domain)
-    }
-
     $scope.openBuy = function (domain) {
         openExchange(domain, 0)
     }
@@ -247,5 +239,9 @@ function addNavigator($scope) {
 
     $scope.openQuiz = function (success) {
         openQuiz(success)
+    }
+
+    $scope.openPool = function (domain, success) {
+        openPool(domain, success)
     }
 }

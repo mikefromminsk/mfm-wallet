@@ -1,7 +1,7 @@
 function openHome($scope) {
 
     $scope.refresh = function () {
-        postContract("mfm-analytics", "home", {
+        postContract("mfm-token", "home", {
             filter: $scope.selectedTop,
         }, function (response) {
             $scope.tokens = response.tokens

@@ -103,7 +103,7 @@ input:disabled {
     left: 26px;
 }
 
-.input-wrapper > input {
+input {
     padding-left: 48px;
     background-color: var(--black);
     color: var(--white);

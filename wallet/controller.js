@@ -54,7 +54,7 @@ function openWallet($scope) {
     }
 
     function loadStaked() {
-        postContract("mfm-token", "staked", {
+        postContract("mfm-contract", "staked", {
             address: wallet.address(),
         }, function (response) {
             $scope.staked = response.staked
@@ -101,31 +101,9 @@ function openWallet($scope) {
         })
     }
 
-    function loadOrders() {
-        if (wallet.address() != "") {
-            postContract("mfm-exchange", "user_orders_active", {
-                address: wallet.address(),
-            }, function (response) {
-                $scope.orders = response.orders
-                $scope.$apply()
-            })
-        }
-    }
-
-    $scope.cancel = function (order_id) {
-        openAskSure(str.are_you_sure, str.yes, str.no, function () {
-            postContract("mfm-exchange", "cancel", {
-                order_id: order_id,
-            }, function () {
-                showSuccess(str.order_canceled, $scope.refresh)
-            })
-        })
-    }
-
     $scope.refresh = function () {
         loadTokens()
         loadStaked()
-        loadOrders()
     }
 
     if (wallet.address() != "") {

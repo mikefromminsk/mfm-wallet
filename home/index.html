@@ -60,7 +60,7 @@
         <div class="col">
             <div class="row p16 align-start-center ripple gap8"
                  ng-repeat="token in tokens"
-                 ng-click="openExchange(token.domain)">
+                 ng-click="openTokenProfile(token.domain)">
                 <p style="min-width: 20px">{{$index + 1}}</p>
                 <div ng-style="getLogo(token.domain)"></div>
                 <p class="flex">{{formatDomain(token.domain)}}</p>

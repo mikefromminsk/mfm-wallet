@@ -1,7 +1,7 @@
 function openSearch(success) {
     trackCall(arguments)
     showDialog("wallet/search", success, function ($scope) {
-
+        addSearch($scope)
 
         setTimeout(function () {
             document.getElementById('search_input').focus()

@@ -36,7 +36,7 @@
             <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
             <ng-include src="'/mfm-wallet/wallet/search/search_result.html'"></ng-include>
             <div class="col align-center-center text1 text-gray"
-                 ng-hide="tokens.length > 0"
+                 ng-hide="search_result.length > 0"
                  style="height: 100px">
                 <p>{{str.nothing_found}}</p>
             </div>
