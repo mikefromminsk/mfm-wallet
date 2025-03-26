@@ -25,8 +25,6 @@ function createOdometer(el, value) {
 
 function openWallet($scope) {
 
-    $scope.domain = "usdt"
-
     addLogin($scope, function () {
         $scope.refresh()
         subscribeAccount()
@@ -38,6 +36,7 @@ function openWallet($scope) {
             address: wallet.address(),
         }, function (response) {
             $scope.accounts = response.accounts
+            $scope.showBody = true
             setTimeout(function () {
                 createOdometer(document.getElementById("total"), $scope.getTotalBalance())
             }, 100)
@@ -53,26 +52,11 @@ function openWallet($scope) {
         return 0
     }
 
-    function loadStaked() {
-        postContract("mfm-contract", "staked", {
-            address: wallet.address(),
-        }, function (response) {
-            $scope.staked = response.staked
-            $scope.$apply()
-        })
-    }
-
     $scope.getTotalBalance = function () {
         let totalBalance = 0
         if ($scope.accounts != null)
             for (const account of $scope.accounts)
                 totalBalance += account.token.price * account.balance
-        if ($scope.staked != null)
-            for (const stake of $scope.staked)
-                totalBalance += $scope.getPrice(stake.domain) * stake.amount
-        if ($scope.orders != null)
-            for (const order of $scope.orders)
-                totalBalance += order.total
         return totalBalance
     }
 
@@ -103,12 +87,13 @@ function openWallet($scope) {
 
     $scope.refresh = function () {
         loadTokens()
-        loadStaked()
     }
 
     if (wallet.address() != "") {
         $scope.refresh()
         subscribeAccount()
         subscribeNewOrders()
+    } else {
+        $scope.showBody = true
     }
 }

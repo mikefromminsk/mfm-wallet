@@ -3,16 +3,16 @@ function start($scope) {
 
     document.title = window.location.hostname
 
-    $scope.menu = ["history", "home", "wallet"]
+    $scope.menu = ["history", "wallet", "search"]
     $scope.selectedIndex = 1
     $scope.selectTab = function (tab) {
         $scope.selectedIndex = tab
         if (tab == 0) {
             openTrans($scope)
         } else if (tab == 1) {
-            openHome($scope)
-        } else if (tab == 2) {
             openWallet($scope)
+        } else if (tab == 2) {
+            openHome($scope)
         }
         swipeToRefresh($scope.swipeToRefresh)
     }
@@ -25,16 +25,6 @@ function start($scope) {
 
     if (window.location.search != "") {
         window.history.pushState({}, document.title, "/mfm-wallet")
-    }
-
-    if (window.Telegram != null) {
-        setTimeout(function () {
-            let userData = window.Telegram.WebApp.initDataUnsafe
-            if (userData.user != null) {
-                window.telegram_username = userData.user.username
-                trackEvent("tg_referer", null, window.telegram_username)
-            }
-        })
     }
 
     window.addEventListener('popstate', () => {

@@ -25,26 +25,6 @@
             <ng-include src="'/mfm-wallet/wallet/profile/options.html?nocache'"></ng-include>
             <div class="col gap16" ng-hide="!wallet.address()">
                 <ng-include src="'/mfm-wallet/wallet/accounts.html?nocache'"></ng-include>
-                <p class="text1" ng-show="staked.length > 0">{{str.staking}}</p>
-                <div class="col back-gray radius-default"
-                     ng-show="staked.length > 0">
-                    <div class="row p16 align-start-center ripple"
-                         ng-repeat="item in staked"
-                         ng-click="openStaking(item.domain, refresh)">
-                        <div ng-style="getLogo(item.domain)"></div>
-                        <div class="flex col ml16">
-                            <p>{{formatDomain(item.domain)}}</p>
-                            <p class="mt4 text2">{{formatPrice(item.price)}}</p>
-                        </div>
-                        <div class="col align-end-end">
-                            <p>{{formatAmount(item.amount, item.domain)}}</p>
-                            <p class="mt4 text2">{{formatPrice(getPrice(item.domain) * item.amount)}}</p>
-                        </div>
-                    </div>
-                </div>
-                <p class="text1" ng-show="orders.length > 0">{{str.active_orders}}</p>
-                <ng-include src="'/mfm-wallet/products/exchange/orders.html'"></ng-include>
-
                 <div class="primary-button back-pay mh0" ng-click="openLaunchToken(refresh)">
                     {{str.launch_token}}
                 </div>

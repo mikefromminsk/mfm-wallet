@@ -1,6 +1,6 @@
 function openSearch(success) {
     trackCall(arguments)
-    showDialog("wallet/search", success, function ($scope) {
+    showDialog("search", success, function ($scope) {
         addSearch($scope)
 
         setTimeout(function () {

@@ -50,10 +50,10 @@
             <ng-include class="fill col" src="'/mfm-wallet/trans/index.html?nocache'"></ng-include>
         </md-tab>
         <md-tab label="1">
-            <ng-include class="fill col" src="'/mfm-wallet/home/index.html?nocache'"></ng-include>
+            <ng-include class="fill col" src="'/mfm-wallet/wallet/index.html?nocache'"></ng-include>
         </md-tab>
         <md-tab label="2">
-            <ng-include class="fill col" src="'/mfm-wallet/wallet/index.html?nocache'"></ng-include>
+            <ng-include class="fill col" src="'/mfm-wallet/home/index.html?nocache'"></ng-include>
         </md-tab>
     </md-tabs>
     <div class="col align-start-center fill-width p16 pt8 back-black ng-cloak"
@@ -81,9 +81,6 @@
 <link href="/angular-material/angular-material.css" rel="stylesheet">
 <link href="/mfm-wallet/utils/angular-bugfixes.css?nocache" rel="stylesheet">
 
-<!--load only open in telegram (has bot parameter)-->
-<script src="utils/telegram-web-app.js"></script>
-
 <script src="/mfm-wallet/utils/lightweight-charts.standalone.production.js"></script>
 
 <link href="/mfm-wallet/utils/odometer-theme-default.css" rel="stylesheet" >
@@ -108,12 +105,13 @@
 <script async src="/mfm-wallet/dialogs/success/controller.js?nocache"></script>
 
 <script src="controller.js?nocache"></script>
-<script src="/mfm-wallet/trans/controller.js?nocache"></script>
+<script src="/mfm-wallet/wallet/login/controller.js?nocache"></script>
 <script src="/mfm-wallet/wallet/controller.js?nocache"></script>
 <script src="/mfm-wallet/home/controller.js?nocache"></script>
+<script src="/mfm-wallet/trans/controller.js?nocache"></script>
+<script src="/mfm-wallet/search/controller.js?nocache"></script>
 <script>
     controller(start)
-    window.Telegram.WebApp.expand()
 </script>
 <script async src="/mfm-wallet/utils/bip39.js"></script>
 <script async src="/mfm-wallet/utils/pnglib.js"></script>
@@ -121,7 +119,6 @@
 <script async onload="loaded()" src="/mfm-wallet/dialogs/pin/controller.js?nocache"></script>
 <script async onload="loaded()" src="/mfm-wallet/dialogs/ask/controller.js?nocache"></script>
 <script async onload="loaded()" src="/mfm-wallet/trans/tran/controller.js?nocache"></script>
-<script async onload="loaded()" src="/mfm-wallet/wallet/login/controller.js?nocache"></script>
 <script async onload="loaded()" src="/mfm-wallet/wallet/launch/distribution/controller.js?nocache"></script>
 <script async onload="loaded()" src="/mfm-wallet/wallet/launch/name/controller.js?nocache"></script>
 <script async onload="loaded()" src="/mfm-wallet/wallet/launch/logo/controller.js?nocache"></script>
@@ -134,7 +131,6 @@
 <script async onload="loaded()" src="/mfm-wallet/wallet/settings/review/controller.js?nocache"></script>
 <script async onload="loaded()" src="/mfm-wallet/wallet/settings/reviews/controller.js?nocache"></script>
 <script async onload="loaded()" src="/mfm-wallet/wallet/settings/version/controller.js?nocache"></script>
-<script async onload="loaded()" src="/mfm-wallet/wallet/search/controller.js?nocache"></script>
 <script async onload="loaded()" src="/mfm-wallet/products/airdrop/controller.js?nocache"></script>
 <script async onload="loaded()" src="/mfm-wallet/earn/controller.js?nocache"></script>
 <script async onload="loaded()" src="/mfm-wallet/earn/mining/controller.js?nocache"></script>
