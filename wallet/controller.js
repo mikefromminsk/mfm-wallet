@@ -1,28 +1,3 @@
-function createOdometer(el, value) {
-    if (el == null) return
-    const odometer = new Odometer({
-        el: el,
-        value: 0,
-    })
-
-    let hasRun = false
-    const callback = (entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                if (!hasRun) {
-                    odometer.update(value)
-                    hasRun = true
-                }
-            }
-        })
-    }
-
-    const observer = new IntersectionObserver(callback, {
-        threshold: [0, 0.9],
-    })
-    observer.observe(el)
-}
-
 function openWallet($scope) {
 
     addLogin($scope, function () {
@@ -38,7 +13,7 @@ function openWallet($scope) {
             $scope.accounts = response.accounts
             $scope.showBody = true
             setTimeout(function () {
-                createOdometer(document.getElementById("total"), $scope.getTotalBalance())
+                createOdometer(document.getElementById("total"), 0, $scope.getTotalBalance())
             }, 100)
             $scope.$apply()
         })
