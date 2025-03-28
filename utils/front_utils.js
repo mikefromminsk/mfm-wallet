@@ -128,3 +128,44 @@ function showSuccess(message, success) {
 function clearFocus() {
     document.body.focus()
 }
+
+
+function addPriceAmountTotal($scope) {
+    $scope.setIsSell = function (is_sell) {
+        $scope.is_sell = is_sell
+    }
+
+    $scope.changePrice = function (price) {
+        if (price != null)
+            $scope.price = price
+        if ($scope.price != null && $scope.amount != null)
+            $scope.total = $scope.round($scope.price * $scope.amount)
+    }
+
+    $scope.changeAmount = function (amount) {
+        if (amount != null)
+            $scope.amount = amount
+        if ($scope.price != null && $scope.amount != null)
+            $scope.total = $scope.round($scope.price * $scope.amount)
+    }
+
+    $scope.changeTotal = function (total) {
+        if (total != null)
+            $scope.total = total
+        if ($scope.price != null && $scope.total != null)
+            $scope.amount = $scope.round($scope.total / $scope.price)
+    }
+
+    $scope.$watch("price", function (newValue) {
+        if (newValue != null)
+            $scope.price = $scope.round($scope.price)
+    })
+    $scope.$watch("amount", function (newValue) {
+        if (newValue != null)
+            $scope.amount = $scope.round($scope.amount)
+    })
+    $scope.$watch("total", function (newValue) {
+        if (newValue != null)
+            $scope.total = $scope.round($scope.total)
+    })
+}

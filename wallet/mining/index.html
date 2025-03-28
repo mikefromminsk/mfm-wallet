@@ -1,4 +1,4 @@
-<div class="fill col block">
+<md-dialog class="fill col block">
     <div class="row header align-start-center">
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="openSupport()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/support.svg">
@@ -86,7 +86,7 @@
             <ng-include class="col mh16 mt16" src="'/mfm-wallet/wallet/accounts.html?nocache'"></ng-include>
             <ng-include class="ph16" src="'/mfm-wallet/trans/trans.html'"></ng-include>
             <div class="nowrap-disabled m16"
-                 ng-include="'/mfm-wallet/earn/mining/faq/' + getLanguage() + '.html'"></div>
+                 ng-include="'/mfm-wallet/wallet/mining/faq/' + getLanguage() + '.html'"></div>
         </div>
     </div>
-</div>
+</md-dialog>

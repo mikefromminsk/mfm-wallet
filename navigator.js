@@ -98,8 +98,8 @@ function addNavigator($scope) {
         openSend(domain, to_address, amount, success)
     }
 
-    $scope.openEarn = function (success) {
-        openEarn(success)
+    $scope.openMining = function (domain, success) {
+        openMining(domain, success)
     }
 
     $scope.openAirdrop = function (promo, success) {

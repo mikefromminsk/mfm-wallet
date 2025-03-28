@@ -1,5 +1,7 @@
 function openWallet($scope) {
 
+    $scope.domain = 'vavilon'
+
     addLogin($scope, function () {
         $scope.refresh()
         subscribeAccount()
