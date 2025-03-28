@@ -306,7 +306,7 @@ button {
     }
 }
 
-.border-accent {
+.border-accent{
     border: 1px solid var(--accent);
 }
 
