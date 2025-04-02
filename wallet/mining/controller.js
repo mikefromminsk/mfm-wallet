@@ -51,16 +51,13 @@ function openMining(domain, success) {
         function startMiningProcess(last_hash, difficulty) {
             if (worker != null)
                 worker.terminate()
-            worker = new Worker('/mfm-wallet/earn/mining/worker.js');
+            worker = new Worker('/mfm-wallet/wallet/mining/worker.js');
             worker.addEventListener('message', function (e) {
                 $scope.speed = e.data.speed
                 if ($scope.last_hash == e.data.last_hash) {
                     postContractWithGas("mfm-contract", "mint20", {
                         domain: domain,
                         nonce: e.data.nonce,
-                        str: e.data.str,
-                        hash: e.data.hash,
-                        last_hash: e.data.last_hash,
                         time: Math.ceil(new Date().getTime() / 1000),
                     }, function () {
                         loadMiningInfo(true)
@@ -124,10 +121,9 @@ function openMining(domain, success) {
         }
 
         function loadTrans() {
-            postContract("mfm-token", "dialog_trans", {
+            postContract("mfm-token", "trans_account", {
                 domain: domain,
-                from: wallet.MINING_ADDRESS,
-                to: wallet.address(),
+                address: wallet.address(),
             }, function (response) {
                 $scope.trans = $scope.groupByTimePeriod(response.trans)
                 $scope.$apply()

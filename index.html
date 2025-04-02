@@ -63,8 +63,7 @@
         <div class="row block">
             <div class="flex col pv8 align-start-center ripple relative"
                  ng-repeat="item in menu"
-                 ng-click="selectTab($index); (item == 'wallet' && check('open_wallet'))">
-                <div class="focus" ng-show="item == 'wallet' && isNotChecked('open_wallet')"></div>
+                 ng-click="selectTab($index)">
                 <img class="img18" src="/mfm-wallet/img/{{item}}.svg"
                      ng-class="{'img-accent': selectedIndex == $index, 'img-gray': selectedIndex != $index}">
                 <p class="mt8"
@@ -135,6 +134,6 @@
 <script async onload="loaded()" src="/mfm-wallet/wallet/settings/reviews/controller.js?nocache"></script>
 <script async onload="loaded()" src="/mfm-wallet/wallet/settings/version/controller.js?nocache"></script>
 <script async onload="loaded()" src="/mfm-wallet/wallet/mining/controller.js?nocache"></script>
-<script async onload="loaded()" src="/mfm-wallet/products/pool/controller.js?nocache"></script>
+<script async onload="loaded()" src="/mfm-wallet/wallet/pool/controller.js?nocache"></script>
 </body>
 </html>

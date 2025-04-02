@@ -308,4 +308,5 @@ str.liquidity = "Liquidity"
 str.add_liquidity = "Add Liquidity"
 str.you_pay = "You pay"
 str.you_get = "You get"
+str.mining_pool = "Mining pool"
 

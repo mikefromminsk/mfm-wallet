@@ -13,14 +13,6 @@
         <p>{{formatPercent((mining.balance || 0) / token.supply * 100, 2)}}</p>
     </div>
     <div class="row">
-        <p class="flex text2">{{str.exchange_bot}}</p>
-        <p>{{formatPercent((exchange_bot.balance || 0) / token.supply * 100, 2)}}</p>
-    </div>
-    <div class="row">
-        <p class="flex text2">{{str.staking}}</p>
-        <p>{{formatPercent((staking.balance || 0) / token.supply * 100, 2)}}</p>
-    </div>
-    <div class="row">
         <p class="flex text2">{{str.created}}</p>
         <p>{{formatTimeDiff(token.created)}}</p>
     </div>

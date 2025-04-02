@@ -10,7 +10,7 @@ function openTokenProfile(domain, success) {
     showDialog("wallet/profile", success, function ($scope) {
         $scope.domain = domain
 
-        addChart($scope, domain + "_price", domain + "_volume")
+        addChart($scope, domain + "_pool_price", domain + "_pool_volume")
         addTokenProfile($scope, domain)
 
         $scope.subscribe("price:" + domain, function (data) {
@@ -21,7 +21,15 @@ function openTokenProfile(domain, success) {
 
         $scope.init = function () {
             $scope.loadTokenProfile(domain)
+            postContract("mfm-token", "trans_account", {
+                domain: domain,
+                address: wallet.address(),
+            }, function (response) {
+                $scope.trans = $scope.groupByTimePeriod(response.trans)
+                $scope.$apply()
+            })
         }
+
 
         $scope.init()
     })
@@ -37,8 +45,8 @@ function addTokenProfile($scope) {
             $scope.token = response.token
             $scope.owner = response.owner
             $scope.mining = response.mining
-            $scope.exchange_bot = response.exchange_bot
-            $scope.staking = response.staking
+            /*$scope.exchange_bot = response.exchange_bot
+            $scope.staking = response.staking*/
             $scope.account = response.account
             $scope.analytics = response.analytics
             $scope.$apply()

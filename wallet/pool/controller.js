@@ -1,6 +1,6 @@
 function openPool(domain, success) {
     trackCall(arguments)
-    showDialog("products/pool", success, function ($scope) {
+    showDialog("wallet/pool", success, function ($scope) {
         $scope.domain = domain || "vavilon";
 
         $scope.base_amount = null

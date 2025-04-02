@@ -8,50 +8,28 @@
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
         </div>
     </div>
-    <div class="flex col scroll align-start-center">
-        <div class="flex col block input-content">
-            <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
-            <p>{{str.total_sypply}}</p>
-            <md-slider-container>
-                <md-slider class="md-primary" ng-model="amount_step" min="0" max="6"></md-slider>
-                <md-input-container style="max-width: 100%">
-                    {{formatAmount(amount)}}
-                </md-input-container>
-            </md-slider-container>
-            <p class="size24 text-green">{{str.you_will_receive}}</p>
-            <md-slider-container>
-                <md-slider class="md-primary" ng-model="user_percent" min="1" max="100"></md-slider>
-                <md-input-container>
-                    {{formatPercent(user_percent, 2)}}
-                </md-input-container>
-            </md-slider-container>
-            <p>{{str.send_to}} {{str.mining}}</p>
-            <md-slider-container>
-                <md-slider class="md-primary" ng-model="mining_percent" min="1" max="100"></md-slider>
-                <md-input-container>
-                    {{formatPercent(mining_percent, 2)}}
-                </md-input-container>
-            </md-slider-container>
-            <p>{{str.exchange_bot}}</p>
-            <md-slider-container>
-                <md-slider class="md-primary" ng-model="exchange_percent" min="1" max="100"></md-slider>
-                <md-input-container>
-                    {{formatPercent(exchange_percent, 2)}}
-                </md-input-container>
-            </md-slider-container>
-            <p>{{str.staking}}</p>
-            <md-slider-container>
-                <md-slider class="md-primary" ng-model="staking_percent" min="1" max="100"></md-slider>
-                <md-input-container>
-                    {{formatPercent(staking_percent, 2)}}
-                </md-input-container>
-            </md-slider-container>
+    <div class="flex col input-content">
+        <div class="col align-center-center" style="min-height: 200px">
+            <div class="col align-center-center">
+                <img class="img64" src="{{getLogoLink(domain)}}" onload="logoLoaded()">
+                <p class="mt16 text2">{{formatDomain(domain)}}</p>
+            </div>
         </div>
+        <div class="flex"></div>
+        <p>{{str.mining_pool}}</p>
+        <md-slider-container>
+            <md-slider class="md-primary" ng-model="amount_step" min="0" max="6"></md-slider>
+            <md-input-container style="max-width: 100%">
+                {{formatAmount(amount)}}
+            </md-input-container>
+        </md-slider-container>
+        <p class="text-green">Все токены отправляются в майнинг пул.</p>
+        <p class="text-green">Каждый год высвобождается 20% всего пула.</p>
+        <div class="primary-button"
+             ng-disabled="in_progress"
+             ng-click="launch()">
+            {{str.launch_token}}
+        </div>
+        <div class="space"></div>
     </div>
-    <div class="primary-button"
-         ng-disabled="in_progress"
-         ng-click="launch()">
-        {{str.launch_token}}
-    </div>
-    <div class="space"></div>
 </md-dialog>
