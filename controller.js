@@ -12,7 +12,7 @@ function start($scope) {
         } else if (tab == 1) {
             openWallet($scope)
         } else if (tab == 2) {
-            openHome($scope)
+            addSearch($scope)
         }
         swipeToRefresh($scope.swipeToRefresh)
     }

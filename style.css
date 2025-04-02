@@ -332,6 +332,11 @@ button {
     overflow-y: hidden;
 }
 
+.scroll-vertical {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
 .scroll {
     overflow: auto;
 }

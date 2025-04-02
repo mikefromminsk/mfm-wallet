@@ -55,7 +55,31 @@
             <ng-include class="fill col" src="'/mfm-wallet/wallet/index.html?nocache'"></ng-include>
         </md-tab>
         <md-tab label="2">
-            <ng-include class="fill col" src="'/mfm-wallet/home/index.html?nocache'"></ng-include>
+            <div class="fill col p0">
+                <div class="row p16 align-start-center gap16">
+                    <div class="flex col">
+                        <div class="flex row radius-default border-gray">
+                            <img class="img20 img-gray"
+                                 style="position: absolute; left: 32px; top: 32px"
+                                 src="/mfm-wallet/img/search.svg"/>
+                            <input type="text"
+                                   class="border-none radius-default"
+                                   id="search_input"
+                                   autocomplete="off"
+                                   style="padding: 20px 0 20px 48px;"
+                                   oninput="this.value = this.value.toLowerCase().replace(/[^a-z0-9_]/g, '')"
+                                   ng-model="search_text"
+                                   ng-change="search()"
+                                   placeholder="{{str.type_token_name}}">
+                            <img class="img14 m16 img-gray"
+                                 ng-show="search_text"
+                                 ng-click="clear()"
+                                 src="/mfm-wallet/img/close.svg"/>
+                        </div>
+                    </div>
+                </div>
+                <ng-include src="'/mfm-wallet/search/index.html?nocache'"></ng-include>
+            </div>
         </md-tab>
     </md-tabs>
     <div class="col align-start-center fill-width p16 pt8 back-black ng-cloak"
@@ -112,7 +136,6 @@
 <script src="controller.js?nocache"></script>
 <script src="/mfm-wallet/wallet/login/controller.js?nocache"></script>
 <script src="/mfm-wallet/wallet/controller.js?nocache"></script>
-<script src="/mfm-wallet/home/controller.js?nocache"></script>
 <script src="/mfm-wallet/trans/controller.js?nocache"></script>
 <script src="/mfm-wallet/search/controller.js?nocache"></script>
 <script>

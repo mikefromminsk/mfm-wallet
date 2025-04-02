@@ -70,6 +70,7 @@ function showDialog(templateUrl, onClose, callback) {
             templateUrl: "/mfm-wallet/" + templateUrl + "/index.html?nocache",
             escapeToClose: false,
             multiple: true,
+            isolateScope: false,
             controller: function ($scope) {
                 addGlobalVars($scope, callback)
             }
