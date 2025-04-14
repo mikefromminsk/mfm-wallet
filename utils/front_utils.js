@@ -46,6 +46,7 @@ function addGlobalVars($scope, callback) {
     if (typeof addNavigator !== 'undefined')
         addNavigator($scope)
     $scope.wallet = window.wallet
+    $scope.user = window.user
     $scope.str = window.str
     $scope.bank_address = "bank"
     $scope.in_progress = false
@@ -67,7 +68,7 @@ function addGlobalVars($scope, callback) {
 function showDialog(templateUrl, onClose, callback) {
     setTimeout(function () {
         window.$mdDialog.show({
-            templateUrl: "/mfm-wallet/" + templateUrl + "/index.html?nocache",
+            templateUrl: location.pathname + templateUrl + "/index.html?nocache",
             escapeToClose: false,
             multiple: true,
             isolateScope: false,
@@ -84,7 +85,7 @@ function showDialog(templateUrl, onClose, callback) {
 function showBottomSheet(templateUrl, onClose, callback) {
     setTimeout(function () {
         window.$mdBottomSheet.show({
-            templateUrl: "/mfm-wallet/" + templateUrl + "/index.html?nocache",
+            templateUrl: location.pathname + templateUrl + "/index.html?nocache",
             escapeToClose: false,
             clickOutsideToClose: false,
             controller: function ($scope) {

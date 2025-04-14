@@ -1,21 +1,21 @@
 @font-face {
     font-family: FontMedium;
-    src: url("font/Inter_18pt-Medium.ttf");
+    src: url("/mfm-wallet/font/Inter_18pt-Medium.ttf");
 }
 
 @font-face {
     font-family: FontBold;
-    src: url("font/Inter_18pt-Bold.ttf");
+    src: url("/mfm-wallet/font/Inter_18pt-Bold.ttf");
 }
 
 @font-face {
     font-family: FontMonoMedium;
-    src: url("font/RobotoMono-Medium.ttf");
+    src: url("/mfm-wallet/font/RobotoMono-Medium.ttf");
 }
 
 @font-face {
     font-family: FontMonoBold;
-    src: url("font/RobotoMono-Bold.ttf");
+    src: url("/mfm-wallet/font/RobotoMono-Bold.ttf");
 }
 
 body {
