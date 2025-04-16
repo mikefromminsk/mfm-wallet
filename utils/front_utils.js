@@ -171,3 +171,21 @@ function addPriceAmountTotal($scope) {
             $scope.total = $scope.round($scope.total)
     })
 }
+
+window.finishAutoOpening = false
+
+function loaded() {
+    if (!finishAutoOpening) {
+        const hash = window.location.hash.substring(1);
+        const params = new URLSearchParams(hash);
+        for (const [key, value] of params) {
+            if (key.startsWith('open')) {
+                const functionName = key;
+                if (typeof window[functionName] === 'function') {
+                    window[functionName](value);
+                    window.finishAutoOpening = true;
+                }
+            }
+        }
+    }
+}

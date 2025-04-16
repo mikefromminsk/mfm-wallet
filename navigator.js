@@ -86,12 +86,12 @@ function addNavigator($scope) {
         openDistribution(domain, success)
     }
 
-    $scope.openDeposit = function (success) {
-        openDeposit(success)
+    $scope.openDeposit = function (domain, success) {
+        openDeposit(domain, success)
     }
 
-    $scope.openWithdrawal = function (success) {
-        openWithdrawal(success)
+    $scope.openWithdrawal = function (domain, success) {
+        openWithdrawal(domain, success)
     }
 
     $scope.openSend = function (domain, to_address, amount, success) {
