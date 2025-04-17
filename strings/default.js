@@ -310,4 +310,5 @@ str.you_pay = "You pay"
 str.you_get = "You get"
 str.mining_pool = "Mining pool"
 str.username = "Username"
+str.password = "Password"
 
