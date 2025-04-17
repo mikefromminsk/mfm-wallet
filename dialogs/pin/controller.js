@@ -12,7 +12,6 @@ function getPin(success, cancel) {
                 else
                     success(result)
             }, function ($scope) {
-                $scope.addFormat
                 $scope.pin = ""
                 $scope.setMode = cancel != null
 

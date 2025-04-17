@@ -85,7 +85,7 @@ function showDialog(templateUrl, onClose, callback) {
 function showBottomSheet(templateUrl, onClose, callback) {
     setTimeout(function () {
         window.$mdBottomSheet.show({
-            templateUrl: location.pathname + templateUrl + "/index.html?nocache",
+            templateUrl: "/mfm-wallet/" +  templateUrl + "/index.html?nocache",
             escapeToClose: false,
             clickOutsideToClose: false,
             controller: function ($scope) {
