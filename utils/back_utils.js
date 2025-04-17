@@ -162,6 +162,7 @@ const storageKeys = {
     onboardingShowed: "STORE_ONBOARDING_SHOWED",
     language: "STORE_LANGUAGE",
     send_history: "STORE_SEND_HISTORY",
+    user_history: "EXCHANGE_SEND_HISTORY",
     search_history: "STORE_SEARCH_HISTORY",
     first_review: "STORE_FIRST_REVIEW",
     defaultOfferDomain: "STORE_DEFAULT_OFFER_DOMAIN",
