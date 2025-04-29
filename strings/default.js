@@ -311,4 +311,8 @@ str.you_get = "You get"
 str.mining_pool = "Mining pool"
 str.username = "Username"
 str.password = "Password"
+str.crypto_network = "Crypto Network"
+str.min_deposit_amount = "Min deposit amount"
+str.avg_deposit_time = "Avg deposit time"
+str.deposit_address = "Deposit address"
 

@@ -121,7 +121,7 @@ function addFormats($scope) {
             return +(Math.round(num + "e+" + precision) + "e-" + precision);
         }
 
-        let diff = new Date().getTime() / 1000 - seconds
+        let diff = (seconds < 1000000000 ? seconds : new Date().getTime() / 1000  - seconds)
         let string = ""
         if (diff < 60) {
             string = round(diff, 0)
