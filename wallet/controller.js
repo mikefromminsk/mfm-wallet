@@ -1,6 +1,6 @@
 function openWallet($scope) {
 
-    $scope.domain = 'vavilon'
+    $scope.domain = wallet.gas_domain
 
     addLogin($scope, function () {
         $scope.refresh()

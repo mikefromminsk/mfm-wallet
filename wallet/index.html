@@ -1,8 +1,8 @@
 <div class="flex col">
     <div class="row header align-start-center">
-        <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/settings.svg" ng-click="openSettings(refresh)">
+        <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/home.svg" ng-click="openLanding()">
         <div class="flex row align-center text1">{{str.wallet}}</div>
-        <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/search.svg" ng-click="openSearch(refresh)">
+        <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/settings.svg" ng-click="openSettings(refresh)">
     </div>
     <div class="flex col" ng-hide="wallet.address()">
         <ng-include src="'/mfm-wallet/wallet/login/login.html?nocache'"></ng-include>

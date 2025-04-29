@@ -244,4 +244,8 @@ function addNavigator($scope) {
     $scope.openPool = function (domain, success) {
         openPool(domain, success)
     }
+
+    $scope.openLanding = function () {
+        location.href = "/mfm-landing"
+    }
 }

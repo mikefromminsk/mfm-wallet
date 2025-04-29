@@ -49,7 +49,7 @@
             </div>
             <button class="primary-button"
                     ng-click="send(domain)"
-                    ng-disabled="in_progress || !to_address || to_address.length < 3 || !amount || (account.balance < amount)">
+                    ng-disabled="in_progress || !to_address || to_address.length < 64 || !amount || (account.balance < amount)">
                 {{str.send}}
             </button>
             <div></div>
