@@ -30,6 +30,16 @@ function openTokenProfile(domain, success) {
             })
         }
 
+        $scope.getMiningYearPercent = function (contract) {
+            if (contract == "mfm-contract/mint10")
+                return 10;
+            if (contract == "mfm-contract/mint20")
+                return 20;
+            if (contract == "mfm-contract/mint100")
+                return 100;
+            return 0;
+        }
+
 
         $scope.init()
     })

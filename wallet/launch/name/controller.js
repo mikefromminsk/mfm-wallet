@@ -1,4 +1,5 @@
 function openLaunchToken(success) {
+    trackCall(arguments)
     showDialog("wallet/launch/name", success, function ($scope) {
         $scope.search_text = ''
 

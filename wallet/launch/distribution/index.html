@@ -23,6 +23,12 @@
                 {{formatAmount(amount)}}
             </md-input-container>
         </md-slider-container>
+        <div class="row gap8">
+            <div class="flex row align-center-center p8 radius4"
+                 ng-repeat="percent in [10, 20, 100]"
+                 ng-class="{'back-accent': mining_percent == percent, 'back-gray': mining_percent != percent}"
+                 ng-click="setMiningPercent(percent)">{{percent}}%/{{str.year}}</div>
+        </div>
         <p class="text-green">Все токены отправляются в майнинг пул.</p>
         <p class="text-green">Каждый год высвобождается 20% всего пула.</p>
         <div class="primary-button"

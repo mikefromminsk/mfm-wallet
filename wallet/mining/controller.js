@@ -1,6 +1,7 @@
 let worker;
 
 function openMining(domain, success) {
+    trackCall(arguments)
     showDialog("wallet/mining", success, function ($scope) {
 
         if (window.conn != null && window.conn.readyState !== WebSocket.OPEN) {
@@ -55,7 +56,7 @@ function openMining(domain, success) {
             worker.addEventListener('message', function (e) {
                 $scope.speed = e.data.speed
                 if ($scope.last_hash == e.data.last_hash) {
-                    postContractWithGas("mfm-contract", "mint20", {
+                    postContractWithGas("mfm-contract", $scope.bank.delegate.split("/")[1], {
                         domain: domain,
                         nonce: e.data.nonce,
                         time: Math.ceil(new Date().getTime() / 1000),
