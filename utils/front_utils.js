@@ -68,7 +68,7 @@ function addGlobalVars($scope, callback) {
 function showDialog(templateUrl, onClose, callback) {
     setTimeout(function () {
         window.$mdDialog.show({
-            templateUrl: location.pathname + templateUrl + "/index.html?nocache",
+            templateUrl: location.pathname + templateUrl + "/index.html",
             escapeToClose: false,
             multiple: true,
             isolateScope: false,
@@ -85,7 +85,7 @@ function showDialog(templateUrl, onClose, callback) {
 function showBottomSheet(templateUrl, onClose, callback) {
     setTimeout(function () {
         window.$mdBottomSheet.show({
-            templateUrl: "/mfm-wallet/" +  templateUrl + "/index.html?nocache",
+            templateUrl: "/mfm-wallet/" +  templateUrl + "/index.html",
             escapeToClose: false,
             clickOutsideToClose: false,
             controller: function ($scope) {

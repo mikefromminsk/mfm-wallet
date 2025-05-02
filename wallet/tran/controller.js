@@ -1,6 +1,6 @@
 function openTran(next_hash, success) {
     trackCall(arguments)
-    showDialog("trans/tran", success, function ($scope) {
+    showDialog("wallet/tran", success, function ($scope) {
         addTran($scope)
 
         $scope.loadTran(next_hash, function (response) {

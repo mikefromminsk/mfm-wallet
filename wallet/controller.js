@@ -64,6 +64,20 @@ function openWallet($scope) {
 
     $scope.refresh = function () {
         loadTokens()
+        loadTrans()
+    }
+
+    $scope.selectTran = function (tran) {
+        openTran(tran.next_hash)
+    }
+
+    function loadTrans() {
+        postContract("mfm-token", "trans", {
+            address: wallet.address(),
+        }, function (response) {
+            $scope.trans = $scope.groupByTimePeriod(response.trans)
+            $scope.$apply()
+        })
     }
 
     if (wallet.address() != "") {
@@ -71,6 +85,7 @@ function openWallet($scope) {
         subscribeAccount()
         subscribeNewOrders()
     } else {
+        $scope.trans = []
         $scope.showBody = true
     }
 }

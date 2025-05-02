@@ -18,9 +18,9 @@
             </div>
 
             <div class="ph16">
-                <ng-include src="'/mfm-wallet/trans/trans.html'"></ng-include>
+                <ng-include src="'/mfm-wallet/wallet/trans.html'"></ng-include>
             </div>
-            <ng-include src="'/mfm-wallet/trans/tran/tran.html'"></ng-include>
+            <ng-include src="'/mfm-wallet/wallet/tran/tran.html'"></ng-include>
 
             <!--@SerializedName("valueUSD")
             @SerializedName("direction")
@@ -37,9 +37,5 @@
     </div>
     <div class="primary-button" ng-click="copy(location.origin + '/mfm-landing/explorer?txid=' + tran.next_hash)">
         {{str.copy_tran_link}}
-    </div>
-    <div class="primary-button mt0 back-black"
-         ng-click="close()">
-        {{str.close}}
     </div>
 </md-dialog>
