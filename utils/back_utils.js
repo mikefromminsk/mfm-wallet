@@ -188,7 +188,8 @@ function calcPassList(domain, pin, success, error) {
 
 var wallet = {
     gas_domain: "usdt",
-    stocks_domain: "vavilon",
+    vavilon: "vavilon",
+    tron: "tron",
     STAKING_ADDRESS: "cba1ac1c73a9d6b717484e774ff85845d343713580cc46b9ae57f801aef729d3",
     MINING_ADDRESS: "e40d3d5318cc88b3874561521992c580300eeb3cc2e2a0c6c7b1a574dc1ae99c",
     BOT_PREFIX: "bot_",

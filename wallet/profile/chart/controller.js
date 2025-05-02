@@ -66,7 +66,7 @@ function addChart($scope, key, accumulate_key) {
         window.chartLoaded = true
     }
 
-    $scope.periods = ['M', 'H', 'D', 'W']
+    $scope.periods = ['M', 'D']
     $scope.period_name = 'M'
     $scope.setPeriod = function (period_name) {
         $scope.period_name = period_name
