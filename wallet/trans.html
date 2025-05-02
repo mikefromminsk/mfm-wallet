@@ -2,7 +2,7 @@
     <div class="text1 mt16">{{tran.day}}</div>
     <div class="row mt16 p16 radius-default back-gray ripple"
          ng-repeat="item in tran.items"
-         ng-click="selectTran(item)">
+         ng-click="openTran(item.next_hash)">
         <div class="radius-default back-black"
              ng-style="getIdenticon(item.from == wallet.address() ? item.to : item.from)"></div>
 
