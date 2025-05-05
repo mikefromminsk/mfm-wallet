@@ -10,7 +10,7 @@ function openDistribution(domain, success) {
             $scope.amount = Math.pow(10, parseInt(newValue))
         })
 
-        $scope.launch = function () {
+        $scope.launch = function (sendAllToMining = true) {
             $scope.startRequest()
             getPin(function (pin) {
                 wallet.calcStartHash($scope.domain, pin, function (next_hash) {
@@ -20,7 +20,10 @@ function openDistribution(domain, success) {
                         pass: ":" + next_hash,
                         amount: $scope.amount,
                     }, function () {
-                        mining($scope.domain, pin)
+                        if (sendAllToMining)
+                            mining($scope.domain, pin)
+                        else
+                            showSuccessDialog(str.your_token_created, $scope.close)
                     }, $scope.finishRequest)
                 })
             })

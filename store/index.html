@@ -1,0 +1,26 @@
+<div class="flex col">
+    <div class="row header align-start-center">
+        <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/home.svg" ng-click="openLanding()">
+        <div class="flex row align-center text1">{{str.apps}}</div>
+        <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/settings.svg" ng-click="openSettings(refresh)">
+    </div>
+    <div class="flex col scroll align-start-center">
+        <div class="flex col block input-content">
+            <img class="refresh-icon img-gray" src="/mfm-wallet/img/reload.svg">
+            <div class="col gap16" ng-repeat="(category, items) in apps" style="padding-right: 0">
+                <div class="text1 mt16 uppercase">{{str[category]}}</div>
+                    <div class="fill-width row gap16 scroll-horizontal">
+                    <div class="col align-start-center radius-default"
+                         ng-repeat="item in items"
+                         ng-click="openApp(item.link)">
+                        <div ng-style="{'background-color': item.backgroundColor}"
+                             class="img64 row align-center-center radius-default">
+                            <div ng-style="getLogo(item.domain)"></div>
+                        </div>
+                        <p class="uppercase-first-letter mt8 store-truncate text-gray">{{item.domain}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

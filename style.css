@@ -805,3 +805,12 @@ md-toast .md-toast-content::before {
 a[title="Charting by TradingView"] {
     display: none;
 }
+
+
+.store-truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    width: 75px;
+}

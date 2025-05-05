@@ -3,12 +3,12 @@ function start($scope) {
 
     document.title = window.location.hostname
 
-    $scope.menu = ["history", "wallet", "search"]
-    $scope.selectedIndex = 1
+    $scope.menu = ["apps", "wallet", "search"]
+    $scope.selectedIndex = 0
     $scope.selectTab = function (tab) {
         $scope.selectedIndex = tab
         if (tab == 0) {
-
+            openStore($scope)
         } else if (tab == 1) {
             openWallet($scope)
         } else if (tab == 2) {
@@ -16,6 +16,7 @@ function start($scope) {
         }
         swipeToRefresh($scope.swipeToRefresh)
     }
+    $scope.showBody = true
 
     $scope.swipeToRefresh = function () {
         $scope.selectTab($scope.selectedIndex)
