@@ -39,14 +39,16 @@ window.finishAutoOpening = false
 
 function loaded() {
     if (!finishAutoOpening) {
-        const hash = window.location.hash.substring(1);
-        const params = new URLSearchParams(hash);
+        const hash = window.location.hash.substring(1)
+        const params = new URLSearchParams(hash)
         for (const [key, value] of params) {
             if (key.startsWith('open')) {
-                const functionName = key;
+                const functionName = key
                 if (typeof window[functionName] === 'function') {
-                    window[functionName](value);
-                    window.finishAutoOpening = true;
+                    setTimeout(function () {
+                        window[functionName](value)
+                    }, 100)
+                    window.finishAutoOpening = true
                 }
             }
         }
