@@ -37,7 +37,6 @@ function openDistribution(domain, success) {
             postContract("mfm-token", "send", {
                 domain: domain,
                 to: wallet.MINING_ADDRESS,
-                amount: 0,
                 pass: wallet.calcStartPass(domain, wallet.MINING_ADDRESS),
                 delegate: "mfm-contract/mint" + $scope.mining_percent,
             }, function () {

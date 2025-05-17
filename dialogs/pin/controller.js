@@ -7,10 +7,13 @@ function getPin(success, cancel) {
             success(window.pinForSesstion)
         } else {
             showBottomSheet("dialogs/pin", function (result) {
-                if (result == null)
-                    cancel()
-                else
-                    success(result)
+                if (result == null) {
+                    if (cancel)
+                        cancel()
+                } else {
+                    if (success)
+                        success(result)
+                }
             }, function ($scope) {
                 $scope.pin = ""
                 $scope.setMode = cancel != null
@@ -18,7 +21,7 @@ function getPin(success, cancel) {
                 $scope.add = function (symbol) {
                     $scope.pin += symbol
                     if ($scope.pin.length == 4) {
-                        $scope.back($scope.pin)
+                        window.$mdBottomSheet.hide($scope.pin)
                     }
                 }
 

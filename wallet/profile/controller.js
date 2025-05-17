@@ -40,6 +40,20 @@ function openTokenProfile(domain, success) {
             return 0;
         }
 
+        $scope.addToWallet = function () {
+            getPin(function (pin) {
+                wallet.calcStartHash($scope.domain, pin, function (next_hash) {
+                    postContract("mfm-token", "send", {
+                        domain: $scope.domain,
+                        to: wallet.address(),
+                        pass: ":" + next_hash,
+                    }, function () {
+                        $scope.init()
+                    })
+                })
+            })
+        }
+
 
         $scope.init()
     })
@@ -55,8 +69,6 @@ function addTokenProfile($scope) {
             $scope.token = response.token
             $scope.owner = response.owner
             $scope.mining = response.mining
-            /*$scope.exchange_bot = response.exchange_bot
-            $scope.staking = response.staking*/
             $scope.account = response.account
             $scope.analytics = response.analytics
             $scope.$apply()

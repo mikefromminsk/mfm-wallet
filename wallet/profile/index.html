@@ -28,11 +28,20 @@
         </div>
     </div>
 
-    <div class="col mh16 align-start-center">
+    <div class="col mh16 align-start-center" ng-show="account">
         <div class="row block">
             <div class="flex mh0 primary-button back-accent radius4 uppercase"
                  ng-click="openSend(domain, null, null, refresh)">
                 {{str.send}}
+            </div>
+        </div>
+    </div>
+
+    <div class="col mh16 align-start-center" ng-show="!account">
+        <div class="row block">
+            <div class="flex mh0 primary-button back-accent radius4 uppercase"
+                 ng-click="addToWallet()">
+                {{str.add_to_wallet}}
             </div>
         </div>
     </div>

@@ -1,4 +1,6 @@
 function addSearch($scope) {
+    trackCall(arguments)
+
     $scope.recent = storage.getStringArray(storageKeys.search_history).reverse()
 
     $scope.openSearchResult = function found(domain) {

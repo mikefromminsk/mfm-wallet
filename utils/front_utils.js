@@ -42,7 +42,8 @@ function controller(callback) {
 }
 
 function addGlobalVars($scope, callback) {
-    addFormats($scope)
+    if (window.addFormats)
+        window.addFormats($scope)
     if (typeof addNavigator !== 'undefined')
         addNavigator($scope)
     $scope.wallet = window.wallet
@@ -68,7 +69,7 @@ function addGlobalVars($scope, callback) {
 function showDialog(templateUrl, onClose, callback) {
     setTimeout(function () {
         window.$mdDialog.show({
-            templateUrl: location.pathname + templateUrl + "/index.html",
+            templateUrl: (templateUrl[0] == "/" ? templateUrl : location.pathname + templateUrl) + "/index.html",
             escapeToClose: false,
             multiple: true,
             isolateScope: false,
@@ -85,7 +86,7 @@ function showDialog(templateUrl, onClose, callback) {
 function showBottomSheet(templateUrl, onClose, callback) {
     setTimeout(function () {
         window.$mdBottomSheet.show({
-            templateUrl: "/mfm-wallet/" +  templateUrl + "/index.html",
+            templateUrl: "/mfm-wallet/" + templateUrl + "/index.html",
             escapeToClose: false,
             clickOutsideToClose: false,
             controller: function ($scope) {

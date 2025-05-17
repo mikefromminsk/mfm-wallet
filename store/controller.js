@@ -1,4 +1,5 @@
 function openStore($scope) {
+    trackCall(arguments)
 
     $scope.apps = {}
 
@@ -12,21 +13,20 @@ function openStore($scope) {
         $scope.apps[categoryName] = category
     }
 
-    addApp("exchange", "CexExchange", "#8646f5", "/mfm-exchange")
-    addApp("exchange", "DexExchange", "#46aef5", "#openPool=vavilon")
+    addApp("exchange", "Cex", "#8646f5", "/mfm-exchange")
+    addApp("exchange", "Dex", "#46aef5", "#openPool=vavilon")
     addApp("exchange", "P2P", "#46aef5", "#openPool=vavilon")
 
-    addApp("bridges", "TronUsdt", "#46aef5", "/mfm-explorer")
+    addApp("bridges", "USDT", "#46aef5", "#openDeposit=" + wallet.address())
 
+    addApp("defi", "Airdrop", "#46aef5", "#openAirdrop")
     addApp("defi", "Miner", "#46aef5", "#openMining=vavilon")
-    addApp("defi", "Staking", "#46aef5", "/mfm-explorer")
-    addApp("defi", "Credits", "#46aef5", "/mfm-explorer")
-    addApp("defi", "Airdrop", "#46aef5", "/mfm-explorer")
+    /*addApp("defi", "Staking", "#46aef5", "/mfm-explorer")*/
 
     addApp("utilities", "Explorer", "#46aef5", "/mfm-explorer")
     addApp("utilities", "Launcher", "#46aef5", "#openLaunchToken")
     addApp("utilities", "Analytics", "#46aef5", "#openAnalytics")
-    addApp("utilities", "Storage", "#46aef5", "#openAnalytics")
+    /*addApp("utilities", "Storage", "#46aef5", "#openAnalytics")*/
 
     addApp("games", "ShitBomb", "#46aef5", "/mfm-pigeon")
     addApp("games", "Quizes", "#46aef5", "/mfm-pigeon")
@@ -40,6 +40,11 @@ function openStore($scope) {
     addApp("docs", "Dev", "#46aef5", "/mfm-pigeon")
 
     $scope.openApp = function (link) {
-        window.open(link, '_blank');
+        if (link[0] == "/") {
+            window.open(link, '_blank');
+        }
+        if (link[0] == "#") {
+            $scope.open(link)
+        }
     }
 }

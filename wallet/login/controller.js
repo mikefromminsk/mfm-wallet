@@ -17,43 +17,22 @@ function addLogin($scope, success) {
     if (DEBUG) {
         $scope.mnemonic = "nation finger unable fade exist visa arch awake anchor surround paddle riot"
     } else {
-        $scope.mnemonic = ""
-        for (let i = 0; i < 12; i++) {
-            $scope.mnemonic += bip39_wordlist[Math.floor(Math.random() * bip39_wordlist.length)] + " "
-        }
-        $scope.mnemonic = $scope.mnemonic.trim()
+        $scope.mnemonic = bip39Generate()
     }
 
     $scope.login = function (mnemonic) {
         $scope.startRequest()
         let password = hash(mnemonic)
         let address = hash(password)
-        authorize(address, password, loginSuccess, $scope.finishRequest, function () {
-            postContract("mfm-token", "send", {
-                domain: wallet.gas_domain,
-                to: address,
-                amount: 0,
-                pass: wallet.calcStartPass(wallet.gas_domain, address, password)
-            }, loginSuccess, $scope.finishRequest)
+        wallet.login(address, password, function () {
+            showSuccess(str.login_success, success)
+            $scope.close()
+        }, function (message) {
+            if (message == "invalid password") {
+                showError(str.password_invalid)
+            }
+            $scope.finishRequest()
         })
-
-        function loginSuccess() {
-            getPin(function (pin) {
-                // set pin
-                storage.setString(storageKeys.address, address)
-                storage.setString(storageKeys.passhash, encode(password, pin))
-                if (pin != null)
-                    storage.setString(storageKeys.hasPin, true)
-                showSuccess(str.login_success, success)
-                $scope.close()
-            }, function () {
-                // skip pin
-                storage.setString(storageKeys.address, address)
-                storage.setString(storageKeys.passhash, password)
-                showSuccess(str.login_success, success)
-                $scope.close()
-            })
-        }
     }
     $scope.copied = false
     $scope.copySeed = function () {
@@ -62,19 +41,4 @@ function addLogin($scope, success) {
     }
 }
 
-function authorize(address, password, success, invalid_pass, error) {
-    postContract("mfm-token", "account", {
-        domain: wallet.gas_domain,
-        address: address,
-    }, function (response) {
-        if (hash(wallet.calcHash(
-            wallet.gas_domain,
-            address,
-            password,
-            response.account.prev_key)) == response.account.next_hash) {
-            success()
-        } else {
-            showError(str.password_invalid, invalid_pass)
-        }
-    }, error)
-}
+

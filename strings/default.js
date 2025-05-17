@@ -324,4 +324,6 @@ str.defi = "DeFi"
 str.bridges = "Bridges"
 str.docs = "Docs"
 str.dialects = "Dialects"
+str.drop_amount = "Drop amount"
+str.add_to_wallet = "Add to wallet"
 

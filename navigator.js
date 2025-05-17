@@ -36,6 +36,13 @@ function addNavigator($scope) {
         }, 100)
     }
 
+    $scope.open = function (link) {
+        window.finishAutoOpening = false
+        historyStack.push(link)
+        history.pushState({}, '', link)
+        loaded()
+    }
+
     $scope.swipeToRefreshDisable = function () {
         $scope.swipeToRefreshDisabled = true
     }
@@ -88,6 +95,10 @@ function addNavigator($scope) {
 
     $scope.openDeposit = function (domain, success) {
         openDeposit(domain, success)
+    }
+
+    $scope.openNetwork = function (success) {
+        openNetwork(success)
     }
 
     $scope.openWithdrawal = function (domain, success) {

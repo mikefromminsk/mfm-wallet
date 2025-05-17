@@ -1,4 +1,5 @@
 function openWallet($scope) {
+    trackCall(arguments)
 
     $scope.domain = wallet.gas_domain
 

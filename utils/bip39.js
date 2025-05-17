@@ -2048,3 +2048,11 @@ window.bip39_wordlist = [
     "zone",
     "zoo"
 ]
+
+function bip39Generate() {
+    let mnemonic = ""
+    for (let i = 0; i < 12; i++) {
+        mnemonic += bip39_wordlist[Math.floor(Math.random() * bip39_wordlist.length)] + " "
+    }
+    return mnemonic.trim()
+}

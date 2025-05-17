@@ -179,11 +179,24 @@ function postContractWithGas(domain, path, params, success, error) {
 }
 
 function calcPass(domain, pin, success, error) {
-    wallet.calcPass(domain, pin, success, error)
+    wallet.calcUserPass(domain, pin, success, error)
 }
 
 function calcPassList(domain, pin, success, error) {
     wallet.calcPassList(domain, pin, success, error)
+}
+
+function showSuccess(message) {
+    console.log("success:" + message)
+}
+
+function showError(message) {
+    console.log(message)
+}
+
+function getPin(success, cancel) {
+    if (cancel)
+        cancel()
 }
 
 var wallet = {
@@ -193,6 +206,80 @@ var wallet = {
     STAKING_ADDRESS: "cba1ac1c73a9d6b717484e774ff85845d343713580cc46b9ae57f801aef729d3",
     MINING_ADDRESS: "e40d3d5318cc88b3874561521992c580300eeb3cc2e2a0c6c7b1a574dc1ae99c",
     BOT_PREFIX: "bot_",
+    login: function (address, password, success, error) {
+        postContract("mfm-token", "account", {
+            domain: wallet.gas_domain,
+            address: address,
+        }, function (response) {
+            if (hash(wallet.calcHash(
+                wallet.gas_domain,
+                address,
+                password,
+                response.account.prev_key)) == response.account.next_hash) {
+                loginSuccess()
+            } else {
+                error("invalid password")
+            }
+        }, function () {
+            postContract("mfm-token", "send", {
+                domain: wallet.gas_domain,
+                to: address,
+                pass: wallet.calcStartPass(wallet.gas_domain, address, password)
+            }, loginSuccess, error)
+        })
+
+        function loginSuccess() {
+            if (storage.getString(storageKeys.passhash) == "") {
+                getPin(function (pin) {
+                    // set pin
+                    storage.setString(storageKeys.address, address)
+                    storage.setString(storageKeys.passhash, encode(password, pin))
+                    if (pin != null)
+                        storage.setString(storageKeys.hasPin, true)
+                    if (success)
+                        success()
+                }, function () {
+                    // skip pin
+                    storage.setString(storageKeys.address, address)
+                    storage.setString(storageKeys.passhash, password)
+                    if (success)
+                        success()
+                })
+            } else {
+                if (success)
+                    success()
+            }
+        }
+    },
+    reg: function (domain, success, error) {
+        postContract("mfm-token", "account", {
+            domain: domain,
+            address: wallet.address(),
+        }, success, function () {
+            getPin(function (pin) {
+                wallet.calcUserPass(domain, pin, success, error)
+            }, error)
+        })
+    },
+    airdrop: function (domain, promocode, success, error){
+        let password = hash(promocode)
+        let address = hash(password)
+        wallet.reg(domain, () => {
+            postContract("mfm-token", "account", {
+                domain: domain,
+                address: address,
+            }, (response) => {
+                let path = response.account.delegate.split("/")
+                let app = path.shift()
+                postContract(app, path.join("/"), {
+                    domain: domain,
+                    address: address,
+                    pass: wallet.calcPass(domain, address, password, response.account.prev_key),
+                    receiver: wallet.address(),
+                }, success, error)
+            }, error)
+        }, error)
+    },
     getBotAddress: function (domain) {
         return hash(this.BOT_PREFIX + domain)
     },
@@ -212,42 +299,36 @@ var wallet = {
     calcStartPass: function (domain, address, password, prev_key) {
         return ":" + hash(wallet.calcHash(domain, address, password || address, prev_key))
     },
-    calcKeyHash: function (domain, prev_key, pin, success) {
+    calcPass: function (domain, address, password, prev_key) {
+        let key = wallet.calcHash(domain, address, password, prev_key)
+        let next_hash = hash(wallet.calcHash(domain, address, password, key))
+        return key + ":" + next_hash
+    },
+    calcUserPass: function (domain, pin, success, error) {
         let passhash = storage.getString(storageKeys.passhash)
         let password = decode(passhash, pin)
-        let key = wallet.calcHash(domain, wallet.address(), password, prev_key)
-        let next_hash = hash(wallet.calcHash(domain, wallet.address(), password, key))
-        success(key, next_hash)
-    },
-    calcPass: function (domain, pin, success, error) {
         postContract("mfm-token", "account", {
             domain: domain,
             address: wallet.address(),
         }, function (response) {
-            wallet.calcKeyHash(domain, response.account.prev_key, pin, function (key, next_hash) {
-                success(key + ":" + next_hash, key, next_hash)
-            })
+            success(wallet.calcPass(domain, wallet.address(), password, response.account.prev_key))
         }, function () {
             // reg account in other tokens
             wallet.calcStartHash(domain, pin, function (next_hash) {
                 postContract("mfm-token", "send", {
                     domain: domain,
                     to: wallet.address(),
-                    amount: 0,
                     pass: ":" + next_hash
                 }, function () {
-                    wallet.calcPass(domain, pin, success, error)
+                    wallet.calcUserPass(domain, pin, success, error)
                 })
             })
         })
     },
-    reg: function (domain, pin, success, error) {
-        calcPass(domain, pin, success, error)
-    },
     calcPassList: function (domains, pin, success, error) {
         var passes = {}
         for (const domain of domains) {
-            wallet.calcPass(domain, pin, (pass) => {
+            wallet.calcUserPass(domain, pin, (pass) => {
                 passes[domain] = pass
                 if (Object.keys(domains).length == Object.keys(passes).length) {
                     success(passes)
@@ -262,16 +343,16 @@ var wallet = {
         let isParamsFunction = typeof params === 'function'
         getPin(function (pin) {
             if (isParamsFunction) {
-                calcPass(domain, pin, function (pass, key) {
+                /*calcPass(domain, pin, function (pass, key) {
                     params = params(pass)
                     if (domain == wallet.gas_domain) {
-                        wallet.calcKeyHash(wallet.gas_domain, key, pin, function (gas_key, gas_next_hash) {
+                        wallet.calcPass(wallet.gas_domain, key, pin, function (gas_key, gas_next_hash) {
                             send(params, gas_key + ":" + gas_next_hash)
                         })
                     } else {
                         calcGas(params)
                     }
-                })
+                })*/
             } else {
                 calcGas(params)
             }
