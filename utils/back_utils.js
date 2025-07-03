@@ -120,6 +120,12 @@ function postContract(domain, path, params, success, error) {
     post(location.origin + "/" + domain + "/" + path, params, success, error)
 }
 
+function tradeApi(path, params, success, error) {
+    params = params || {}
+    params.address = wallet.address()
+    post((DEBUG ? "http://localhost" : "https://mytoken.space") + "/mfm-exchange/" + path, params, success, error)
+}
+
 function getParam(paramName, def) {
     let uri = window.location.search.substring(1)
     let params = new URLSearchParams(uri)
@@ -281,7 +287,7 @@ var wallet = {
         }, error)
     },
     getBotAddress: function (domain) {
-        return hash(this.BOT_PREFIX + domain)
+        return hash(hash(this.BOT_PREFIX + domain))
     },
     logout: function () {
         storage.clear()

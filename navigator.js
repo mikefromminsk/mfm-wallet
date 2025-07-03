@@ -256,6 +256,18 @@ function addNavigator($scope) {
         openPool(domain, success)
     }
 
+    $scope.openBuy = function (domain) {
+        openExchange(domain, 0)
+    }
+
+    $scope.openSell = function (domain) {
+        openExchange(domain, 1)
+    }
+
+    $scope.openExchangeBot = function (domain, success) {
+        openExchangeBot(domain, success)
+    }
+
     $scope.openLanding = function () {
         location.href = "/mfm-landing"
     }

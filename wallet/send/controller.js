@@ -53,7 +53,7 @@ function openSend(domain, to_address, amount, success) {
         init()
 
         setTimeout(function () {
-            document.getElementById('send_address').focus()
+            document.getElementById(!to_address ? 'send_address' : 'send_amount').focus()
         }, 500)
     })
 }

@@ -22,13 +22,6 @@
             <div class="input-content text-align-center" ng-show="domain != wallet.gas_domain">
                 <ng-include class="p0" src="'/mfm-wallet/wallet/profile/chart/chart.html'"></ng-include>
                 <div class="row align-start-end">
-                    <!--<div class="flex p16 col align-start-center ripple"
-                         style="position: relative"
-                         ng-click="openDeposit(domain, refresh)">
-                        <div class="focus" ng-show="isNotChecked('deposit')" ng-click="check('deposit')"></div>
-                        <img class="img16 img-gray" src="/mfm-wallet/img/arrow-down.svg">
-                        <p class="mt8 text2">{{str.deposit}}</p>
-                    </div>-->
                     <div class="flex p16 col align-start-center ripple"
                          ng-click="openMining(domain, refresh)">
                         <img class="img16 img-gray" src="/mfm-wallet/img/mining.svg">
@@ -39,6 +32,11 @@
                         <img class="img16 img-gray" src="/mfm-wallet/img/exchange.svg">
                         <p class="mt8 text2">{{str.swap}}</p>
                     </div>
+                    <div class="flex p16 col align-start-center ripple"
+                         ng-click="openSend(domain, null, null, refresh)">
+                        <img class="img16 img-gray" src="/mfm-wallet/img/send.svg">
+                        <p class="mt8 text2">{{str.send}}</p>
+                    </div>
                 </div>
             </div>
             <ng-include src="'/mfm-wallet/wallet/profile/analytics.html'"></ng-include>
@@ -46,11 +44,16 @@
         </div>
     </div>
 
-    <div class="col mh16 align-start-center" ng-show="account">
-        <div class="row block">
-            <div class="flex mh0 primary-button back-accent radius4 uppercase"
-                 ng-click="openSend(domain, null, null, refresh)">
-                {{str.send}}
+    <div class="col mh16 align-start-center" ng-show="account && domain != wallet.gas_domain">
+        <div class="row block gap16">
+            <div class="flex mh0 primary-button back-green radius4 uppercase"
+                 ng-click="openBuy(domain)">
+                {{str.buy}}
+            </div>
+            <div class="flex mh0 primary-button back-red radius4 uppercase"
+                 ng-click="openSell(domain)"
+                 ng-show="balance > 0">
+                {{str.sell}}
             </div>
         </div>
     </div>

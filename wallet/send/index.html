@@ -35,10 +35,11 @@
             <div class="row input-wrapper">
                 <div ng-style="getLogo(domain)"></div>
                 <input type="number"
+                       id="send_amount"
                        autocapitalize="off"
                        autocomplete="off"
                        ng-model="amount"
-                       placeholder="{{str.amount}}">
+                       placeholder="{{str.amount}} {{formatDomain(domain)}}">
                 <button ng-click="setMax()"
                         ng-hide="!account || account.balance == 0">
                     {{str.max}}
