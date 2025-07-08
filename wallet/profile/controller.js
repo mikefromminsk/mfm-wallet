@@ -21,7 +21,7 @@ function openTokenProfile(domain, success) {
 
         $scope.init = function () {
             $scope.loadTokenProfile(domain)
-            postContract("mfm-token", "trans_account", {
+            postContract("mfm-token", "trans", {
                 domain: domain,
                 address: wallet.address(),
             }, function (response) {
@@ -60,9 +60,8 @@ function openTokenProfile(domain, success) {
 }
 
 function addTokenProfile($scope) {
-
     $scope.loadTokenProfile = function (domain) {
-        postContract("mfm-token", "token_info", {
+        postContract("mfm-token", "token", {
             domain: domain,
             address: wallet.address()
         }, function (response) {
@@ -70,6 +69,7 @@ function addTokenProfile($scope) {
             $scope.owner = response.owner
             $scope.mining = response.mining
             $scope.account = response.account
+            $scope.gas_account = response.account
             $scope.analytics = response.analytics
             $scope.$apply()
         })

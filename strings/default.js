@@ -351,3 +351,6 @@ str.sell = "Sell";
 str.balance = "Balance";
 str.pool = "Pool";
 str.pool = "Pool";
+str.collect_gas = "Collect gas";
+str.block_in_contract = "Block in contract";
+str.finish_epoch = "Finish epoch";

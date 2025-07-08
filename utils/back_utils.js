@@ -109,15 +109,15 @@ function post(url, params, success, error) {
             }
         }
     };
-    xhr.send(JSON.stringify(params))
+    xhr.send(JSON.stringify(params || {}))
 }
 
 function hash(str) {
     return CryptoJS.SHA256(str).toString()
 }
 
-function postContract(domain, path, params, success, error) {
-    post(location.origin + "/" + domain + "/" + path, params, success, error)
+function postContract(application, path, params, success, error) {
+    post(location.origin + "/" + application + "/" + path, params, success, error)
 }
 
 function tradeApi(path, params, success, error) {

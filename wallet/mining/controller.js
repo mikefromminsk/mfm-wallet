@@ -122,7 +122,7 @@ function openMining(domain, success) {
         }
 
         function loadTrans() {
-            postContract("mfm-token", "trans_account", {
+            postContract("mfm-token", "trans", {
                 domain: domain,
                 address: wallet.address(),
             }, function (response) {

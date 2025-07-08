@@ -19,7 +19,7 @@
     <div class="flex col scroll align-start-center">
         <div class="flex col block">
             <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
-            <div class="input-content text-align-center" ng-show="domain != wallet.gas_domain">
+            <div class="input-content text-align-center">
                 <ng-include class="p0" src="'/mfm-wallet/wallet/profile/chart/chart.html'"></ng-include>
                 <div class="row align-start-end">
                     <div class="flex p16 col align-start-center ripple"
@@ -63,6 +63,15 @@
             <div class="flex mh0 primary-button back-accent radius4 uppercase"
                  ng-click="addToWallet()">
                 {{str.add_to_wallet}}
+            </div>
+        </div>
+    </div>
+
+    <div class="col mh16 align-start-center" ng-show="domain == wallet.vavilon">
+        <div class="row block">
+            <div class="flex mh0 primary-button back-accent radius4 uppercase"
+                 ng-click="openDividend(domain)">
+                {{str.collect_gas}}
             </div>
         </div>
     </div>

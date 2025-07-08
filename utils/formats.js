@@ -173,21 +173,6 @@ function addFormats($scope) {
         return $scope.round(number, 0) + "%";
     }
 
-    $scope.channels = []
-    $scope.subscription_id_list = []
-    $scope.subscribe = function (channel, callback) {
-        if ($scope.channels.indexOf(channel) == -1) {
-            $scope.subscription_id_list.push(subscribe(channel, callback))
-            $scope.channels.push(channel)
-        }
-    }
-
-    $scope.unsubscribeAll = function () {
-        for (let subscription_id of $scope.subscription_id_list) {
-            unsubscribe(subscription_id)
-        }
-    }
-
     $scope.random = function (from, to) {
         return Math.floor(Math.random() * to) + from;
     }

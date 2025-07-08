@@ -15,6 +15,21 @@ function addNavigator($scope) {
         clearFocus()
     }
 
+    $scope.channels = []
+    $scope.subscription_id_list = []
+    $scope.subscribe = function (channel, callback) {
+        if ($scope.channels.indexOf(channel) == -1) {
+            $scope.subscription_id_list.push(subscribe(channel, callback))
+            $scope.channels.push(channel)
+        }
+    }
+
+    $scope.unsubscribeAll = function () {
+        for (let subscription_id of $scope.subscription_id_list) {
+            unsubscribe(subscription_id)
+        }
+    }
+
     $scope.scrollTo = function (id) {
         setTimeout(function () {
             document.getElementById(id).scrollIntoView({behavior: 'smooth'})
@@ -266,6 +281,10 @@ function addNavigator($scope) {
 
     $scope.openExchangeBot = function (domain, success) {
         openExchangeBot(domain, success)
+    }
+
+    $scope.openDividend = function (domain, success) {
+        openDividend(domain, success)
     }
 
     $scope.openLanding = function () {

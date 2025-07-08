@@ -4,7 +4,8 @@ function openWallet($scope) {
     $scope.domain = wallet.gas_domain
 
     addLogin($scope, function () {
-        $scope.refresh()
+        if ($scope.refresh)
+            $scope.refresh()
         subscribeAccount()
         subscribeNewOrders()
     })
@@ -43,24 +44,25 @@ function openWallet($scope) {
     }
 
     function subscribeAccount() {
-        $scope.subscribe("account:" + wallet.address(), function (data) {
+        /*$scope.subscribe("account:" + wallet.address(), function (data) {
             if (data.amount != 0 && data.to == wallet.address()) {
                 showSuccess(str.you_have_received + " " + $scope.formatAmount(data.amount, data.domain))
                 setTimeout(function () {
                     new Audio("/mfm-wallet/dialogs/success/payment_success.mp3").play()
                 })
             }
-            $scope.refresh()
-        })
+            if ($scope.refresh)
+                $scope.refresh()
+        })*/
     }
 
     function subscribeNewOrders() {
-        $scope.subscribe("new_order:" + wallet.address(), function (data) {
+        /*$scope.subscribe("new_order:" + wallet.address(), function (data) {
             showSuccess(str.new_p2p_order)
             setTimeout(function () {
                 new Audio("/mfm-wallet/dialogs/success/payment_success.mp3").play()
             })
-        })
+        })*/
     }
 
     $scope.refresh = function () {
@@ -82,7 +84,8 @@ function openWallet($scope) {
     }
 
     if (wallet.address() != "") {
-        $scope.refresh()
+        if ($scope.refresh)
+            $scope.refresh()
         subscribeAccount()
         subscribeNewOrders()
     } else {

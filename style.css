@@ -814,3 +814,7 @@ a[title="Charting by TradingView"] {
     text-align: center;
     width: 75px;
 }
+
+div[ng-include] > p {
+    margin-top: 16px;
+}

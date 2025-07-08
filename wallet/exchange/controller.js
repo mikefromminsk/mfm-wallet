@@ -27,12 +27,6 @@ function openExchange(domain, is_sell) {
             }
         }
 
-        tradeApi("deposit_address", {
-            domain: domain,
-        }, function (response) {
-            $scope.deposit_address = response.deposit_address
-        })
-
         $scope.place = function place() {
             trackCall(arguments)
             $scope.startRequest()
@@ -43,14 +37,14 @@ function openExchange(domain, is_sell) {
                 price: $scope.price,
                 amount: $scope.amount,
                 total: $scope.total,
-            }, function () {
+            }, function (place_response) {
                 let placeDomain = $scope.is_sell ? domain : wallet.gas_domain
                 getPin(function (pin) {
                     calcPass(placeDomain, pin, function (pass) {
                         postContract("mfm-token", "send", {
                             domain: placeDomain,
                             from: wallet.address(),
-                            to: $scope.deposit_address,
+                            to: place_response.deposit_address,
                             pass: pass,
                             amount: $scope.is_sell ? $scope.amount : $scope.total,
                         }, function (response) {
