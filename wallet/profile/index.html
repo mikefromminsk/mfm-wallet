@@ -19,18 +19,18 @@
     <div class="flex col scroll align-start-center">
         <div class="flex col block">
             <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
-            <div class="input-content text-align-center">
+            <div class="input-content" ng-show="domain != wallet.gas_domain">
                 <ng-include class="p0" src="'/mfm-wallet/wallet/profile/chart/chart.html'"></ng-include>
                 <div class="row align-start-end">
-                    <div class="flex p16 col align-start-center ripple"
-                         ng-click="openMining(domain, refresh)">
-                        <img class="img16 img-gray" src="/mfm-wallet/img/mining.svg">
-                        <p class="mt8 text2">{{str.mining}}</p>
-                    </div>
                     <div class="flex p16 col align-start-center ripple"
                          ng-click="openPool(domain, refresh)">
                         <img class="img16 img-gray" src="/mfm-wallet/img/exchange.svg">
                         <p class="mt8 text2">{{str.swap}}</p>
+                    </div>
+                    <div class="flex p16 col align-start-center ripple"
+                         ng-click="openMinerFarm(domain, refresh)">
+                        <img class="img16 img-gray" src="/mfm-wallet/img/mining.svg">
+                        <p class="mt8 text2">{{str.mining}}</p>
                     </div>
                     <div class="flex p16 col align-start-center ripple"
                          ng-click="openSend(domain, null, null, refresh)">
@@ -44,6 +44,15 @@
         </div>
     </div>
 
+    <div class="col mh16 align-start-center" ng-show="account && domain == wallet.vavilon">
+        <div class="row block">
+            <div class="flex mh0 primary-button back-accent radius4 uppercase"
+                 ng-click="openDividend(domain)">
+                {{str.collect_gas}}
+            </div>
+        </div>
+    </div>
+
     <div class="col mh16 align-start-center" ng-show="account && domain != wallet.gas_domain">
         <div class="row block gap16">
             <div class="flex mh0 primary-button back-green radius4 uppercase"
@@ -52,7 +61,7 @@
             </div>
             <div class="flex mh0 primary-button back-red radius4 uppercase"
                  ng-click="openSell(domain)"
-                 ng-show="balance > 0">
+                 ng-show="account.balance > 0">
                 {{str.sell}}
             </div>
         </div>
@@ -67,13 +76,12 @@
         </div>
     </div>
 
-    <div class="col mh16 align-start-center" ng-show="domain == wallet.vavilon">
+    <div class="col mh16 align-start-center" ng-show="domain == wallet.gas_domain">
         <div class="row block">
             <div class="flex mh0 primary-button back-accent radius4 uppercase"
-                 ng-click="openDividend(domain)">
-                {{str.collect_gas}}
+                 ng-click="openSend(wallet.gas_domain, null, null, refresh)">
+                {{str.send}}
             </div>
         </div>
     </div>
-    <!--<div class="space"></div>-->
 </md-dialog>

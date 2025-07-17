@@ -10,6 +10,9 @@ function openTokenProfile(domain, success) {
     showDialog("wallet/profile", success, function ($scope) {
         $scope.domain = domain
 
+        storage.pushToArray(storageKeys.search_history, domain, 10)
+        $scope.recent = storage.getStringArray(storageKeys.search_history).reverse()
+
         addChart($scope, domain + "_price", domain + "_volume")
         addTokenProfile($scope, domain)
 

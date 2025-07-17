@@ -10,7 +10,14 @@
     </div>-->
     <div class="row">
         <p class="flex text2">{{str.mining}}</p>
-        <p>{{formatAmount(mining.balance)}} ({{formatPercent(getMiningYearPercent(mining.delegate))}}/{{str.year}})</p>
+        <p>{{formatAmount(round(mining.balance, 1))}} ({{formatPercent(getMiningYearPercent(mining.delegate))}}/{{str.year}})</p>
+    </div>
+    <div class="row" ng-show="token.difficulty > 0">
+        <p class="text2">{{str.difficulty}}</p>
+        <img class="ml4 img12 img-gray" src="/mfm-wallet/img/chart.svg"
+             ng-click="openChartWithAccumulate(token.domain + '_difficulty')">
+        <div class="flex"></div>
+        <p>{{formatAmount(token.difficulty)}}</p>
     </div>
     <div class="row">
         <p class="flex text2">{{str.created}}</p>

@@ -2,6 +2,7 @@ function openWallet($scope) {
     trackCall(arguments)
 
     $scope.domain = wallet.gas_domain
+    $scope.host = location.host
 
     addLogin($scope, function () {
         if ($scope.refresh)
@@ -14,13 +15,34 @@ function openWallet($scope) {
         postContract("mfm-token", "accounts", {
             address: wallet.address(),
         }, function (response) {
-            $scope.accounts = response.accounts
+            setAccounts(response.accounts || [])
             $scope.showBody = true
             setTimeout(function () {
                 createOdometer(document.getElementById("total"), 0, $scope.getTotalBalance())
             }, 100)
             $scope.$apply()
         })
+        postContract("mfm-token", "top", {}, function (response) {
+            $scope.tokens = response.top_mining
+            $scope.$apply()
+        })
+    }
+
+    function setAccounts(accounts) {
+        accounts.sort((a, b) => {
+            if (a.domain === wallet.gas_domain) return -1;
+            if (b.domain === wallet.gas_domain) return 1;
+            if (a.token.price == 0 && b.token.price == 0) {
+                if (a.balance == 0 && b.balance == 0)
+                    return b.created - a.created
+                else
+                    return b.balance - a.balance
+            }
+            if (b.token.price == 0) return 1;
+            if (a.token.price == 0) return -1;
+            return (b.balance * b.token.price) - (a.balance * a.token.price);
+        })
+        $scope.accounts = accounts
     }
 
     $scope.getPrice = function (domain) {

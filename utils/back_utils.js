@@ -211,6 +211,7 @@ var wallet = {
     tron: "tron",
     STAKING_ADDRESS: "cba1ac1c73a9d6b717484e774ff85845d343713580cc46b9ae57f801aef729d3",
     MINING_ADDRESS: "e40d3d5318cc88b3874561521992c580300eeb3cc2e2a0c6c7b1a574dc1ae99c",
+    MINER_ADDRESS: "32fbfb43bb993947ed36747f564f4a54f8e9a767bb3f972fe1d3498b352e061c",
     BOT_PREFIX: "bot_",
     login: function (address, password, success, error) {
         postContract("mfm-token", "account", {

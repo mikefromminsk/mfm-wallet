@@ -1,7 +1,7 @@
 <div class="flex col">
     <div class="row header align-start-center">
         <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/home.svg" ng-click="openLanding()">
-        <div class="flex row align-center text1">{{str.wallet}}</div>
+        <div class="flex row align-center text1">{{host}}</div>
         <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/settings.svg" ng-click="openSettings(refresh)">
     </div>
     <div class="flex col" ng-hide="wallet.address()">
@@ -31,7 +31,7 @@
                     <p class="mt8 text2">{{str.deposit}}</p>
                 </div>
                 <div class="flex p16 col align-start-center ripple"
-                     ng-click="openMining(wallet.vavilon, refresh)">
+                     ng-click="openMinerFarm(wallet.vavilon, refresh)">
                     <img class="img16 img-gray" src="/mfm-wallet/img/mining.svg">
                     <p class="mt8 text2">{{str.mining}}</p>
                 </div>
@@ -46,6 +46,7 @@
                 <div class="primary-button back-pay mh0 mb0 mt8" ng-click="openLaunchToken(refresh)">
                     {{str.launch_token}}
                 </div>
+                <ng-include src="'/mfm-wallet/search/tokens.html'"></ng-include>
             </div>
 
             <ng-include src="'/mfm-wallet/wallet/trans.html'"></ng-include>

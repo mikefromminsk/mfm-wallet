@@ -67,7 +67,7 @@ function addChart($scope, key, accumulate_key) {
     }
 
     $scope.periods = ['M', 'D']
-    $scope.period_name = 'M'
+    $scope.period_name = 'D'
     $scope.setPeriod = function (period_name) {
         $scope.period_name = period_name
         postContract("mfm-analytics", "candles", {

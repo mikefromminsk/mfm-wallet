@@ -1,10 +1,10 @@
-<md-dialog class="fill col block">
+<md-dialog class="fill col">
     <div class="row header align-start-center">
-        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="openSupport()">
-            <img class="img16 img-gray400" src="/mfm-wallet/img/support.svg">
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="openMining(domain)">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/mining.svg">
         </div>
-        <div class="flex row align-center">
-            {{str.mining}}
+        <div class="flex row align-center-center gap8">
+            <p>{{str.miner_account}}</p>
         </div>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
@@ -13,80 +13,94 @@
     <div class="flex col scroll align-start-center">
         <div class="flex col block">
             <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
-            <div class="col mh16 align-start-center"
-                 style="position: relative; padding-top: 100px">
-                <p class="size12 uppercase">{{str.last_reward}}</p>
-                <p class="size40 bold">{{formatAmount(last_reward, null, 4)}}</p>
-                <p class="size12"
-                   ng-class="{'text-red': !bank || bank.balance == 0}">
-                    {{formatAmount(bank.balance, domain)}} {{str.in_bank}}
-                </p>
-                <div class="row mt8 align-start-center">
-                    <p class="size10">{{str.difficulty}} {{formatAmount(difficulty, '', 2)}}</p>
-                    <img class="ml4 img12 img-gray" src="/mfm-wallet/img/chart.svg"
-                         ng-click="openChartWithAccumulate(token.domain + '_difficulty')">
+            <div class="input-content">
+                <!--<ng-include src="'/mfm-wallet/wallet/profile/chart/chart.html'"></ng-include>-->
+
+                <div class="col gap16">
+                    <div class="col align-center-center gap16" style="padding: 40px 0 0 0">
+                        <div class="row gap8 align-start-center">
+                            <div ng-style="getLogo(domain)"></div>
+                            <p class="text0">{{formatAmount(token_account.balance)}}</p>
+                            <p class="text0">{{formatDomain(token_account.domain)}}</p>
+                        </div>
+                        <p class="text1">{{formatAmount(gas_account.balance, wallet.gas_domain)}}</p>
+                    </div>
+                    <div class="row mh8">
+                        <div class="flex row align-center">
+                            {{formatPrice(miner_account.tariff)}}/min
+                        </div>
+                        <img class="img16 img-white" src="/mfm-wallet/img/arrow-right.svg" alt="">
+                        <div class="flex row align-center">
+                            {{miner_account ? formatDomain(miner_account.minerDomain) : "unset"}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <button class="flex"
+                                ng-click="openMinerTariffs(domain)"
+                                ng-disabled="gas_account.balance == 0">
+                            {{str.set_tariff}}
+                        </button>
+                        <button class="flex"
+                                ng-click="setDomain()"
+                                ng-disabled="gas_account.balance == 0">
+                            {{str.set_domain}}
+                        </button>
+                    </div>
                 </div>
-                <p class="size10 mt8" ng-show="speed > 0">{{str.speed}} {{formatAmount(speed, '', 2)}} h/s</p>
-                <p class="size10 mt8 text-black" ng-hide="speed > 0">.</p>
-
-                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                     viewBox="100 100 800 500" xml:space="preserve">
-<!-- Stroke ring -->
-<circle class="st0" cx="500" cy="500" r="302.8">
-  <animateTransform attributeType="xml"
-                    attributeName="transform"
-                    type="rotate"
-                    from="0 500 500"
-                    to="360 500 500"
-                    dur="100s"
-                    repeatCount="indefinite"/>
-</circle>
-                    <!-- Inner ring -->
-                    <circle class="st1" cx="500" cy="500" r="237.7">
-    <animateTransform attributeType="xml"
-                      attributeName="transform"
-                      type="rotate"
-                      from="0 500 500"
-                      to="360 500 500"
-                      dur="40s"
-                      repeatCount="indefinite"/>
-</circle>
-                    <!-- Outer ring -->
-                    <circle class="st2" cx="500" cy="500" r="366.8" transform="rotate(0 500 500)" ;>
-  <animateTransform attributeType="xml"
-                    attributeName="transform"
-                    type="rotate"
-                    from="0 500 500"
-                    to="-360 500 500"
-                    dur="50s"
-                    repeatCount="indefinite"/>
-</circle>
-                    <!-- Outer thin ring -->
-                    <circle class="st3" cx="500" cy="500" r="385.1"/>
-</svg>
-
-            </div>
-            <div class="col">
+                <div class="flex primary-button"
+                        ng-click="withdrawal(domain)"
+                        ng-disabled="!token_account || token_account.balance == 0">
+                    {{str.withdrawal}}
+                </div>
                 <div class="row">
-                    <div class="flex primary-button relative"
-                         ng-click="startMining()"
-                         ng-disabled="account.balance == 0 || bank == 0 || !loaded"
-                         ng-hide="in_progress">
-                        <div class="focus" ng-show="isChecked('finish_quiz') && isNotChecked('start_mining')" ng-click="check('start_mining')"></div>
-                        {{str.start}}
-                    </div>
-                    <div class="flex primary-button back-red"
-                         ng-click="stopMining()"
-                         ng-show="in_progress">
-                        {{str.stop}}
-                    </div>
+                    <p class="flex text2">{{str.difficulty}}</p>
+                    <p>{{formatAmount(token.difficulty, str.hash_per_min)}}</p>
                 </div>
+                <div class="row">
+                    <p class="flex text2">{{str.tariff_speed}}</p>
+                    <p>{{formatAmount(miner_account.tariff * 10000 * 10000, str.hash_per_min)}}</p>
+                </div>
+                <div class="row">
+                    <p class="flex text2">{{str.chance_to_mine}}</p>
+                    <p>{{formatPercent((miner_account.tariff * 10000 * 10000) / token.difficulty * 100, 2)}}</p>
+                </div>
+                <div class="row">
+                    <p class="flex text2">{{str.last_reward}}</p>
+                    <p>{{formatAmount(last_reward.amount, domain)}}</p>
+                </div>
+                <div class="row">
+                    <p class="flex text2">{{str.predicted_profit}}</p>
+                    <p>{{formatAmount((miner_account.tariff * 10000 * 10000) / token.difficulty * (60 * 24 * 7) * last_reward.amount, domain)}}</p>
+                </div>
+                <div class="row">
+                    <p class="flex text2">{{str.predicted_profit}}</p>
+                    <p>{{formatAmount((miner_account.tariff * 10000 * 10000) / token.difficulty * (60 * 24 * 7) * last_reward.amount * token.price, wallet.gas_domain)}}</p>
+                </div>
+
+                <div class="nowrap-disabled"
+                     ng-include="'/mfm-wallet/wallet/mining/faq/' + getLanguage() + '.html'"></div>
+
+                <!--<div class="flex primary-button"
+                     ng-click="openMining(domain)">
+                    mining in browser
+                </div>-->
             </div>
-            <ng-include class="col mh16 mt16" src="'/mfm-wallet/wallet/accounts.html'"></ng-include>
-            <ng-include class="ph16" src="'/mfm-wallet/wallet/trans.html'"></ng-include>
-            <div class="nowrap-disabled m16"
-                 ng-include="'/mfm-wallet/wallet/mining/faq/' + getLanguage() + '.html'"></div>
+            <!--<div class="nowrap-disabled m16"
+                 ng-include="'/mfm-wallet/wallet/mining/faq/' + getLanguage() + '.html'"></div>-->
         </div>
+    </div>
+    <div class="row ph16 pt16">
+        <p class="flex text2">{{str.miner_balance}}</p>
+        <p>{{formatAmount(miner_account.balance, wallet.gas_domain)}}</p>
+    </div>
+    <div class="primary-button"
+         ng-show="account.balance == 0"
+         ng-click="openDeposit()">
+        {{str.deposit}}
+    </div>
+    <div class="primary-button"
+         ng-show="account.balance != 0"
+         ng-click="openSend(wallet.gas_domain, wallet.MINER_ADDRESS, null, refresh)">
+        {{str.top_up_miner}}
     </div>
 </md-dialog>

@@ -4,30 +4,55 @@
             <img class="img16 img-gray400" src="/mfm-wallet/img/support.svg">
         </div>
         <div class="flex row align-center">
-            {{str.staking}}</p>
+            {{str.collect_gas}}</p>
         </div>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
         </div>
     </div>
     <div class="flex col scroll align-start-center">
-        <div class="flex col block">
+        <div class="flex col block input-content"
+             style="background: radial-gradient(circle at top center, var(--accent) 0%,  rgba(255, 0, 0, 0) 30%);">
             <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
 
-            <div class="col align-center-center" style="margin: 20px 0">
-                <p class="text0">{{formatAmount(epoch_tran.amount, wallet.gas_domain)}}</p>
+            <div class="col align-center-center" style="padding: 40px 0; ">
+                <p>{{str.reward}}</p>
+                <p class="text0">{{formatAmount(reward.amount, wallet.gas_domain)}}</p>
             </div>
             <div class="row align-center-center">
-                finish in 2 h
+                {{str.epoch_will_end_in}} {{formatTime(gas.balance / reward.amount * (time - reward.time))}}
             </div>
             <div class="primary-button back-pay"
                  ng-click="epochFinish()"
-                 ng-disabled="mining_gas.balance > round(epoch_tran.amount * 1.01)">
+                 ng-disabled="gas.balance < round(reward.amount * 1.01)">
                 {{str.finish_epoch}}
             </div>
-            <ng-include class="ph16" src="'/mfm-wallet/wallet/accounts.html'"></ng-include>
-            <ng-include class="ph16" src="'/mfm-wallet/wallet/trans.html'"></ng-include>
-            <div class="nowrap-disabled m16"
+            <div class="col align-center-center" style="padding: 20px 0;">
+                <p>{{str.in_contract}}</p>
+                <p class="text0">{{formatAmount(participants.balance, wallet.vavilon)}}</p>
+            </div>
+
+            <ng-include src="'/mfm-wallet/wallet/trans.html'"></ng-include>
+
+            <div class="row">
+                <p class="text2">{{str.you_blocked}}</p>
+                <div class="flex"></div>
+                <p>{{formatAmount(sumTrans(), wallet.vavilon)}}</p>
+            </div>
+
+            <div class="row">
+                <p class="text2">{{str.percent_of_reward}}</p>
+                <div class="flex"></div>
+                <p>{{formatPercent(sumTrans() / participants.balance * 100)}}</p>
+            </div>
+
+            <div class="row">
+                <p class="text2">{{str.your_reward}}</p>
+                <div class="flex"></div>
+                <p>{{formatAmount(reward.amount * (sumTrans() / participants.balance), wallet.gas_domain)}}</p>
+            </div>
+
+            <div class="nowrap-disabled"
                  ng-include="'/mfm-wallet/wallet/dividend/faq/' + getLanguage() + '.html'"></div>
 
             <div class="space"></div>
@@ -35,8 +60,9 @@
     </div>
 
     <div class="primary-button"
-         ng-click="openSend(wallet.vavilon, epoch_tran.to, null, refresh)">
-        {{str.block_in_contract}}
+         ng-click="openSend(wallet.vavilon, reward.to, null, refresh)"
+         ng-disabled="!account || account.balance == 0">
+        {{str.send}} {{formatDomain(wallet.vavilon)}}
     </div>
 
 </md-dialog>

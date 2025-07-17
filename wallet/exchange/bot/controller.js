@@ -3,7 +3,7 @@ function openExchangeBot(domain, success) {
     showDialog("wallet/exchange/bot", success, function ($scope) {
         $scope.domain = domain
         $scope.accounts = []
-        let bot_address = wallet.getBotAddress(domain)
+        let bot_address = hash(hash("exhibit tragic bundle galaxy zero lunch lift six access story round " + domain))
 
         $scope.selectAccount = function (domain) {
             openSend(domain, bot_address, null, init)

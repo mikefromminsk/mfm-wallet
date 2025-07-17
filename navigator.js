@@ -287,6 +287,14 @@ function addNavigator($scope) {
         openDividend(domain, success)
     }
 
+    $scope.openMinerFarm = function (domain, success) {
+        openMinerFarm(domain, success)
+    }
+
+    $scope.openMinerTariffs = function (domain, success) {
+        openMinerTariffs(domain, success)
+    }
+
     $scope.openLanding = function () {
         location.href = "/mfm-landing"
     }
