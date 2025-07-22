@@ -24,13 +24,6 @@ function openTokenProfile(domain, success) {
 
         $scope.init = function () {
             $scope.loadTokenProfile(domain)
-            postContract("mfm-token", "trans", {
-                domain: domain,
-                address: wallet.address(),
-            }, function (response) {
-                $scope.trans = $scope.groupByTimePeriod(response.trans)
-                $scope.$apply()
-            })
         }
 
         $scope.getMiningYearPercent = function (contract) {

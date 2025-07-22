@@ -20,7 +20,8 @@
                        oninput="this.value = this.value.toLowerCase().replace(/[^a-z0-9_]/g, '')"
                        ng-model="search_text"
                        ng-change="search()"
-                       placeholder="{{str.token_name}}">
+                       placeholder=" ">
+                <label for="search_input">{{str.token_name}}</label>
             </div>
             <ul class="col mh16 mv0 text2 text-align-start">
                 <li>{{str.min_3_symbols}}</li>

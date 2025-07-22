@@ -4,58 +4,65 @@
         <div class="flex row align-center text1">{{host}}</div>
         <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/settings.svg" ng-click="openSettings(refresh)">
     </div>
-    <div class="flex col" ng-hide="wallet.address()">
-        <ng-include src="'/mfm-wallet/wallet/login/login.html'"></ng-include>
+    <div class="flex col scroll align-start-center" ng-hide="wallet.address()">
+        <div class="flex col block">
+            <ng-include src="'/mfm-wallet/wallet/login/login.html?v=2'"></ng-include>
+        </div>
     </div>
     <div class="flex col scroll align-start-center" ng-show="wallet.address()">
-        <div class="flex col block input-content">
+        <div class="flex col block">
             <img class="refresh-icon img-gray" src="/mfm-wallet/img/reload.svg">
-            <div class="col align-center-center">
-                <div class="row align-center text0" style="margin-top: 40px;">
-                    $<div id="total">0</div>
-                </div>
-                <div class="row align-start-center mt8">
-                    <div class="radius-default back-black" ng-style="getIdenticon(wallet.address())"></div>
-                    <p class="ml8">{{formatAddress(wallet.address())}}</p>
-                    <div class="radius-default p8 ripple" ng-click="copy(wallet.address())">
-                        <img class="img22 img-gray400" src="/mfm-wallet/img/copy.svg">
+            <div class="input-content">
+                <div class="col align-center-center">
+                    <div class="row align-center text0" style="margin-top: 40px;">
+                        $
+                        <div id="total">0</div>
+                    </div>
+                    <div class="row align-start-center mt8">
+                        <div class="radius-default back-black" ng-style="getIdenticon(wallet.address())"></div>
+                        <p class="ml8">{{formatAddress(wallet.address())}}</p>
+                        <div class="radius-default p8 ripple" ng-click="copy(wallet.address())">
+                            <img class="img22 img-gray400" src="/mfm-wallet/img/copy.svg">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row align-start-end">
-                <div class="flex p16 col align-start-center ripple"
-                     style="position: relative"
-                     ng-click="openDeposit(wallet.gas_domain, refresh)">
-                    <div class="focus" ng-show="isNotChecked('deposit')" ng-click="check('deposit')"></div>
-                    <img class="img16 img-gray" src="/mfm-wallet/img/arrow-down.svg">
-                    <p class="mt8 text2">{{str.deposit}}</p>
+                <div class="row align-start-end">
+                    <div class="flex p16 col align-start-center ripple"
+                         style="position: relative"
+                         ng-click="openDeposit(wallet.gas_domain, refresh)">
+                        <div class="focus" ng-show="isNotChecked('deposit')" ng-click="check('deposit')"></div>
+                        <img class="img16 img-gray" src="/mfm-wallet/img/arrow-down.svg">
+                        <p class="mt8 text2">{{str.deposit}}</p>
+                    </div>
+                    <div class="flex p16 col align-start-center ripple"
+                         ng-click="openMinerFarm(wallet.vavilon, refresh)">
+                        <img class="img16 img-gray" src="/mfm-wallet/img/mining.svg">
+                        <p class="mt8 text2">{{str.mining}}</p>
+                    </div>
+                    <div class="flex p16 col align-start-center ripple"
+                         ng-click="openPool(wallet.vavilon, refresh)">
+                        <img class="img16 img-gray" src="/mfm-wallet/img/exchange.svg">
+                        <p class="mt8 text2">{{str.swap}}</p>
+                    </div>
                 </div>
-                <div class="flex p16 col align-start-center ripple"
-                     ng-click="openMinerFarm(wallet.vavilon, refresh)">
-                    <img class="img16 img-gray" src="/mfm-wallet/img/mining.svg">
-                    <p class="mt8 text2">{{str.mining}}</p>
+                <div class="col gap16" ng-hide="!wallet.address()">
+                    <ng-include src="'/mfm-wallet/wallet/accounts.html?v=2'"></ng-include>
+                    <div class="primary-button back-pay mh0 mb0 mt8" ng-click="openLaunchToken(refresh)">
+                        {{str.launch_token}}
+                    </div>
+                    <div class="row primary-button back-black m0"  ng-click="openSupport()">
+                        {{str.report_a_bug}}
+                    </div>
+                    <ng-include src="'/mfm-wallet/search/tokens.html?v=2'"></ng-include>
                 </div>
-                <div class="flex p16 col align-start-center ripple"
-                     ng-click="openPool(wallet.vavilon, refresh)">
-                    <img class="img16 img-gray" src="/mfm-wallet/img/exchange.svg">
-                    <p class="mt8 text2">{{str.swap}}</p>
-                </div>
-            </div>
-            <div class="col gap16" ng-hide="!wallet.address()">
-                <ng-include src="'/mfm-wallet/wallet/accounts.html'"></ng-include>
-                <div class="primary-button back-pay mh0 mb0 mt8" ng-click="openLaunchToken(refresh)">
-                    {{str.launch_token}}
-                </div>
-                <ng-include src="'/mfm-wallet/search/tokens.html'"></ng-include>
-            </div>
 
-            <ng-include src="'/mfm-wallet/wallet/trans.html'"></ng-include>
-            <div class="col align-center-center text1 text-gray"
-                 ng-hide="trans.length > 0"
-                 style="height: 500px">
-                {{str.there_is_no_history_yet}}
+                <ng-include src="'/mfm-wallet/wallet/trans.html?v=2'"></ng-include>
+                <div class="col align-center-center text1 text-gray"
+                     ng-hide="trans.length > 0"
+                     style="height: 500px">
+                    {{str.there_is_no_history_yet}}
+                </div>
             </div>
-            <div></div>
         </div>
     </div>
 </div>

@@ -20,7 +20,7 @@
         <div class="flex col block">
             <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
             <div class="input-content" ng-show="domain != wallet.gas_domain">
-                <ng-include class="p0" src="'/mfm-wallet/wallet/profile/chart/chart.html'"></ng-include>
+                <ng-include class="p0" src="'/mfm-wallet/wallet/profile/chart/chart.html?v=2'"></ng-include>
                 <div class="row align-start-end">
                     <div class="flex p16 col align-start-center ripple"
                          ng-click="openPool(domain, refresh)">
@@ -39,8 +39,7 @@
                     </div>
                 </div>
             </div>
-            <ng-include src="'/mfm-wallet/wallet/profile/analytics.html'"></ng-include>
-            <ng-include class="ph16" src="'/mfm-wallet/wallet/trans.html'"></ng-include>
+            <ng-include src="'/mfm-wallet/wallet/profile/analytics.html?v=2'"></ng-include>
         </div>
     </div>
 

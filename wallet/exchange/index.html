@@ -40,17 +40,21 @@
                     <div class="row input-wrapper">
                         <img class="img-white" src="/mfm-wallet/img/dollar.svg">
                         <input type="number"
+                               id="price"
                                ng-model="price"
                                ng-change="changePrice()"
-                               placeholder="{{str.price}}">
+                               placeholder=" ">
+                        <label for="price">{{str.price}}</label>
                     </div>
 
                     <div class="row input-wrapper">
                         <div ng-style="getLogo(domain)"></div>
                         <input type="number"
+                               id="amount"
                                ng-model="amount"
                                ng-change="changeAmount()"
-                               placeholder="{{str.amount}}">
+                               placeholder=" ">
+                        <label for="amount">{{str.amount}}</label>
                     </div>
                     <div class="row">
                         <div class="flex row range-container">
@@ -69,9 +73,11 @@
                     <div class="row input-wrapper">
                         <div ng-style="getLogo(wallet.gas_domain)"></div>
                         <input type="number"
+                               id="total"
                                ng-model="total"
                                ng-change="changeTotal()"
-                               placeholder="{{str.total}}">
+                               placeholder=" ">
+                        <label for="total">{{str.total}}</label>
                     </div>
 
                     <div class="row pb0"
@@ -159,7 +165,7 @@
                     </div>
                 </div>
                 <div class="col" ng-repeat="orders in [active_orders, history_orders]">
-                    <ng-include src="'/mfm-exchange/exchange/orders.html'"></ng-include>
+                    <ng-include src="'/mfm-exchange/exchange/orders.html?v=2'"></ng-include>
                 </div>
                 <div class="col align-center-center text1 text-gray"
                      ng-show="active_orders.length == 0 && history_orders.length == 0"

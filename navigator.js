@@ -156,7 +156,7 @@ function addNavigator($scope) {
     }
 
     $scope.openSupport = function () {
-        window.open("https://t.me/vavilon_org_bot")
+        window.open('https://forms.gle/JPpVptGeygK9aSiS7')
     }
 
     $scope.openShareLink = function (title, text, url) {
@@ -295,7 +295,23 @@ function addNavigator($scope) {
         openMinerTariffs(domain, success)
     }
 
+    $scope.openSearchDialog = function (domain, success) {
+        openSearchDialog(domain, success)
+    }
+
+    $scope.openAirdropAdd = function (domain, success) {
+        openAirdropAdd(domain, success)
+    }
+
+    $scope.openAirdropGet = function (domain, success) {
+        openAirdropGet(domain, success)
+    }
+
     $scope.openLanding = function () {
         location.href = "/mfm-landing"
+    }
+
+    $scope.openWeb = function (page) {
+        location.href = page
     }
 }

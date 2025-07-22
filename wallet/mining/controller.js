@@ -1,34 +1,37 @@
 function openMinerFarm(domain, success) {
     trackCall(arguments)
     showDialog("wallet/mining", success, function ($scope) {
-        $scope.domain = domain
 
-        //addChart($scope, domain + "_difficulty")
-
-        $scope.setTariff = function () {
-            postContract("mfm-miner", "set_tariff", {
-                domain: domain,
-                address: wallet.address(),
-            }, function (response) {
-                showSuccess(str.success)
-            })
-        }
-
-        $scope.setDomain = function () {
+        $scope.setDomain = function (domain) {
             postContract("mfm-miner", "set_domain", {
                 domain: domain,
                 address: wallet.address(),
             }, function (response) {
-                showSuccess(str.success)
+                showSuccess(str.success, $scope.refresh)
             })
         }
 
         $scope.withdrawal = function () {
-            postContract("mfm-miner", "withdrawal", {
+            let domain = $scope.miner_account.minerDomain
+            postContract("mfm-token", "account", {
                 domain: domain,
                 address: wallet.address(),
-            }, function (response) {
-                showSuccess(str.success)
+            }, function () {
+                postContract("mfm-miner", "withdrawal", {
+                    domain: domain,
+                    address: wallet.address(),
+                }, function (response) {
+                })
+            }, function () {
+                getPin(function (pin) {
+                    wallet.calcStartHash(domain, pin, function (next_hash) {
+                        postContract("mfm-token", "send", {
+                            domain: domain,
+                            to: wallet.address(),
+                            pass: ":" + next_hash
+                        }, $scope.withdrawal)
+                    })
+                })
             })
         }
 
@@ -56,6 +59,40 @@ function openMinerFarm(domain, success) {
             })
         }
 
+        $scope.selectAccount = function (domain) {
+            openMinerFarm(domain, $scope.refresh)
+        }
+
+        function loadMinerAccounts(address) {
+            postContract("mfm-token", "accounts", {
+                address: address,
+            }, function (response) {
+                let accounts = []
+                for (const account of response.accounts)
+                    if (account.domain == domain && account.domain != domain)
+                        accounts.push(account)
+                $scope.accounts = accounts
+                $scope.$apply()
+            })
+        }
+
+        function loadMinerTrans(address) {
+            postContract("mfm-token", "trans", {
+                address: address,
+            }, function (response) {
+                $scope.trans = $scope.groupByTimePeriod(response.trans)
+                $scope.$apply()
+            })
+        }
+
+        function loadProfile(domain) {
+            getAccount(domain, function (response) {
+                $scope.token = response.token
+                $scope.account = response.gas_account
+                $scope.$apply()
+            })
+        }
+
         function loadMinerAccount() {
             postContract("mfm-miner", "account", {
                 address: wallet.address(),
@@ -64,25 +101,18 @@ function openMinerFarm(domain, success) {
                     $scope.miner_account = response.miner_account
                     $scope.gas_account = response.gas_account
                     $scope.token_account = response.token_account
-                    $scope.accounts = [response.gas_account, response.token_account]
+                    loadMinerAccounts(response.miner_account.minerAddress)
+                    loadMinerTrans(response.miner_account.minerAddress)
                     subscribeToMinerAddress(response.miner_account.minerAddress)
+                    loadMiningInfo(response.miner_account.minerDomain)
+                    loadProfile(response.miner_account.minerDomain)
                     $scope.$apply()
                 }
             })
         }
 
-        function loadProfile() {
-            getAccount(domain, function (response) {
-                $scope.token = response.token
-                $scope.account = response.gas_account
-                $scope.$apply()
-            })
-        }
-
         $scope.refresh = function () {
             loadMinerAccount()
-            loadMiningInfo()
-            loadProfile()
         }
 
         $scope.refresh()

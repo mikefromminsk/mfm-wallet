@@ -6,7 +6,7 @@
         </div>
     </div>
     <div class="flex col scroll align-start-center">
-        <div class="flex col block input-content">
+        <div class="flex col block">
             <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
             <div class="row align-center-center">
                 <div class="img100" style="position: relative">
@@ -17,10 +17,8 @@
                 </div>
             </div>
 
-            <div class="ph16">
-                <ng-include src="'/mfm-wallet/wallet/trans.html'"></ng-include>
-            </div>
-            <ng-include src="'/mfm-wallet/wallet/tran/tran.html'"></ng-include>
+            <ng-include src="'/mfm-wallet/wallet/trans.html?v=2'"></ng-include>
+            <ng-include src="'/mfm-wallet/wallet/tran/tran.html?v=2'"></ng-include>
 
             <!--@SerializedName("valueUSD")
             @SerializedName("direction")
@@ -35,7 +33,7 @@
             </div>-->
         </div>
     </div>
-    <div class="primary-button" ng-click="copy(location.origin + '/mfm-landing/explorer?txid=' + tran.next_hash)">
+    <div class="primary-button" ng-click="copy(location.origin + '/mfm-explorer?hash=' + tran.next_hash)">
         {{str.copy_tran_link}}
     </div>
 </md-dialog>

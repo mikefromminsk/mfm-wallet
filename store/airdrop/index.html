@@ -19,6 +19,7 @@
                        ng-model="promo"
                        oninput="this.value = this.value.toLowerCase().replace(/[^a-z0-9_:]/g, '')"
                        placeholder="{{str.promo_code}}">
+                <label for="enter_promo">{{str.promo_code}}</label>
             </div>
             <div class="primary-button"
                  ng-disabled="!promo || in_progress"

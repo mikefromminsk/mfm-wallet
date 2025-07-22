@@ -69,7 +69,7 @@ function addGlobalVars($scope, callback) {
 function showDialog(templateUrl, onClose, callback) {
     setTimeout(function () {
         window.$mdDialog.show({
-            templateUrl: (templateUrl[0] == "/" ? templateUrl : location.pathname + templateUrl) + "/index.html",
+            templateUrl: (templateUrl[0] == "/" ? templateUrl : location.pathname + templateUrl) + "/index.html?v=2",
             escapeToClose: false,
             multiple: true,
             isolateScope: false,
@@ -102,7 +102,6 @@ function showBottomSheet(templateUrl, onClose, callback) {
     }, 100)
 }
 
-
 function showMessage(message, toastClass, callback) {
     if (message == null) message = ""
     let spaceCount = message.split(' ').length + 1
@@ -114,6 +113,8 @@ function showMessage(message, toastClass, callback) {
             .toastClass(toastClass)
             .textContent(message)
             .hideDelay(delay))
+    } else {
+        alert(message)
     }
     if (callback)
         callback(message)
@@ -126,7 +127,6 @@ function showError(message, error) {
 function showSuccess(message, success) {
     showMessage(message, 'green-toast', success)
 }
-
 
 function clearFocus() {
     document.body.focus()

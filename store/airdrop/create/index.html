@@ -21,15 +21,18 @@
                        maxlength="32"
                        oninput="this.value = this.value.toLowerCase().replace(/[^a-z0-9_]/g, '')"
                        ng-model="promoCode"
-                       placeholder="{{str.promo_code}}">
+                       placeholder=" ">
+                <label for="promo">{{str.promo_code}}</label>
             </div>
             <div class="row input-wrapper">
                 <div ng-style="getLogo(domain)"></div>
                 <input type="number"
+                       id="amount"
                        autocapitalize="off"
                        autocomplete="off"
                        ng-model="amount"
-                       placeholder="{{str.amount}}">
+                       placeholder=" ">
+                <label for="amount">{{str.amount}}</label>
                 <button ng-click="setMax()"
                         ng-hide="account.balance == 0">
                     {{str.max}}

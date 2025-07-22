@@ -87,11 +87,6 @@ function openWallet($scope) {
         })*/
     }
 
-    $scope.refresh = function () {
-        loadTokens()
-        loadTrans()
-    }
-
     $scope.selectTran = function (tran) {
         openTran(tran.next_hash)
     }
@@ -103,6 +98,20 @@ function openWallet($scope) {
             $scope.trans = $scope.groupByTimePeriod(response.trans)
             $scope.$apply()
         })
+    }
+
+    function loadAirdrops() {
+        postContract("mfm-airdrop", "list", {
+        }, function (response) {
+            $scope.top_airdrops = response.top_airdrops
+            $scope.$apply()
+        })
+    }
+
+    $scope.refresh = function () {
+        loadTokens()
+        loadTrans()
+        loadAirdrops()
     }
 
     if (wallet.address() != "") {

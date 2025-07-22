@@ -1,6 +1,9 @@
 function addSearch($scope) {
-    trackCall(arguments)
 
+    $scope.clear = function () {
+        $scope.search_text = ""
+        $scope.search()
+    }
 
     $scope.search = function () {
         postContract("mfm-token", "search", {
@@ -11,15 +14,13 @@ function addSearch($scope) {
         })
     }
 
-    $scope.refresh = function () {
-        $scope.recent = storage.getStringArray(storageKeys.search_history).reverse()
-    }
-
-    $scope.clear = function () {
-        $scope.search_text = ""
-        $scope.search()
-    }
-
     $scope.search()
-    $scope.refresh()
+}
+
+function openSearchDialog(success) {
+    trackCall(arguments)
+    showDialog("search", success, function ($scope) {
+        addSearch($scope)
+        $scope.openTokenProfile = $scope.close
+    })
 }

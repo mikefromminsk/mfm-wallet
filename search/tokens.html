@@ -1,5 +1,5 @@
 <div class="row ph16 mt8 align-start-center text2">
-  <p class="flex ml8">{{str.name}}</p>
+  <p class="flex">{{str.name}}</p>
   <p class="flex-10 row align-end">{{str.price}}</p>
   <p class="flex-20 row align-end">{{str._24h}}</p>
 </div>
@@ -15,3 +15,9 @@
     </p>
   </div>
 </div>
+<div class="col align-center-center text1 text-gray"
+     ng-hide="tokens.length > 0"
+     style="height: 200px">
+  {{str.there_is_no_tokens_yet}}
+</div>
+<div></div>

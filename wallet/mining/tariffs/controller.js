@@ -6,28 +6,26 @@ function openMinerTariffs(domain, success) {
         $scope.tariffs = [
             {
                 title: "Starter",
-                speed: 10000,
+                speed: 100000,
                 tariff: 0.0001
             },
             {
                 title: "Standard",
-                speed: 100000,
+                speed: 1000000,
                 tariff: 0.001
             },
             {
                 title: "Pro",
-                speed: 1000000,
+                speed: 10000000,
                 tariff: 0.01
             },
         ]
 
-        $scope.setTariff = function () {
+        $scope.setTariff = function (tariff) {
             postContract("mfm-miner", "set_tariff", {
-                domain: domain,
                 address: wallet.address(),
-            }, function (response) {
-                showSuccess(str.success)
-            })
+                tariff: tariff,
+            }, $scope.close)
         }
 
     })

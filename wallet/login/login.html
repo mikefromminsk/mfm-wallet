@@ -1,6 +1,7 @@
 <div class="flex col">
     <div class="col input-content">
-        <p>{{str.save_this_phrase_for_access_the_wallet}}</p>
+        <p ng-show="validateBip39(mnemonic)">{{str.save_this_phrase_for_access_the_wallet}}</p>
+        <p ng-hide="validateBip39(mnemonic)">{{str.enter_your_secret_phrase_for_access_the_wallet}}</p>
         <div class="m0 p16">
             <div class="row">
                     <textarea id="seed_phrase"
@@ -11,7 +12,7 @@
                               autocomplete="off"
                               ng-model="mnemonic"
                               oninput="this.value = this.value.toLowerCase().replace(/[^a-z0-9 ]/g, '')"
-                              placeholder="{{str.seed_phrase}}"></textarea>
+                              placeholder="{{str.secret_12_words}}"></textarea>
                 <div class="row primary-button ripple m0 align-center-center relative"
                      ng-style="{'background-color': copied ? 'var(--black)' : 'var(--accent)'}"
                      ng-click="copySeed(mnemonic)">
@@ -19,7 +20,7 @@
                     <img class="img32 img-white" src="/mfm-wallet/img/copy.svg">
                 </div>
             </div>
-            <p class="text-red" ng-show="!validateBip39(mnemonic)">{{str.phrase_must_have_12_words}}</p>
+            <p class="text-red" ng-show="mnemonic != '' && !validateBip39(mnemonic)">{{str.phrase_must_have_12_words}}</p>
         </div>
         <div class="row align-start-center gap4">
             <p>{{str.agree_to}}</p>
@@ -33,5 +34,8 @@
             <div class="focus" ng-show="copied && isNotChecked('login')" ng-click="check('login')"></div>
             {{str.accept_and_login}}
         </div>
+
+        <div class="nowrap-disabled"
+             ng-include="'/mfm-wallet/wallet/login/faq/' + getLanguage() + '.html'"></div>
     </div>
 </div>

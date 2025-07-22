@@ -1,6 +1,6 @@
 function addFormats($scope) {
     $scope.round = function (num, precision) {
-        const factor = Math.pow(10, precision || 4)
+        const factor = Math.pow(10, precision == null ? 4 : precision)
         return (Math.ceil(num * factor) / factor)
     }
 
@@ -121,7 +121,7 @@ function addFormats($scope) {
             return +(Math.round(num + "e+" + precision) + "e-" + precision);
         }
 
-        let diff = (seconds < 1000000000 ? seconds : new Date().getTime() / 1000  - seconds)
+        let diff = (seconds < 1000000000 ? seconds : new Date().getTime() / 1000 - seconds)
         let string = ""
         if (diff < 60) {
             string = round(diff, 0)

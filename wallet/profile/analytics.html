@@ -3,14 +3,10 @@
     <div class="row">
         <p class="flex text2">{{str.total_sypply}}</p>
         <p>{{formatAmount(token.supply, token.domain)}}</p>
-    </div><!--
+    </div>
     <div class="row">
         <p class="flex text2">{{str.circulation_supply}}</p>
-        <p>{{formatPercent((1 - (owner.balance / token.supply)) * 100, 2)}}</p>
-    </div>-->
-    <div class="row">
-        <p class="flex text2">{{str.mining}}</p>
-        <p>{{formatAmount(round(mining.balance, 1))}} ({{formatPercent(getMiningYearPercent(mining.delegate))}}/{{str.year}})</p>
+        <p>{{formatAmount(token.supply - mining.balance, token.domain, 0)}}</p>
     </div>
     <div class="row" ng-show="token.difficulty > 0">
         <p class="text2">{{str.difficulty}}</p>

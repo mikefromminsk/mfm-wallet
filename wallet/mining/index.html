@@ -1,6 +1,6 @@
 <md-dialog class="fill col">
     <div class="row header align-start-center">
-        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="openMining(domain)">
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="openMining(token_account.domain)">
             <img class="img16 img-gray400" src="/mfm-wallet/img/mining.svg">
         </div>
         <div class="flex row align-center-center gap8">
@@ -14,16 +14,17 @@
         <div class="flex col block">
             <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
             <div class="input-content">
-                <!--<ng-include src="'/mfm-wallet/wallet/profile/chart/chart.html'"></ng-include>-->
-
                 <div class="col gap16">
                     <div class="col align-center-center gap16" style="padding: 40px 0 0 0">
                         <div class="row gap8 align-start-center">
-                            <div ng-style="getLogo(domain)"></div>
+                            <div ng-style="getLogo(token_account.domain)"></div>
                             <p class="text0">{{formatAmount(token_account.balance)}}</p>
                             <p class="text0">{{formatDomain(token_account.domain)}}</p>
                         </div>
-                        <p class="text1">{{formatAmount(gas_account.balance, wallet.gas_domain)}}</p>
+                        <div class="row gap8 align-start-center">
+                            <div ng-style="getLogo(wallet.gas_domain)"></div>
+                            <p class="text1">{{formatAmount(gas_account.balance, wallet.gas_domain)}}</p>
+                        </div>
                     </div>
                     <div class="row mh8">
                         <div class="flex row align-center">
@@ -36,14 +37,14 @@
                     </div>
                     <div class="row">
                         <button class="flex"
-                                ng-click="openMinerTariffs(domain)"
+                                ng-click="openMinerTariffs(domain, setTariff)"
                                 ng-disabled="gas_account.balance == 0">
                             {{str.set_tariff}}
                         </button>
                         <button class="flex"
-                                ng-click="setDomain()"
+                                ng-click="openSearchDialog(setDomain)"
                                 ng-disabled="gas_account.balance == 0">
-                            {{str.set_domain}}
+                            {{str.set_token}}
                         </button>
                     </div>
                 </div>
@@ -58,11 +59,11 @@
                 </div>
                 <div class="row">
                     <p class="flex text2">{{str.tariff_speed}}</p>
-                    <p>{{formatAmount(miner_account.tariff * 10000 * 10000, str.hash_per_min)}}</p>
+                    <p>{{formatAmount(miner_account.tariff * 100000 * 10000, str.hash_per_min)}}</p>
                 </div>
                 <div class="row">
                     <p class="flex text2">{{str.chance_to_mine}}</p>
-                    <p>{{formatPercent((miner_account.tariff * 10000 * 10000) / token.difficulty * 100, 2)}}</p>
+                    <p>{{formatPercent((miner_account.tariff * 100000 * 10000) / token.difficulty * 100, 2)}}</p>
                 </div>
                 <div class="row">
                     <p class="flex text2">{{str.last_reward}}</p>
@@ -70,27 +71,38 @@
                 </div>
                 <div class="row">
                     <p class="flex text2">{{str.predicted_profit}}</p>
-                    <p>{{formatAmount((miner_account.tariff * 10000 * 10000) / token.difficulty * (60 * 24 * 7) * last_reward.amount, domain)}}</p>
+                    <p>{{formatAmount((miner_account.tariff * 100000 * 10000) / token.difficulty * (60 * 24 * 7) * last_reward.amount, domain)}}</p>
                 </div>
                 <div class="row">
                     <p class="flex text2">{{str.predicted_profit}}</p>
-                    <p>{{formatAmount((miner_account.tariff * 10000 * 10000) / token.difficulty * (60 * 24 * 7) * last_reward.amount * token.price, wallet.gas_domain)}}</p>
+                    <p>{{formatAmount((miner_account.tariff * 100000 * 10000) / token.difficulty * (60 * 24 * 7) * last_reward.amount * token.price, wallet.gas_domain)}}</p>
+                </div>
+                <div class="row">
+                    <p class="flex text2">{{str.cost_price}}</p>
+                    <p>{{formatAmount(max(0.0001, 1 / last_reward.amount * (0.0003  + max(0.0001, token.difficulty / 10000000))), wallet.gas_domain)}}</p>
                 </div>
 
+                <div ng-show="accounts && accounts.length > 0">
+                    <p class="text1 mb8">{{str.miner_balances}}</p>
+                    <ng-include src="'/mfm-wallet/wallet/accounts.html?v=2'"></ng-include>
+                </div>
                 <div class="nowrap-disabled"
                      ng-include="'/mfm-wallet/wallet/mining/faq/' + getLanguage() + '.html'"></div>
 
-                <!--<div class="flex primary-button"
-                     ng-click="openMining(domain)">
-                    mining in browser
-                </div>-->
+                <p class="text1" ng-show="trans">{{str.last_rewards}}</p>
+                <ng-include src="'/mfm-wallet/wallet/trans.html?v=2'"></ng-include>
+                <div class="col align-center-center text1 text-gray"
+                     ng-hide="trans.length > 0"
+                     style="height: 100px">
+                    {{str.there_is_no_history_yet}}
+                </div>
             </div>
             <!--<div class="nowrap-disabled m16"
                  ng-include="'/mfm-wallet/wallet/mining/faq/' + getLanguage() + '.html'"></div>-->
         </div>
     </div>
     <div class="row ph16 pt16">
-        <p class="flex text2">{{str.miner_balance}}</p>
+        <p class="flex text2">{{str.miner_balance}} ({{formatAddress(wallet.MINER_ADDRESS)}})</p>
         <p>{{formatAmount(miner_account.balance, wallet.gas_domain)}}</p>
     </div>
     <div class="primary-button"

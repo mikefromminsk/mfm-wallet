@@ -1,0 +1,45 @@
+<md-dialog class="fill col">
+    <div class="row header align-start-center">
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="openSupport()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/support.svg">
+        </div>
+        <div class="flex row align-center">
+            {{str.withdrawal}} {{formatDomain(wallet.gas_domain)}}</p>
+        </div>
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+        </div>
+    </div>
+    <div class="flex col scroll align-start-center">
+        <div class="flex col block input-content">
+            <div class="row input-wrapper">
+                <img class="img16 img-gray400" src="/mfm-wallet/img/user-circle.svg">
+                <input type="text"
+                       id="withdrawal_address"
+                       ng-model="withdrawal_address">
+                <label for="withdrawal_address">{{str.address}}</label>
+            </div>
+            <div class="row input-wrapper">
+                <div ng-style="getLogo(domain)"></div>
+                <input type="number"
+                       id="amount"
+                       ng-model="amount"
+                       placeholder=" ">
+                <label for="amount">{{str.amount}} {{formatAmount(domain)}}</label>
+                <button ng-click="setMax()"
+                        ng-hide="balance == 0">
+                    {{str.max}}
+                </button>
+            </div>
+            <div ng-class="{'text-red': balance < amount || balance == 0}">
+                {{str.available}}: {{formatAmount(balance, domain)}}
+            </div>
+            <div class="primary-button"
+                    ng-click="withdrawal()"
+                    ng-disabled="!withdrawal_address || withdrawal_address.length < 64 || !amount || amount > balance">
+                {{str.withdrawal}}
+            </div>
+            <div></div>
+        </div>
+    </div>
+</md-dialog>

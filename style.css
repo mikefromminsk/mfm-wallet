@@ -70,7 +70,7 @@ a:active {
 }
 
 .input-content > * {
-    padding: 8px 16px 8px 16px;
+    margin: 16px 16px 8px 16px;
 }
 
 .input-content > *:first-child {
@@ -85,6 +85,23 @@ a:active {
     position: relative;
 }
 
+.input-wrapper label {
+    position: absolute;
+    left: 42px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #777;
+    background: var(--black);
+    padding: 0 4px;
+    transition: 0.2s;
+    pointer-events: none;
+}
+
+.input-wrapper input:focus + label,
+.input-wrapper input:not(:placeholder-shown) + label {
+    transform: translateY(-32px) scale(0.9);
+}
+
 input:disabled {
     pointer-events: none;
     background-color: rgba(0, 0, 0, 0.05);
@@ -97,10 +114,6 @@ input:disabled {
     top: 50%;
     transform: translateY(-50%);
     left: 8px;
-}
-
-.input-content > .input-wrapper > *:first-child {
-    left: 26px;
 }
 
 input {
@@ -123,8 +136,8 @@ input {
 .input-wrapper > button {
     border: none;
     position: absolute;
-    right: 20px;
-    top: 17px;
+    right: 8px;
+    top: 8px;
 }
 
 textarea {
@@ -141,7 +154,7 @@ textarea {
 }
 
 .input-wrapper > input:disabled {
-    color: var(--gray300);
+    color: var(--gray200);
 }
 
 input::placeholder {
