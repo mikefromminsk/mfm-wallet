@@ -3,7 +3,7 @@
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="openSupport()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/support.svg">
         </div>
-        <div class="flex row align-center">{{str.deposit}}</div>
+        <div class="flex row align-center">{{str.airdrop}}</div>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
         </div>
@@ -11,19 +11,21 @@
     <div class="flex col scroll align-start-center">
         <div class="flex col block input-content">
             <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
-            <div class="row input-wrapper">
-                <div ng-style="getLogo(domain)"></div>
-                <input type="text"
-                       id="token_name"
-                       autocapitalize="none"
-                       autocomplete="off"
-                       class="uppercase"
-                       ng-model="domain"
-                       placeholder=" ">
-                <label for="token_name">{{str.token_name}}</label>
+            <div class="col gap16">
+                <p>1. Добавьте в кошелек {{formatDomain(domain)}}</p>
+                <div class="row align-end-center">
+                    <button class="border-gray p8"
+                            ng-click="openTokenProfile(domain, refresh)">
+                        {{str.add_to_wallet}}
+                    </button>
+                </div>
             </div>
 
             <div></div>
         </div>
+    </div>
+    <div class="primary-button"
+         ng-click="getReward()">
+        {{str.get_reward}}
     </div>
 </md-dialog>

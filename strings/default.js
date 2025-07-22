@@ -375,3 +375,7 @@ str.miner_balances = "Miner balances";
 str.last_rewards = "Last rewards";
 str.cost_price = "Cost price";
 str.report_a_bug = "Report a bug";
+str.budget = "Budget";
+str.participants = "Participants";
+str.reward_per_person = "Reward per person";
+str.get_reward = "Get reward";

@@ -1,6 +1,6 @@
 function openWithdrawal(domain, success) {
     trackCall(arguments)
-    showDialog("withdrawal", success, function ($scope) {
+    showDialog("wallet/withdrawal", success, function ($scope) {
             $scope.domain = domain
             $scope.withdrawal_address = ""
             $scope.amount = ""

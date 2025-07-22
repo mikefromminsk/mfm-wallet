@@ -28,11 +28,9 @@
                 </div>
                 <div class="row align-start-end">
                     <div class="flex p16 col align-start-center ripple"
-                         style="position: relative"
-                         ng-click="openDeposit(wallet.gas_domain, refresh)">
-                        <div class="focus" ng-show="isNotChecked('deposit')" ng-click="check('deposit')"></div>
-                        <img class="img16 img-gray" src="/mfm-wallet/img/arrow-down.svg">
-                        <p class="mt8 text2">{{str.deposit}}</p>
+                         ng-click="openPool(wallet.vavilon, refresh)">
+                        <img class="img16 img-gray" src="/mfm-wallet/img/exchange.svg">
+                        <p class="mt8 text2">{{str.swap}}</p>
                     </div>
                     <div class="flex p16 col align-start-center ripple"
                          ng-click="openMinerFarm(wallet.vavilon, refresh)">
@@ -40,11 +38,12 @@
                         <p class="mt8 text2">{{str.mining}}</p>
                     </div>
                     <div class="flex p16 col align-start-center ripple"
-                         ng-click="openPool(wallet.vavilon, refresh)">
-                        <img class="img16 img-gray" src="/mfm-wallet/img/exchange.svg">
-                        <p class="mt8 text2">{{str.swap}}</p>
+                         ng-click="openSend(wallet.gas_domain, null, null, refresh)">
+                        <img class="img16 img-gray" src="/mfm-wallet/img/send.svg">
+                        <p class="mt8 text2">{{str.send}}</p>
                     </div>
                 </div>
+                <ng-include ng-show="top_airdrops" src="'/mfm-wallet/wallet/airdrop/airdrops.html?v=2'"></ng-include>
                 <div class="col gap16" ng-hide="!wallet.address()">
                     <ng-include src="'/mfm-wallet/wallet/accounts.html?v=2'"></ng-include>
                     <div class="primary-button back-pay mh0 mb0 mt8" ng-click="openLaunchToken(refresh)">

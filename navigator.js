@@ -303,8 +303,8 @@ function addNavigator($scope) {
         openAirdropAdd(domain, success)
     }
 
-    $scope.openAirdropGet = function (domain, success) {
-        openAirdropGet(domain, success)
+    $scope.openAirdrop = function (domain, success) {
+        openAirdrop(domain, success)
     }
 
     $scope.openLanding = function () {

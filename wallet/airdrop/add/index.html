@@ -3,7 +3,7 @@
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="openSupport()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/support.svg">
         </div>
-        <div class="flex row align-center">{{str.deposit}}</div>
+        <div class="flex row align-center">{{str.new_airdrop}}</div>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
         </div>
@@ -11,19 +11,52 @@
     <div class="flex col scroll align-start-center">
         <div class="flex col block input-content">
             <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
+
             <div class="row input-wrapper">
                 <div ng-style="getLogo(domain)"></div>
-                <input type="text"
-                       id="token_name"
-                       autocapitalize="none"
+                <input type="number"
+                       id="budget"
+                       autocapitalize="off"
                        autocomplete="off"
-                       class="uppercase"
-                       ng-model="domain"
+                       ng-model="budget"
                        placeholder=" ">
-                <label for="token_name">{{str.token_name}}</label>
+                <label for="budget">{{str.budget}}</label>
+                <button ng-click="setMax()"
+                        ng-hide="!account || account.balance == 0">
+                    {{str.max}}
+                </button>
+            </div>
+            <div ng-class="{'text-red': !account || account.balance < amount || account.balance == 0}">
+                {{str.available}}: {{formatAmount(account.balance, domain)}}
+            </div>
+
+            <div class="row input-wrapper">
+                <img class="img-white" src="/mfm-wallet/img/user-circle.svg">
+                <input type="number"
+                       id="participants"
+                       autocapitalize="off"
+                       autocomplete="off"
+                       ng-model="participants"
+                       placeholder=" ">
+                <label for="participants">{{str.participants}}</label>
+            </div>
+            <div class="row">
+                <div class="flex row align-center-center border-gray p8"
+                    ng-repeat="item in [1, 10, 50, 100]"
+                    ng-click="setParticipants(item)">
+                    {{item}}
+                </div>
+            </div>
+            <div>
+                {{str.reward_per_person}}: {{formatAmount(round(budget / participants), domain)}}
             </div>
 
             <div></div>
         </div>
+    </div>
+    <div class="primary-button"
+         ng-disabled="!budget || !participants"
+         ng-click="add()">
+        {{str.new_airdrop}}
     </div>
 </md-dialog>

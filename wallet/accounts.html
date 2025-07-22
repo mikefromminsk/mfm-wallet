@@ -1,21 +1,46 @@
 <div class="col back-gray radius-default">
-    <div class="row p16 align-start-center ripple"
-         ng-repeat="account in accounts"
-         ng-click="selectAccount(account.domain)"
-         ng-show="account">
-        <div ng-style="getLogo(account.domain)"></div>
-        <div class="flex col ml16">
-            <p>{{formatDomain(account.domain)}}</p>
-            <div class="row mt4 text2">
-                <p class="">{{formatPrice(account.token.price)}}</p>
-                <p class="ml4" ng-class="percentColor(account.token.price24)">
-                    {{formatChange(account.token.price24)}}
-                </p>
+    <div class="col"
+         ng-repeat="account in accounts">
+        <div class="row p16 align-start-center ripple"
+             ng-click="selectAccount(account.domain)"
+             ng-show="account">
+            <div ng-style="getLogo(account.domain)"></div>
+            <div class="flex col ml16">
+                <p>{{formatDomain(account.domain)}}</p>
+                <div class="row mt4 text2">
+                    <p class="">{{formatPrice(account.token.price)}}</p>
+                    <p class="ml4" ng-class="percentColor(account.token.price24)">
+                        {{formatChange(account.token.price24)}}
+                    </p>
+                </div>
+            </div>
+            <div class="col align-end-end">
+                <p>{{formatAmount(account.balance)}}</p>
+                <p class="mt4 text2">{{formatPrice(account.token.price * account.balance)}}</p>
             </div>
         </div>
-        <div class="col align-end-end">
-            <p>{{formatAmount(account.balance)}}</p>
-            <p class="mt4 text2">{{formatPrice(account.token.price * account.balance)}}</p>
+        <div class="row" ng-show="account.domain == wallet.gas_domain">
+            <div class="flex row align-center-center p16 ripple"
+                 ng-click="openDeposit(wallet.gas_domain, refresh)">
+                {{str.deposit}}
+            </div>
+            <div class="flex row align-center-center p16 ripple"
+                 ng-click="openWithdrawal(wallet.gas_domain, refresh)">
+                {{str.withdrawal}}
+            </div>
         </div>
+        <div class="col" ng-show="account.domain != wallet.gas_domain && account.address == wallet.address()">
+            <div class="row text2">
+                <div class="flex row align-center-center p8 ripple"
+                     ng-click="openMinerFarm(account.domain, refresh)">
+                    {{str.mining}}
+                </div>
+                <div class="flex row align-center-center p8 ripple"
+                     ng-click="openAirdropAdd(account.domain, refresh)">
+                    {{str.airdrop}}
+                </div>
+            </div>
+        </div>
+        <div class="divider" ng-show="$index != accounts.length -1 "></div>
     </div>
 </div>

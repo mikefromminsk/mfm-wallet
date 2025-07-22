@@ -423,7 +423,7 @@ md-radio-button.md-default-theme .md-on, md-radio-button .md-on {
 }
 
 .divider {
-    background-color: var(--gray100);
+    background-color: var(--gray200);
     width: 100%;
     min-height: 1px;
     margin-top: 4px;
