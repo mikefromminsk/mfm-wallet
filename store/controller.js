@@ -1,6 +1,4 @@
-function openStore($scope) {
-    trackCall(arguments)
-
+function addStore($scope) {
     $scope.apps = {}
 
     function addApp(categoryName, domain, backgroundColor, link){

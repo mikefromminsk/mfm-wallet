@@ -1,6 +1,4 @@
-function openWallet($scope) {
-    trackCall(arguments)
-
+function addWallet($scope) {
     $scope.domain = wallet.gas_domain
     $scope.host = location.host
 

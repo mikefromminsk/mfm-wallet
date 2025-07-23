@@ -1,5 +1,4 @@
-function addSearch($scope) {
-
+function openSearch($scope) {
     $scope.clear = function () {
         $scope.search_text = ""
         $scope.search()
@@ -20,7 +19,7 @@ function addSearch($scope) {
 function openSearchDialog(success) {
     trackCall(arguments)
     showDialog("search", success, function ($scope) {
-        addSearch($scope)
+        openSearch($scope)
         $scope.openTokenProfile = $scope.close
     })
 }

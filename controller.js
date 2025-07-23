@@ -8,11 +8,11 @@ function start($scope) {
     $scope.selectTab = function (tab) {
         $scope.selectedIndex = tab
         if (tab == 0) {
-            openStore($scope)
+            addStore($scope)
         } else if (tab == 1) {
-            openWallet($scope)
+            addWallet($scope)
         } else if (tab == 2) {
-            addSearch($scope)
+            openSearch($scope)
         }
         swipeToRefresh($scope.swipeToRefresh)
     }
@@ -39,17 +39,14 @@ window.finishAutoOpening = false
 
 function loaded() {
     if (!finishAutoOpening) {
-        const hash = window.location.hash.substring(1)
-        const params = new URLSearchParams(hash)
-        for (const [key, value] of params) {
-            if (key.startsWith('open')) {
-                const functionName = key
-                if (typeof window[functionName] === 'function') {
+        for (const [functionName, value] of new URLSearchParams(window.location.hash.substring(1))) {
+            if (functionName.startsWith('open')) {
+                if (typeof window[functionName] === 'function' && functionName != 'openWallet') {
                     setTimeout(function () {
                         window[functionName](value)
                     }, 100)
-                    window.finishAutoOpening = true
                 }
+                window.finishAutoOpening = true
             }
         }
     }
