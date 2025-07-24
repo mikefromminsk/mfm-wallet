@@ -1,10 +1,10 @@
 <md-dialog class="fill col">
     <div class="row header align-start-center">
-        <!--<img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/support.svg" ng-click="openSupport()">-->
+        <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/support.svg" ng-click="openSupport()">
         <div class="flex row align-center">{{str.login_via_telegram}}</div>
-        <!--<div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
-        </div>-->
+        </div>
     </div>
     <div class="flex col scroll align-start-center">
         <div class="flex col block">
@@ -16,7 +16,8 @@
                  ng-include="'/mfm-wallet/wallet/login/telegram/faq/' + getLanguage() + '.html'"></div>
         </div>
     </div>
-    <div class="primary-button" ng-click="openWeb('https://t.me/vavilon_org_bot')">
+    <div class="primary-button"
+         ng-click="close()">
         {{str.login_via_telegram}}
     </div>
 </md-dialog>
