@@ -86,7 +86,7 @@ function openMinerFarm(domain, success) {
         }
 
         function loadProfile(domain) {
-            getAccount(domain, function (response) {
+            getProfile(domain, function (response) {
                 $scope.token = response.token
                 $scope.account = response.gas_account
                 $scope.$apply()

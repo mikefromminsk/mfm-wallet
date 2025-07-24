@@ -54,10 +54,10 @@
      ng-style="{'visibility': showBody ? 'visible' : 'hidden'}">
     <md-tabs class="flex col" md-selected="selectedIndex">
         <md-tab label="0">
-            <ng-include src="'/mfm-wallet/store/index.html?v=2'"></ng-include>
+            <ng-include src="'/mfm-wallet/store/index.html?v=4'"></ng-include>
         </md-tab>
         <md-tab label="1">
-            <ng-include src="'/mfm-wallet/wallet/index.html?v=2'"></ng-include>
+            <ng-include src="'/mfm-wallet/wallet/index.html?v=4'"></ng-include>
         </md-tab>
         <md-tab label="2">
             <div class="row input-wrapper m16">
@@ -78,7 +78,7 @@
             <div class="flex col scroll align-start-center">
                 <div class="flex col block ph8">
                     <img class="refresh-icon img-gray" src="/mfm-wallet/img/reload.svg">
-                    <ng-include src="'/mfm-wallet/search/tokens.html?v=2'"></ng-include>
+                    <ng-include src="'/mfm-wallet/search/tokens.html?v=4'"></ng-include>
                 </div>
             </div>
         </md-tab>
@@ -119,59 +119,60 @@
 <script src="/mfm-wallet/utils/identicon.js"></script>
 <script src="/mfm-wallet/utils/telegram-web-app.js"></script>
 
-<link href="colors.css?v=2" rel="stylesheet">
-<link href="style.css?v=2" rel="stylesheet">
-<link href="style_async.css?v=2" rel="stylesheet">
+<link href="colors.css?v=4" rel="stylesheet">
+<link href="style.css?v=4" rel="stylesheet">
+<link href="style_async.css?v=4" rel="stylesheet">
 
 <link href="/mfm-flex/flex.css" rel="stylesheet">
 <link href="/mfm-flex/shorts.css" rel="stylesheet">
 
 <script src="/crypto-js/crypto-js.js"></script>
-<script src="/mfm-wallet/utils/storage.js?v=2"></script>
-<script src="/mfm-wallet/utils/back_utils.js?v=2"></script>
+<script src="/mfm-wallet/utils/storage.js?v=4"></script>
+<script src="/mfm-wallet/utils/back_utils.js?v=4"></script>
 
-<script src="/mfm-wallet/utils/formats.js?v=2"></script>
-<script src="/mfm-wallet/navigator.js?v=2"></script>
-<script src="/mfm-wallet/utils/front_utils.js?v=2"></script>
+<script src="/mfm-wallet/utils/formats.js?v=4"></script>
+<script src="/mfm-wallet/navigator.js?v=4"></script>
+<script src="/mfm-wallet/utils/front_utils.js?v=4"></script>
 
-<script src="/mfm-wallet/strings/default.js?v=2"></script>
-<script async src="/mfm-wallet/dialogs/success/controller.js?v=2"></script>
+<script src="/mfm-wallet/strings/default.js?v=4"></script>
+<script async src="/mfm-wallet/dialogs/success/controller.js?v=4"></script>
 
-<script src="controller.js?v=2"></script>
-<script src="/mfm-wallet/wallet/login/controller.js?v=2"></script>
-<script src="/mfm-wallet/wallet/controller.js?v=2"></script>
-<script src="/mfm-wallet/search/controller.js?v=2"></script>
-<script src="/mfm-wallet/store/controller.js?v=2"></script>
+<script src="/mfm-wallet/wallet/login/controller.js?v=4"></script>
+<script src="/mfm-wallet/wallet/login/telegram/controller.js?v=4"></script>
+<script src="/mfm-wallet/wallet/controller.js?v=4"></script>
+<script src="/mfm-wallet/search/controller.js?v=4"></script>
+<script src="/mfm-wallet/store/controller.js?v=4"></script>
+<script src="/mfm-wallet/controller.js?v=4"></script>
 <script>
     controller(start)
 </script>
-<script async onload="loaded()" src="/mfm-wallet/dialogs/pin/controller.js?v=2"></script>
-<script async onload="loaded()" src="/mfm-wallet/dialogs/ask/controller.js?v=2"></script>
-<script async onload="loaded()" src="/mfm-wallet/wallet/tran/controller.js?v=2"></script>
-<script async onload="loaded()" src="/mfm-wallet/wallet/launch/distribution/controller.js?v=2"></script>
-<script async onload="loaded()" src="/mfm-wallet/wallet/launch/name/controller.js?v=2"></script>
-<script async onload="loaded()" src="/mfm-wallet/wallet/launch/logo/controller.js?v=2"></script>
-<script async onload="loaded()" src="/mfm-wallet/wallet/profile/chart/controller.js?v=2"></script>
-<script async onload="loaded()" src="/mfm-wallet/wallet/profile/controller.js?v=2"></script>
-<script async onload="loaded()" src="/mfm-wallet/wallet/send/controller.js?v=2"></script>
-<script async onload="loaded()" src="/mfm-wallet/wallet/settings/analytics/controller.js?v=2"></script>
-<script async onload="loaded()" src="/mfm-wallet/wallet/settings/controller.js?v=2"></script>
-<script async onload="loaded()" src="/mfm-wallet/wallet/settings/lang/controller.js?v=2"></script>
-<script async onload="loaded()" src="/mfm-wallet/wallet/settings/review/controller.js?v=2"></script>
-<script async onload="loaded()" src="/mfm-wallet/wallet/settings/reviews/controller.js?v=2"></script>
-<script async onload="loaded()" src="/mfm-wallet/wallet/settings/version/controller.js?v=2"></script>
-<script async onload="loaded()" src="/mfm-wallet/wallet/mining/miner/controller.js?v=2"></script>
-<script async onload="loaded()" src="/mfm-wallet/wallet/mining/tariffs/controller.js?v=2"></script>
-<script async onload="loaded()" src="/mfm-wallet/wallet/mining/controller.js?v=2"></script>
-<script async onload="loaded()" src="/mfm-wallet/wallet/pool/controller.js?v=2"></script>
-<script async onload="loaded()" src="/mfm-wallet/store/airdrop/controller.js?v=2"></script>
-<script async onload="loaded()" src="/mfm-wallet/store/airdrop/create/controller.js?v=2"></script>
-<script async onload="loaded()" src="/mfm-wallet/wallet/deposit/controller.js?v=2"></script>
-<script async onload="loaded()" src="/mfm-wallet/wallet/exchange/controller.js?v=2"></script>
-<script async onload="loaded()" src="/mfm-wallet/wallet/exchange/bot/controller.js?v=2"></script>
-<script async onload="loaded()" src="/mfm-wallet/wallet/dividend/controller.js?v=2"></script>
-<script async onload="loaded()" src="/mfm-wallet/wallet/airdrop/add/controller.js?v=2"></script>
-<script async onload="loaded()" src="/mfm-wallet/wallet/airdrop/get/controller.js?v=2"></script>
-<script async onload="loaded()" src="/mfm-wallet/wallet/withdrawal/controller.js?v=2"></script>
+<script async onload="loaded()" src="/mfm-wallet/dialogs/pin/controller.js?v=4"></script>
+<script async onload="loaded()" src="/mfm-wallet/dialogs/ask/controller.js?v=4"></script>
+<script async onload="loaded()" src="/mfm-wallet/wallet/tran/controller.js?v=4"></script>
+<script async onload="loaded()" src="/mfm-wallet/wallet/launch/distribution/controller.js?v=4"></script>
+<script async onload="loaded()" src="/mfm-wallet/wallet/launch/name/controller.js?v=4"></script>
+<script async onload="loaded()" src="/mfm-wallet/wallet/launch/logo/controller.js?v=4"></script>
+<script async onload="loaded()" src="/mfm-wallet/wallet/profile/chart/controller.js?v=4"></script>
+<script async onload="loaded()" src="/mfm-wallet/wallet/profile/controller.js?v=4"></script>
+<script async onload="loaded()" src="/mfm-wallet/wallet/send/controller.js?v=4"></script>
+<script async onload="loaded()" src="/mfm-wallet/wallet/settings/analytics/controller.js?v=4"></script>
+<script async onload="loaded()" src="/mfm-wallet/wallet/settings/controller.js?v=4"></script>
+<script async onload="loaded()" src="/mfm-wallet/wallet/settings/lang/controller.js?v=4"></script>
+<script async onload="loaded()" src="/mfm-wallet/wallet/settings/review/controller.js?v=4"></script>
+<script async onload="loaded()" src="/mfm-wallet/wallet/settings/reviews/controller.js?v=4"></script>
+<script async onload="loaded()" src="/mfm-wallet/wallet/settings/version/controller.js?v=4"></script>
+<script async onload="loaded()" src="/mfm-wallet/wallet/mining/miner/controller.js?v=4"></script>
+<script async onload="loaded()" src="/mfm-wallet/wallet/mining/tariffs/controller.js?v=4"></script>
+<script async onload="loaded()" src="/mfm-wallet/wallet/mining/controller.js?v=4"></script>
+<script async onload="loaded()" src="/mfm-wallet/wallet/pool/controller.js?v=4"></script>
+<script async onload="loaded()" src="/mfm-wallet/store/airdrop/controller.js?v=4"></script>
+<script async onload="loaded()" src="/mfm-wallet/store/airdrop/create/controller.js?v=4"></script>
+<script async onload="loaded()" src="/mfm-wallet/wallet/deposit/controller.js?v=4"></script>
+<script async onload="loaded()" src="/mfm-wallet/wallet/exchange/controller.js?v=4"></script>
+<script async onload="loaded()" src="/mfm-wallet/wallet/exchange/bot/controller.js?v=4"></script>
+<script async onload="loaded()" src="/mfm-wallet/wallet/dividend/controller.js?v=4"></script>
+<script async onload="loaded()" src="/mfm-wallet/wallet/airdrop/add/controller.js?v=4"></script>
+<script async onload="loaded()" src="/mfm-wallet/wallet/airdrop/get/controller.js?v=4"></script>
+<script async onload="loaded()" src="/mfm-wallet/wallet/withdrawal/controller.js?v=4"></script>
 </body>
 </html>

@@ -18,10 +18,9 @@
                 <input type="text"
                        id="send_address"
                        ng-disabled="block_to_address"
-                       autocapitalize="none"
+                       autocapitalize="off"
                        autocomplete="off"
-                       maxlength="64"
-                       oninput="this.value = this.value.toLowerCase().replace(/[^a-z0-9_]/g, '')"
+                       maxlength="35"
                        ng-model="to_address"
                        placeholder=" ">
                 <label for="send_address">{{str.address}}</label>
@@ -48,11 +47,11 @@
                 </button>
             </div>
             <div ng-class="{'text-red': !account || account.balance < amount || account.balance == 0}">
-                {{str.available}}: {{formatAmount(account.balance, token.domain)}}
+                {{str.available}}: {{formatAmount(account.balance, account.domain)}}
             </div>
             <button class="primary-button"
                     ng-click="send(domain)"
-                    ng-disabled="in_progress || !to_address || to_address.length < 64 || !amount || (account.balance < amount)">
+                    ng-disabled="in_progress || !to_address || !amount || (account.balance < amount)">
                 {{str.send}}
             </button>
 

@@ -120,5 +120,9 @@ function addWallet($scope) {
     } else {
         $scope.trans = []
         $scope.showBody = true
+
+        if (getTelegramUsername() != null) {
+            openTelegramLogin("", $scope.refresh)
+        }
     }
 }

@@ -38,15 +38,17 @@ function start($scope) {
 window.finishAutoOpening = false
 
 function loaded() {
-    if (!finishAutoOpening) {
-        for (const [functionName, value] of new URLSearchParams(window.location.hash.substring(1))) {
-            if (functionName.startsWith('open')) {
-                if (typeof window[functionName] === 'function' && functionName != 'openWallet') {
-                    setTimeout(function () {
-                        window[functionName](value)
-                    }, 100)
+    if (!window.finishAutoOpening) {
+        for (const str of [window.location.hash, window.location.search]) {
+            for (const [functionName, value] of new URLSearchParams(str.substring(1))) {
+                if (functionName.startsWith('open')) {
+                    if (typeof window[functionName] === 'function' && functionName != 'openWallet') {
+                        setTimeout(function () {
+                            window[functionName](value)
+                        }, 100)
+                        window.finishAutoOpening = true
+                    }
                 }
-                window.finishAutoOpening = true
             }
         }
     }

@@ -97,7 +97,7 @@ function openMining(domain, success) {
         })
 
         function loadProfile() {
-            getAccount(domain, function (response) {
+            getProfile(domain, function (response) {
                 $scope.token = response.token
                 $scope.account = response.account
                 $scope.$apply()

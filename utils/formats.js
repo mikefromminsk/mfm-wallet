@@ -51,7 +51,6 @@ function addFormats($scope) {
 
     $scope.formatAddress = function (address) {
         if (address == null) return ""
-        if (address.length < 32) return address
         return address.substr(0, 4) + "..." + address.substr(-4)
     }
 
@@ -211,11 +210,11 @@ function addFormats($scope) {
 
     $scope.getLogo = function (domain, width) {
         if (width == null)
-            width = '32px'
+            width = 32
         let style = {
-            'width': width,
-            'height': width,
-            'min-width': width,
+            'width': width + 'px',
+            'height': width + 'px',
+            'min-width': width + 'px',
         }
         if (domain != null) {
             style['background-image'] = "url('" + $scope.getLogoLink(domain.toLowerCase()) + "')"

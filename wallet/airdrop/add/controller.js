@@ -29,7 +29,7 @@ function openAirdropAdd(domain, success) {
             $scope.participants = count
         }
 
-        getAccount(domain, function (response) {
+        getProfile(domain, function (response) {
             $scope.token = response.token
             $scope.account = response.account
             $scope.$apply()

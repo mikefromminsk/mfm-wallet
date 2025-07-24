@@ -116,6 +116,26 @@ function hash(str) {
     return CryptoJS.SHA256(str).toString()
 }
 
+function hashAddress(password) {
+    const abc = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
+    const binaryStr = atob(hash(password)); // Декодируем Base64
+    const last20Bytes = new Uint8Array(20);
+
+    // Копируем последние 20 байт (если строка короче, заполняем нулями)
+    const startPos = Math.max(0, binaryStr.length - 20);
+    for (let i = 0; i < 20; i++) {
+        const srcPos = startPos + i;
+        last20Bytes[i] = srcPos < binaryStr.length ? binaryStr.charCodeAt(srcPos) : 0;
+    }
+
+    // Конвертируем 20 байт в Base58
+    let num = last20Bytes.reduce((n, byte) => (n << 8n) + BigInt(byte), 0n);
+    let res = '';
+    while (num > 0n) res = abc[num % 58n] + res, num /= 58n;
+    return "V" + res;
+}
+
+
 function postContract(application, path, params, success, error) {
     post(location.origin + "/" + application + "/" + path, params, success, error)
 }
@@ -192,9 +212,9 @@ var wallet = {
     gas_domain: "usdt",
     vavilon: "vavilon",
     tron: "tron",
-    STAKING_ADDRESS: "cba1ac1c73a9d6b717484e774ff85845d343713580cc46b9ae57f801aef729d3",
-    MINING_ADDRESS: "e40d3d5318cc88b3874561521992c580300eeb3cc2e2a0c6c7b1a574dc1ae99c",
-    MINER_ADDRESS: "32fbfb43bb993947ed36747f564f4a54f8e9a767bb3f972fe1d3498b352e061c",
+    MINING_ADDRESS: "V3eWGQmcvKkG7bhtCv7eW1yvtwTxX",
+    MINER_ADDRESS: "V3f7tNy1QpiwH4C5J7AUDc46bidsH",
+    WITHDRAWAL_ADDESS: "V",
     BOT_PREFIX: "bot_",
     login: function (address, password, success, error) {
         postContract("mfm-token", "account", {
@@ -248,7 +268,7 @@ var wallet = {
     },
     airdrop: function (domain, promocode, success, error) {
         let password = hash(promocode)
-        let address = hash(password)
+        let address = hashAddress(password)
         wallet.reg(domain, () => {
             postContract("mfm-token", "account", {
                 domain: domain,

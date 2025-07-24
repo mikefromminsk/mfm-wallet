@@ -88,7 +88,7 @@ function openExchange(domain, is_sell) {
         }
 
         $scope.loadBaseProfile = function () {
-            getAccount(domain, function (response) {
+            getProfile(domain, function (response) {
                 $scope.token = response.token
                 $scope.$apply()
             })
@@ -162,6 +162,8 @@ function addPriceAmountTotal($scope) {
             $scope.price = price
         if ($scope.price != null && $scope.amount != null)
             $scope.total = $scope.round($scope.price * $scope.amount)
+        if ($scope.price != null && $scope.amount == null && $scope.total != null)
+            $scope.changeTotal($scope.total)
     }
 
     $scope.changeAmount = function (amount) {

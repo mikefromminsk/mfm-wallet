@@ -13,7 +13,7 @@ function openAirdropCreate(domain, success) {
 
         $scope.create = function () {
             let password = hash($scope.promoCode)
-            let address = hash(password)
+            let address = hashAddress(password)
             $scope.startRequest()
             postContract("mfm-token", "send", {
                 domain: domain,
@@ -62,7 +62,7 @@ function openAirdropCreate(domain, success) {
         }
 
         function init() {
-            getAccount(domain, function (response) {
+            getProfile(domain, function (response) {
                 $scope.token = response.token
                 $scope.account = response.account
                 $scope.$apply()

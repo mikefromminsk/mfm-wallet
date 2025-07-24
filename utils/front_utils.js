@@ -68,8 +68,12 @@ function addGlobalVars($scope, callback) {
 
 function showDialog(templateUrl, onClose, callback) {
     setTimeout(function () {
+        let path = location.pathname
+        if (!path.endsWith("/"))
+            path += "/"
+
         window.$mdDialog.show({
-            templateUrl: (templateUrl[0] == "/" ? templateUrl : location.pathname + templateUrl) + "/index.html?v=2",
+            templateUrl: (templateUrl[0] == "/" ? templateUrl : path + templateUrl) + "/index.html?v=4",
             escapeToClose: false,
             multiple: true,
             isolateScope: false,
@@ -171,22 +175,4 @@ function addPriceAmountTotal($scope) {
         if (newValue != null)
             $scope.total = $scope.round($scope.total)
     })
-}
-
-window.finishAutoOpening = false
-
-function loaded() {
-    if (!finishAutoOpening) {
-        const hash = window.location.hash.substring(1);
-        const params = new URLSearchParams(hash);
-        for (const [key, value] of params) {
-            if (key.startsWith('open')) {
-                const functionName = key;
-                if (typeof window[functionName] === 'function') {
-                    window[functionName](value);
-                    window.finishAutoOpening = true;
-                }
-            }
-        }
-    }
 }

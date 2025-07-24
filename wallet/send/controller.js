@@ -27,7 +27,7 @@ function openSend(domain, to_address, amount, success) {
                     }, function (response) {
                         storage.pushToArray(storageKeys.send_history, $scope.to_address, 3)
                         $scope.close()
-                        openTran(response.next_hash, success)
+                        openTran(response.next_hash, $scope.close)
                     }, $scope.finishRequest)
                 })
             })
@@ -44,7 +44,6 @@ function openSend(domain, to_address, amount, success) {
         function init() {
             $scope.recent = storage.getStringArray(storageKeys.send_history).reverse()
             getAccount(domain, function (response) {
-                $scope.token = response.token
                 $scope.account = response.account
                 $scope.$apply()
             })

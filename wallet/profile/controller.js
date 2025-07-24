@@ -1,5 +1,12 @@
-function getAccount(domain, success, error) {
+function getProfile(domain, success, error) {
     postContract("mfm-token", "profile", {
+        domain: domain,
+        address: wallet.address(),
+    }, success, error)
+}
+
+function getAccount(domain, success, error) {
+    postContract("mfm-token", "account", {
         domain: domain,
         address: wallet.address(),
     }, success, error)
@@ -22,10 +29,6 @@ function openTokenProfile(domain, success) {
             $scope.$apply()
         })
 
-        $scope.init = function () {
-            $scope.loadTokenProfile(domain)
-        }
-
         $scope.getMiningYearPercent = function (contract) {
             if (contract == "mfm-contract/mint10")
                 return 10;
@@ -44,14 +47,17 @@ function openTokenProfile(domain, success) {
                         to: wallet.address(),
                         pass: ":" + next_hash,
                     }, function () {
-                        $scope.init()
+                        $scope.refresh()
                     })
                 })
             })
         }
 
+        $scope.refresh = function () {
+            $scope.loadTokenProfile(domain)
+        }
 
-        $scope.init()
+        $scope.refresh()
     })
 }
 

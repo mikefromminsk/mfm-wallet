@@ -2,14 +2,23 @@
     <div class="row">
         <p class="flex text2">ID</p>
         <p>{{formatAddress(tran.next_hash)}}</p>
+        <div class="radius-default ripple" ng-click="copy(tran.next_hash)">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/copy.svg">
+        </div>
     </div>
     <div class="row" ng-hide="tran.from == wallet.address()">
         <p class="flex text2">{{str.from}}</p>
-        <p>{{formatAddress(tran.from)}}</p>
+        <p>{{tran.from}}</p>
+        <div class="radius-default ripple" ng-click="copy(tran.from)">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/copy.svg">
+        </div>
     </div>
     <div class="row" ng-hide="tran.to == wallet.address()">
         <p class="flex text2">{{str.to}}</p>
-        <p>{{formatAddress(tran.to)}}</p>
+        <p>{{tran.to}}</p>
+        <div class="radius-default ripple" ng-click="copy(tran.to)">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/copy.svg">
+        </div>
     </div>
     <div class="row">
         <p class="flex text2">{{str.amount}}</p>
