@@ -174,7 +174,8 @@ function trackCall(args) {
     if (args.callee.name.startsWith("open")) {
         let anhor = "#" + funcName + (funcParam != "" ? "=" + funcParam : "")
         historyStack.push(anhor)
-        history.pushState({}, '', anhor)
+        if (getTelegramUserId() == null)
+            history.pushState({}, '', anhor)
     }
     trackEvent(funcName, funcParam, wallet.address())
 }

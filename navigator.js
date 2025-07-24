@@ -6,7 +6,8 @@ function addNavigator($scope) {
 
     function historyBack() {
         historyStack.pop()
-        window.history.pushState({}, document.title, historyStack[historyStack.length - 1])
+        if (getTelegramUserId() == null)
+            window.history.pushState({}, document.title, historyStack[historyStack.length - 1])
     }
 
     function finish() {
@@ -54,7 +55,8 @@ function addNavigator($scope) {
     $scope.open = function (link) {
         window.finishAutoOpening = false
         historyStack.push(link)
-        history.pushState({}, '', link)
+        if (getTelegramUserId() == null)
+            history.pushState({}, '', link)
         loaded()
     }
 

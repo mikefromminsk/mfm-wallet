@@ -25,12 +25,14 @@ function start($scope) {
     $scope.selectTab($scope.selectedIndex)
 
     if (window.location.search != "") {
-        window.history.pushState({}, document.title, "/mfm-wallet")
+        if (getTelegramUserId() == null)
+            window.history.pushState({}, document.title, "/mfm-wallet")
     }
 
-    window.addEventListener('popstate', () => {
-        $scope.close()
-    })
+/*    if (getTelegramUserId() == null)
+        window.addEventListener('popstate', () => {
+            $scope.close()
+        })*/
 
     connectWs()
 }

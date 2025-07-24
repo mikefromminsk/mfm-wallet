@@ -73,7 +73,7 @@ function showDialog(templateUrl, onClose, callback) {
             path += "/"
 
         window.$mdDialog.show({
-            templateUrl: (templateUrl[0] == "/" ? templateUrl : path + templateUrl) + "/index.html?v=4",
+            templateUrl: (templateUrl[0] == "/" ? templateUrl : path + templateUrl) + "/index.html?v=5",
             escapeToClose: false,
             multiple: true,
             isolateScope: false,

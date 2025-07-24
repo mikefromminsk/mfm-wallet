@@ -6,7 +6,7 @@
     </div>
     <div class="flex col scroll align-start-center" ng-hide="wallet.address()">
         <div class="flex col block">
-            <ng-include src="'/mfm-wallet/wallet/login/login.html?v=4'"></ng-include>
+            <ng-include src="'/mfm-wallet/wallet/login/login.html?v=5'"></ng-include>
         </div>
     </div>
     <div class="flex col scroll align-start-center" ng-show="wallet.address()">
@@ -26,20 +26,20 @@
                         </div>
                     </div>
                 </div>
-                <ng-include class="m0" src="'/mfm-wallet/wallet/profile/options.html?v=4'"></ng-include>
-                <ng-include ng-show="top_airdrops && top_airdrops.length > 0" src="'/mfm-wallet/wallet/airdrop/airdrops.html?v=4'"></ng-include>
+                <ng-include class="m0" src="'/mfm-wallet/wallet/profile/options.html?v=5'"></ng-include>
+                <ng-include ng-show="top_airdrops && top_airdrops.length > 0" src="'/mfm-wallet/wallet/airdrop/airdrops.html?v=5'"></ng-include>
                 <div class="col gap16" ng-hide="!wallet.address()">
-                    <ng-include src="'/mfm-wallet/wallet/accounts.html?v=4'"></ng-include>
+                    <ng-include src="'/mfm-wallet/wallet/accounts.html?v=5'"></ng-include>
                     <div class="primary-button back-pay mh0 mb0 mt8" ng-click="openLaunchToken(refresh)">
                         {{str.launch_token}}
                     </div>
                     <div class="row primary-button back-black m0"  ng-click="openSupport()">
                         {{str.report_a_bug}}
                     </div>
-                    <ng-include src="'/mfm-wallet/search/tokens.html?v=4'"></ng-include>
+                    <ng-include src="'/mfm-wallet/search/tokens.html?v=5'"></ng-include>
                 </div>
 
-                <ng-include src="'/mfm-wallet/wallet/trans.html?v=4'"></ng-include>
+                <ng-include src="'/mfm-wallet/wallet/trans.html?v=5'"></ng-include>
                 <div class="col align-center-center text1 text-gray"
                      ng-hide="trans.length > 0"
                      style="height: 500px">
