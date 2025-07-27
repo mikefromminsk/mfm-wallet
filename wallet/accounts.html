@@ -8,7 +8,7 @@
             <div class="flex col ml16">
                 <p>{{formatDomain(account.domain)}}</p>
                 <div class="row mt4 text2">
-                    <p class="">{{formatPrice(account.token.price)}}</p>
+                    <p>{{formatPrice(account.token.price)}}</p>
                     <p class="ml4" ng-class="percentColor(account.token.price24)">
                         {{formatChange(account.token.price24)}}
                     </p>
@@ -36,7 +36,7 @@
                     {{str.bot}}
                 </div>
                 <div class="flex row align-center-center p8 ripple"
-                     ng-click="openMinerFarm(account.domain, refresh)">
+                     ng-click="openMiningProfile(account.domain, refresh)">
                     {{str.mining}}
                 </div>
                 <div class="flex row align-center-center p8 ripple"

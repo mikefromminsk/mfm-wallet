@@ -1,6 +1,8 @@
 function openExchange(domain, is_sell) {
     trackCall(arguments)
     showDialog("wallet/exchange", null, function ($scope) {
+        if (domain == wallet.gas_domain)
+            domain = wallet.vavilon
         addPriceAmountTotal($scope)
         $scope.domain = domain
         $scope.is_sell = is_sell == 1

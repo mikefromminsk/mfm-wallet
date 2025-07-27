@@ -22,8 +22,30 @@ function openAirdrop(domain, success) {
             })
         }
 
+        function loadProfile() {
+            getProfile(domain, function (response) {
+                $scope.token = response.token
+                $scope.account = response.account
+                $scope.$apply()
+            })
+        }
+
+        function loadTrans() {
+            postContract("mfm-token", "trans", {
+                address: wallet.AIRDROP_ADDRESS,
+                domain: domain,
+            }, function (response) {
+                $scope.trans = $scope.groupByTimePeriod(response.trans)
+                $scope.$apply()
+            })
+        }
+
         $scope.refresh = function () {
             getAirdrop()
+            loadProfile()
+            loadTrans()
         }
+
+        $scope.refresh()
     })
 }

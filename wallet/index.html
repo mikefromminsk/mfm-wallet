@@ -26,7 +26,23 @@
                         </div>
                     </div>
                 </div>
-                <ng-include class="m0" src="'/mfm-wallet/wallet/profile/options.html?v=5'"></ng-include>
+                <div class="row">
+                    <div class="flex p16 col align-start-center ripple"
+                         ng-click="openExchange(domain, refresh)">
+                        <img class="img16 img-gray" src="/mfm-wallet/img/exchange.svg">
+                        <p class="mt8 text2">{{str.swap}}</p>
+                    </div>
+                    <div class="flex p16 col align-start-center ripple"
+                         ng-click="openMinerFarm(refresh)">
+                        <img class="img16 img-gray" src="/mfm-wallet/img/mining.svg">
+                        <p class="mt8 text2">{{str.mining}}</p>
+                    </div>
+                    <div class="flex p16 col align-start-center ripple"
+                         ng-click="openSend(domain, null, null, refresh)">
+                        <img class="img16 img-gray" src="/mfm-wallet/img/send.svg">
+                        <p class="mt8 text2">{{str.send}}</p>
+                    </div>
+                </div>
                 <ng-include ng-show="top_airdrops && top_airdrops.length > 0" src="'/mfm-wallet/wallet/airdrop/airdrops.html?v=5'"></ng-include>
                 <div class="col gap16" ng-hide="!wallet.address()">
                     <ng-include src="'/mfm-wallet/wallet/accounts.html?v=5'"></ng-include>
@@ -36,7 +52,6 @@
                     <div class="row primary-button back-black m0"  ng-click="openSupport()">
                         {{str.report_a_bug}}
                     </div>
-                    <ng-include src="'/mfm-wallet/search/tokens.html?v=5'"></ng-include>
                 </div>
 
                 <ng-include src="'/mfm-wallet/wallet/trans.html?v=5'"></ng-include>

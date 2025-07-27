@@ -212,9 +212,11 @@ function getPin(success, cancel) {
 var wallet = {
     gas_domain: "usdt",
     vavilon: "vavilon",
+    energy: "energy",
     tron: "tron",
     MINING_ADDRESS: "V3eWGQmcvKkG7bhtCv7eW1yvtwTxX",
     MINER_ADDRESS: "V3f7tNy1QpiwH4C5J7AUDc46bidsH",
+    AIRDROP_ADDRESS: "V2KjdDBQXjHi4Ub5QUt4VDJnKWq8V",
     WITHDRAWAL_ADDESS: "V",
     BOT_PREFIX: "bot_",
     login: function (address, password, success, error) {
@@ -296,8 +298,8 @@ var wallet = {
         return storage.getString(storageKeys.address)
     },
     // rename to calcKey
-    calcHash: function (domain, username, password, prev_key) {
-        return hash(domain + username + password + (prev_key || ""))
+    calcHash: function (domain, address, password, prev_key) {
+        return hash(domain + address + password + (prev_key || ""))
     },
     calcStartHash: function (domain, pin, success) {
         success(hash(wallet.calcHash(domain, wallet.address(), decode(storage.getString(storageKeys.passhash), pin))))

@@ -1,18 +1,28 @@
 <div class="row scroll pl16">
-    <div class="col mr4 radius-default border-gray p8 gap8 ripple"
-         ng-repeat="item in top_airdrops"
-         ng-click="openAirdrop(item.domain, refresh)">
-        <div class="row align-start-center gap8">
-            <div ng-style="getLogo(item.domain)" style="max-width: 25px; max-height: 25px"></div>
-            <p>{{formatDomain(item.domain)}}</p>
-        </div>
-        <div class="row text2">
-        </div>
+    <div class="col mr4 radius-default border-gray p8 gap8 ripple relative"
+         style="min-width: 100px"
+         ng-repeat="airdrop in top_airdrops"
+         ng-click="openAirdrop(airdrop.domain, refresh)">
         <div class="row align-start-center">
-            +<p>{{formatPrice(item.reward * item.token.price)}}</p>
-            <div class="flex"></div>
-            <img class="img14 img-gray" src="/mfm-wallet/img/task.svg">
-            <p class="text2">1</p>
+            <p class="flex">{{formatDomain(airdrop.domain)}}</p>
+            <img class="img14"
+                 src="/mfm-wallet/img/task.svg"
+                 ng-class="{'img-gray': !airdrop.rewarded, 'img-green': airdrop.rewarded}">
         </div>
+        <div class="row align-start-center" style="margin-top: 20px">
+            <p>{{formatPrice(airdrop.reward * airdrop.token.price, 2)}}</p>
+            <div class="flex"></div>
+            <p class="text2">{{str.airdrop}}</p>
+        </div>
+        <div style="position: absolute;
+                    top: 0;
+                    right: 0;
+                    width: 50px;
+                    height: 50px;
+                    background-image: url('/mfm-wallet/logo.svg');
+                    background-size: cover;
+                    background-position: center;
+                    opacity: 0.2;
+                    z-index: -1;"></div>
     </div>
 </div>

@@ -99,10 +99,10 @@ function showBottomSheet(templateUrl, onClose, callback) {
         }).then(function (result) {
             if (onClose)
                 onClose(result)
-        }).catch(function () {
+        })/*.catch(function () {
             if (onClose)
                 onClose()
-        })
+        })*/
     }, 100)
 }
 

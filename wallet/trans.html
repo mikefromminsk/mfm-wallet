@@ -2,26 +2,22 @@
     <div class="text1 mt8">{{tran.day}}</div>
     <div class="row mt8 p16 radius-default back-gray ripple"
          ng-repeat="item in tran.items"
-         ng-click="openTran(item.next_hash)">
+         ng-click="openTran(item.next_hash)"
+         ng-show="item.amount != 0">
         <div class="radius-default back-black"
              ng-style="getIdenticon(item.from == wallet.address() ? item.to : item.from)"></div>
 
         <div class="col ml16">
-            <p class="">{{item.from == wallet.address() ? formatAddress(item.to) : formatAddress(item.from)}}</p>
+            <p>{{item.from == wallet.address() ? formatAddress(item.to) : formatAddress(item.from)}}</p>
             <p class="mt4 text2 lowercase">
                 {{formatSec(item.time)}}</p>
         </div>
 
         <div class="flex col align-start-end">
             <div ng-class="{'text-red': item.from == wallet.address(), 'text-green': item.from != username}">
-                <p ng-show="item.amount == 0">
-                    {{str.registration}}
-                </p>
-                <p ng-hide="item.amount == 0">
-                    {{(item.from == wallet.address() ? "-" : "+") + formatAmount(item.amount, item.domain)}}
-                </p>
+                {{(item.from == wallet.address() ? "-" : "+") + formatAmount(item.amount, item.domain)}}
             </div>
-            <p class="mt4 text2">{{formatPrice(item.amount * item.token.price)}}</p>
+            <p class="mt4 text2">{{formatPrice(item.amount * item.price)}}</p>
         </div>
     </div>
 </div>

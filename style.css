@@ -277,6 +277,10 @@ button {
     background: var(--gray100);
 }
 
+.back-yellow {
+    background: var(--yellow);
+}
+
 
 /* Ripple effect */
 .ripple:active {

@@ -10,11 +10,11 @@ function addFormats($scope) {
         let numberFormat = new Intl.NumberFormat()
         let result
         if (number >= 1_000_000_000)
-            result = numberFormat.format($scope.round(number / 1_000_000_000, 2)) + str.billion_short
+            result = numberFormat.format($scope.round(number / 1_000_000_000, 2)) + " " + str.billion_short
         else if (number >= 1_000_000)
-            result = numberFormat.format($scope.round(number / 1_000_000, 2)) + str.million_short
+            result = numberFormat.format($scope.round(number / 1_000_000, 2)) + " " + str.million_short
         else if (number >= 1_000)
-            result = numberFormat.format($scope.round(number, 0))
+            result = numberFormat.format($scope.round(number, 0)) + " "
         else
             result = number
         return result
@@ -47,6 +47,10 @@ function addFormats($scope) {
             return result + " " + domain.toUpperCase()
         }
         return result
+    }
+
+    $scope.formatDifficulty = function (difficulty) {
+        return $scope.shortNumber(difficulty) + "H"
     }
 
     $scope.formatAddress = function (address) {
@@ -202,9 +206,9 @@ function addFormats($scope) {
     // this is not a formats
 
     $scope.getLogoLink = function (domain) {
-        let server = "https://vavilon.org"
-        if (DEBUG)
-            server = ""
+        let server = ""
+        if (location.host != "vavilon.org")
+            server = "https://vavilon.org"
         return server + "/storage/" + domain + ".png"
     }
 

@@ -309,6 +309,14 @@ function addNavigator($scope) {
         openAirdrop(domain, success)
     }
 
+    $scope.openMiningProfile = function (domain, success) {
+        openMiningProfile(domain, success)
+    }
+
+    $scope.openMinerFarm = function (success) {
+        openMinerFarm(success)
+    }
+
     $scope.openLanding = function () {
         location.href = "/mfm-landing"
     }

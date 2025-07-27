@@ -412,4 +412,44 @@ svg {
     box-sizing: unset;
 }
 
+.toggle {
+    --width: 50px;          /* Ширина переключателя */
+    --height: 24px;         /* Высота переключателя */
+    --slider-size: 16px;    /* Размер бегунка */
+    --slider-margin: 4px;   /* Отступ бегунка от края */
+    --bg-off: #ccc;         /* Цвет фона выключенного */
+    --bg-on: #2196F3;       /* Цвет фона включенного */
+    --slider-color: #fff;   /* Цвет бегунка */
+    --transition: 0.3s;     /* Длительность анимации */
 
+    position: relative;
+    width: var(--width);
+    height: var(--height);
+    background-color: var(--bg-off);
+    border-radius: 100px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+/* Бегунок */
+.toggle::before {
+    content: "";
+    position: absolute;
+    width: var(--slider-size);
+    height: var(--slider-size);
+    background-color: var(--slider-color);
+    border-radius: 50%;
+    top: 50%;
+    left: var(--slider-margin);
+    transform: translateY(-50%);
+    transition: var(--transition);
+}
+
+/* Состояние "включено" */
+.toggle.active {
+    background-color: var(--bg-on);
+}
+
+.toggle.active::before {
+    left: calc(100% - var(--slider-size) - var(--slider-margin));
+}

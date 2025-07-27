@@ -20,10 +20,6 @@ function addWallet($scope) {
             }, 100)
             $scope.$apply()
         })
-        postContract("mfm-token", "top", {}, function (response) {
-            $scope.tokens = response.top_mining
-            $scope.$apply()
-        })
     }
 
     function setAccounts(accounts) {
@@ -100,6 +96,7 @@ function addWallet($scope) {
 
     function loadAirdrops() {
         postContract("mfm-airdrop", "list", {
+            address: wallet.address()
         }, function (response) {
             $scope.top_airdrops = response.top_airdrops
             $scope.$apply()

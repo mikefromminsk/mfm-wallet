@@ -32,11 +32,9 @@ function getTelegramUserId() {
     if (!window.Telegram?.WebApp?.isReady) {
         window.Telegram.WebApp.ready();
     }
-
     try {
         return window.Telegram.WebApp.initDataUnsafe.user.id
     } catch (e) {
-        console.error('Ошибка при получении username:', e);
+        return null;
     }
-    return null;
 }
