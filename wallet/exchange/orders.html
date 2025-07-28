@@ -13,7 +13,7 @@
     </div>
     <div class="flex col align-start-end">
         <p>{{formatAmount(item.amount, domain)}}</p>
-        <p class="mt4 size10" ng-show="is_sell == 1">{{str.filled}}
+        <p class="mt4 size10 text-gray" ng-show="is_sell == 1">{{str.filled}}
             {{formatPercent(item.amount_filled / item.amount * 100)}}</p>
         <p class="mt4 size10 text-gray" ng-show="is_sell == 0">{{str.filled}}
             {{formatPercent(item.total_filled / item.total * 100)}}</p>

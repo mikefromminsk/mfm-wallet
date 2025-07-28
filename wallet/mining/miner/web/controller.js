@@ -2,7 +2,7 @@ let worker;
 
 function openWebMiner(domain, success) {
     trackCall(arguments)
-    showDialog("wallet/mining/miner", success, function ($scope) {
+    showDialog("wallet/mining/miner/web", success, function ($scope) {
 
         if (window.conn != null && window.conn.readyState !== WebSocket.OPEN) {
             showError(str.web_socket_not_connected)

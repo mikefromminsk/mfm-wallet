@@ -387,3 +387,4 @@ str.you_received_reward = "You received reward";
 str.tokens = "Tokens";
 str.costs = "Costs";
 str.buy_energy = "Buy energy";
+str.energy = "Energy";

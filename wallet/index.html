@@ -34,7 +34,11 @@
                     </div>
                     <div class="flex p16 col align-start-center ripple"
                          ng-click="openMinerFarm(refresh)">
-                        <img class="img16 img-gray" src="/mfm-wallet/img/mining.svg">
+                        <img class="img16 img-gray"
+                             {{miner_gas_account}}
+                             ng-class="{'img-yellow': (miner_account && miner_account.domains && miner_gas_account && miner_gas_account.balance > 0.001),
+                             'img-red': (miner_account && miner_account.domains && (!miner_gas_account || miner_gas_account.balance <= 0.001))}"
+                             src="/mfm-wallet/img/energy.svg">
                         <p class="mt8 text2">{{str.mining}}</p>
                     </div>
                     <div class="flex p16 col align-start-center ripple"

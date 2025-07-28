@@ -1,7 +1,7 @@
 <md-dialog class="fill col">
     <div class="row header align-start-center">
         <div class="row align-center-center img32 back-gray radius-default ripple"
-             ng-click="openMining(token_account.domain)">
+             ng-click="openWebMiner('vavilon')">
             <img class="img16 img-gray400" src="/mfm-wallet/img/mining.svg">
         </div>
         <div class="flex row align-center-center gap8">
@@ -15,9 +15,13 @@
         <div class="flex col block">
             <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
             <div class="col align-center-center relative">
-                <div class="row gap4 align-start-center" style="height: 200px">
-                    <img class="img30 img-white" src="/mfm-wallet/img/energy.svg">
-                    <p class="text0">{{formatAmount(gas_account ? gas_account.balance * 100 : 0, null, 2)}}</p>
+                <div class="col align-center-center" style="height: 200px">
+                    <p class="text2">{{str.energy}}</p>
+                    <div class="row gap4 align-start-center">
+                        <img class="img30 img-yellow" src="/mfm-wallet/img/energy.svg">
+                        <p class="text0">{{formatAmount(gas_account ? gas_account.balance * 100 : 0, null, 2)}}</p>
+                    </div>
+                    <p class="text2">&nbsp;</p>
                 </div>
                 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                      xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -59,7 +63,11 @@
                                 </p>
                             </div>
                         </div>
-                        <button class="toggle"
+                        <div class="col align-end-end">
+                            <p>{{formatAmount(account.balance)}}</p>
+                            <p class="mt4 text2">{{formatPrice(account.token.price * account.balance)}}</p>
+                        </div>
+                        <button class="ml16 toggle"
                                 ng-class="{'active': (miner_account.domains || '').indexOf(account.domain) != -1}"
                                 ng-click="toggleDomain(account.domain); $event.stopPropagation()"></button>
                     </div>
@@ -81,8 +89,10 @@
                 </div>
             </div>
 
+            <ng-include src="'/mfm-wallet/wallet/trans.html?v=5'"></ng-include>
             <div class="nowrap-disabled mh16"
                  ng-include="'/mfm-wallet/wallet/mining/faq/' + getLanguage() + '.html'"></div>
+
 
         </div>
     </div>

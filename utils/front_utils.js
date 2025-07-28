@@ -97,12 +97,15 @@ function showBottomSheet(templateUrl, onClose, callback) {
                 addGlobalVars($scope, callback)
             }
         }).then(function (result) {
-            if (onClose)
-                onClose(result)
-        })/*.catch(function () {
+            try {
+                if (onClose)
+                    onClose(result)
+            } catch (e) {
+            }
+        }).catch(function () { // для отслеживания свертывания окна
             if (onClose)
                 onClose()
-        })*/
+        })
     }, 100)
 }
 

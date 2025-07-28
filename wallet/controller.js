@@ -103,10 +103,24 @@ function addWallet($scope) {
         })
     }
 
+    function loadMinerAccount() {
+        postContract("mfm-miner", "account", {
+            address: wallet.address(),
+        }, function (response) {
+            if (response.miner_account) {
+                $scope.miner_account = response.miner_account
+                $scope.miner_gas_account = response.gas_account
+                $scope.$apply()
+            }
+        }, function (response) {
+        })
+    }
+
     $scope.refresh = function () {
         loadTokens()
         loadTrans()
         loadAirdrops()
+        loadMinerAccount()
     }
 
     if (wallet.address() != "") {

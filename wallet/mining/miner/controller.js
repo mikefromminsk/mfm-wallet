@@ -7,9 +7,26 @@ function openMiningProfile(domain, success) {
 
         $scope.toggleDomain = function () {
             postContract("mfm-miner", "toggle_domain", {
-                address: wallet.address(),
                 domain: domain,
+                address: wallet.address(),
             }, $scope.refresh)
+        }
+
+        $scope.withdrawal = function () {
+            postContract("mfm-miner", "withdrawal", {
+                domain: domain,
+                address: wallet.address(),
+            }, $scope.refresh, function () {
+                getPin(function (pin) {
+                    wallet.calcStartHash($scope.domain, pin, function (next_hash) {
+                        postContract("mfm-token", "send", {
+                            domain: $scope.domain,
+                            to: wallet.address(),
+                            pass: ":" + next_hash,
+                        }, $scope.withdrawal)
+                    })
+                })
+            })
         }
 
         $scope.minutesInMonth = 60 * 24 * 30

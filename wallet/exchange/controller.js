@@ -32,8 +32,9 @@ function openExchange(domain, is_sell) {
         $scope.place = function place() {
             trackCall(arguments)
             $scope.startRequest()
-            tradeApi("place", {
+            postContract("mfm-exchange", "place", {
                 order_type: "post_limit",
+                address: wallet.address(),
                 domain: domain,
                 is_sell: $scope.is_sell ? 1 : 0,
                 price: $scope.price,
@@ -64,17 +65,18 @@ function openExchange(domain, is_sell) {
 
         $scope.cancel = function (order_id) {
             openAskSure(str.are_you_sure, str.yes, str.no, function () {
-                tradeApi("cancel", {
+                postContract("mfm-exchange", "cancel", {
                     order_id: order_id,
                 }, function () {
-                    showSuccess(str.order_canceled, $scope.refresh)
+                    //$scope.refresh()
                 })
             })
         }
 
         $scope.loadOrders = function () {
-            tradeApi("user_orders", {
+            postContract("mfm-exchange", "user_orders", {
                 domain: domain,
+                address: wallet.address(),
             }, function (response) {
                 $scope.active_orders = response.active
                 $scope.history_orders = response.history
@@ -119,7 +121,7 @@ function openExchange(domain, is_sell) {
         }
 
         $scope.loadOrderbook = function () {
-            tradeApi("orderbook", {
+            postContract("mfm-exchange", "orderbook", {
                 domain: domain,
             }, function (response) {
                 $scope.sell = (response.sell || []).reverse()
@@ -137,7 +139,6 @@ function openExchange(domain, is_sell) {
 
         $scope.subscribe("orderbook:" + domain, function (data) {
             $scope.loadOrderbook()
-            $scope.$apply()
         });
 
         $scope.subscribe("account:" + wallet.address(), function (data) {

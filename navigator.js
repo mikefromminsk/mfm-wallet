@@ -126,8 +126,8 @@ function addNavigator($scope) {
         openSend(domain, to_address, amount, success)
     }
 
-    $scope.openMining = function (domain, success) {
-        openMining(domain, success)
+    $scope.openWebMiner = function (domain, success) {
+        openWebMiner(domain, success)
     }
 
     $scope.openAirdrop = function (promo, success) {

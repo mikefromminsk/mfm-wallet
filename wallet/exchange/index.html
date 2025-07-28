@@ -101,11 +101,6 @@
                          ng-disabled="in_progress">
                         {{is_sell ? str.sell : str.buy}}
                     </div>
-                    <div ng-show="sell.length == 0 || buy.length == 0"
-                         class="primary-button p8"
-                         ng-click="openExchangeBot(domain)">
-                        {{str.bot_settings}}
-                    </div>
                 </div>
 
 
@@ -133,10 +128,8 @@
                         </div>
                     </div>
 
-                    <div class="row pv16"
-                         ng-hide="token.owner == user.username()">
-                        <p class="flex bold"
-                           ng-click="changePrice(token.price)">
+                    <div class="row pv16">
+                        <p class="flex bold" ng-click="changePrice(token.price)">
                             {{formatPrice(token.price)}}
                         </p>
                     </div>

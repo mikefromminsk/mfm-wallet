@@ -11,9 +11,9 @@ function addStore($scope) {
         $scope.apps[categoryName] = category
     }
 
-    addApp("exchange", "Cex", "#8646f5", "/mfm-exchange")
+    /*addApp("exchange", "Cex", "#8646f5", "/mfm-exchange")
     addApp("exchange", "Dex", "#46aef5", "#openPool=vavilon")
-    addApp("exchange", "P2P", "#46aef5", "#openPool=vavilon")
+    addApp("exchange", "P2P", "#46aef5", "#openPool=vavilon")*/
 
     addApp("bridges", "USDT", "#46aef5", "#openDeposit=" + wallet.address())
 

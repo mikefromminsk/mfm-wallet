@@ -37,6 +37,7 @@ function addFormats($scope) {
             number = 0;
         return "$" + $scope.shortNumber(number, precision)
     }
+
     $scope.formatAmount = function (number, domain, precision) {
         if (number == null)
             number = 0;

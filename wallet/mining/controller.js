@@ -34,6 +34,16 @@ function openMinerFarm(success) {
             })
         }
 
+        function loadMinerTrans(minerAddress) {
+            postContract("mfm-token", "trans", {
+                address: wallet.address(),
+                to: minerAddress,
+            }, function (response) {
+                $scope.trans = $scope.groupByTimePeriod(response.trans)
+                $scope.$apply()
+            })
+        }
+
         function loadMinerAccount() {
             postContract("mfm-miner", "account", {
                 address: wallet.address(),
@@ -43,6 +53,7 @@ function openMinerFarm(success) {
                     $scope.gas_account = response.gas_account
                     loadMinerAccounts(response.miner_account.minerAddress)
                     subscribeToMinerAddress(response.miner_account.minerAddress)
+                    loadMinerTrans(response.miner_account.minerAddress)
                     $scope.$apply()
                 }
             }, function (response) {
