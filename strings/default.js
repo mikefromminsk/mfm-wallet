@@ -391,3 +391,4 @@ str.costs = "Costs";
 str.buy_energy = "Buy energy";
 str.energy = "Energy";
 str.every_year_is_released = "Every year is released";
+str.coloect_tokens = "Collect tokens";

@@ -283,6 +283,10 @@ button {
 
 
 /* Ripple effect */
+.ripple{
+    cursor: pointer;
+}
+
 .ripple:active {
     background-color: var(--gray200);
     border-radius: 16px;

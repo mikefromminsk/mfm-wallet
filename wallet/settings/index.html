@@ -8,18 +8,17 @@
     <div class="flex col scroll align-start-center">
         <div class="flex col block ph16">
             <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
+            <div class="text1 pv16">{{str.account}}</div>
             <div class="primary-button mh0"
                  ng-click="openLogin(init)"
-                 ng-disabled="in_progress"
                  ng-hide="wallet.address()">
                 {{str.login_or_create_account}}
             </div>
-            <div class="text1 pv16">{{str.account}}</div>
             <div class="row align-start-center ripple pv16"
                  ng-show="wallet.address()"
                  ng-click="copy(wallet.address())">
                 <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/user-circle.svg">
-                <div class="flex">{{formatAddress(wallet.address())}}</div>
+                <div class="flex">{{wallet.address()}}</div>
                 <img class="img20 img-white" src="/mfm-wallet/img/copy.svg">
             </div>
             <div class="row align-start-center ripple pv16" ng-click="openLanguages()">
@@ -27,29 +26,11 @@
                 <p class="flex">{{str.language}}</p>
                 <p>{{languages[language]}}</p>
             </div>
-            <div class="row align-start-center ripple pv16" ng-click="openChangePin()" ng-show="wallet.address()">
-                <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/password.svg">
-                <p>{{str.change_pin}}</p>
-            </div>
             <div class="row align-start-center ripple pv16" ng-click="logout()" ng-show="wallet.address()">
                 <img class="img32 p8 mr8 img-red" src="/mfm-wallet/img/arrow-right.svg">
                 <p class=" text-red">{{str.logout}}</p>
             </div>
-
             <div class="text1 pv16">{{str.help}}</div>
-            <div class="row align-start-center ripple pv16" ng-click="openSupport()">
-                <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/support.svg">
-                <p>{{str.support}}</p>
-            </div>
-            <!--<div class="row align-start-center ripple pv16" ng-click="openReview()">
-                <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/like.svg">
-                <p>{{str.leave_review}}</p>
-            </div>-->
-            <!--<div class="row align-start-center ripple pv16"
-                 ng-click="openShareLink(str.share_link, str.check_and_enjoy, 'https://vavilon.org')">
-                <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/share.svg">
-                <p>{{str.share_link}}</p>
-            </div>-->
             <a class="row align-start-center ripple text-white pv16" href="https://www.trustpilot.com/review/vavilon.org" target="_blank">
                 <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/star.svg">
                 <p>{{str.rate_us}}</p>
@@ -58,14 +39,9 @@
                 <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/doc.svg">
                 <p>{{str.terms_and_conditions}}</p>
             </a>
-            <div class="row align-start-center ripple pv16" ng-click="openVersion()">
-                <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/info.svg">
-                <p>{{str.version}}</p>
-            </div>
-            <div class="text1 pv16">{{str.admin_panel}}</div>
-            <div class="row align-start-center ripple pv16" ng-click="openReviews()" ng-show="wallet.address() == 'support'">
-                <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/star.svg">
-                <p>{{str.reviews}}</p>
+            <div class="row align-start-center ripple pv16" ng-click="openSupport()">
+                <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/support.svg">
+                <p>{{str.report_a_bug}}</p>
             </div>
             <div class="col align-center pv16" style="text-align: center">
                 <p class="text2">mfm-wallet 2023-{{year}}</p>

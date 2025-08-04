@@ -18,7 +18,7 @@ function addStore($scope) {
     addApp("bridges", "USDT", "#46aef5", "#openDeposit=" + wallet.address())
 
     addApp("defi", "Airdrop", "#46aef5", "#openAirdrop")
-    addApp("defi", "Miner", "#46aef5", "#openMining=vavilon")
+    addApp("defi", "Miner", "#46aef5", "#openWebMiner=vavilon")
     /*addApp("defi", "Staking", "#46aef5", "/mfm-explorer")*/
 
     addApp("utilities", "Explorer", "#46aef5", "/mfm-explorer")

@@ -1,7 +1,7 @@
 <md-dialog class="fill col">
     <div class="row header align-start-center">
         <div class="row align-center-center img32 back-gray radius-default ripple"
-             ng-click="openWebMiner('vavilon')">
+             ng-click="openWebMiner(domain)">
             <img class="img16 img-gray400" src="/mfm-wallet/img/mining.svg">
         </div>
         <div class="flex row align-center-center gap8">
@@ -47,12 +47,39 @@
 </circle>
 </svg>
             </div>
+            <!--<div>FOCUSED TOKEN
 
+                               <div class="row">
+                           <p class="flex text2">{{str.mining_cost_price}}</p>
+                           <p>{{formatPrice(((difficulty / 100000 * 0.0001) + 0.0003) / getReward())}}</p>
+                       </div>
+                       <div class="row">
+                           <p class="flex text2">{{str.tariff_speed}}</p>
+                           <p>{{formatAmount(getMinerHashRate(), str.hash_per_min)}}</p>
+                       </div>
+                       <div class="row">
+                           <p class="flex text2">{{str.tokens}} {{str.month}}</p>
+                           <p>{{formatAmount(getMinerHashRate() / difficulty * minutesInMonth * getReward(), domain)}}</p>
+                       </div>
+                       <div class="row">
+                           <p class="flex text2">{{str.costs}} {{str.month}}</p>
+                           <p>{{formatPrice(getMinerHashRate() / difficulty * minutesInMonth * 0.0004)}}</p>
+                       </div>
+                       <div class="row">
+                           <p class="flex text2">{{str.price}}</p>
+                           <p>{{formatPrice(token ? token.price : 1)}}</p>
+                       </div>
+                       <div class="row">
+                           <p class="flex text2">{{str.predicted_profit}} {{str.month}}</p>
+                           <p>{{formatPrice((getMinerHashRate() / difficulty * minutesInMonth * getReward() * (token ? token.price : 1))
+                                   - (getMinerHashRate() / difficulty * minutesInMonth * 0.0004))}}</p>
+                       </div>
+                           </div>-->
             <div class="col mt16 input-content">
                 <div class="col back-gray radius-default">
                     <div class="row p16 align-start-center ripple"
                          ng-repeat="(domain, account) in accounts"
-                         ng-click="openMiningProfile(account.domain, refresh)">
+                         ng-click="openTokenProfile(account.domain, refresh)">
                         <div ng-style="getLogo(account.domain)"></div>
                         <div class="flex col ml16">
                             <p>{{formatDomain(account.domain)}}</p>
@@ -68,9 +95,18 @@
                                 ng-class="{'active': (miner_account.domains || '').indexOf(account.domain) != -1}"
                                 ng-click="toggleDomain(account.domain); $event.stopPropagation()"></button>
                     </div>
+                </div>
+
+                <div class="primary-button"
+                     ng-show="haveMinerBalance()"
+                     ng-click="withdrawal()">
+                    {{str.coloect_tokens}}
+                </div>
+                <p class="text2">{{str.recommended}}</p>
+                <div class="col back-gray radius-default">
                     <div class="row p16 align-start-center"
                          ng-repeat="token in tokens"
-                         ng-click="openMiningProfile(token.domain, refresh)">
+                         ng-click="openTokenProfile(token.domain, refresh)">
                         <div ng-style="getLogo(token.domain)"></div>
                         <div class="flex col ml16">
                             <p>{{formatDomain(token.domain)}}</p>
@@ -86,8 +122,6 @@
             <ng-include src="'/mfm-wallet/wallet/trans.html?v=9'"></ng-include>
             <div class="nowrap-disabled mh16"
                  ng-include="'/mfm-wallet/wallet/mining/faq/' + getLanguage() + '.html'"></div>
-
-
         </div>
     </div>
     <div class="primary-button back-yellow"

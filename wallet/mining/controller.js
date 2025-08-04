@@ -1,8 +1,11 @@
-function openMinerFarm(success) {
+function openMiner(domain, success) {
     trackCall(arguments)
     showDialog("wallet/mining", success, function ($scope) {
-        let subscribed = false
+        if (domain == wallet.gas_domain)
+            domain = wallet.vavilon
+        $scope.domain = domain
         $scope.accounts = {}
+        let subscribed = false
 
         function subscribeToMinerAddress(minerAddress) {
             if (!subscribed) {
@@ -20,6 +23,67 @@ function openMinerFarm(success) {
                 domain: domain,
             }, $scope.refresh)
         }
+
+        $scope.withdrawal = function () {
+            for (const account of Object.values($scope.accounts)) {
+                if (account.balance > 0) {
+                    postContract("mfm-miner", "withdrawal", {
+                        domain: account.domain,
+                        address: wallet.address(),
+                    }, $scope.refresh, function () {
+                        getPin(function (pin) {
+                            wallet.calcStartHash(account.domain, pin, function (next_hash) {
+                                postContract("mfm-token", "send", {
+                                    domain: account.domain,
+                                    to: wallet.address(),
+                                    pass: ":" + next_hash,
+                                }, $scope.withdrawal)
+                            })
+                        })
+                    })
+                }
+            }
+        }
+
+        $scope.haveMinerBalance = function () {
+            for (const account of Object.values($scope.accounts))
+                if (account.balance > 0)
+                    return true
+            return false
+        }
+
+        $scope.minutesInMonth = 60 * 24 * 30
+        $scope.getReward = function () {
+            let percentInYear = 0;
+            if ($scope.bank == null) {
+                return 0
+            }
+            if ($scope.bank.delegate == "mfm-contract/mint10") {
+                percentInYear = 10
+            } else if ($scope.bank.delegate == "mfm-contract/mint20") {
+                percentInYear = 20
+            } else if ($scope.bank.delegate == "mfm-contract/mint100") {
+                percentInYear = 100
+            }
+            let minutesInYear = 365.0 * 24 * 60;
+            return $scope.bank.balance / percentInYear / minutesInYear
+        }
+
+        $scope.getMinerHashRate = function () {
+            return $scope.miner_account.tariff * 100000 * 10000
+        }
+
+        function loadMiningInfo() {
+            postContract("mfm-contract", "mining_info", {
+                domain: domain,
+                address: wallet.address(),
+            }, function (response) {
+                $scope.difficulty = response.difficulty || 1
+                $scope.bank = response.bank
+                $scope.$apply()
+            })
+        }
+
 
         function loadMinerAccounts(address) {
             postContract("mfm-token", "accounts", {
@@ -73,6 +137,7 @@ function openMinerFarm(success) {
 
         $scope.refresh = function () {
             loadMinerAccount()
+            //loadMiningInfo(domain)
         }
 
         $scope.refresh()

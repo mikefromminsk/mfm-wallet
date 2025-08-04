@@ -285,10 +285,6 @@ function addNavigator($scope) {
         openDividend(domain, success)
     }
 
-    $scope.openMinerFarm = function (domain, success) {
-        openMinerFarm(domain, success)
-    }
-
     $scope.openMinerTariffs = function (domain, success) {
         openMinerTariffs(domain, success)
     }
@@ -305,12 +301,8 @@ function addNavigator($scope) {
         openAirdrop(domain, success)
     }
 
-    $scope.openMiningProfile = function (domain, success) {
-        openMiningProfile(domain, success)
-    }
-
-    $scope.openMinerFarm = function (success) {
-        openMinerFarm(success)
+    $scope.openMiner = function (domain, success) {
+        openMiner(domain, success)
     }
 
     $scope.openLanding = function () {
