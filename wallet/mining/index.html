@@ -57,10 +57,7 @@
                         <div class="flex col ml16">
                             <p>{{formatDomain(account.domain)}}</p>
                             <div class="row mt4 text2">
-                                <p>{{formatPrice(account.token.price)}}</p>
-                                <p class="ml4" ng-class="percentColor(account.token.price24)">
-                                    {{formatChange(account.token.price24)}}
-                                </p>
+                                <p>{{formatDifficulty(account.token.difficulty)}}</p>
                             </div>
                         </div>
                         <div class="col align-end-end">
@@ -78,10 +75,7 @@
                         <div class="flex col ml16">
                             <p>{{formatDomain(token.domain)}}</p>
                             <div class="row mt4 text2">
-                                <p>{{formatPrice(token.price)}}</p>
-                                <p class="ml4" ng-class="percentColor(token.price24)">
-                                    {{formatChange(token.price24)}}
-                                </p>
+                                <p>{{formatDifficulty(token.difficulty)}}</p>
                             </div>
                         </div>
                         <button class="toggle" ng-click="toggleDomain(token.domain); $event.stopPropagation()"></button>
@@ -89,7 +83,7 @@
                 </div>
             </div>
 
-            <ng-include src="'/mfm-wallet/wallet/trans.html?v=5'"></ng-include>
+            <ng-include src="'/mfm-wallet/wallet/trans.html?v=9'"></ng-include>
             <div class="nowrap-disabled mh16"
                  ng-include="'/mfm-wallet/wallet/mining/faq/' + getLanguage() + '.html'"></div>
 

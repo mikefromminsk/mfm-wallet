@@ -19,9 +19,8 @@
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
         </div>
     </div>
-    <div class="flex col scroll align-start-center">
+    <div class="flex col scroll-vertical align-start-center">
         <div class="flex col block">
-            <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
             <div class="row">
                 <div class="col input-content" style="min-width: 200px;">
                     <div class="row radius3">
@@ -39,7 +38,7 @@
 
                     <div class="row input-wrapper">
                         <img class="img-white" src="/mfm-wallet/img/dollar.svg">
-                        <input type="number"
+                        <input type="number" inputmode="decimal"
                                id="price"
                                ng-model="price"
                                ng-change="changePrice()"
@@ -49,7 +48,7 @@
 
                     <div class="row input-wrapper">
                         <div ng-style="getLogo(domain)"></div>
-                        <input type="number"
+                        <input type="number" inputmode="decimal"
                                id="amount"
                                ng-model="amount"
                                ng-change="changeAmount()"
@@ -72,7 +71,7 @@
 
                     <div class="row input-wrapper">
                         <div ng-style="getLogo(wallet.gas_domain)"></div>
-                        <input type="number"
+                        <input type="text" inputmode="decimal"
                                id="total"
                                ng-model="total"
                                ng-change="changeTotal()"
@@ -86,11 +85,11 @@
                             {{str.available}}
                         </div>
                         <div ng-show="is_sell"
-                             ng-class="{'text-red': amount > base}">
+                             ng-class="{'text-red': amount > base || base == 0}">
                             {{formatAmount(base, domain)}}
                         </div>
                         <div ng-hide="is_sell"
-                             ng-class="{'text-red': total > quote}">
+                             ng-class="{'text-red': total > quote || quote == 0}">
                             {{formatAmount(quote, wallet.gas_domain, 1)}}
                         </div>
                     </div>
@@ -158,7 +157,7 @@
                     </div>
                 </div>
                 <div class="col" ng-repeat="orders in [active_orders, history_orders]">
-                    <ng-include src="'/mfm-wallet/wallet/exchange/orders.html?v=5'"></ng-include>
+                    <ng-include src="'/mfm-wallet/wallet/exchange/orders.html?v=9'"></ng-include>
                 </div>
                 <div class="col align-center-center text1 text-gray"
                      ng-show="active_orders.length == 0 && history_orders.length == 0"

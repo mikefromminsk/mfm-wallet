@@ -26,7 +26,6 @@ function openSend(domain, to_address, amount, success) {
                         amount: $scope.amount,
                     }, function (response) {
                         storage.pushToArray(storageKeys.send_history, $scope.to_address, 3)
-                        $scope.close()
                         openTran(response.next_hash, $scope.close)
                     }, $scope.finishRequest)
                 })

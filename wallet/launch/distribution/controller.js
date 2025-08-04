@@ -10,48 +10,31 @@ function openDistribution(domain, success) {
             $scope.amount = Math.pow(10, parseInt(newValue))
         })
 
-        $scope.launch = function (sendAllToMining = true) {
+        $scope.launch = function () {
             $scope.startRequest()
-            getPin(function (pin) {
-                wallet.calcStartHash($scope.domain, pin, function (next_hash) {
-                    postContract("mfm-token", "send", {
-                        domain: $scope.domain,
-                        to: wallet.address(),
-                        pass: ":" + next_hash,
-                        amount: $scope.amount,
-                    }, function () {
-                        if (sendAllToMining)
-                            mining($scope.domain, pin)
-                        else
-                            showSuccessDialog(str.your_token_created, $scope.close)
-                    }, $scope.finishRequest)
-                })
-            })
-        }
-
-        $scope.setMiningPercent = function (percent) {
-            $scope.mining_percent = percent
-        }
-
-        function mining(domain, pin) {
-            postContract("mfm-token", "send", {
+            postContract("mfm-token", "send", { // create token
                 domain: domain,
                 to: wallet.MINING_ADDRESS,
                 pass: wallet.calcStartPass(domain, wallet.MINING_ADDRESS),
                 delegate: "mfm-contract/mint" + $scope.mining_percent,
+                amount: $scope.amount,
             }, function () {
-                calcPass(domain, pin, function (pass) {
-                    postContract("mfm-token", "send", {
-                        domain: domain,
-                        from: wallet.address(),
-                        to: wallet.MINING_ADDRESS,
-                        amount: $scope.amount,
-                        pass: pass,
-                    }, function () {
-                        showSuccessDialog(str.your_token_created, $scope.close)
+                getPin(function (pin) { // add to wallet
+                    wallet.calcStartHash($scope.domain, pin, function (next_hash) {
+                        postContract("mfm-token", "send", {
+                            domain: $scope.domain,
+                            to: wallet.address(),
+                            pass: ":" + next_hash,
+                        }, function () {
+                            showSuccessDialog(str.your_token_created, $scope.close)
+                        }, $scope.finishRequest)
                     }, $scope.finishRequest)
-                })
-            })
+                }, $scope.finishRequest)
+            }, $scope.finishRequest)
+        }
+
+        $scope.setMiningPercent = function (percent) {
+            $scope.mining_percent = percent
         }
     })
 }

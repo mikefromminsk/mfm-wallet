@@ -39,6 +39,10 @@ function controller(callback) {
         addGlobalVars($scope, callback)
         loadTranslations($scope)
     })
+    if (window.Telegram && window.Telegram.WebApp) {
+        Telegram.WebApp.expand()
+        Telegram.WebApp.setHeaderColor("#0f1620")
+    }
 }
 
 function addGlobalVars($scope, callback) {
@@ -67,13 +71,12 @@ function addGlobalVars($scope, callback) {
 }
 
 function showDialog(templateUrl, onClose, callback) {
-    setTimeout(function () {
         let path = location.pathname
         if (!path.endsWith("/"))
             path += "/"
 
         window.$mdDialog.show({
-            templateUrl: (templateUrl[0] == "/" ? templateUrl : path + templateUrl) + "/index.html?v=5",
+            templateUrl: (templateUrl[0] == "/" ? templateUrl : path + templateUrl) + "/index.html?v=9",
             escapeToClose: false,
             multiple: true,
             isolateScope: false,
@@ -84,7 +87,6 @@ function showDialog(templateUrl, onClose, callback) {
             if (onClose)
                 onClose(result)
         })
-    }, 100)
 }
 
 function showBottomSheet(templateUrl, onClose, callback) {

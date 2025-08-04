@@ -77,9 +77,20 @@ function openMiningProfile(domain, success) {
                     $scope.miner_account = response.miner_account
                     $scope.gas_account = response.gas_account
                     $scope.token_account = response.token_account
+                    loadTrans(response.miner_account.minerAddress)
                     $scope.$apply()
                 }
             }, function () {
+            })
+        }
+
+        function loadTrans(minerAddress) {
+            postContract("mfm-token", "trans", {
+                domain: domain,
+                address: minerAddress,
+            }, function (response) {
+                $scope.trans = $scope.groupByTimePeriod(response.trans)
+                $scope.$apply()
             })
         }
 

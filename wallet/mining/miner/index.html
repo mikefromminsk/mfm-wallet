@@ -72,13 +72,13 @@
 
                 <div ng-show="accounts && accounts.length > 0">
                     <p class="text1 mb8">{{str.miner_balances}}</p>
-                    <ng-include src="'/mfm-wallet/wallet/accounts.html?v=5'"></ng-include>
+                    <ng-include src="'/mfm-wallet/wallet/accounts.html?v=9'"></ng-include>
                 </div>
                 <div class="nowrap-disabled"
                      ng-include="'/mfm-wallet/wallet/mining/faq/' + getLanguage() + '.html'"></div>
 
                 <p class="text1" ng-show="trans">{{str.last_rewards}}</p>
-                <ng-include src="'/mfm-wallet/wallet/trans.html?v=5'"></ng-include>
+                <ng-include src="'/mfm-wallet/wallet/trans.html?v=9'"></ng-include>
                 <div class="col align-center-center text1 text-gray"
                      ng-hide="trans.length > 0"
                      style="height: 100px">

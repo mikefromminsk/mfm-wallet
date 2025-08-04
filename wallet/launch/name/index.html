@@ -26,25 +26,9 @@
             <ul class="col mh16 mv0 text2 text-align-start">
                 <li>{{str.min_3_symbols}}</li>
                 <li>{{str.oly_english_symbols}}</li>
+                <li>{{str.only_lowercase_symbols}}</li>
             </ul>
-            <div class="col">
-                <div class="col back-gray radius-default">
-                    <div class="row p16 align-start-center ripple"
-                         ng-repeat="token in tokens"
-                         ng-click="openToken(token.domain)">
-                        <div ng-style="getLogo(token.domain)"></div>
-                        <div class="flex col ml16">
-                            <p>{{formatDomain(token.domain)}}</p>
-                            <div class="row mt4 text2">
-                                <p>{{formatPrice(token.price)}}</p>
-                                <p class="ml4" ng-class="percentColor(token.price24)">
-                                    {{formatChange(token.price24)}}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <ng-include ng-show="tokens && tokens.length > 0" src="'/mfm-wallet/search/tokens.html?v=9'"></ng-include>
             <div class="primary-button"
                  ng-disabled="!hasTheSameToken() || !search_text || search_text.length < 3"
                  ng-click="selectName()">

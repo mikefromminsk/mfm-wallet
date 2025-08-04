@@ -12,7 +12,7 @@ function getAccount(domain, success, error) {
     }, success, error)
 }
 
-function openTokenProfile(domain, success) {
+function openTokenProfile(domain, success, mode) {
     trackCall(arguments)
     showDialog("wallet/profile", success, function ($scope) {
         $scope.domain = domain
@@ -47,7 +47,10 @@ function openTokenProfile(domain, success) {
                         to: wallet.address(),
                         pass: ":" + next_hash,
                     }, function () {
-                        $scope.refresh()
+                        if (mode == "airdrop")
+                            $scope.close()
+                        else
+                            $scope.refresh()
                     })
                 })
             })
@@ -71,7 +74,7 @@ function addTokenProfile($scope) {
             $scope.owner = response.owner
             $scope.mining = response.mining
             $scope.account = response.account
-            $scope.gas_account = response.account
+            $scope.gas_account = response.gas_account
             $scope.analytics = response.analytics
             $scope.$apply()
         })

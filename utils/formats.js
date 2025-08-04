@@ -9,11 +9,13 @@ function addFormats($scope) {
         number = $scope.round(number, precision)
         let numberFormat = new Intl.NumberFormat()
         let result
-        if (number >= 1_000_000_000)
-            result = numberFormat.format($scope.round(number / 1_000_000_000, 2)) + " " + str.billion_short
-        else if (number >= 1_000_000)
-            result = numberFormat.format($scope.round(number / 1_000_000, 2)) + " " + str.million_short
-        else if (number >= 1_000)
+        if (number >= 1000000000)
+            result = numberFormat.format($scope.round(number / 1000000000, 1)) + " " + str.billion_short
+        else if (number >= 1000000)
+            result = numberFormat.format($scope.round(number / 1000000, 1)) + " " + str.million_short
+        else if (number >= 100000)
+            result = numberFormat.format($scope.round(number / 1000, 1)) + " " + str.thousand_short
+        else if (number >= 1000)
             result = numberFormat.format($scope.round(number, 0)) + " "
         else
             result = number

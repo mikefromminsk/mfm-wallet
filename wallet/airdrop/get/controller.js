@@ -26,6 +26,7 @@ function openAirdrop(domain, success) {
             getProfile(domain, function (response) {
                 $scope.token = response.token
                 $scope.account = response.account
+                $scope.show_task0 = response.account == null
                 $scope.$apply()
             })
         }

@@ -52,25 +52,18 @@
                          ng-class="{'img-green': account, 'img-gray': !account}">
                     <p class="flex">1. {{str.add_to_wallet}} {{formatDomain(domain)}}</p>
                     <img class="img16 img-gray"
-                         src="/mfm-wallet/img/{{account ? 'down' : 'up'}}.svg">
+                         src="/mfm-wallet/img/{{show_task0 ? 'up' : 'down'}}.svg" ng-click="show_task0 = !show_task0">
                 </div>
-                <div class="row align-end-center" ng-show="!account">
-                    <button class="border-gray p8"
-                            ng-click="openTokenProfile(domain, refresh)">
+                <div class="row align-end-center" ng-show="show_task0">
+                    <div class="primary-button m0 border-gray p8"
+                            ng-click="openTokenProfile(domain, refresh, 'airdrop')">
                         {{str.add_to_wallet}}
-                    </button>
+                    </div>
                 </div>
-
-                <p ng-show="trans.length > 0">{{str.participants}}</p>
-                <ng-include class="m0" src="'/mfm-wallet/wallet/trans.html?v=5'"></ng-include>
-                <div class="col align-center-center text-gray"
-                     ng-hide="trans.length > 0"
-                     style="height: 100px">
-                    {{str.there_is_no_participants_yet}}
-                </div>
-
                 <div class="nowrap-disabled"
                      ng-include="'/mfm-wallet/wallet/airdrop/get/faq/' + getLanguage() + '.html'"></div>
+                <p ng-show="trans.length > 0">{{str.participants}}</p>
+                <ng-include class="m0" src="'/mfm-wallet/wallet/trans.html?v=9'"></ng-include>
             </div>
 
             <div></div>

@@ -17,9 +17,12 @@
                 </div>
             </div>
 
-            <ng-include src="'/mfm-wallet/wallet/trans.html?v=5'"></ng-include>
-            <ng-include src="'/mfm-wallet/wallet/tran/tran.html?v=5'"></ng-include>
+            <ng-include src="'/mfm-wallet/wallet/trans.html?v=9'"></ng-include>
+            <ng-include src="'/mfm-wallet/wallet/tran/tran.html?v=9'"></ng-include>
 
+            <!--<button class="" ng-click="copy(location.origin + '/mfm-explorer?hash=' + tran.next_hash)">
+                {{str.copy_tran_link}}
+            </button>-->
             <!--@SerializedName("valueUSD")
             @SerializedName("direction")
             fee
@@ -33,7 +36,7 @@
             </div>-->
         </div>
     </div>
-    <div class="primary-button" ng-click="copy(location.origin + '/mfm-explorer?hash=' + tran.next_hash)">
-        {{str.copy_tran_link}}
+    <div class="primary-button" ng-click="close()">
+        {{str.close}}
     </div>
 </md-dialog>

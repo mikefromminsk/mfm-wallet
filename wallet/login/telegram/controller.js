@@ -25,13 +25,6 @@ function openTelegramLogin(bot_name, success) {
 }
 
 function getTelegramUserId() {
-    if (!window.Telegram?.WebApp) {
-        alert('Telegram WebApp не инициализирован');
-        return null;
-    }
-    if (!window.Telegram?.WebApp?.isReady) {
-        window.Telegram.WebApp.ready();
-    }
     try {
         return window.Telegram.WebApp.initDataUnsafe.user.id
     } catch (e) {

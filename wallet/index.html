@@ -1,12 +1,12 @@
 <div class="flex col">
     <div class="row header align-start-center">
-        <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/home.svg" ng-click="openLanding()">
+        <img class="img40 p8 img-gray" src="/mfm-wallet/img/gift.svg" ng-click="openAirdrop(wallet.vavilon, refresh)">
         <div class="flex row align-center text1">{{host}}</div>
         <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/settings.svg" ng-click="openSettings(refresh)">
     </div>
     <div class="flex col scroll align-start-center" ng-hide="wallet.address()">
-        <div class="flex col block">
-            <ng-include src="'/mfm-wallet/wallet/login/login.html?v=5'"></ng-include>
+        <div class="flex col">
+            <ng-include src="'/mfm-wallet/wallet/login/login.html?v=9'"></ng-include>
         </div>
     </div>
     <div class="flex col scroll align-start-center" ng-show="wallet.address()">
@@ -34,11 +34,13 @@
                     </div>
                     <div class="flex p16 col align-start-center ripple"
                          ng-click="openMinerFarm(refresh)">
-                        <img class="img16 img-gray"
-                             {{miner_gas_account}}
-                             ng-class="{'img-yellow': (miner_account && miner_account.domains && miner_gas_account && miner_gas_account.balance > 0.001),
+                        <div class="row gap4">
+                            <img class="img16 img-gray"
+                                 ng-class="{'img-yellow': (miner_account && miner_account.domains && miner_gas_account && miner_gas_account.balance > 0.001),
                              'img-red': (miner_account && miner_account.domains && (!miner_gas_account || miner_gas_account.balance <= 0.001))}"
-                             src="/mfm-wallet/img/energy.svg">
+                                 src="/mfm-wallet/img/energy.svg">
+                            {{miner_account ? formatAmount(miner_gas_account.balance * 100, "", 2) : ""}}
+                        </div>
                         <p class="mt8 text2">{{str.mining}}</p>
                     </div>
                     <div class="flex p16 col align-start-center ripple"
@@ -47,9 +49,9 @@
                         <p class="mt8 text2">{{str.send}}</p>
                     </div>
                 </div>
-                <ng-include ng-show="top_airdrops && top_airdrops.length > 0" src="'/mfm-wallet/wallet/airdrop/airdrops.html?v=5'"></ng-include>
+                <ng-include ng-show="top_airdrops && top_airdrops.length > 0" src="'/mfm-wallet/wallet/airdrop/airdrops.html?v=9'"></ng-include>
                 <div class="col gap16" ng-hide="!wallet.address()">
-                    <ng-include src="'/mfm-wallet/wallet/accounts.html?v=5'"></ng-include>
+                    <ng-include src="'/mfm-wallet/wallet/accounts.html?v=9'"></ng-include>
                     <div class="primary-button back-pay mh0 mb0 mt8" ng-click="openLaunchToken(refresh)">
                         {{str.launch_token}}
                     </div>
@@ -58,10 +60,10 @@
                     </div>
                 </div>
 
-                <ng-include src="'/mfm-wallet/wallet/trans.html?v=5'"></ng-include>
+                <ng-include src="'/mfm-wallet/wallet/trans.html?v=9'"></ng-include>
                 <div class="col align-center-center text1 text-gray"
                      ng-hide="trans.length > 0"
-                     style="height: 500px">
+                     style="height: 100px">
                     {{str.there_is_no_history_yet}}
                 </div>
             </div>

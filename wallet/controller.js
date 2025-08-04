@@ -72,6 +72,15 @@ function addWallet($scope) {
         })
     }
 
+    function subscribePrices() {
+        $scope.subscribe("price", function () {
+            if ($scope.refresh)
+                $scope.refresh()
+            if ($scope.search)
+                $scope.search()
+        })
+    }
+
     function subscribeNewOrders() {
         $scope.subscribe("new_order:" + wallet.address(), function (data) {
             showSuccess(str.new_p2p_order)
@@ -128,6 +137,7 @@ function addWallet($scope) {
             $scope.refresh()
         subscribeAccount()
         subscribeNewOrders()
+        subscribePrices()
     } else {
         $scope.trans = []
         $scope.showBody = true

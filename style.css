@@ -355,7 +355,7 @@ button {
 }
 
 .scroll {
-    overflow: auto;
+    overflow-y: scroll;
 }
 
 .scroll .block > :last-child {

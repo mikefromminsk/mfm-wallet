@@ -118,20 +118,37 @@ function hash(str) {
 
 function hashAddress(password) {
     const abc = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
-    const binaryStr = atob(hash(password)); // Декодируем Base64
+    const binaryStr = atob(hash(password));
     const last20Bytes = new Uint8Array(20);
 
-    // Копируем последние 20 байт (если строка короче, заполняем нулями)
+    // Берём последние 20 байт (или заполняем нулями)
     const startPos = Math.max(0, binaryStr.length - 20);
     for (let i = 0; i < 20; i++) {
         const srcPos = startPos + i;
         last20Bytes[i] = srcPos < binaryStr.length ? binaryStr.charCodeAt(srcPos) : 0;
     }
 
-    // Конвертируем 20 байт в Base58
-    let num = last20Bytes.reduce((n, byte) => (n << 8n) + BigInt(byte), 0n);
+    // Конвертируем байты в массив цифр (256-ричное число)
+    let digits = [0];
+    for (const byte of last20Bytes) {
+        let carry = byte;
+        for (let i = 0; i < digits.length; i++) {
+            carry += digits[i] * 256;
+            digits[i] = carry % 58;
+            carry = Math.floor(carry / 58);
+        }
+        while (carry > 0) {
+            digits.push(carry % 58);
+            carry = Math.floor(carry / 58);
+        }
+    }
+
+    // Убираем лидирующие нули (кодируются как '1' в Base58)
     let res = '';
-    while (num > 0n) res = abc[num % 58n] + res, num /= 58n;
+    for (const d of digits.reverse()) {
+        res += abc[d];
+    }
+
     return "V" + res;
 }
 

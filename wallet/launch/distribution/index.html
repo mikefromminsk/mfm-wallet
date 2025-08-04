@@ -29,8 +29,7 @@
                  ng-class="{'back-accent': mining_percent == percent, 'back-gray': mining_percent != percent}"
                  ng-click="setMiningPercent(percent)">{{percent}}%/{{str.year}}</div>
         </div>
-        <p class="text-green">Все токены отправляются в майнинг пул.</p>
-        <p class="text-green">Каждый год высвобождается {{mining_percent}}% всего пула.</p>
+        <p class="text-green">{{str.every_year_is_released}} {{mining_percent}}%</p>
         <div class="primary-button"
              ng-disabled="in_progress"
              ng-click="launch()">

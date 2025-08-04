@@ -2,7 +2,7 @@
     <div class="row">
         <p class="flex text2">ID</p>
         <p>{{formatAddress(tran.next_hash)}}</p>
-        <div class="radius-default ripple" ng-click="copy(tran.next_hash)">
+        <div class="radius-default ripple" ng-click="copy(location.origin + '/mfm-explorer?hash=' + tran.next_hash)">
             <img class="img16 img-gray400" src="/mfm-wallet/img/copy.svg">
         </div>
     </div>

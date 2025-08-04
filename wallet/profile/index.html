@@ -12,10 +12,12 @@
         <div class="flex col block">
             <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
             <div class="input-content" ng-show="domain != wallet.gas_domain">
-                <ng-include class="p0" src="'/mfm-wallet/wallet/profile/chart/chart.html?v=5'"></ng-include>
-                <ng-include class="m0" src="'/mfm-wallet/wallet/profile/options.html?v=5'"></ng-include>
+                <ng-include class="p0" src="'/mfm-wallet/wallet/profile/chart/chart.html?v=9'"></ng-include>
+                <ng-include class="m0" src="'/mfm-wallet/wallet/profile/options.html?v=9'"></ng-include>
             </div>
-            <ng-include src="'/mfm-wallet/wallet/profile/analytics.html?v=5'"></ng-include>
+            <ng-include src="'/mfm-wallet/wallet/profile/analytics.html?v=9'"></ng-include>
+            <div class="nowrap-disabled mh16"
+                 ng-include="'/mfm-wallet/wallet/profile/faq/' + getLanguage() + '.html'"></div>
         </div>
     </div>
 
@@ -31,7 +33,8 @@
     <div class="col mh16 align-start-center" ng-show="account && domain != wallet.gas_domain">
         <div class="row block gap16">
             <div class="flex mh0 primary-button back-green radius4 uppercase"
-                 ng-click="openBuy(domain)">
+                 ng-click="openBuy(domain)"
+                 ng-show="gas_account.balance != 0 || account.balance == 0">
                 {{str.buy}}
             </div>
             <div class="flex mh0 primary-button back-red radius4 uppercase"

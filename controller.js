@@ -28,11 +28,21 @@ function start($scope) {
         if (getTelegramUserId() == null)
             window.history.pushState({}, document.title, "/mfm-wallet")
     }
-
-/*    if (getTelegramUserId() == null)
-        window.addEventListener('popstate', () => {
-            $scope.close()
-        })*/
+    /*if (Telegram){
+        Telegram.WebApp.onEvent('backButtonClicked', () => {
+            if (!window.backPressed) {
+                window.backPressed = true;
+                Telegram.WebApp.showAlert('Нажмите ещё раз назад для выхода');
+                setTimeout(() => window.backPressed = false, 2000);
+            } else {
+                Telegram.WebApp.close();
+            }
+        })
+    }*/
+    /*    if (getTelegramUserId() == null)
+            window.addEventListener('popstate', () => {
+                $scope.close()
+            })*/
 
     connectWs()
 }

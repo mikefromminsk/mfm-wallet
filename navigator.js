@@ -94,8 +94,8 @@ function addNavigator($scope) {
         openLogin(success)
     }
 
-    $scope.openTokenProfile = function (domain, success) {
-        openTokenProfile(domain, success)
+    $scope.openTokenProfile = function (domain, success, mode) {
+        openTokenProfile(domain, success, mode)
     }
 
     $scope.openSettings = function (success) {
@@ -203,10 +203,6 @@ function addNavigator($scope) {
 
     $scope.openDistribution = function (domain, success) {
         openDistribution(domain, success)
-    }
-
-    $scope.openAnalytics = function () {
-        openAnalytics()
     }
 
     $scope.openReview = function () {
