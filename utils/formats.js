@@ -184,22 +184,16 @@ function addFormats($scope) {
     }
 
     $scope.groupByTimePeriod = function (obj) {
-        let objPeriod = {};
-        let oneDay = 24 * 60 * 60;
+        const oneDay = 24 * 60 * 60;
+        let lastDay = 0
         for (let i = 0; i < obj.length; i++) {
-            let d = new Date(obj[i]['time']);
-            d = Math.floor(d.getTime() / oneDay);
-            objPeriod[d] = objPeriod[d] || [];
-            objPeriod[d].push(obj[i]);
+            let day = Math.floor(obj[i]['time'] / oneDay) * oneDay;
+            if (day != lastDay) {
+                obj[i]['day'] = day
+                lastDay = day
+            }
         }
-        let result = []
-        for (day of Object.keys(objPeriod).sort().reverse()) {
-            result.push({
-                day: $scope.formatDate(day * 24 * 60 * 60),
-                items: objPeriod[day].sort((a, b) => b['time'] - a['time']),
-            })
-        }
-        return result;
+        return obj;
     }
 
     $scope.max = function (a, b) {

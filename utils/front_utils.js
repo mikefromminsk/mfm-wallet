@@ -43,6 +43,24 @@ function controller(callback) {
         Telegram.WebApp.expand()
         Telegram.WebApp.setHeaderColor("#0f1620")
     }
+    app.directive('onScreen', function () {
+        return {
+            restrict: 'A',
+            link: function (scope, element, attrs) {
+                const observer = new IntersectionObserver(function (entries) {
+                    if (entries[0].isIntersecting) {
+                        scope.$apply(attrs.onScreen);
+                    }
+                }, {
+                    threshold: 0.1
+                });
+                observer.observe(element[0]);
+                element.on('$destroy', function () {
+                    observer.unobserve(element[0]);
+                });
+            }
+        };
+    });
 }
 
 function addGlobalVars($scope, callback) {
@@ -71,22 +89,22 @@ function addGlobalVars($scope, callback) {
 }
 
 function showDialog(templateUrl, onClose, callback) {
-        let path = location.pathname
-        if (!path.endsWith("/"))
-            path += "/"
+    let path = location.pathname
+    if (!path.endsWith("/"))
+        path += "/"
 
-        window.$mdDialog.show({
-            templateUrl: (templateUrl[0] == "/" ? templateUrl : path + templateUrl) + "/index.html?v=9",
-            escapeToClose: false,
-            multiple: true,
-            isolateScope: false,
-            controller: function ($scope) {
-                addGlobalVars($scope, callback)
-            }
-        }).then(function (result) {
-            if (onClose)
-                onClose(result)
-        })
+    window.$mdDialog.show({
+        templateUrl: (templateUrl[0] == "/" ? templateUrl : path + templateUrl) + "/index.html?v=9",
+        escapeToClose: false,
+        multiple: true,
+        isolateScope: false,
+        controller: function ($scope) {
+            addGlobalVars($scope, callback)
+        }
+    }).then(function (result) {
+        if (onClose)
+            onClose(result)
+    })
 }
 
 function showBottomSheet(templateUrl, onClose, callback) {
