@@ -24,12 +24,28 @@ function loadTranslations($scope) {
 
 function controller(callback) {
     let app = angular.module("App", ['ngMaterial', 'ngAnimate'])
-    app.config(function ($mdThemingProvider, $locationProvider) {
+    app.config(function ($mdThemingProvider, $locationProvider, $provide) {
         $mdThemingProvider.disableTheming()
         // Включаем HTML5 Mode
         $locationProvider.html5Mode({
             enabled: true,
             requireBase: false
+        })
+
+        $provide.decorator('ngClickDirective', function($delegate) {
+            $delegate[0].compile = function() {
+                return function(scope, element, attrs) {
+                    element.on('touchend', function(event) {
+                        event.preventDefault()
+                    })
+                    element.on('click', function(event) {
+                        scope.$apply(function() {
+                            scope.$eval(attrs.ngClick, {$event: event})
+                        })
+                    })
+                }
+            }
+            return $delegate
         })
     })
     app.controller("Controller", function ($scope, $mdBottomSheet, $mdDialog, $mdToast) {
@@ -49,18 +65,31 @@ function controller(callback) {
             link: function (scope, element, attrs) {
                 const observer = new IntersectionObserver(function (entries) {
                     if (entries[0].isIntersecting) {
-                        scope.$apply(attrs.onScreen);
+                        scope.$apply(attrs.onScreen)
                     }
                 }, {
                     threshold: 0.1
-                });
-                observer.observe(element[0]);
+                })
+                observer.observe(element[0])
                 element.on('$destroy', function () {
-                    observer.unobserve(element[0]);
-                });
+                    observer.unobserve(element[0])
+                })
             }
-        };
-    });
+        }
+    })
+
+
+    /*app.directive('preventDoubleClick', ['$timeout', function ($timeout) {
+        return {
+            priority: 100,
+            restrict: 'A',
+            link: function (scope, element, attrs) {
+                element.on('touchstart', function (event) {
+                    event.preventDefault()
+                })
+            }
+        }
+    }])*/
 }
 
 function addGlobalVars($scope, callback) {
@@ -94,7 +123,7 @@ function showDialog(templateUrl, onClose, callback) {
         path += "/"
 
     window.$mdDialog.show({
-        templateUrl: (templateUrl[0] == "/" ? templateUrl : path + templateUrl) + "/index.html?v=9",
+        templateUrl: (templateUrl[0] == "/" ? templateUrl : path + templateUrl) + "/index.html?v=11",
         escapeToClose: false,
         multiple: true,
         isolateScope: false,
@@ -108,25 +137,23 @@ function showDialog(templateUrl, onClose, callback) {
 }
 
 function showBottomSheet(templateUrl, onClose, callback) {
-    setTimeout(function () {
-        window.$mdBottomSheet.show({
-            templateUrl: "/mfm-wallet/" + templateUrl + "/index.html",
-            escapeToClose: false,
-            clickOutsideToClose: false,
-            controller: function ($scope) {
-                addGlobalVars($scope, callback)
-            }
-        }).then(function (result) {
-            try {
-                if (onClose)
-                    onClose(result)
-            } catch (e) {
-            }
-        }).catch(function () { // для отслеживания свертывания окна
+    window.$mdBottomSheet.show({
+        templateUrl: "/mfm-wallet/" + templateUrl + "/index.html?v=11",
+        escapeToClose: false,
+        clickOutsideToClose: false,
+        controller: function ($scope) {
+            addGlobalVars($scope, callback)
+        }
+    }).then(function (result) {
+        try {
             if (onClose)
-                onClose()
-        })
-    }, 100)
+                onClose(result)
+        } catch (e) {
+        }
+    }).catch(function () { // для отслеживания свертывания окна
+        if (onClose)
+            onClose()
+    })
 }
 
 function showMessage(message, toastClass, callback) {

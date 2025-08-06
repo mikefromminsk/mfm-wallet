@@ -98,6 +98,7 @@ function addWallet($scope) {
         postContract("mfm-token", "trans", {
             address: wallet.address(),
         }, function (response) {
+            $scope.next_offset = response.next_offset
             $scope.trans = response.trans
             $scope.$apply()
         })

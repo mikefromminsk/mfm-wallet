@@ -9,14 +9,14 @@
     <div class="col align-start-center">
         <div class="col block" style="width: 400px">
             <div class="row align-center-center" style="margin: 40px 0 20px 0">
-                <div class="pin-unfilled" ng-hide="pin.length >= 1"></div>
-                <div class="pin-filled" ng-show="pin.length >= 1">*</div>
-                <div class="pin-unfilled" ng-hide="pin.length >= 2"></div>
-                <div class="pin-filled" ng-show="pin.length >= 2">*</div>
-                <div class="pin-unfilled" ng-hide="pin.length >= 3"></div>
-                <div class="pin-filled" ng-show="pin.length >= 3">*</div>
-                <div class="pin-unfilled" ng-hide="pin.length >= 4"></div>
-                <div class="pin-filled" ng-show="pin.length >= 4">*</div>
+                <div class="pin-unfilled" ng-hide="pincode.length >= 1"></div>
+                <div class="pin-filled" ng-show="pincode.length >= 1">*</div>
+                <div class="pin-unfilled" ng-hide="pincode.length >= 2"></div>
+                <div class="pin-filled" ng-show="pincode.length >= 2">*</div>
+                <div class="pin-unfilled" ng-hide="pincode.length >= 3"></div>
+                <div class="pin-filled" ng-show="pincode.length >= 3">*</div>
+                <div class="pin-unfilled" ng-hide="pincode.length >= 4"></div>
+                <div class="pin-filled" ng-show="pincode.length >= 4">*</div>
             </div>
             <div class="row">
                 <div class="flex-33 col align-center-center ripple pv16" ng-click="add('1')">1</div>
@@ -35,7 +35,7 @@
             </div>
             <div class="row">
                 <div class="flex col align-center-center ripple pv16"></div>
-                <div class="flex col align-center-center ripple pv16" ng-click="add('1')">0</div>
+                <div class="flex col align-center-center ripple pv16" ng-click="add('0')">0</div>
                 <div class="flex col align-center-center ripple pv16" ng-click="remove()">
                     <img class="img36 img-white" src="/mfm-wallet/img/delete.svg">
                 </div>

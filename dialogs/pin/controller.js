@@ -15,19 +15,19 @@ function getPin(success, cancel) {
                         success(result)
                 }
             }, function ($scope) {
-                $scope.pin = ""
+                $scope.pincode = ""
                 $scope.setMode = cancel != null
 
                 $scope.add = function (symbol) {
-                    $scope.pin += symbol
-                    if ($scope.pin.length == 4) {
-                        window.$mdBottomSheet.hide($scope.pin)
+                    $scope.pincode += symbol
+                    if ($scope.pincode.length == 4) {
+                        window.$mdBottomSheet.hide($scope.pincode)
                     }
                 }
 
                 $scope.remove = function () {
-                    if ($scope.pin.length > 0)
-                        $scope.pin = $scope.pin.substring(0, $scope.pin.length - 1);
+                    if ($scope.pincode.length > 0)
+                        $scope.pincode = $scope.pincode.substring(0, $scope.pincode.length - 1);
                 }
             })
         }

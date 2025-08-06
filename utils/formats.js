@@ -186,11 +186,13 @@ function addFormats($scope) {
     $scope.groupByTimePeriod = function (obj) {
         const oneDay = 24 * 60 * 60;
         let lastDay = 0
-        for (let i = 0; i < obj.length; i++) {
-            let day = Math.floor(obj[i]['time'] / oneDay) * oneDay;
-            if (day != lastDay) {
-                obj[i]['day'] = day
-                lastDay = day
+        if (obj){
+            for (let i = 0; i < obj.length; i++) {
+                let day = Math.floor(obj[i]['time'] / oneDay) * oneDay;
+                if (day != lastDay) {
+                    obj[i]['day'] = day
+                    lastDay = day
+                }
             }
         }
         return obj;

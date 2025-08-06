@@ -305,6 +305,10 @@ function addNavigator($scope) {
         openMiner(domain, success)
     }
 
+    $scope.openMinerTestReadUsers = function () {
+        openMinerTestReadUsers()
+    }
+
     $scope.openLanding = function () {
         location.href = "/mfm-landing"
     }

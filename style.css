@@ -839,3 +839,8 @@ a[title="Charting by TradingView"] {
 div[ng-include] > p {
     margin-top: 16px;
 }
+
+[prevent-double-click] {
+    touch-action: manipulation; /* Отключает задержку 300ms в мобильном Safari */
+    cursor: pointer; /* Улучшает отзывчивость */
+}
