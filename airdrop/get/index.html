@@ -1,0 +1,77 @@
+<md-dialog class="fill col">
+    <div class="row header align-start-center">
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="openSupport()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/support.svg">
+        </div>
+        <div class="flex row align-center">{{str.airdrop}}</div>
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+        </div>
+    </div>
+    <div class="flex col scroll align-start-center">
+        <div class="flex col block">
+            <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
+            <div class="col input-content">
+                <div class="col border-gray radius-default relative p16">
+                    <div class="row">
+                        <div class="flex col">
+                            <p>{{formatDomain(domain)}}</p>
+                            <div class="row mt4 text2">
+                                <p>{{formatPrice(token.price)}}</p>
+                                <p class="ml4" ng-class="percentColor(token.price24)">
+                                    {{formatChange(token.price24)}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col align-start-end">
+                            <p class="text0">{{formatAmount(airdrop.reward, airdrop.domain)}}</p>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 50px">
+                        <div class="flex col">
+                        </div>
+                        <div class="col">
+                            {{str.airdrop}}
+                        </div>
+                    </div>
+                    <div style="position: absolute;
+                                top: 0;
+                                right: 0;
+                                width: 100px;
+                                height: 100px;
+                                background-size: cover;
+                                background-position: center;
+                                opacity: 0.2;
+                                z-index: -1;"
+                         ng-style="{'background-image': 'url(\'' + getLogoLink(domain) + '\')'}"></div>
+                </div>
+
+                <div class="row gap8">
+                    <img class="img20"
+                         src="/mfm-wallet/img/task.svg"
+                         ng-class="{'img-green': account, 'img-gray': !account}">
+                    <p class="flex">1. {{str.add_to_wallet}} {{formatDomain(domain)}}</p>
+                    <img class="img16 img-gray"
+                         src="/mfm-wallet/img/{{show_task0 ? 'up' : 'down'}}.svg" ng-click="show_task0 = !show_task0">
+                </div>
+                <div class="row align-end-center" ng-show="show_task0">
+                    <div class="primary-button m0 border-gray p8"
+                            ng-click="openTokenProfile(domain, refresh, 'airdrop')">
+                        {{str.add_to_wallet}}
+                    </div>
+                </div>
+                <div class="nowrap-disabled"
+                     ng-include="'/mfm-wallet/airdrop/get/faq/' + getLanguage() + '.html'"></div>
+                <p ng-show="trans.length > 0">{{str.participants}}</p>
+                <ng-include class="m0" src="'/mfm-wallet/wallet/trans.html?v=11'"></ng-include>
+            </div>
+
+            <div></div>
+        </div>
+    </div>
+    <div class="primary-button"
+         ng-disabled="airdrop.rewarded || !account"
+         ng-click="getReward()">
+        {{airdrop.rewarded ? str.you_received_reward : str.get_reward}}
+    </div>
+</md-dialog>

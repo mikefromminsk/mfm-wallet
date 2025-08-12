@@ -1,0 +1,42 @@
+<md-dialog class="fill col">
+    <div class="row header align-start-center">
+        <p class="flex">{{str.details}}</p>
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+        </div>
+    </div>
+    <div class="flex col scroll align-start-center">
+        <div class="flex col block">
+            <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
+            <div class="row align-center-center">
+                <div class="img100" style="position: relative">
+                    <svg class="img100 checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                        <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                        <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                    </svg>
+                </div>
+            </div>
+
+            <ng-include src="'/mfm-wallet/trans.html?v=11'"></ng-include>
+            <ng-include src="'/mfm-wallet/tran/tran.html?v=11'"></ng-include>
+
+            <!--<button class="" ng-click="copy(location.origin + '/mfm-explorer?hash=' + tran.next_hash)">
+                {{str.copy_tran_link}}
+            </button>-->
+            <!--@SerializedName("valueUSD")
+            @SerializedName("direction")
+            fee
+            -->
+            <!--<div class="row mt8">
+                <p class="flex">TxId</p>
+                <div class="row">
+                    <a class="nowrap" href="{{getTxLink(tran.txid)}}" target="_blank">{{formatHash(tran.txid)}}</a>
+                    <img class="img16 ml4 ripple img-black" src="/mfm-wallet/img/copy.svg" ng-click="copy(tran.txid)">
+                </div>
+            </div>-->
+        </div>
+    </div>
+    <div class="primary-button" ng-click="close()">
+        {{str.close}}
+    </div>
+</md-dialog>
