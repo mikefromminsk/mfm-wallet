@@ -1,5 +1,5 @@
 function openAskSure(title, yes, no, yesCallback, noCallback) {
-    showBottomSheet("dialogs/ask", null, function ($scope) {
+    showBottomSheet("ask", null, function ($scope) {
         $scope.title = title
         $scope.yes = yes
         $scope.no = no
