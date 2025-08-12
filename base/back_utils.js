@@ -121,14 +121,12 @@ function hashAddress(password) {
     const binaryStr = atob(hash(password));
     const last20Bytes = new Uint8Array(20);
 
-    // Берём последние 20 байт (или заполняем нулями)
     const startPos = Math.max(0, binaryStr.length - 20);
     for (let i = 0; i < 20; i++) {
         const srcPos = startPos + i;
         last20Bytes[i] = srcPos < binaryStr.length ? binaryStr.charCodeAt(srcPos) : 0;
     }
 
-    // Конвертируем байты в массив цифр (256-ричное число)
     let digits = [0];
     for (const byte of last20Bytes) {
         let carry = byte;
@@ -143,7 +141,6 @@ function hashAddress(password) {
         }
     }
 
-    // Убираем лидирующие нули (кодируются как '1' в Base58)
     let res = '';
     for (const d of digits.reverse()) {
         res += abc[d];
@@ -151,7 +148,6 @@ function hashAddress(password) {
 
     return "V" + res;
 }
-
 
 function postContract(application, path, params, success, error) {
     post(location.origin + "/" + application + "/" + path, params, success, error)
@@ -254,7 +250,6 @@ var wallet = {
 
         function loginSuccess() {
             getPin(function (pin) {
-                // set pin
                 storage.setString(storageKeys.address, address)
                 storage.setString(storageKeys.passhash, encode(password, pin))
                 if (pin != null)
@@ -262,7 +257,6 @@ var wallet = {
                 if (success)
                     success()
             }, function () {
-                // skip pin
                 storage.setString(storageKeys.address, address)
                 storage.setString(storageKeys.passhash, password)
                 if (success)
@@ -308,7 +302,6 @@ var wallet = {
     address: function () {
         return storage.getString(storageKeys.address)
     },
-    // rename to calcKey
     calcHash: function (domain, address, password, prev_key) {
         return hash(domain + address + password + (prev_key || ""))
     },
@@ -332,7 +325,6 @@ var wallet = {
         }, function (response) {
             success(wallet.calcPass(domain, wallet.address(), password, response.account.prev_key))
         }, function () {
-            // reg account in other tokens
             wallet.calcStartHash(domain, pin, function (next_hash) {
                 postContract("mfm-token", "send", {
                     domain: domain,
@@ -362,16 +354,6 @@ var wallet = {
         let isParamsFunction = typeof params === 'function'
         getPin(function (pin) {
             if (isParamsFunction) {
-                /*calcPass(domain, pin, function (pass, key) {
-                    params = params(pass)
-                    if (domain == wallet.gas_domain) {
-                        wallet.calcPass(wallet.gas_domain, key, pin, function (gas_key, gas_next_hash) {
-                            send(params, gas_key + ":" + gas_next_hash)
-                        })
-                    } else {
-                        calcGas(params)
-                    }
-                })*/
             } else {
                 calcGas(params)
             }
@@ -411,7 +393,6 @@ var wallet = {
         })
     },
 }
-
 
 function reverse(s) {
     return s.split("").reverse().join("");

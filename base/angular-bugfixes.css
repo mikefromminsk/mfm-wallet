@@ -29,7 +29,7 @@ md-bottom-sheet > .header {
     background: none;
 }
 
-    md-dialog {
+md-dialog {
     max-width: none;
     max-height: none;
 }

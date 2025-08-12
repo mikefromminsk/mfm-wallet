@@ -26,7 +26,6 @@ function controller(callback) {
     let app = angular.module("App", ['ngMaterial', 'ngAnimate'])
     app.config(function ($mdThemingProvider, $locationProvider, $provide) {
         $mdThemingProvider.disableTheming()
-        // Включаем HTML5 Mode
         $locationProvider.html5Mode({
             enabled: true,
             requireBase: false
@@ -150,7 +149,7 @@ function showBottomSheet(templateUrl, onClose, callback) {
                 onClose(result)
         } catch (e) {
         }
-    }).catch(function () { // для отслеживания свертывания окна
+    }).catch(function () {
         if (onClose)
             onClose()
     })

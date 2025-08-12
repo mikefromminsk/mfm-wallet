@@ -75,9 +75,9 @@ function addFormats($scope) {
             "max-height": size + "px",
             "background-image": "url(data:image/png;base64,"
                 + new Identicon(address, {
-                    background: [255, 255, 255, 0],         // rgba white
-                    margin: 0.2,                              // 20% margin
-                    size: size,                                // 420px square
+                    background: [255, 255, 255, 0],
+                    margin: 0.2,
+                    size: size,
                 }).toString() + ")",
         }
     }
@@ -122,7 +122,6 @@ function addFormats($scope) {
     }
 
     $scope.formatTime = function (seconds) {
-
         function round(num, precision) {
             return +(Math.round(num + "e+" + precision) + "e-" + precision);
         }
@@ -157,7 +156,6 @@ function addFormats($scope) {
     $scope.formatTimeDiff = function (seconds) {
         return ($scope.formatTime(seconds) + " " + str.ago).toLowerCase()
     }
-
 
     function padTo2Digits(num) {
         return num.toString().padStart(2, '0');
@@ -201,8 +199,6 @@ function addFormats($scope) {
     $scope.max = function (a, b) {
         return Math.max(a, b)
     }
-
-    // this is not a formats
 
     $scope.getLogoLink = function (domain) {
         let server = ""
@@ -263,7 +259,6 @@ function addFormats($scope) {
             'transform': 'translate3d(0, 0, 0)',
         }
     }
-
 
     let keyPressCallback = null
     let keyPressListener = function (e) {
