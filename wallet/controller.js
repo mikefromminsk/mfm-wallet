@@ -15,9 +15,7 @@ function addWallet($scope) {
         }, function (response) {
             setAccounts(response.accounts || [])
             $scope.showBody = true
-            setTimeout(function () {
-                createOdometer(document.getElementById("total"), 0, $scope.getTotalBalance())
-            }, 100)
+            setTotalBalance()
             $scope.$apply()
         })
     }
@@ -52,7 +50,29 @@ function addWallet($scope) {
         if ($scope.accounts != null)
             for (const account of $scope.accounts)
                 totalBalance += account.token.price * account.balance
+        if ($scope.miner_gas_account)
+            totalBalance += $scope.miner_gas_account.balance
         return totalBalance
+    }
+
+    let isDelayFinished = true
+    let lastTotalBalance = 0
+    function setTotalBalance() {
+        if (!isDelayFinished) return;
+        let newTotalBalance = $scope.getTotalBalance()
+        let precision = 4
+        if (newTotalBalance > 100)
+            precision = 0
+        else if (newTotalBalance > 1)
+            precision = 2
+        setTimeout(function () {
+            createOdometer(document.getElementById("total"), 0, $scope.round(newTotalBalance, precision))
+        }, document.getElementById("total") ? 100 : 1500)
+        lastTotalBalance = newTotalBalance
+        isDelayFinished = false
+        setTimeout(() => {
+            isDelayFinished = true
+        }, 10000);
     }
 
     $scope.selectAccount = function (domain) {
