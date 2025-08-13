@@ -31,14 +31,14 @@ function controller(callback) {
             requireBase: false
         })
 
-        $provide.decorator('ngClickDirective', function($delegate) {
-            $delegate[0].compile = function() {
-                return function(scope, element, attrs) {
-                    element.on('touchend', function(event) {
+        $provide.decorator('ngClickDirective', function ($delegate) {
+            $delegate[0].compile = function () {
+                return function (scope, element, attrs) {
+                    element.on('touchend', function (event) {
                         event.preventDefault()
                     })
-                    element.on('click', function(event) {
-                        scope.$apply(function() {
+                    element.on('click', function (event) {
+                        scope.$apply(function () {
                             scope.$eval(attrs.ngClick, {$event: event})
                         })
                     })

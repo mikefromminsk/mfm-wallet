@@ -12,6 +12,34 @@ function openAirdrop(domain, success) {
             })
         }
 
+        $scope.isAddedToWallet = function () {
+            return $scope.account
+        }
+
+        $scope.addToWallet = function () {
+            openTokenProfile(domain, $scope.refresh, 'airdrop');
+        }
+
+        $scope.isTelegramSubscribed = function () {
+            return $scope.isChecked('subscribe_to_telegram_' + domain)
+        }
+
+        $scope.subscribeToTelegram = function () {
+            $scope.check('subscribe_to_telegram_' + domain)
+            $scope.show_task1 = false
+            $scope.openWeb('https://t.me/' + $scope.airdrop.telegram)
+        }
+
+        $scope.show_task0 = false
+        $scope.show_task1 = !$scope.isTelegramSubscribed()
+
+        $scope.isRewardEnabled = function () {
+            return $scope.airdrop
+                && !$scope.airdrop.rewarded
+                && $scope.isAddedToWallet()
+                && $scope.isTelegramSubscribed()
+        }
+
         function getAirdrop() {
             postContract("mfm-airdrop", "get", {
                 domain: domain,

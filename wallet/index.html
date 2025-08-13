@@ -6,7 +6,7 @@
     </div>
     <div class="flex col scroll align-start-center" ng-hide="wallet.address()">
         <div class="flex col">
-            <ng-include src="'/mfm-wallet/wallet/login/login.html?v=11'"></ng-include>
+            <ng-include src="'/mfm-wallet/login/login.html?v=11'"></ng-include>
         </div>
     </div>
     <div class="flex col scroll align-start-center" ng-show="wallet.address()">
@@ -49,13 +49,46 @@
                         <p class="mt8 text2">{{str.send}}</p>
                     </div>
                 </div>
-                <ng-include ng-show="top_airdrops && top_airdrops.length > 0" src="'/mfm-wallet/wallet/airdrop/airdrops.html?v=11'"></ng-include>
+
+                <div class="col"
+                     ng-show="top_airdrops && top_airdrops.length > 0">
+                    <p class="mb4 text2">{{str.giveaways}}</p>
+                    <div class="row scroll">
+                        <div class="col mr4 radius-default border-gray p8 gap8 ripple relative"
+                             style="min-width: 100px"
+                             ng-repeat="airdrop in top_airdrops"
+                             ng-click="check('start_airdrop'); openAirdrop(airdrop.domain, refresh)">
+                            <div class="focus" ng-show="$index == 0 && isNotChecked('start_airdrop')"></div>
+                            <div class="row align-start-center">
+                                <img class="img14"
+                                     src="/mfm-wallet/img/task.svg"
+                                     ng-class="{'img-gray': !airdrop.rewarded, 'img-green': airdrop.rewarded}">
+                                <p class="ml4">{{formatDomain(airdrop.domain)}}</p>
+                            </div>
+                            <div class="row align-start-center gap4" style="margin-top: 20px">
+                                <p>{{formatPrice(airdrop.reward * airdrop.token.price, 2)}}</p>
+                                <div class="flex"></div>
+                            </div>
+                            <div style="position: absolute;
+                    top: 0;
+                    right: 0;
+                    width: 50px;
+                    height: 50px;
+                    background-size: cover;
+                    background-position: center;
+                    opacity: 0.2;
+                    z-index: -1;"
+                                 ng-style="{'background-image': 'url(\'' + getLogoLink(airdrop.domain) + '\')'}"></div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="col gap16" ng-hide="!wallet.address()">
                     <ng-include src="'/mfm-wallet/wallet/accounts.html?v=11'"></ng-include>
                     <div class="primary-button back-pay mh0 mb0 mt8" ng-click="openLaunchToken(refresh)">
                         {{str.launch_token}}
                     </div>
-                    <div class="row primary-button back-black m0"  ng-click="openSupport()">
+                    <div class="row primary-button back-black m0" ng-click="openSupport()">
                         {{str.report_a_bug}}
                     </div>
                 </div>

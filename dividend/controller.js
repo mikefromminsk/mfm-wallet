@@ -20,6 +20,7 @@ function openDividend(domain, success) {
                 address: wallet.address()
             }, function (response) {
                 $scope.reward = response.reward
+                $scope.all_rewards = response.all_rewards
                 $scope.participants = response.participants || {}
                 $scope.gas = response.gas
                 $scope.transList = response.trans

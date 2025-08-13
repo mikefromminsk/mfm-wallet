@@ -49,17 +49,34 @@
                 <div class="row gap8">
                     <img class="img20"
                          src="/mfm-wallet/img/task.svg"
-                         ng-class="{'img-green': account, 'img-gray': !account}">
+                         ng-class="{'img-green': isAddedToWallet(), 'img-gray': !isAddedToWallet()}">
                     <p class="flex">1. {{str.add_to_wallet}} {{formatDomain(domain)}}</p>
                     <img class="img16 img-gray"
                          src="/mfm-wallet/img/{{show_task0 ? 'up' : 'down'}}.svg" ng-click="show_task0 = !show_task0">
                 </div>
                 <div class="row align-end-center" ng-show="show_task0">
                     <div class="primary-button m0 border-gray p8"
-                            ng-click="openTokenProfile(domain, refresh, 'airdrop')">
+                            ng-click="addToWallet()">
                         {{str.add_to_wallet}}
                     </div>
                 </div>
+
+                <div class="row gap8">
+                    <img class="img20"
+                         src="/mfm-wallet/img/task.svg"
+                         ng-class="{'img-green': isTelegramSubscribed(),
+                                    'img-gray': !isTelegramSubscribed()}">
+                    <p class="flex">2. {{str.subscribe_to_telegram}}</p>
+                    <img class="img16 img-gray"
+                         src="/mfm-wallet/img/{{show_task0 ? 'up' : 'down'}}.svg" ng-click="show_task1 = !show_task1">
+                </div>
+                <div class="row align-end-center" ng-show="show_task1">
+                    <div class="primary-button m0 border-gray p8"
+                         ng-click="subscribeToTelegram()">
+                        {{str.subscribe}}
+                    </div>
+                </div>
+
                 <div class="nowrap-disabled"
                      ng-include="'/mfm-wallet/airdrop/get/faq/' + getLanguage() + '.html'"></div>
                 <p ng-show="trans.length > 0">{{str.participants}}</p>
@@ -70,7 +87,7 @@
         </div>
     </div>
     <div class="primary-button"
-         ng-disabled="airdrop.rewarded || !account"
+         ng-disabled="!isRewardEnabled()"
          ng-click="getReward()">
         {{airdrop.rewarded ? str.you_received_reward : str.get_reward}}
     </div>

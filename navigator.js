@@ -314,6 +314,6 @@ function addNavigator($scope) {
     }
 
     $scope.openWeb = function (page) {
-        location.href = page
+        window.open(page)
     }
 }

@@ -51,6 +51,17 @@
                 {{str.reward_per_person}}: {{formatAmount(round(budget / participants), domain)}}
             </div>
 
+            <div class="row input-wrapper">
+                <img class="" src="/mfm-wallet/img/telegram.svg">
+                <input type="text"
+                       id="telegram"
+                       autocapitalize="off"
+                       autocomplete="off"
+                       ng-model="telegram"
+                       placeholder=" ">
+                <label for="telegram">{{str.telegram_channel}}</label>
+            </div>
+
             <div></div>
         </div>
     </div>

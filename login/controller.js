@@ -4,7 +4,7 @@ function openLogin(success) {
         if (success) success()
         return
     }
-    showDialog("wallet/login", success, function ($scope) {
+    showDialog("login", success, function ($scope) {
         addLogin($scope, $scope.close)
     })
 }
@@ -26,7 +26,6 @@ function addLogin($scope, success) {
         let address = hashAddress(password)
         wallet.login(address, password, function () {
             showSuccess(str.login_success, success)
-            $scope.finishRequest()
             $scope.close()
         }, function (message) {
             if (message == "invalid password")
