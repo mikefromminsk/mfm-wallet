@@ -52,6 +52,16 @@ function addNavigator($scope) {
         }, 100)
     }
 
+    $scope.closeAll = function () {
+        setTimeout(function () {
+            for (let i = 0; i < 10; i++){
+                window.$mdDialog.hide()
+                historyBack()
+            }
+            finish()
+        }, 100)
+    }
+
     $scope.open = function (link) {
         window.finishAutoOpening = false
         historyStack.push(link)

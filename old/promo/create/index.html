@@ -15,8 +15,6 @@
                 <img class="img-white" src="/mfm-wallet/img/giftbox.svg">
                 <input type="text"
                        id="promo"
-                       autocapitalize="off"
-                       autocomplete="off"
                        minlength="3"
                        maxlength="32"
                        oninput="this.value = this.value.toLowerCase().replace(/[^a-z0-9_]/g, '')"
@@ -28,8 +26,6 @@
                 <div ng-style="getLogo(domain)"></div>
                 <input type="number"
                        id="amount"
-                       autocapitalize="off"
-                       autocomplete="off"
                        ng-model="amount"
                        placeholder=" ">
                 <label for="amount">{{str.amount}}</label>

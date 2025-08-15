@@ -1,7 +1,7 @@
 <md-dialog class="fill col">
     <div class="row header align-start-center">
-        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="openSupport()">
-            <img class="img16 img-gray400" src="/mfm-wallet/img/support.svg">
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="closeAll()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/home.svg">
         </div>
         <p class="flex row align-center-center">{{str.new_token}}</p>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
@@ -15,8 +15,6 @@
                 <input type="text"
                        id="search_input"
                        class="uppercase"
-                       autocapitalize="off"
-                       autocomplete="off"
                        maxlength="16"
                        oninput="this.value = this.value.toLowerCase().replace(/[^a-z0-9_]/g, '')"
                        ng-model="search_text"
@@ -29,7 +27,7 @@
                 <li>{{str.oly_english_symbols}}</li>
                 <li>{{str.only_lowercase_symbols}}</li>
             </ul>
-            <ng-include ng-show="tokens && tokens.length > 0" src="'/mfm-wallet/search/tokens.html?v=11'"></ng-include>
+            <ng-include ng-show="tokens && tokens.length > 0" src="'/mfm-wallet/search/tokens.html?v=12'"></ng-include>
             <div class="primary-button"
                  ng-disabled="!hasTheSameToken() || !search_text || search_text.length < 3"
                  ng-click="selectName()">

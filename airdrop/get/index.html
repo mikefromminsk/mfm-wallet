@@ -1,7 +1,7 @@
 <md-dialog class="fill col">
     <div class="row header align-start-center">
-        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="openSupport()">
-            <img class="img16 img-gray400" src="/mfm-wallet/img/support.svg">
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="closeAll()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/home.svg">
         </div>
         <div class="flex row align-center">{{str.airdrop}}</div>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
@@ -80,7 +80,7 @@
                 <div class="nowrap-disabled"
                      ng-include="'/mfm-wallet/airdrop/get/faq/' + getLanguage() + '.html'"></div>
                 <p ng-show="trans.length > 0">{{str.participants}}</p>
-                <ng-include class="m0" src="'/mfm-wallet/wallet/trans.html?v=11'"></ng-include>
+                <ng-include class="m0" src="'/mfm-wallet/wallet/trans.html?v=12'"></ng-include>
             </div>
 
             <div></div>

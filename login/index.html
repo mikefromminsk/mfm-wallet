@@ -1,10 +1,12 @@
 <md-dialog class="fill col">
     <div class="row header align-start-center">
-        <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/support.svg" ng-click="openSupport()">
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="closeAll()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/home.svg">
+        </div>
         <div class="flex row align-center">{{str.login}}</div>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
         </div>
     </div>
-    <ng-include src="'/mfm-wallet/login/login.html?v=11'"></ng-include>
+    <ng-include src="'/mfm-wallet/login/login.html?v=12'"></ng-include>
 </md-dialog>

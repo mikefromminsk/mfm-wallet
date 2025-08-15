@@ -1,4 +1,4 @@
-function start($scope) {
+function start(address, $scope) {
     trackCall(arguments)
 
     document.title = window.location.hostname

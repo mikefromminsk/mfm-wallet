@@ -72,7 +72,7 @@ function addWallet($scope) {
         isDelayFinished = false
         setTimeout(() => {
             isDelayFinished = true
-        }, 10000);
+        }, 15000);
     }
 
     $scope.selectAccount = function (domain) {

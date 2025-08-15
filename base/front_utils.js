@@ -96,12 +96,11 @@ function addGlobalVars($scope, callback) {
         window.addFormats($scope)
     if (typeof addNavigator !== 'undefined')
         addNavigator($scope)
+    $scope.location = location
     $scope.wallet = window.wallet
     $scope.user = window.user
     $scope.str = window.str
-    $scope.bank_address = "bank"
     $scope.in_progress = false
-    $scope.location = location
     $scope.startRequest = function () {
         $scope.in_progress = true
     }
@@ -111,9 +110,16 @@ function addGlobalVars($scope, callback) {
         $scope.in_progress = false
         $scope.$apply()
     }
-    callback($scope)
+    callback(wallet.address(), $scope)
     if (!$scope.swipeToRefreshDisabled && typeof swipeToRefresh !== 'undefined')
         swipeToRefresh($scope.swipeToRefresh || $scope.close)
+
+    setTimeout(function () {
+        document.querySelectorAll('input').forEach(input => {
+            input.setAttribute('autocapitalize', 'off')
+            input.setAttribute('autocomplete', 'off')
+        });
+    }, 100)
 }
 
 function showDialog(templateUrl, onClose, callback) {
@@ -122,7 +128,7 @@ function showDialog(templateUrl, onClose, callback) {
         path += "/"
 
     window.$mdDialog.show({
-        templateUrl: (templateUrl[0] == "/" ? templateUrl : path + templateUrl) + "/index.html?v=11",
+        templateUrl: (templateUrl[0] == "/" ? templateUrl : path + templateUrl) + "/index.html?v=12",
         escapeToClose: false,
         multiple: true,
         isolateScope: false,
@@ -137,7 +143,7 @@ function showDialog(templateUrl, onClose, callback) {
 
 function showBottomSheet(templateUrl, onClose, callback) {
     window.$mdBottomSheet.show({
-        templateUrl: "/mfm-wallet/" + templateUrl + "/index.html?v=11",
+        templateUrl: "/mfm-wallet/" + templateUrl + "/index.html?v=12",
         escapeToClose: false,
         clickOutsideToClose: false,
         controller: function ($scope) {

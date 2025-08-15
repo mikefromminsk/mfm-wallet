@@ -1,20 +1,11 @@
 <md-dialog class="fill col">
     <div class="row header align-start-center">
-        <div class="row align-center-center img32 back-gray radius4 ripple" ng-click="openTokenProfile(token.domain)">
-            <img class="img16" src="/mfm-wallet/img/chart.svg">
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="closeAll()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/home.svg">
         </div>
-        <div class="row gap16 align-start-center">
-            <div class="col">
-                <p class="uppercase text1">{{formatDomain(token.domain)}}</p>
-                <div class="row mt4 text2">
-                    <p>{{formatPrice(token.price)}}</p>
-                    <p class="ml4" ng-class="percentColor(token.price24)">
-                        {{formatChange(token.price24)}}
-                    </p>
-                </div>
-            </div>
+        <div class="flex row align-center-center">
+            <p class="text1">{{formatDomain(token.domain)}}</p>
         </div>
-        <div class="flex"></div>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
         </div>
@@ -157,7 +148,7 @@
                     </div>
                 </div>
                 <div class="col" ng-repeat="orders in [active_orders, history_orders]">
-                    <ng-include src="'/mfm-wallet/exchange/orders.html?v=11'"></ng-include>
+                    <ng-include src="'/mfm-wallet/exchange/orders.html?v=12'"></ng-include>
                 </div>
                 <div class="col align-center-center text1 text-gray"
                      ng-show="active_orders.length == 0 && history_orders.length == 0"

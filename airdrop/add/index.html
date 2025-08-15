@@ -1,7 +1,7 @@
 <md-dialog class="fill col">
     <div class="row header align-start-center">
-        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="openSupport()">
-            <img class="img16 img-gray400" src="/mfm-wallet/img/support.svg">
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="closeAll()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/home.svg">
         </div>
         <div class="flex row align-center">{{str.new_airdrop}}</div>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
@@ -16,8 +16,6 @@
                 <div ng-style="getLogo(domain)"></div>
                 <input type="number"
                        id="budget"
-                       autocapitalize="off"
-                       autocomplete="off"
                        ng-model="budget"
                        placeholder=" ">
                 <label for="budget">{{str.budget}}</label>
@@ -34,8 +32,6 @@
                 <img class="img-white" src="/mfm-wallet/img/user-circle.svg">
                 <input type="number"
                        id="participants"
-                       autocapitalize="off"
-                       autocomplete="off"
                        ng-model="participants"
                        placeholder=" ">
                 <label for="participants">{{str.participants}}</label>
@@ -55,12 +51,12 @@
                 <img class="" src="/mfm-wallet/img/telegram.svg">
                 <input type="text"
                        id="telegram"
-                       autocapitalize="off"
-                       autocomplete="off"
                        ng-model="telegram"
                        placeholder=" ">
                 <label for="telegram">{{str.telegram_channel}}</label>
             </div>
+            <div class="nowrap-disabled"
+                 ng-include="'/mfm-wallet/airdrop/add/faq/' + getLanguage() + '.html'"></div>
 
             <div></div>
         </div>

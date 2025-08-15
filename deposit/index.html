@@ -1,7 +1,7 @@
 <md-dialog class="fill col">
     <div class="row header align-start-center">
-        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="openSupport()">
-            <img class="img16 img-gray400" src="/mfm-wallet/img/support.svg">
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="closeAll()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/home.svg">
         </div>
         <div class="flex row align-center">{{str.deposit}}</div>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
@@ -15,8 +15,6 @@
                 <div ng-style="getLogo(domain)"></div>
                 <input type="text"
                        id="token_name"
-                       autocapitalize="off"
-                       autocomplete="off"
                        class="uppercase"
                        ng-model="domain"
                        placeholder=" ">
@@ -27,8 +25,6 @@
                 <div ng-style="getLogo(network)"></div>
                 <input type="text"
                        id="network"
-                       autocapitalize="off"
-                       autocomplete="off"
                        class="uppercase"
                        ng-model="network"
                        placeholder=" ">
@@ -41,7 +37,6 @@
             <div class="row input-wrapper" ng-show="deposit_address">
                 <div ng-style="getLogo(domain)"></div>
                 <input type="text"
-                       autocapitalize="off"
                        id="deposit_address"
                        ng-model="deposit_address"
                        placeholder=" ">

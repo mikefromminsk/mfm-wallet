@@ -1,8 +1,10 @@
 <md-dialog class="fill col">
     <div class="row header align-start-center">
-        <div ng-style="getLogo(token.domain, 24)"></div>
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="closeAll()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/home.svg">
+        </div>
         <div class="flex row align-center-center">
-            <p class="uppercase text1">{{formatDomain(token.domain)}}</p>
+            <p class="text1">{{formatDomain(token.domain)}}</p>
         </div>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
@@ -12,12 +14,38 @@
         <div class="flex col block">
             <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
             <div class="input-content" ng-show="domain != wallet.gas_domain">
-                <ng-include class="p0" src="'/mfm-wallet/profile/chart/chart.html?v=11'"></ng-include>
-                <ng-include class="m0" src="'/mfm-wallet/profile/options.html?v=11'"></ng-include>
+                <ng-include class="p0" src="'/mfm-wallet/profile/chart/chart.html?v=12'"></ng-include>
+                <ng-include class="m0" src="'/mfm-wallet/profile/options.html?v=12'"></ng-include>
+                <div class="row">
+                    <img class="img16" src="/mfm-wallet/img/telegram.svg"
+                         ng-show="airdrop"
+                         ng-click="openWeb('https://t.me/' + airdrop.telegram)">
+                </div>
             </div>
-            <ng-include src="'/mfm-wallet/profile/analytics.html?v=11'"></ng-include>
+            <ng-include src="'/mfm-wallet/profile/analytics.html?v=12'"></ng-include>
             <div class="nowrap-disabled mh16"
                  ng-include="'/mfm-wallet/profile/faq/' + getLanguage() + '.html'"></div>
+
+            <div class="col mh16">
+                <p class="text1 mt16 mb8">{{str.top_hodlers}}</p>
+                <div class="row mt8 p16 radius-default back-gray ripple"
+                     ng-repeat="item in accounts">
+                    <div class="radius-default back-black"
+                         ng-style="getIdenticon(item.address)"></div>
+
+                    <div class="col ml16">
+                        <p>{{formatAddress(item.address)}}</p>
+                        <!--<p class="mt4 text2 lowercase">
+                            {{formatSec(item.time)}}</p>-->
+                    </div>
+
+                    <div class="flex col align-start-end">
+                        <p>{{formatAmount(item.balance, item.domain)}}</p>
+                        <p class="mt4 text2">{{formatPrice(item.balance * item.token.price)}}</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 

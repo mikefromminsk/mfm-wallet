@@ -56,8 +56,17 @@ function openTokenProfile(domain, success, mode) {
             })
         }
 
+        function loadTopAccounts() {
+            postContract("mfm-token", "accounts_top", {
+                domain: domain,
+            }, function (response) {
+                $scope.accounts = response.accounts
+            })
+        }
+
         $scope.refresh = function () {
             $scope.loadTokenProfile(domain)
+            loadTopAccounts()
         }
 
         $scope.refresh()
@@ -75,6 +84,7 @@ function addTokenProfile($scope) {
             $scope.mining = response.mining
             $scope.account = response.account
             $scope.gas_account = response.gas_account
+            $scope.airdrop = response.airdrop
             $scope.analytics = response.analytics
             $scope.$apply()
         })
