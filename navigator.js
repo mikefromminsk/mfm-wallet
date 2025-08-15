@@ -132,8 +132,8 @@ function addNavigator($scope) {
         openWithdrawal(domain, success)
     }
 
-    $scope.openSend = function (domain, to_address, amount, success) {
-        openSend(domain, to_address, amount, success)
+    $scope.openSend = function (domain, to_address, amount, success, project) {
+        openSend(domain, to_address, amount, success, project)
     }
 
     $scope.openWebMiner = function (domain, success) {

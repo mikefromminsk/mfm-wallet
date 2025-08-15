@@ -1,5 +1,5 @@
-function start(address, $scope) {
-    trackCall(arguments)
+function start($scope) {
+    trackEvent("start", wallet.address(), wallet.address())
 
     document.title = window.location.hostname
 

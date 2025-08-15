@@ -110,7 +110,7 @@ function addGlobalVars($scope, callback) {
         $scope.in_progress = false
         $scope.$apply()
     }
-    callback(wallet.address(), $scope)
+    callback($scope)
     if (!$scope.swipeToRefreshDisabled && typeof swipeToRefresh !== 'undefined')
         swipeToRefresh($scope.swipeToRefresh || $scope.close)
 

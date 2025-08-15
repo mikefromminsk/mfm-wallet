@@ -1,4 +1,4 @@
-function openSend(domain, to_address, amount, success) {
+function openSend(domain, to_address, amount, success, project) {
     trackCall(arguments)
     showDialog("send", success, function ($scope) {
         addPriceAmountTotal($scope)
@@ -18,7 +18,7 @@ function openSend(domain, to_address, amount, success) {
             $scope.startRequest()
             getPin(function (pin) {
                 calcPass(domain, pin, function (pass) {
-                    postContract("mfm-token", "send", {
+                    postContract(project || "mfm-token", "send", {
                         domain: domain,
                         from: wallet.address(),
                         to: $scope.to_address,
