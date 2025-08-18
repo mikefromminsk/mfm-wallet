@@ -1,7 +1,7 @@
 function addFormats($scope) {
     $scope.round = function (num, precision) {
         const factor = Math.pow(10, precision == null ? 4 : precision)
-        return (Math.ceil(num * factor) / factor)
+        return Math.round(num * factor) / factor
     }
 
     $scope.shortNumber = function (number, precision) {

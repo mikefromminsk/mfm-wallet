@@ -32,7 +32,8 @@
                         <input type="number" inputmode="decimal"
                                id="price"
                                ng-model="price"
-                               ng-change="changePrice()"
+                               ng-focus="setFocus('price')"
+                               ng-blur="setFocus(null)"
                                placeholder=" ">
                         <label for="price">{{str.price}}</label>
                     </div>
@@ -42,7 +43,8 @@
                         <input type="number" inputmode="decimal"
                                id="amount"
                                ng-model="amount"
-                               ng-change="changeAmount()"
+                               ng-focus="setFocus('amount')"
+                               ng-blur="setFocus(null)"
                                placeholder=" ">
                         <label for="amount">{{str.amount}}</label>
                     </div>
@@ -62,10 +64,11 @@
 
                     <div class="row input-wrapper">
                         <div ng-style="getLogo(wallet.gas_domain)"></div>
-                        <input type="text" inputmode="decimal"
+                        <input type="number" inputmode="decimal"
                                id="total"
                                ng-model="total"
-                               ng-change="changeTotal()"
+                               ng-focus="setFocus('total')"
+                               ng-blur="setFocus(null)"
                                placeholder=" ">
                         <label for="total">{{str.total}}</label>
                     </div>
@@ -109,7 +112,7 @@
                         <div class="row align-start-center ripple"
                              ng-repeat="item in sell"
                              style="height: 20px; position: relative"
-                             ng-click="changePrice(item.price)">
+                             ng-click="setPrice(item.price)">
                             <div class="back-red"
                                  style="position: absolute; height: 100%"
                                  ng-style="{'min-width': item.percent + '%', 'opacity': hasMyOrder(item.price) ? 0.5 : 0.2}"></div>
@@ -119,7 +122,7 @@
                     </div>
 
                     <div class="row pv16">
-                        <p class="flex bold" ng-click="changePrice(token.price)">
+                        <p class="flex bold" ng-click="setPrice(token.price)">
                             {{formatPrice(token.price)}}
                         </p>
                     </div>
@@ -128,7 +131,7 @@
                         <div class="row align-start-center ripple"
                              ng-repeat="item in buy"
                              style="height: 20px; position: relative"
-                             ng-click="changePrice(item.price)">
+                             ng-click="setPrice(item.price)">
                             <div class="back-green"
                                  style="position: absolute; height: 100%"
                                  ng-style="{'min-width': item.percent + '%', 'opacity': hasMyOrder(item.price) ? 0.3 : 0.2}"></div>

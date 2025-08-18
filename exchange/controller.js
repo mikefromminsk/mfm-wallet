@@ -23,9 +23,9 @@ function openExchange(domain, is_sell) {
         $scope.setPortion = function (new_value) {
             $scope.portion = new_value
             if ($scope.is_sell) {
-                $scope.changeAmount($scope.base * (new_value / 100))
+                $scope.amount = $scope.round($scope.base * (new_value / 100))
             } else {
-                $scope.changeTotal($scope.quote * (new_value / 100))
+                $scope.total = $scope.round($scope.quote * (new_value / 100))
             }
         }
 
@@ -129,7 +129,7 @@ function openExchange(domain, is_sell) {
                 $scope.$apply()
             })
             //if (user.username() != "")
-                $scope.loadOrders()
+            $scope.loadOrders()
         }
 
         $scope.subscribe("price:" + domain, function (data) {
@@ -160,39 +160,36 @@ function addPriceAmountTotal($scope) {
         $scope.is_sell = is_sell
     }
 
-    $scope.changePrice = function (price) {
-        if (price != null)
-            $scope.price = price
-        if ($scope.price != null && $scope.amount != null)
-            $scope.total = $scope.round($scope.price * $scope.amount)
-        if ($scope.price != null && $scope.amount == null && $scope.total != null)
-            $scope.changeTotal($scope.total)
+    let focused = null
+    $scope.setFocus = function (focus) {
+        focused = focus
     }
 
-    $scope.changeAmount = function (amount) {
-        if (amount != null)
-            $scope.amount = amount
-        if ($scope.price != null && $scope.amount != null)
-            $scope.total = $scope.round($scope.price * $scope.amount)
-    }
+    $scope.$watch("price", function (price) {
+        if (price == null) return
+        if (price != $scope.round(price))
+            $scope.price = $scope.round(price)
+        else if ($scope.amount != null)
+            $scope.total = $scope.round(price * $scope.amount)
+    })
 
-    $scope.changeTotal = function (total) {
-        if (total != null)
-            $scope.total = total
-        if ($scope.price != null && $scope.total != null)
-            $scope.amount = $scope.round($scope.total / $scope.price)
-    }
+    $scope.$watch("amount", function (amount) {
+        if (amount == null) return
+        if (amount != $scope.round(amount))
+            $scope.amount = $scope.round(amount)
+        else if ($scope.price != null && focused == 'amount')
+            $scope.total = $scope.round(amount * $scope.price)
+    })
 
-    $scope.$watch("price", function (newValue) {
-        if (newValue != null)
-            $scope.price = $scope.round($scope.price)
+    $scope.$watch("total", function (total) {
+        if (total == null) return
+        if (total != $scope.round(total))
+            $scope.total = $scope.round(total)
+        else if ($scope.price != null)
+            $scope.amount = $scope.round(total / $scope.price)
     })
-    $scope.$watch("amount", function (newValue) {
-        if (newValue != null)
-            $scope.amount = $scope.round($scope.amount)
-    })
-    $scope.$watch("total", function (newValue) {
-        if (newValue != null)
-            $scope.total = $scope.round($scope.total)
-    })
+
+    $scope.setPrice = function (price) {
+        $scope.price = price
+    }
 }
