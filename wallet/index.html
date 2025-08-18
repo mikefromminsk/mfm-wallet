@@ -6,7 +6,7 @@
     </div>
     <div class="flex col scroll align-start-center" ng-hide="wallet.address()">
         <div class="flex col">
-            <ng-include src="'/mfm-wallet/login/login.html?v=12'"></ng-include>
+            <ng-include src="'/mfm-wallet/login/login.html?v=14'"></ng-include>
         </div>
     </div>
     <div class="flex col scroll align-start-center" ng-show="wallet.address()">
@@ -84,7 +84,7 @@
                 </div>
 
                 <div class="col gap16" ng-hide="!wallet.address()">
-                    <ng-include src="'/mfm-wallet/wallet/accounts.html?v=12'"></ng-include>
+                    <ng-include src="'/mfm-wallet/wallet/accounts.html?v=14'"></ng-include>
                     <div class="primary-button back-pay mh0 mb0 mt8" ng-click="openLaunchToken(refresh)">
                         {{str.launch_token}}
                     </div>
@@ -93,7 +93,7 @@
                     </div>
                 </div>
 
-                <ng-include src="'/mfm-wallet/wallet/trans.html?v=12'"></ng-include>
+                <ng-include src="'/mfm-wallet/wallet/trans.html?v=14'"></ng-include>
                 <div class="col align-center-center text1 text-gray"
                      ng-hide="trans.length > 0"
                      style="height: 100px">

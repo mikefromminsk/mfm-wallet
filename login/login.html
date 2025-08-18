@@ -1,7 +1,7 @@
 <div class="flex col">
     <div class="col input-content">
-        <p ng-show="validateBip39(mnemonic)">{{str.save_this_phrase_for_access_the_wallet}}</p>
-        <p ng-hide="validateBip39(mnemonic)">{{str.enter_your_secret_phrase_for_access_the_wallet}}</p>
+        <p ng-show="validateBip39(mnemonic)" ng-click="login2()">{{str.save_this_phrase_for_access_the_wallet}}</p>
+        <p ng-hide="validateBip39(mnemonic)" ng-click="login2()">{{str.enter_your_secret_phrase_for_access_the_wallet}}</p>
         <div class="m0 p16">
             <div class="row">
                     <textarea id="seed_phrase"

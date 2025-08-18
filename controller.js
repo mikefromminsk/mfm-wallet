@@ -1,5 +1,5 @@
 function start($scope) {
-    trackEvent("start", wallet.address(), wallet.address())
+    trackEvent("start", getTelegramUserId(), wallet.address())
 
     document.title = window.location.hostname
 

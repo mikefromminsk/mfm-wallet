@@ -128,7 +128,7 @@ function showDialog(templateUrl, onClose, callback) {
         path += "/"
 
     window.$mdDialog.show({
-        templateUrl: (templateUrl[0] == "/" ? templateUrl : path + templateUrl) + "/index.html?v=12",
+        templateUrl: (templateUrl[0] == "/" ? templateUrl : path + templateUrl) + "/index.html?v=14",
         escapeToClose: false,
         multiple: true,
         isolateScope: false,
@@ -143,7 +143,7 @@ function showDialog(templateUrl, onClose, callback) {
 
 function showBottomSheet(templateUrl, onClose, callback) {
     window.$mdBottomSheet.show({
-        templateUrl: "/mfm-wallet/" + templateUrl + "/index.html?v=12",
+        templateUrl: "/mfm-wallet/" + templateUrl + "/index.html?v=14",
         escapeToClose: false,
         clickOutsideToClose: false,
         controller: function ($scope) {

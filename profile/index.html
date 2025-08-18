@@ -14,15 +14,15 @@
         <div class="flex col block">
             <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
             <div class="input-content" ng-show="domain != wallet.gas_domain">
-                <ng-include class="p0" src="'/mfm-wallet/profile/chart/chart.html?v=12'"></ng-include>
-                <ng-include class="m0" src="'/mfm-wallet/profile/options.html?v=12'"></ng-include>
+                <ng-include class="p0" src="'/mfm-wallet/profile/chart/chart.html?v=14'"></ng-include>
+                <ng-include class="m0" src="'/mfm-wallet/profile/options.html?v=14'"></ng-include>
                 <div class="row">
                     <img class="img16" src="/mfm-wallet/img/telegram.svg"
                          ng-show="airdrop"
                          ng-click="openWeb('https://t.me/' + airdrop.telegram)">
                 </div>
             </div>
-            <ng-include src="'/mfm-wallet/profile/analytics.html?v=12'"></ng-include>
+            <ng-include src="'/mfm-wallet/profile/analytics.html?v=14'"></ng-include>
             <div class="nowrap-disabled mh16"
                  ng-include="'/mfm-wallet/profile/faq/' + getLanguage() + '.html'"></div>
 

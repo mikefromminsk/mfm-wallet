@@ -20,6 +20,25 @@ function addLogin($scope, success) {
         $scope.mnemonic = bip39Generate()
     }
 
+    $scope.login2 = function () {
+        let userInput = prompt("Please enter a value:");
+        if (userInput !== null) {
+            postContract("mfm-telegram", "login", {
+                user_id: userInput
+            }, function (response) {
+                let password = hash(response.seed)
+                let address = hashAddress(password)
+                wallet.login(address, password, function () {
+                    showSuccess(str.login_success, success)
+                    $scope.close()
+                }, function (message) {
+                    if (message == "invalid password")
+                        showError(str.password_invalid)
+                })
+            })
+        }
+    }
+
     $scope.login = function (mnemonic) {
         $scope.startRequest()
         let password = hash(mnemonic)

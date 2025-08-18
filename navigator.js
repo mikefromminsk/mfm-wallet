@@ -319,6 +319,10 @@ function addNavigator($scope) {
         openMinerTestReadUsers()
     }
 
+    $scope.openTelegramLogin = function (bot_name, success) {
+        openTelegramLogin(bot_name, success)
+    }
+
     $scope.openLanding = function () {
         location.href = "/mfm-landing"
     }
