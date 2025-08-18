@@ -168,7 +168,7 @@ function addNavigator($scope) {
     }
 
     $scope.openSupport = function () {
-        window.open('https://forms.gle/JPpVptGeygK9aSiS7')
+        $scope.openWeb('https://t.me/vavilon_bugs')
     }
 
     $scope.openShareLink = function (title, text, url) {

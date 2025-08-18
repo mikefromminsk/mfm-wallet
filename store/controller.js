@@ -1,10 +1,10 @@
 function addStore($scope) {
     $scope.apps = {}
 
-    function addApp(categoryName, domain, backgroundColor, link){
+    function addApp(categoryName, domain, backgroundColor, link) {
         let category = $scope.apps[categoryName] || []
         category.push({
-            domain: domain,
+            domain: domain.toLowerCase(),
             link: link,
             backgroundColor: backgroundColor,
         })
@@ -17,25 +17,22 @@ function addStore($scope) {
 
     addApp("bridges", "USDT", "#46aef5", "#openDeposit=" + wallet.address())
 
-    addApp("defi", "Airdrop", "#46aef5", "#openAirdrop")
+   /* addApp("defi", "Airdrop", "#46aef5", "#openAirdrop")*/
     addApp("defi", "Miner", "#46aef5", "#openWebMiner=vavilon")
     /*addApp("defi", "Staking", "#46aef5", "/mfm-explorer")*/
 
     addApp("utilities", "Explorer", "#46aef5", "/mfm-explorer")
     addApp("utilities", "Launcher", "#46aef5", "#openLaunchToken")
-    addApp("utilities", "Analytics", "#46aef5", "#openAnalytics")
+/*    addApp("utilities", "Analytics", "#46aef5", "#openAnalytics")*/
     /*addApp("utilities", "Storage", "#46aef5", "#openAnalytics")*/
 
     addApp("games", "ShitBomb", "#46aef5", "/mfm-pigeon")
-    addApp("games", "Quizes", "#46aef5", "/mfm-pigeon")
+/*    addApp("games", "Quizes", "#46aef5", "/mfm-pigeon")*/
 
-    addApp("dialects", "Gopnics", "#46aef5", "/mfm-pigeon")
-
-    addApp("docs", "Whitepaper", "#46aef5", "/mfm-pigeon")
-    addApp("docs", "Roadmap", "#46aef5", "/mfm-pigeon")
-    addApp("docs", "Terms", "#46aef5", "/mfm-pigeon")
-    addApp("docs", "Dev", "#46aef5", "/mfm-pigeon")
-    addApp("docs", "Dev", "#46aef5", "/mfm-pigeon")
+    addApp("docs", "Whitepaper", "#46aef5", "/mfm-landing/docs?doc=whitepaper")
+    addApp("docs", "Roadmap", "#46aef5", "/mfm-landing/docs?doc=roadmap")
+    addApp("docs", "Terms", "#46aef5", "/mfm-landing/docs?doc=terms")
+    addApp("docs", "Dev", "#46aef5", "/mfm-landing/docs?doc=dev")
 
     $scope.openApp = function (link) {
         if (link[0] == "/") {
