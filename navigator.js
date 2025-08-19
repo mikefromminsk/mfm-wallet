@@ -218,8 +218,8 @@ function addNavigator($scope) {
         openDoc(path)
     }
 
-    $scope.openExchange = function (domain) {
-        openExchange(domain)
+    $scope.openExchange = function (domain, is_sell) {
+        openExchange(domain, is_sell)
     }
 
     $scope.openDistribution = function (domain, success) {
@@ -332,6 +332,10 @@ function addNavigator($scope) {
 
     $scope.openTelegramLogin = function (bot_name, success) {
         openTelegramLogin(bot_name, success)
+    }
+
+    $scope.openOnboarding = function (domain, success) {
+        openOnboarding(domain, success)
     }
 
     $scope.openLanding = function () {

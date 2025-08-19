@@ -35,19 +35,19 @@
                 </div>
 
 
-                <div class="row">
+                <div class="row" ng-show="sumTrans() > 0">
                     <p class="text2">{{str.you_block_tokens}}</p>
                     <div class="flex"></div>
                     <p>{{formatAmount(sumTrans(), wallet.vavilon)}}</p>
                 </div>
 
-                <div class="row">
+                <div class="row" ng-show="sumTrans() > 0">
                     <p class="text2">{{str.percent_of_reward}}</p>
                     <div class="flex"></div>
                     <p>{{formatPercent(sumTrans() / participants.balance * 100)}}</p>
                 </div>
 
-                <div class="row">
+                <div class="row" ng-show="sumTrans() > 0">
                     <p class="text2">{{str.your_reward}}</p>
                     <div class="flex"></div>
                     <p>{{formatAmount(reward.amount * (sumTrans() / participants.balance), wallet.gas_domain)}}</p>

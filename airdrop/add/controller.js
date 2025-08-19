@@ -16,7 +16,7 @@ function openAirdropAdd(domain, success) {
                         participants: $scope.participants,
                         telegram: $scope.telegram,
                     }, function () {
-                        showSuccessDialog(str.givearay_created, $scope.close)
+                        showSuccessDialog(str.giveaway_created, $scope.close)
                     })
                 })
             })

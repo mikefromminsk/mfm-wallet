@@ -19,7 +19,7 @@
                 <p class="size40 bold">{{formatAmount(last_reward.amount, last_reward.domain, 4)}}</p>
                 <p class="size12"
                    ng-class="{'text-red': !bank || bank.balance == 0}">
-                    {{formatAmount(bank.balance, domain)}} {{str.in_bank}}
+                    {{formatAmount(bank.balance, domain)}}
                 </p>
                 <div class="row mt8 align-start-center">
                     <p class="size10">{{str.difficulty}} {{formatAmount(difficulty, '', 2)}}</p>

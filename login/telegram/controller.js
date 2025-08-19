@@ -9,7 +9,10 @@ function openTelegramLogin(bot_name, success) {
                 }, function (response) {
                     let password = hash(response.seed)
                     let address = hashAddress(password)
-                    wallet.login(address, password, $scope.close, function (message) {
+                    wallet.login(address, password, function () {
+                        $scope.close()
+                        $scope.openOnboarding()
+                    }, function (message) {
                         if (message == "invalid password")
                             showError(str.password_invalid)
                     })
