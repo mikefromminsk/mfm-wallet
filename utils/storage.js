@@ -4,7 +4,6 @@ const storageKeys = {
     hasPin: "STORE_HAS_PIN",
     hideBalances: "STORE_HIDE_BALANCES",
     bonuses: "STORE_BONUSES",
-    onboardingShowed: "STORE_ONBOARDING_SHOWED",
     language: "STORE_LANGUAGE",
     send_history: "STORE_SEND_HISTORY",
     user_history: "EXCHANGE_SEND_HISTORY",

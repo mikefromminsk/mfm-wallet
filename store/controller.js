@@ -15,31 +15,37 @@ function addStore($scope) {
     addApp("exchange", "Dex", "#46aef5", "#openPool=vavilon")
     addApp("exchange", "P2P", "#46aef5", "#openPool=vavilon")*/
 
-    addApp("bridges", "USDT", "#46aef5", "#openDeposit=" + wallet.address())
+    /*addApp("bridges", "USDT", "#46aef5", function () {
+        $scope.openDeposit()
+    })*/
 
    /* addApp("defi", "Airdrop", "#46aef5", "#openAirdrop")*/
-    addApp("defi", "Miner", "#46aef5", "#openWebMiner=vavilon")
+    addApp("defi", "Miner", "#46aef5", function () {
+        $scope.openWebMiner('vavilon')
+    })
     /*addApp("defi", "Staking", "#46aef5", "/mfm-explorer")*/
 
-    addApp("utilities", "Explorer", "#46aef5", "/mfm-explorer")
-    addApp("utilities", "Launcher", "#46aef5", "#openLaunchToken")
+    addApp("utilities", "Explorer", "#46aef5", "/mfm-explorer/")
+    addApp("utilities", "Launcher", "#46aef5", function () {
+        $scope.openLaunchToken()
+    })
 /*    addApp("utilities", "Analytics", "#46aef5", "#openAnalytics")*/
     /*addApp("utilities", "Storage", "#46aef5", "#openAnalytics")*/
 
-    addApp("games", "ShitBomb", "#46aef5", "/mfm-pigeon")
+    addApp("games", "ShitBomb", "#46aef5", "/mfm-pigeon/")
 /*    addApp("games", "Quizes", "#46aef5", "/mfm-pigeon")*/
 
-    addApp("docs", "Whitepaper", "#46aef5", "/mfm-landing/docs?doc=whitepaper")
-    addApp("docs", "Roadmap", "#46aef5", "/mfm-landing/docs?doc=roadmap")
-    addApp("docs", "Terms", "#46aef5", "/mfm-landing/docs?doc=terms")
-    addApp("docs", "Dev", "#46aef5", "/mfm-landing/docs?doc=dev")
+    addApp("docs", "Whitepaper", "#46aef5", "/mfm-wallet/docs/?doc=whitepaper")
+    addApp("docs", "Roadmap", "#46aef5", "/mfm-wallet/docs/?doc=roadmap")
+    addApp("docs", "Terms", "#46aef5", "/mfm-wallet/docs/?doc=terms")
+    addApp("docs", "Dev", "#46aef5", "/mfm-wallet/docs/?doc=dev")
 
     $scope.openApp = function (link) {
         if (link[0] == "/") {
             window.open(link, '_blank');
         }
-        if (link[0] == "#") {
-            $scope.open(link)
+        if (typeof link === "function") {
+            link()
         }
     }
 }

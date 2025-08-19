@@ -1,10 +1,7 @@
 <md-bottom-sheet class="col size24">
-    <div class="row header align-start-center">
-        <p class="flex" ng-show="setMode">{{str.set_pin_code}}</p>
-        <p class="flex" ng-show="!setMode">{{str.enter_pin_code}}</p>
-        <button ng-click="back()">
-            {{str.skip}}
-        </button>
+    <div class="row header align-center-center">
+        <p ng-show="setMode">{{str.set_pin_code}}</p>
+        <p ng-hide="setMode">{{str.enter_pin_code}}</p>
     </div>
     <div class="col align-start-center">
         <div class="col block" style="width: 400px">

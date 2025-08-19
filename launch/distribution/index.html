@@ -16,20 +16,13 @@
             </div>
         </div>
         <div class="flex"></div>
-        <p>{{str.mining_pool}}</p>
+        <p>{{str.token_count}}</p>
         <md-slider-container>
-            <md-slider class="md-primary" ng-model="amount_step" min="0" max="6"></md-slider>
+            <md-slider class="md-primary" ng-model="amount_step" min="3" max="7"></md-slider>
             <md-input-container style="max-width: 100%">
                 {{formatAmount(amount)}}
             </md-input-container>
         </md-slider-container>
-        <div class="row gap8">
-            <div class="flex row align-center-center p8 radius4"
-                 ng-repeat="percent in [10, 20, 100]"
-                 ng-class="{'back-accent': mining_percent == percent, 'back-gray': mining_percent != percent}"
-                 ng-click="setMiningPercent(percent)">{{percent}}%/{{str.year}}</div>
-        </div>
-        <p class="text-green">{{str.every_year_is_released}} {{mining_percent}}%</p>
         <div class="primary-button"
              ng-disabled="in_progress"
              ng-click="launch()">

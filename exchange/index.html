@@ -88,11 +88,16 @@
                         </div>
                     </div>
 
-                    <div class="primary-button uppercase p8 text1"
+                    <div class="primary-button uppercase p8 text1 align-center-center"
                          ng-class="{'back-red': is_sell, ' back-green': !is_sell}"
                          ng-click="place()"
                          ng-disabled="in_progress">
                         {{is_sell ? str.sell : str.buy}}
+                        <div class="row ml8 align-center-center"
+                             ng-show="!isChecked(str.order_placed)">
+                            <img class="img16 img-yellow" src="/mfm-wallet/img/energy.svg">
+                            <p>100</p>
+                        </div>
                     </div>
                 </div>
 
@@ -151,7 +156,7 @@
                     </div>
                 </div>
                 <div class="col" ng-repeat="orders in [active_orders, history_orders]">
-                    <ng-include src="'/mfm-wallet/exchange/orders.html?v=14'"></ng-include>
+                    <ng-include src="'/mfm-wallet/exchange/orders.html?v=15'"></ng-include>
                 </div>
                 <div class="col align-center-center text1 text-gray"
                      ng-show="active_orders.length == 0 && history_orders.length == 0"

@@ -3,7 +3,7 @@
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="closeAll()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/home.svg">
         </div>
-        <div class="flex row align-center">{{str.new_airdrop}}</div>
+        <div class="flex row align-center">{{str.new_giveaway}}</div>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
         </div>
@@ -64,6 +64,11 @@
     <div class="primary-button"
          ng-disabled="!budget || !participants"
          ng-click="add()">
-        {{str.new_airdrop}}
+        {{str.new_giveaway}}
+        <div class="row ml8 align-center-center"
+             ng-show="!isChecked(str.givearay_created)">
+            <img class="img16 img-yellow" src="/mfm-wallet/img/energy.svg">
+            <p>100</p>
+        </div>
     </div>
 </md-dialog>

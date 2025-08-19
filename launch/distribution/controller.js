@@ -3,7 +3,6 @@ function openDistribution(domain, success) {
         $scope.domain = domain
         $scope.amount_step = 6
         $scope.amount = 10000
-        $scope.mining_percent = 20
         $scope.swipeToRefreshDisable()
 
         $scope.$watch('amount_step', function (newValue) {
@@ -16,7 +15,7 @@ function openDistribution(domain, success) {
                 domain: domain,
                 to: wallet.MINING_ADDRESS,
                 pass: wallet.calcStartPass(domain, wallet.MINING_ADDRESS),
-                delegate: "mfm-contract/mint" + $scope.mining_percent,
+                delegate: "mfm-contract/mint100",
                 amount: $scope.amount,
             }, function () {
                 getPin(function (pin) { // add to wallet
@@ -26,15 +25,11 @@ function openDistribution(domain, success) {
                             to: wallet.address(),
                             pass: ":" + next_hash,
                         }, function () {
-                            showSuccessDialog(str.your_token_created, $scope.close)
+                            showSuccessDialog(str.your_token_created, $scope.closeAll)
                         }, $scope.finishRequest)
                     }, $scope.finishRequest)
                 }, $scope.finishRequest)
             }, $scope.finishRequest)
-        }
-
-        $scope.setMiningPercent = function (percent) {
-            $scope.mining_percent = percent
         }
     })
 }

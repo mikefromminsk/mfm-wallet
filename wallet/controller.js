@@ -91,11 +91,16 @@ function addWallet($scope) {
                 $scope.refresh()
         })
     }
+    let lastRefreshTime = 0
+    const refreshInterval = 1000
 
     function subscribePrices() {
         $scope.subscribe("price", function () {
-            if ($scope.refresh)
+            const currentTime = Date.now()
+            if ($scope.refresh && currentTime - lastRefreshTime >= refreshInterval) {
                 $scope.refresh()
+                lastRefreshTime = currentTime
+            }
             if ($scope.search)
                 $scope.search()
         })
@@ -142,6 +147,7 @@ function addWallet($scope) {
         }, function (response) {
             $scope.top_airdrops = response.top_airdrops
             $scope.$apply()
+        }, function () {
         })
     }
 

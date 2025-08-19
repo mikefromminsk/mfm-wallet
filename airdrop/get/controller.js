@@ -8,7 +8,7 @@ function openAirdrop(domain, success) {
                 domain: domain,
                 address: wallet.address(),
             }, function (response) {
-                showSuccessDialog(str.success, $scope.close)
+                showSuccessDialog(str.giveaway_received, $scope.close)
             })
         }
 

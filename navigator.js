@@ -88,12 +88,23 @@ function addNavigator($scope) {
         showSuccess(str.copied)
     }
 
+    $scope.stringHash = function (string) {
+        let hash = 0;
+        if (string != null) {
+            for (const char of string) {
+                hash = (hash << 5) - hash + char.charCodeAt(0)
+                hash |= 0;
+            }
+        }
+        return hash;
+    }
+
     $scope.check = function (value) {
-        storage.setString(storageKeys.check_prefix + value, "true")
+        storage.setString(storageKeys.check_prefix + $scope.stringHash(value), "true")
     }
 
     $scope.isChecked = function (value) {
-        return storage.getString(storageKeys.check_prefix + value) == "true"
+        return storage.getString(storageKeys.check_prefix + $scope.stringHash(value)) == "true"
     }
 
     $scope.isNotChecked = function (value) {

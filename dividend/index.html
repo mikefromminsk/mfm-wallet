@@ -34,10 +34,9 @@
                     <p class="text0">{{formatAmount(participants.balance, wallet.vavilon)}}</p>
                 </div>
 
-                <ng-include src="'/mfm-wallet/wallet/trans.html?v=14'"></ng-include>
 
                 <div class="row">
-                    <p class="text2">{{str.you_blocked}}</p>
+                    <p class="text2">{{str.you_block_tokens}}</p>
                     <div class="flex"></div>
                     <p>{{formatAmount(sumTrans(), wallet.vavilon)}}</p>
                 </div>
@@ -53,6 +52,8 @@
                     <div class="flex"></div>
                     <p>{{formatAmount(reward.amount * (sumTrans() / participants.balance), wallet.gas_domain)}}</p>
                 </div>
+
+                <ng-include src="'/mfm-wallet/wallet/trans.html?v=15'"></ng-include>
 
                 <div class="nowrap-disabled"
                      ng-include="'/mfm-wallet/dividend/faq/' + getLanguage() + '.html'"></div>

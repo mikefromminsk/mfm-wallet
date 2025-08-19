@@ -3,7 +3,7 @@
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="closeAll()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/home.svg">
         </div>
-        <div class="flex row align-center">{{str.airdrop}}</div>
+        <div class="flex row align-center">{{str.givearay}}</div>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
         </div>
@@ -80,15 +80,20 @@
                 <div class="nowrap-disabled"
                      ng-include="'/mfm-wallet/airdrop/get/faq/' + getLanguage() + '.html'"></div>
                 <p ng-show="trans.length > 0">{{str.participants}}</p>
-                <ng-include class="m0" src="'/mfm-wallet/wallet/trans.html?v=14'"></ng-include>
+                <ng-include class="m0" src="'/mfm-wallet/wallet/trans.html?v=15'"></ng-include>
             </div>
 
             <div></div>
         </div>
     </div>
-    <div class="primary-button"
+    <div class="primary-button align-center-center"
          ng-disabled="!isRewardEnabled()"
          ng-click="getReward()">
         {{airdrop.rewarded ? str.you_received_reward : str.get_reward}}
+        <div class="row ml8 align-center-center"
+             ng-show="!isRewardEnabled() && !isChecked(str.giveaway_received)">
+            <img class="img16 img-yellow" src="/mfm-wallet/img/energy.svg">
+            <p>100</p>
+        </div>
     </div>
 </md-dialog>

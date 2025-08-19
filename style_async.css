@@ -368,7 +368,7 @@ svg {
 }
 
 .focus {
-    animation: growAndFade 1.5s infinite ease-out;
+    animation: growAndFade 1s infinite ease-out;
     background-color: white;
     border-radius: 50%;
     min-height: 100px;

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown с меню</title>
+    <link rel="icon" href="/mfm-wallet/logo.svg">
+
+    <script src="/mfm-wallet/utils/showdown.min.js"></script>
+    <script src="/mfm-wallet/utils/highlight.min.js"></script>
+    <link href="/mfm-wallet/utils/github-dark.min.css" rel="stylesheet">
+
+    <link href="style.css" rel="stylesheet">
+    <link href="/mfm-shorts/shorts.css" rel="stylesheet">
+</head>
+<body class="fill col ">
+<div class="flex row ">
+    <div class="col sidebar mob-hide nowrap">
+        <a href="/">
+            <div class="row header">
+                <img class="img32" src="/mfm-wallet/logo.svg">
+                <h2 class="ml16 m0">Vavilon Docs</h2>
+            </div>
+        </a>
+        <div class="flex col scroll">
+            <a href="?doc=whitepaper">White Paper</a>
+            <a href="?doc=roadmap">Roadmap</a>
+            <a href="?doc=dev">For Developers</a>
+            <a href="?doc=terms">Terms and Conditions</a>
+            <a href="?doc=bugbounty">Bug Bounty Program</a>
+        </div>
+        <div class="row align-center-center">
+            <div class="language-switcher">
+                <div class="primary-button language-button"></div>
+                <div class="language-menu">
+                    <a href="?lang=en">English</a>
+                    <a href="?lang=ru">Русский</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex col nowrap-disabled" style="position: relative">
+        <div class="flex col content scroll" id="content"></div>
+        <button id="scrollToTop" style="display:none;">
+            <img class="img20 img-white" src="/mfm-wallet/img/arrow-up.svg">
+        </button>
+    </div>
+    <div class="col sidebar mob-hide">
+        <div class="row header search-container">
+            <img src="/mfm-wallet/img/search.svg" alt="Search">
+            <input type="text" id="search" placeholder="Поиск...">
+        </div>
+        <div id="sidebar"></div>
+    </div>
+</div>
+
+<script src="controller.js">
+</script>
+</body>
+</html>

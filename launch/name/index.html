@@ -16,7 +16,7 @@
                        id="search_input"
                        class="uppercase"
                        maxlength="16"
-                       oninput="this.value = this.value.toLowerCase().replace(/[^a-z0-9_]/g, '')"
+                       oninput="this.value = this.value.toLowerCase().replace(/[^a-z_]/g, '')"
                        ng-model="search_text"
                        ng-change="search()"
                        placeholder=" ">
@@ -25,9 +25,8 @@
             <ul class="col mh16 mv0 text2 text-align-start">
                 <li>{{str.min_3_symbols}}</li>
                 <li>{{str.oly_english_symbols}}</li>
-                <li>{{str.only_lowercase_symbols}}</li>
             </ul>
-            <ng-include ng-show="tokens && tokens.length > 0" src="'/mfm-wallet/search/tokens.html?v=14'"></ng-include>
+            <ng-include ng-show="tokens && tokens.length > 0" src="'/mfm-wallet/search/tokens.html?v=15'"></ng-include>
             <div class="primary-button"
                  ng-disabled="!hasTheSameToken() || !search_text || search_text.length < 3"
                  ng-click="selectName()">

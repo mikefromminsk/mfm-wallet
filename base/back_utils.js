@@ -293,9 +293,6 @@ var wallet = {
             }, error)
         }, error)
     },
-    getBotAddress: function (domain) {
-        return hash(hash(this.BOT_PREFIX + domain))
-    },
     logout: function () {
         storage.clear()
     },

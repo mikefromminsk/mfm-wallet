@@ -8,7 +8,6 @@ function openSettings(success) {
         $scope.logout = function () {
             openAskSure(str.are_you_sure, str.yes, str.no, function () {
                 wallet.logout()
-                storage.setString(storageKeys.onboardingShowed, "true")
             })
         }
 
