@@ -32,7 +32,7 @@
         <div class="col" ng-show="account.token.price == 0 || (miner_account && (miner_account.domains || '').indexOf(account.domain) != -1)">
             <div class="row text2">
                 <div class="flex row align-center-center p8 ripple relative"
-                     ng-click="openExchangeBot(account.domain, refresh)">
+                     ng-click="openExchangeBots(account.domain, refresh)">
                     {{str.bot}}
                 </div>
                 <div class="flex row align-center-center p8 ripple relative"

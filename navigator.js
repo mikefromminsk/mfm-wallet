@@ -246,6 +246,10 @@ function addNavigator($scope) {
         openExchangeBot(domain, success)
     }
 
+    $scope.openExchangeBots = function (domain, success) {
+        openExchangeBots(domain, success)
+    }
+
     $scope.openP2P = function (success) {
         openP2P(success)
     }

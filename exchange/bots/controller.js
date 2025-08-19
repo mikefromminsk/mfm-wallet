@@ -1,9 +1,9 @@
-function openExchangeBot(domain, seedPrefix, success) {
+function openExchangeBots(domain, success) {
     trackCall(arguments)
-    showDialog("exchange/bot", success, function ($scope) {
+    showDialog("exchange/bots", success, function ($scope) {
         $scope.domain = domain
         $scope.accounts = []
-        let bot_address = hashAddress(hash(seedPrefix + domain))
+        let bot_address = hashAddress(hash("exhibit tragic bundle galaxy zero lunch lift six access story round " + domain))
 
         $scope.selectAccount = function (domain) {
             openSend(domain, bot_address, null, init)
