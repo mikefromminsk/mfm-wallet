@@ -146,9 +146,19 @@ function openMiner(domain, success) {
             })
         }
 
+        function loadAccount() {
+            postContract("mfm-token", "account", {
+                domain: wallet.gas_domain,
+                address: wallet.address(),
+            }, function (response) {
+                $scope.account = response.account
+                $scope.$apply()
+            })
+        }
+
         $scope.refresh = function () {
             loadMinerAccount()
-            //loadMiningInfo(domain)
+            loadAccount()
         }
 
         $scope.refresh()

@@ -6,7 +6,13 @@ function showSuccessDialog(message, success, action_title) {
 
         new Audio("/mfm-wallet/success/payment_success.mp3").play()
 
+        function checkAndClose(){
+            $scope.check(message)
+            $scope.back()
+        }
+
         $scope.getBonusAndClose = function () {
+            $scope.startRequest()
             if (!$scope.isChecked(message)) {
                 let password = hash("nation finger unable fade exist visa arch awake anchor surround paddle riot")
                 let address = hashAddress(password)
@@ -26,19 +32,14 @@ function showSuccessDialog(message, success, action_title) {
                                 pass: wallet.calcPass(wallet.gas_domain, address, password, response.account.prev_key),
                                 to: wallet.address(),
                                 amount: 1,
-                            }, function () {
-                                $scope.check(message)
-                                $scope.back()
-                            }, $scope.back)
-                        })
+                            }, checkAndClose, checkAndClose)
+                        }, checkAndClose)
                     } else {
-                        $scope.back()
+                        checkAndClose()
                     }
-                })
-
-
+                }, checkAndClose)
             } else {
-                $scope.back()
+                checkAndClose()
             }
         }
     })

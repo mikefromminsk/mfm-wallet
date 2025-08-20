@@ -9,6 +9,16 @@ function addWallet($scope) {
         subscribeNewOrders()
     })
 
+    $scope.finishOnboardingPercent = function () {
+        return (
+            ($scope.isChecked(str.your_token_created) ? 1 : 0) +
+            ($scope.isChecked(str.you_start_mining) ? 1 : 0) +
+            ($scope.isChecked(str.giveaway_received) ? 1 : 0) +
+            ($scope.isChecked(str.order_placed) ? 1 : 0) +
+            ($scope.isChecked(str.you_block_tokens) ? 1 : 0)
+        ) * 20
+    }
+
     function loadTokens() {
         postContract("mfm-token", "accounts", {
             address: wallet.address(),
@@ -21,9 +31,9 @@ function addWallet($scope) {
     }
 
     function setAccounts(accounts) {
-        try{
+        try {
             accounts.sort((a, b) => {
-                try{
+                try {
                     if (a.domain === wallet.gas_domain) return -1;
                     if (b.domain === wallet.gas_domain) return 1;
                     if (a.token.price == 0 && b.token.price == 0) {
@@ -35,10 +45,10 @@ function addWallet($scope) {
                     if (b.token.price == 0) return 1;
                     if (a.token.price == 0) return -1;
                     return (b.balance * b.token.price) - (a.balance * a.token.price);
-                } catch (e){
+                } catch (e) {
                 }
             })
-        } catch (e){
+        } catch (e) {
         }
         $scope.accounts = accounts
     }
@@ -63,6 +73,7 @@ function addWallet($scope) {
 
     let isDelayFinished = true
     let lastTotalBalance = 0
+
     function setTotalBalance() {
         if (!isDelayFinished) return;
         let newTotalBalance = $scope.getTotalBalance()
@@ -97,6 +108,7 @@ function addWallet($scope) {
                 $scope.refresh()
         })
     }
+
     let lastRefreshTime = 0
     const refreshInterval = 1000
 

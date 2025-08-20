@@ -26,7 +26,9 @@
                 <p>{{message}}</p>
             </div>
         </div>
-        <div class="row primary-button align-center-center" ng-click="getBonusAndClose()">
+        <div class="row primary-button align-center-center"
+             ng-disabled="in_progress"
+             ng-click="getBonusAndClose()">
             {{title}}
             <div class="row ml8 align-center-center"
                  ng-show="!isChecked(message)">

@@ -113,6 +113,7 @@
         {{str.coloect_tokens}}
     </div>
     <div class="primary-button back-yellow"
+         ng-disabled="account && account.balance > 0"
          ng-click="openSend(wallet.gas_domain, wallet.MINER_ADDRESS, null, refresh)">
         {{str.buy_energy}}
     </div>
