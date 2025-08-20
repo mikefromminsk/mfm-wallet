@@ -78,7 +78,7 @@
          ng-click="getReward()">
         {{airdrop.rewarded ? str.you_received_reward : str.get_reward}}
         <div class="row ml8 align-center-center"
-             ng-show="!airdrop.rewarded && !isChecked(str.giveaway_received)">
+             ng-show="!airdrop.rewarded && rewardsReceived < maxRewards && !isChecked(str.giveaway_received)">
             <img class="img16 img-yellow" src="/mfm-wallet/img/energy.svg">
             <p>100</p>
         </div>

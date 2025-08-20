@@ -100,6 +100,7 @@ function addGlobalVars($scope, callback) {
     $scope.wallet = window.wallet
     $scope.user = window.user
     $scope.str = window.str
+    $scope.maxRewards = maxRewards
     $scope.in_progress = false
     $scope.startRequest = function () {
         $scope.in_progress = true

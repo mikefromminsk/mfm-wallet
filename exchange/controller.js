@@ -1,6 +1,6 @@
-function openExchange(domain, is_sell) {
+function openExchange(domain, is_sell, success) {
     trackCall(arguments)
-    showDialog("exchange", null, function ($scope) {
+    showDialog("exchange", success, function ($scope) {
         if (domain == wallet.gas_domain)
             domain = wallet.vavilon
         addPriceAmountTotal($scope)
@@ -53,9 +53,9 @@ function openExchange(domain, is_sell) {
                         }, function (response) {
                             $scope.finishRequest()
                             showSuccessDialog(str.order_placed, function () {
-                                $scope.loadBaseBalance()
-                                $scope.loadQuoteBalance()
-                                $scope.loadOrderbook()
+                                loadBaseBalance()
+                                loadQuoteBalance()
+                                loadOrderbook()
                             })
                         }, $scope.finishRequest)
                     }, $scope.finishRequest)
@@ -91,7 +91,7 @@ function openExchange(domain, is_sell) {
             return false
         }
 
-        $scope.loadProfile = function () {
+        function loadProfile() {
             getProfile(domain, function (response) {
                 $scope.token = response.token
                 if ($scope.price == null) {
@@ -103,7 +103,7 @@ function openExchange(domain, is_sell) {
             })
         }
 
-        $scope.loadBaseBalance = function () {
+        function loadBaseBalance() {
             postContract("mfm-token", "account", {
                 domain: domain,
                 address: wallet.address(),
@@ -114,7 +114,7 @@ function openExchange(domain, is_sell) {
             })
         }
 
-        $scope.loadQuoteBalance = function () {
+        function loadQuoteBalance() {
             postContract("mfm-token", "account", {
                 domain: wallet.gas_domain,
                 address: wallet.address(),
@@ -125,7 +125,7 @@ function openExchange(domain, is_sell) {
             })
         }
 
-        $scope.loadOrderbook = function () {
+        function loadOrderbook() {
             postContract("mfm-exchange", "orderbook", {
                 domain: domain,
             }, function (response) {
@@ -143,7 +143,7 @@ function openExchange(domain, is_sell) {
         });
 
         $scope.subscribe("orderbook:" + domain, function (data) {
-            $scope.loadOrderbook()
+            loadOrderbook()
         });
 
         $scope.subscribe("account:" + wallet.address(), function (data) {
@@ -151,10 +151,13 @@ function openExchange(domain, is_sell) {
         })
 
         $scope.refresh = function () {
-            $scope.loadProfile()
-            $scope.loadBaseBalance()
-            $scope.loadQuoteBalance()
-            $scope.loadOrderbook()
+            loadProfile()
+            loadBaseBalance()
+            loadQuoteBalance()
+            loadOrderbook()
+            loadRewards(function (rewardsReceived) {
+                $scope.rewardsReceived = rewardsReceived
+            })
         }
         $scope.refresh()
     })

@@ -25,9 +25,7 @@ function openDistribution(domain, success) {
                             to: wallet.address(),
                             pass: ":" + next_hash,
                         }, function () {
-                            showSuccessDialog(str.your_token_created, function () {
-                                $scope.close()
-                            })
+                            showSuccessDialog(str.your_token_created, $scope.close)
                         }, $scope.finishRequest)
                     }, $scope.finishRequest)
                 }, $scope.finishRequest)

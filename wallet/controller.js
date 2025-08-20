@@ -10,12 +10,14 @@ function addWallet($scope) {
     })
 
     $scope.finishOnboardingPercent = function () {
-        return (
-            ($scope.isChecked(str.your_token_created) ? 1 : 0) +
-            ($scope.isChecked(str.you_start_mining) ? 1 : 0) +
-            ($scope.isChecked(str.giveaway_received) ? 1 : 0) +
-            ($scope.isChecked(str.order_placed) ? 1 : 0) +
-            ($scope.isChecked(str.you_block_tokens) ? 1 : 0)
+        return Math.min(5,
+            Math.max($scope.rewardsReceived,
+                ($scope.isChecked(str.your_token_created) ? 1 : 0) +
+                ($scope.isChecked(str.you_start_mining) ? 1 : 0) +
+                ($scope.isChecked(str.giveaway_received) ? 1 : 0) +
+                ($scope.isChecked(str.order_placed) ? 1 : 0) +
+                ($scope.isChecked(str.you_block_tokens) ? 1 : 0)
+            )
         ) * 20
     }
 
@@ -182,11 +184,28 @@ function addWallet($scope) {
         })
     }
 
+    $scope.maxRewards = 5
+    $scope.rewardsReceived = $scope.maxRewards
+
+    function loadRewards() {
+        postContract("mfm-token", "trans", {
+            domain: wallet.gas_domain,
+            address: wallet.address(),
+            to: rewardAddress,
+            size: $scope.maxRewards,
+        }, (response) => {
+            $scope.rewardsReceived = response.trans.length
+        }, function () {
+            $scope.rewardsReceived = 0
+        })
+    }
+
     $scope.refresh = function () {
         loadTokens()
         loadTrans()
         loadAirdrops()
         loadMinerAccount()
+        loadRewards()
     }
 
     if (wallet.address() != "") {

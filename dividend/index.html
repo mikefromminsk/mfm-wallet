@@ -62,9 +62,14 @@
         </div>
     </div>
     <div class="primary-button"
-         ng-click="openSend(wallet.vavilon, reward.to, null, refresh)"
+         ng-click="participate()"
          ng-disabled="!account || account.balance == 0">
         {{str.participate}}
+        <div class="row ml8 align-center-center"
+             ng-show="rewardsReceived < maxRewards && isNotChecked(str.you_block_tokens)">
+            <img class="img16 img-yellow" src="/mfm-wallet/img/energy.svg">
+            <p>100</p>
+        </div>
     </div>
 
 </md-dialog>

@@ -402,3 +402,4 @@ str.use_the_token_distribution_for_new_users = "Воспользуйтесь р�
 str.trade_your_assets_on_the_internal_exchange = "Торгуйте своими активами на внутренней бирже";
 str.earn_passive_income_by_collecting_gas_in_the_network = "Получайте пассивный доход собирая газ в сети";
 str.you_start_mining = "You start mining";
+str.epoch_finished = "Epoch finished";

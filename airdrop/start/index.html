@@ -25,7 +25,7 @@
          ng-click="tasks[tabIndex].click()">
         {{tasks[tabIndex].title}}
         <div class="row ml8 align-center-center"
-             ng-hide="isChecked(tasks[tabIndex].check)">
+             ng-show="rewardsReceived < maxRewards && isNotChecked(tasks[tabIndex].check)">
             <img class="img16 img-yellow" src="/mfm-wallet/img/energy.svg">
             <p>100</p>
         </div>

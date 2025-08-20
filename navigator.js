@@ -218,8 +218,8 @@ function addNavigator($scope) {
         openDoc(path)
     }
 
-    $scope.openExchange = function (domain, is_sell) {
-        openExchange(domain, is_sell)
+    $scope.openExchange = function (domain, is_sell, success) {
+        openExchange(domain, is_sell, success)
     }
 
     $scope.openDistribution = function (domain, success) {

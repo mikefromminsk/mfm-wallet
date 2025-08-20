@@ -94,7 +94,7 @@
                          ng-disabled="in_progress">
                         {{is_sell ? str.sell : str.buy}}
                         <div class="row ml8 align-center-center"
-                             ng-show="!isChecked(str.order_placed)">
+                             ng-show="rewardsReceived < maxRewards && isNotChecked(str.order_placed)">
                             <img class="img16 img-yellow" src="/mfm-wallet/img/energy.svg">
                             <p>100</p>
                         </div>

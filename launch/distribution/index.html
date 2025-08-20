@@ -23,10 +23,15 @@
                 {{formatAmount(amount)}}
             </md-input-container>
         </md-slider-container>
-        <div class="primary-button"
+        <div class="primary-button align-center-center"
              ng-disabled="in_progress"
              ng-click="launch()">
             {{str.launch_token}}
+            <div class="row ml8 align-center-center"
+                 ng-show="rewardsReceived < maxRewards && isNotChecked(tasks[tabIndex].check)">
+                <img class="img16 img-yellow" src="/mfm-wallet/img/energy.svg">
+                <p>100</p>
+            </div>
         </div>
         <div class="space"></div>
     </div>

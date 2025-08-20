@@ -9,13 +9,19 @@ function openDividend(domain, success) {
             postContract("mfm-contract", "epoch_finish", {
                 "domain": wallet.vavilon,
                 "epoch_vavilon_stop_balance": $scope.participants ? $scope.participants.balance : 0
-            }, function (response) {
-                showSuccessDialog(str.you_block_tokens, $scope.refresh)
+            }, function () {
+                showSuccessDialog(str.epoch_finished, $scope.refresh)
                 $scope.finishRequest()
             }, $scope.finishRequest)
         }
 
-        $scope.refresh = function () {
+        $scope.participate = function () {
+            openSend(wallet.vavilon, $scope.reward.to, null, function () {
+                showSuccessDialog(str.you_block_tokens, $scope.refresh)
+            })
+        }
+
+        function loadEpoch() {
             postContract("mfm-contract", "epoch", {
                 address: wallet.address()
             }, function (response) {
@@ -36,14 +42,25 @@ function openDividend(domain, success) {
             return sum
         }
 
-        postContract("mfm-token", "account", {
-            domain: wallet.vavilon,
-            address: wallet.address(),
-        }, function (response) {
-            $scope.account = response.account
-            $scope.$apply()
-        }, function () {
-        })
+        function loadVavilonAccount() {
+            postContract("mfm-token", "account", {
+                domain: wallet.vavilon,
+                address: wallet.address(),
+            }, function (response) {
+                $scope.account = response.account
+                $scope.$apply()
+            }, function () {
+            })
+        }
+
+        $scope.refresh = function () {
+            loadEpoch()
+            loadVavilonAccount()
+            loadRewards(function (rewardsReceived) {
+                $scope.rewardsReceived = rewardsReceived
+                $scope.$apply()
+            })
+        }
 
         $scope.refresh()
     })

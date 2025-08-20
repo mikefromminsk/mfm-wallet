@@ -73,6 +73,9 @@ function openAirdrop(domain, success) {
             getAirdrop()
             loadProfile()
             loadTrans()
+            loadRewards(function (rewardsReceived) {
+                $scope.rewardsReceived = rewardsReceived
+            })
         }
 
         $scope.refresh()

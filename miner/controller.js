@@ -22,7 +22,7 @@ function openMiner(domain, success) {
                 address: wallet.address(),
                 domain: domain,
             }, function () {
-                if ($scope.isNotChecked(str.you_start_mining)){
+                if ($scope.rewardsReceived < maxRewards && $scope.isNotChecked(str.you_start_mining)) {
                     showSuccessDialog(str.you_start_mining, $scope.refresh)
                 } else {
                     $scope.refresh()
@@ -157,6 +157,10 @@ function openMiner(domain, success) {
         }
 
         $scope.refresh = function () {
+            loadRewards(function (rewardsReceived) {
+                $scope.rewardsReceived = rewardsReceived
+                $scope.$apply()
+            })
             loadMinerAccount()
             loadAccount()
         }
