@@ -23,8 +23,8 @@ function openDividend(domain, success) {
                 $scope.all_rewards = response.all_rewards
                 $scope.participants = response.participants || {}
                 $scope.gas = response.gas
-                $scope.transList = response.trans
                 $scope.trans = $scope.groupByTimePeriod(response.trans)
+                $scope.transList = response.trans
                 $scope.$apply()
             })
         }

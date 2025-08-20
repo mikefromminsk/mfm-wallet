@@ -91,9 +91,14 @@ function openExchange(domain, is_sell) {
             return false
         }
 
-        $scope.loadBaseProfile = function () {
+        $scope.loadProfile = function () {
             getProfile(domain, function (response) {
                 $scope.token = response.token
+                if ($scope.price == null) {
+                    $scope.price = $scope.is_sell == 1
+                        ? $scope.round($scope.token.price * 0.97)
+                        : $scope.round($scope.token.price * 1.03);
+                }
                 $scope.$apply()
             })
         }
@@ -146,7 +151,7 @@ function openExchange(domain, is_sell) {
         })
 
         $scope.refresh = function () {
-            $scope.loadBaseProfile()
+            $scope.loadProfile()
             $scope.loadBaseBalance()
             $scope.loadQuoteBalance()
             $scope.loadOrderbook()

@@ -58,16 +58,15 @@
                              style="min-width: 100px"
                              ng-repeat="airdrop in top_airdrops"
                              ng-click="check('start_airdrop'); openAirdrop(airdrop.domain, refresh)">
-                            <div class="focus" ng-show="$index == 0 && isNotChecked('start_airdrop')"></div>
+                            <!--<div class="focus" ng-show="$index == 0 && isNotChecked('start_airdrop')"></div>-->
                             <div class="row align-start-center">
                                 <img class="img14"
                                      src="/mfm-wallet/img/task.svg"
                                      ng-class="{'img-gray': !airdrop.rewarded, 'img-green': airdrop.rewarded}">
                                 <p class="ml4">{{formatDomain(airdrop.domain)}}</p>
                             </div>
-                            <div class="row align-start-center gap4" style="margin-top: 20px">
+                            <div class="row" style="margin-top: 20px">
                                 <p>{{formatPrice(airdrop.reward * airdrop.token.price, 2)}}</p>
-                                <div class="flex"></div>
                             </div>
                             <div style="position: absolute;
                     top: 0;

@@ -13,26 +13,14 @@
             <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
             <div class="col input-content">
                 <div class="col border-gray radius-default relative p16">
-                    <div class="row">
-                        <div class="flex col">
-                            <p>{{formatDomain(domain)}}</p>
-                            <div class="row mt4 text2">
-                                <p>{{formatPrice(token.price)}}</p>
-                                <p class="ml4" ng-class="percentColor(token.price24)">
-                                    {{formatChange(token.price24)}}
-                                </p>
-                            </div>
-                        </div>
+                    <div class="row align-center-center">
                         <div class="col align-start-end">
                             <p class="text0">{{formatAmount(airdrop.reward, airdrop.domain)}}</p>
                         </div>
                     </div>
                     <div class="row" style="margin-top: 50px">
-                        <div class="flex col">
-                        </div>
-                        <div class="col">
-                            {{str.giveaway}}
-                        </div>
+                        <p class="flex">{{formatPrice(airdrop.reward * airdrop.token.price)}}</p>
+                        <p>{{str.giveaway}}</p>
                     </div>
                     <div style="position: absolute;
                                 top: 0;
@@ -56,7 +44,7 @@
                 </div>
                 <div class="row align-end-center" ng-show="show_task0">
                     <div class="primary-button m0 border-gray p8"
-                            ng-click="addToWallet()">
+                         ng-click="addToWallet()">
                         {{str.add_to_wallet}}
                     </div>
                 </div>
@@ -90,7 +78,7 @@
          ng-click="getReward()">
         {{airdrop.rewarded ? str.you_received_reward : str.get_reward}}
         <div class="row ml8 align-center-center"
-             ng-show="!isRewardEnabled() && !isChecked(str.giveaway_received)">
+             ng-show="!airdrop.rewarded && !isChecked(str.giveaway_received)">
             <img class="img16 img-yellow" src="/mfm-wallet/img/energy.svg">
             <p>100</p>
         </div>

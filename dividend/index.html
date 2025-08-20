@@ -23,11 +23,11 @@
                 </div>
                 <div class="primary-button back-pay"
                      ng-click="epochFinish()"
-                     ng-disabled="gas.balance < round(reward.amount * 1.01)">
+                     ng-disabled="gas.balance < reward.amount * 1.01">
                     {{str.finish_epoch}}
                 </div>
-                <div class="row align-center-center">
-                    {{str.epoch_will_end_in}} {{formatTime(reward.amount / gas.balance * (time - reward.time))}}
+                <div class="row align-center-center" ng-show="gas.balance < reward.amount * 1.01">
+                    {{str.epoch_will_end_in}} {{formatTime((time - reward.time) / (gas.balance / reward.amount) - (time - reward.time))}}
                 </div>
                 <div class="col align-center-center" style="padding: 20px 0;">
                     <p>{{str.in_contract}}</p>

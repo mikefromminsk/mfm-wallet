@@ -1,105 +1,91 @@
-let worker;
-
-function openWebMiner(domain, success) {
+function openMiner(domain, success) {
     trackCall(arguments)
     showDialog("miner", success, function ($scope) {
+        if (domain == wallet.gas_domain)
+            domain = wallet.vavilon
+        $scope.domain = domain
+        $scope.tokens = {}
+        let subscribed = false
 
-        if (window.conn != null && window.conn.readyState !== WebSocket.OPEN) {
-            showError(str.web_socket_not_connected)
-            connectWs(function () {
-                showSuccess(str.web_socket_connection_restored)
-            })
-        }
-
-        function loadMiningInfo(startMiningAfterRequest) {
-            postContract("mfm-contract", "mining_info", {
-                domain: domain,
-                address: wallet.address(),
-            }, function (response) {
-                $scope.loaded = true
-                $scope.last_hash = response.last_hash || ""
-                $scope.difficulty = response.difficulty || 1
-                $scope.last_reward = response.last_reward
-                $scope.bank = response.bank
-                $scope.account = response.account
-                $scope.$apply()
-                if ($scope.in_progress && startMiningAfterRequest)
-                    startMiningProcess($scope.last_hash, $scope.difficulty)
-            })
-            loadAccounts()
-            loadTrans()
-        }
-
-        $scope.startMining = function () {
-            $scope.startRequest()
-            getPin(function (pin) {
-                window.pinForSesstion = pin
-                wallet.reg(domain, function () {
-                    postContract("mfm-token", "account", {
-                        domain: wallet.gas_domain,
-                        address: wallet.address(),
-                    }, function (response) {
-                        if (response.account.balance > 0) {
-                            loadMiningInfo(true)
-                        } else {
-                            showError($scope.formatDomain(wallet.gas_domain) + " " + str.balance_is_not_enough)
-                        }
-                    })
+        function subscribeToMinerAddress(minerAddress) {
+            if (!subscribed) {
+                subscribed = true
+                $scope.subscribe("account:" + minerAddress, function (data) {
+                    if ($scope.refresh)
+                        $scope.refresh()
                 })
+            }
+        }
+
+        $scope.toggleDomain = function (domain) {
+            postContract("mfm-miner", "toggle_domain", {
+                address: wallet.address(),
+                domain: domain,
+            }, function () {
+                if ($scope.isNotChecked(str.you_start_mining)){
+                    showSuccessDialog(str.you_start_mining, $scope.refresh)
+                } else {
+                    $scope.refresh()
+                }
             })
         }
 
-        function startMiningProcess(last_hash, difficulty) {
-            if (worker != null)
-                worker.terminate()
-            worker = new Worker('/mfm-wallet/wallet/mining/miner/worker.js');
-            worker.addEventListener('message', function (e) {
-                $scope.speed = e.data.speed
-                if ($scope.last_hash == e.data.last_hash) {
-                    postContractWithGas("mfm-contract", $scope.bank.delegate.split("/")[1], {
-                        domain: domain,
-                        nonce: e.data.nonce,
-                        time: Math.ceil(new Date().getTime() / 1000),
-                    }, function () {
-                        loadMiningInfo(true)
-                    }, function (message) {
-                        if (message.indexOf("Invalid nonce") !== -1) {
-                            loadMiningInfo(true)
-                        } else {
-                            $scope.stopMining(message)
-                        }
+        $scope.withdrawal = function () {
+            for (const account of Object.values($scope.accounts)) {
+                if (account.balance > 0) {
+                    postContract("mfm-miner", "withdrawal", {
+                        domain: account.domain,
+                        address: wallet.address(),
+                    }, $scope.refresh, function () {
+                        getPin(function (pin) {
+                            wallet.calcStartHash(account.domain, pin, function (next_hash) {
+                                postContract("mfm-token", "send", {
+                                    domain: account.domain,
+                                    to: wallet.address(),
+                                    pass: ":" + next_hash,
+                                }, $scope.withdrawal)
+                            })
+                        })
                     })
-                } else {
-                    loadMiningInfo(true)
                 }
-            });
-            worker.postMessage({
-                domain: domain,
-                last_hash: last_hash,
-                difficulty: difficulty,
-            });
+            }
         }
 
-        $scope.stopMining = function (message) {
-            if (worker != null)
-                worker.terminate()
-            $scope.finishRequest(message)
+        $scope.haveMinerBalance = function () {
+            for (const token of Object.values($scope.tokens))
+                if (token.account && token.account.balance > 0)
+                    return true
+            return false
         }
 
-        $scope.subscribe("mining:" + domain, function (data) {
-            $scope.balance = data.balance
-            $scope.difficulty = data.difficulty
-            $scope.$apply()
-            if (data.gas_address == wallet.address())
-                loadAccounts()
-            if ($scope.in_progress)
-                startMiningProcess(data.last_hash, data.difficulty)
-        })
+        $scope.minutesInMonth = 60 * 24 * 30
+        $scope.getReward = function () {
+            let percentInYear = 0;
+            if ($scope.bank == null) {
+                return 0
+            }
+            if ($scope.bank.delegate == "mfm-contract/mint10") {
+                percentInYear = 10
+            } else if ($scope.bank.delegate == "mfm-contract/mint20") {
+                percentInYear = 20
+            } else if ($scope.bank.delegate == "mfm-contract/mint100") {
+                percentInYear = 100
+            }
+            let minutesInYear = 365.0 * 24 * 60;
+            return $scope.bank.balance / percentInYear / minutesInYear
+        }
 
-        function loadProfile() {
-            getProfile(domain, function (response) {
-                $scope.token = response.token
-                $scope.account = response.account
+        $scope.getMinerHashRate = function () {
+            return $scope.miner_account.tariff * 100000 * 10000
+        }
+
+        function loadTopMining() {
+            postContract("mfm-token", "search", {}, function (response) {
+                for (const token of response.tokens) {
+                    if (token.domain != wallet.gas_domain && $scope.tokens[token.domain] == null) {
+                        $scope.tokens[token.domain] = token
+                    }
+                }
                 $scope.$apply()
             })
         }
@@ -108,35 +94,64 @@ function openWebMiner(domain, success) {
             postContract("mfm-token", "accounts", {
                 address: wallet.address(),
             }, function (response) {
-                let accounts = []
-                for (const account of response.accounts)
-                    if (account.domain == domain || account.domain == wallet.gas_domain)
-                        accounts.push(account)
-                $scope.accounts = accounts
+                for (const account of response.accounts) {
+                    if (account.domain != wallet.gas_domain && $scope.tokens[account.domain] == null) {
+                        $scope.tokens[account.domain] = account.token
+                    }
+                }
                 $scope.$apply()
+                loadTopMining()
             })
         }
 
-        $scope.selectAccount = function () {
-            $scope.openTokenProfile(domain, loadAccounts)
+        function loadMinerAccounts(address) {
+            postContract("mfm-token", "accounts", {
+                address: address,
+            }, function (response) {
+                for (const account of response.accounts) {
+                    if (account.domain != wallet.gas_domain) {
+                        $scope.tokens[account.domain] = account.token
+                        $scope.tokens[account.domain].account = account
+                    }
+                }
+                $scope.$apply()
+                loadAccounts()
+            })
         }
 
-        function loadTrans() {
-            postContract("mfm-token", "trans", {
-                domain: domain,
+        function loadMinerAccount() {
+            postContract("mfm-miner", "account", {
                 address: wallet.address(),
+            }, function (response) {
+                if (response.miner_account) {
+                    $scope.miner_account = response.miner_account
+                    $scope.gas_account = response.gas_account
+                    loadMinerAccounts(response.miner_account.minerAddress)
+                    subscribeToMinerAddress(response.miner_account.minerAddress)
+                    loadTrans(response.miner_account.minerAddress)
+                    $scope.$apply()
+                }
+            }, function () {
+                loadAccounts()
+            })
+        }
+
+        function loadTrans(minerAddress) {
+            postContract("mfm-token", "trans", {
+                address: minerAddress,
+                to: wallet.address(),
             }, function (response) {
                 $scope.trans = $scope.groupByTimePeriod(response.trans)
                 $scope.$apply()
             })
         }
 
-        function init() {
-            loadProfile()
-            loadMiningInfo(false)
+        $scope.refresh = function () {
+            loadMinerAccount()
+            //loadMiningInfo(domain)
         }
 
-        init()
+        $scope.refresh()
 
     })
 }

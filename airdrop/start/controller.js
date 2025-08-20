@@ -15,7 +15,7 @@ function openOnboarding(domain, success) {
             },
             {
                 title: str.start_miner,
-                check: str.miner_tokens_received,
+                check: str.you_start_mining,
                 description: str.collect_energy_and_mine_tokens,
                 img: 'miner',
                 click: function () {

@@ -21,19 +21,25 @@ function addWallet($scope) {
     }
 
     function setAccounts(accounts) {
-        accounts.sort((a, b) => {
-            if (a.domain === wallet.gas_domain) return -1;
-            if (b.domain === wallet.gas_domain) return 1;
-            if (a.token.price == 0 && b.token.price == 0) {
-                if (a.balance == 0 && b.balance == 0)
-                    return b.created - a.created
-                else
-                    return b.balance - a.balance
-            }
-            if (b.token.price == 0) return 1;
-            if (a.token.price == 0) return -1;
-            return (b.balance * b.token.price) - (a.balance * a.token.price);
-        })
+        try{
+            accounts.sort((a, b) => {
+                try{
+                    if (a.domain === wallet.gas_domain) return -1;
+                    if (b.domain === wallet.gas_domain) return 1;
+                    if (a.token.price == 0 && b.token.price == 0) {
+                        if (a.balance == 0 && b.balance == 0)
+                            return b.created - a.created
+                        else
+                            return b.balance - a.balance
+                    }
+                    if (b.token.price == 0) return 1;
+                    if (a.token.price == 0) return -1;
+                    return (b.balance * b.token.price) - (a.balance * a.token.price);
+                } catch (e){
+                }
+            })
+        } catch (e){
+        }
         $scope.accounts = accounts
     }
 
@@ -123,13 +129,13 @@ function addWallet($scope) {
         postContract("mfm-token", "trans", {
             address: wallet.address(),
         }, function (response) {
-            $scope.next_offset = response.next_offset
-            $scope.trans = response.trans
+            //$scope.next_offset = response.next_offset
+            $scope.trans = $scope.groupByTimePeriod(response.trans)
             $scope.$apply()
         })
     }
 
-    $scope.loadNextTrans = function () {
+    /*$scope.loadNextTrans = function () {
         postContract("mfm-token", "trans", {
             address: wallet.address(),
             offset: $scope.next_offset,
@@ -139,7 +145,7 @@ function addWallet($scope) {
             $scope.trans = [...$scope.trans, ...response.trans]
             $scope.$apply()
         })
-    }
+    }*/
 
     function loadAirdrops() {
         postContract("mfm-airdrop", "list", {
