@@ -22,6 +22,11 @@ function openAirdropAdd(domain, success) {
             })
         }
 
+        $scope.checkTokenName = function () {
+            if (!$scope.telegram) return null;
+            return $scope.telegram.indexOf(domain) != -1
+        }
+
         $scope.setMax = function () {
             $scope.budget = $scope.account.balance
         }
@@ -30,11 +35,28 @@ function openAirdropAdd(domain, success) {
             $scope.participants = count
         }
 
-        getProfile(domain, function (response) {
-            $scope.token = response.token
-            $scope.account = response.account
-            $scope.$apply()
-        })
+        function loadProfile() {
+            getProfile(domain, function (response) {
+                $scope.token = response.token
+                $scope.account = response.account
+                $scope.$apply()
+            })
+        }
 
+        function loadAirdrop() {
+            postContract("mfm-airdrop", "get", {
+                domain: domain,
+            }, function (response) {
+                $scope.telegram = response.airdrop.telegram
+                $scope.$apply()
+            })
+        }
+
+        $scope.refresh = function () {
+            loadProfile()
+            loadAirdrop()
+        }
+
+        $scope.refresh()
     })
 }

@@ -38,28 +38,24 @@ function addNavigator($scope) {
     }
 
     $scope.back = function (result) {
-        setTimeout(function () {
-            window.$mdBottomSheet.hide(result)
-            finish()
-        }, 100)
+        window.$mdBottomSheet.hide(result)
+        finish()
     }
 
     $scope.close = function (result) {
-        setTimeout(function () {
-            window.$mdDialog.hide(result)
-            finish()
-            historyBack()
-        }, 100)
+        window.$mdDialog.hide(result)
+        finish()
+        historyBack()
     }
 
-    $scope.closeAll = function () {
-        setTimeout(function () {
-            for (let i = 0; i < 10; i++){
-                window.$mdDialog.hide()
-                historyBack()
-            }
-            finish()
-        }, 100)
+    $scope.closeAll = function (success) {
+        for (let i = 0; i < 10; i++){
+            window.$mdDialog.hide()
+            historyBack()
+        }
+        finish()
+        if (success)
+            success()
     }
 
     $scope.open = function (link) {

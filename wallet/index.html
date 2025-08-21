@@ -1,7 +1,6 @@
 <div class="flex col">
     <div class="row header align-start-center">
-        <img class="img40 p8" src="/mfm-wallet/img/star{{finishOnboardingPercent()}}.svg" ng-click="openOnboarding()">
-        {{rewardsReceived}}
+        <img class="img40 p8" src="/mfm-wallet/img/star{{finishOnboardingPercent()}}.svg" ng-click="openOnboarding(refresh)">
         <div class="flex row align-center text1">{{host}}</div>
         <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/settings.svg" ng-click="openSettings(refresh)">
     </div>
@@ -86,12 +85,12 @@
                 <div class="col gap16" ng-hide="!wallet.address()">
                     <ng-include src="'/mfm-wallet/wallet/accounts.html?v=15'"></ng-include>
                     <div class="primary-button back-pay mh0 mb0 mt8 align-center-center"
-                         ng-click="openLaunchToken(refresh)">
+                         ng-click="launch()">
                         {{str.launch_token}}
                         <div class="row ml8 align-center-center"
-                             ng-show="!isChecked(str.your_token_created)">
+                             ng-show="rewardsReceived < maxRewards && isNotChecked(str.your_token_created)">
                             <img class="img16 img-yellow" src="/mfm-wallet/img/energy.svg">
-                            <p>100</p>
+                            <p>{{energyReward}}</p>
                         </div>
                     </div>
                     <div class="row primary-button back-black m0" ng-click="openSupport()">

@@ -1,6 +1,6 @@
 function openLaunchToken(success) {
     trackCall(arguments)
-    showDialog("launch/name", success, function ($scope) {
+    showDialog("launch/name", null, function ($scope) {
         $scope.search_text = ''
 
         $scope.search = function () {
@@ -23,13 +23,27 @@ function openLaunchToken(success) {
             }).length == 0;
         }
 
-        $scope.selectName = function () {
-            openLogoChange($scope.search_text, function () {
-                $scope.close()
-            })
+        $scope.check3Symbuls = function () {
+            if (!$scope.search_text) return null;
+            return $scope.search_text.length >= 3
         }
 
-        $scope.pressEnter($scope.selectName)
+        $scope.checkEnglish = function () {
+            if (!$scope.search_text) return null;
+            return true
+        }
+
+        $scope.checkFreeName = function () {
+            if (!$scope.search_text) return null;
+            return $scope.tokens.length == 0
+        }
+
+        $scope.next = function () {
+            $scope.close()
+            openLogoChange($scope.search_text, success)
+        }
+
+        $scope.pressEnter($scope.next)
 
         setTimeout(function () {
             document.getElementById('search_input').focus()

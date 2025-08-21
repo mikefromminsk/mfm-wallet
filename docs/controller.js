@@ -8,7 +8,7 @@ function getLanguage() {
 
 function getDocParam() {
     const urlParams = new URLSearchParams(window.location.search);
-    return '/mfm-landing/docs/' + urlParams.get('doc') + '/' + getLanguage() + '.md'
+    return '/mfm-wallet/docs/' + urlParams.get('doc') + '/' + getLanguage() + '.md'
 }
 
 async function fetchMarkdown(url) {

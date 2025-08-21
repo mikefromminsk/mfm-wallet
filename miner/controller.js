@@ -31,16 +31,16 @@ function openMiner(domain, success) {
         }
 
         $scope.withdrawal = function () {
-            for (const account of Object.values($scope.accounts)) {
-                if (account.balance > 0) {
+            for (const token of Object.values($scope.tokens)) {
+                if (token.account && token.account.balance > 0) {
                     postContract("mfm-miner", "withdrawal", {
-                        domain: account.domain,
+                        domain: token.domain,
                         address: wallet.address(),
                     }, $scope.refresh, function () {
                         getPin(function (pin) {
-                            wallet.calcStartHash(account.domain, pin, function (next_hash) {
+                            wallet.calcStartHash(token.domain, pin, function (next_hash) {
                                 postContract("mfm-token", "send", {
-                                    domain: account.domain,
+                                    domain: token.domain,
                                     to: wallet.address(),
                                     pass: ":" + next_hash,
                                 }, $scope.withdrawal)
@@ -146,7 +146,7 @@ function openMiner(domain, success) {
             })
         }
 
-        function loadAccount() {
+        function loadGasAccount() {
             postContract("mfm-token", "account", {
                 domain: wallet.gas_domain,
                 address: wallet.address(),
@@ -162,7 +162,7 @@ function openMiner(domain, success) {
                 $scope.$apply()
             })
             loadMinerAccount()
-            loadAccount()
+            loadGasAccount()
         }
 
         $scope.refresh()

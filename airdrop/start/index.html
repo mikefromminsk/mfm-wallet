@@ -21,13 +21,13 @@
         </div>
     </div>
     <div class="primary-button align-center-center"
-         ng-disabled="isChecked(tasks[tabIndex].check)"
+         ng-disabled="isChecked(tasks[tabIndex].check) && rewardsReceived < maxRewards"
          ng-click="tasks[tabIndex].click()">
         {{tasks[tabIndex].title}}
         <div class="row ml8 align-center-center"
              ng-show="rewardsReceived < maxRewards && isNotChecked(tasks[tabIndex].check)">
             <img class="img16 img-yellow" src="/mfm-wallet/img/energy.svg">
-            <p>100</p>
+            <p>{{energyReward}}</p>
         </div>
     </div>
     <div class="primary-button back-black border-gray" ng-click="next()">

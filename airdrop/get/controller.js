@@ -40,7 +40,7 @@ function openAirdrop(domain, success) {
                 && $scope.isTelegramSubscribed()
         }
 
-        function getAirdrop() {
+        function loadAirdrop() {
             postContract("mfm-airdrop", "get", {
                 domain: domain,
                 address: wallet.address(),
@@ -70,7 +70,7 @@ function openAirdrop(domain, success) {
         }
 
         $scope.refresh = function () {
-            getAirdrop()
+            loadAirdrop()
             loadProfile()
             loadTrans()
             loadRewards(function (rewardsReceived) {

@@ -15,18 +15,20 @@ function openExchange(domain, is_sell, success) {
             openLogin($scope.refresh)
         }
         $scope.portion = 0
-        $scope.$watch("portion", function (new_value, old_value) {
-            if (new_value == old_value) return;
-            $scope.setPortion(new_value)
+        $scope.$watch("portion", function (value) {
+            if ($scope.is_sell) {
+                $scope.setFocus('amount')
+                $scope.amount = $scope.round($scope.base * (value / 100))
+            } else {
+                $scope.setFocus('total')
+                $scope.total = $scope.round($scope.quote * (value / 100))
+            }
+            if (value > 0)
+                $scope.check('set_portion')
         })
 
-        $scope.setPortion = function (new_value) {
-            $scope.portion = new_value
-            if ($scope.is_sell) {
-                $scope.amount = $scope.round($scope.base * (new_value / 100))
-            } else {
-                $scope.total = $scope.round($scope.quote * (new_value / 100))
-            }
+        $scope.setPortion = function (value) {
+            $scope.portion = value
         }
 
         $scope.place = function place() {

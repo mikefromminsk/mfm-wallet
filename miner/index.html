@@ -94,10 +94,10 @@
                             <p>{{formatAmount(token.account.balance)}}</p>
                             <p class="mt4 text2">{{formatPrice(token.price * token.account.balance)}}</p>
                         </div>
-                        <div class="row mr8 align-center-center"
-                             ng-show="rewardsReceived < maxRewards && isNotChecked(str.you_start_mining)">
+                        <div class="row ml8 mr8 align-center-center"
+                             ng-show="$index == 0 && rewardsReceived < maxRewards && isNotChecked(str.you_start_mining)">
                             <img class="img16 img-yellow" src="/mfm-wallet/img/energy.svg">
-                            <p>100</p>
+                            <p>{{energyReward}}</p>
                         </div>
                         <button class="ml16 toggle"
                                 ng-class="{'active': (miner_account.domains || '').indexOf(token.domain) != -1}"
@@ -118,7 +118,7 @@
         {{str.coloect_tokens}}
     </div>
     <div class="primary-button back-yellow"
-         ng-disabled="account && account.balance > 0"
+         ng-disabled="!account || account.balance == 0"
          ng-click="openSend(wallet.gas_domain, wallet.MINER_ADDRESS, null, refresh)">
         {{str.buy_energy}}
     </div>

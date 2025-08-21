@@ -4,8 +4,6 @@ function openLogoChange(domain, success) {
     showDialog("launch/logo", function () {
         if (logoRefreshInterval != null)
             clearInterval(logoRefreshInterval)
-        if (success)
-            success()
     }, function ($scope) {
         $scope.domain = domain
 
@@ -57,6 +55,11 @@ function openLogoChange(domain, success) {
                 }, 1000)
                 showSuccess(str.logo_uploaded)
             })
+        }
+
+        $scope.next = function () {
+            $scope.close()
+            $scope.openDistribution(domain, success)
         }
     })
 }

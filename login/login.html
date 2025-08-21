@@ -1,28 +1,29 @@
 <div class="flex col">
     <div class="col input-content">
         <p ng-show="validateBip39(mnemonic)" ng-click="login2()">{{str.save_this_phrase_for_access_the_wallet}}</p>
-        <p ng-hide="validateBip39(mnemonic)" ng-click="login2()">{{str.enter_your_secret_phrase_for_access_the_wallet}}</p>
-        <div class="m0 p16">
-            <div class="row">
-                    <textarea id="seed_phrase"
-                              type="text"
-                              rows="3"
-                              autocomplete="off"
-                              ng-model="mnemonic"
-                              oninput="this.value = this.value.toLowerCase().replace(/[^a-z0-9 ]/g, '')"
-                              placeholder="{{str.secret_12_words}}"></textarea>
-                <div class="row primary-button ripple m0 align-center-center relative"
-                     ng-style="{'background-color': copied ? 'var(--black)' : 'var(--accent)'}"
-                     ng-click="copySeed(mnemonic)">
-                    <div class="focus" ng-show="!copied  && isNotChecked('copy_seed')" ng-click="check('copy_seed')"></div>
-                    <img class="img32 img-white" src="/mfm-wallet/img/copy.svg">
-                </div>
+        <p ng-hide="validateBip39(mnemonic)" ng-click="login2()">
+            {{str.enter_your_secret_phrase_for_access_the_wallet}}</p>
+        <div class="row m16">
+              <textarea id="seed_phrase"
+                        type="text"
+                        rows="3"
+                        autocomplete="off"
+                        ng-model="mnemonic"
+                        oninput="this.value = this.value.toLowerCase().replace(/[^a-z0-9 ]/g, '')"
+                        placeholder="{{str.secret_12_words}}"></textarea>
+            <div class="row primary-button ripple m0 align-center-center relative"
+                 ng-style="{'background-color': copied ? 'var(--black)' : 'var(--accent)'}"
+                 ng-click="copySeed(mnemonic)">
+                <div class="focus" ng-show="!copied  && isNotChecked('copy_seed')"
+                     ng-click="check('copy_seed')"></div>
+                <img class="img32 img-white" src="/mfm-wallet/img/copy.svg">
             </div>
-            <p class="text-red" ng-show="mnemonic != '' && !validateBip39(mnemonic)">{{str.phrase_must_have_12_words}}</p>
         </div>
+        <p class="text-red" ng-show="mnemonic != '' && !validateBip39(mnemonic)">
+            {{str.phrase_must_have_12_words}}</p>
         <div class="row align-start-center gap4">
             <p>{{str.agree_to}}</p>
-            <a href="/mfm-landing/docs?doc=terms&lang={{getLanguage()}}" target="_blank">
+            <a href="/mfm-wallet/docs?doc=terms&lang={{getLanguage()}}" target="_blank">
                 {{str.terms_and_conditions}}
             </a>
         </div>

@@ -29,11 +29,12 @@
                 <div class="row align-center-center" ng-show="gas.balance < reward.amount * 1.01">
                     {{str.epoch_will_end_in}} {{formatTime((time - reward.time) / (gas.balance / reward.amount) - (time - reward.time))}}
                 </div>
-                <div class="col align-center-center" style="padding: 20px 0;">
+                <div class="col align-center-center"
+                     ng-show="account && account.balance > 0"
+                     style="padding: 20px 0;">
                     <p>{{str.in_contract}}</p>
                     <p class="text0">{{formatAmount(participants.balance, wallet.vavilon)}}</p>
                 </div>
-
 
                 <div class="row" ng-show="sumTrans() > 0">
                     <p class="text2">{{str.you_block_tokens}}</p>
@@ -61,6 +62,12 @@
             <div class="space"></div>
         </div>
     </div>
+    <div class="primary-button back-green"
+         ng-click="openExchange(wallet.vavilon, false, refresh)"
+         ng-show="gas_account.balance > 0 && account.balance == 0">
+        {{str.buy}} {{formatDomain(wallet.vavilon)}}
+    </div>
+
     <div class="primary-button"
          ng-click="participate()"
          ng-disabled="!account || account.balance == 0">
@@ -68,7 +75,7 @@
         <div class="row ml8 align-center-center"
              ng-show="rewardsReceived < maxRewards && isNotChecked(str.you_block_tokens)">
             <img class="img16 img-yellow" src="/mfm-wallet/img/energy.svg">
-            <p>100</p>
+            <p>{{energyReward}}</p>
         </div>
     </div>
 

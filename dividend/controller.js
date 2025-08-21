@@ -42,6 +42,17 @@ function openDividend(domain, success) {
             return sum
         }
 
+        function loadGasAccount() {
+            postContract("mfm-token", "account", {
+                domain: wallet.gas_domain,
+                address: wallet.address(),
+            }, function (response) {
+                $scope.gas_account = response.account
+                $scope.$apply()
+            }, function () {
+            })
+        }
+
         function loadVavilonAccount() {
             postContract("mfm-token", "account", {
                 domain: wallet.vavilon,
@@ -55,6 +66,7 @@ function openDividend(domain, success) {
 
         $scope.refresh = function () {
             loadEpoch()
+            loadGasAccount()
             loadVavilonAccount()
             loadRewards(function (rewardsReceived) {
                 $scope.rewardsReceived = rewardsReceived

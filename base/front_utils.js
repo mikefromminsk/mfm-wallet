@@ -100,7 +100,8 @@ function addGlobalVars($scope, callback) {
     $scope.wallet = window.wallet
     $scope.user = window.user
     $scope.str = window.str
-    $scope.maxRewards = maxRewards
+    $scope.maxRewards = window.maxRewards || 5
+    $scope.energyReward = window.energyReward || 10
     $scope.in_progress = false
     $scope.startRequest = function () {
         $scope.in_progress = true
@@ -191,7 +192,6 @@ function showSuccess(message, success) {
 function clearFocus() {
     document.body.focus()
 }
-
 
 function addPriceAmountTotal($scope) {
     $scope.setIsSell = function (is_sell) {

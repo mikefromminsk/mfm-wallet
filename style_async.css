@@ -295,11 +295,6 @@ input[type="range"]::-webkit-slider-thumb {
     border-radius: 50%;
 }
 
-
-.range-container {
-    position: relative;
-}
-
 .romb {
     position: absolute;
     left: 25%;

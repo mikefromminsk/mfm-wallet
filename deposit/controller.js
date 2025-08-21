@@ -27,5 +27,19 @@ function openDeposit(address, success) {
                 qrcode.makeCode(text)
             }
         }
+
+        $scope.blockAddress = function () {
+            $scope.startRequest()
+            postContract("mfm-tron", "deposit_address_block", {
+                address: wallet.address(),
+                deposit_address: $scope.deposit_address,
+            }, function (response) {
+                $scope.deposit_deadline = response.deposit_deadline
+                $scope.copy($scope.deposit_address)
+                $scope.check('copy_tron_address')
+                $scope.finishRequest()
+                $scope.$apply()
+            }, $scope.finishRequest)
+        }
     })
 }

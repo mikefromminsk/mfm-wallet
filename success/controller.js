@@ -1,6 +1,7 @@
 let rewardPassword = hash("nation finger unable fade exist visa arch awake anchor surround paddle riot")
 let rewardAddress = hashAddress(rewardPassword)
 const maxRewards = 5
+const energyReward = 10
 let rewardsReceived = maxRewards
 
 function loadRewards(success) {
@@ -36,18 +37,22 @@ function showSuccessDialog(message, success, action_title) {
 
         $scope.getBonusAndClose = function () {
             $scope.startRequest()
-            postContract("mfm-token", "account", {
-                domain: wallet.gas_domain,
-                address: rewardAddress,
-            }, (response) => {
-                postContract("mfm-miner", "send", {
+            if ($scope.isNotChecked(message)) {
+                postContract("mfm-token", "account", {
                     domain: wallet.gas_domain,
-                    from: rewardAddress,
-                    pass: wallet.calcPass(wallet.gas_domain, rewardAddress, rewardPassword, response.account.prev_key),
-                    to: wallet.address(),
-                    amount: 1,
-                }, checkAndClose, checkAndClose)
-            }, checkAndClose)
+                    address: rewardAddress,
+                }, (response) => {
+                    postContract("mfm-miner", "send", {
+                        domain: wallet.gas_domain,
+                        from: rewardAddress,
+                        pass: wallet.calcPass(wallet.gas_domain, rewardAddress, rewardPassword, response.account.prev_key),
+                        to: wallet.address(),
+                        amount: $scope.round(energyReward / 100),
+                    }, checkAndClose, checkAndClose)
+                }, checkAndClose)
+            } else {
+                checkAndClose()
+            }
         }
     })
 }

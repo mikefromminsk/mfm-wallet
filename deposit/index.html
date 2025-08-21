@@ -8,45 +8,40 @@
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
         </div>
     </div>
-    <div class="flex col scroll align-start-center">
+    <div class="flex col scroll-vertical align-start-center">
         <div class="flex col block input-content">
-            <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
-            <div class="row input-wrapper">
-                <div ng-style="getLogo(domain)"></div>
-                <input type="text"
-                       id="token_name"
-                       class="uppercase"
-                       ng-model="domain"
-                       placeholder=" ">
-                <label for="token_name">{{str.token_name}}</label>
-            </div>
-
-            <div class="row input-wrapper">
-                <div ng-style="getLogo(network)"></div>
-                <input type="text"
-                       id="network"
-                       class="uppercase"
-                       ng-model="network"
-                       placeholder=" ">
-                <label for="network">{{str.crypto_network}}</label>
-            </div>
-
-            <div class="row align-center" ng-show="deposit_address">
-                <div id="qrcode" style="margin: 20px 0"></div>
-            </div>
-            <div class="row input-wrapper" ng-show="deposit_address">
-                <div ng-style="getLogo(domain)"></div>
-                <input type="text"
-                       id="deposit_address"
-                       ng-model="deposit_address"
-                       placeholder=" ">
-                <label for="deposit_address">{{formatDomain(domain)}} {{formatDomain(network)}} {{str.deposit_address}}</label>
-                <div class="col align-center-center" style="position: relative">
-                    <div class="focus"></div>
-                    <img class="img40 p8 ripple img-white"
-                         src="/mfm-wallet/img/copy.svg"
-                         ng-click="copy(deposit_address)">
+            <div class="flex row align-start-center" ng-show="deposit_address">
+                <div class="flex col">
+                    <div class="row align-center-center">
+                        <div id="qrcode" style="margin: 20px 0"></div>
+                    </div>
+                    <div class="row input-wrapper" style="margin-top: 40px">
+                        <div ng-style="getLogo(wallet.gas_domain)"></div>
+                        <input type="text"
+                               id="deposit_address"
+                               disabled
+                               class="text-white"
+                               ng-model="deposit_address"
+                               placeholder=" ">
+                        <label for="deposit_address">{{formatDomain(domain)}} {{formatDomain(network)}}
+                            {{str.deposit_address}}</label>
+                        <div class="col align-center-center" style="position: relative">
+                            <div class="focus" ng-show="isNotChecked('copy_tron_address')"></div>
+                            <img class="img40 p8 ripple img-white"
+                                 src="/mfm-wallet/img/copy.svg"
+                                 ng-click="blockAddress(deposit_address)">
+                        </div>
+                    </div>
+                    <ul class="col mv0 text2 text-align-start">
+                        <li>{{str.minimum_deposit}} {{formatAmount(0.0001, wallet.gas_domain)}}</li>
+                        <li>{{str.you_will_have_30_min_for_deposit_after_copy_address}}</li>
+                    </ul>
                 </div>
+            </div>
+            <div class="primary-button"
+                 ng-disabled="in_progress"
+                 ng-click="blockAddress(deposit_address)">
+                {{str.copy}}
             </div>
             <div></div>
         </div>

@@ -157,6 +157,10 @@ textarea {
     color: var(--gray200);
 }
 
+.input-wrapper > input:disabled.text-white {
+    color: var(--white);
+}
+
 input::placeholder {
     color: var(--gray200);
     font-family: FontMedium, Roboto, "Helvetica Neue", sans-serif;
@@ -222,6 +226,25 @@ button {
     border-radius: 4px;
     cursor: pointer;
     text-align: center;
+}
+
+
+.text0 {
+    font-family: FontBold;
+    color: var(--white);
+    font-size: 32px;
+}
+
+.text1 {
+    font-family: FontBold;
+    color: var(--white);
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.text2 {
+    color: var(--gray300);
+    font-size: 12px;
 }
 
 .text-black {
@@ -290,24 +313,6 @@ button {
 .ripple:active {
     background-color: var(--gray200);
     border-radius: 16px;
-}
-
-.text0 {
-    font-family: FontBold;
-    color: var(--white);
-    font-size: 32px;
-}
-
-.text1 {
-    font-family: FontBold;
-    color: var(--white);
-    font-size: 16px;
-    line-height: 24px;
-}
-
-.text2 {
-    color: var(--gray300);
-    font-size: 12px;
 }
 
 

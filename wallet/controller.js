@@ -127,7 +127,7 @@ function addWallet($scope) {
     }
 
     function subscribeNewOrders() {
-        $scope.subscribe("new_order:" + wallet.address(), function (data) {
+        $scope.subscribe("new_order:" + wallet.address(), function () {
             showSuccess(str.new_p2p_order)
             setTimeout(function () {
                 new Audio("/mfm-wallet/dialogs/success/payment_success.mp3").play()
@@ -180,23 +180,17 @@ function addWallet($scope) {
                 $scope.miner_gas_account = response.gas_account
                 $scope.$apply()
             }
-        }, function (response) {
+        }, function () {
+            $scope.miner_account = null
+            $scope.miner_gas_account = null
+            $scope.$apply()
         })
     }
 
-    $scope.maxRewards = 5
-    $scope.rewardsReceived = $scope.maxRewards
-
-    function loadRewards() {
-        postContract("mfm-token", "trans", {
-            domain: wallet.gas_domain,
-            address: wallet.address(),
-            to: rewardAddress,
-            size: $scope.maxRewards,
-        }, (response) => {
-            $scope.rewardsReceived = response.trans.length
-        }, function () {
-            $scope.rewardsReceived = 0
+    $scope.launch = function () {
+        openLaunchToken(function (domain) {
+            openMiner(domain, $scope.refresh)
+            $scope.refresh()
         })
     }
 
@@ -205,7 +199,9 @@ function addWallet($scope) {
         loadTrans()
         loadAirdrops()
         loadMinerAccount()
-        loadRewards()
+        loadRewards(function (rewardsReceived) {
+            $scope.rewardsReceived = rewardsReceived
+        })
     }
 
     if (wallet.address() != "") {

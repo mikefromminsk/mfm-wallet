@@ -38,7 +38,7 @@
             </div>
             <div class="row">
                 <div class="flex row align-center-center border-gray p8"
-                    ng-repeat="item in [1, 10, 50, 100]"
+                    ng-repeat="item in [10, 100, 1000]"
                     ng-click="setParticipants(item)">
                     {{item}}
                 </div>
@@ -55,6 +55,10 @@
                        placeholder=" ">
                 <label for="telegram">{{str.telegram_channel}}</label>
             </div>
+            <ul class="col mh16 mv0 text2 text-align-start">
+                <li ng-class="formatColor(checkTokenName)">{{str.link_has_to_contain_token_name}}</li>
+            </ul>
+
             <div class="nowrap-disabled"
                  ng-include="'/mfm-wallet/airdrop/add/faq/' + getLanguage() + '.html'"></div>
 
@@ -66,9 +70,9 @@
          ng-click="add()">
         {{str.new_giveaway}}
         <div class="row ml8 align-center-center"
-             ng-show="!isChecked(str.giveaway_created)">
+             ng-show="isNotChecked(str.giveaway_created)">
             <img class="img16 img-yellow" src="/mfm-wallet/img/energy.svg">
-            <p>100</p>
+            <p>{{energyReward}}</p>
         </div>
     </div>
 </md-dialog>

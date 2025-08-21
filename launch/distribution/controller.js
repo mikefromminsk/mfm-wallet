@@ -1,12 +1,14 @@
 function openDistribution(domain, success) {
     showDialog("launch/distribution", success, function ($scope) {
         $scope.domain = domain
-        $scope.amount_step = 6
-        $scope.amount = 10000
+        $scope.supply_step_min = 3
+        $scope.supply_step_max = 6
+        $scope.supply_step = 6
+        $scope.supply = Math.pow(10, 6)
         $scope.swipeToRefreshDisable()
 
-        $scope.$watch('amount_step', function (newValue) {
-            $scope.amount = Math.pow(10, parseInt(newValue))
+        $scope.$watch('supply_step', function (newValue) {
+            $scope.supply = Math.pow(10, parseInt(newValue))
         })
 
         $scope.launch = function () {
@@ -16,7 +18,7 @@ function openDistribution(domain, success) {
                 to: wallet.MINING_ADDRESS,
                 pass: wallet.calcStartPass(domain, wallet.MINING_ADDRESS),
                 delegate: "mfm-contract/mint100",
-                amount: $scope.amount,
+                amount: $scope.supply,
             }, function () {
                 getPin(function (pin) { // add to wallet
                     wallet.calcStartHash($scope.domain, pin, function (next_hash) {
@@ -25,7 +27,9 @@ function openDistribution(domain, success) {
                             to: wallet.address(),
                             pass: ":" + next_hash,
                         }, function () {
-                            showSuccessDialog(str.your_token_created, $scope.close)
+                            showSuccessDialog(str.your_token_created, function () {
+                                $scope.close(domain)
+                            })
                         }, $scope.finishRequest)
                     }, $scope.finishRequest)
                 }, $scope.finishRequest)

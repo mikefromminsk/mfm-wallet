@@ -121,6 +121,15 @@ function addFormats($scope) {
             return {'text-red': true}
     }
 
+    $scope.formatColor = function (func) {
+        if (typeof func === "function") {
+            let val = func()
+            if (val === true) return {'text-green': true}
+            if (val === false) return {'text-red': true}
+        }
+        return {'text-gray': true}
+    }
+
     $scope.formatTime = function (seconds) {
         function round(num, precision) {
             return +(Math.round(num + "e+" + precision) + "e-" + precision);

@@ -49,12 +49,15 @@
                         <label for="amount">{{str.amount}}</label>
                     </div>
                     <div class="row">
-                        <div class="flex row range-container">
+                        <div class="flex row relative">
                             <input type="range"
                                    class="flex"
                                    ng-style="{'background-size': portion + '% 100%'}"
                                    ng-model="portion"
                                    min="0" max="100">
+                            <div ng-class="{'focus': isNotChecked('set_portion')}"
+                                 ng-show="isNotChecked('set_portion')"
+                                 style="left: -35px; z-index: -1"></div>
                             <div class="romb back-gray"
                                  ng-repeat="i in [3, 25, 50, 75, 98]"
                                  ng-class="{'back-gray': i >= portion, 'back-white': i < portion}"
@@ -96,7 +99,7 @@
                         <div class="row ml8 align-center-center"
                              ng-show="rewardsReceived < maxRewards && isNotChecked(str.order_placed)">
                             <img class="img16 img-yellow" src="/mfm-wallet/img/energy.svg">
-                            <p>100</p>
+                            <p>{{energyReward}}</p>
                         </div>
                     </div>
                 </div>

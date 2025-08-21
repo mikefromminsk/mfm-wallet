@@ -14,7 +14,13 @@
         <div class="flex col block">
             <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
             <div class="input-content" ng-show="domain != wallet.gas_domain">
-                <ng-include class="p0" src="'/mfm-wallet/profile/chart/chart.html?v=15'"></ng-include>
+                <ng-include class="p0" src="'/mfm-wallet/profile/chart/chart.html?v=15'"
+                            ng-show="token.price > 0"></ng-include>
+                <div class="primary-button"
+                     ng-show="token.price == 0 && account"
+                     ng-click="openExchangeBot(domain, 'exhibit tragic bundle galaxy zero lunch lift six access story round ')">
+                    {{str.add_liquidity}}
+                </div>
                 <ng-include class="m0" src="'/mfm-wallet/profile/options.html?v=15'"></ng-include>
                 <div class="row">
                     <img class="img16" src="/mfm-wallet/img/telegram.svg"
@@ -29,7 +35,8 @@
             <div class="col mh16">
                 <p class="text1 mt16 mb8">{{str.top_hodlers}}</p>
                 <div class="row mt8 p16 radius-default back-gray ripple"
-                     ng-repeat="item in accounts">
+                     ng-repeat="item in accounts"
+                     ng-click="copy(item.address)">
                     <div class="radius-default back-black"
                          ng-style="getIdenticon(item.address)"></div>
 
