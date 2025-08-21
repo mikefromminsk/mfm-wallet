@@ -39,7 +39,12 @@ function openDeposit(address, success) {
                 $scope.check('copy_tron_address')
                 $scope.finishRequest()
                 $scope.$apply()
-            }, $scope.finishRequest)
+            }, function (message){
+                $scope.finishRequest()
+                if (message == "you block this address") {
+                    $scope.copy($scope.deposit_address)
+                }
+            })
         }
     })
 }
