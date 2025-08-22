@@ -34,7 +34,7 @@ function createChart(id) {
     return chart
 }
 
-function addChart($scope, key, accumulate_key) {
+function addChart($scope, app, key, accumulate_key) {
     function init() {
         setTimeout(function () {
             if ($scope.candleSeries == null) {
@@ -70,7 +70,8 @@ function addChart($scope, key, accumulate_key) {
     $scope.period_name = 'H'
     $scope.setPeriod = function (period_name) {
         $scope.period_name = period_name
-        postContract("mfm-analytics", "candles", {
+        postContract("mfm-chart", "chart", {
+            app: app,
             key: key,
             accumulate_key: accumulate_key,
             period_name: period_name,
@@ -101,10 +102,10 @@ function addChart($scope, key, accumulate_key) {
     init()
 }
 
-function openChartWithAccumulate(key, accumulate_key, success) {
+function openChartWithAccumulate(app, key, accumulate_key, success) {
     showBottomSheet("profile/chart", success, function ($scope) {
         $scope.key = key
         $scope.accumulate_key = accumulate_key
-        addChart($scope, key, accumulate_key)
+        addChart($scope, app, key, accumulate_key)
     })
 }

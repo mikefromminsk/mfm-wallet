@@ -35,10 +35,10 @@ function addStore($scope) {
     addApp("games", "ShitBomb", "#46aef5", "/mfm-pigeon/")
 /*    addApp("games", "Quizes", "#46aef5", "/mfm-pigeon")*/
 
-    addApp("docs", "Whitepaper", "#46aef5", "/mfm-wallet/docs/?doc=whitepaper")
-    addApp("docs", "Roadmap", "#46aef5", "/mfm-wallet/docs/?doc=roadmap")
-    addApp("docs", "Terms", "#46aef5", "/mfm-wallet/docs/?doc=terms")
-    addApp("docs", "Dev", "#46aef5", "/mfm-wallet/docs/?doc=dev")
+    addApp("docs", "Whitepaper", "#46aef5", "/mfm-docs/?doc=whitepaper")
+    addApp("docs", "Roadmap", "#46aef5", "/mfm-docs/?doc=roadmap")
+    addApp("docs", "Terms", "#46aef5", "/mfm-docs/?doc=terms")
+    addApp("docs", "Dev", "#46aef5", "/mfm-docs/?doc=dev")
 
     $scope.openApp = function (link) {
         if (link[0] == "/") {

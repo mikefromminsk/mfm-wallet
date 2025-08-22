@@ -49,7 +49,7 @@ function addNavigator($scope) {
     }
 
     $scope.closeAll = function (success) {
-        for (let i = 0; i < 10; i++){
+        for (let i = 0; i < 10; i++) {
             window.$mdDialog.hide()
             historyBack()
         }
@@ -190,16 +190,16 @@ function addNavigator($scope) {
         }
     }
 
-    $scope.openChart = function (key, success) {
-        openChartWithAccumulate(key, null, success)
+    $scope.openChart = function (app, key, success) {
+        openChartWithAccumulate(app, key, null, success)
     }
 
-    $scope.openChartWithAccumulate = function (key, accomulate, success) {
-        openChartWithAccumulate(key, accomulate, success)
+    $scope.openChartWithAccumulate = function (app, key, accomulate, success) {
+        openChartWithAccumulate(app, key, accomulate, success)
     }
 
-    $scope.openChartWithAccumulate = function (key, success) {
-        openChartWithAccumulate(key, key, success)
+    $scope.openChartWithAccumulate = function (app, key, success) {
+        openChartWithAccumulate(app, key, key, success)
     }
 
     $scope.openPayOffCredit = function (success) {

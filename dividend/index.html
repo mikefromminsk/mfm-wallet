@@ -30,7 +30,7 @@
                     {{str.epoch_will_end_in}} {{formatTime((time - reward.time) / (gas.balance / reward.amount) - (time - reward.time))}}
                 </div>
                 <div class="col align-center-center"
-                     ng-show="account && account.balance > 0"
+                     ng-show="(account && account.balance > 0) || sumTrans() > 0"
                      style="padding: 20px 0;">
                     <p>{{str.in_contract}}</p>
                     <p class="text0">{{formatAmount(participants.balance, wallet.vavilon)}}</p>

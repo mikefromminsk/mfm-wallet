@@ -1,7 +1,6 @@
-function openOnboarding(domain, success) {
+function openOnboarding(success) {
     trackCall(arguments)
     showDialog("airdrop/start", success, function ($scope) {
-        $scope.domain = domain
 
         $scope.tasks = [
             {
