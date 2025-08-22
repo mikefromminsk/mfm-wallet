@@ -4,6 +4,7 @@ function openAirdropAdd(domain, success) {
         $scope.domain = domain
         $scope.budget = null
         $scope.participants = null
+        $scope.airdrop = {}
 
         $scope.add = function () {
             getPin(function (pin) {
@@ -14,7 +15,8 @@ function openAirdropAdd(domain, success) {
                         pass: pass,
                         budget: $scope.budget,
                         participants: $scope.participants,
-                        telegram: $scope.telegram,
+                        telegram: $scope.airdrop.telegram,
+                        language: $scope.airdrop.language,
                     }, function () {
                         showSuccessDialog(str.giveaway_created, $scope.close)
                     })
@@ -23,8 +25,8 @@ function openAirdropAdd(domain, success) {
         }
 
         $scope.checkTokenName = function () {
-            if (!$scope.telegram) return null;
-            return $scope.telegram.indexOf(domain) != -1
+            if (!$scope.airdrop.telegram) return null;
+            return $scope.airdrop.telegram.indexOf(domain) != -1
         }
 
         $scope.setMax = function () {
@@ -33,6 +35,10 @@ function openAirdropAdd(domain, success) {
 
         $scope.setParticipants = function (count) {
             $scope.participants = count
+        }
+
+        $scope.setLanguage = function (language) {
+            $scope.airdrop.language = language
         }
 
         function loadProfile() {
@@ -47,7 +53,7 @@ function openAirdropAdd(domain, success) {
             postContract("mfm-airdrop", "get", {
                 domain: domain,
             }, function (response) {
-                $scope.telegram = response.airdrop.telegram
+                $scope.airdrop = response.airdrop
                 $scope.$apply()
             })
         }
