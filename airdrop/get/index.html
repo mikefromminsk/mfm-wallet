@@ -3,7 +3,12 @@
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="closeAll()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/home.svg">
         </div>
-        <div class="flex row align-center">{{str.giveaway}}</div>
+        <div class="flex row align-center">
+            <div class="col align-center-center">
+                {{str.giveaway}}
+                <p class="text2 mt4">{{formatAmount(airdrop.account.balance, domain)}}</p>
+            </div>
+        </div>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
         </div>
@@ -14,13 +19,11 @@
             <div class="col input-content">
                 <div class="col border-gray radius-default relative p16">
                     <div class="row align-center-center">
-                        <div class="col align-start-end">
+                        <div class="col align-start-center">
+                            <p class="text2">{{str.reward}}</p>
                             <p class="text0">{{formatAmount(airdrop.reward, airdrop.domain)}}</p>
+                            <p class="text2">{{formatPrice(airdrop.reward * airdrop.token.price)}}</p>
                         </div>
-                    </div>
-                    <div class="row" style="margin-top: 50px">
-                        <p class="flex">{{formatPrice(airdrop.reward * airdrop.token.price)}}</p>
-                        <p>{{str.giveaway}}</p>
                     </div>
                     <div style="position: absolute;
                                 top: 0;
@@ -32,6 +35,20 @@
                                 opacity: 0.2;
                                 z-index: -1;"
                          ng-style="{'background-image': 'url(\'' + getLogoLink(domain) + '\')'}"></div>
+                </div>
+
+                <div class="row input-wrapper" ng-show="airdrop.rewarded">
+                    <img class="img-white" src="/mfm-wallet/img/user-plus.svg">
+                    <input type="text"
+                           id="referrer_link"
+                           ng-model="airdrop.referrer_link"
+                           placeholder=" ">
+                    <label for="referrer_link">{{str.referrer_link}}</label>
+                    <div class="col align-center-center">
+                        <img class="img40 p8 ripple img-white"
+                             src="/mfm-wallet/img/copy.svg"
+                             ng-click="copy(airdrop.referrer_link)">
+                    </div>
                 </div>
 
                 <div class="row gap8">
