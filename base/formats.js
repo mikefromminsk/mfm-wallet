@@ -58,7 +58,7 @@ function addFormats($scope) {
 
     $scope.formatAddress = function (address) {
         if (address == null) return ""
-        return address.substr(0, 4) + "..." + address.substr(-4)
+        return address.substr(0, 4) + "..." + address.substr(-3)
     }
 
     $scope.getIdenticon = function (address, size) {
@@ -130,36 +130,78 @@ function addFormats($scope) {
         return {'text-gray': true}
     }
 
-    $scope.formatTime = function (seconds) {
-        function round(num, precision) {
-            return +(Math.round(num + "e+" + precision) + "e-" + precision);
-        }
+    $scope.formatTime = function (seconds, language) {
+        let diff = (seconds < 1000000000 ? seconds : new Date().getTime() / 1000 - seconds);
 
-        let diff = (seconds < 1000000000 ? seconds : new Date().getTime() / 1000 - seconds)
-        let string = ""
-        if (diff < 60) {
-            string = round(diff, 0)
-            string += " " + (string == 1 ? str.second : str.seconds)
-        } else if (diff < 60 * 60) {
-            string = round(diff / 60, 0)
-            string += " " + (string == 1 ? str.minute : str.minutes)
-        } else if (diff < 60 * 60 * 24) {
-            string = round(diff / 60 / 60, 0)
-            string += " " + (string == 1 ? str.hour : str.hours)
-        } else if (diff < 60 * 60 * 24 * 7) {
-            string = round(diff / 60 / 60 / 24, 0)
-            string += " " + (string == 1 ? str.day : str.days)
-        } else if (diff < 60 * 60 * 24 * 30) {
-            string = round(diff / 60 / 60 / 24 / 7, 0)
-            string += " " + (string == 1 ? str.week : str.weeks)
-        } else if (diff < 60 * 60 * 24 * 365) {
-            string = round(diff / 60 / 60 / 24 / 30, 0)
-            string += " " + (string == 1 ? str.month : str.months)
+        language = !language ? "en" : language;
+        if (language.startsWith("ru")) {
+            return $scope.formatTimeRussian(diff);
         } else {
-            string = round(diff / 60 / 60 / 24 / 365, 0)
-            string += " " + (string == 1 ? str.year : str.years)
+            return $scope.formatTimeEnglish(diff);
         }
-        return string
+    }
+
+    $scope.formatTimeEnglish = function (diff) {
+        if (diff < 60) {
+            return Math.floor(diff) + " " + (diff == 1 ? "second" : "seconds");
+        } else if (diff < 60 * 60) {
+            let minutes = Math.floor(diff / 60);
+            return minutes + " " + (minutes == 1 ? "minute" : "minutes");
+        } else if (diff < 60 * 60 * 24) {
+            let hours = Math.floor(diff / (60 * 60));
+            return hours + " " + (hours == 1 ? "hour" : "hours");
+        } else if (diff < 60 * 60 * 24 * 7) {
+            let days = Math.floor(diff / (60 * 60 * 24));
+            return days + " " + (days == 1 ? "day" : "days");
+        } else if (diff < 60 * 60 * 24 * 30) {
+            let weeks = Math.floor(diff / (60 * 60 * 24 * 7));
+            return weeks + " " + (weeks == 1 ? "week" : "weeks");
+        } else if (diff < 60 * 60 * 24 * 365) {
+            let months = Math.floor(diff / (60 * 60 * 24 * 30));
+            return months + " " + (months == 1 ? "month" : "months");
+        } else {
+            let years = Math.floor(diff / (60 * 60 * 24 * 365));
+            return years + " " + (years == 1 ? "year" : "years");
+        }
+    }
+
+    $scope.formatTimeRussian = function (diff) {
+        if (diff < 60) {
+            return Math.floor(diff) + " " + $scope.getRussianWord(diff, "секунду", "секунды", "секунд");
+        } else if (diff < 60 * 60) {
+            let minutes = Math.floor(diff / 60);
+            return minutes + " " + $scope.getRussianWord(minutes, "минуту", "минуты", "минут");
+        } else if (diff < 60 * 60 * 24) {
+            let hours = Math.floor(diff / (60 * 60));
+            return hours + " " + $scope.getRussianWord(hours, "час", "часа", "часов");
+        } else if (diff < 60 * 60 * 24 * 7) {
+            let days = Math.floor(diff / (60 * 60 * 24));
+            return days + " " + $scope.getRussianWord(days, "день", "дня", "дней");
+        } else if (diff < 60 * 60 * 24 * 30) {
+            let weeks = Math.floor(diff / (60 * 60 * 24 * 7));
+            return weeks + " " + $scope.getRussianWord(weeks, "неделю", "недели", "недель");
+        } else if (diff < 60 * 60 * 24 * 365) {
+            let months = Math.floor(diff / (60 * 60 * 24 * 30));
+            return months + " " + $scope.getRussianWord(months, "месяц", "месяца", "месяцев");
+        } else {
+            let years = Math.floor(diff / (60 * 60 * 24 * 365));
+            return years + " " + $scope.getRussianWord(years, "год", "года", "лет");
+        }
+    }
+
+    $scope.getRussianWord = function (number, form1, form2, form5) {
+        number = Math.abs(number) % 100;
+        if (number > 10 && number < 20) {
+            return form5;
+        }
+        number = number % 10;
+        if (number == 1) {
+            return form1;
+        }
+        if (number >= 2 && number <= 4) {
+            return form2;
+        }
+        return form5;
     }
 
     $scope.formatTimeDiff = function (seconds) {

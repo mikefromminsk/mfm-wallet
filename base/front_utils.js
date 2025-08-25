@@ -9,15 +9,12 @@ function getLanguage() {
     return ["ru"].indexOf(lang) === -1 ? "en" : lang
 }
 
-function loadTranslations($scope) {
+function loadTranslations($scope, path) {
     let scriptTag = document.createElement('script')
-    scriptTag.src = "/mfm-wallet/strings/lang/" + getLanguage() + ".js"
+    scriptTag.src = path + getLanguage() + ".js"
     scriptTag.onload = function () {
         $scope.str = window.str
         $scope.$apply()
-    }
-    scriptTag.onerror = function () {
-        storage.setString(storageKeys.language, "en")
     }
     document.body.appendChild(scriptTag)
 }
@@ -52,7 +49,8 @@ function controller(callback) {
         window.$mdBottomSheet = $mdBottomSheet
         window.$mdDialog = $mdDialog
         addGlobalVars($scope, callback)
-        loadTranslations($scope)
+        loadTranslations($scope, "/mfm-wallet/strings/lang/")
+        loadTranslations($scope, "/mfm-wallet/strings/base/")
     })
     if (window.Telegram && window.Telegram.WebApp) {
         Telegram.WebApp.expand()

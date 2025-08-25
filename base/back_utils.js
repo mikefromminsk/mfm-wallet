@@ -167,6 +167,8 @@ function trackEvent(name, value, user_id, success, error) {
         value: value || "",
         user_id: user_id || "",
         session: session,
+        language_code: getLanguage(),
+        timezone_offset_minutes: new Date().getTimezoneOffset(),
     }, function (response) {
         if (success)
             success(response.info)

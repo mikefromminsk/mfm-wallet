@@ -42,7 +42,7 @@ function openWebMiner(domain, success) {
                         if (response.account.balance > 0) {
                             loadMiningInfo(true)
                         } else {
-                            showError($scope.formatDomain(wallet.gas_domain) + " " + str.balance_is_not_enough)
+                            showError($scope.formatDomain(wallet.gas_domain) + " balance_is_not_enough")
                         }
                     })
                 })
