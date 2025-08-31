@@ -21,7 +21,18 @@ function openTokenProfile(domain, success, mode) {
         $scope.recent = storage.getStringArray(storageKeys.search_history).reverse()
 
         addChart($scope, 'exchange', domain + "_price", domain + "_volume")
-        addTokenProfile($scope, domain)
+
+        $scope.isMiningToken = function () {
+            return $scope.supply?.delegate?.startsWith("mfm-contract/mint")
+        }
+
+        $scope.isCraftToken = function () {
+            return $scope.supply?.delegate?.startsWith("mfm-contract/craft")
+        }
+
+        $scope.isSimpleToken = function () {
+            return $scope.supply?.delegate == ''
+        }
 
         $scope.subscribe("price:" + domain, function (data) {
             $scope.token.price = data.price
@@ -40,19 +51,11 @@ function openTokenProfile(domain, success, mode) {
         }
 
         $scope.addToWallet = function () {
-            getPin(function (pin) {
-                wallet.calcStartHash($scope.domain, pin, function (next_hash) {
-                    postContract("mfm-token", "send", {
-                        domain: $scope.domain,
-                        to: wallet.address(),
-                        pass: ":" + next_hash,
-                    }, function () {
-                        if (mode == "airdrop")
-                            $scope.close()
-                        else
-                            $scope.refresh()
-                    })
-                })
+            addToWallet(domain, function () {
+                if (mode == "airdrop")
+                    $scope.close()
+                else
+                    $scope.refresh()
             })
         }
 
@@ -65,7 +68,7 @@ function openTokenProfile(domain, success, mode) {
         }
 
         $scope.refresh = function () {
-            $scope.loadTokenProfile(domain)
+            loadTokenProfile($scope, domain)
             loadTopAccounts()
         }
 
@@ -73,20 +76,29 @@ function openTokenProfile(domain, success, mode) {
     })
 }
 
-function addTokenProfile($scope) {
-    $scope.loadTokenProfile = function (domain) {
-        postContract("mfm-token", "token", {
-            domain: domain,
-            address: wallet.address()
-        }, function (response) {
-            $scope.token = response.token
-            $scope.owner = response.owner
-            $scope.mining = response.mining
-            $scope.account = response.account
-            $scope.gas_account = response.gas_account
-            $scope.airdrop = response.airdrop
-            $scope.analytics = response.analytics
-            $scope.$apply()
+function loadTokenProfile($scope, domain) {
+    postContract("mfm-token", "token", {
+        domain: domain,
+        address: wallet.address()
+    }, function (response) {
+        $scope.token = response.token
+        $scope.supply = response.supply
+        $scope.account = response.account
+        $scope.gas_account = response.gas_account
+        $scope.airdrop = response.airdrop
+        $scope.analytics = response.analytics
+        $scope.$apply()
+    })
+}
+
+function addToWallet(domain, success, error) {
+    getPin(function (pin) {
+        wallet.calcStartHash(domain, pin, function (next_hash) {
+            postContract("mfm-token", "send", {
+                domain: domain,
+                to: wallet.address(),
+                pass: ":" + next_hash,
+            }, success, error)
         })
-    }
+    })
 }

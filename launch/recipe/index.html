@@ -1,0 +1,48 @@
+<md-dialog class="fill col">
+    <div class="row header align-start-center">
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="closeAll()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/home.svg">
+        </div>
+        <p class="flex row align-center-center">{{str.distribution}}</p>
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+        </div>
+    </div>
+    <div class="flex col scroll align-start-center">
+        <div class="flex col block">
+            <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
+            <div class="col input-content gap16">
+                <div ng-include="'/mfm-wallet/launch/contracts/contracts.html'"></div>
+                <div class="row" ng-repeat="item in items">
+                    <div class="row input-wrapper">
+                        <div ng-style="getLogo(item.domain)"></div>
+                        <input type="text"
+                               id="domain{{$index}}"
+                               class="uppercase"
+                               maxlength="32"
+                               oninput="this.value = this.value.toLowerCase().replace(/[^a-z0-9_]/g, '')"
+                               ng-model="item.domain"
+                               placeholder=" ">
+                        <label for="domain{{$index}}">Token {{$index + 1}}</label>
+                    </div>
+                    <div class="row input-wrapper">
+                        <img class="img-white" src="/mfm-wallet/img/dollar.svg">
+                        <input type="number"
+                               id="rate{{$index}}"
+                               maxlength="8"
+                               ng-model="item.rate"
+                               placeholder=" ">
+                        <label for="rate{{$index}}">Rate</label>
+                    </div>
+                </div>
+                <button class="row align-center-center gap16 mv0 back-black"
+                        ng-click="addItem()">
+                    <img class="img16 img-white" src="/mfm-wallet/img/plus.svg">
+                    Add ingredient
+                </button>
+                <div></div>
+            </div>
+        </div>
+    </div>
+    <div ng-include="'/mfm-wallet/launch/mining/supply.html'"></div>
+</md-dialog>

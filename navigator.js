@@ -123,16 +123,8 @@ function addNavigator($scope) {
         openLaunchToken(success)
     }
 
-    $scope.openDistribution = function (domain, success) {
-        openDistribution(domain, success)
-    }
-
     $scope.openDeposit = function (domain, success) {
         openDeposit(domain, success)
-    }
-
-    $scope.openNetwork = function (success) {
-        openNetwork(success)
     }
 
     $scope.openWithdrawal = function (domain, success) {
@@ -202,32 +194,28 @@ function addNavigator($scope) {
         openChartWithAccumulate(app, key, key, success)
     }
 
-    $scope.openPayOffCredit = function (success) {
-        openPayOffCredit(success)
-    }
-
     $scope.openTran = function (next_hash, success) {
         openTran(next_hash, success)
-    }
-
-    $scope.openDoc = function (path) {
-        openDoc(path)
     }
 
     $scope.openExchange = function (domain, is_sell, success) {
         openExchange(domain, is_sell, success)
     }
 
-    $scope.openDistribution = function (domain, success) {
-        openDistribution(domain, success)
+    $scope.openLaunchMining = function (domain, success) {
+        openLaunchMining(domain, success)
     }
 
-    $scope.openReview = function () {
-        openReview()
+    $scope.openLaunchRecipe = function (domain, success) {
+        openLaunchRecipe(domain, success)
     }
 
-    $scope.openReviews = function () {
-        openReviews()
+    $scope.openLaunchSimple = function (contract, success) {
+        openLaunchSimple(contract, success)
+    }
+
+    $scope.openLaunchContracts = function (contract, success) {
+        openLaunchContracts(contract, success)
     }
 
     $scope.openLanguages = function () {
@@ -244,46 +232,6 @@ function addNavigator($scope) {
 
     $scope.openExchangeBots = function (domain, success) {
         openExchangeBots(domain, success)
-    }
-
-    $scope.openP2P = function (success) {
-        openP2P(success)
-    }
-
-    $scope.openOfferPlace = function (domain, success) {
-        openOfferPlace(domain, success)
-    }
-
-    $scope.openPaymentAdd = function (domain, success) {
-        openPaymentAdd(domain, success)
-    }
-
-    $scope.openOrderPlace = function (order_id, success) {
-        openOrderPlace("" + order_id, success)
-    }
-
-    $scope.openOrder = function (order_id, success) {
-        openOrder("" + order_id, success)
-    }
-
-    $scope.openP2PChat = function (order_id, success) {
-        openP2PChat("" + order_id, success)
-    }
-
-    $scope.openP2PProfile = function (address, success) {
-        openP2PProfile(address, success)
-    }
-
-    $scope.openSelectDomain = function (success) {
-        openSelectDomain(success)
-    }
-
-    $scope.openVersion = function (success) {
-        openVersion(success)
-    }
-
-    $scope.openQuiz = function (success) {
-        openQuiz(success)
     }
 
     $scope.openPool = function (domain, success) {
@@ -304,10 +252,6 @@ function addNavigator($scope) {
 
     $scope.openDividend = function (domain, success) {
         openDividend(domain, success)
-    }
-
-    $scope.openMinerTariffs = function (domain, success) {
-        openMinerTariffs(domain, success)
     }
 
     $scope.openSearchDialog = function (domain, success) {
@@ -336,6 +280,10 @@ function addNavigator($scope) {
 
     $scope.openOnboarding = function (domain, success) {
         openOnboarding(domain, success)
+    }
+
+    $scope.openRecipe = function (delegate, success) {
+        openRecipe(delegate, success)
     }
 
     $scope.openLanding = function () {

@@ -1,0 +1,22 @@
+<div class="col">
+    <p class="mh16">{{formatDomain(domain)}} {{str.token_count}} {{formatAmount(pow(10, token.supply_step))}}</p>
+    <div class="row m16">
+        <input type="range"
+               class="flex"
+               ng-style="{'background-size': (token.supply_step - 3) / (6 - 3) * 100  + '% 100%'}"
+               ng-model="token.supply_step"
+               min="3"
+               max="6">
+    </div>
+    <div class="primary-button align-center-center"
+         ng-disabled="in_progress"
+         ng-click="launch()">
+        {{str.launch_token}}
+        <div class="row ml8 align-center-center"
+             ng-show="rewardsReceived < maxRewards && isNotChecked(str.your_token_created)">
+            <img class="img16 img-yellow" src="/mfm-wallet/img/energy.svg">
+            <p>{{energyReward}}</p>
+        </div>
+    </div>
+    <div class="space"></div>
+</div>

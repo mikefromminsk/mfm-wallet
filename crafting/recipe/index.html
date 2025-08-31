@@ -1,0 +1,46 @@
+<md-dialog class="fill col">
+    <div class="row header align-start-center">
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="closeAll()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/home.svg">
+        </div>
+        <div class="flex row align-center">{{formatDomain(domain)}}</div>
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+        </div>
+    </div>
+    <div class="flex col scroll align-start-center">
+        <div class="flex col block">
+            <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
+            <div class="input-content">
+                <div class="col align-center-center">
+                    <div ng-style="getLogo(domain, 200)"></div>
+                </div>
+
+                <div class="nowrap-disabled"
+                     ng-include="'/mfm-wallet/crafting/recipe/faq/' + getLanguage() + '.html'"></div>
+
+                <p class="text2">{{str.recipe}}</p>
+                <div class="row p8 align-start-center gap8 ripple"
+                     ng-repeat="(itemDomain, count) in recipe.items"
+                     ng-click="openTokenProfile(itemDomain)">
+                    <div ng-style="getLogo(itemDomain)"></div>
+                    <p>{{formatDomain(itemDomain)}}</p>
+                    <p class="text-accent text1">{{count}}x</p>
+                </div>
+
+                <ng-include src="'/mfm-wallet/profile/analytics.html?v=15'"></ng-include>
+
+                <div class="primary-button back-black text-red border-gray"
+                     ng-click="decraft()">
+                    {{str.decraft}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="primary-button"
+         ng-click="craft()">
+        {{str.craft}}
+    </div>
+
+</md-dialog>

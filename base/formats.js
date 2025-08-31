@@ -4,6 +4,10 @@ function addFormats($scope) {
         return Math.round(num * factor) / factor
     }
 
+    $scope.pow = function (base, factor) {
+        return Math.pow(base, factor)
+    }
+
     $scope.shortNumber = function (number, precision) {
         if (precision == null) precision = 4
         number = $scope.round(number, precision)
@@ -95,7 +99,7 @@ function addFormats($scope) {
     }
 
     $scope.formatDomain = function (domain) {
-        return (domain || "").replace("_", " ").toUpperCase()
+        return (domain || "").replaceAll("_", " ").toUpperCase()
     }
 
     $scope.formatChange = function (number) {
@@ -264,7 +268,7 @@ function addFormats($scope) {
         let style = {
             'width': width + 'px',
             'height': width + 'px',
-            'min-width': width + 'px',
+            'flex-shrink' : 0
         }
         if (domain != null) {
             style['background-image'] = "url('" + $scope.getLogoLink(domain.toLowerCase()) + "')"

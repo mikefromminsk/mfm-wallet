@@ -11,9 +11,9 @@ function loadRewards(success) {
         to: rewardAddress,
         size: maxRewards,
     }, (response) => {
-        success(rewardsReceived = response.trans.length)
+        success(rewardsReceived == response.trans.length)
     }, function () {
-        success(rewardsReceived = 0)
+        success(rewardsReceived == 0)
     })
 }
 

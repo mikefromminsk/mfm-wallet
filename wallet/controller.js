@@ -33,25 +33,26 @@ function addWallet($scope) {
     }
 
     function setAccounts(accounts) {
-        try {
-            accounts.sort((a, b) => {
-                try {
-                    if (a.domain === wallet.gas_domain) return -1;
-                    if (b.domain === wallet.gas_domain) return 1;
-                    if (a.token.price == 0 && b.token.price == 0) {
-                        if (a.balance == 0 && b.balance == 0)
-                            return b.created - a.created
-                        else
-                            return b.balance - a.balance
-                    }
-                    if (b.token.price == 0) return 1;
-                    if (a.token.price == 0) return -1;
-                    return (b.balance * b.token.price) - (a.balance * a.token.price);
-                } catch (e) {
+        accounts.sort((a, b) => {
+            try {
+                if (a.domain === wallet.gas_domain) return -1;
+                if (b.domain === wallet.gas_domain) return 1;
+
+                const aPrice = a.token?.price || 0;
+                const bPrice = b.token?.price || 0;
+
+                if (aPrice === 0 && bPrice === 0) {
+                    return (b.balance || 0) - (a.balance || 0);
                 }
-            })
-        } catch (e) {
-        }
+
+                if (bPrice === 0) return -1;
+                if (aPrice === 0) return 1;
+
+                return (b.balance * bPrice) - (a.balance * aPrice);
+            } catch (e) {
+                return 0;
+            }
+        });
         $scope.accounts = accounts
     }
 
@@ -101,7 +102,7 @@ function addWallet($scope) {
     function subscribeAccount() {
         $scope.subscribe("account:" + wallet.address(), function (data) {
             if (data.amount != 0 && data.to == wallet.address()) {
-                showSuccess(str.you_have_received + " " + $scope.formatAmount(data.amount, data.domain))
+                showSuccess(str.you_have_received + " " + $scope.formatAmount(data.amount) + " " + $scope.formatDomain(data.domain))
                 setTimeout(function () {
                     new Audio("/mfm-wallet/dialogs/success/payment_success.mp3").play()
                 })
@@ -189,7 +190,13 @@ function addWallet($scope) {
 
     $scope.launch = function () {
         openLaunchToken(function (domain) {
-            openMiner(domain, $scope.refresh)
+            postContract("mfm-token", "token", {
+                domain: domain,
+                address: wallet.address()
+            }, function (response) {
+                if (response.supply.delegate.startsWith("mfm-contract/mint"))
+                    openMiner(domain, $scope.refresh)
+            })
             $scope.refresh()
         })
     }

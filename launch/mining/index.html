@@ -1,0 +1,27 @@
+<md-dialog class="fill col">
+    <div class="row header align-start-center">
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="closeAll()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/home.svg">
+        </div>
+        <p class="flex row align-center-center">{{str.distribution}}</p>
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+        </div>
+    </div>
+    <div class="flex col scroll align-start-center">
+        <div class="flex col block">
+            <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
+            <div class="col input-content gap16">
+                <div ng-include="'/mfm-wallet/launch/contracts/contracts.html'"></div>
+                <div class="flex col align-center-center">
+                    <div class="col align-center-center">
+                        <img class="img64" src="{{getLogoLink(domain)}}" onload="logoLoaded()">
+                        <p class="mt16 text2">{{formatDomain(domain)}}</p>
+                    </div>
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+    <div ng-include="'/mfm-wallet/launch/mining/supply.html'"></div>
+</md-dialog>

@@ -59,7 +59,7 @@ function openLogoChange(domain, success) {
 
         $scope.next = function () {
             $scope.close()
-            $scope.openDistribution(domain, success)
+            $scope.openLaunchMining(domain, success)
         }
     })
 }

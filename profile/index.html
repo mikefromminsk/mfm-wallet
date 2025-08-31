@@ -20,37 +20,77 @@
                      ng-click="openExchangeBot(domain, 'exhibit tragic bundle galaxy zero lunch lift six access story round ')">
                     {{str.add_liquidity}}
                 </div>
-                <ng-include class="m0" src="'/mfm-wallet/profile/options.html?v=15'"></ng-include>
+                <div class="row">
+                    <div class="flex p16 col align-start-center ripple"
+                         ng-click="openExchange(domain, refresh)">
+                        <img class="img16 img-gray" src="/mfm-wallet/img/exchange.svg">
+                        <p class="mt8 text2">{{str.swap}}</p>
+                    </div>
+                    <div class="flex p16 col align-start-center ripple"
+                         ng-show="isMiningToken()"
+                         ng-click="openMiner(domain, refresh)">
+                        <img class="img16 img-gray" src="/mfm-wallet/img/mining.svg">
+                        <p class="mt8 text2">{{str.mining}}</p>
+                    </div>
+                    <div class="flex p16 col align-start-center ripple"
+                         ng-show="isCraftToken()"
+                         ng-click="openRecipe(domain, refresh)">
+                        <img class="img16 img-gray" src="/mfm-wallet/img/craft.svg">
+                        <p class="mt8 text2">{{str.craft}}</p>
+                    </div>
+                    <div class="flex p16 col align-start-center ripple"
+                         ng-click="openSend(domain, null, null, refresh)">
+                        <img class="img16 img-gray" src="/mfm-wallet/img/send.svg">
+                        <p class="mt8 text2">{{str.send}}</p>
+                    </div>
+                </div>
                 <div class="row">
                     <img class="img16" src="/mfm-wallet/img/telegram.svg"
                          ng-show="airdrop"
                          ng-click="openWeb('https://t.me/' + airdrop.telegram)">
                 </div>
+
+                <div class="nowrap-disabled"
+                     ng-show="isCraftToken()"
+                     ng-include="'/mfm-wallet/launch/contracts/craft/' + getLanguage() + '.html'"></div>
+
+                <div class="nowrap-disabled"
+                     ng-show="isMiningToken()"
+                     ng-include="'/mfm-wallet/launch/contracts/mining/' + getLanguage() + '.html'"></div>
+
+                <div class="nowrap-disabled"
+                     ng-show="isSimpleToken()"
+                     ng-include="'/mfm-wallet/launch/contracts/simple/' + getLanguage() + '.html'"></div>
+
+
             </div>
+
             <ng-include src="'/mfm-wallet/profile/analytics.html?v=15'"></ng-include>
-            <div class="nowrap-disabled mh16"
-                 ng-include="'/mfm-wallet/profile/faq/' + getLanguage() + '.html'"></div>
 
-            <div class="col mh16">
-                <p class="text1 mt16 mb8">{{str.top_hodlers}}</p>
-                <div class="row mt8 p16 radius-default back-gray ripple"
-                     ng-repeat="item in accounts"
-                     ng-click="copy(item.address)">
-                    <div class="radius-default back-black"
-                         ng-style="getIdenticon(item.address)"></div>
+            <div class="input-content">
 
-                    <div class="col ml16">
-                        <p>{{formatAddress(item.address)}}</p>
-                        <!--<p class="mt4 text2 lowercase">
-                            {{formatSec(item.time)}}</p>-->
-                    </div>
+                <div class="col">
+                    <p class="text1 mt16 mb8">{{str.top_hodlers}}</p>
+                    <div class="row mt8 p16 radius-default back-gray ripple"
+                         ng-repeat="item in accounts"
+                         ng-click="copy(item.address)">
+                        <div class="radius-default back-black"
+                             ng-style="getIdenticon(item.address)"></div>
 
-                    <div class="flex col align-start-end">
-                        <p>{{formatAmount(item.balance, item.domain)}}</p>
-                        <p class="mt4 text2">{{formatPrice(item.balance * item.token.price)}}</p>
+                        <div class="col ml16">
+                            <p>{{formatAddress(item.address)}}</p>
+                            <!--<p class="mt4 text2 lowercase">
+                                {{formatSec(item.time)}}</p>-->
+                        </div>
+
+                        <div class="flex col align-start-end">
+                            <p>{{formatAmount(item.balance, item.domain)}}</p>
+                            <p class="mt4 text2">{{formatPrice(item.balance * item.token.price)}}</p>
+                        </div>
                     </div>
                 </div>
             </div>
+
 
         </div>
     </div>

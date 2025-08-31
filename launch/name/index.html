@@ -16,7 +16,7 @@
                        id="search_input"
                        class="uppercase"
                        maxlength="16"
-                       oninput="this.value = this.value.toLowerCase().replace(/[^a-z_]/g, '')"
+                       oninput="this.value = this.value.toLowerCase().replace(/[^a-z0-9_]/g, '')"
                        ng-model="search_text"
                        ng-change="search()"
                        placeholder=" ">
