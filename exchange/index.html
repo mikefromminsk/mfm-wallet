@@ -1,5 +1,5 @@
 <md-dialog class="fill col">
-    <div class="row header align-start-center">
+    <div class="row align-start-center p16 text1">
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="closeAll()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/home.svg">
         </div>
@@ -111,8 +111,8 @@
                         Chart
                     </div>-->
                     <div class="row text2 mv16">
-                        <div class="flex">{{formatDomainShort(wallet.gas_domain)}}</div>
-                        <div>{{formatDomainShort(domain)}}</div>
+                        <div class="flex">{{formatDomain(wallet.gas_domain)}}</div>
+                        <div>{{formatDomain(domain)}}</div>
                     </div>
 
                     <!--orderbook-->

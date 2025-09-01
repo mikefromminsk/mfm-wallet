@@ -1,7 +1,8 @@
 window.str = window.str || {}
 
+str.nothing_found = "Nothing found"
 str.invite_friend = "Invite friend"
-str.referrer_link = "Referrer link"
+str.referral_link = "Referral link"
 str.craft = "Craft"
 str.decraft = "Decraft"
 str.contracts = "Contracts"
@@ -9,3 +10,6 @@ str.simple_token = "Simple token"
 str.mining_token = "Mining token"
 str.craft_token = "Craft token"
 str.recipe = "Recipe"
+str.transactions_only_by_request = "Translations only by request"
+str.friends_invited = "Friends invited"
+str.shops = "Shops"

@@ -96,7 +96,7 @@ function addWallet($scope) {
     }
 
     $scope.selectAccount = function (domain) {
-        openTokenProfile(domain, $scope.refresh)
+        openProfile(domain, $scope.refresh)
     }
 
     function subscribeAccount() {

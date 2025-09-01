@@ -28,11 +28,11 @@ function openPool(domain, success) {
         }
 
         $scope.loadUserBalances = function () {
-            getProfile($scope.domain, function (response) {
+            getToken($scope.domain, function (response) {
                 $scope.base_balance = response.account.balance
                 $scope.$apply()
             })
-            getProfile(wallet.gas_domain, function (response) {
+            getToken(wallet.gas_domain, function (response) {
                 $scope.quote_balance = response.account.balance
                 $scope.$apply()
             })

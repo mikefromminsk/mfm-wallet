@@ -48,6 +48,8 @@ function addFormats($scope) {
         if (number == null)
             number = 0;
         let result = $scope.shortNumber(number, precision)
+        if (ticker[domain] != null)
+            domain = ticker[domain]
         if (domain != null && domain.length > 0) {
             if (domain.length > 5)
                 domain = domain.substr(0, 3)
@@ -91,15 +93,12 @@ function addFormats($scope) {
         return hash.substr(0, 5) + "..." + hash.substr(-5)
     }
 
-    $scope.formatDomainShort = function (domain) {
-        if (domain == null) return ""
-        if (domain.length > 8)
-            domain = domain.substr(0, 7) + ".."
-        return $scope.formatDomain(domain)
-    }
-
     $scope.formatDomain = function (domain) {
-        return (domain || "").replaceAll("_", " ").toUpperCase()
+        let translation = ticker[domain]
+        if (translation)
+            return translation
+        else
+            return (domain || "").replaceAll("_", " ").toUpperCase()
     }
 
     $scope.formatChange = function (number) {
@@ -239,7 +238,7 @@ function addFormats($scope) {
     $scope.groupByTimePeriod = function (obj) {
         const oneDay = 24 * 60 * 60;
         let lastDay = 0
-        if (obj){
+        if (obj) {
             for (let i = 0; i < obj.length; i++) {
                 let day = Math.floor(obj[i]['time'] / oneDay) * oneDay;
                 if (day != lastDay) {
@@ -268,7 +267,7 @@ function addFormats($scope) {
         let style = {
             'width': width + 'px',
             'height': width + 'px',
-            'flex-shrink' : 0
+            'flex-shrink': 0
         }
         if (domain != null) {
             style['background-image'] = "url('" + $scope.getLogoLink(domain.toLowerCase()) + "')"

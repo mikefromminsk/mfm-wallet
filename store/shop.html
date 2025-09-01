@@ -1,0 +1,18 @@
+<div class="col gap16" ng-repeat="(category, items) in apps" style="padding-right: 0">
+    <div class="text1 mt16 uppercase">{{str[category] || category}}</div>
+    <div class="fill-width row gap16 scroll-horizontal">
+        <div class="col align-start-center radius-default"
+             ng-repeat="item in items"
+             ng-click="selectApp(item.link || item.domain)">
+            <div ng-style="{'background-color': item.backgroundColor || 'var(--gray100)'}"
+                 class="img64 row align-center-center radius-default">
+                <div ng-show="item.domain" ng-style="getLogo(item.domain)"></div>
+                <img ng-show="item.img" class="img32" src="{{item.img}}">
+            </div>
+            <p class="uppercase-first-letter mt8 store-truncate text-gray nowrap-disabled text-align-center"
+               style="max-width: 80px">
+                {{item.title || formatDomain(item.domain)}}
+            </p>
+        </div>
+    </div>
+</div>

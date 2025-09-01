@@ -96,8 +96,8 @@ function openWebMiner(domain, success) {
                 startMiningProcess(data.last_hash, data.difficulty)
         })
 
-        function loadProfile() {
-            getProfile(domain, function (response) {
+        function loadToken() {
+            getToken(domain, function (response) {
                 $scope.token = response.token
                 $scope.account = response.account
                 $scope.$apply()
@@ -118,7 +118,7 @@ function openWebMiner(domain, success) {
         }
 
         $scope.selectAccount = function () {
-            $scope.openTokenProfile(domain, loadAccounts)
+            $scope.openProfile(domain, loadAccounts)
         }
 
         function loadTrans() {
@@ -132,7 +132,7 @@ function openWebMiner(domain, success) {
         }
 
         function init() {
-            loadProfile()
+            loadToken()
             loadMiningInfo(false)
         }
 

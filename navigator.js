@@ -44,7 +44,7 @@ function addNavigator($scope) {
 
     $scope.close = function (result) {
         window.$mdDialog.hide(result)
-        finish()
+        $scope.back()
         historyBack()
     }
 
@@ -53,7 +53,7 @@ function addNavigator($scope) {
             window.$mdDialog.hide()
             historyBack()
         }
-        finish()
+        $scope.back()
         if (success)
             success()
     }
@@ -112,7 +112,7 @@ function addNavigator($scope) {
     }
 
     $scope.openTokenProfile = function (domain, success, mode) {
-        openTokenProfile(domain, success, mode)
+        openProfile(domain, success, mode)
     }
 
     $scope.openSettings = function (success) {

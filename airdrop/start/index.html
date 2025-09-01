@@ -1,5 +1,5 @@
 <md-dialog class="fill col">
-    <div class="row header align-start-center">
+    <div class="row align-start-center p16 text1">
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="closeAll()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/home.svg">
         </div>
@@ -10,27 +10,58 @@
     </div>
     <div class="flex col scroll-vertical align-start-center">
         <div class="flex col block">
+
+
+
             <md-tabs md-selected="tabIndex" class="col p0" md-swipe-content md-dynamic-height>
                 <md-tab label="$index" ng-repeat="item in tasks">
                     <div class="col align-start-center p16 gap16">
-                        <div ng-style="getLogo(item.img, 200)"></div>
-                        <p class="text1 text-align-center" style="margin-top: 40px">{{item.description}}</p>
+                        <!--<img class="img200" src="{{item.img2}}">-->
+                        <dotlottie-wc src="/mfm-wallet/airdrop/start/stone.json"
+                                      ng-show="$index == 0"
+                                      style="width: 300px; height: 300px;"
+                                      speed="1" mode="forward" loop autoplay></dotlottie-wc>
+                        <dotlottie-wc src="/mfm-wallet/airdrop/start/energy.json"
+                                      ng-show="$index == 1"
+                                      style="width: 200px; height: 200px; margin: 50px"
+                                      speed="1" mode="forward" loop autoplay></dotlottie-wc>
+                        <dotlottie-wc src="/mfm-wallet/airdrop/start/airdrop.json"
+                                      ng-show="$index == 2"
+                                      style="width: 200px; height: 200px; margin: 50px"
+                                      speed="1" mode="forward" loop autoplay></dotlottie-wc>
+                        <dotlottie-wc src="/mfm-wallet/airdrop/start/exchange.json"
+                                      ng-show="$index == 3"
+                                      style="width: 300px; height: 300px;"
+                                      speed="1" mode="forward" loop autoplay></dotlottie-wc>
+                        <img src="/mfm-landing/img/vavilon512.png"
+                             style="width: 200px; height: 200px; margin: 50px"
+                             ng-show="$index == 4"
+                             class="jumping">
+                        <p class="text1 text-align-center">{{item.description}}</p>
                     </div>
                 </md-tab>
             </md-tabs>
         </div>
     </div>
-    <div class="primary-button align-center-center"
-         ng-disabled="isChecked(tasks[tabIndex].check) && rewardsReceived < maxRewards"
-         ng-click="tasks[tabIndex].click()">
-        {{tasks[tabIndex].title}}
-        <div class="row ml8 align-center-center"
-             ng-show="rewardsReceived < maxRewards && isNotChecked(tasks[tabIndex].check)">
-            <img class="img16 img-yellow" src="/mfm-wallet/img/energy.svg">
-            <p>{{energyReward}}</p>
+    <div class="col">
+        <div class="row align-center-center gap4">
+            <img class="img4"
+                 src="/mfm-wallet/img/circle.svg"
+                 ng-class="{'img-white': $index == tabIndex, 'img-gray': $index != tabIndex}"
+                 ng-repeat="item in tasks">
         </div>
-    </div>
-    <div class="primary-button back-black border-gray" ng-click="next()">
-        {{tabIndex + 1 == tasks.length ? str.close : str.next}}
+        <div class="primary-button align-center-center"
+             ng-disabled="isChecked(tasks[tabIndex].check) && rewardsReceived < maxRewards"
+             ng-click="tasks[tabIndex].click()">
+            {{tasks[tabIndex].title}}
+            <div class="row ml8 align-center-center"
+                 ng-show="rewardsReceived < maxRewards && isNotChecked(tasks[tabIndex].check)">
+                <img class="img16 img-yellow" src="/mfm-wallet/img/energy.svg">
+                <p>{{energyReward}}</p>
+            </div>
+        </div>
+        <div class="primary-button back-black border-gray" ng-click="next()">
+            {{tabIndex + 1 == tasks.length ? str.close : str.next}}
+        </div>
     </div>
 </md-dialog>

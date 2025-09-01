@@ -1,46 +1,76 @@
 function addStore($scope) {
-    $scope.apps = {}
 
-    function addApp(categoryName, domain, backgroundColor, link) {
-        let category = $scope.apps[categoryName] || []
-        category.push({
-            domain: domain.toLowerCase(),
-            link: link,
-            backgroundColor: backgroundColor,
-        })
-        $scope.apps[categoryName] = category
+    $scope.apps = {
+        "shops": [{
+            title: "ShitShop",
+            domain: "shit",
+            link: function () {
+                openShitShop()
+            }
+        }],
+        "defi": [{
+            title: str.mining,
+            domain: "miner",
+            link: function () {
+                $scope.openMiner(wallet.vavilon)
+            }
+        }, {
+            domain: wallet.vavilon,
+            link: function () {
+                $scope.openDividend(wallet.vavilon)
+            }
+        }],
+        "utilities": [{
+            title: "Explorer",
+            domain: "explorer",
+            link: "/mfm-explorer/"
+        }, {
+            title: "Launcher",
+            domain: "Launcher",
+            link: function () {
+                $scope.openLaunchToken()
+            }
+        }],
+        "games": [{
+            title: "Shit",
+            domain: "Shit",
+            link: "/mfm-pigeon/"
+        }],
+        "docs": [{
+            title: "Whitepaper",
+            domain: "whitepaper",
+            link: "/mfm-docs/?doc=whitepaper"
+        }, {
+            title: "Roadmap",
+            domain: "roadmap",
+            link: "/mfm-docs/?doc=roadmap"
+        }, {
+            title: "Terms",
+            domain: "terms",
+            link: "/mfm-docs/?doc=terms"
+        }, {
+            title: "Dev",
+            domain: "dev",
+            link: "/mfm-docs/?doc=dev"
+        }]
+
+        /* add("defi", "Airdrop", "#46aef5", "#openAirdrop")*/
+        /*add("defi", "Staking", "#46aef5", "/mfm-explorer")*/
+
+        /*    add("utilities", "Analytics", "#46aef5", "#openAnalytics")*/
+        /*add("utilities", "Storage", "#46aef5", "#openAnalytics")*/
+
+        /*    add("games", "Quizes", "#46aef5", "/mfm-pigeon")*/
     }
 
-    /*addApp("exchange", "Cex", "#8646f5", "/mfm-exchange")
-    addApp("exchange", "Dex", "#46aef5", "#openPool=vavilon")
-    addApp("exchange", "P2P", "#46aef5", "#openPool=vavilon")*/
+    /*add("exchange", "Cex", "#8646f5", "/mfm-exchange")
+       add("exchange", "Dex", "#46aef5", "#openPool=vavilon")
+       add("exchange", "P2P", "#46aef5", "#openPool=vavilon")*/
 
-    /*addApp("bridges", "USDT", "#46aef5", function () {
+    /*add("bridges", "USDT", "#46aef5", function () {
         $scope.openDeposit()
     })*/
-
-   /* addApp("defi", "Airdrop", "#46aef5", "#openAirdrop")*/
-    addApp("defi", "Miner", "#46aef5", function () {
-        $scope.openWebMiner('vavilon')
-    })
-    /*addApp("defi", "Staking", "#46aef5", "/mfm-explorer")*/
-
-    addApp("utilities", "Explorer", "#46aef5", "/mfm-explorer/")
-    addApp("utilities", "Launcher", "#46aef5", function () {
-        $scope.openLaunchToken()
-    })
-/*    addApp("utilities", "Analytics", "#46aef5", "#openAnalytics")*/
-    /*addApp("utilities", "Storage", "#46aef5", "#openAnalytics")*/
-
-    addApp("games", "ShitBomb", "#46aef5", "/mfm-pigeon/")
-/*    addApp("games", "Quizes", "#46aef5", "/mfm-pigeon")*/
-
-    addApp("docs", "Whitepaper", "#46aef5", "/mfm-docs/?doc=whitepaper")
-    addApp("docs", "Roadmap", "#46aef5", "/mfm-docs/?doc=roadmap")
-    addApp("docs", "Terms", "#46aef5", "/mfm-docs/?doc=terms")
-    addApp("docs", "Dev", "#46aef5", "/mfm-docs/?doc=dev")
-
-    $scope.openApp = function (link) {
+    $scope.selectApp = function (link) {
         if (link[0] == "/") {
             window.open(link, '_blank');
         }

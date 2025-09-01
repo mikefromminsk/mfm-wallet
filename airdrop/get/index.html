@@ -1,5 +1,5 @@
 <md-dialog class="fill col">
-    <div class="row header align-start-center">
+    <div class="row align-start-center p16 text1">
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="closeAll()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/home.svg">
         </div>
@@ -40,14 +40,18 @@
                 <div class="row input-wrapper" ng-show="airdrop.rewarded">
                     <img class="img-white" src="/mfm-wallet/img/user-plus.svg">
                     <input type="text"
-                           id="referrer_link"
-                           ng-model="airdrop.referrer_link"
+                           id="referral_link"
+                           ng-model="airdrop.referral_link"
                            placeholder=" ">
-                    <label for="referrer_link">{{str.referrer_link}}</label>
+                    <label for="referral_link">{{str.referral_link}}</label>
                     <div class="col align-center-center">
                         <img class="img40 p8 ripple img-white"
                              src="/mfm-wallet/img/copy.svg"
-                             ng-click="copy(airdrop.referrer_link)">
+                             ng-click="copy(airdrop.referral_link)">
+                    </div>
+                    <div class="row">
+                        <p class="flex">{{str.friends_invited}}</p>
+                        <p>{{airdrop.referral_count}}</p>
                     </div>
                 </div>
 

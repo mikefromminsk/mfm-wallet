@@ -17,7 +17,7 @@ function openAirdrop(domain, success) {
         }
 
         $scope.addToWallet = function () {
-            openTokenProfile(domain, $scope.refresh, 'airdrop');
+            openProfile(domain, $scope.refresh, 'airdrop');
         }
 
         $scope.isTelegramSubscribed = function () {
@@ -50,8 +50,8 @@ function openAirdrop(domain, success) {
             })
         }
 
-        function loadProfile() {
-            getProfile(domain, function (response) {
+        function loadToken() {
+            getToken(domain, function (response) {
                 $scope.token = response.token
                 $scope.account = response.account
                 $scope.show_task0 = response.account == null
@@ -71,7 +71,7 @@ function openAirdrop(domain, success) {
 
         $scope.refresh = function () {
             loadAirdrop()
-            loadProfile()
+            loadToken()
             loadTrans()
             loadRewards(function (rewardsReceived) {
                 $scope.rewardsReceived = rewardsReceived

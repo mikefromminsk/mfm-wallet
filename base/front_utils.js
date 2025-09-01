@@ -51,6 +51,7 @@ function controller(callback) {
         addGlobalVars($scope, callback)
         loadTranslations($scope, "/mfm-wallet/strings/lang/")
         loadTranslations($scope, "/mfm-wallet/strings/base/")
+        loadTranslations($scope, "/mfm-wallet/strings/ticker/")
     })
     if (window.Telegram && window.Telegram.WebApp) {
         Telegram.WebApp.expand()
@@ -98,8 +99,9 @@ function addGlobalVars($scope, callback) {
     $scope.wallet = window.wallet
     $scope.user = window.user
     $scope.str = window.str
+    $scope.ticker = window.ticker
     $scope.maxRewards = window.maxRewards || 5
-    $scope.energyReward = window.energyReward || 10
+    $scope.energyReward = window.energyReward || 100
     $scope.in_progress = false
     $scope.startRequest = function () {
         $scope.in_progress = true

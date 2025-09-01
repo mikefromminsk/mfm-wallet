@@ -18,9 +18,14 @@
     src: url("/mfm-wallet/font/RobotoMono-Bold.ttf");
 }
 
-body {
+html, body, md-dialog {
+    background-color: var(--back);
+    color: var(--white);
+    white-space: nowrap;
+    font-size: 14px;
     font-family: FontMedium, Roboto, "Helvetica Neue", sans-serif;
 }
+
 body {
     overflow-anchor: none;
 }
@@ -35,22 +40,12 @@ md-bottom-sheet {
     box-shadow: 4px 0 4px rgba(255, 255, 255, 0.2);
 }
 
-body {
-    white-space: nowrap;
-    font-size: 14px;
-}
-
 .mono {
     font-family: FontMonoMedium, Roboto, "Helvetica Neue", sans-serif;
 }
 
 .mono.bold {
     font-family: FontMonoBold, Roboto, "Helvetica Neue", sans-serif;
-}
-
-html, body, md-dialog {
-    background-color: var(--back);
-    color: var(--white);
 }
 
 a:link {
@@ -172,23 +167,8 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
-.input-label {
-    top: 0;
-    left: 24px;
-    position: absolute;
-    padding: 0 2px;
-    background-color: var(--back);
-    color: var(--gray300);
-    font-size: 12px;
-}
-
 .input:hover, .input:focus {
     border: 1px solid var(--gray300);
-}
-
-.input.search {
-    border-radius: 20px;
-    padding-top: 1px
 }
 
 .primary-button {
@@ -217,6 +197,23 @@ input::-webkit-inner-spin-button {
     margin-right: 0;
 }
 
+
+.primary-button:active,
+button:active {
+    color: var(--gray400);
+    background: var(--gray200);
+}
+
+.primary-button:disabled,
+.primary-button[disabled],
+button:disabled,
+button[disabled] {
+    color: var(--gray100);
+    cursor: default;
+    background: var(--gray300);
+    pointer-events: none;
+}
+
 button {
     color: var(--white);
     background-color: var(--black);
@@ -227,7 +224,6 @@ button {
     cursor: pointer;
     text-align: center;
 }
-
 
 .text0 {
     font-family: FontBold;
@@ -288,8 +284,9 @@ button {
 }
 
 .back-blur {
+    z-index: 2;
     backdrop-filter: blur(10px);
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.2);
 }
 
 .back-accent {
@@ -304,8 +301,6 @@ button {
     background: var(--yellow);
 }
 
-
-/* Ripple effect */
 .ripple{
     cursor: pointer;
 }
@@ -345,15 +340,6 @@ button {
     border: 1px solid var(--gray200);
 }
 
-.header {
-    padding: 16px;
-    min-height: 60px;
-    width: 100%;
-    gap: 16px;
-    font-size: 16px;
-    font-family: FontBold;
-}
-
 .scroll-horizontal {
     overflow-x: scroll;
     overflow-y: hidden;
@@ -377,19 +363,8 @@ img {
     -webkit-user-drag: none
 }
 
-
-.md-button {
-    margin: 0;
-    height: 38px;
-}
-
 *:focus {
     outline: none;
-}
-
-.wauto {
-    width: 100%;
-    height: auto;
 }
 
 /* angular fixes*/
@@ -399,25 +374,8 @@ p {
     padding: 0;
 }
 
-
 .back-pay {
     background: linear-gradient(90deg, var(--accent) 0%, var(--pay) 100%);
-}
-
-.primary-button:active,
-button:active {
-    color: var(--gray400);
-    background: var(--gray200);
-}
-
-.primary-button:disabled,
-.primary-button[disabled],
-button:disabled,
-button[disabled] {
-    color: var(--gray100);
-    cursor: default;
-    background: var(--gray300);
-    pointer-events: none;
 }
 
 md-radio-button.md-default-theme .md-on, md-radio-button .md-on {
@@ -428,16 +386,6 @@ md-radio-button.md-default-theme .md-on, md-radio-button .md-on {
     background-color: var(--accent);
 }
 
-.text-align-center {
-    text-align: center;
-    white-space: normal;
-    word-break: break-word;
-}
-
-.bold {
-    font-family: FontBold, Roboto, "Helvetica Neue", sans-serif;
-}
-
 .divider {
     background-color: var(--gray200);
     width: 100%;
@@ -445,114 +393,10 @@ md-radio-button.md-default-theme .md-on, md-radio-button .md-on {
     margin-top: 4px;
 }
 
-.divider-white {
-    background-color: var(--gray400);
-    width: 100%;
-    height: 1px;
-    margin-top: 4px;
-}
-
-.tab {
-    border-bottom: 2px solid transparent;
-}
-
-.tab.active {
-    border-bottom: 2px solid #4F50FB;
-}
-
-#messages_send_input::placeholder {
-    color: var(--gray400);
-}
-
-.img-fav {
-    filter: invert(100%) sepia(44%) saturate(7500%) hue-rotate(3deg) brightness(102%) contrast(102%);
-}
-
-.filter {
-    color: var(--black);
-    padding: 8px 16px 8px 16px;
-    border-radius: 16px;
-    border: 1px solid var(--accent);
-    margin-right: 8px;
-    margin-bottom: 8px;
-}
-
-.filter.active {
-    background-color: var(--accent);
-}
-
-.filter-black {
-    color: var(--white);
-    padding: 8px 16px 8px 16px;
-    border-radius: 16px;
-    border: 1px solid var(--accent);
-    margin-right: 8px;
-    margin-bottom: 8px;
-}
-
-.filter-black.active {
-    background-color: var(--accent);
-    color: var(--black);
-}
-
-
-.lds-ring {
-    display: inline-block;
-    position: relative;
-    width: 24px;
-    height: 24px;
-}
-
-.lds-ring div {
-    box-sizing: border-box;
-    display: block;
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    margin: 2px;
-    border: 2px solid #fff;
-    border-radius: 50%;
-    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: #fff transparent transparent transparent;
-}
-
-.lds-ring div:nth-child(1) {
-    animation-delay: -0.45s;
-}
-
-.lds-ring div:nth-child(2) {
-    animation-delay: -0.3s;
-}
-
-.lds-ring div:nth-child(3) {
-    animation-delay: -0.15s;
-}
-
-@keyframes lds-ring {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
 @media (max-width: 959px) {
     md-toast {
         bottom: unset !important;
     }
-}
-
-.sticky {
-    position: -webkit-sticky; /* Safari */
-    position: sticky;
-    bottom: 0;
-    border-radius: 30px;
-}
-
-.vertical-text {
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
 }
 
 .loader {
@@ -562,63 +406,6 @@ md-radio-button.md-default-theme .md-on, md-radio-button .md-on {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.loader .face {
-    border-radius: 50%;
-    animation: animate 3s linear infinite;
-}
-
-.loader .face:nth-child(1) {
-    width: 100%;
-    height: 100%;
-    color: gold;
-    border-width: 0.2em 0.2em 0em 0em;
-    --deg: -45deg;
-    animation-direction: normal;
-}
-
-.loader .face:nth-child(2) {
-    width: 70%;
-    height: 70%;
-    color: lime;
-    border-width: 0.2em 0em 0em 0.2em;
-    --deg: -135deg;
-    animation-direction: reverse;
-}
-
-.loader .face .circle {
-    position: absolute;
-    width: 50%;
-    height: 0.1em;
-    top: 50%;
-    left: 50%;
-    background-color: transparent;
-    transform: rotate(var(--deg));
-    transform-origin: left;
-}
-
-.loader .face .circle::before {
-    position: absolute;
-    top: -0.5em;
-    right: -0.5em;
-    content: '';
-    width: 1em;
-    height: 1em;
-    background-color: currentColor;
-    border-radius: 50%;
-    box-shadow: 0 0 2em,
-    0 0 4em,
-    0 0 6em,
-    0 0 8em,
-    0 0 10em,
-    0 0 0 0.5em rgba(255, 255, 0, 0.1);
-}
-
-@keyframes animate {
-    to {
-        transform: rotate(1turn);
-    }
 }
 
 .green-toast .md-toast-content {
@@ -669,23 +456,73 @@ md-radio-button.md-default-theme .md-on, md-radio-button .md-on {
     border: 1px solid var(--green);
 }
 
-.footer_background {
-    min-height: 1200px;
-    background: radial-gradient(43.65% 30.04% at 100% 34.32%, rgba(25, 161, 102, .188) 0, rgba(25, 161, 102, 0) 96.22%), radial-gradient(54.83% 54.7% at 4.44% 100%, rgba(53, 101, 229, .3) 0, rgba(53, 101, 229, 0) 100%), radial-gradient(69.52% 87.02% at 97.18% 100%, rgba(8, 150, 252, .4) 0, rgba(53, 101, 229, 0) 100%), #13151a;
-}
-
-.footer_up_background {
-    min-height: 1200px;
-    background: radial-gradient(47.62% 93.46% at 64.87% 2.03%, rgba(156, 38, 80, .45) 0, rgba(156, 38, 80, 0) 100%), #13151a;
-}
-
-.header_background {
-    min-height: 1200px;
-    background: radial-gradient(154.16% 36.43% at 46.78% 100%, rgba(52, 170, 255, .4) 0, rgba(0, 102, 255, .132) 52.6%, rgba(0, 102, 255, 0) 100%), radial-gradient(74.9% 52.95% at 75.44% 1.97%, rgba(156, 38, 80, .45) 0, rgba(156, 38, 80, 0) 100%), radial-gradient(179.13% 86.27% at 94.11% 1.87%, rgba(53, 101, 229, .75) 0, rgba(53, 101, 229, .133) 73.12%, rgba(53, 101, 229, 0) 100%), radial-gradient(47.31% 33.89% at 35.7% 100%, rgba(53, 101, 229, .4) 0, rgba(53, 101, 229, 0) 100%), radial-gradient(33.07% 52.27% at 37.24% 100%, #24314f 0, rgba(36, 49, 79, 0) 100%), #0f1115;
-}
-
 md-dialog {
     max-width: 980px;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+md-slider-container md-input-container input[type=number] {
+    color: var(--white);
+}
+
+div[ng-include] > p, li {
+    margin-top: 8px;
+    line-height: 1.4em;
+}
+
+md-toast .md-toast-content {
+    padding: 16px;
+    min-height: 0;
+}
+
+md-toast .md-toast-content::before {
+    min-height: 0;
+}
+
+.hover-accent {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.hover-accent:hover {
+    background-color: var(--accent);
+}
+
+.hover-scale {
+    transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+    transform: scale(1.1);
+}
+
+
+a[title="Charting by TradingView"] {
+    display: none;
+}
+
+
+[prevent-double-click] {
+    touch-action: manipulation; /* Отключает задержку 300ms в мобильном Safari */
+    cursor: pointer; /* Улучшает отзывчивость */
+}
+
+.jumping {
+    animation: jump 1.2s infinite alternate ease-in-out;
+}
+
+@keyframes jump {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-40px) scale(1.06);
+    }
+    100% {
+        transform: translateY(0) scale(1);
+    }
 }
 
 .checkmark {
@@ -735,120 +572,4 @@ md-dialog {
     100% {
         box-shadow: inset 0px 0px 0px 30px #4bb71b;
     }
-}
-
-
-@keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-
-::-webkit-scrollbar {
-    display: none;
-}
-
-.show-scrollbar::-webkit-scrollbar {
-    display: block;
-}
-
-
-.backgroundd {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-.backgroundd::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    width: 1px;
-    height: 100vh;
-    border-left: 1px dashed;
-    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
-    animation: rotate 10s linear infinite;
-    transform-origin: bottom center;
-    clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
-    background-size: 700%;
-    background-position: 100%;
-}
-
-@keyframes rotate {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-
-md-slider-container md-input-container input[type=number] {
-    color: var(--white);
-}
-
-
-li {
-    margin-top: 8px;
-    line-height: 1.4em;
-}
-
-
-md-toast .md-toast-content {
-    padding: 16px;
-    min-height: 0;
-}
-
-md-toast .md-toast-content::before {
-    min-height: 0;
-}
-
-
-.hover-accent {
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.hover-accent:hover {
-    background-color: var(--accent);
-}
-
-.hover-scale {
-    transition: transform 0.3s ease;
-}
-
-.hover-scale:hover {
-    transform: scale(1.1);
-}
-
-
-a[title="Charting by TradingView"] {
-    display: none;
-}
-
-
-.store-truncate {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-align: center;
-    width: 75px;
-}
-
-div[ng-include] > p {
-    margin-top: 16px;
-}
-
-[prevent-double-click] {
-    touch-action: manipulation; /* Отключает задержку 300ms в мобильном Safari */
-    cursor: pointer; /* Улучшает отзывчивость */
 }

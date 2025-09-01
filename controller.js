@@ -4,7 +4,7 @@ function start($scope) {
     document.title = window.location.hostname
 
     $scope.menu = ["apps", "wallet", "search"]
-    $scope.selectedIndex = 1
+    $scope.selectedIndex = 0
     $scope.selectTab = function (tab) {
         $scope.selectedIndex = tab
         if (tab == 0) {
@@ -12,7 +12,7 @@ function start($scope) {
         } else if (tab == 1) {
             addWallet($scope)
         } else if (tab == 2) {
-            openSearch($scope)
+            addSearch($scope)
         }
         swipeToRefresh($scope.swipeToRefresh)
     }

@@ -1,10 +1,11 @@
 <md-dialog class="fill col">
-    <div class="row header align-start-center">
+    <div class="row align-start-center p16 text1">
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="closeAll()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/home.svg">
         </div>
-        <div class="flex row align-center-center">
-            <p class="text1">{{formatDomain(token.domain)}}</p>
+        <div class="flex col align-center-center">
+            <p>{{formatDomain(token.domain)}}</p>
+            <p class="text2">{{token.domain}}</p>
         </div>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
@@ -44,11 +45,6 @@
                         <p class="mt8 text2">{{str.send}}</p>
                     </div>
                 </div>
-                <div class="row">
-                    <img class="img16" src="/mfm-wallet/img/telegram.svg"
-                         ng-show="airdrop"
-                         ng-click="openWeb('https://t.me/' + airdrop.telegram)">
-                </div>
 
                 <div class="nowrap-disabled"
                      ng-show="isCraftToken()"
@@ -62,7 +58,21 @@
                      ng-show="isSimpleToken()"
                      ng-include="'/mfm-wallet/launch/contracts/simple/' + getLanguage() + '.html'"></div>
 
-
+                <div class="row gap8"
+                     ng-show="airdrop">
+                    <a class="back-gray radius-default img32 p8 hover-accent"
+                       href="https://t.me/{{airdrop.telegram}}">
+                        <img class="img16 img-white" src="/mfm-wallet/img/telegram.svg">
+                    </a>
+                    <a class="back-gray radius-default img32 p8 hover-accent"
+                       href="https://github.com/mikefromminsk/mfm=wallet">
+                        <img class="img16 img-white" src="/mfm-wallet/img/git.svg">
+                    </a>
+                    <a class="back-gray radius-default img32 p8 hover-accent"
+                       href="/mfm-docs/?doc=whitepaper">
+                        <img class="img16" src="/storage/whitepaper.png">
+                    </a>
+                </div>
             </div>
 
             <ng-include src="'/mfm-wallet/profile/analytics.html?v=15'"></ng-include>

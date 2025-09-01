@@ -41,8 +41,8 @@ function openAirdropAdd(domain, success) {
             $scope.airdrop.language = language
         }
 
-        function loadProfile() {
-            getProfile(domain, function (response) {
+        function loadToken() {
+            getToken(domain, function (response) {
                 $scope.token = response.token
                 $scope.account = response.account
                 $scope.$apply()
@@ -59,7 +59,7 @@ function openAirdropAdd(domain, success) {
         }
 
         $scope.refresh = function () {
-            loadProfile()
+            loadToken()
             loadAirdrop()
         }
 

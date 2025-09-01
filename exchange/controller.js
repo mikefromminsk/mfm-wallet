@@ -93,8 +93,8 @@ function openExchange(domain, is_sell, success) {
             return false
         }
 
-        function loadProfile() {
-            getProfile(domain, function (response) {
+        function loadToken() {
+            getToken(domain, function (response) {
                 $scope.token = response.token
                 if ($scope.price == null) {
                     $scope.price = $scope.is_sell == 1
@@ -153,7 +153,7 @@ function openExchange(domain, is_sell, success) {
         })
 
         $scope.refresh = function () {
-            loadProfile()
+            loadToken()
             loadBaseBalance()
             loadQuoteBalance()
             loadOrderbook()

@@ -1,7 +1,7 @@
 let rewardPassword = hash("nation finger unable fade exist visa arch awake anchor surround paddle riot")
 let rewardAddress = hashAddress(rewardPassword)
 const maxRewards = 5
-const energyReward = 10
+const energyReward = 100
 let rewardsReceived = maxRewards
 
 function loadRewards(success) {

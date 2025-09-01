@@ -1,5 +1,5 @@
 <md-dialog class="fill col">
-    <div class="row header align-start-center">
+    <div class="row align-start-center p16 text1">
         <p class="flex">{{str.details}}</p>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
@@ -19,6 +19,9 @@
 
             <ng-include src="'/mfm-wallet/trans.html?v=15'"></ng-include>
             <ng-include src="'/mfm-wallet/tran/tran.html?v=15'"></ng-include>
+
+            <div class="nowrap-disabled mh16"
+                 ng-include="'/mfm-wallet/tran/faq/' + getLanguage() + '.html'"></div>
 
             <!--<button class="" ng-click="copy(location.origin + '/mfm-explorer?hash=' + tran.next_hash)">
                 {{str.copy_tran_link}}

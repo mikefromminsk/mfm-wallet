@@ -1,5 +1,5 @@
-function getProfile(domain, success, error) {
-    postContract("mfm-token", "profile", {
+function getToken(domain, success, error) {
+    postContract("mfm-token", "token", {
         domain: domain,
         address: wallet.address(),
     }, success, error)
@@ -12,7 +12,7 @@ function getAccount(domain, success, error) {
     }, success, error)
 }
 
-function openTokenProfile(domain, success, mode) {
+function openProfile(domain, success, mode) {
     trackCall(arguments)
     showDialog("profile", success, function ($scope) {
         $scope.domain = domain
@@ -68,7 +68,7 @@ function openTokenProfile(domain, success, mode) {
         }
 
         $scope.refresh = function () {
-            loadTokenProfile($scope, domain)
+            loadProfile($scope, domain)
             loadTopAccounts()
         }
 
@@ -76,8 +76,8 @@ function openTokenProfile(domain, success, mode) {
     })
 }
 
-function loadTokenProfile($scope, domain) {
-    postContract("mfm-token", "token", {
+function loadProfile($scope, domain) {
+    postContract("mfm-token", "profile", {
         domain: domain,
         address: wallet.address()
     }, function (response) {

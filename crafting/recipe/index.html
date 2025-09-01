@@ -1,5 +1,5 @@
 <md-dialog class="fill col">
-    <div class="row header align-start-center">
+    <div class="row align-start-center p16 text1">
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="closeAll()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/home.svg">
         </div>
@@ -22,7 +22,7 @@
                 <p class="text2">{{str.recipe}}</p>
                 <div class="row p8 align-start-center gap8 ripple"
                      ng-repeat="(itemDomain, count) in recipe.items"
-                     ng-click="openTokenProfile(itemDomain)">
+                     ng-click="openProfile(itemDomain)">
                     <div ng-style="getLogo(itemDomain)"></div>
                     <p>{{formatDomain(itemDomain)}}</p>
                     <p class="text-accent text1">{{count}}x</p>

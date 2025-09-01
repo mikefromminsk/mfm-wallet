@@ -48,7 +48,7 @@ function openRecipe(domain, success) {
 
         $scope.refresh = function () {
             loadRecipe()
-            loadTokenProfile($scope, domain)
+            loadProfile($scope, domain)
         }
 
         $scope.refresh()

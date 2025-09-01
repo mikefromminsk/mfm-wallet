@@ -62,7 +62,7 @@ function openAirdropCreate(domain, success) {
         }
 
         function init() {
-            getProfile(domain, function (response) {
+            getToken(domain, function (response) {
                 $scope.token = response.token
                 $scope.account = response.account
                 $scope.$apply()

@@ -7,7 +7,7 @@
 <div class="col">
     <div class="row p16 align-start-center ripple gap8"
          ng-repeat="token in tokens"
-         ng-click="openTokenProfile(token.domain, refresh)">
+         ng-click="openProfile(token.domain, refresh)">
         <div ng-style="getLogo(token.domain)"></div>
         <p class="flex">{{formatDomain(token.domain)}}</p>
         <p class="flex-10 row align-end">{{formatPrice(token.price)}}</p>
@@ -19,6 +19,6 @@
 <div class="col align-center-center text1 text-gray"
      ng-hide="tokens.length > 0"
      style="height: 200px">
-    {{str.there_is_no_tokens_yet}}
+    {{str.nothing_found}}
 </div>
 <div></div>

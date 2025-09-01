@@ -1,5 +1,5 @@
 <md-dialog class="fill col">
-    <div class="row header align-start-center">
+    <div class="row align-start-center p16 text1">
         <div class="row align-center-center img32 back-gray radius-default ripple"
              ng-click="openWebMiner(domain)">
             <img class="img16 img-gray400" src="/mfm-wallet/img/mining.svg">
@@ -82,7 +82,7 @@
                 <div class="col back-gray radius-default">
                     <div class="row p16 align-start-center"
                          ng-repeat="token in tokens"
-                         ng-click="openTokenProfile(token.domain, refresh)">
+                         ng-click="openProfile(token.domain, refresh)">
                         <div ng-style="getLogo(token.domain)"></div>
                         <div class="flex col ml16">
                             <p>{{formatDomain(token.domain)}}</p>
