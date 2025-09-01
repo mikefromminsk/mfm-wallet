@@ -8,6 +8,11 @@ function addStore($scope) {
                 openShitShop()
             }
         }],
+        "games": [{
+            title: "Shit",
+            domain: "Shit",
+            link: "/mfm-pigeon/"
+        }],
         "defi": [{
             title: str.mining,
             domain: "miner",
@@ -30,11 +35,6 @@ function addStore($scope) {
             link: function () {
                 $scope.openLaunchToken()
             }
-        }],
-        "games": [{
-            title: "Shit",
-            domain: "Shit",
-            link: "/mfm-pigeon/"
         }],
         "docs": [{
             title: "Whitepaper",

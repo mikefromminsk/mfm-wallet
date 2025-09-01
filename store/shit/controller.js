@@ -1,6 +1,6 @@
 function openShitShop(success) {
     trackCall(arguments)
-    showDialog("crafting/shit", success, function ($scope) {
+    showDialog("store/shit", success, function ($scope) {
         $scope.title = "ShitShop"
         $scope.apps = {
             "base": [{domain: "water"}, {domain: "dick"}],
