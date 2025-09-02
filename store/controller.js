@@ -7,6 +7,12 @@ function addStore($scope) {
             link: function () {
                 openShitShop()
             }
+        },{
+            title: "GunsShop",
+            domain: "ak74",
+            link: function () {
+                openGunsShop()
+            }
         }],
         "games": [{
             title: "Shit",
