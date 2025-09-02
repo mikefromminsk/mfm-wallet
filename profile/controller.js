@@ -67,27 +67,27 @@ function openProfile(domain, success, mode) {
             })
         }
 
+        function loadProfile() {
+            postContract("mfm-token", "profile", {
+                domain: domain,
+                address: wallet.address()
+            }, function (response) {
+                $scope.token = response.token
+                $scope.supply = response.supply
+                $scope.account = response.account
+                $scope.gas_account = response.gas_account
+                $scope.airdrop = response.airdrop
+                $scope.analytics = response.analytics
+                $scope.$apply()
+            })
+        }
+
         $scope.refresh = function () {
-            loadProfile($scope, domain)
+            loadProfile()
             loadTopAccounts()
         }
 
         $scope.refresh()
-    })
-}
-
-function loadProfile($scope, domain) {
-    postContract("mfm-token", "profile", {
-        domain: domain,
-        address: wallet.address()
-    }, function (response) {
-        $scope.token = response.token
-        $scope.supply = response.supply
-        $scope.account = response.account
-        $scope.gas_account = response.gas_account
-        $scope.airdrop = response.airdrop
-        $scope.analytics = response.analytics
-        $scope.$apply()
     })
 }
 

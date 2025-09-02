@@ -22,7 +22,7 @@
                 <p class="text2">{{str.recipe}}</p>
                 <div class="row p8 align-start-center gap8 ripple"
                      ng-repeat="(itemDomain, count) in recipe.items"
-                     ng-click="openProfile(itemDomain)">
+                     ng-click="selectApp(itemDomain)">
                     <div ng-style="getLogo(itemDomain)"></div>
                     <p>{{formatDomain(itemDomain)}}</p>
                     <p class="text-accent text1">x{{count}}</p>

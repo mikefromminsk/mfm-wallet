@@ -1,4 +1,24 @@
-function addFormats($scope) {
+function addScopeUtils($scope) {
+    $scope.location = location
+    $scope.wallet = window.wallet
+    $scope.user = window.user
+    $scope.str = window.str
+    $scope.ticker = window.ticker
+    $scope.maxRewards = window.maxRewards || 5
+    $scope.energyReward = window.energyReward || 100
+    $scope.in_progress = false
+
+    $scope.getLanguage = getLanguage
+    $scope.startRequest = function () {
+        $scope.in_progress = true
+    }
+    $scope.finishRequest = function (message) {
+        if (message)
+            showError(message)
+        $scope.in_progress = false
+        $scope.$apply()
+    }
+
     $scope.round = function (num, precision) {
         const factor = Math.pow(10, precision == null ? 4 : precision)
         return Math.round(num * factor) / factor
@@ -256,8 +276,8 @@ function addFormats($scope) {
 
     $scope.getLogoLink = function (domain) {
         let server = ""
-        if (location.host != "vavilon.org")
-            server = "https://vavilon.org"
+        /*if (location.host != "vavilon.org")
+            server = "https://vavilon.org"*/
         return server + "/storage/" + domain + ".png"
     }
 
@@ -314,30 +334,56 @@ function addFormats($scope) {
         }
     }
 
-    let keyPressCallback = null
-    let keyPressListener = function (e) {
-        if (e.key === 'Enter') {
-            if (keyPressCallback)
-                keyPressCallback()
+
+    $scope.channels = []
+    $scope.subscription_id_list = []
+    $scope.subscribe = function (channel, callback) {
+        if ($scope.channels.indexOf(channel) == -1) {
+            $scope.subscription_id_list.push(subscribe(channel, callback))
+            $scope.channels.push(channel)
         }
     }
 
-    $scope.pressEnter = function (callback) {
-        if (callback) {
-            keyPressCallback = callback
-            document.addEventListener('keypress', keyPressListener);
+    $scope.unsubscribeAll = function () {
+        for (let subscription_id of $scope.subscription_id_list) {
+            unsubscribe(subscription_id)
         }
     }
 
-    $scope.removePressEnter = function () {
-        if (keyPressCallback)
-            document.removeEventListener('keypress', keyPressListener);
+    $scope.subscribeAccount = function () {
+        $scope.subscribe("account:" + wallet.address(), function (data) {
+            if (data.amount != 0 && data.to == wallet.address()) {
+                showSuccess(str.you_have_received +
+                    (data.amount == 1 ? "" : " " + $scope.formatAmount(data.amount)) +
+                    " " + $scope.formatDomain(data.domain))
+                setTimeout(function () {
+                    new Audio("/mfm-wallet/success/payment_success.mp3").play()
+                })
+            }
+            if ($scope.refresh)
+                $scope.refresh()
+        })
     }
 
-    $scope.formatAntiPrice = function (number, precision) {
-        if (precision == null) precision = 2
-        if (number < 1)
-            return $scope.formatPrice(1 / number, precision).substr(1)
-        return $scope.formatPrice(number, precision).substr(1)
+    $scope.back = function (result) {
+        window.$mdBottomSheet.hide(result)
+        $scope.unsubscribeAll()
+        clearFocus()
+    }
+
+    $scope.close = function (result) {
+        window.$mdDialog.hide(result)
+        $scope.back()
+        historyBack()
+    }
+
+    $scope.closeAll = function (success) {
+        for (let i = 0; i < 10; i++) {
+            window.$mdDialog.hide()
+            historyBack()
+        }
+        $scope.back()
+        if (success)
+            success()
     }
 }

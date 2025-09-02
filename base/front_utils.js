@@ -9,13 +9,11 @@ function getLanguage() {
     return ["ru"].indexOf(lang) === -1 ? "en" : lang
 }
 
-function loadTranslations($scope, path) {
+function loadTranslations($scope, path, success) {
+    if (!path.endsWith("/")) path += "/"
     let scriptTag = document.createElement('script')
     scriptTag.src = path + getLanguage() + ".js"
-    scriptTag.onload = function () {
-        $scope.str = window.str
-        $scope.$apply()
-    }
+    scriptTag.onload = success
     document.body.appendChild(scriptTag)
 }
 
@@ -49,9 +47,18 @@ function controller(callback) {
         window.$mdBottomSheet = $mdBottomSheet
         window.$mdDialog = $mdDialog
         addGlobalVars($scope, callback)
-        loadTranslations($scope, "/mfm-wallet/strings/lang/")
-        loadTranslations($scope, "/mfm-wallet/strings/base/")
-        loadTranslations($scope, "/mfm-wallet/strings/ticker/")
+        loadTranslations($scope, "/mfm-wallet/strings/base", function () {
+            $scope.str = str
+            $scope.$apply()
+        })
+        loadTranslations($scope, "/mfm-wallet/strings/lang", function () {
+            $scope.str = str
+            $scope.$apply()
+        })
+        loadTranslations($scope, "/mfm-wallet/strings/ticker", function () {
+            $scope.ticker = ticker
+            $scope.$apply()
+        })
     })
     if (window.Telegram && window.Telegram.WebApp) {
         Telegram.WebApp.expand()
@@ -75,62 +82,21 @@ function controller(callback) {
             }
         }
     })
-
-
-    /*app.directive('preventDoubleClick', ['$timeout', function ($timeout) {
-        return {
-            priority: 100,
-            restrict: 'A',
-            link: function (scope, element, attrs) {
-                element.on('touchstart', function (event) {
-                    event.preventDefault()
-                })
-            }
-        }
-    }])*/
 }
 
 function addGlobalVars($scope, callback) {
-    if (window.addFormats)
-        window.addFormats($scope)
-    if (typeof addNavigator !== 'undefined')
-        addNavigator($scope)
-    $scope.location = location
-    $scope.wallet = window.wallet
-    $scope.user = window.user
-    $scope.str = window.str
-    $scope.ticker = window.ticker
-    $scope.maxRewards = window.maxRewards || 5
-    $scope.energyReward = window.energyReward || 100
-    $scope.in_progress = false
-    $scope.startRequest = function () {
-        $scope.in_progress = true
-    }
-    $scope.finishRequest = function (message) {
-        if (message)
-            showError(message)
-        $scope.in_progress = false
-        $scope.$apply()
-    }
+    if (window.addScopeUtils)
+        window.addScopeUtils($scope)
+    if (window.addNavigator)
+        window.addNavigator($scope)
     callback($scope)
     if (!$scope.swipeToRefreshDisabled && typeof swipeToRefresh !== 'undefined')
         swipeToRefresh($scope.swipeToRefresh || $scope.close)
-
-    setTimeout(function () {
-        document.querySelectorAll('input').forEach(input => {
-            input.setAttribute('autocapitalize', 'off')
-            input.setAttribute('autocomplete', 'off')
-        });
-    }, 100)
 }
 
 function showDialog(templateUrl, onClose, callback) {
-    let path = location.pathname
-    if (!path.endsWith("/"))
-        path += "/"
-
     window.$mdDialog.show({
-        templateUrl: (templateUrl[0] == "/" ? templateUrl : path + templateUrl) + "/index.html?v=15",
+        templateUrl: (templateUrl[0] == "/" ? templateUrl : "/mfm-wallet/" + templateUrl) + "/index.html?v=15",
         escapeToClose: false,
         multiple: true,
         isolateScope: false,
@@ -193,42 +159,8 @@ function clearFocus() {
     document.body.focus()
 }
 
-function addPriceAmountTotal($scope) {
-    $scope.setIsSell = function (is_sell) {
-        $scope.is_sell = is_sell
-    }
-
-    $scope.changePrice = function (price) {
-        if (price != null)
-            $scope.price = price
-        if ($scope.price != null && $scope.amount != null)
-            $scope.total = $scope.round($scope.price * $scope.amount)
-    }
-
-    $scope.changeAmount = function (amount) {
-        if (amount != null)
-            $scope.amount = amount
-        if ($scope.price != null && $scope.amount != null)
-            $scope.total = $scope.round($scope.price * $scope.amount)
-    }
-
-    $scope.changeTotal = function (total) {
-        if (total != null)
-            $scope.total = total
-        if ($scope.price != null && $scope.total != null)
-            $scope.amount = $scope.round($scope.total / $scope.price)
-    }
-
-    $scope.$watch("price", function (newValue) {
-        if (newValue != null)
-            $scope.price = $scope.round($scope.price)
-    })
-    $scope.$watch("amount", function (newValue) {
-        if (newValue != null)
-            $scope.amount = $scope.round($scope.amount)
-    })
-    $scope.$watch("total", function (newValue) {
-        if (newValue != null)
-            $scope.total = $scope.round($scope.total)
-    })
+function scrollTo(id) {
+    setTimeout(function () {
+        document.getElementById(id).scrollIntoView({behavior: 'smooth'})
+    }, 100)
 }

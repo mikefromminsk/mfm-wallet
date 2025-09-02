@@ -169,7 +169,7 @@ function trackEvent(name, value, user_id, success, error) {
         value: value || "",
         user_id: user_id || "",
         session: session,
-        language_code: getLanguage(),
+        language_code: window.getLanguage ?  getLanguage() : null,
         timezone_offset_minutes: new Date().getTimezoneOffset(),
     }, function (response) {
         if (success)
@@ -185,10 +185,16 @@ function trackCall(args) {
     if (args.callee.name.startsWith("open")) {
         let anhor = "#" + funcName + (funcParam != "" ? "=" + funcParam : "")
         historyStack.push(anhor)
-        if (getTelegramUserId() == null)
+        if (window.Telegram && getTelegramUserId() == null)
             history.pushState({}, '', anhor)
     }
     trackEvent(funcName, funcParam, wallet.address())
+}
+
+function historyBack() {
+    historyStack.pop()
+    if (window.Telegram && getTelegramUserId() == null)
+        window.history.pushState({}, document.title, historyStack[historyStack.length - 1])
 }
 
 function postContractWithGas(domain, path, params, success, error) {
@@ -268,7 +274,7 @@ var wallet = {
             })
         }
     },
-    reg: function (domain, success, error) {
+    reg: function (domain, success, error) { // TODO delete
         postContract("mfm-token", "account", {
             domain: domain,
             address: wallet.address(),
@@ -277,25 +283,6 @@ var wallet = {
                 wallet.calcUserPass(domain, pin, success, error)
             }, error)
         })
-    },
-    airdrop: function (domain, promocode, success, error) {
-        let password = hash(promocode)
-        let address = hashAddress(password)
-        wallet.reg(domain, () => {
-            postContract("mfm-token", "account", {
-                domain: domain,
-                address: address,
-            }, (response) => {
-                let path = response.account.delegate.split("/")
-                let app = path.shift()
-                postContract(app, path.join("/"), {
-                    domain: domain,
-                    address: address,
-                    pass: wallet.calcPass(domain, address, password, response.account.prev_key),
-                    receiver: wallet.address(),
-                }, success, error)
-            }, error)
-        }, error)
     },
     logout: function () {
         storage.clear()

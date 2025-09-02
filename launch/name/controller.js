@@ -43,8 +43,6 @@ function openLaunchToken(success) {
             openLogoChange($scope.search_text, success)
         }
 
-        $scope.pressEnter($scope.next)
-
         setTimeout(function () {
             document.getElementById('search_input').focus()
         }, 500)

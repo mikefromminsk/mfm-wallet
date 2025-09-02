@@ -61,7 +61,7 @@ function openAirdropCreate(domain, success) {
             $scope.dropAmount = dropAmount
         }
 
-        function init() {
+        function loadToken() {
             getToken(domain, function (response) {
                 $scope.token = response.token
                 $scope.account = response.account
@@ -70,10 +70,10 @@ function openAirdropCreate(domain, success) {
         }
 
         subscribe("account:" + wallet.address(), function (data) {
-            init()
+            loadToken()
         })
 
-        init()
+        loadToken()
 
         setTimeout(function () {
             document.getElementById('promo').focus()

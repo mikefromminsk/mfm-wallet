@@ -33,7 +33,5 @@ function openAirdrop(promo, success) {
                 }, 100)
             }
         }
-
-        $scope.pressEnter($scope.receive)
     })
 }

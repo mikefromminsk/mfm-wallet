@@ -5,7 +5,7 @@ function addWallet($scope) {
     addLogin($scope, function () {
         if ($scope.refresh)
             $scope.refresh()
-        subscribeAccount()
+        $scope.subscribeAccount()
         subscribeNewOrders()
     })
 
@@ -99,19 +99,6 @@ function addWallet($scope) {
         openProfile(domain, $scope.refresh)
     }
 
-    function subscribeAccount() {
-        $scope.subscribe("account:" + wallet.address(), function (data) {
-            if (data.amount != 0 && data.to == wallet.address()) {
-                showSuccess(str.you_have_received + " " + $scope.formatAmount(data.amount) + " " + $scope.formatDomain(data.domain))
-                setTimeout(function () {
-                    new Audio("/mfm-wallet/dialogs/success/payment_success.mp3").play()
-                })
-            }
-            if ($scope.refresh)
-                $scope.refresh()
-        })
-    }
-
     let lastRefreshTime = 0
     const refreshInterval = 1000
 
@@ -130,9 +117,6 @@ function addWallet($scope) {
     function subscribeNewOrders() {
         $scope.subscribe("new_order:" + wallet.address(), function () {
             showSuccess(str.new_p2p_order)
-            setTimeout(function () {
-                new Audio("/mfm-wallet/dialogs/success/payment_success.mp3").play()
-            })
         })
     }
 
@@ -214,7 +198,7 @@ function addWallet($scope) {
     if (wallet.address() != "") {
         if ($scope.refresh)
             $scope.refresh()
-        subscribeAccount()
+        $scope.subscribeAccount()
         subscribeNewOrders()
         subscribePrices()
     } else {
