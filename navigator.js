@@ -53,7 +53,7 @@ function addNavigator($scope) {
         openLogin(success)
     }
 
-    $scope.openTokenProfile = function (domain, success, mode) {
+    $scope.openProfile = function (domain, success, mode) {
         openProfile(domain, success, mode)
     }
 
@@ -234,5 +234,9 @@ function addNavigator($scope) {
 
     $scope.openWeb = function (page) {
         window.open(page)
+    }
+
+    $scope.openLoader = function (success) {
+        openLoader(success)
     }
 }

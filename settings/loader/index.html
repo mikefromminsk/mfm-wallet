@@ -1,0 +1,29 @@
+<md-dialog class="fill col">
+    <div class="row align-start-center p16 text1">
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="closeAll()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/home.svg">
+        </div>
+        <p class="flex align-center-center">{{str.settings}}</p>
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+        </div>
+    </div>
+    <div class="flex col scroll align-start-center">
+        <div class="flex col block">
+            <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
+                <textarea id="json_text"
+                          type="text"
+                          autocomplete="off"
+                          ng-model="json_text"
+                          placeholder="Json text"></textarea>
+
+            <p>Errors {{error_count}}</p>
+            <p>Success {{success_count}}</p>
+            <p>Total {{error_count + success_count}}</p>
+        </div>
+    </div>
+    <div class="primary-button"
+         ng-click="send()">
+        Send
+    </div>
+</md-dialog>

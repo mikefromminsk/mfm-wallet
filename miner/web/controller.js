@@ -52,7 +52,7 @@ function openWebMiner(domain, success) {
         function startMiningProcess(last_hash, difficulty) {
             if (worker != null)
                 worker.terminate()
-            worker = new Worker('/mfm-wallet/wallet/mining/miner/worker.js');
+            worker = new Worker('/mfm-wallet/miner/web/worker.js');
             worker.addEventListener('message', function (e) {
                 $scope.speed = e.data.speed
                 if ($scope.last_hash == e.data.last_hash) {

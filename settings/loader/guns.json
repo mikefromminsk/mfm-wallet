@@ -1,0 +1,226 @@
+[
+    {
+        "delegate": "mfm-contract/mint100",
+        "path": "/mfm-token/send",
+        "amount": "1000000000",
+        "pass": ":bdb69d8442fa6a40d58fefa38b06d185dc735f1187411b6e6e065699c8c12d33",
+        "domain": "coin",
+        "to": "V3eWGQmcvKkG7bhtCv7eW1yvtwTxX"
+    },
+    {
+        "path": "/mfm-token/send",
+        "domain": "knife",
+        "amount": "5000000",
+        "delegate": "mfm-contract/craft?domain\u003dknife\u0026coin\u003d10",
+        "to": "V2fXf6a8y3EXa9HJdP3iWckpY19Nm",
+        "pass": ":9e6ac3b48d309a092d36e5a1fe38c3ddfa7debdd68d4610bf6ec9870a462964b"
+    },
+    {
+        "path": "/mfm-token/send",
+        "domain": "axe",
+        "amount": "1000000",
+        "delegate": "mfm-contract/craft?domain\u003daxe\u0026coin\u003d50",
+        "to": "V3fJQKxGoXavE9qrFnS9kKxkCenDK",
+        "pass": ":7a659be6a33f22f5992b10cac9a8241978543c69aba5556cbbc765efc92cc7d0"
+    },
+    {
+        "path": "/mfm-token/send",
+        "domain": "sword",
+        "amount": "500000",
+        "delegate": "mfm-contract/craft?domain\u003dsword\u0026coin\u003d100",
+        "to": "V46ZXoFRyX5zaAmyez5nCbTc5rrA3",
+        "pass": ":11fc51c8e591ef247ced1715bd510e8c1c4c7e75d3290ca9483c7797521f8d80"
+    },
+    {
+        "path": "/mfm-token/send",
+        "domain": "arbalet",
+        "amount": "250000",
+        "delegate": "mfm-contract/craft?domain\u003darbalet\u0026coin\u003d200",
+        "to": "V2kbUmgf2nbHRz2FzJvjAA9g6eNy1",
+        "pass": ":75833ce38519c6a3213b3babb07fbae70aa45600abd26d514f4d0617dea29bb4"
+    },
+    {
+        "path": "/mfm-token/send",
+        "domain": "ruger",
+        "amount": "200000",
+        "delegate": "mfm-contract/craft?domain\u003druger\u0026coin\u003d250",
+        "to": "V4KcLrZJQWwvFsABPbCtvhDUbx6t3",
+        "pass": ":7767436ae77c1aa8b04611aa7fdc01ced328906626ebad271a05329c931d3972"
+    },
+    {
+        "path": "/mfm-token/send",
+        "domain": "beretta",
+        "amount": "166000",
+        "delegate": "mfm-contract/craft?domain\u003dberetta\u0026coin\u003d300",
+        "to": "V3eVvAGVWc28yGRSrCK8HGc6UMvci",
+        "pass": ":8b6c794f3a3c8cc17c6a77acf9601ba954db8d739284ee5cb0fc950b7c162189"
+    },
+    {
+        "path": "/mfm-token/send",
+        "domain": "revolver",
+        "amount": "142000",
+        "delegate": "mfm-contract/craft?domain\u003drevolver\u0026coin\u003d400",
+        "to": "V3eHjykyF4K2uaQ16py1tP2CgWMUt",
+        "pass": ":01967d6801bca1f8ca17d3ce6ba1e3aaec5189c874f00967913ddfa37257279e"
+    },
+    {
+        "path": "/mfm-token/send",
+        "domain": "magnum",
+        "amount": "125000",
+        "delegate": "mfm-contract/craft?domain\u003dmagnum\u0026coin\u003d500",
+        "to": "V261zNrQp3esbrtZoNzSktfU4NXq7",
+        "pass": ":b7685b1a09c09c0014938d15a86e2692a975af6c7caf0ce13a9b3b7cc4b5a433"
+    },
+    {
+        "path": "/mfm-token/send",
+        "domain": "ak74_black",
+        "amount": "25000",
+        "delegate": "mfm-contract/craft?domain\u003dak74_black\u0026coin\u003d600\u0026ak74\u003d1",
+        "to": "V3doeBcy5WHCYA5m8H1bXHd1sBGsM",
+        "pass": ":f9ddd7c08e239c3add5fe8fdb4f4e52f0c6045c1499d3ebf0e4290740e79f53b"
+    },
+    {
+        "path": "/mfm-token/send",
+        "domain": "laser",
+        "amount": "25000",
+        "delegate": "mfm-contract/craft?domain\u003dlaser\u0026coin\u003d650",
+        "to": "V25JdWXwf3t4VgsCt6hr55N7iECxa",
+        "pass": ":91426cbd53e86b4151bd34fd5f80252c791a86713c9a56792973b09a5f20d5a0"
+    },
+    {
+        "path": "/mfm-token/send",
+        "domain": "bizon",
+        "amount": "10000",
+        "delegate": "mfm-contract/craft?domain\u003dbizon\u0026coin\u003d1000",
+        "to": "VzfRKcsGSsDvy2BhaiwJzG8eoTz6",
+        "pass": ":a2a218edb2251452bd090a8eee7b2265e92c97b090de0ab3faea647542d73b62"
+    },
+    {
+        "path": "/mfm-token/send",
+        "domain": "deagle",
+        "amount": "10000",
+        "delegate": "mfm-contract/craft?domain\u003ddeagle\u0026coin\u003d700",
+        "to": "V4TNL5ccnt2ogLkCcF2MvtRssGoHd",
+        "pass": ":181a58d2f74b7784b21e8ca65a3fab78779bdb6fab3e325446467b6d4820b2f1"
+    },
+    {
+        "path": "/mfm-token/send",
+        "domain": "famas",
+        "amount": "9000",
+        "delegate": "mfm-contract/craft?domain\u003dfamas\u0026coin\u003d800",
+        "to": "V37nopV56ppLycDFUY3AJhepG4cAV",
+        "pass": ":7e4fed46c5eba3afa5da339305b50fea57cc7e24280f94ec565a6697d203a8e5"
+    },
+    {
+        "path": "/mfm-token/send",
+        "domain": "galil",
+        "amount": "9000",
+        "delegate": "mfm-contract/craft?domain\u003dgalil\u0026coin\u003d900",
+        "to": "V4KtojHanAgSTr3PKe6ZPag6CTNQJ",
+        "pass": ":ce02b40cf91344a2a4dee509372a33975380bbb0c252ceccca89e1d83b105cf8"
+    },
+    {
+        "path": "/mfm-token/send",
+        "domain": "xm1014",
+        "amount": "8000",
+        "delegate": "mfm-contract/craft?domain\u003dxm1014\u0026coin\u003d1000",
+        "to": "V3YkuEQEJ6haUBXCUCMKyECxLBJio",
+        "pass": ":45f66b59f716682e10c2f5604100de9d5be5f4ace5605e32112499bce4279c14"
+    },
+    {
+        "path": "/mfm-token/send",
+        "domain": "p90",
+        "amount": "5000",
+        "delegate": "mfm-contract/craft?domain\u003dp90\u0026coin\u003d1200",
+        "to": "V47AfZjnWCS8rcVRx3av78jnB2bEz",
+        "pass": ":d149d3034d3bb39f7579d581d5f9d9b18d45836dd8b5b3b08c697e693e9c434f"
+    },
+    {
+        "path": "/mfm-token/send",
+        "domain": "uzi",
+        "amount": "5000",
+        "delegate": "mfm-contract/craft?domain\u003duzi\u0026coin\u003d1200",
+        "to": "V3dozjhKeoTTMu5HVkvDD799oNEcK",
+        "pass": ":8e40c1c2d63d497d215be771ff9430b068fcaf74eb0b404fc8e2cc90f08b5e34"
+    },
+    {
+        "path": "/mfm-token/send",
+        "domain": "mp5",
+        "amount": "5000",
+        "delegate": "mfm-contract/craft?domain\u003dmp5\u0026coin\u003d1200",
+        "to": "V45sj1tYR14dQzwXCuawPYLjzAHkh",
+        "pass": ":ad6c1e68c440ccfff7366d9a9bb69df9434ae136268cba3fc69e94398e95e15f"
+    },
+    {
+        "path": "/mfm-token/send",
+        "domain": "scar",
+        "amount": "3000",
+        "delegate": "mfm-contract/craft?domain\u003dscar\u0026coin\u003d1300",
+        "to": "V3sRKrF6xWUmAFecwFAqLtbgd6GrY",
+        "pass": ":293d2227043ec42def15b59278548a278fddb32a204deb97c588ba9897983c06"
+    },
+    {
+        "path": "/mfm-token/send",
+        "domain": "ak74",
+        "amount": "3000",
+        "delegate": "mfm-contract/craft?domain\u003dak74\u0026coin\u003d1400",
+        "to": "V3te4Rccj1CJFhaDe2V1qBCCr5uW4",
+        "pass": ":0a9a77f355a7e20d40f3bc7b4527fe5db722451a98c315eae86b06a82047a016"
+    },
+    {
+        "path": "/mfm-token/send",
+        "domain": "awp_black",
+        "amount": "2000",
+        "delegate": "mfm-contract/craft?domain\u003dawp_black\u0026coin\u003d1500",
+        "to": "V2KFoasQWcYz9mCU6A1KWkuHbqGpM",
+        "pass": ":40a5475de746cca9ef2645939023ac6dc73e80f34a1d5a8c56bac267a7439ba6"
+    },
+    {
+        "path": "/mfm-token/send",
+        "domain": "m16",
+        "amount": "2000",
+        "delegate": "mfm-contract/craft?domain\u003dm16\u0026coin\u003d1600",
+        "to": "V4SxMSi2qd8XBBddytbJXW9SDpPsN",
+        "pass": ":59390479bcf247b69fd9095c4a8fb824823664923637b0ac061cdf20f90e87ac"
+    },
+    {
+        "path": "/mfm-token/send",
+        "domain": "rifle",
+        "amount": "2000",
+        "delegate": "mfm-contract/craft?domain\u003drifle\u0026coin\u003d1700",
+        "to": "V3sELGiyxDYwBShWfFBxQT3M5ZraR",
+        "pass": ":810a464da3ccc61e6631cd96004a0a894c9ab08fabb4440a45f143406bc8f699"
+    },
+    {
+        "path": "/mfm-token/send",
+        "domain": "svd",
+        "amount": "2000",
+        "delegate": "mfm-contract/craft?domain\u003dsvd\u0026coin\u003d1800",
+        "to": "V2Y44uB2DEBXGmF4z7vCEi4UUifqk",
+        "pass": ":fa251744814fd53dc5afcabebd186413f992d312f798939cd74994435f3c6651"
+    },
+    {
+        "path": "/mfm-token/send",
+        "domain": "awp",
+        "amount": "2000",
+        "delegate": "mfm-contract/craft?domain\u003dawp\u0026coin\u003d1900",
+        "to": "V376dyRECpz8EEkLxtfCHP2GAPzQc",
+        "pass": ":5a83a7d563683f5a9fc286f7a594ba9d366d9a4b041616392ad27656a31dd3b9"
+    },
+    {
+        "path": "/mfm-token/send",
+        "domain": "granate_launcher",
+        "amount": "1500",
+        "delegate": "mfm-contract/craft?domain\u003dgranate_launcher\u0026coin\u003d2000",
+        "to": "V37X5BESZ6uEZnMmwi9xWHazRhsoZ",
+        "pass": ":ff8df088bb16efc61ccce230beb81b7e61bf6cc63c2e32aa017b183115a3281f"
+    },
+    {
+        "path": "/mfm-token/send",
+        "domain": "minigun",
+        "amount": "1000",
+        "delegate": "mfm-contract/craft?domain\u003dminigun\u0026coin\u003d2500",
+        "to": "V37WzXsnnuuJ9auqENmbqgBi4YbEz",
+        "pass": ":873dcff2492a6fc3c8a73de0621e4255472b77b50f6cb035002f3bb3bb5ff98c"
+    }
+]

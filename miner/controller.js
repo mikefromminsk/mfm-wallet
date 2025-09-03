@@ -79,6 +79,18 @@ function openMiner(domain, success) {
             return $scope.miner_account.tariff * 100000 * 10000
         }
 
+        function sortAndApply() {
+            let values = Object.values($scope.tokens).sort((a, b) => {
+                if (a.domain === domain && b.domain !== domain) return -1;
+                if (a.domain !== domain && b.domain === domain) return 1;
+                return 0;
+            });
+            $scope.tokens = {}
+            for (const token of values)
+                $scope.tokens[token.domain] = token
+            $scope.$apply()
+        }
+
         function loadTopMining() {
             postContract("mfm-token", "search", {}, function (response) {
                 for (const token of response.tokens) {
@@ -86,8 +98,17 @@ function openMiner(domain, success) {
                         $scope.tokens[token.domain] = token
                     }
                 }
-                $scope.$apply()
+                sortAndApply()
             })
+        }
+
+        function loadDomainToken() {
+            if ($scope.tokens[domain] == null) {
+                postContract("mfm-token", "token", {}, function (response) {
+                    $scope.tokens[domain] = response.token
+                    sortAndApply()
+                })
+            }
         }
 
         function loadAccounts() {
@@ -99,8 +120,9 @@ function openMiner(domain, success) {
                         $scope.tokens[account.domain] = account.token
                     }
                 }
-                $scope.$apply()
+                sortAndApply()
                 loadTopMining()
+                loadDomainToken()
             })
         }
 
@@ -114,7 +136,7 @@ function openMiner(domain, success) {
                         $scope.tokens[account.domain].account = account
                     }
                 }
-                $scope.$apply()
+                sortAndApply()
                 loadAccounts()
             })
         }
@@ -129,7 +151,7 @@ function openMiner(domain, success) {
                     loadMinerAccounts(response.miner_account.minerAddress)
                     subscribeToMinerAddress(response.miner_account.minerAddress)
                     loadTrans(response.miner_account.minerAddress)
-                    $scope.$apply()
+                    sortAndApply()
                 }
             }, function () {
                 loadAccounts()
@@ -161,6 +183,9 @@ function openMiner(domain, success) {
                 $scope.rewardsReceived = rewardsReceived
                 $scope.$apply()
             })
+            if (domain != null) {
+
+            }
             loadMinerAccount()
             loadGasAccount()
         }

@@ -80,8 +80,11 @@ async function get(url, success, error) {
 }
 
 function post(url, params, success, error) {
-    if (url.indexOf("http") == -1)
-        url = location.origin + "/" + url
+    if (url.indexOf("http") == -1){
+        if (!url.startsWith("/"))
+            url = "/" + url
+        url = location.origin + url
+    }
     const xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
     xhr.onload = () => {
