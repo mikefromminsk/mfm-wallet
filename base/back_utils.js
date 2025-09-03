@@ -93,12 +93,8 @@ function post(url, params, success, error) {
                 try {
                     let response = JSON.parse(xhr.response)
                     let message = response.message
-                    if (message.length < 100) {
-                        try {
-                            let translate_key = message.replaceAll(" ", "_").toLowerCase()
-                            message = window.str[translate_key] || message
-                        } catch (e) {
-                        }
+                    if (window.message) {
+                        message = window.message[message.replaceAll(" ", "_").toLowerCase()] || message
                     }
                     if (error) {
                         error(message)
@@ -169,7 +165,7 @@ function trackEvent(name, value, user_id, success, error) {
         value: value || "",
         user_id: user_id || "",
         session: session,
-        language_code: window.getLanguage ?  getLanguage() : null,
+        language_code: window.getLanguage ? getLanguage() : null,
         timezone_offset_minutes: new Date().getTimezoneOffset(),
     }, function (response) {
         if (success)

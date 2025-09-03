@@ -59,6 +59,7 @@ function controller(callback) {
             $scope.ticker = ticker
             $scope.$apply()
         })
+        loadTranslations($scope, "/mfm-wallet/strings/message")
     })
     if (window.Telegram && window.Telegram.WebApp) {
         Telegram.WebApp.expand()
