@@ -95,29 +95,31 @@ function addGlobalVars($scope, callback) {
         swipeToRefresh($scope.swipeToRefresh || $scope.close)
 }
 
-function showDialog(templateUrl, onClose, callback) {
+function showDialog(templateUrl, onClose, controller, onComplete) {
     window.$mdDialog.show({
         templateUrl: (templateUrl[0] == "/" ? templateUrl : "/mfm-wallet/" + templateUrl) + "/index.html?v=15",
         escapeToClose: false,
         multiple: true,
         isolateScope: false,
         controller: function ($scope) {
-            addGlobalVars($scope, callback)
-        }
+            addGlobalVars($scope, controller)
+        },
+        onComplete: onComplete
     }).then(function (result) {
         if (onClose)
             onClose(result)
     })
 }
 
-function showBottomSheet(templateUrl, onClose, callback) {
+function showBottomSheet(templateUrl, onClose, controller, onComplete) {
     window.$mdBottomSheet.show({
         templateUrl: "/mfm-wallet/" + templateUrl + "/index.html?v=15",
         escapeToClose: false,
         clickOutsideToClose: false,
         controller: function ($scope) {
-            addGlobalVars($scope, callback)
-        }
+            addGlobalVars($scope, controller)
+        },
+        onComplete: onComplete
     }).then(function (result) {
         try {
             if (onClose)

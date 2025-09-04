@@ -1,3 +1,18 @@
+function loadRewards(success) {
+    if (window.rewardAddress){
+        postContract("mfm-token", "trans", {
+            domain: wallet.gas_domain,
+            address: wallet.address(),
+            to: rewardAddress,
+            size: maxRewards,
+        }, (response) => {
+            success(rewardsReceived == response.trans.length)
+        }, function () {
+            success(rewardsReceived == 0)
+        })
+    }
+}
+
 function addWallet($scope) {
     $scope.domain = wallet.gas_domain
     $scope.host = location.host

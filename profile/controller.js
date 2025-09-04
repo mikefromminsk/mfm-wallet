@@ -20,8 +20,6 @@ function openProfile(domain, success, mode) {
         storage.pushToArray(storageKeys.search_history, domain, 10)
         $scope.recent = storage.getStringArray(storageKeys.search_history).reverse()
 
-        addChart($scope, 'exchange', domain + "_price", domain + "_volume")
-
         $scope.isMiningToken = function () {
             return $scope.supply?.delegate?.startsWith("mfm-contract/mint")
         }
@@ -88,6 +86,8 @@ function openProfile(domain, success, mode) {
         }
 
         $scope.refresh()
+    }, function ($scope) {
+        addChart($scope, 'exchange', $scope.domain + "_price", $scope.domain + "_volume")
     })
 }
 

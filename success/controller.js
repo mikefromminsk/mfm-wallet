@@ -4,20 +4,6 @@ const maxRewards = 5
 const energyReward = 100
 let rewardsReceived = maxRewards
 
-function loadRewards(success) {
-    postContract("mfm-token", "trans", {
-        domain: wallet.gas_domain,
-        address: wallet.address(),
-        to: rewardAddress,
-        size: maxRewards,
-    }, (response) => {
-        success(rewardsReceived == response.trans.length)
-    }, function () {
-        success(rewardsReceived == 0)
-    })
-}
-
-
 function showSuccessDialog(message, success, action_title) {
     showBottomSheet("success", success, function ($scope) {
         $scope.message = message || str.success

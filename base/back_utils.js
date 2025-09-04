@@ -22,7 +22,7 @@ function subscribe(channel, callback) {
 function unsubscribe(subscriber_id) {
     for (let channel in subscriptions) {
         subscriptions[channel] = subscriptions[channel].filter(subscription => subscription.subscriber_id !== subscriber_id);
-        if (subscriptions[channel].length === 0) {
+        if (window.conn && subscriptions[channel].length === 0) {
             window.conn.send(JSON.stringify({unsubscribe: channel}))
             delete subscriptions[channel];
         }

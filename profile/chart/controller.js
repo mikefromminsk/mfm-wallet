@@ -104,8 +104,10 @@ function addChart($scope, app, key, accumulate_key) {
 
 function openChartWithAccumulate(app, key, accumulate_key, success) {
     showBottomSheet("profile/chart", success, function ($scope) {
+        $scope.app = app
         $scope.key = key
         $scope.accumulate_key = accumulate_key
-        addChart($scope, app, key, accumulate_key)
+    }, function ($scope) {
+        addChart($scope, $scope.app, $scope.key, $scope.accumulate_key)
     })
 }

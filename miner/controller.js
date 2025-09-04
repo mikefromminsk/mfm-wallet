@@ -1,7 +1,7 @@
 function openMiner(domain, success) {
     trackCall(arguments)
     showDialog("miner", success, function ($scope) {
-        if (domain == wallet.gas_domain)
+        if (domain == null || domain == "" || domain == wallet.gas_domain)
             domain = wallet.vavilon
         $scope.domain = domain
         $scope.tokens = {}
@@ -103,8 +103,10 @@ function openMiner(domain, success) {
         }
 
         function loadDomainToken() {
-            if ($scope.tokens[domain] == null) {
-                postContract("mfm-token", "token", {}, function (response) {
+            if (domain != null && $scope.tokens[domain] == null) {
+                postContract("mfm-token", "token", {
+                    domain: domain
+                }, function (response) {
                     $scope.tokens[domain] = response.token
                     sortAndApply()
                 })

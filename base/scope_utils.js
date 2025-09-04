@@ -20,7 +20,7 @@ function addScopeUtils($scope) {
     }
 
     $scope.round = function (num, precision) {
-        const factor = Math.pow(10, precision == null ? 4 : precision)
+        const factor = Math.pow(10, precision != null ? precision : 4)
         return Math.round(num * factor) / factor
     }
 
@@ -29,21 +29,17 @@ function addScopeUtils($scope) {
     }
 
     $scope.shortNumber = function (number, precision) {
-        if (precision == null) precision = 4
-        number = $scope.round(number, precision)
         let numberFormat = new Intl.NumberFormat()
-        let result
         if (number >= 1000000000)
-            result = numberFormat.format($scope.round(number / 1000000000, 1)) + " " + str.billion_short
+            return numberFormat.format($scope.round(number / 1000000000, precision != null ? precision : 1)) + str.billion_short
         else if (number >= 1000000)
-            result = numberFormat.format($scope.round(number / 1000000, 1)) + " " + str.million_short
+            return numberFormat.format($scope.round(number / 1000000, precision != null ? precision : 1)) + str.million_short
         else if (number >= 100000)
-            result = numberFormat.format($scope.round(number / 1000, 1)) + " " + str.thousand_short
+            return numberFormat.format($scope.round(number / 1000, precision != null ? precision : 1)) + str.thousand_short
         else if (number >= 1000)
-            result = numberFormat.format($scope.round(number, 0)) + " "
+            return numberFormat.format($scope.round(number, precision != null ? precision : 2))
         else
-            result = number
-        return result
+            return $scope.round(number, precision != null ? precision : 4)
     }
 
     $scope.formatSec = function (sec) {
@@ -84,7 +80,7 @@ function addScopeUtils($scope) {
 
     $scope.formatAddress = function (address) {
         if (address == null) return ""
-        return address.substr(0, 4) + "..." + address.substr(-3)
+        return address.substr(0, 4) + ".." + address.substr(-3)
     }
 
     $scope.getIdenticon = function (address, size) {
@@ -110,7 +106,7 @@ function addScopeUtils($scope) {
 
     $scope.formatHash = function (hash) {
         if (hash == null) return ""
-        return hash.substr(0, 5) + "..." + hash.substr(-5)
+        return hash.substr(0, 4) + ".." + hash.substr(-4)
     }
 
     $scope.formatDomain = function (domain) {
