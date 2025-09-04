@@ -4,8 +4,8 @@
             <img class="img16 img-gray400" src="/mfm-wallet/img/home.svg">
         </div>
         <div class="flex col align-center-center">
-            <p>{{formatDomain(token.domain)}}</p>
-            <p class="text2">{{token.domain}}</p>
+            <p>{{formatDomain(domain)}}</p>
+            <p ng-show="formatDomain(domain).toLowerCase() != domain" class="text2">{{domain}}</p>
         </div>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">

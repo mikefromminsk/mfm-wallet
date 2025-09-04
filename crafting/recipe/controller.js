@@ -5,16 +5,18 @@ function openRecipe(domain, success) {
 
         $scope.craft = function () {
             getPin(function (pin) {
-                calcPassList(Object.keys($scope.recipe.items), pin, function (passes) {
-                    let params = {}
-                    for (const domain of Object.keys(passes))
-                        params[domain + "Pass"] = passes[domain]
-                    post($scope.recipe.recipe, {
-                        ...params,
-                        is_craft: 1,
-                        domain: $scope.recipe.domain,
-                        address: wallet.address(),
-                    }, loadRecipe)
+                wallet.reg(domain, pin, function () {
+                    calcPassList(Object.keys($scope.recipe.items), pin, function (passes) {
+                        let params = {}
+                        for (const domain of Object.keys(passes))
+                            params[domain + "Pass"] = passes[domain]
+                        post($scope.recipe.recipe, {
+                            ...params,
+                            is_craft: 1,
+                            domain: $scope.recipe.domain,
+                            address: wallet.address(),
+                        }, loadRecipe)
+                    })
                 })
             })
         }
@@ -41,7 +43,7 @@ function openRecipe(domain, success) {
                 address: wallet.address(),
             }, function (response) {
                 $scope.recipe = response.recipe
-                $scope.accounts = response.recipe.accounts
+                $scope.balances = response.recipe.balances
                 $scope.$apply()
             })
         }

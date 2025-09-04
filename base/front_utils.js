@@ -60,6 +60,10 @@ function controller(callback) {
             $scope.$apply()
         })
         loadTranslations($scope, "/mfm-wallet/strings/message")
+        loadTranslations($scope, "/mfm-pigeon/strings/ticker", function () {
+            $scope.ticker = ticker
+            $scope.$apply()
+        })
     })
     if (window.Telegram && window.Telegram.WebApp) {
         Telegram.WebApp.expand()

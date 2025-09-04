@@ -34,7 +34,7 @@ function openWebMiner(domain, success) {
             $scope.startRequest()
             getPin(function (pin) {
                 window.pinForSesstion = pin
-                wallet.reg(domain, function () {
+                wallet.reg(domain, pin, function () {
                     postContract("mfm-token", "account", {
                         domain: wallet.gas_domain,
                         address: wallet.address(),

@@ -9,6 +9,10 @@
                 <div ng-show="item.domain" ng-style="getLogo(item.domain)"></div>
                 <img ng-show="item.img" class="img32" src="{{item.img}}">
             </div>
+            <div ng-show="item.price" class="row gap4 mt8">
+                <div ng-style="getLogo(domain, 14)"></div>
+                <p>{{item.price}}</p>
+            </div>
             <p class="uppercase-first-letter mt8 store-truncate text-gray nowrap-disabled text-align-center"
                style="max-width: 80px">
                 {{item.title || formatDomain(item.domain)}}

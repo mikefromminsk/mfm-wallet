@@ -80,7 +80,7 @@ async function get(url, success, error) {
 }
 
 function post(url, params, success, error) {
-    if (url.indexOf("http") == -1){
+    if (url.indexOf("http") == -1) {
         if (!url.startsWith("/"))
             url = "/" + url
         url = location.origin + url
@@ -273,15 +273,21 @@ var wallet = {
             })
         }
     },
-    reg: function (domain, success, error) { // TODO delete
+    reg: function (domain, pin, success, error) {
         postContract("mfm-token", "account", {
-            domain: domain,
-            address: wallet.address(),
-        }, success, function () {
-            getPin(function (pin) {
-                wallet.calcUserPass(domain, pin, success, error)
-            }, error)
-        })
+                domain: domain,
+                address: wallet.address(),
+            },
+            success,
+            function () {
+                if (pin) {
+                    wallet.calcUserPass(domain, pin, success, error)
+                } else {
+                    getPin(function (pin) {
+                        wallet.calcUserPass(domain, pin, success, error)
+                    })
+                }
+            })
     },
     logout: function () {
         storage.clear()
@@ -324,7 +330,7 @@ var wallet = {
         })
     },
     calcPassList: function (domains, pin, success, error) {
-        var passes = {}
+        let passes = {}
         for (const domain of domains) {
             wallet.calcUserPass(domain, pin, (pass) => {
                 passes[domain] = pass

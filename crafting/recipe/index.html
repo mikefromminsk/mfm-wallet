@@ -3,7 +3,10 @@
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="closeAll()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/home.svg">
         </div>
-        <div class="flex row align-center">{{formatDomain(domain)}}</div>
+        <div class="flex col align-center-center">
+            <p>{{formatDomain(domain)}}</p>
+            <p ng-show="formatDomain(domain).toLowerCase() != domain" class="text2">{{domain}}</p>
+        </div>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
         </div>
@@ -19,13 +22,18 @@
                 <div class="nowrap-disabled"
                      ng-include="'/mfm-wallet/crafting/recipe/faq/' + getLanguage() + '.html'"></div>
 
-                <p class="text2">{{str.recipe}}</p>
-                <div class="row p8 align-start-center gap8 ripple"
+                <div class="row">
+                    <p class="flex text2">{{str.recipe}}</p>
+                    <p class="text2">{{str.balance}}</p>
+                </div>
+                <div class="flex row mv8 align-start-center gap8 ripple"
                      ng-repeat="(itemDomain, count) in recipe.items"
                      ng-click="selectApp(itemDomain)">
                     <div ng-style="getLogo(itemDomain)"></div>
                     <p>{{formatDomain(itemDomain)}}</p>
                     <p class="text-accent text1">x{{count}}</p>
+                    <div class="flex"></div>
+                    <p>{{formatAmount(balances[itemDomain], itemDomain)}}</p>
                 </div>
 
                 <ng-include src="'/mfm-wallet/profile/analytics.html?v=15'"></ng-include>
