@@ -157,9 +157,7 @@ function openExchange(domain, is_sell, success) {
             loadBaseBalance()
             loadQuoteBalance()
             loadOrderbook()
-            loadRewards(function (rewardsReceived) {
-                $scope.rewardsReceived = rewardsReceived
-            })
+            loadRewards($scope)
         }
         $scope.refresh()
     })

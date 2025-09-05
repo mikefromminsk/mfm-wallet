@@ -1,8 +1,3 @@
-let rewardPassword = hash("nation finger unable fade exist visa arch awake anchor surround paddle riot")
-let rewardAddress = hashAddress(rewardPassword)
-const maxRewards = 5
-const energyReward = 100
-let rewardsReceived = maxRewards
 
 function showSuccessDialog(message, success, action_title) {
     showBottomSheet("success", success, function ($scope) {
@@ -17,9 +12,7 @@ function showSuccessDialog(message, success, action_title) {
             $scope.back()
         }
 
-        loadRewards(function (rewardsReceived) {
-            $scope.rewardsReceived = rewardsReceived
-        })
+        loadRewards($scope)
 
         $scope.getBonusAndClose = function () {
             $scope.startRequest()

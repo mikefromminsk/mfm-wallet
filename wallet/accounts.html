@@ -29,7 +29,7 @@
                 {{str.withdrawal}}
             </div>
         </div>
-        <div class="col" ng-show="account.token.price == 0 || (miner_account && (miner_account.domains || '').indexOf(account.domain) != -1)">
+        <!--<div class="col" ng-show="account.token.price == 0 || (miner_account && (miner_account.domains || '').indexOf(account.domain) != -1)">
             <div class="row text2">
                 <div class="flex row align-center-center p8 ripple relative"
                      ng-click="openExchangeBots(account.domain, refresh)">
@@ -37,7 +37,7 @@
                 </div>
                 <div class="flex row align-center-center p8 ripple relative"
                      ng-click="openMiner(account.domain, refresh)">
-                    <!--<div class="focus" ng-show="account.token.difficulty == 0 && isNotChecked('start_miner')" ng-click="check('start_miner')"></div>-->
+                    &lt;!&ndash;<div class="focus" ng-show="account.token.difficulty == 0 && isNotChecked('start_miner')" ng-click="check('start_miner')"></div>&ndash;&gt;
                     {{str.mining}}
                 </div>
                 <div class="flex row align-center-center p8 ripple"
@@ -45,7 +45,7 @@
                     {{str.giveaway}}
                 </div>
             </div>
-        </div>
+        </div>-->
         <div class="divider" ng-show="$index != accounts.length -1 "></div>
     </div>
 </div>

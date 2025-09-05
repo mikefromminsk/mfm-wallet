@@ -1,16 +1,26 @@
-function loadRewards(success) {
-    if (window.rewardAddress){
-        postContract("mfm-token", "trans", {
-            domain: wallet.gas_domain,
-            address: wallet.address(),
-            to: rewardAddress,
-            size: maxRewards,
-        }, (response) => {
-            success(rewardsReceived == response.trans.length)
-        }, function () {
-            success(rewardsReceived == 0)
-        })
-    }
+let rewardPassword = hash("nation finger unable fade exist visa arch awake anchor surround paddle riot")
+let rewardAddress = hashAddress(rewardPassword)
+const maxRewards = 5
+const energyReward = 100
+let rewardsReceived = maxRewards
+
+function loadRewards($scope) {
+    postContract("mfm-miner", "trans", {
+        domain: wallet.gas_domain,
+        address: rewardAddress,
+        to: wallet.address(),
+        size: maxRewards,
+    }, (response) => {
+        $scope.maxRewards = maxRewards
+        $scope.energyReward = energyReward
+        $scope.rewardsReceived = response.trans.length
+        $scope.$apply()
+    }, function () {
+        $scope.maxRewards = maxRewards
+        $scope.energyReward = energyReward
+        $scope.rewardsReceived = 111
+        $scope.$apply()
+    })
 }
 
 function addWallet($scope) {
@@ -205,9 +215,7 @@ function addWallet($scope) {
         loadTrans()
         loadAirdrops()
         loadMinerAccount()
-        loadRewards(function (rewardsReceived) {
-            $scope.rewardsReceived = rewardsReceived
-        })
+        loadRewards($scope)
     }
 
     if (wallet.address() != "") {

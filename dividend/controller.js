@@ -69,10 +69,7 @@ function openDividend(domain, success) {
             loadEpoch()
             loadGasAccount()
             loadVavilonAccount()
-            loadRewards(function (rewardsReceived) {
-                $scope.rewardsReceived = rewardsReceived
-                $scope.$apply()
-            })
+            loadRewards($scope)
         }
 
         $scope.refresh()

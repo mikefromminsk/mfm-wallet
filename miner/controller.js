@@ -181,13 +181,7 @@ function openMiner(domain, success) {
         }
 
         $scope.refresh = function () {
-            loadRewards(function (rewardsReceived) {
-                $scope.rewardsReceived = rewardsReceived
-                $scope.$apply()
-            })
-            if (domain != null) {
-
-            }
+            loadRewards($scope)
             loadMinerAccount()
             loadGasAccount()
         }

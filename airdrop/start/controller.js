@@ -53,9 +53,7 @@ function openOnboarding(success) {
         }
 
         $scope.refresh = function () {
-            loadRewards(function (rewardsReceived) {
-                $scope.rewardsReceived = rewardsReceived
-            })
+            loadRewards($scope)
         }
 
         $scope.refresh()
