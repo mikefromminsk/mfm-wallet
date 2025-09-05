@@ -51,7 +51,7 @@ function controller(callback) {
             $scope.str = str
             $scope.$apply()
         })
-        loadTranslations($scope, "/mfm-wallet/strings/lang", function () {
+        loadTranslations($scope, "/mfm-wallet/strings", function () {
             $scope.str = str
             $scope.$apply()
         })
