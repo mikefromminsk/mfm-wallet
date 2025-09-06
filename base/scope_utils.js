@@ -382,4 +382,36 @@ function addScopeUtils($scope) {
         if (success)
             success()
     }
+
+    $scope.swipeToRefreshDisable = function () {
+        $scope.swipeToRefreshDisabled = true
+    }
+
+    $scope.copy = function (text) {
+        copy(text)
+        showSuccess(str.copied)
+    }
+
+    $scope.stringHash = function (string) {
+        let hash = 0;
+        if (string != null) {
+            for (const char of string) {
+                hash = (hash << 5) - hash + char.charCodeAt(0)
+                hash |= 0;
+            }
+        }
+        return hash;
+    }
+
+    $scope.check = function (value) {
+        storage.setString(storageKeys.check_prefix + $scope.stringHash(value), "true")
+    }
+
+    $scope.isChecked = function (value) {
+        return storage.getString(storageKeys.check_prefix + $scope.stringHash(value)) == "true"
+    }
+
+    $scope.isNotChecked = function (value) {
+        return !$scope.isChecked(value)
+    }
 }

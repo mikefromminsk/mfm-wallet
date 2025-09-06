@@ -171,3 +171,28 @@ function scrollTo(id) {
         document.getElementById(id).scrollIntoView({behavior: 'smooth'})
     }, 100)
 }
+
+function copy() {
+    let textArea = document.createElement("textarea");
+    textArea.value = text;
+    textArea.style.top = "0";
+    textArea.style.left = "0";
+    textArea.style.position = "fixed";
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
+}
+
+function share(title, text, url) {
+    if (navigator.share) {
+        navigator.share({
+            title: title,
+            text: text,
+            url: url,
+        })
+            .then(() => console.log('Successful share'))
+            .catch((error) => console.log('Error sharing', error));
+    }
+}

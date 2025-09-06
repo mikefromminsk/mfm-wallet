@@ -1,52 +1,11 @@
 function addNavigator($scope) {
 
-    $scope.open = function (link) {
-        window.finishAutoOpening = false
-        historyStack.push(link)
-        if (getTelegramUserId() == null)
-            history.pushState({}, '', link)
-        loaded()
+    $scope.openWeb = function (page) {
+        window.open(page)
     }
 
-    $scope.swipeToRefreshDisable = function () {
-        $scope.swipeToRefreshDisabled = true
-    }
-
-    $scope.copy = function (text) {
-        let textArea = document.createElement("textarea");
-        textArea.value = text;
-        textArea.style.top = "0";
-        textArea.style.left = "0";
-        textArea.style.position = "fixed";
-        document.body.appendChild(textArea);
-        textArea.focus();
-        textArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textArea);
-        showSuccess(str.copied)
-    }
-
-    $scope.stringHash = function (string) {
-        let hash = 0;
-        if (string != null) {
-            for (const char of string) {
-                hash = (hash << 5) - hash + char.charCodeAt(0)
-                hash |= 0;
-            }
-        }
-        return hash;
-    }
-
-    $scope.check = function (value) {
-        storage.setString(storageKeys.check_prefix + $scope.stringHash(value), "true")
-    }
-
-    $scope.isChecked = function (value) {
-        return storage.getString(storageKeys.check_prefix + $scope.stringHash(value)) == "true"
-    }
-
-    $scope.isNotChecked = function (value) {
-        return !$scope.isChecked(value)
+    $scope.openSupport = function () {
+        $scope.openWeb('https://t.me/vavilon_bugs')
     }
 
     $scope.openLogin = function (success) {
@@ -95,33 +54,6 @@ function addNavigator($scope) {
 
     $scope.openSearch = function (success) {
         openSearch(success)
-    }
-
-    $scope.openTokenSettings = function () {
-        openLogoChange(domain, function (result) {
-            if (result == "success")
-                location.reload()
-        })
-    }
-
-    $scope.openSite = function () {
-        window.open("/" + domain)
-    }
-
-    $scope.openSupport = function () {
-        $scope.openWeb('https://t.me/vavilon_bugs')
-    }
-
-    $scope.openShareLink = function (title, text, url) {
-        if (navigator.share) {
-            navigator.share({
-                title: title,
-                text: text,
-                url: url,
-            })
-                .then(() => console.log('Successful share'))
-                .catch((error) => console.log('Error sharing', error));
-        }
     }
 
     $scope.openChart = function (app, key, success) {
@@ -226,14 +158,6 @@ function addNavigator($scope) {
 
     $scope.openRecipe = function (delegate, success) {
         openRecipe(delegate, success)
-    }
-
-    $scope.openLanding = function () {
-        location.href = "/mfm-landing"
-    }
-
-    $scope.openWeb = function (page) {
-        window.open(page)
     }
 
     $scope.openLoader = function (success) {
