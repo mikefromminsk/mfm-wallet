@@ -389,7 +389,7 @@ function addScopeUtils($scope) {
 
     $scope.copy = function (text) {
         copy(text)
-        showSuccess(str.copied)
+        showSuccess(str.copied + " " + text)
     }
 
     $scope.stringHash = function (string) {

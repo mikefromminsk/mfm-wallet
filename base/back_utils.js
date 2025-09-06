@@ -234,7 +234,6 @@ var wallet = {
     MINER_ADDRESS: "V3f7tNy1QpiwH4C5J7AUDc46bidsH",
     AIRDROP_ADDRESS: "V2KjdDBQXjHi4Ub5QUt4VDJnKWq8V",
     user_seed: "nation finger unable fade exist visa arch awake anchor surround paddle riot",
-    tg_user_seed: "hen fruit impulse unfair shoulder make hold inch climb outside mail pond",
     WITHDRAWAL_ADDESS: "V",
     BOT_PREFIX: "bot_",
     login: function (address, password, success, error) {

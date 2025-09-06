@@ -15,7 +15,7 @@ function addLogin($scope, success) {
     }
 
     if (DEBUG) {
-        $scope.mnemonic = wallet.tg_user_seed
+        $scope.mnemonic = wallet.user_seed
     } else {
         $scope.mnemonic = bip39Generate()
     }
