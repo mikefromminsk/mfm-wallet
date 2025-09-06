@@ -35,7 +35,7 @@ function addStore($scope) {
         },{
             title: "Explorer",
             domain: "explorer",
-            link: "/mfm-explorer/"
+            link: "/mfm-landing/explorer/"
         }, {
             title: "Launcher",
             domain: "Launcher",
@@ -62,7 +62,7 @@ function addStore($scope) {
         }]
 
         /* add("defi", "Airdrop", "#46aef5", "#openAirdrop")*/
-        /*add("defi", "Staking", "#46aef5", "/mfm-explorer")*/
+        /*add("defi", "Staking", "#46aef5", "/mfm-landing/explorer")*/
 
         /*    add("utilities", "Analytics", "#46aef5", "#openAnalytics")*/
         /*add("utilities", "Storage", "#46aef5", "#openAnalytics")*/
