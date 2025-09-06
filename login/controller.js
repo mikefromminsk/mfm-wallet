@@ -15,7 +15,7 @@ function addLogin($scope, success) {
     }
 
     if (DEBUG) {
-        $scope.mnemonic = "nation finger unable fade exist visa arch awake anchor surround paddle riot"
+        $scope.mnemonic = wallet.tg_user_seed
     } else {
         $scope.mnemonic = bip39Generate()
     }

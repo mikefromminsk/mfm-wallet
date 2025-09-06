@@ -39,7 +39,7 @@ function openProfile(domain, success, mode) {
         })
 
         $scope.isAdmin = function () {
-            if ($scope.account.balance > $scope.supply.balance * 0.01 || DEBUG) {
+            if ($scope.account && $scope.account.balance > $scope.supply.balance * 0.01 || DEBUG) {
                 return true
             }
             return false
