@@ -32,8 +32,7 @@ function addStore($scope) {
             link: function () {
                 $scope.openDividend(wallet.vavilon)
             }
-        }],
-        "utilities": [{
+        },{
             title: "Explorer",
             domain: "explorer",
             link: "/mfm-explorer/"

@@ -33,7 +33,7 @@
         <img class="ml4 img12 img-gray" src="/mfm-wallet/img/chart.svg"
              ng-click="openChartWithAccumulate('exchange', token.domain + '_volume')">
         <div class="flex"></div>
-        <p>{{formatAmount(token.volume24, token.domain, 0)}}</p>
+        <p>{{formatPrice(token.volume24, 0)}}</p>
     </div>
     <div class="row">
         <p class="text2">{{str.accounts}}</p>
