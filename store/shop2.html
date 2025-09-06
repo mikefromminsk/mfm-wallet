@@ -1,0 +1,37 @@
+<div class="col">
+    <div class="row scroll-horizontal ph8">
+        <div class="text1 mh8 uppercase pv16"
+             ng-click="state.selectedIndex = $index"
+             ng-class="{'text-white': state.selectedIndex == $index, 'text-gray': state.selectedIndex != $index}"
+             ng-repeat="(category, items) in apps">
+            {{str[category] || formatDomain(category)}}
+        </div>
+    </div>
+    <md-tabs class="flex col" md-selected="state.selectedIndex" md-swipe-content md-dynamic-height>
+        <md-tab class="col mt16" label="0" ng-repeat="(category, items) in apps" style="padding-right: 0">
+            <div class="fill-width row wrap">
+                <div class="row mob-half-width"
+                     ng-repeat="item in items"
+                     ng-click="selectApp(item.link || item.domain)">
+                    <div class="flex col p8">
+                        <div ng-style="{'background-color': item.backgroundColor || 'var(--gray100)'}"
+                             class="flex row align-center-center radius-default">
+                            <div class="" ng-show="item.domain" ng-style="getLogo(item.domain, 100)"></div>
+                            <img ng-show="item.img" class="img32" src="{{item.img}}">
+                        </div>
+                        <div class="row mt8 ph8">
+                            <p class="flex uppercase-first-letter  text-gray ">
+                                {{item.title || formatDomain(item.domain)}}
+                            </p>
+                            <div ng-show="item.price" class="row gap4 align-start-center">
+                                <div ng-style="getLogo(domain, 14)"></div>
+                                <p>{{item.price}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </md-tab>
+    </md-tabs>
+</div>
+
