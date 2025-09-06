@@ -172,7 +172,7 @@ function scrollTo(id) {
     }, 100)
 }
 
-function copy() {
+function copy(text) {
     let textArea = document.createElement("textarea");
     textArea.value = text;
     textArea.style.top = "0";
