@@ -77,8 +77,18 @@ function openProfile(domain, success, mode) {
             })
         }
 
+        function loadRecommendation(){
+            postContract("mfm-analytics", "recommendations", {
+                from: domain,
+            }, function(res) {
+                $scope.recommended = res.top
+                $scope.$apply()
+            })
+        }
+
         $scope.refresh = function () {
             loadProfile()
+            loadRecommendation()
             loadTopAccounts()
         }
 

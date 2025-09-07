@@ -87,9 +87,9 @@
             </div>
 
             <ng-include src="'/mfm-wallet/profile/analytics.html?v=15'"></ng-include>
+            <ng-include src="'/mfm-wallet/profile/recommended.html?v=15'"></ng-include>
 
             <div class="input-content">
-
                 <div class="col">
                     <p class="text1 mt16 mb8">{{str.top_hodlers}}</p>
                     <div class="row mt8 p16 radius-default back-gray ripple"
@@ -97,13 +97,11 @@
                          ng-click="copy(item.address)">
                         <div class="radius-default back-black"
                              ng-style="getIdenticon(item.address)"></div>
-
                         <div class="col ml16">
                             <p>{{formatAddress(item.address)}}</p>
                             <!--<p class="mt4 text2 lowercase">
                                 {{formatSec(item.time)}}</p>-->
                         </div>
-
                         <div class="flex col align-start-end">
                             <p>{{formatAmount(item.balance, item.domain)}}</p>
                             <p class="mt4 text2">{{formatPrice(item.balance * item.token.price)}}</p>
@@ -111,7 +109,6 @@
                     </div>
                 </div>
             </div>
-
 
         </div>
     </div>
