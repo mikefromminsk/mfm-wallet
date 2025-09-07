@@ -2,7 +2,7 @@
     <p class="text1 mh16 mt8">{{str.recommended}}</p>
     <div class="row scroll-horizontal ph8">
         <div class="text1 mh8 uppercase pv16"
-             ng-click="openProfile(item.domain)"
+             ng-click="selectRecommended(item.domain)"
              ng-repeat="item in recommended">
             <div class="img64 row align-center-center radius-default back-gray">
                 <div ng-style="getLogo(item.domain)"></div>

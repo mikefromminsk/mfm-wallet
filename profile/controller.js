@@ -81,9 +81,13 @@ function openProfile(domain, success, mode) {
             postContract("mfm-analytics", "recommendations", {
                 from: domain,
             }, function(res) {
-                $scope.recommended = res.top
+                $scope.recommended = res.recommended
                 $scope.$apply()
             })
+        }
+
+        $scope.selectRecommended = function (domain) {
+            openProfile(domain)
         }
 
         $scope.refresh = function () {

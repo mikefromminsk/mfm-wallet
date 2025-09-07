@@ -63,9 +63,19 @@ function openRecipe(domain, success) {
             })
         }
 
+        function loadRecommendation(){
+            postContract("mfm-analytics", "recommendations", {
+                from: domain,
+            }, function(res) {
+                $scope.recommended = res.recommended
+                $scope.$apply()
+            })
+        }
+
         $scope.refresh = function () {
             loadRecipe()
             loadProfile()
+            loadRecommendation()
         }
 
         $scope.refresh()
