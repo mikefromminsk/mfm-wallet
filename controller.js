@@ -1,8 +1,6 @@
 function start($scope) {
     trackEvent("start", getTelegramUserId(), wallet.address())
-
     document.title = window.location.hostname
-
     $scope.menu = ["apps", "wallet", "search"]
     $scope.selectedIndex = 1
     $scope.selectTab = function (tab) {
@@ -17,23 +15,17 @@ function start($scope) {
         swipeToRefresh($scope.swipeToRefresh)
     }
     $scope.showBody = true
-
     $scope.swipeToRefresh = function () {
         $scope.selectTab($scope.selectedIndex)
     }
-
     $scope.selectTab($scope.selectedIndex)
-
     if (window.location.search != "") {
         if (getTelegramUserId() == null)
             window.history.pushState({}, document.title, "/mfm-wallet")
     }
-
     connectWs()
 }
-
 window.finishAutoOpening = false
-
 function loaded() {
     if (!window.finishAutoOpening) {
         for (const str of [window.location.hash, window.location.search]) {
