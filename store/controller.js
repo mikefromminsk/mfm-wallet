@@ -46,19 +46,19 @@ function addStore($scope) {
         "docs": [{
             title: "Whitepaper",
             domain: "whitepaper",
-            link: "/mfm-landing/docs/?doc=whitepaper"
+            link: "/mfm-landing/docs/?doc=whitepaper.md"
         }, {
             title: "Roadmap",
             domain: "roadmap",
-            link: "/mfm-landing/docs/?doc=roadmap"
+            link: "/mfm-landing/docs/?doc=roadmap.md"
         }, {
             title: "Terms",
             domain: "terms",
-            link: "/mfm-landing/docs/?doc=terms"
+            link: "/mfm-landing/docs/?doc=terms.md"
         }, {
             title: "Dev",
             domain: "dev",
-            link: "/mfm-landing/docs/?doc=dev"
+            link: "/mfm-landing/docs/?doc=dev.md"
         }]
 
         /* add("defi", "Airdrop", "#46aef5", "#openAirdrop")*/

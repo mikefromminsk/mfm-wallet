@@ -18,7 +18,7 @@
     src: url("/mfm-wallet/font/RobotoMono-Bold.ttf");
 }
 
-html {
+html, md-dialog {
     background-color: var(--back);
     color: var(--white);
     white-space: nowrap;
