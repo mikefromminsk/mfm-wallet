@@ -8,7 +8,7 @@ function openAirdropAdd(domain, success) {
 
         $scope.add = function () {
             getPin(function (pin) {
-                calcPass(domain, pin, function (pass) {
+                wallet.calcUserPass(domain, pin, function (pass) {
                     postContract("mfm-airdrop", "add", {
                         domain: domain,
                         address: wallet.address(),

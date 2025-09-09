@@ -1,16 +1,9 @@
 const storageKeys = {
-    address: "STORE_ADDRESS",
-    passhash: "STORE_PASSHASH",
-    hasPin: "STORE_HAS_PIN",
-    hideBalances: "STORE_HIDE_BALANCES",
-    bonuses: "STORE_BONUSES",
+    address: "STORE_ADDRESS_V2",
+    passhash: "STORE_PASSHASH_V2",
+    hasPin: "STORE_HAS_PIN_V2",
     language: "STORE_LANGUAGE",
     send_history: "STORE_SEND_HISTORY",
-    user_history: "EXCHANGE_SEND_HISTORY",
-    search_history: "STORE_SEARCH_HISTORY",
-    first_review: "STORE_FIRST_REVIEW",
-    defaultOfferDomain: "STORE_DEFAULT_OFFER_DOMAIN",
-    default_payment_type: "STORE_DEFAULT_PAYMENT_TYPE",
     check_prefix: "STORE_CHECK_PREFIX_",
 }
 

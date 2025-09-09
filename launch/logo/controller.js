@@ -28,7 +28,7 @@ function openLogoChange(domain, success) {
                     file: file,
                 }, function () {
                     logoRefreshInterval = setInterval(function () {
-                        $scope.logoLink = $scope.getLogoLink($scope.domain) + '?' + randomString(4)
+                        $scope.logoLink = $scope.getLogoLink($scope.domain) + '?' + Math.random()
                         $scope.$apply()
                     }, 1000)
                     showSuccess(str.logo_uploaded)
@@ -50,7 +50,7 @@ function openLogoChange(domain, success) {
                 to: domain + ".png",
             }, function () {
                 logoRefreshInterval = setInterval(function () {
-                    $scope.logoLink = $scope.getLogoLink($scope.domain) + '?' + randomString(4)
+                    $scope.logoLink = $scope.getLogoLink($scope.domain)
                     $scope.$apply()
                 }, 1000)
                 showSuccess(str.logo_uploaded)

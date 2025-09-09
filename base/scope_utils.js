@@ -1,3 +1,4 @@
+
 function addScopeUtils($scope) {
     $scope.location = location
     $scope.wallet = window.wallet
@@ -364,7 +365,7 @@ function addScopeUtils($scope) {
     $scope.back = function (result) {
         window.$mdBottomSheet.hide(result)
         $scope.unsubscribeAll()
-        clearFocus()
+        hideKeyboard()
     }
 
     $scope.close = function (result) {

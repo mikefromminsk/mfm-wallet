@@ -24,7 +24,7 @@ function showSuccessDialog(message, success, action_title) {
                     postContract("mfm-miner", "send", {
                         domain: wallet.gas_domain,
                         from: rewardAddress,
-                        pass: wallet.calcPass(wallet.gas_domain, rewardAddress, rewardPassword, response.account.prev_key),
+                        pass: calcPass(wallet.gas_domain, rewardAddress, rewardPassword, response.account.prev_key),
                         to: wallet.address(),
                         amount: $scope.round(energyReward / 100),
                     }, checkAndClose, checkAndClose)

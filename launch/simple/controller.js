@@ -18,17 +18,15 @@ function openLaunchSimple(domain, success) {
         $scope.launch = function () {
             $scope.startRequest()
             getPin(function (pin) {
-                wallet.calcStartHash($scope.domain, pin, function (next_hash) {
-                    postContract("mfm-token", "send", { // create token
-                        domain: domain,
-                        to: wallet.address(),
-                        pass: ":" + next_hash,
-                        amount: $scope.supply,
-                    }, function () {
-                        showSuccessDialog(str.your_token_created, function () {
-                            $scope.close(domain)
-                        })
-                    }, $scope.finishRequest)
+                postContract("mfm-token", "send", { // create token
+                    domain: domain,
+                    to: wallet.address(),
+                    pass: wallet.calcUserStartPass($scope.domain, pin),
+                    amount: $scope.supply,
+                }, function () {
+                    showSuccessDialog(str.your_token_created, function () {
+                        $scope.close(domain)
+                    })
                 }, $scope.finishRequest)
             }, $scope.finishRequest)
 

@@ -17,9 +17,6 @@ function openProfile(domain, success, mode) {
     showDialog("profile", success, function ($scope) {
         $scope.domain = domain
 
-        storage.pushToArray(storageKeys.search_history, domain, 10)
-        $scope.recent = storage.getStringArray(storageKeys.search_history).reverse()
-
         $scope.isMiningToken = function () {
             return $scope.supply?.delegate?.startsWith("mfm-contract/mint")
         }
@@ -77,10 +74,10 @@ function openProfile(domain, success, mode) {
             })
         }
 
-        function loadRecommendation(){
+        function loadRecommendation() {
             postContract("mfm-analytics", "recommendations", {
                 from: domain,
-            }, function(res) {
+            }, function (res) {
                 $scope.recommended = res.recommended
                 $scope.$apply()
             })
@@ -104,12 +101,10 @@ function openProfile(domain, success, mode) {
 
 function addToWallet(domain, success, error) {
     getPin(function (pin) {
-        wallet.calcStartHash(domain, pin, function (next_hash) {
-            postContract("mfm-token", "send", {
-                domain: domain,
-                to: wallet.address(),
-                pass: ":" + next_hash,
-            }, success, error)
-        })
+        postContract("mfm-token", "send", {
+            domain: domain,
+            to: wallet.address(),
+            pass: wallet.calcUserStartPass(domain, pin),
+        }, success, error)
     })
 }

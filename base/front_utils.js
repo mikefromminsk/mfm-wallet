@@ -162,14 +162,11 @@ function showSuccess(message, success) {
     showMessage(message, 'green-toast', success)
 }
 
-function clearFocus() {
-    document.body.focus()
-}
-
-function scrollTo(id) {
-    setTimeout(function () {
-        document.getElementById(id).scrollIntoView({behavior: 'smooth'})
-    }, 100)
+function hideKeyboard() {
+    const active = document.activeElement;
+    if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA')) {
+        active.blur()
+    }
 }
 
 function copy(text) {

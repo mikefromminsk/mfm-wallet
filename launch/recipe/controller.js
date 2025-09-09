@@ -32,7 +32,7 @@ function openLaunchRecipe(domain, success) {
             postContract("mfm-token", "send", { // create token
                 domain: domain,
                 to: contractAddress,
-                pass: wallet.calcStartPass(domain, contractAddress, CRAFT_SEED),
+                pass: calcStartPass(domain, contractAddress, CRAFT_SEED),
                 delegate: delegate,
                 amount: Math.pow(10, $scope.token.supply_step),
             }, function () {

@@ -51,7 +51,6 @@ function openPool(domain, success) {
         }
 
 
-
         function addSwap() {
             $scope.is_sell = 1
 
@@ -117,7 +116,7 @@ function openPool(domain, success) {
 
             $scope.executeSwap = function () {
                 getPin(function (pin) {
-                    calcPassList([$scope.domain, wallet.gas_domain], pin, function (passes) {
+                    wallet.calcUserPassList([$scope.domain, wallet.gas_domain], pin, function (passes) {
                         postContract("mfm-contract", "pool_swap", {
                             is_sell: $scope.is_sell,
                             domain: $scope.domain,
@@ -141,7 +140,7 @@ function openPool(domain, success) {
         function addLiquidity() {
             $scope.addLiquidity = function () {
                 getPin(function (pin) {
-                    calcPassList([$scope.domain, wallet.gas_domain], pin, function (passes) {
+                    wallet.calcUserPassList([$scope.domain, wallet.gas_domain], pin, function (passes) {
                         postContract("mfm-contract", "pool_add", {
                             domain: $scope.domain,
                             token_amount: $scope.base_amount,
@@ -167,7 +166,6 @@ function openPool(domain, success) {
 
         $scope.loadPoolData()
     })
-
 
 
 }

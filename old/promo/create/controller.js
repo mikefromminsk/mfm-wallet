@@ -18,11 +18,11 @@ function openAirdropCreate(domain, success) {
             postContract("mfm-token", "send", {
                 domain: domain,
                 to: address,
-                pass: wallet.calcStartPass(domain, address, password),
+                pass: calcStartPass(domain, address, password),
                 delegate: "mfm-contract/airdrop" + $scope.dropAmount,
             }, function () {
                 getPin(function (pin) {
-                    calcPass(domain, pin, function (pass) {
+                    wallet.calcUserPass(domain, pin, function (pass) {
                         postContract("mfm-token", "send", {
                             domain: domain,
                             from: wallet.address(),

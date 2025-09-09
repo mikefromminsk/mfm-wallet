@@ -140,3 +140,53 @@ function openWebMiner(domain, success) {
 
     })
 }
+
+let requestQueue = []
+let requestInProcess= false
+function postContractWithGas(domain, path, params, success, error) {
+    if (requestInProcess) {
+        requestQueue.push({domain, path, params, success, error})
+        return;
+    }
+    requestInProcess = true
+    let isParamsFunction = typeof params === 'function'
+    getPin(function (pin) {
+        if (isParamsFunction) {
+        } else {
+            calcGas(params)
+        }
+
+        function calcGas(params) {
+            wallet.calcUserPass(wallet.gas_domain, pin, function (pass) {
+                send(params, pass)
+            })
+        }
+
+        function checkNextRequest(afterCallback, data) {
+            let nextRequest = requestQueue.shift()
+            if (nextRequest != null) {
+                postContractWithGas(
+                    nextRequest.domain,
+                    nextRequest.path,
+                    nextRequest.params,
+                    nextRequest.success,
+                    nextRequest.error)
+            } else {
+                requestInProcess = false
+                if (afterCallback)
+                    afterCallback(data)
+            }
+        }
+
+        function send(params, pass) {
+            if (params == null) return
+            params.gas_address = wallet.address()
+            params.gas_pass = pass
+            postContract(domain, path, params, (data) => {
+                checkNextRequest(success, data)
+            }, (data) => {
+                checkNextRequest(error, data)
+            })
+        }
+    })
+}

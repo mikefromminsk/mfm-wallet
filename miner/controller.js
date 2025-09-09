@@ -38,13 +38,11 @@ function openMiner(domain, success) {
                         address: wallet.address(),
                     }, $scope.refresh, function () {
                         getPin(function (pin) {
-                            wallet.calcStartHash(token.domain, pin, function (next_hash) {
-                                postContract("mfm-token", "send", {
-                                    domain: token.domain,
-                                    to: wallet.address(),
-                                    pass: ":" + next_hash,
-                                }, $scope.withdrawal)
-                            })
+                            postContract("mfm-token", "send", {
+                                domain: token.domain,
+                                to: wallet.address(),
+                                pass: wallet.calcUserStartPass(token.domain, pin),
+                            }, $scope.withdrawal)
                         })
                     })
                 }

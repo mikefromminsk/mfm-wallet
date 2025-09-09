@@ -17,7 +17,7 @@ function openSend(domain, to_address, amount, success, project) {
             trackCall(arguments)
             $scope.startRequest()
             getPin(function (pin) {
-                calcPass(domain, pin, function (pass) {
+                wallet.calcUserPass(domain, pin, function (pass) {
                     postContract(project || "mfm-token", "send", {
                         domain: domain,
                         from: wallet.address(),

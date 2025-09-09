@@ -6,7 +6,7 @@ function getPin(success, cancel) {
         if (cancel == null && window.pinForSesstion) {
             success(window.pinForSesstion)
         } else {
-            clearFocus()
+            hideKeyboard()
             showBottomSheet("pin", function (result) {
                 if (result == null) {
                     if (cancel)

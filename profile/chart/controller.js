@@ -28,7 +28,7 @@ function chartResize(tradeChart, chart) {
 
 function createChart(id) {
     var tradeChart = document.getElementById(id)
-    tradeChart.id = id + randomString(2)
+    tradeChart.id = id + Math.floor(Math.random() * 10000)
     var chart = LightweightCharts.createChart(tradeChart, getChartOptions())
     chartResize(tradeChart, chart)
     return chart
