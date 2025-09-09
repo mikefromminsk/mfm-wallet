@@ -10,9 +10,6 @@
     </div>
     <div class="flex col scroll-vertical align-start-center">
         <div class="flex col block">
-
-
-
             <md-tabs md-selected="tabIndex" class="col p0" md-swipe-content md-dynamic-height>
                 <md-tab label="$index" ng-repeat="item in tasks">
                     <div class="col align-start-center p16 gap16">
@@ -37,7 +34,7 @@
                              style="width: 200px; height: 200px; margin: 50px"
                              ng-show="$index == 4"
                              class="jumping">
-                        <p class="text1 text-align-center">{{item.description}}</p>
+                        <p class="text1 nowrap-disabled text-align-center">{{item.description}}</p>
                     </div>
                 </md-tab>
             </md-tabs>

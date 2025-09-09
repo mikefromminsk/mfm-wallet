@@ -4,7 +4,7 @@
             <img class="img16 img-gray400" src="/mfm-wallet/img/home.svg">
         </div>
         <div class="flex row align-center">
-            {{str.withdrawal}} {{formatDomain(wallet.gas_domain)}}</p>
+            {{str.withdrawal}}</p>
         </div>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
@@ -14,13 +14,21 @@
         <div class="flex col block">
             <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
             <div class="col input-content">
-                <div class="row input-wrapper">
-                    <div ng-style="getLogo('tron')"></div>
+                <div class="row input-wrapper" ng-show="network() == 'tron'">
+                    <img class="img-white" src="/mfm-wallet/img/wallet.svg">
                     <input type="text"
                            id="tron_address"
                            ng-model="tron_address"
                            placeholder=" ">
                     <label for="tron_address">{{str.tron_address}}</label>
+                </div>
+                <div class="row input-wrapper" ng-show="network() == 'bitcoin'">
+                    <img class="img-white" src="/mfm-wallet/img/wallet.svg">
+                    <input type="text"
+                           id="bitcoin_address"
+                           ng-model="tron_address"
+                           placeholder=" ">
+                    <label for="bitcoin_address">{{str.bitcoin_address}}</label>
                 </div>
                 <div class="row input-wrapper">
                     <div ng-style="getLogo(domain)"></div>

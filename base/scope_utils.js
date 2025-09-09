@@ -413,4 +413,21 @@ function addScopeUtils($scope) {
     $scope.isNotChecked = function (value) {
         return !$scope.isChecked(value)
     }
+
+    $scope.isDepositToken = function (token) {
+        return token?.delegate?.startsWith("mfm-token/send")
+            && token?.delegate?.indexOf("&a=") != -1
+    }
+
+    $scope.isMiningToken = function (token) {
+        return token?.delegate?.startsWith("mfm-contract/mint")
+    }
+
+    $scope.isCraftToken = function (token) {
+        return token?.delegate?.startsWith("mfm-contract/craft")
+    }
+
+    $scope.isSimpleToken = function (token) {
+        return token?.delegate == ''
+    }
 }

@@ -17,18 +17,6 @@ function openProfile(domain, success, mode) {
     showDialog("profile", success, function ($scope) {
         $scope.domain = domain
 
-        $scope.isMiningToken = function () {
-            return $scope.supply?.delegate?.startsWith("mfm-contract/mint")
-        }
-
-        $scope.isCraftToken = function () {
-            return $scope.supply?.delegate?.startsWith("mfm-contract/craft")
-        }
-
-        $scope.isSimpleToken = function () {
-            return $scope.supply?.delegate == ''
-        }
-
         $scope.subscribe("price:" + domain, function (data) {
             $scope.token.price = data.price
             $scope.updateChart()

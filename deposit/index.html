@@ -8,42 +8,44 @@
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
         </div>
     </div>
-    <div class="flex col scroll-vertical align-start-center">
-        <div class="flex col block input-content">
-            <div class="flex row align-start-center" ng-show="deposit_address">
-                <div class="flex col">
-                    <div class="row align-center-center">
-                        <div id="qrcode" style="margin: 20px 0"></div>
+    <div class="flex col scroll align-start-center">
+        <div class="flex col block">
+            <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
+            <div class="flex col input-content">
+                <div class="row input-wrapper">
+                    <div ng-style="getLogo(domain)"></div>
+                    <input type="text"
+                           id="deposit_address"
+                           disabled
+                           ng-class="{'text-white': lock && lock.user_address == wallet.address()}"
+                           ng-model="deposit_address"
+                           placeholder=" ">
+                    <label for="deposit_address">{{formatDomain(domain)}} {{formatDomain(network)}}
+                        {{str.deposit_address}}</label>
+                    <div class="col align-center-center" style="position: relative">
+                        <div class="focus" ng-show="isNotChecked('copy_address')"></div>
+                        <img class="img40 p8 ripple img-white" src="/mfm-wallet/img/copy.svg"
+                             ng-disabled="lock && lock.address != wallet.address()"
+                                ng-click="blockAddress()">
                     </div>
-                    <div class="row input-wrapper" style="margin-top: 40px">
-                        <div ng-style="getLogo(wallet.gas_domain)"></div>
-                        <input type="text"
-                               id="deposit_address"
-                               disabled
-                               class="text-white"
-                               ng-model="deposit_address"
-                               placeholder=" ">
-                        <label for="deposit_address">{{formatDomain(domain)}} {{formatDomain(network)}}
-                            {{str.deposit_address}}</label>
-                        <div class="col align-center-center" style="position: relative">
-                            <div class="focus" ng-show="isNotChecked('copy_tron_address')"></div>
-                            <img class="img40 p8 ripple img-white"
-                                 src="/mfm-wallet/img/copy.svg"
-                                 ng-click="blockAddress(deposit_address)">
-                        </div>
-                    </div>
-                    <ul class="col mv0 text2 text-align-start">
-                        <li>{{str.minimum_deposit}} {{formatAmount(0.0001, wallet.gas_domain)}}</li>
-                        <li>{{str.you_will_have_30_min_for_deposit_after_copy_address}}</li>
-                    </ul>
                 </div>
-            </div>
-            <div class="primary-button"
-                 ng-disabled="in_progress"
-                 ng-click="blockAddress(deposit_address)">
-                {{str.copy}}
+                <ul class="col mh16 mv0 text2 text-align-start">
+                    <li>{{str.minimum_deposit}} {{formatAmount(0.0001, wallet.gas_domain)}}</li>
+                    <li>{{str.you_will_have_30_min_for_deposit_after_copy_address}}</li>
+                </ul>
+                <div class="row" ng-show="lock && lock.user_address == wallet.address()">
+                    {{str.you_block_deposit_address_till}} {{formatTime(lock.deadline)}}
+                </div>
+                <div class="row" ng-show="lock && lock.user_address != wallet.address()">
+                    {{str.address_blicked_till}} {{formatTime(lock.deadline)}}
+                </div>
             </div>
             <div></div>
         </div>
+    </div>
+    <div class="primary-button"
+         ng-disabled="lock && lock.user_address != wallet.address()"
+         ng-click="blockAddress()">
+        {{str.copy}}
     </div>
 </md-dialog>

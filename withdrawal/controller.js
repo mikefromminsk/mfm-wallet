@@ -15,6 +15,12 @@ function openWithdrawal(domain, success) {
             })
         }
 
+        $scope.network = function () {
+            if (domain == wallet.gas_domain)
+                return "tron"
+            return domain
+        }
+
         init()
     })
 }

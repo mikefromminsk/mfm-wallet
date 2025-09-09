@@ -23,13 +23,19 @@
                         <p class="mt8 text2">{{str.swap}}</p>
                     </div>
                     <div class="flex p16 col align-start-center ripple"
-                         ng-show="isMiningToken()"
+                         ng-show="isDepositToken(token)"
+                         ng-click="openDeposit(domain, refresh)">
+                        <img class="img16 img-gray" src="/mfm-wallet/img/plus.svg">
+                        <p class="mt8 text2">{{str.deposit}}</p>
+                    </div>
+                    <div class="flex p16 col align-start-center ripple"
+                         ng-show="isMiningToken(token)"
                          ng-click="openMiner(domain, refresh)">
                         <img class="img16 img-gray" src="/mfm-wallet/img/mining.svg">
                         <p class="mt8 text2">{{str.mining}}</p>
                     </div>
                     <div class="flex p16 col align-start-center ripple"
-                         ng-show="isCraftToken()"
+                         ng-show="isCraftToken(token)"
                          ng-click="openRecipe(domain, refresh)">
                         <img class="img16 img-gray" src="/mfm-wallet/img/craft.svg">
                         <p class="mt8 text2">{{str.craft}}</p>

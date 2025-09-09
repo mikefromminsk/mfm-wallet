@@ -91,6 +91,7 @@ var wallet = {
     gas_domain: "usdt",
     vavilon: "vavilon",
     energy: "energy",
+    bitcoin: "bitcoin",
     tron: "tron",
     MINING_ADDRESS: "V3eWGQmcvKkG7bhtCv7eW1yvtwTxX",
     MINER_ADDRESS: "V3f7tNy1QpiwH4C5J7AUDc46bidsH",

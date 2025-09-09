@@ -19,13 +19,13 @@
                 <p class="mt4 text2">{{formatPrice(account.token.price * account.balance)}}</p>
             </div>
         </div>
-        <div class="row" ng-show="account.domain == wallet.gas_domain">
+        <div class="row" ng-show="isDepositToken(account.token)">
             <div class="flex row align-center-center p16 ripple"
-                 ng-click="openDeposit(wallet.gas_domain, refresh)">
+                 ng-click="openDeposit(account.domain, refresh)">
                 {{str.deposit}}
             </div>
             <div class="flex row align-center-center p16 ripple"
-                 ng-click="openWithdrawal(wallet.gas_domain, refresh)">
+                 ng-click="openWithdrawal(account.domain, refresh)">
                 {{str.withdrawal}}
             </div>
         </div>
