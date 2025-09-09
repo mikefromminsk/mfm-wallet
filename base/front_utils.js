@@ -163,23 +163,23 @@ function showSuccess(message, success) {
 }
 
 function hideKeyboard() {
-    const active = document.activeElement;
+    const active = document.activeElement
     if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA')) {
         active.blur()
     }
 }
 
 function copy(text) {
-    let textArea = document.createElement("textarea");
-    textArea.value = text;
-    textArea.style.top = "0";
-    textArea.style.left = "0";
-    textArea.style.position = "fixed";
-    document.body.appendChild(textArea);
-    textArea.focus();
-    textArea.select();
-    document.execCommand('copy');
-    document.body.removeChild(textArea);
+    let textArea = document.createElement("textarea")
+    textArea.value = text
+    textArea.style.top = "0"
+    textArea.style.left = "0"
+    textArea.style.position = "fixed"
+    document.body.appendChild(textArea)
+    textArea.focus()
+    textArea.select()
+    document.execCommand('copy')
+    document.body.removeChild(textArea)
 }
 
 function share(title, text, url) {
@@ -187,9 +187,9 @@ function share(title, text, url) {
         navigator.share({
             title: title,
             text: text,
-            url: url,
+            url: url
         })
             .then(() => console.log('Successful share'))
-            .catch((error) => console.log('Error sharing', error));
+            .catch((error) => console.log('Error sharing', error))
     }
 }

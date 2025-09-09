@@ -1,4 +1,4 @@
-let worker;
+let worker
 
 function openWebMiner(domain, success) {
     trackCall(arguments)
@@ -52,7 +52,7 @@ function openWebMiner(domain, success) {
         function startMiningProcess(last_hash, difficulty) {
             if (worker != null)
                 worker.terminate()
-            worker = new Worker('/mfm-wallet/miner/web/worker.js');
+            worker = new Worker('/mfm-wallet/miner/web/worker.js')
             worker.addEventListener('message', function (e) {
                 $scope.speed = e.data.speed
                 if ($scope.last_hash == e.data.last_hash) {
@@ -72,12 +72,12 @@ function openWebMiner(domain, success) {
                 } else {
                     loadMiningInfo(true)
                 }
-            });
+            })
             worker.postMessage({
                 domain: domain,
                 last_hash: last_hash,
                 difficulty: difficulty,
-            });
+            })
         }
 
         $scope.stopMining = function (message) {
@@ -146,7 +146,7 @@ let requestInProcess= false
 function postContractWithGas(domain, path, params, success, error) {
     if (requestInProcess) {
         requestQueue.push({domain, path, params, success, error})
-        return;
+        return
     }
     requestInProcess = true
     let isParamsFunction = typeof params === 'function'

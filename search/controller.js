@@ -17,7 +17,7 @@ function addSearch($scope) {
         let search_text = $scope.search_text
 
         let translations = []
-        if (search_text != ''){
+        if (search_text != '') {
             for (const key of Object.keys(ticker)) {
                 const value = ticker[key].toLowerCase()
                 if (value.startsWith(search_text))
@@ -27,20 +27,18 @@ function addSearch($scope) {
 
         if (translations.length > 0) {
             postContract("mfm-token", "tokens", {
-                domains: translations.join(","),
+                domains: translations.join(",")
             }, function (response) {
                 $scope.tokens = response.tokens
                 $scope.$apply()
-            }, function () {
-            })
+            }, function () {})
         } else {
             postContract("mfm-token", "search", {
-                search_text: search_text,
+                search_text: search_text
             }, function (response) {
                 $scope.tokens = response.tokens
                 $scope.$apply()
-            }, function () {
-            })
+            }, function () {})
         }
     }
 

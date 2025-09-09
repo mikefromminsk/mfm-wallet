@@ -1,4 +1,3 @@
-
 function addScopeUtils($scope) {
     $scope.location = location
     $scope.wallet = window.wallet
@@ -44,26 +43,26 @@ function addScopeUtils($scope) {
     }
 
     $scope.formatSec = function (sec) {
-        let d = new Date(sec * 1000);
+        let d = new Date(sec * 1000)
 
         function format_two_digits(n) {
-            return n < 10 ? '0' + n : n;
+            return n < 10 ? '0' + n : n
         }
 
-        let hours = format_two_digits(d.getHours());
-        let minutes = format_two_digits(d.getMinutes());
-        return hours + ":" + minutes;
+        let hours = format_two_digits(d.getHours())
+        let minutes = format_two_digits(d.getMinutes())
+        return hours + ":" + minutes
     }
 
     $scope.formatPrice = function (number, precision) {
         if (number == null)
-            number = 0;
+            number = 0
         return "$" + $scope.shortNumber(number, precision)
     }
 
     $scope.formatAmount = function (number, domain, precision) {
         if (number == null)
-            number = 0;
+            number = 0
         let result = $scope.shortNumber(number, precision)
         if (ticker[domain] != null)
             domain = ticker[domain]
@@ -96,12 +95,12 @@ function addScopeUtils($scope) {
             "min-height": size + "px",
             "max-width": size + "px",
             "max-height": size + "px",
-            "background-image": "url(data:image/png;base64,"
-                + new Identicon(address, {
+            "background-image": "url(data:image/png;base64," +
+                new Identicon(address, {
                     background: [255, 255, 255, 0],
                     margin: 0.2,
-                    size: size,
-                }).toString() + ")",
+                    size: size
+                }).toString() + ")"
         }
     }
 
@@ -122,13 +121,13 @@ function addScopeUtils($scope) {
         if (number == 0) return ""
         let str = $scope.formatPercent(number, 0)
         if (number > 0)
-            str = "+" + str;
-        return str;
+            str = "+" + str
+        return str
     }
 
     $scope.formatPercent = function (number, precision) {
-        if (number == 0 || isNaN(number)) return "0%";
-        return $scope.round(number, precision || 1) + "%";
+        if (number == 0 || isNaN(number)) return "0%"
+        return $scope.round(number, precision || 1) + "%"
     }
 
     $scope.percentColor = function (number) {
@@ -151,77 +150,77 @@ function addScopeUtils($scope) {
     }
 
     $scope.formatTime = function (seconds, language) {
-        let diff = (seconds < 1000000000 ? seconds : new Date().getTime() / 1000 - seconds);
+        let diff = (seconds < 1000000000 ? seconds : new Date().getTime() / 1000 - seconds)
 
-        language = !language ? "en" : language;
+        language = !language ? "en" : language
         if (language.startsWith("ru")) {
-            return $scope.formatTimeRussian(diff);
+            return $scope.formatTimeRussian(diff)
         } else {
-            return $scope.formatTimeEnglish(diff);
+            return $scope.formatTimeEnglish(diff)
         }
     }
 
     $scope.formatTimeEnglish = function (diff) {
         if (diff < 60) {
-            return Math.floor(diff) + " " + (diff == 1 ? "second" : "seconds");
+            return Math.floor(diff) + " " + (diff == 1 ? "second" : "seconds")
         } else if (diff < 60 * 60) {
-            let minutes = Math.floor(diff / 60);
-            return minutes + " " + (minutes == 1 ? "minute" : "minutes");
+            let minutes = Math.floor(diff / 60)
+            return minutes + " " + (minutes == 1 ? "minute" : "minutes")
         } else if (diff < 60 * 60 * 24) {
-            let hours = Math.floor(diff / (60 * 60));
-            return hours + " " + (hours == 1 ? "hour" : "hours");
+            let hours = Math.floor(diff / (60 * 60))
+            return hours + " " + (hours == 1 ? "hour" : "hours")
         } else if (diff < 60 * 60 * 24 * 7) {
-            let days = Math.floor(diff / (60 * 60 * 24));
-            return days + " " + (days == 1 ? "day" : "days");
+            let days = Math.floor(diff / (60 * 60 * 24))
+            return days + " " + (days == 1 ? "day" : "days")
         } else if (diff < 60 * 60 * 24 * 30) {
-            let weeks = Math.floor(diff / (60 * 60 * 24 * 7));
-            return weeks + " " + (weeks == 1 ? "week" : "weeks");
+            let weeks = Math.floor(diff / (60 * 60 * 24 * 7))
+            return weeks + " " + (weeks == 1 ? "week" : "weeks")
         } else if (diff < 60 * 60 * 24 * 365) {
-            let months = Math.floor(diff / (60 * 60 * 24 * 30));
-            return months + " " + (months == 1 ? "month" : "months");
+            let months = Math.floor(diff / (60 * 60 * 24 * 30))
+            return months + " " + (months == 1 ? "month" : "months")
         } else {
-            let years = Math.floor(diff / (60 * 60 * 24 * 365));
-            return years + " " + (years == 1 ? "year" : "years");
+            let years = Math.floor(diff / (60 * 60 * 24 * 365))
+            return years + " " + (years == 1 ? "year" : "years")
         }
     }
 
     $scope.formatTimeRussian = function (diff) {
         if (diff < 60) {
-            return Math.floor(diff) + " " + $scope.getRussianWord(diff, "секунду", "секунды", "секунд");
+            return Math.floor(diff) + " " + $scope.getRussianWord(diff, "секунду", "секунды", "секунд")
         } else if (diff < 60 * 60) {
-            let minutes = Math.floor(diff / 60);
-            return minutes + " " + $scope.getRussianWord(minutes, "минуту", "минуты", "минут");
+            let minutes = Math.floor(diff / 60)
+            return minutes + " " + $scope.getRussianWord(minutes, "минуту", "минуты", "минут")
         } else if (diff < 60 * 60 * 24) {
-            let hours = Math.floor(diff / (60 * 60));
-            return hours + " " + $scope.getRussianWord(hours, "час", "часа", "часов");
+            let hours = Math.floor(diff / (60 * 60))
+            return hours + " " + $scope.getRussianWord(hours, "час", "часа", "часов")
         } else if (diff < 60 * 60 * 24 * 7) {
-            let days = Math.floor(diff / (60 * 60 * 24));
-            return days + " " + $scope.getRussianWord(days, "день", "дня", "дней");
+            let days = Math.floor(diff / (60 * 60 * 24))
+            return days + " " + $scope.getRussianWord(days, "день", "дня", "дней")
         } else if (diff < 60 * 60 * 24 * 30) {
-            let weeks = Math.floor(diff / (60 * 60 * 24 * 7));
-            return weeks + " " + $scope.getRussianWord(weeks, "неделю", "недели", "недель");
+            let weeks = Math.floor(diff / (60 * 60 * 24 * 7))
+            return weeks + " " + $scope.getRussianWord(weeks, "неделю", "недели", "недель")
         } else if (diff < 60 * 60 * 24 * 365) {
-            let months = Math.floor(diff / (60 * 60 * 24 * 30));
-            return months + " " + $scope.getRussianWord(months, "месяц", "месяца", "месяцев");
+            let months = Math.floor(diff / (60 * 60 * 24 * 30))
+            return months + " " + $scope.getRussianWord(months, "месяц", "месяца", "месяцев")
         } else {
-            let years = Math.floor(diff / (60 * 60 * 24 * 365));
-            return years + " " + $scope.getRussianWord(years, "год", "года", "лет");
+            let years = Math.floor(diff / (60 * 60 * 24 * 365))
+            return years + " " + $scope.getRussianWord(years, "год", "года", "лет")
         }
     }
 
     $scope.getRussianWord = function (number, form1, form2, form5) {
-        number = Math.abs(number) % 100;
+        number = Math.abs(number) % 100
         if (number > 10 && number < 20) {
-            return form5;
+            return form5
         }
-        number = number % 10;
+        number = number % 10
         if (number == 1) {
-            return form1;
+            return form1
         }
         if (number >= 2 && number <= 4) {
-            return form2;
+            return form2
         }
-        return form5;
+        return form5
     }
 
     $scope.formatTimeDiff = function (seconds) {
@@ -229,7 +228,7 @@ function addScopeUtils($scope) {
     }
 
     function padTo2Digits(num) {
-        return num.toString().padStart(2, '0');
+        return num.toString().padStart(2, '0')
     }
 
     $scope.formatDate = function (number) {
@@ -240,31 +239,31 @@ function addScopeUtils($scope) {
         return [
             padTo2Digits(date.getDate()),
             padTo2Digits(date.getMonth() + 1),
-            date.getFullYear(),
-        ].join('.');
+            date.getFullYear()
+        ].join('.')
     }
 
     $scope.percentFormat = function (number) {
-        return $scope.round(number, 0) + "%";
+        return $scope.round(number, 0) + "%"
     }
 
     $scope.random = function (from, to) {
-        return Math.floor(Math.random() * to) + from;
+        return Math.floor(Math.random() * to) + from
     }
 
     $scope.groupByTimePeriod = function (obj) {
-        const oneDay = 24 * 60 * 60;
+        const oneDay = 24 * 60 * 60
         let lastDay = 0
         if (obj) {
             for (let i = 0; i < obj.length; i++) {
-                let day = Math.floor(obj[i]['time'] / oneDay) * oneDay;
+                let day = Math.floor(obj[i]['time'] / oneDay) * oneDay
                 if (day != lastDay) {
                     obj[i]['day'] = day
                     lastDay = day
                 }
             }
         }
-        return obj;
+        return obj
     }
 
     $scope.max = function (a, b) {
@@ -310,7 +309,7 @@ function addScopeUtils($scope) {
         "#FFEB3B",
         "#FFC107",
         "#FF9800",
-        "#FF5722",
+        "#FF5722"
     ]
 
     $scope.getColor = function (domain) {
@@ -327,10 +326,9 @@ function addScopeUtils($scope) {
             'background': 'linear-gradient(90deg, ' + random4colors.join(', ') + ')',
             'background-size': '400% 400%',
             'animation': 'gradient 10s ease infinite',
-            'transform': 'translate3d(0, 0, 0)',
+            'transform': 'translate3d(0, 0, 0)'
         }
     }
-
 
     $scope.channels = []
     $scope.subscription_id_list = []
@@ -394,14 +392,14 @@ function addScopeUtils($scope) {
     }
 
     $scope.stringHash = function (string) {
-        let hash = 0;
+        let hash = 0
         if (string != null) {
             for (const char of string) {
                 hash = (hash << 5) - hash + char.charCodeAt(0)
-                hash |= 0;
+                hash |= 0
             }
         }
-        return hash;
+        return hash
     }
 
     $scope.check = function (value) {

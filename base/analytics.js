@@ -1,4 +1,4 @@
-const session = Math.random().toString(36).substring(2, 2 + 6/*length*/)
+const session = Math.random().toString(36).substring(2, 8)
 
 function trackEvent(name, value, user_id, success, error) {
     postContract("mfm-analytics", "track", {
@@ -7,7 +7,7 @@ function trackEvent(name, value, user_id, success, error) {
         user_id: user_id || "",
         session: session,
         language_code: window.getLanguage ? getLanguage() : null,
-        timezone_offset_minutes: new Date().getTimezoneOffset(),
+        timezone_offset_minutes: new Date().getTimezoneOffset()
     }, function (response) {
         if (success)
             success(response.info)

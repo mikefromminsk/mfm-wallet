@@ -42,7 +42,7 @@ function openOnboarding(success) {
                 click: function () {
                     $scope.openDividend(wallet.vavilon, $scope.refresh)
                 }
-            },
+            }
         ]
 
         $scope.next = function () {

@@ -60,24 +60,24 @@ function addWallet($scope) {
     function setAccounts(accounts) {
         accounts.sort((a, b) => {
             try {
-                if (a.domain === wallet.gas_domain) return -1;
-                if (b.domain === wallet.gas_domain) return 1;
+                if (a.domain === wallet.gas_domain) return -1
+                if (b.domain === wallet.gas_domain) return 1
 
-                const aPrice = a.token?.price || 0;
-                const bPrice = b.token?.price || 0;
+                const aPrice = a.token?.price || 0
+                const bPrice = b.token?.price || 0
 
                 if (aPrice === 0 && bPrice === 0) {
-                    return (b.balance || 0) - (a.balance || 0);
+                    return (b.balance || 0) - (a.balance || 0)
                 }
 
-                if (bPrice === 0) return -1;
-                if (aPrice === 0) return 1;
+                if (bPrice === 0) return -1
+                if (aPrice === 0) return 1
 
-                return (b.balance * bPrice) - (a.balance * aPrice);
+                return (b.balance * bPrice) - (a.balance * aPrice)
             } catch (e) {
-                return 0;
+                return 0
             }
-        });
+        })
         $scope.accounts = accounts
     }
 
@@ -103,7 +103,7 @@ function addWallet($scope) {
     let lastTotalBalance = 0
 
     function setTotalBalance() {
-        if (!isDelayFinished) return;
+        if (!isDelayFinished) return
         let newTotalBalance = $scope.getTotalBalance()
         let precision = 4
         if (newTotalBalance > 100)
@@ -117,7 +117,7 @@ function addWallet($scope) {
         isDelayFinished = false
         setTimeout(() => {
             isDelayFinished = true
-        }, 15000);
+        }, 15000)
     }
 
     $scope.selectAccount = function (domain) {
@@ -153,23 +153,10 @@ function addWallet($scope) {
         postContract("mfm-token", "trans", {
             address: wallet.address(),
         }, function (response) {
-            //$scope.next_offset = response.next_offset
             $scope.trans = $scope.groupByTimePeriod(response.trans)
             $scope.$apply()
         })
     }
-
-    /*$scope.loadNextTrans = function () {
-        postContract("mfm-token", "trans", {
-            address: wallet.address(),
-            offset: $scope.next_offset,
-            size: 5,
-        }, function (response) {
-            $scope.next_offset = response.next_offset
-            $scope.trans = [...$scope.trans, ...response.trans]
-            $scope.$apply()
-        })
-    }*/
 
     function loadAirdrops() {
         postContract("mfm-airdrop", "list", {

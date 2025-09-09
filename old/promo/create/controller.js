@@ -19,7 +19,7 @@ function openAirdropCreate(domain, success) {
                 domain: domain,
                 to: address,
                 pass: calcStartPass(domain, address, password),
-                delegate: "mfm-contract/airdrop" + $scope.dropAmount,
+                delegate: "mfm-contract/airdrop" + $scope.dropAmount
             }, function () {
                 getPin(function (pin) {
                     wallet.calcUserPass(domain, pin, function (pass) {
@@ -37,8 +37,8 @@ function openAirdropCreate(domain, success) {
                                     await navigator.share({
                                         title: str.share,
                                         text: str.click_on_the_link_and_win + " " + $scope.amount + " " + $scope.formatDomain(domain),
-                                        url: link,
-                                    });
+                                        url: link
+                                    })
                                     $scope.close()
                                 } catch (err) {
                                 }

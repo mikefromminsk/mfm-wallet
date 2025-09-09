@@ -38,7 +38,7 @@ function openLogoChange(domain, success) {
 
         $scope.logos = []
         for (let i = 0; i < 20; i++) {
-            let randomIndex = Math.floor(Math.random() * 199) + 1;
+            let randomIndex = Math.floor(Math.random() * 199) + 1
             let logoName = 'logo' + randomIndex
             if ($scope.logos.indexOf(logoName) == -1)
                 $scope.logos.push(logoName)

@@ -9,7 +9,7 @@ function openLaunchToken(success) {
             } else {
                 postContract("mfm-token", "search", {
                     search_text: $scope.search_text,
-                    size: 1,
+                    size: 1
                 }, function (response) {
                     $scope.tokens = response.tokens
                     $scope.$apply()
@@ -19,22 +19,22 @@ function openLaunchToken(success) {
 
         $scope.hasTheSameToken = function () {
             return ($scope.tokens || []).filter(function (token) {
-                return token.domain === $scope.search_text;
-            }).length == 0;
+                return token.domain === $scope.search_text
+            }).length == 0
         }
 
         $scope.check3Symbuls = function () {
-            if (!$scope.search_text) return null;
+            if (!$scope.search_text) return null
             return $scope.search_text.length >= 3
         }
 
         $scope.checkEnglish = function () {
-            if (!$scope.search_text) return null;
+            if (!$scope.search_text) return null
             return true
         }
 
         $scope.checkFreeName = function () {
-            if (!$scope.search_text) return null;
+            if (!$scope.search_text) return null
             return $scope.tokens.length == 0
         }
 

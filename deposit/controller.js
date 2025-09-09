@@ -5,14 +5,14 @@ function openDeposit(address, success) {
         $scope.network = "tron"
 
         postContract("mfm-tron", "deposit_address", {
-            address: wallet.address(),
+            address: wallet.address()
         }, function (response) {
             $scope.deposit_address = response.deposit_address
             $scope.$apply()
             drawQr(response.deposit_address)
         })
 
-        var qrcode = null;
+        var qrcode = null
         function drawQr(text){
             if (qrcode == null){
                 qrcode = new QRCode(document.getElementById("qrcode"), {
@@ -32,7 +32,7 @@ function openDeposit(address, success) {
             $scope.startRequest()
             postContract("mfm-tron", "deposit_address_block", {
                 address: wallet.address(),
-                deposit_address: $scope.deposit_address,
+                deposit_address: $scope.deposit_address
             }, function (response) {
                 $scope.deposit_deadline = response.deposit_deadline
                 $scope.copy($scope.deposit_address)

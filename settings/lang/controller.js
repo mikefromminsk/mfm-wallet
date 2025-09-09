@@ -1,7 +1,7 @@
 window.languages = {
     "title": "Languages",
     "en": "English",
-    "ru": "Русский",
+    "ru": "Русский"
 }
 
 function openLanguages(languages, success) {

@@ -21,7 +21,7 @@ function addLogin($scope, success) {
     }
 
     $scope.login2 = function () {
-        let userInput = prompt("Please enter a value:");
+        let userInput = prompt("Please enter a value:")
         if (userInput !== null) {
             postContract("mfm-telegram", "login", {
                 user_id: userInput
@@ -58,5 +58,3 @@ function addLogin($scope, success) {
         $scope.copied = true
     }
 }
-
-

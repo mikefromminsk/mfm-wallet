@@ -1,85 +1,85 @@
 function addStore($scope) {
-
     $scope.apps = {
-        "shops": [{
-            title: "ShitShop",
-            domain: "shit",
-            link: function () {
-                openShitShop()
+        "shops": [
+            {
+                title: "ShitShop",
+                domain: "shit",
+                link: function () {
+                    openShitShop()
+                }
+            },
+            {
+                title: "GunsShop",
+                domain: "ak74",
+                link: function () {
+                    openShopGuns(function (link) {
+                        openRecipe(link)
+                    })
+                }
             }
-        },{
-            title: "GunsShop",
-            domain: "ak74",
-            link: function () {
-                openShopGuns(function (link) {
-                    openRecipe(link)
-                })
+        ],
+        "games": [
+            {
+                title: "Shit",
+                domain: "Shit",
+                link: "/mfm-pigeon/"
             }
-        }],
-        "games": [{
-            title: "Shit",
-            domain: "Shit",
-            link: "/mfm-pigeon/"
-        }],
-        "defi": [{
-            title: str.mining,
-            domain: "miner",
-            link: function () {
-                $scope.openMiner(wallet.vavilon)
+        ],
+        "defi": [
+            {
+                title: "Mining",
+                domain: "miner",
+                link: function () {
+                    $scope.openMiner(wallet.vavilon)
+                }
+            },
+            {
+                title: "Dividend",
+                domain: wallet.vavilon,
+                link: function () {
+                    $scope.openDividend(wallet.vavilon)
+                }
+            },
+            {
+                title: "Explorer",
+                domain: "explorer",
+                link: "/mfm-landing/explorer/"
+            },
+            {
+                title: "Launcher",
+                domain: "Launcher",
+                link: function () {
+                    $scope.openLaunchToken()
+                }
             }
-        }, {
-            domain: wallet.vavilon,
-            link: function () {
-                $scope.openDividend(wallet.vavilon)
+        ],
+        "docs": [
+            {
+                title: "Whitepaper",
+                domain: "whitepaper",
+                link: "/mfm-landing/docs/?doc=whitepaper.md"
+            },
+            {
+                title: "Roadmap",
+                domain: "roadmap",
+                link: "/mfm-landing/docs/?doc=roadmap.md"
+            },
+            {
+                title: "Terms",
+                domain: "terms",
+                link: "/mfm-landing/docs/?doc=terms.md"
+            },
+            {
+                title: "Dev",
+                domain: "dev",
+                link: "/mfm-landing/docs/?doc=dev.md"
             }
-        },{
-            title: "Explorer",
-            domain: "explorer",
-            link: "/mfm-landing/explorer/"
-        }, {
-            title: "Launcher",
-            domain: "Launcher",
-            link: function () {
-                $scope.openLaunchToken()
-            }
-        }],
-        "docs": [{
-            title: "Whitepaper",
-            domain: "whitepaper",
-            link: "/mfm-landing/docs/?doc=whitepaper.md"
-        }, {
-            title: "Roadmap",
-            domain: "roadmap",
-            link: "/mfm-landing/docs/?doc=roadmap.md"
-        }, {
-            title: "Terms",
-            domain: "terms",
-            link: "/mfm-landing/docs/?doc=terms.md"
-        }, {
-            title: "Dev",
-            domain: "dev",
-            link: "/mfm-landing/docs/?doc=dev.md"
-        }]
-
-        /* add("defi", "Airdrop", "#46aef5", "#openAirdrop")*/
-        /*add("defi", "Staking", "#46aef5", "/mfm-landing/explorer")*/
-
-        /*    add("utilities", "Analytics", "#46aef5", "#openAnalytics")*/
-        /*add("utilities", "Storage", "#46aef5", "#openAnalytics")*/
-
-        /*    add("games", "Quizes", "#46aef5", "/mfm-pigeon")*/
+        ]
     }
 
-    /*add("exchange", "Cex", "#8646f5", "/mfm-exchange")
-       add("exchange", "Dex", "#46aef5", "#openPool=vavilon")
-       add("exchange", "P2P", "#46aef5", "#openPool=vavilon")*/
-
-    /*add("bridges", "USDT", "#46aef5", function () {
-        $scope.openDeposit()
-    })*/
     $scope.selectApp = function (link) {
         if (link[0] == "/") {
-            window.open(link, '_blank');
+            window.open(link, '_blank')
         }
         if (typeof link === "function") {
             link()

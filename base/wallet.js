@@ -10,8 +10,8 @@ function post(url, params, success, error) {
             url = "/" + url
         url = location.origin + url
     }
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", url, true);
+    const xhr = new XMLHttpRequest()
+    xhr.open("POST", url, true)
     xhr.onload = () => {
         if (xhr.readyState == 4) {
             if (xhr.status == 200) {
@@ -21,7 +21,7 @@ function post(url, params, success, error) {
                 try {
                     let response = JSON.parse(xhr.response)
                     let message = response.message
-                    if (window.message) // translations
+                    if (window.message)
                         message = window.message[message.replaceAll(" ", "_").toLowerCase()] || message
                     if (error) {
                         error(message)
@@ -33,7 +33,7 @@ function post(url, params, success, error) {
                 }
             }
         }
-    };
+    }
     xhr.send(JSON.stringify(params || {}))
 }
 
@@ -60,23 +60,23 @@ function calcPass(domain, address, password, prev_key) {
 }
 
 function hashAddress(password) {
-    const abc = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
-    const hashBytes = new Uint8Array([...atob(hash(password))].map(c => c.charCodeAt(0)));
-    const last20Bytes = hashBytes.slice(-20); // get last 20 bytes
-    let digits = [0];
-    for (const byte of last20Bytes) { // to base58
-        let carry = byte;
+    const abc = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'
+    const hashBytes = new Uint8Array([...atob(hash(password))].map(c => c.charCodeAt(0)))
+    const last20Bytes = hashBytes.slice(-20)
+    let digits = [0]
+    for (const byte of last20Bytes) {
+        let carry = byte
         for (let i = 0; i < digits.length; i++) {
-            carry += digits[i] * 256;
-            digits[i] = carry % 58;
-            carry = Math.floor(carry / 58);
+            carry += digits[i] * 256
+            digits[i] = carry % 58
+            carry = Math.floor(carry / 58)
         }
         while (carry > 0) {
-            digits.push(carry % 58);
-            carry = Math.floor(carry / 58);
+            digits.push(carry % 58)
+            carry = Math.floor(carry / 58)
         }
     }
-    return "V" + digits.reverse().map(d => abc[d]).join('');
+    return "V" + digits.reverse().map(d => abc[d]).join('')
 }
 
 function getPin(success, cancel) {
@@ -101,7 +101,7 @@ var wallet = {
     login: function (address, password, success, error) {
         postContract("mfm-token", "account", {
             domain: wallet.gas_domain,
-            address: address,
+            address: address
         }, function (response) {
             if (hash(calcHash(
                 wallet.gas_domain,
@@ -138,18 +138,17 @@ var wallet = {
     },
     reg: function (domain, pin, success, error) {
         postContract("mfm-token", "account", {
-                domain: domain,
-                address: wallet.address(),
-            }, success,
-            function () {
-                if (pin) {
+            domain: domain,
+            address: wallet.address()
+        }, success, function () {
+            if (pin) {
+                wallet.calcUserPass(domain, pin, success, error)
+            } else {
+                getPin(function (pin) {
                     wallet.calcUserPass(domain, pin, success, error)
-                } else {
-                    getPin(function (pin) {
-                        wallet.calcUserPass(domain, pin, success, error)
-                    })
-                }
-            })
+                })
+            }
+        })
     },
     logout: function () {
         storage.clear()
@@ -165,7 +164,7 @@ var wallet = {
         let password = decode(passhash, pin)
         postContract("mfm-token", "account", {
             domain: domain,
-            address: wallet.address(),
+            address: wallet.address()
         }, function (response) {
             success(calcPass(domain, wallet.address(), password, response.account.prev_key))
         }, function () {
@@ -177,12 +176,13 @@ var wallet = {
                 wallet.calcUserPass(domain, pin, success, error)
             })
         })
-    }, calcUserPassList: function (domains, pin, success, error) {
+    },
+    calcUserPassList: function (domains, pin, success, error) {
         let passes = {}
         for (const domain of domains) {
             wallet.calcUserPass(domain, pin, (pass) => {
                 passes[domain] = pass
-                if (Object.keys(domains).length == Object.keys(passes).length) {
+                if (domains.length == Object.keys(passes).length) {
                     success(passes)
                 }
             }, error)

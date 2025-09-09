@@ -9,7 +9,7 @@ function openLoader(success) {
             "        \"amount\": \"1000000\",\n" +
             "        \"delegate\": \"mfm-contract/craft?domain\u003dak74\u0026coin\u003d2500\",\n" +
             "        \"pass\": \":a48b7fea0746fbf457ae1ac95a7a24b6ad676c99478f2f1236980f10526454c1\"\n" +
-            "    }]";
+            "    }]"
 
         $scope.send = function () {
             getPin(function (pin) {

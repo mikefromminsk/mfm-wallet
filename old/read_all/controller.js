@@ -4,7 +4,7 @@ function openMinerTestReadUsers() {
         function loadTrans() {
             postContract("mfm-token", "trans", {
                 address: wallet.MINER_ADDRESS,
-                size: 100,
+                size: 100
             }, function (response) {
                 $scope.next_offset = response.next_offset
                 $scope.trans = response.trans
@@ -14,11 +14,10 @@ function openMinerTestReadUsers() {
 
         loadTrans()
 
-
         function loadMinerToggle(address) {
             postContract("mfm-miner", "toggle_domain", {
                 address: address,
-                domain: 'vavilon',
+                domain: wallet.vavilon
             }, function (response) {
             }, function (response) {
             })
@@ -26,7 +25,7 @@ function openMinerTestReadUsers() {
 
         function loadMinerAccount(address) {
             postContract("mfm-miner", "account", {
-                address: address,
+                address: address
             }, function (response) {
                 if (response.miner_account) {
                     $scope.minerAccounts.push(response.miner_account)

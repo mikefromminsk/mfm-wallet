@@ -50,7 +50,6 @@ function openPool(domain, success) {
             $scope.selectedIndex = index
         }
 
-
         function addSwap() {
             $scope.is_sell = 1
 
@@ -59,7 +58,6 @@ function openPool(domain, success) {
                     $scope.quote_amount = null
                     return
                 }
-
                 postContract("mfm-contract", "pool_impact", {
                     domain: $scope.domain,
                     is_sell: $scope.is_sell,
@@ -78,7 +76,6 @@ function openPool(domain, success) {
                     $scope.base_amount = null
                     return
                 }
-
                 postContract("mfm-contract", "pool_impact", {
                     domain: $scope.domain,
                     is_sell: 0,
@@ -160,12 +157,9 @@ function openPool(domain, success) {
             }
         }
 
-
-        addSwap($scope)
-        addLiquidity($scope)
+        addSwap()
+        addLiquidity()
 
         $scope.loadPoolData()
     })
-
-
 }

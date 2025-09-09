@@ -2,7 +2,7 @@ function openLaunchRecipe(domain, success) {
     showDialog("launch/recipe", success, function ($scope) {
         $scope.domain = domain
         $scope.token = {
-            supply_step: 6,
+            supply_step: 6
         }
         $scope.contract = "craft"
         $scope.items = [{}]
@@ -34,7 +34,7 @@ function openLaunchRecipe(domain, success) {
                 to: contractAddress,
                 pass: calcStartPass(domain, contractAddress, CRAFT_SEED),
                 delegate: delegate,
-                amount: Math.pow(10, $scope.token.supply_step),
+                amount: Math.pow(10, $scope.token.supply_step)
             }, function () {
                 addToWallet(domain, function () {
                     showSuccessDialog(str.your_token_created, function () {

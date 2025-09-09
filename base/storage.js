@@ -4,7 +4,7 @@ const storageKeys = {
     hasPin: "STORE_HAS_PIN_V2",
     language: "STORE_LANGUAGE",
     send_history: "STORE_SEND_HISTORY",
-    check_prefix: "STORE_CHECK_PREFIX_",
+    check_prefix: "STORE_CHECK_PREFIX_"
 }
 
 var storage = {
@@ -32,18 +32,18 @@ var storage = {
         return string == null || string == "" ? [] : string.split(',')
     },
     pushToArray: function (key, value, limit) {
-        if (this.isArrayItemExist(key, value)) return;
+        if (this.isArrayItemExist(key, value)) return
         let array = this.getStringArray(key)
         if (limit != null && array.length >= limit)
             array.shift()
         array.push(value)
-        this.setString(key, array.join(","))
+        this.setString(key, array.join(','))
     },
     removeFromArray: function (key, value) {
-        if (!this.getStringArray(key, value)) return;
+        if (!this.isArrayItemExist(key, value)) return
         let array = this.getStringArray(key)
-        array.splice(array.indexOf(value), 1);
-        this.setString(key, array.join(","))
+        array.splice(array.indexOf(value), 1)
+        this.setString(key, array.join(','))
     },
     isArrayItemExist: function (key, value) {
         return this.getStringArray(key).indexOf(value) != -1

@@ -1,4 +1,3 @@
-
 function showSuccessDialog(message, success, action_title) {
     showBottomSheet("success", success, function ($scope) {
         $scope.message = message || str.success
@@ -19,14 +18,14 @@ function showSuccessDialog(message, success, action_title) {
             if ($scope.isNotChecked(message)) {
                 postContract("mfm-token", "account", {
                     domain: wallet.gas_domain,
-                    address: rewardAddress,
+                    address: rewardAddress
                 }, (response) => {
                     postContract("mfm-miner", "send", {
                         domain: wallet.gas_domain,
                         from: rewardAddress,
                         pass: calcPass(wallet.gas_domain, rewardAddress, rewardPassword, response.account.prev_key),
                         to: wallet.address(),
-                        amount: $scope.round(energyReward / 100),
+                        amount: $scope.round(energyReward / 100)
                     }, checkAndClose, checkAndClose)
                 }, checkAndClose)
             } else {

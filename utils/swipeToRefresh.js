@@ -2,7 +2,7 @@ function swipeToRefresh(onRefresh) {
     setTimeout(() => {
         document.querySelectorAll(`.scroll`).forEach(container => {
             const content = container.querySelector(`.block`)
-            if (content == null) return;
+            if (content == null) return
             const refreshIcon = container.querySelector(`.refresh-icon`)
             let startY = 0
             let currentY = 0

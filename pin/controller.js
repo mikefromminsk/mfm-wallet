@@ -28,7 +28,7 @@ function getPin(success, cancel) {
 
                 $scope.remove = function () {
                     if ($scope.pincode.length > 0)
-                        $scope.pincode = $scope.pincode.substring(0, $scope.pincode.length - 1);
+                        $scope.pincode = $scope.pincode.substring(0, $scope.pincode.length - 1)
                 }
             })
         }

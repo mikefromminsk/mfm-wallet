@@ -1,14 +1,14 @@
 function getToken(domain, success, error) {
     postContract("mfm-token", "token", {
         domain: domain,
-        address: wallet.address(),
+        address: wallet.address()
     }, success, error)
 }
 
 function getAccount(domain, success, error) {
     postContract("mfm-token", "account", {
         domain: domain,
-        address: wallet.address(),
+        address: wallet.address()
     }, success, error)
 }
 
@@ -53,7 +53,7 @@ function openProfile(domain, success, mode) {
 
         function loadTopAccounts() {
             postContract("mfm-token", "accounts_top", {
-                domain: domain,
+                domain: domain
             }, function (response) {
                 $scope.accounts = response.accounts
             })
@@ -76,7 +76,7 @@ function openProfile(domain, success, mode) {
 
         function loadRecommendation() {
             postContract("mfm-analytics", "recommendations", {
-                from: domain,
+                from: domain
             }, function (res) {
                 $scope.recommended = res.recommended
                 $scope.$apply()
@@ -104,7 +104,7 @@ function addToWallet(domain, success, error) {
         postContract("mfm-token", "send", {
             domain: domain,
             to: wallet.address(),
-            pass: wallet.calcUserStartPass(domain, pin),
+            pass: wallet.calcUserStartPass(domain, pin)
         }, success, error)
     })
 }

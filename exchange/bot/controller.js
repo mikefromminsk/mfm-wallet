@@ -19,18 +19,18 @@ function openExchangeBot(domain, seedPrefix, success) {
         function init() {
             $scope.accounts = []
             postContract("mfm-exchange", "orderbook", {
-                domain: domain,
+                domain: domain
             }, function () {
                 postContract("mfm-token", "account", {
                     domain: domain,
-                    address: bot_address,
+                    address: bot_address
                 }, function (response) {
                     $scope.accounts.push(response.account)
                     $scope.$apply()
                 })
                 postContract("mfm-token", "account", {
                     domain: wallet.gas_domain,
-                    address: bot_address,
+                    address: bot_address
                 }, function (response) {
                     $scope.accounts.push(response.account)
                     $scope.$apply()

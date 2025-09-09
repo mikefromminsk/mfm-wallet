@@ -99,7 +99,7 @@ function openExchange(domain, is_sell, success) {
                 if ($scope.price == null) {
                     $scope.price = $scope.is_sell == 1
                         ? $scope.round($scope.token.price * 0.97)
-                        : $scope.round($scope.token.price * 1.03);
+                        : $scope.round($scope.token.price * 1.03)
                 }
                 $scope.$apply()
             })
@@ -142,11 +142,11 @@ function openExchange(domain, is_sell, success) {
         $scope.subscribe("price:" + domain, function (data) {
             $scope.token.price = data.price
             $scope.$apply()
-        });
+        })
 
         $scope.subscribe("orderbook:" + domain, function (data) {
             loadOrderbook()
-        });
+        })
 
         $scope.subscribe("account:" + wallet.address(), function (data) {
             $scope.refresh()

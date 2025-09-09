@@ -1,11 +1,10 @@
 function createOdometer(el, start, finish, duration, animation) {
-    // animation = 'count'
     if (el == null) return
     const odometer = new Odometer({
         el: el,
         value: start,
         duration: duration || 3000,
-        animation: animation,
+        animation: animation
     })
     const observer = new IntersectionObserver((entries) => {
         let hasRun = false
@@ -18,7 +17,7 @@ function createOdometer(el, start, finish, duration, animation) {
             }
         })
     }, {
-        threshold: [0, 0.9],
+        threshold: [0, 0.9]
     })
     observer.observe(el)
 }

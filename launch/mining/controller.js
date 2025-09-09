@@ -3,7 +3,7 @@ function openLaunchMining(domain, success) {
         $scope.domain = domain
         $scope.contract = "mining"
         $scope.token = {
-            supply_step: 6,
+            supply_step: 6
         }
 
         $scope.selectContract = function () {
@@ -19,7 +19,7 @@ function openLaunchMining(domain, success) {
                 to: wallet.MINING_ADDRESS,
                 pass: calcStartPass(domain, wallet.MINING_ADDRESS, wallet.MINING_ADDRESS),
                 delegate: "mfm-contract/mint100",
-                amount: Math.pow(10, $scope.token.supply_step),
+                amount: Math.pow(10, $scope.token.supply_step)
             }, function () {
                 addToWallet(domain, function () {
                     showSuccessDialog(str.your_token_created, function () {

@@ -4,12 +4,12 @@ function openShitShop(success) {
         $scope.title = "ShitShop"
         $scope.apps = {
             "base": [{domain: "water"}, {domain: "dick"}],
-            "gold": [{domain: "7dicks_soup"}],
+            "gold": [{domain: "7dicks_soup"}]
         }
 
         $scope.selectApp = function (link) {
             if (link[0] == "/") {
-                window.open(link, '_blank');
+                window.open(link, '_blank')
             } else if (typeof link === "function") {
                 link()
             } else {

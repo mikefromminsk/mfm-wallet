@@ -2,7 +2,7 @@ function openTelegramLogin(bot_name, success) {
     if (wallet.address() == "" && getTelegramUserId() != null) {
         showDialog("login/telegram", success, function ($scope) {
             postContract("mfm-telegram", "subscription_check", {
-                user_id: getTelegramUserId(),
+                user_id: getTelegramUserId()
             }, function () {
                 postContract("mfm-telegram", "login", {
                     user_id: getTelegramUserId()
@@ -30,6 +30,6 @@ function getTelegramUserId() {
     try {
         return window.Telegram.WebApp.initDataUnsafe.user.id
     } catch (e) {
-        return null;
+        return null
     }
 }

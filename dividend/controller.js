@@ -50,8 +50,7 @@ function openDividend(domain, success) {
             }, function (response) {
                 $scope.gas_account = response.account
                 $scope.$apply()
-            }, function () {
-            })
+            }, function () {})
         }
 
         function loadVavilonAccount() {
@@ -61,8 +60,7 @@ function openDividend(domain, success) {
             }, function (response) {
                 $scope.account = response.account
                 $scope.$apply()
-            }, function () {
-            })
+            }, function () {})
         }
 
         $scope.refresh = function () {

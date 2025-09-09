@@ -17,7 +17,7 @@ function openAirdrop(domain, success) {
         }
 
         $scope.addToWallet = function () {
-            openProfile(domain, $scope.refresh, 'airdrop');
+            openProfile(domain, $scope.refresh, 'airdrop')
         }
 
         $scope.isTelegramSubscribed = function () {

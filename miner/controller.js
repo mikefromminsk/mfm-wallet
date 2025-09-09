@@ -58,7 +58,7 @@ function openMiner(domain, success) {
 
         $scope.minutesInMonth = 60 * 24 * 30
         $scope.getReward = function () {
-            let percentInYear = 0;
+            let percentInYear = 0
             if ($scope.bank == null) {
                 return 0
             }
@@ -69,7 +69,7 @@ function openMiner(domain, success) {
             } else if ($scope.bank.delegate == "mfm-contract/mint100") {
                 percentInYear = 100
             }
-            let minutesInYear = 365.0 * 24 * 60;
+            let minutesInYear = 365.0 * 24 * 60
             return $scope.bank.balance / percentInYear / minutesInYear
         }
 
@@ -79,10 +79,10 @@ function openMiner(domain, success) {
 
         function sortAndApply() {
             let values = Object.values($scope.tokens).sort((a, b) => {
-                if (a.domain === domain && b.domain !== domain) return -1;
-                if (a.domain !== domain && b.domain === domain) return 1;
-                return 0;
-            });
+                if (a.domain === domain && b.domain !== domain) return -1
+                if (a.domain !== domain && b.domain === domain) return 1
+                return 0
+            })
             $scope.tokens = {}
             for (const token of values)
                 $scope.tokens[token.domain] = token

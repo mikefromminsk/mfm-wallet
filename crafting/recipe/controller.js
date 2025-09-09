@@ -36,7 +36,6 @@ function openRecipe(domain, success) {
             })
         }
 
-
         function loadRecipe() {
             postContract("mfm-craft", "recipe", {
                 domain: domain,

@@ -22,7 +22,7 @@ function openLaunchSimple(domain, success) {
                     domain: domain,
                     to: wallet.address(),
                     pass: wallet.calcUserStartPass($scope.domain, pin),
-                    amount: $scope.supply,
+                    amount: $scope.supply
                 }, function () {
                     showSuccessDialog(str.your_token_created, function () {
                         $scope.close(domain)

@@ -2,18 +2,18 @@ function getChartOptions() {
     return {
         layout: {
             background: {color: '#222'},
-            textColor: '#DDD',
+            textColor: '#DDD'
         },
         grid: {
             vertLines: {color: '#444'},
-            horzLines: {color: '#444'},
+            horzLines: {color: '#444'}
         },
         crosshair: {
-            mode: LightweightCharts.CrosshairMode.Normal,
+            mode: LightweightCharts.CrosshairMode.Normal
         },
         timeScale: {
             timeVisible: true,
-            secondsVisible: false,
+            secondsVisible: false
         }
     }
 }
@@ -40,25 +40,25 @@ function addChart($scope, app, key, accumulate_key) {
             if ($scope.candleSeries == null) {
                 let chart = createChart("chart")
                 $scope.candleSeries = chart.addCandlestickSeries({
-                    upColor: '#45be88', // Цвет свечей, когда цена растет
-                    downColor: '#FF3347', // Цвет свечей, когда цена падает
-                    borderUpColor: '#45be88', // Цвет границ свечей, когда цена растет
-                    borderDownColor: '#FF3347', // Цвет границ свечей, когда цена падает
-                    wickUpColor: '#45be88', // Цвет фитиля свечей, когда цена растет
-                    wickDownColor: '#FF3347' // Цвет фитиля свечей, когда цена падает
+                    upColor: '#45be88',
+                    downColor: '#FF3347',
+                    borderUpColor: '#45be88',
+                    borderDownColor: '#FF3347',
+                    wickUpColor: '#45be88',
+                    wickDownColor: '#FF3347'
                 })
                 $scope.accomulateSeries = chart.addHistogramSeries({
                     color: '#45be88',
                     priceFormat: {
-                        type: 'volume',
+                        type: 'volume'
                     },
-                    priceScaleId: '',
+                    priceScaleId: ''
                 })
                 $scope.accomulateSeries.priceScale().applyOptions({
                     scaleMargins: {
                         top: 0.9,
-                        bottom: 0,
-                    },
+                        bottom: 0
+                    }
                 })
             }
             $scope.setPeriod($scope.period_name)
@@ -74,7 +74,7 @@ function addChart($scope, app, key, accumulate_key) {
             app: app,
             key: key,
             accumulate_key: accumulate_key,
-            period_name: period_name,
+            period_name: period_name
         }, function (response) {
             if (response.candles != null) {
                 $scope.candleSeries.setData(response.candles)
@@ -82,7 +82,7 @@ function addChart($scope, app, key, accumulate_key) {
                     for (const candle of response.candles) {
                         if (candle.time == volume.time) {
                             if (candle.open > candle.close)
-                                volume.color = "#FF3347";
+                                volume.color = "#FF3347"
                             break
                         }
                     }

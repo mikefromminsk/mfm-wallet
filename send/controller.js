@@ -23,7 +23,7 @@ function openSend(domain, to_address, amount, success, project) {
                         from: wallet.address(),
                         to: $scope.to_address,
                         pass: pass,
-                        amount: $scope.amount,
+                        amount: $scope.amount
                     }, function (response) {
                         storage.pushToArray(storageKeys.send_history, $scope.to_address, 3)
                         openTran(response.next_hash, $scope.close)
