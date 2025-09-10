@@ -64,7 +64,7 @@ function addScopeUtils($scope) {
         if (number == null)
             number = 0
         let result = $scope.shortNumber(number, precision)
-        if (ticker[domain] != null)
+        if (window.ticker && ticker[domain])
             domain = ticker[domain]
         if (domain != null && domain.length > 0) {
             if (domain.length > 5)
@@ -110,11 +110,9 @@ function addScopeUtils($scope) {
     }
 
     $scope.formatDomain = function (domain) {
-        let translation = ticker[domain]
-        if (translation)
-            return translation
-        else
-            return (domain || "").replaceAll("_", " ").toUpperCase()
+        if (window.ticker && ticker[domain])
+            return ticker[domain]
+        return (domain || "").replaceAll("_", " ").toUpperCase()
     }
 
     $scope.formatChange = function (number) {

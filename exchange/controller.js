@@ -31,14 +31,14 @@ function openExchange(domain, is_sell, success) {
             $scope.portion = value
         }
 
-        $scope.place = function place() {
+        $scope.place = function place(sell_or_buy) {
             trackCall(arguments)
             $scope.startRequest()
             postContract("mfm-exchange", "place", {
                 order_type: "post_limit",
                 address: wallet.address(),
                 domain: domain,
-                is_sell: $scope.is_sell ? 1 : 0,
+                is_sell: sell_or_buy == 'sell' ? 1 : 0,
                 price: $scope.price,
                 amount: $scope.amount,
                 total: $scope.total,

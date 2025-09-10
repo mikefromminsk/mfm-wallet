@@ -48,20 +48,20 @@ function controller(callback) {
         window.$mdDialog = $mdDialog
         addGlobalVars($scope, callback)
         loadTranslations($scope, "/mfm-wallet/strings/base", function () {
-            $scope.str = str
+            $scope.str = window.str
             $scope.$apply()
         })
         loadTranslations($scope, "/mfm-wallet/strings", function () {
-            $scope.str = str
+            $scope.str = window.str
             $scope.$apply()
         })
         loadTranslations($scope, "/mfm-wallet/strings/ticker", function () {
-            $scope.ticker = ticker
+            $scope.ticker = window.ticker
             $scope.$apply()
         })
         loadTranslations($scope, "/mfm-wallet/strings/message")
         loadTranslations($scope, "/mfm-pigeon/strings/ticker", function () {
-            $scope.ticker = ticker
+            $scope.ticker = window.ticker
             $scope.$apply()
         })
     })

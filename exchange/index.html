@@ -93,7 +93,7 @@
 
                     <div class="primary-button uppercase p8 text1 align-center-center"
                          ng-class="{'back-red': is_sell, ' back-green': !is_sell}"
-                         ng-click="place()"
+                         ng-click="place(is_sell ? 'sell' : 'buy')"
                          ng-disabled="in_progress">
                         {{is_sell ? str.sell : str.buy}}
                         <div class="row ml8 align-center-center"

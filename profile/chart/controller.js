@@ -67,9 +67,10 @@ function addChart($scope, app, key, accumulate_key) {
     }
 
     $scope.periods = ['M', 'H', 'D']
-    $scope.period_name = 'H'
+    $scope.period_name = storage.getString(storageKeys.chart_period, 'H')
     $scope.setPeriod = function (period_name) {
         $scope.period_name = period_name
+        storage.setString(storageKeys.chart_period, period_name)
         postContract("mfm-chart", "chart", {
             app: app,
             key: key,

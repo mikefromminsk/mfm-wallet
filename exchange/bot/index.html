@@ -4,7 +4,7 @@
             <img class="img16 img-gray400" src="/mfm-wallet/img/home.svg">
         </div>
         <p class="flex row align-center-center">
-            {{str.bot_settings}}
+            {{title}}
         </p>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
@@ -18,8 +18,6 @@
                  ng-click="addLiquidity()">
                 {{str.add_liquidity}}
             </div>
-
-            <div class="nowrap-disabled" id="bot_faq"
-                 ng-include="'/mfm-wallet/exchange/bot/faq/' + getLanguage() + '.html'"></div>
+            <div></div>
         </div>
 </md-dialog>

@@ -1,7 +1,8 @@
-function openExchangeBot(domain, seedPrefix, success) {
+function openExchangeBot(title, domain, seedPrefix, success) {
     trackCall(arguments)
     showDialog("exchange/bot", success, function ($scope) {
         $scope.domain = domain
+        $scope.title = title
         $scope.accounts = []
         let bot_address = hashAddress(hash(seedPrefix + domain))
 

@@ -4,7 +4,8 @@ const storageKeys = {
     hasPin: "STORE_HAS_PIN_V2",
     language: "STORE_LANGUAGE",
     send_history: "STORE_SEND_HISTORY",
-    check_prefix: "STORE_CHECK_PREFIX_"
+    check_prefix: "STORE_CHECK_PREFIX_",
+    chart_period: "STORE_CHART_PERIOD_"
 }
 
 var storage = {

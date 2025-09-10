@@ -71,8 +71,8 @@ function addNavigator($scope) {
     $scope.openAirdropCreate = function (domain, success) {
         openAirdropCreate(domain, success)
     }
-    $scope.openExchangeBot = function (domain, success) {
-        openExchangeBot(domain, success)
+    $scope.openExchangeBot = function (title, domain, success) {
+        openExchangeBot(title, domain, success)
     }
     $scope.openExchangeBots = function (domain, success) {
         openExchangeBots(domain, success)
