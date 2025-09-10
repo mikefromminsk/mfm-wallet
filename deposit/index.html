@@ -1,7 +1,7 @@
 <md-dialog class="fill col">
     <div class="row align-start-center p16 text1">
-        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="closeAll()">
-            <img class="img16 img-gray400" src="/mfm-wallet/img/home.svg">
+        <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="openSupport()">
+            <img class="img16 img-gray400" src="/mfm-wallet/img/support.svg">
         </div>
         <div class="flex row align-center">{{str.deposit}}</div>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
@@ -22,10 +22,10 @@
                            placeholder=" ">
                     <label for="deposit_address">{{formatDomain(domain)}} {{formatDomain(network)}}
                         {{str.deposit_address}}</label>
-                    <div class="col align-center-center" style="position: relative">
+                    <div class="col align-center-center" style="position: relative"
+                         ng-hide="isCopyDisabled()">
                         <div class="focus" ng-show="isNotChecked('copy_address')"></div>
                         <img class="img40 p8 ripple img-white" src="/mfm-wallet/img/copy.svg"
-                             ng-disabled="lock && lock.address != wallet.address()"
                                 ng-click="blockAddress()">
                     </div>
                 </div>
@@ -44,7 +44,7 @@
         </div>
     </div>
     <div class="primary-button"
-         ng-disabled="lock && lock.user_address != wallet.address()"
+         ng-disabled="isCopyDisabled()"
          ng-click="blockAddress()">
         {{str.copy}}
     </div>

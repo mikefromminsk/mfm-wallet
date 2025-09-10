@@ -3,7 +3,7 @@ function addNavigator($scope) {
         window.open(page)
     }
     $scope.openSupport = function () {
-        $scope.openWeb('https://t.me/vavilon_bugs')
+        $scope.openWeb('https://t.me/mikefromvavilon')
     }
     $scope.openLogin = function (success) {
         openLogin(success)

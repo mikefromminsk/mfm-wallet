@@ -3,6 +3,10 @@ function openDeposit(domain, success) {
     showDialog("deposit", success, function ($scope) {
         $scope.domain = domain
 
+        $scope.isCopyDisabled = function () {
+            return $scope.lock && $scope.lock.user_address != wallet.address()
+        }
+
         $scope.blockAddress = function () {
             postContract("mfm-deposit", "deposit_address_block", {
                 domain: domain,

@@ -59,6 +59,9 @@
                     <button ng-click="openAirdropAdd(account.domain, refresh)">
                         airdrop
                     </button>
+                    <button ng-click="openLoader()">
+                        loader
+                    </button>
                 </div>
                 <div class="nowrap-disabled"
                      ng-show="isCraftToken()"
@@ -125,14 +128,14 @@
         </div>
     </div>
 
-    <div class="col mh16 align-start-center" ng-show="account && domain != wallet.gas_domain">
+    <div class="col mh16 align-start-center" ng-show="account && domain != wallet.gas_domain && token.price != 0">
         <div class="row block gap16">
-            <div class="flex mh0 primary-button back-green radius4 uppercase"
+            <div class="flex mh0 primary-button back-green"
                  ng-click="openBuy(domain)"
                  ng-show="gas_account.balance != 0 || account.balance == 0">
                 {{str.buy}}
             </div>
-            <div class="flex mh0 primary-button back-red radius4 uppercase"
+            <div class="flex mh0 primary-button back-red"
                  ng-click="openSell(domain)"
                  ng-show="account.balance > 0">
                 {{str.sell}}
@@ -142,16 +145,25 @@
 
     <div class="col mh16 align-start-center" ng-show="!account">
         <div class="row block">
-            <div class="flex mh0 primary-button back-accent radius4 uppercase"
+            <div class="flex mh0 primary-button"
                  ng-click="addToWallet()">
                 {{str.add_to_wallet}}
             </div>
         </div>
     </div>
 
+    <div class="col mh16 align-start-center" ng-show="account && token.price == 0">
+        <div class="row block">
+            <div class="flex mh0 primary-button"
+                 ng-click="openExchangeBot('liquidity', domain, 'exhibit tragic bundle galaxy zero lunch lift six access story round ', refresh)">
+                {{str.add_liquidity}}
+            </div>
+        </div>
+    </div>
+
     <div class="col mh16 align-start-center" ng-show="domain == wallet.gas_domain">
         <div class="row block">
-            <div class="flex mh0 primary-button back-accent radius4 uppercase"
+            <div class="flex mh0 primary-button"
                  ng-click="openSend(wallet.gas_domain, null, null, refresh)"
                  ng-disabled="account.balance == 0">
                 {{str.send}}
