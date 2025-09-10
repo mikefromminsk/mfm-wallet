@@ -36,25 +36,6 @@
                                 z-index: -1;"
                          ng-style="{'background-image': 'url(\'' + getLogoLink(domain) + '\')'}"></div>
                 </div>
-
-                <div class="row input-wrapper" ng-show="airdrop.rewarded">
-                    <img class="img-white" src="/mfm-wallet/img/user-plus.svg">
-                    <input type="text"
-                           id="referral_link"
-                           ng-model="airdrop.referral_link"
-                           placeholder=" ">
-                    <label for="referral_link">{{str.referral_link}}</label>
-                    <div class="col align-center-center">
-                        <img class="img40 p8 ripple img-white"
-                             src="/mfm-wallet/img/copy.svg"
-                             ng-click="copy(airdrop.referral_link)">
-                    </div>
-                    <div class="row">
-                        <p class="flex">{{str.friends_invited}}</p>
-                        <p>{{airdrop.referral_count}}</p>
-                    </div>
-                </div>
-
                 <div class="row gap8">
                     <img class="img20"
                          src="/mfm-wallet/img/task.svg"
@@ -84,6 +65,23 @@
                         {{str.subscribe}}
                     </div>
                 </div>
+                <div class="row input-wrapper" ng-show="airdrop.rewarded">
+                    <img class="img-white" src="/mfm-wallet/img/user-plus.svg">
+                    <input type="text"
+                           id="referral_link"
+                           ng-model="airdrop.referral_link"
+                           placeholder=" ">
+                    <label for="referral_link">{{str.referral_link}}</label>
+                    <div class="col align-center-center">
+                        <img class="img40 p8 ripple img-white"
+                             src="/mfm-wallet/img/copy.svg"
+                             ng-click="copy(airdrop.referral_link)">
+                    </div>
+                </div>
+                <ul class="col mh16 mv0 text2 text-align-start">
+                    <li>{{str.friends_invited}}: {{airdrop.referral_count}}</li>
+                    <li>{{str.each_friend_will_bring_you_an_extra_reward}}</li>
+                </ul>
 
                 <div class="nowrap-disabled"
                      ng-include="'/mfm-wallet/airdrop/get/faq/' + getLanguage() + '.html'"></div>

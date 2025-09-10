@@ -83,7 +83,7 @@ a:active {
     left: 42px;
     top: 50%;
     transform: translateY(-50%);
-    color: #777;
+    color: var(--gray300);
     background: var(--black);
     padding: 0 4px;
     transition: 0.2s;
@@ -92,7 +92,7 @@ a:active {
 
 .input-wrapper input:focus + label,
 .input-wrapper input:not(:placeholder-shown) + label {
-    transform: translateY(-32px) scale(0.9);
+    transform: translateY(-32px) translateX(-4px) scale(0.9);
 }
 
 input:disabled {

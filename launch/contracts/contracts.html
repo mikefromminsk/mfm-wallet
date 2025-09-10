@@ -2,21 +2,30 @@
     <div class="col p16 radius-default border-gray ripple gap16"
          ng-show="!contract || contract == 'mining'"
          ng-click="selectContract('mining')">
-        <p class="text0">{{str.mining_token}}</p>
+        <div class="row">
+            <p class="text0 flex">{{str.mining_token}}</p>
+            <img class="img20 img-white" src="/mfm-wallet/img/edit.svg" ng-show="contract">
+        </div>
         <div class="nowrap-disabled"
              ng-include="'/mfm-wallet/launch/contracts/mining/' + getLanguage() + '.html'"></div>
     </div>
     <div class="col p16 radius-default border-gray ripple gap16"
          ng-show="!contract || contract == 'craft'"
          ng-click="selectContract('craft')">
-        <p class="text0">{{str.craft_token}}</p>
+        <div class="row">
+            <p class="text0 flex">{{str.craft_token}}</p>
+            <img class="img20 img-white" src="/mfm-wallet/img/edit.svg" ng-show="contract">
+        </div>
         <div class="nowrap-disabled"
              ng-include="'/mfm-wallet/launch/contracts/craft/' + getLanguage() + '.html'"></div>
     </div>
     <div class="col p16 radius-default border-gray ripple gap16"
          ng-show="!contract || contract == 'simple'"
          ng-click="selectContract('simple')">
-        <p class="text0">{{str.simple_token}}</p>
+        <div class="row">
+            <p class="text0 flex">{{str.simple_token}}</p>
+            <img class="img20 img-white" src="/mfm-wallet/img/edit.svg" ng-show="contract">
+        </div>
         <div class="nowrap-disabled"
              ng-include="'/mfm-wallet/launch/contracts/simple/' + getLanguage() + '.html'"></div>
     </div>

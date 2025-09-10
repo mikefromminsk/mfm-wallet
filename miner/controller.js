@@ -31,22 +31,22 @@ function openMiner(domain, success) {
         }
 
         $scope.withdrawal = function () {
-            for (const token of Object.values($scope.tokens)) {
-                if (token.account && token.account.balance > 0) {
-                    postContract("mfm-miner", "withdrawal", {
-                        domain: token.domain,
-                        address: wallet.address(),
-                    }, $scope.refresh, function () {
-                        getPin(function (pin) {
+            getPin(function (pin) {
+                for (const token of Object.values($scope.tokens)) {
+                    if (token.account && token.account.balance > 0) {
+                        postContract("mfm-miner", "withdrawal", {
+                            domain: token.domain,
+                            address: wallet.address(),
+                        }, $scope.refresh, function () {
                             postContract("mfm-token", "send", {
                                 domain: token.domain,
                                 to: wallet.address(),
                                 pass: wallet.calcUserStartPass(token.domain, pin),
                             }, $scope.withdrawal)
                         })
-                    })
+                    }
                 }
-            }
+            })
         }
 
         $scope.haveMinerBalance = function () {
