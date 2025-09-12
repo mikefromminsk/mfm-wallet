@@ -31,7 +31,6 @@ function addWallet($scope) {
         if ($scope.refresh)
             $scope.refresh()
         $scope.subscribeAccount()
-        subscribeNewOrders()
     })
 
     $scope.finishOnboardingPercent = function () {
@@ -139,12 +138,6 @@ function addWallet($scope) {
         })
     }
 
-    function subscribeNewOrders() {
-        $scope.subscribe("new_order:" + wallet.address(), function () {
-            showSuccess(str.new_p2p_order)
-        })
-    }
-
     $scope.selectTran = function (tran) {
         openTran(tran.next_hash)
     }
@@ -209,7 +202,6 @@ function addWallet($scope) {
         if ($scope.refresh)
             $scope.refresh()
         $scope.subscribeAccount()
-        subscribeNewOrders()
         subscribePrices()
     } else {
         $scope.trans = []
