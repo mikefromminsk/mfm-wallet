@@ -5,8 +5,7 @@ function getParam(paramName, def) {
 }
 
 function getLanguage() {
-    let lang = getParam('lang', storage.getString(storageKeys.language, navigator.language.split("-")[0]))
-    return ["ru"].indexOf(lang) === -1 ? "en" : lang
+    return getParam('lang', storage.getString(storageKeys.language, navigator.language.split("-")[0]))
 }
 
 function loadTranslations($scope, path, success) {

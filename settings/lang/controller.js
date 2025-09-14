@@ -39,8 +39,8 @@ function openLanguages(languages, success) {
             if (typeof val === 'object') {
                 openLanguages(val, success)
             } else {
+                storage.setString(storageKeys.language, key)
                 setTimeout(function () {
-                    storage.setString(storageKeys.language, key)
                     location.reload()
                 }, 500)
             }
