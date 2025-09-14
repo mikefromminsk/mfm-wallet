@@ -8,26 +8,21 @@
             <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
         </div>
     </div>
-    <div class="flex col input-content">
-        <div class="col align-center-center" style="min-height: 200px">
-            <div class="col align-center-center">
-                <div class="step" ng-show="!logoLink">
-                    <img class="img64 img-accent ripple"
-                         ng-click="uploadLogo()"
-                         src="/mfm-wallet/img/upload-circle.svg">
-                </div>
-                <img class="img64" src="{{logoLink}}" onload="logoLoaded()" ng-show="logoLink">
-                <p class="mt16 text2">{{formatDomain(domain)}}</p>
-            </div>
-        </div>
-        <div class="flex col scroll align-start-center">
-            <div class="row wrap">
-                <div class="img64 m8 ripple" style="margin: auto"
-                     ng-repeat="item in logos"
-                     ng-click="copyLogo(item)"
-                     ng-style="getLogo(item, 64)">
+    <div class="flex col scroll align-start-center">
+        <div class="flex col block">
+            <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
+            <div class="col align-center-center" style="min-height: 200px">
+                <div class="col align-center-center">
+                    <div class="step" ng-show="!logoLink">
+                        <img class="img64 img-accent ripple"
+                             ng-click="uploadLogo()"
+                             src="/mfm-wallet/img/upload-circle.svg">
+                    </div>
+                    <img class="img64" src="{{logoLink}}" onload="logoLoaded()" ng-show="logoLink">
+                    <p class="mt16 text2">{{formatDomain(domain)}}</p>
                 </div>
             </div>
+            <div class="mh0" ng-include="'/mfm-wallet/store/shop.html?v=15'"></div>
         </div>
     </div>
     <div class="primary-button"

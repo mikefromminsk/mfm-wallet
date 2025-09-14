@@ -7,6 +7,27 @@ function openLogoChange(domain, success) {
     }, function ($scope) {
         $scope.domain = domain
 
+        function generateApps(prefix, start, end, maxCount) {
+            const apps = []
+            const total = Math.min(end - start + 1, maxCount)
+            const step = Math.floor((end - start + 1) / total)
+            let count = 0
+            for (let i = start; i <= end && count < total; i += step) {
+                apps.push({
+                    title: " ",
+                    domain: prefix + i,
+                    link: prefix + i
+                })
+                count++
+            }
+            return apps
+        }
+
+        $scope.apps = {
+            "stones": generateApps("stone", 1, 20, 20),
+            "minecraft": generateApps("logo", 1, 200, 20)
+        }
+
         function selectFile(success, accept) {
             let input = document.createElement('input')
             input.type = 'file'
@@ -36,15 +57,7 @@ function openLogoChange(domain, success) {
             }, ".png")
         }
 
-        $scope.logos = []
-        for (let i = 0; i < 20; i++) {
-            let randomIndex = Math.floor(Math.random() * 199) + 1
-            let logoName = 'logo' + randomIndex
-            if ($scope.logos.indexOf(logoName) == -1)
-                $scope.logos.push(logoName)
-        }
-
-        $scope.copyLogo = function (logo) {
+        $scope.selectApp = function (logo) {
             postContract("mfm-storage", "copy", {
                 from: logo + ".png",
                 to: domain + ".png",
