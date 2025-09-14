@@ -11,9 +11,28 @@ function getChartOptions() {
         crosshair: {
             mode: LightweightCharts.CrosshairMode.Normal
         },
-        timeScale: {
-            timeVisible: true,
-            secondsVisible: false
+        localization: {
+            timeFormatter: (time) => {
+                if (typeof time === 'number') {
+                    let date = new Date(time * 1000);
+                    return date.toLocaleTimeString([], {
+                        day: '2-digit',
+                        month: '2-digit',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        year: '2-digit'
+                    });
+                }
+                return String(time);
+            },
+            priceFormatter: (price) => {
+                if (price == null || isNaN(price)) return ''
+                if (price >= 1) {
+                    return price.toFixed(2)
+                } else {
+                    return price.toFixed(4)
+                }
+            }
         }
     }
 }
