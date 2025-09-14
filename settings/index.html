@@ -24,7 +24,7 @@
             <div class="row align-start-center ripple pv16" ng-click="openLanguages()">
                 <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/language.svg">
                 <p class="flex">{{str.language}}</p>
-                <p>{{languages[language]}}</p>
+                <p>{{languages[getLanguage()]}}</p>
             </div>
             <div class="row align-start-center ripple pv16" ng-click="logout()" ng-show="wallet.address()">
                 <img class="img32 p8 mr8 img-red" src="/mfm-wallet/img/arrow-right.svg">

@@ -18,10 +18,13 @@
                 <div class="col align-center-center" style="height: 200px">
                     <p class="text2">{{str.energy}}</p>
                     <div class="row gap4 align-start-center">
-                        <img class="img30 img-yellow" src="/mfm-wallet/img/energy.svg">
+                        <img class="img30 img-gray"
+                             ng-class="{'img-yellow': isMining(),
+                                            'img-red': isMiningPaused()}"
+                             src="/mfm-wallet/img/energy.svg">
                         <p class="text0"
                            ng-click="openSend(wallet.gas_domain, null, 0.1, refresh, 'mfm-miner')">
-                            {{formatAmount(gas_account ? gas_account.balance * 100 : 0, null, 2)}}
+                            {{formatAmount(miner_gas_account ? miner_gas_account.balance * 100 : 0, null, 2)}}
                         </p>
                     </div>
                     <p class="text2">&nbsp;</p>

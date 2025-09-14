@@ -1,6 +1,6 @@
 function openSend(domain, to_address, amount, success, project) {
     trackCall(arguments)
-    showDialog("send", success, function ($scope) {
+    showDialog("send", null, function ($scope) {
         addPriceAmountTotal($scope)
 
         $scope.domain = domain
@@ -25,11 +25,12 @@ function openSend(domain, to_address, amount, success, project) {
                         pass: pass,
                         amount: $scope.amount
                     }, function (response) {
+                        $scope.finishRequest()
                         storage.pushToArray(storageKeys.send_history, $scope.to_address, 3)
-                        openTran(response.next_hash, $scope.close)
+                        openTran(response.next_hash, success)
                     }, $scope.finishRequest)
-                })
-            })
+                }, $scope.finishRequest)
+            }, $scope.finishRequest)
         }
 
         $scope.setMax = function () {

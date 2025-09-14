@@ -147,7 +147,7 @@ function openMiner(domain, success) {
             }, function (response) {
                 if (response.miner_account) {
                     $scope.miner_account = response.miner_account
-                    $scope.gas_account = response.gas_account
+                    $scope.miner_gas_account = response.gas_account
                     loadMinerAccounts(response.miner_account.minerAddress)
                     subscribeToMinerAddress(response.miner_account.minerAddress)
                     loadTrans(response.miner_account.minerAddress)
@@ -156,6 +156,28 @@ function openMiner(domain, success) {
             }, function () {
                 loadAccounts()
             })
+        }
+
+        $scope.isMiningEnabled = function () {
+            return $scope.miner_account
+                && $scope.miner_account.domains
+                && $scope.miner_account.domains != ""
+        }
+
+        $scope.isMiningPaused = function () {
+            if ($scope.isMiningEnabled()
+                && $scope.miner_gas_account.balance < $scope.miner_account.domains.split(',').length * 0.0001) {
+                return true;
+            }
+            return false
+        }
+
+        $scope.isMining = function () {
+            if ($scope.isMiningEnabled()
+                && $scope.miner_gas_account.balance >= $scope.miner_account.domains.split(',').length * 0.0001) {
+                return true;
+            }
+            return false
         }
 
         function loadTrans(minerAddress) {

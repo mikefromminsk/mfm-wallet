@@ -1,6 +1,6 @@
 function openDividend(domain, success) {
     trackCall(arguments)
-    showDialog("dividend", success, function ($scope) {
+    showDialog("dividend", null, function ($scope) {
         $scope.domain = domain
         $scope.time = new Date().getTime() / 1000
 
@@ -17,7 +17,11 @@ function openDividend(domain, success) {
 
         $scope.participate = function () {
             openSend(wallet.vavilon, $scope.reward.to, null, function () {
-                showSuccessDialog(str.you_block_tokens, $scope.refresh)
+                showSuccessDialog(str.you_block_tokens, function () {
+                    if (success)
+                        success()
+                    $scope.close()
+                })
             })
         }
 

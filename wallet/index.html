@@ -36,8 +36,8 @@
                          ng-click="openMiner(null, refresh)">
                         <div class="row gap4">
                             <img class="img16 img-gray"
-                                 ng-class="{'img-yellow': (miner_account && miner_account.domains && miner_gas_account && miner_gas_account.balance > 0.001),
-                             'img-red': (miner_account && miner_account.domains && (!miner_gas_account || miner_gas_account.balance <= 0.001))}"
+                                 ng-class="{'img-yellow': isMining(),
+                                            'img-red': isMiningPaused()}"
                                  src="/mfm-wallet/img/energy.svg">
                             {{miner_account ? formatAmount(miner_gas_account.balance * 100, "", 2) : ""}}
                         </div>
@@ -69,8 +69,8 @@
                                 <p>{{formatPrice(airdrop.reward * airdrop.token.price, 2)}}</p>
                             </div>
                             <div style="position: absolute;
-                    top: 0;
-                    right: 0;
+                    top: 4px;
+                    right: 4px;
                     width: 50px;
                     height: 50px;
                     background-size: cover;

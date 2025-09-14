@@ -44,12 +44,13 @@ function addLogin($scope, success) {
         let password = hash(mnemonic)
         let address = hashAddress(password)
         wallet.login(address, password, function () {
+            $scope.finishRequest()
             showSuccess(str.login_success, success)
             $scope.close()
         }, function (message) {
+            $scope.finishRequest()
             if (message == "invalid password")
                 showError(str.password_invalid)
-            $scope.finishRequest()
         })
     }
     $scope.copied = false
