@@ -51,8 +51,8 @@ function addWallet($scope) {
         }, function (response) {
             setAccounts(response.accounts || [])
             $scope.showBody = true
-            setTotalBalance()
             $scope.$apply()
+            loadMinerAccount()
         })
     }
 
@@ -61,17 +61,12 @@ function addWallet($scope) {
             try {
                 if (a.domain === wallet.gas_domain) return -1
                 if (b.domain === wallet.gas_domain) return 1
-
                 const aPrice = a.token?.price || 0
                 const bPrice = b.token?.price || 0
-
-                if (aPrice === 0 && bPrice === 0) {
+                if (aPrice === 0 && bPrice === 0)
                     return (b.balance || 0) - (a.balance || 0)
-                }
-
                 if (bPrice === 0) return -1
                 if (aPrice === 0) return 1
-
                 return (b.balance * bPrice) - (a.balance * aPrice)
             } catch (e) {
                 return 0
@@ -170,10 +165,12 @@ function addWallet($scope) {
                 $scope.miner_gas_account = response.gas_account
                 $scope.$apply()
             }
+            setTotalBalance()
         }, function () {
             $scope.miner_account = null
             $scope.miner_gas_account = null
             $scope.$apply()
+            setTotalBalance()
         })
     }
 
@@ -216,7 +213,6 @@ function addWallet($scope) {
         loadTokens()
         loadTrans()
         loadAirdrops()
-        loadMinerAccount()
         loadRewards($scope)
     }
 

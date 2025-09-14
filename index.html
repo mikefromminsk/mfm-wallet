@@ -74,6 +74,15 @@
                      ng-show="search_text"
                      ng-click="clear()"/>
             </div>
+            <div class="row scroll-horizontal ph8 pt0">
+                <div class="text2 ml8 p8 radius-default ripple"
+                     ng-class="{'back-active': top_selected == key,
+                                'back-gray': top_selected != key}"
+                     ng-repeat="(key, value) in tops"
+                     ng-click="selectTop(key)">
+                    {{value}}
+                </div>
+            </div>
             <div class="flex col scroll align-start-center">
                 <div class="flex col block ph8">
                     <img class="refresh-icon img-gray" src="/mfm-wallet/img/reload.svg">

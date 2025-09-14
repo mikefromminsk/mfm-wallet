@@ -78,7 +78,7 @@
                              ng-click="copy(airdrop.referral_link)">
                     </div>
                 </div>
-                <ul class="col mh16 mv0 text2 text-align-start">
+                <ul class="col mh16 mv0 text2 text-align-start" ng-show="airdrop.rewarded">
                     <li>{{str.friends_invited}}: {{airdrop.referral_count}}</li>
                     <li>{{str.each_friend_will_bring_you_an_extra_reward}}</li>
                 </ul>

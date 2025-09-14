@@ -295,6 +295,10 @@ button {
     background: var(--gray100);
 }
 
+.back-active {
+    background: var(--gray200);
+}
+
 .back-yellow {
     background: var(--yellow);
 }
