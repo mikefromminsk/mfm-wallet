@@ -575,3 +575,7 @@ a[title="Charting by TradingView"] {
         box-shadow: inset 0px 0px 0px 30px #4bb71b;
     }
 }
+
+ul {
+    white-space: pre;
+}

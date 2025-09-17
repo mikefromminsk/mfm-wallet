@@ -24,10 +24,10 @@ function openSend(domain, to_address, amount, success, project) {
                         to: $scope.to_address,
                         pass: pass,
                         amount: $scope.amount
-                    }, function (response) {
+                    }, function () {
                         $scope.finishRequest()
                         storage.pushToArray(storageKeys.send_history, $scope.to_address, 3)
-                        openTran(response.next_hash, success)
+                        openTran(pass.split(":")[1], success)
                     }, $scope.finishRequest)
                 }, $scope.finishRequest)
             }, $scope.finishRequest)
