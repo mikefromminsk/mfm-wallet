@@ -41,7 +41,7 @@ function addNavigator($scope) {
     $scope.openSearch = function (success) {
         openSearch(success)
     }
-    $scope.openChart = function (app, key, success) {
+    $scope.opeChart = function (app, key, success) {
         openChartWithAccumulate(app, key, null, success)
     }
     $scope.openChartWithAccumulate = function (app, key, accomulate, success) {
