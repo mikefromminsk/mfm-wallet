@@ -166,7 +166,7 @@ function openMiner(domain, success) {
 
         $scope.isMiningPaused = function () {
             if ($scope.isMiningEnabled()
-                && $scope.miner_gas_account.balance < $scope.miner_account.domains.split(',').length * 0.0001) {
+                && $scope.miner_gas_account?.balance < $scope.miner_account?.domains.split(',').length * 0.0001) {
                 return true;
             }
             return false
@@ -174,7 +174,7 @@ function openMiner(domain, success) {
 
         $scope.isMining = function () {
             if ($scope.isMiningEnabled()
-                && $scope.miner_gas_account.balance >= $scope.miner_account.domains.split(',').length * 0.0001) {
+                && $scope.miner_gas_account?.balance >= $scope.miner_account?.domains.split(',').length * 0.0001) {
                 return true;
             }
             return false

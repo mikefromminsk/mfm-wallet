@@ -5,20 +5,18 @@ const energyReward = 100
 let rewardsReceived = maxRewards
 
 function loadRewards($scope) {
+    $scope.maxRewards = maxRewards
+    $scope.energyReward = energyReward
     postContract("mfm-miner", "trans", {
         domain: wallet.gas_domain,
         address: rewardAddress,
         to: wallet.address(),
         size: maxRewards,
     }, (response) => {
-        $scope.maxRewards = maxRewards
-        $scope.energyReward = energyReward
         $scope.rewardsReceived = response.trans.length
         $scope.$apply()
     }, function () {
-        $scope.maxRewards = maxRewards
-        $scope.energyReward = energyReward
-        $scope.rewardsReceived = 111
+        $scope.rewardsReceived = 0
         $scope.$apply()
     })
 }
@@ -182,7 +180,7 @@ function addWallet($scope) {
 
     $scope.isMiningPaused = function () {
         if ($scope.isMiningEnabled()
-            && $scope.miner_gas_account.balance < $scope.miner_account.domains.split(',').length * 0.0001) {
+            && $scope.miner_gas_account?.balance < $scope.miner_account?.domains.split(',').length * 0.0001) {
             return true;
         }
         return false
@@ -190,7 +188,7 @@ function addWallet($scope) {
 
     $scope.isMining = function () {
         if ($scope.isMiningEnabled()
-            && $scope.miner_gas_account.balance >= $scope.miner_account.domains.split(',').length * 0.0001) {
+            && $scope.miner_gas_account?.balance >= $scope.miner_account?.domains.split(',').length * 0.0001) {
             return true;
         }
         return false

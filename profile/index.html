@@ -23,7 +23,7 @@
                         <p class="mt8 text2">{{str.swap}}</p>
                     </div>
                     <div class="flex p16 col align-start-center ripple"
-                         ng-show="isDepositToken(token)"
+                         ng-show="isWrappedToken(token)"
                          ng-click="openDeposit(domain, refresh)">
                         <img class="img16 img-gray" src="/mfm-wallet/img/plus.svg">
                         <p class="mt8 text2">{{str.deposit}}</p>
@@ -67,16 +67,20 @@
                     </button>
                 </div>
                 <div class="nowrap-disabled"
-                     ng-show="isCraftToken()"
+                     ng-show="isCraftToken(token)"
                      ng-include="'/mfm-wallet/launch/contracts/craft/' + getLanguage() + '.html'"></div>
 
                 <div class="nowrap-disabled"
-                     ng-show="isMiningToken()"
+                     ng-show="isMiningToken(token)"
                      ng-include="'/mfm-wallet/launch/contracts/mining/' + getLanguage() + '.html'"></div>
 
                 <div class="nowrap-disabled"
-                     ng-show="isSimpleToken()"
+                     ng-show="isSimpleToken(token)"
                      ng-include="'/mfm-wallet/launch/contracts/simple/' + getLanguage() + '.html'"></div>
+
+                <div class="nowrap-disabled"
+                     ng-show="isWrappedToken(token)"
+                     ng-include="'/mfm-wallet/launch/contracts/wrapped/' + getLanguage() + '.html'"></div>
 
                 <div class="row gap8"
                      ng-show="airdrop">

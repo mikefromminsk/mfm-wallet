@@ -50,7 +50,7 @@ function controller(callback) {
             $scope.str = window.str
             $scope.$apply()
         })
-        loadTranslations($scope, "/mfm-wallet/strings", function () {
+        loadTranslations($scope, "/mfm-wallet/strings/str", function () {
             $scope.str = window.str
             $scope.$apply()
         })
@@ -169,16 +169,33 @@ function hideKeyboard() {
 }
 
 function copy(text) {
-    let textArea = document.createElement("textarea")
-    textArea.value = text
-    textArea.style.top = "0"
-    textArea.style.left = "0"
-    textArea.style.position = "fixed"
-    document.body.appendChild(textArea)
-    textArea.focus()
-    textArea.select()
-    document.execCommand('copy')
-    document.body.removeChild(textArea)
+    if (navigator.clipboard && window.isSecureContext) {
+        // Современный метод
+        return navigator.clipboard.writeText(text).catch(err => {
+            console.error("Clipboard write failed:", err);
+        });
+    } else {
+        // Фолбэк для Safari и старых браузеров
+        let textArea = document.createElement("textarea");
+        textArea.value = text;
+
+        // скрываем элемент
+        textArea.style.position = "fixed";
+        textArea.style.top = "-1000px";
+        textArea.style.left = "-1000px";
+
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+
+        try {
+            document.execCommand("copy");
+        } catch (err) {
+            console.error("Fallback: Unable to copy", err);
+        }
+
+        document.body.removeChild(textArea);
+    }
 }
 
 function share(title, text, url) {

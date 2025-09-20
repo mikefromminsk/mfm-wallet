@@ -1,16 +1,16 @@
 <div class="input-content" ng-show="token">
     <p class="text1">{{str.tokenomics}}</p>
     <div class="row">
+        <p class="flex text2">{{str.capitalization}}</p>
+        <p>{{formatPrice((token.supply - supply.balance) * token.price, 0)}}</p>
+    </div>
+    <div class="row">
         <p class="flex text2">{{str.total_supply}}</p>
         <p>{{formatAmount(token.supply, token.domain, 0)}}</p>
     </div>
     <div class="row">
-        <p class="flex text2">{{str.capitalization}}</p>
-        <p>{{formatPrice(token.supply * token.price, 0)}}</p>
-    </div>
-    <div class="row">
         <p class="flex text2">{{str.circulation_supply}}</p>
-        <p>{{formatPrice((token.supply - supply.balance) * token.price, 0)}}</p>
+        <p>{{formatAmount(token.supply - supply.balance, token.domain, 0)}}</p>
     </div>
     <div class="row" ng-show="token.difficulty > 0">
         <p class="text2">{{str.mining_difficulty}}</p>

@@ -42,14 +42,14 @@ function openExchange(domain, is_sell, success) {
                 price: $scope.price,
                 amount: $scope.amount,
                 total: $scope.total,
-            }, function (place_response) {
+            }, function () {
                 let placeDomain = $scope.is_sell ? domain : wallet.gas_domain
                 getPin(function (pin) {
                     wallet.calcUserPass(placeDomain, pin, function (pass) {
                         postContract("mfm-token", "send", {
                             domain: placeDomain,
                             from: wallet.address(),
-                            to: place_response.deposit_address,
+                            to: $scope.bot_address,
                             pass: pass,
                             amount: $scope.is_sell ? $scope.amount : $scope.total,
                         }, function (response) {
@@ -80,6 +80,7 @@ function openExchange(domain, is_sell, success) {
                 domain: domain,
                 address: wallet.address(),
             }, function (response) {
+                $scope.bot_address = response.bot_address
                 $scope.active_orders = response.active
                 $scope.history_orders = response.history
                 $scope.$apply()

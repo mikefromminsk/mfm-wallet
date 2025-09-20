@@ -577,5 +577,5 @@ a[title="Charting by TradingView"] {
 }
 
 ul {
-    white-space: pre;
+    white-space: unset;
 }

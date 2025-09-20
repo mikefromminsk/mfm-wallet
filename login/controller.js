@@ -44,8 +44,8 @@ function addLogin($scope, success) {
         let password = hash(mnemonic)
         let address = hashAddress(password)
         wallet.login(address, password, function () {
-            $scope.finishRequest()
             showSuccess(str.login_success, success)
+            $scope.finishRequest()
             $scope.close()
         }, function (message) {
             $scope.finishRequest()

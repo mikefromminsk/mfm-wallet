@@ -342,7 +342,7 @@ function addScopeUtils($scope) {
         return !$scope.isChecked(value)
     }
 
-    $scope.isDepositToken = function (token) {
+    $scope.isWrappedToken = function (token) {
         return token?.delegate?.startsWith("mfm-token/send")
             && token?.delegate?.indexOf("&a=") != -1
     }

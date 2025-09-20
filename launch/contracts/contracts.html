@@ -29,4 +29,14 @@
         <div class="nowrap-disabled"
              ng-include="'/mfm-wallet/launch/contracts/simple/' + getLanguage() + '.html'"></div>
     </div>
+    <div class="col p16 radius-default border-gray ripple gap16"
+         ng-show="!contract || contract == 'wrapped'"
+         ng-click="selectContract('wrapped')">
+        <div class="row">
+            <p class="text0 flex">{{str.simple_token}}</p>
+            <img class="img20 img-white" src="/mfm-wallet/img/edit.svg" ng-show="contract">
+        </div>
+        <div class="nowrap-disabled"
+             ng-include="'/mfm-wallet/launch/contracts/wrapped/' + getLanguage() + '.html'"></div>
+    </div>
 </div>
