@@ -41,7 +41,7 @@ function addNavigator($scope) {
     $scope.openSearch = function (success) {
         openSearch(success)
     }
-    $scope.opeChart = function (app, key, success) {
+    $scope.openChart = function (app, key, success) {
         openChartWithAccumulate(app, key, null, success)
     }
     $scope.openChartWithAccumulate = function (app, key, accomulate, success) {
@@ -95,7 +95,7 @@ function addNavigator($scope) {
     $scope.openMinerTestReadUsers = function () {
         openMinerTestReadUsers()
     }
-    $scope.opeTelegramLogin = function (bot_name, success) {
+    $scope.openTelegramLogin = function (bot_name, success) {
         openTelegramLogin(bot_name, success)
     }
     $scope.openOnboarding = function (domain, success) {
