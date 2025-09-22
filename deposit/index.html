@@ -34,10 +34,10 @@
                     <li>{{str.you_will_have_30_min_for_deposit_after_copy_address}}</li>
                 </ul>
                 <div class="row" ng-show="lock && lock.user_address == wallet.address()">
-                    {{str.you_block_deposit_address_till}} {{formatTime(lock.deadline)}}
+                    {{str.you_block_deposit_address_till}} {{formatTimeDiff(lock.deadline)}}
                 </div>
                 <div class="row" ng-show="lock && lock.user_address != wallet.address()">
-                    {{str.address_blicked_till}} {{formatTime(lock.deadline)}}
+                    {{str.address_blicked_till}} {{formatTimeDiff(lock.deadline)}}
                 </div>
             </div>
             <div></div>
