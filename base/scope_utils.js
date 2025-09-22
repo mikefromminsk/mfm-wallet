@@ -151,8 +151,8 @@ function addScopeUtils($scope) {
         return formatTime(seconds, getLanguage())
     }
 
-    $scope.formatTimeDiff = function (seconds) {
-        return formatTimeDiff(seconds, getLanguage())
+    $scope.formatTimeAgo = function (seconds) {
+        return formatTimeAgo(seconds, getLanguage())
     }
 
     function padTo2Digits(num) {

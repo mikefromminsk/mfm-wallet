@@ -3,8 +3,10 @@ function openDeposit(domain, success) {
     showDialog("deposit", success, function ($scope) {
         $scope.domain = domain
 
-        $scope.isCopyDisabled = function () {
-            return $scope.lock && $scope.lock.user_address != wallet.address()
+        $scope.isCopyEnabled = function () {
+            return $scope.lock == null
+                || $scope.lock.user_address == wallet.address()
+                || $scope.lock.deadline <= new Date().getTime() / 1000
         }
 
         $scope.blockAddress = function () {
@@ -12,8 +14,8 @@ function openDeposit(domain, success) {
                 domain: domain,
                 address: wallet.address()
             }, function (response) {
-                $scope.deposit_deadline = response.deposit_deadline
-                $scope.copy($scope.deposit_address)
+                $scope.lock = response.lock
+                $scope.copy($scope.lock.deposit_address)
                 $scope.check('copy_address')
                 $scope.refresh()
             })

@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="flex col scroll align-start-center">
-        <div class="flex col block">
+        <div class="flex col block nowrap-disabled">
             <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
             <div class="flex col input-content">
                 <div class="row input-wrapper">
@@ -17,13 +17,13 @@
                     <input type="text"
                            id="deposit_address"
                            disabled
-                           ng-class="{'text-white': lock && lock.user_address == wallet.address()}"
+                           ng-class="{'text-white': isCopyEnabled()}"
                            ng-model="deposit_address"
                            placeholder=" ">
                     <label for="deposit_address">{{formatDomain(domain)}} {{formatDomain(network)}}
                         {{str.deposit_address}}</label>
                     <div class="col align-center-center" style="position: relative"
-                         ng-hide="isCopyDisabled()">
+                         ng-show="isCopyEnabled()">
                         <div class="focus" ng-show="isNotChecked('copy_address')"></div>
                         <img class="img40 p8 ripple img-white" src="/mfm-wallet/img/copy.svg"
                                 ng-click="blockAddress()">
@@ -44,7 +44,7 @@
         </div>
     </div>
     <div class="primary-button"
-         ng-disabled="isCopyDisabled()"
+         ng-disabled="!isCopyEnabled()"
          ng-click="blockAddress()">
         {{str.copy}}
     </div>
