@@ -90,7 +90,8 @@
                         <div class="flex col ml16">
                             <p>{{formatDomain(token.domain)}}</p>
                             <div class="row mt4 text2">
-                                <p>{{formatDifficulty(token.difficulty)}}</p>
+                                <img class="img16 img-gray" src="/mfm-wallet/img/energy.svg">
+                                <p>{{formatAmount(((token.difficulty / 1000000000) + 0.0003) / token.mint_reward * 100)}}</p>
                             </div>
                         </div>
                         <div class="col align-end-end" ng-show="token.account">

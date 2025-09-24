@@ -28,18 +28,26 @@ function addScopeUtils($scope) {
         return Math.pow(base, factor)
     }
 
-    $scope.shortNumber = function (number, precision) {
-        let numberFormat = new Intl.NumberFormat()
-        if (number >= 1000000000)
-            return numberFormat.format($scope.round(number / 1000000000, precision != null ? precision : 1)) + str.billion_short
-        else if (number >= 1000000)
-            return numberFormat.format($scope.round(number / 1000000, precision != null ? precision : 1)) + str.million_short
-        else if (number >= 100000)
-            return numberFormat.format($scope.round(number / 1000, precision != null ? precision : 1)) + str.thousand_short
-        else if (number >= 1000)
-            return numberFormat.format($scope.round(number, precision != null ? precision : 2))
-        else
-            return $scope.round(number, precision != null ? precision : 4)
+    $scope.shortNumber = function(number, precision) {
+        let abs = Math.abs(number)
+        let result = number
+        let suffix = ""
+        if (abs >= 1000000000) {
+            result = number / 1000000000
+            suffix = str.billion_short
+        } else if (abs >= 1000000) {
+            result = number / 1000000
+            suffix = str.million_short
+        } else if (abs >= 1000) {
+            result = number / 1000
+            suffix = str.thousand_short
+        }
+        let intLen = Math.floor(Math.abs(result)).toString().length
+        precision = Math.min(precision != null ? precision : 4 - intLen, 4 - intLen)
+        if (precision < 0) precision = 0
+        let rounded = $scope.round(result, precision)
+        if (precision > 0) rounded = parseFloat(rounded)
+        return rounded + suffix
     }
 
     $scope.formatSec = function (sec) {
