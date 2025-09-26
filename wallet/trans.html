@@ -17,7 +17,7 @@
             <div ng-class="{'text-red': item.from == wallet.address(), 'text-green': item.from != username}">
                 {{(item.from == wallet.address() ? "-" : "+") + formatAmount(item.amount, item.domain)}}
             </div>
-            <p class="mt4 text2">{{formatPrice(item.amount * item.price)}}</p>
+            <p class="mt4 text2">{{formatPrice(item.amount * item.token.price)}}</p>
         </div>
     </div>
 </div>

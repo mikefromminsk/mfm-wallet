@@ -10,12 +10,12 @@ function openDeposit(domain, success) {
         }
 
         $scope.blockAddress = function () {
+            $scope.copy($scope.deposit_address)
             postContract("mfm-deposit", "deposit_address_block", {
                 domain: domain,
                 address: wallet.address()
             }, function (response) {
                 $scope.lock = response.lock
-                $scope.copy($scope.lock.deposit_address)
                 $scope.check('copy_address')
                 $scope.refresh()
             })

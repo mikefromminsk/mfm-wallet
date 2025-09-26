@@ -169,32 +169,19 @@ function hideKeyboard() {
 }
 
 function copy(text) {
-    if (navigator.clipboard && window.isSecureContext) {
-        // Современный метод
-        return navigator.clipboard.writeText(text).catch(err => {
-            console.error("Clipboard write failed:", err);
-        });
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        return navigator.clipboard.writeText(text)
     } else {
-        // Фолбэк для Safari и старых браузеров
-        let textArea = document.createElement("textarea");
-        textArea.value = text;
-
-        // скрываем элемент
-        textArea.style.position = "fixed";
-        textArea.style.top = "-1000px";
-        textArea.style.left = "-1000px";
-
-        document.body.appendChild(textArea);
-        textArea.focus();
-        textArea.select();
-
-        try {
-            document.execCommand("copy");
-        } catch (err) {
-            console.error("Fallback: Unable to copy", err);
-        }
-
-        document.body.removeChild(textArea);
+        const textArea = document.createElement("textarea")
+        textArea.value = text
+        textArea.style.position = "fixed"
+        textArea.style.opacity = "0"
+        document.body.appendChild(textArea)
+        textArea.focus()
+        textArea.select()
+        textArea.setSelectionRange(0, textArea.value.length)
+        document.execCommand("copy")
+        document.body.removeChild(textArea)
     }
 }
 

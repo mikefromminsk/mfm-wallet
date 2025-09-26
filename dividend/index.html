@@ -28,7 +28,7 @@
                     {{str.finish_epoch}}
                 </div>
                 <div class="row align-center-center" ng-show="gas.balance < reward.amount * 1.01">
-                    {{str.epoch}} {{epoch_number}} {{str.will_end_in.toLowerCase()}} {{formatTime((time - reward.time) / (gas.balance / reward.amount) - (time - reward.time))}}
+                    {{str.epoch}} {{epoch_number}} {{str.will_end_in.toLowerCase()}} {{formatTimeDiff((time - reward.time) / (gas.balance / reward.amount) - (time - reward.time))}}
                 </div>
                 <div class="col align-center-center"
                      ng-show="(account && account.balance > 0) || sumTrans() > 0"
