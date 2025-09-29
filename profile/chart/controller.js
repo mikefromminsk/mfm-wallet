@@ -86,7 +86,7 @@ function addChart($scope, app, key, accumulate_key) {
     }
 
     $scope.periods = ['M', 'H', 'D']
-    $scope.period_name = window.storage ? window.storage.getString(storageKeys.chart_period, 'H') : "H"
+    $scope.period_name = window.storage ? window.storage.getString(storageKeys.chart_period, "D") : "D"
     $scope.setPeriod = function (period_name) {
         $scope.period_name = period_name
         if (window.storage)
