@@ -15,36 +15,15 @@ function addSearch($scope) {
 
     $scope.search = function () {
         let search_text = $scope.search_text
-        let translations = []
-        if (search_text != '') {
-            for (const key of Object.keys(ticker)) {
-                const value = ticker[key].toLowerCase()
-                if (value.startsWith(search_text))
-                    translations.push(key)
-            }
-        }
-
-        if (translations.length > 0) {
-            postContract("mfm-token", "tokens", {
-                domains: translations.join(",")
-            }, function (response) {
-                $scope.tokens = response.tokens
-                $scope.$apply()
-            }, function () {
-            })
-        } else {
-            postContract("mfm-token", "search", {
-                search_text: search_text,
-                top: $scope.top_selected,
-            }, function (response) {
-                $scope.tokens = response.tokens
-                $scope.$apply()
-            }, function () {
-            })
-        }
+        postContract("mfm-token", "search", {
+            search_text: search_text,
+            top: $scope.top_selected,
+        }, function (response) {
+            $scope.tokens = response.tokens
+            $scope.$apply()
+        }, function () {
+        })
     }
-
-    $scope.search()
 
     $scope.tops = {
         volume24: str.top_exchange,
@@ -57,4 +36,6 @@ function addSearch($scope) {
         $scope.top_selected = key
         $scope.search()
     }
+
+    $scope.search()
 }

@@ -9,7 +9,11 @@
         <p>{{formatAmount(token.supply, token.domain, 0)}}</p>
     </div>
     <div class="row">
-        <p class="flex text2">{{str.circulation_supply}}</p>
+        <p class="text2">{{str.circulation_supply}}</p>
+        <img class="ml4 img12 img-gray" src="/mfm-wallet/img/chart.svg"
+             ng-show="isWrappedToken(token)"
+             ng-click="openChart('tokens', getTokenNetwork(token))">
+        <div class="flex"></div>
         <p>{{formatAmount(token.supply - supply.balance, token.domain, 0)}}</p>
     </div>
     <div class="row" ng-show="token.difficulty > 0">

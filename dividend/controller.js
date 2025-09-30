@@ -10,7 +10,9 @@ function openDividend(domain, success) {
                 "domain": wallet.vavilon,
                 "epoch_vavilon_stop_balance": $scope.participants ? $scope.participants.balance : 0
             }, function () {
-                showSuccessDialog(str.epoch_finished, $scope.refresh)
+                showSuccessDialog(str.epoch_finished, setTimeout(function () {
+                    $scope.refresh()
+                }, 1000))
                 $scope.finishRequest()
             }, $scope.finishRequest)
         }

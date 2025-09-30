@@ -1,3 +1,12 @@
+function getNetwork(token) {
+    let params = new URLSearchParams(token.delegate)
+    if (params.get("n") == "t")
+        return "usdt"
+    if (params.get("n") == "b")
+        return "bitcoin"
+    return null
+}
+
 function openDeposit(domain, success) {
     trackCall(arguments)
     showDialog("deposit", success, function ($scope) {
@@ -27,19 +36,10 @@ function openDeposit(domain, success) {
                 address: wallet.address(),
             }, function (response) {
                 $scope.token = response.token
-                $scope.network = getNetwork(response.token.delegate)
+                $scope.network = getNetwork(response.token)
                 $scope.deposit_address = getDepositAddress(response.token.delegate)
                 $scope.$apply()
             })
-        }
-
-        function getNetwork(delegate) {
-            let params = new URLSearchParams(delegate)
-            if (params.get("n") == "t")
-                return "usdt"
-            if (params.get("n") == "b")
-                return "bitcoin"
-            return null
         }
 
         function getDepositAddress(delegate) {

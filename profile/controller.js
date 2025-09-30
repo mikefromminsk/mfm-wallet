@@ -31,6 +31,10 @@ function openProfile(domain, success, mode) {
             return false
         }
 
+        $scope.getTokenNetwork = function (token) {
+            return new URLSearchParams(token.delegate).get("n")
+        }
+
         $scope.addToWallet = function () {
             addToWallet(domain, function () {
                 if (mode == "airdrop")
