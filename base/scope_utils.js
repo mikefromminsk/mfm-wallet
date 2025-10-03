@@ -42,8 +42,8 @@ function addScopeUtils($scope) {
             result = number / 1000
             suffix = str.thousand_short
         }
-        let intLen = Math.floor(Math.abs(result)).toString().length
-        precision = Math.min(precision != null ? precision : 4 - intLen, 4 - intLen)
+        let majorLength = Math.floor(Math.abs(result)).toString().length
+        precision = Math.min(precision != null ? precision : 4 - (majorLength - 1), 4 - (majorLength - 1))
         if (precision < 0) precision = 0
         let rounded = $scope.round(result, precision)
         if (precision > 0) rounded = parseFloat(rounded)

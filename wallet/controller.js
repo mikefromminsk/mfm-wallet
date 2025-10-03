@@ -43,14 +43,14 @@ function addWallet($scope) {
         ) * 20
     }
 
-    function loadTokens() {
+    function loadTokens(recalculateTotal) {
         postContract("mfm-token", "accounts", {
             address: wallet.address(),
         }, function (response) {
             setAccounts(response.accounts || [])
             $scope.showBody = true
             $scope.$apply()
-            loadMinerAccount()
+            loadMinerAccount(recalculateTotal)
         })
     }
 
@@ -94,8 +94,9 @@ function addWallet($scope) {
     let isDelayFinished = true
     let lastTotalBalance = 0
 
-    function setTotalBalance() {
-        if (!isDelayFinished) return
+    function setTotalBalance(recalculateTotal) {
+        if (!recalculateTotal)
+            if (!isDelayFinished) return
         let newTotalBalance = $scope.getTotalBalance()
         let precision = 4
         if (newTotalBalance > 100)
@@ -113,7 +114,7 @@ function addWallet($scope) {
     }
 
     $scope.selectAccount = function (domain) {
-        openProfile(domain, $scope.refresh)
+        openProfile(domain, refresh)
     }
 
     let lastRefreshTime = 0
@@ -123,7 +124,7 @@ function addWallet($scope) {
         $scope.subscribe("price", function () {
             const currentTime = Date.now()
             if ($scope.refresh && currentTime - lastRefreshTime >= refreshInterval) {
-                $scope.refresh()
+                refresh()
                 lastRefreshTime = currentTime
             }
             if ($scope.search)
@@ -154,7 +155,7 @@ function addWallet($scope) {
         })
     }
 
-    function loadMinerAccount() {
+    function loadMinerAccount(recalculateTotal) {
         postContract("mfm-miner", "account", {
             address: wallet.address(),
         }, function (response) {
@@ -163,12 +164,12 @@ function addWallet($scope) {
                 $scope.miner_gas_account = response.gas_account
                 $scope.$apply()
             }
-            setTotalBalance()
+            setTotalBalance(recalculateTotal)
         }, function () {
             $scope.miner_account = null
             $scope.miner_gas_account = null
             $scope.$apply()
-            setTotalBalance()
+            setTotalBalance(recalculateTotal)
         })
     }
 
@@ -201,29 +202,33 @@ function addWallet($scope) {
                 address: wallet.address()
             }, function (response) {
                 if (response.supply.delegate.startsWith("mfm-contract/mint"))
-                    openMiner(domain, $scope.refresh)
+                    openMiner(domain, refresh)
             })
-            $scope.refresh()
+            refresh()
         })
     }
 
     $scope.refresh = function () {
-        loadTokens()
+        refresh(true)
+    }
+
+    function refresh(recalculateTotal) {
+        loadTokens(recalculateTotal)
         loadTrans()
         loadAirdrops()
         loadRewards($scope)
     }
 
     if (wallet.address() != "") {
-        if ($scope.refresh)
-            $scope.refresh()
+        if (refresh)
+            refresh()
         $scope.subscribeAccount()
         subscribePrices()
     } else {
         $scope.trans = []
         $scope.showBody = true
         if (getTelegramUserId() != null) {
-            openTelegramLogin("", $scope.refresh)
+            openTelegramLogin("", refresh)
         }
     }
 }
