@@ -46,7 +46,7 @@ function openExchange(domain, is_sell, success) {
                 let placeDomain = $scope.is_sell ? domain : wallet.gas_domain
                 getPin(function (pin) {
                     wallet.calcUserPass(placeDomain, pin, function (pass) {
-                        postContract("mfm-token", "send", {
+                        postContract("mfm", "send", {
                             domain: placeDomain,
                             from: wallet.address(),
                             to: $scope.bot_address,

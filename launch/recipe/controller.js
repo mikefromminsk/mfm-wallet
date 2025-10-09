@@ -29,7 +29,7 @@ function openLaunchRecipe(domain, success) {
             const contractAddress = hashAddress(delegate)
             const CRAFT_SEED = "card wing home athlete regular post notice paddle isolate zone payment craft"
 
-            postContract("mfm-token", "send", { // create token
+            postContract("mfm", "send", { // create token
                 domain: domain,
                 to: contractAddress,
                 pass: calcStartPass(domain, contractAddress, CRAFT_SEED),

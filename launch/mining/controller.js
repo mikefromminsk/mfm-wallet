@@ -14,7 +14,7 @@ function openLaunchMining(domain, success) {
 
         $scope.launch = function () {
             $scope.startRequest()
-            postContract("mfm-token", "send", { // create token
+            postContract("mfm", "send", { // create token
                 domain: domain,
                 to: wallet.MINING_ADDRESS,
                 pass: calcStartPass(domain, wallet.MINING_ADDRESS, wallet.MINING_ADDRESS),

@@ -347,7 +347,7 @@ function addScopeUtils($scope) {
     }
 
     $scope.isWrappedToken = function (token) {
-        return token?.delegate?.startsWith("mfm-token/send")
+        return token?.delegate?.startsWith("mfm/send")
             && token?.delegate?.indexOf("&a=") != -1
     }
 

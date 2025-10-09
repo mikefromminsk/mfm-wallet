@@ -38,7 +38,7 @@ function openMiner(domain, success) {
                             domain: token.domain,
                             address: wallet.address(),
                         }, $scope.refresh, function () {
-                            postContract("mfm-token", "send", {
+                            postContract("mfm", "send", {
                                 domain: token.domain,
                                 to: wallet.address(),
                                 pass: wallet.calcUserStartPass(token.domain, pin),

@@ -15,7 +15,7 @@ function openAirdropCreate(domain, success) {
             let password = hash($scope.promoCode)
             let address = hashAddress(password)
             $scope.startRequest()
-            postContract("mfm-token", "send", {
+            postContract("mfm", "send", {
                 domain: domain,
                 to: address,
                 pass: calcStartPass(domain, address, password),
@@ -23,7 +23,7 @@ function openAirdropCreate(domain, success) {
             }, function () {
                 getPin(function (pin) {
                     wallet.calcUserPass(domain, pin, function (pass) {
-                        postContract("mfm-token", "send", {
+                        postContract("mfm", "send", {
                             domain: domain,
                             from: wallet.address(),
                             to: address,

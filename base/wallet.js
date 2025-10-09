@@ -114,7 +114,7 @@ var wallet = {
                 error("invalid password")
             }
         }, function () {
-            postContract("mfm-token", "send", {
+            postContract("mfm", "send", {
                 domain: wallet.gas_domain,
                 to: address,
                 pass: calcStartPass(wallet.gas_domain, address, password)
@@ -169,7 +169,7 @@ var wallet = {
         }, function (response) {
             success(calcPass(domain, wallet.address(), password, response.account.prev_key))
         }, function () {
-            postContract("mfm-token", "send", {
+            postContract("mfm", "send", {
                 domain: domain,
                 to: wallet.address(),
                 pass: wallet.calcUserStartPass(domain, pin)

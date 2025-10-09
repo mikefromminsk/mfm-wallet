@@ -18,7 +18,7 @@ function openLaunchSimple(domain, success) {
         $scope.launch = function () {
             $scope.startRequest()
             getPin(function (pin) {
-                postContract("mfm-token", "send", { // create token
+                postContract("mfm", "send", { // create token
                     domain: domain,
                     to: wallet.address(),
                     pass: wallet.calcUserStartPass($scope.domain, pin),

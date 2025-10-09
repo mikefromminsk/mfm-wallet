@@ -53,7 +53,7 @@ function addNavigator($scope) {
     $scope.openExchange = function (domain, is_sell, success) {
         openExchange(domain, is_sell, success)
     }
-    $scope.openLaunchMining = function (domain, success) {
+    $scope.opeLaunchMining = function (domain, success) {
         openLaunchMining(domain, success)
     }
     $scope.openLaunchRecipe = function (domain, success) {

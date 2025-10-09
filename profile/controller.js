@@ -94,7 +94,7 @@ function openProfile(domain, success, mode) {
 
 function addToWallet(domain, success, error) {
     getPin(function (pin) {
-        postContract("mfm-token", "send", {
+        postContract("mfm", "send", {
             domain: domain,
             to: wallet.address(),
             pass: wallet.calcUserStartPass(domain, pin)

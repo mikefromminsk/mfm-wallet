@@ -79,4 +79,9 @@
         <div class="flex"></div>
         <p>{{formatAmount(analytics.trans_count)}} {{formatChange(analytics.trans_count7d / analytics.trans_count)}}</p>
     </div>
+    <div class="row">
+        <p class="text2">{{str.total_wrapped}}</p>
+        <div class="flex"></div>
+        <p>{{formatPrice(analytics.total_wrapped, 2)}}</p>
+    </div>
 </div>
