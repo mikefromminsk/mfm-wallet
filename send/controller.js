@@ -1,6 +1,6 @@
 function openSend(domain, to_address, amount, success, project) {
     trackCall(arguments)
-    showDialog("send", success, function ($scope) {
+    showDialog("send", null, function ($scope) {
         addPriceAmountTotal($scope)
 
         $scope.domain = domain
@@ -27,7 +27,7 @@ function openSend(domain, to_address, amount, success, project) {
                     }, function () {
                         $scope.finishRequest()
                         storage.pushToArray(storageKeys.send_history, $scope.to_address, 3)
-                        openTran(pass.split(":")[1], $scope.close)
+                        openTran(pass.split(":")[1], success)
                     }, $scope.finishRequest)
                 }, $scope.finishRequest)
             }, $scope.finishRequest)
