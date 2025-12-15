@@ -1,10 +1,10 @@
-function openLogin(success) {
+function openLogin(success, onclose) {
     trackCall(arguments)
-    if (wallet.address() != "") {
+    /*if (wallet.address() != "") {
         if (success) success()
         return
-    }
-    showDialog("login", success, function ($scope) {
+    }*/
+    showDialog("login", onclose, function ($scope) {
         addLogin($scope, $scope.close)
     })
 }

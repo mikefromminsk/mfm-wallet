@@ -125,15 +125,10 @@ var wallet = {
             getPin(function (pin) {
                 storage.setString(storageKeys.address, address)
                 storage.setString(storageKeys.passhash, encode(password, pin))
-                if (pin != null)
-                    storage.setString(storageKeys.hasPin, true)
                 if (success)
                     success()
             }, function () {
-                storage.setString(storageKeys.address, address)
-                storage.setString(storageKeys.passhash, password)
-                if (success)
-                    success()
+                
             })
         }
     },
@@ -150,9 +145,6 @@ var wallet = {
                 })
             }
         })
-    },
-    logout: function () {
-        storage.clear()
     },
     address: function () {
         return storage.getString(storageKeys.address)

@@ -1,11 +1,14 @@
-const storageKeys = {
+var storageKeys = {
     address: "STORE_ADDRESS_V2",
     passhash: "STORE_PASSHASH_V2",
-    hasPin: "STORE_HAS_PIN_V2",
     language: "STORE_LANGUAGE",
     send_history: "STORE_SEND_HISTORY",
     check_prefix: "STORE_CHECK_PREFIX_",
-    chart_period: "STORE_CHART_PERIOD_"
+    chart_period: "STORE_CHART_PERIOD_",
+    address2: "STORE_ADDRESS2_V2",
+    passhash2: "STORE_PASSHASH2_V2",
+    address3: "STORE_ADDRESS3_V2",
+    passhash3: "STORE_PASSHASH3_V2",
 }
 
 var storage = {

@@ -14,24 +14,42 @@
                  ng-hide="wallet.address()">
                 {{str.login_or_create_account}}
             </div>
-            <div class="row align-start-center ripple pv16"
-                 ng-show="wallet.address()"
-                 ng-click="copy(wallet.address())">
+            <div class="row align-start-center ripple pv16" ng-click="logout()"
+                 ng-show="storage.getString(storageKeys.address)">
                 <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/user-circle.svg">
-                <div class="flex">{{wallet.address()}}</div>
-                <img class="img20 img-white" src="/mfm-wallet/img/copy.svg">
+                <div class="flex">{{formatAddress(storage.getString(storageKeys.address))}}</div>
+                <p class="text-red">{{str.logout}}</p>
+            </div>
+            <div class="row align-start-center ripple pv16" ng-click="changeAddress2()"
+                 ng-show="storage.getString(storageKeys.address2)">
+                <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/user-circle.svg">
+                <div class="flex">{{formatAddress(storage.getString(storageKeys.address2))}}</div>
+                <p>{{str.change}}</p>
+            </div>
+            <div class="row align-start-center ripple pv16" ng-click="changeAddress3()"
+                 ng-show="storage.getString(storageKeys.address3)">
+                <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/user-circle.svg">
+                <div class="flex">{{formatAddress(storage.getString(storageKeys.address3))}}</div>
+                <p>{{str.change}}</p>
+            </div>
+            <div class="row align-start-center ripple pv16" ng-click="addAddress2()"
+                 ng-show="storage.getString(storageKeys.address) != '' && storage.getString(storageKeys.address2) == ''">
+                <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/plus.svg">
+                <div class="flex">{{str.add_account}}</div>
+            </div>
+            <div class="row align-start-center ripple pv16" ng-click="addAddress3()"
+                 ng-show="storage.getString(storageKeys.address2) != '' && storage.getString(storageKeys.address3) == ''">
+                <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/plus.svg">
+                <div class="flex">{{str.add_account}}</div>
             </div>
             <div class="row align-start-center ripple pv16" ng-click="openLanguages()">
                 <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/language.svg">
                 <p class="flex">{{str.language}}</p>
                 <p>{{languages[getLanguage()]}}</p>
             </div>
-            <div class="row align-start-center ripple pv16" ng-click="logout()" ng-show="wallet.address()">
-                <img class="img32 p8 mr8 img-red" src="/mfm-wallet/img/arrow-right.svg">
-                <p class=" text-red">{{str.logout}}</p>
-            </div>
             <div class="text1 pv16">{{str.help}}</div>
-            <a class="row align-start-center ripple text-white pv16" href="https://www.trustpilot.com/review/vavilon.org" target="_blank">
+            <a class="row align-start-center ripple text-white pv16"
+               href="https://www.trustpilot.com/review/vavilon.org" target="_blank">
                 <img class="img32 p8 mr8 img-gray" src="/mfm-wallet/img/star100.svg">
                 <p>{{str.rate_us}}</p>
             </a>

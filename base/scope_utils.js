@@ -1,6 +1,8 @@
 function addScopeUtils($scope) {
     $scope.location = location
     $scope.wallet = window.wallet
+    $scope.storage = window.storage
+    $scope.storageKeys = window.storageKeys
     $scope.user = window.user
     $scope.str = window.str
     $scope.ticker = window.ticker
