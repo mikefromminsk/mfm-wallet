@@ -46,19 +46,19 @@ function controller(callback) {
         window.$mdBottomSheet = $mdBottomSheet
         window.$mdDialog = $mdDialog
         addGlobalVars($scope, callback)
-        loadTranslations($scope, "/mfm-wallet/strings/base", function () {
+        loadTranslations($scope, "./strings/base", function () {
             $scope.str = window.str
             $scope.$apply()
         })
-        loadTranslations($scope, "/mfm-wallet/strings/str", function () {
+        loadTranslations($scope, "./strings/str", function () {
             $scope.str = window.str
             $scope.$apply()
         })
-        loadTranslations($scope, "/mfm-wallet/strings/ticker", function () {
+        loadTranslations($scope, "./strings/ticker", function () {
             $scope.ticker = window.ticker
             $scope.$apply()
         })
-        loadTranslations($scope, "/mfm-wallet/strings/message")
+        loadTranslations($scope, "./strings/message")
         loadTranslations($scope, "/mfm-pigeon/strings/ticker", function () {
             $scope.ticker = window.ticker
             $scope.$apply()
@@ -100,7 +100,7 @@ function addGlobalVars($scope, callback) {
 
 function showDialog(templateUrl, onClose, controller, onComplete) {
     window.$mdDialog.show({
-        templateUrl: (templateUrl[0] == "/" ? templateUrl : "/mfm-wallet/" + templateUrl) + "/index.html?v=15",
+        templateUrl: (templateUrl[0] == "/" ? templateUrl : "./" + templateUrl) + "/index.html?v=15",
         escapeToClose: false,
         multiple: true,
         isolateScope: false,
@@ -116,7 +116,7 @@ function showDialog(templateUrl, onClose, controller, onComplete) {
 
 function showBottomSheet(templateUrl, onClose, controller, onComplete) {
     window.$mdBottomSheet.show({
-        templateUrl: "/mfm-wallet/" + templateUrl + "/index.html?v=15",
+        templateUrl: "./" + templateUrl + "/index.html?v=15",
         escapeToClose: false,
         clickOutsideToClose: false,
         controller: function ($scope) {

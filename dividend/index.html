@@ -1,20 +1,20 @@
 <md-dialog class="fill col">
     <div class="row align-start-center p16 text1">
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="closeAll()">
-            <img class="img16 img-gray400" src="/mfm-wallet/img/home.svg">
+            <img class="img16 img-gray400" src="./img/home.svg">
         </div>
         <div class="flex row align-center">
             {{str.collect_gas}}</p>
         </div>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
-            <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+            <img class="img16 img-gray400" src="./img/close.svg">
         </div>
     </div>
     <div class="flex col scroll align-start-center">
         <div class="flex col block"
              style="background: radial-gradient(circle at top center, var(--accent) 0%,  rgba(255, 0, 0, 0) 30%);">
             <!--radial-gradient https://tonkeeper.com/ru/article/education-hub-liquidity-pools-on-ton-->
-            <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
+            <img class="refresh-icon img-gray" src="./img/close.svg">
 
             <div class="input-content">
                 <div class="col align-center-center" style="padding: 40px 0; ">
@@ -55,10 +55,10 @@
                     <p>{{formatAmount(reward.amount * (sumTrans() / participants.balance), wallet.gas_domain)}}</p>
                 </div>
 
-                <ng-include src="'/mfm-wallet/wallet/trans.html?v=15'"></ng-include>
+                <ng-include src="'./wallet/trans.html?v=15'"></ng-include>
 
                 <div class="nowrap-disabled"
-                     ng-include="'/mfm-wallet/dividend/faq/' + getLanguage() + '.html'"></div>
+                     ng-include="'./dividend/faq/' + getLanguage() + '.html'"></div>
             </div>
             <div class="space"></div>
         </div>
@@ -75,7 +75,7 @@
         {{str.participate}}
         <div class="row ml8 align-center-center"
              ng-show="rewardsReceived < maxRewards && isNotChecked(str.you_block_tokens)">
-            <img class="img16 img-yellow" src="/mfm-wallet/img/energy.svg">
+            <img class="img16 img-yellow" src="./img/energy.svg">
             <p>{{energyReward}}</p>
         </div>
     </div>

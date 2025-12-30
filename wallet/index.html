@@ -1,21 +1,21 @@
 <div class="flex col">
     <div class="row align-start-center p16 text1">
-        <img class="img40 p8" src="/mfm-wallet/img/star{{finishOnboardingPercent()}}.svg"
+        <img class="img40 p8" src="./img/star{{finishOnboardingPercent()}}.svg"
              ng-show="wallet.address()"
              ng-click="openOnboarding(refresh)">
-        <img class="img40 p8" src="/mfm-wallet/logo.png"
+        <img class="img40 p8" src="./logo.png"
              ng-hide="wallet.address()">
         <div class="flex row align-center text1">{{host}}</div>
-        <img class="img40 p8 img-gray ripple" src="/mfm-wallet/img/settings.svg" ng-click="openSettings(refresh)">
+        <img class="img40 p8 img-gray ripple" src="./img/settings.svg" ng-click="openSettings(refresh)">
     </div>
     <div class="flex col scroll align-start-center" ng-hide="wallet.address()">
         <div class="flex col">
-            <ng-include src="'/mfm-wallet/login/login.html?v=15'"></ng-include>
+            <ng-include src="'./login/login.html?v=15'"></ng-include>
         </div>
     </div>
     <div class="flex col scroll align-start-center" ng-show="wallet.address()">
         <div class="flex col block">
-            <img class="refresh-icon img-gray" src="/mfm-wallet/img/reload.svg">
+            <img class="refresh-icon img-gray" src="./img/reload.svg">
             <div class="input-content">
                 <div class="col align-center-center">
                     <div class="row align-center text0" style="margin-top: 40px;">
@@ -26,14 +26,14 @@
                         <div ng-style="getLogo(wallet.vavilon, 16)"></div>
                         <p class="ml8 text2">{{wallet.address()}}</p>
                         <div class="radius-default p8 ripple" ng-click="copy(wallet.address())">
-                            <img class="img16 img-gray400" src="/mfm-wallet/img/copy.svg">
+                            <img class="img16 img-gray400" src="./img/copy.svg">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="flex p16 col align-start-center ripple"
                          ng-click="openExchange(domain, refresh)">
-                        <img class="img16 img-gray" src="/mfm-wallet/img/exchange.svg">
+                        <img class="img16 img-gray" src="./img/exchange.svg">
                         <p class="mt8 text2">{{str.swap}}</p>
                     </div>
                     <div class="flex p16 col align-start-center ripple"
@@ -42,14 +42,14 @@
                             <img class="img16 img-gray"
                                  ng-class="{'img-yellow': isMining(),
                                             'img-red': isMiningPaused()}"
-                                 src="/mfm-wallet/img/energy.svg">
+                                 src="./img/energy.svg">
                             {{miner_account ? formatAmount(miner_gas_account.balance * 100, "", 2) : ""}}
                         </div>
                         <p class="mt8 text2">{{str.mining}}</p>
                     </div>
                     <div class="flex p16 col align-start-center ripple"
                          ng-click="openSend(domain, null, null, refresh)">
-                        <img class="img16 img-gray" src="/mfm-wallet/img/send.svg">
+                        <img class="img16 img-gray" src="./img/send.svg">
                         <p class="mt8 text2">{{str.send}}</p>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
                             <!--<div class="focus" ng-show="$index == 0 && isNotChecked('start_airdrop')"></div>-->
                             <div class="row align-start-center">
                                 <img class="img14"
-                                     src="/mfm-wallet/img/task.svg"
+                                     src="./img/task.svg"
                                      ng-class="{'img-gray': !airdrop.rewarded, 'img-green': airdrop.rewarded}">
                                 <p class="ml4">{{formatDomain(airdrop.domain)}}</p>
                             </div>

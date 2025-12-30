@@ -2,18 +2,18 @@
     <div class="row align-start-center p16 text1">
         <div class="row align-center-center img32 back-gray radius-default ripple"
              ng-click="openWebMiner(domain)">
-            <img class="img16 img-gray400" src="/mfm-wallet/img/mining.svg">
+            <img class="img16 img-gray400" src="./img/mining.svg">
         </div>
         <div class="flex row align-center-center gap8">
             <p>{{str.mining}}</p>
         </div>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
-            <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+            <img class="img16 img-gray400" src="./img/close.svg">
         </div>
     </div>
     <div class="flex col scroll align-start-center">
         <div class="flex col block">
-            <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
+            <img class="refresh-icon img-gray" src="./img/close.svg">
             <div class="col align-center-center relative">
                 <div class="col align-center-center" style="height: 200px">
                     <p class="text2">{{str.energy}}</p>
@@ -21,7 +21,7 @@
                         <img class="img30 img-gray"
                              ng-class="{'img-yellow': isMining(),
                                             'img-red': isMiningPaused()}"
-                             src="/mfm-wallet/img/energy.svg">
+                             src="./img/energy.svg">
                         <p class="text0"
                            ng-click="openSend(wallet.gas_domain, null, 0.1, refresh, 'mfm-miner')">
                             {{formatAmount(miner_gas_account ? miner_gas_account.balance * 100 : 0, null, 2)}}
@@ -90,7 +90,7 @@
                         <div class="flex col ml16">
                             <p>{{formatDomain(token.domain)}}</p>
                             <div class="row mt4 text2">
-                                <img class="img16 img-gray" src="/mfm-wallet/img/energy.svg">
+                                <img class="img16 img-gray" src="./img/energy.svg">
                                 <p>{{formatAmount(((token.difficulty / 1000000000) + 0.0003) / token.mint_reward * 100)}}</p>
                             </div>
                         </div>
@@ -100,7 +100,7 @@
                         </div>
                         <div class="row ml8 mr8 align-center-center"
                              ng-show="$index == 0 && rewardsReceived < maxRewards && isNotChecked(str.you_start_mining)">
-                            <img class="img16 img-yellow" src="/mfm-wallet/img/energy.svg">
+                            <img class="img16 img-yellow" src="./img/energy.svg">
                             <p>{{energyReward}}</p>
                         </div>
                         <button class="ml16 toggle"
@@ -110,9 +110,9 @@
                 </div>
             </div>
 
-            <ng-include src="'/mfm-wallet/wallet/trans.html?v=15'"></ng-include>
+            <ng-include src="'./wallet/trans.html?v=15'"></ng-include>
             <div class="nowrap-disabled mh16"
-                 ng-include="'/mfm-wallet/miner/faq/' + getLanguage() + '.html'"></div>
+                 ng-include="'./miner/faq/' + getLanguage() + '.html'"></div>
         </div>
     </div>
 

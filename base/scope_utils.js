@@ -286,7 +286,7 @@ function addScopeUtils($scope) {
                     (data.amount == 1 ? "" : " " + $scope.formatAmount(data.amount)) +
                     " " + $scope.formatDomain(data.domain))
                 setTimeout(function () {
-                    new Audio("/mfm-wallet/success/payment_success.mp3").play()
+                    new Audio("./success/payment_success.mp3").play()
                 })
             }
             if ($scope.refresh)

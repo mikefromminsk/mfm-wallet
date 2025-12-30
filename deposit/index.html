@@ -1,16 +1,16 @@
 <md-dialog class="fill col">
     <div class="row align-start-center p16 text1">
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="openSupport()">
-            <img class="img16 img-gray400" src="/mfm-wallet/img/support.svg">
+            <img class="img16 img-gray400" src="./img/support.svg">
         </div>
         <div class="flex row align-center">{{str.deposit}}</div>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
-            <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+            <img class="img16 img-gray400" src="./img/close.svg">
         </div>
     </div>
     <div class="flex col scroll align-start-center">
         <div class="flex col block nowrap-disabled">
-            <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
+            <img class="refresh-icon img-gray" src="./img/close.svg">
             <div class="flex col input-content">
                 <div class="row input-wrapper">
                     <div ng-style="getLogo(domain)"></div>
@@ -25,7 +25,7 @@
                     <div class="col align-center-center" style="position: relative"
                          ng-show="isCopyEnabled()">
                         <div class="focus" ng-show="isNotChecked('copy_address')"></div>
-                        <img class="img40 p8 ripple img-white" src="/mfm-wallet/img/copy.svg"
+                        <img class="img40 p8 ripple img-white" src="./img/copy.svg"
                                 ng-click="blockAddress()">
                     </div>
                 </div>

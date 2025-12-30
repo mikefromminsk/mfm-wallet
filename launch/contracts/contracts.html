@@ -4,39 +4,39 @@
          ng-click="selectContract('mining')">
         <div class="row">
             <p class="text0 flex">{{str.mining_token}}</p>
-            <img class="img20 img-white" src="/mfm-wallet/img/edit.svg" ng-show="contract">
+            <img class="img20 img-white" src="./img/edit.svg" ng-show="contract">
         </div>
         <div class="nowrap-disabled"
-             ng-include="'/mfm-wallet/launch/contracts/mining/' + getLanguage() + '.html'"></div>
+             ng-include="'./launch/contracts/mining/' + getLanguage() + '.html'"></div>
     </div>
     <div class="col p16 radius-default border-gray ripple gap16"
          ng-show="!contract || contract == 'craft'"
          ng-click="selectContract('craft')">
         <div class="row">
             <p class="text0 flex">{{str.craft_token}}</p>
-            <img class="img20 img-white" src="/mfm-wallet/img/edit.svg" ng-show="contract">
+            <img class="img20 img-white" src="./img/edit.svg" ng-show="contract">
         </div>
         <div class="nowrap-disabled"
-             ng-include="'/mfm-wallet/launch/contracts/craft/' + getLanguage() + '.html'"></div>
+             ng-include="'./launch/contracts/craft/' + getLanguage() + '.html'"></div>
     </div>
     <div class="col p16 radius-default border-gray ripple gap16"
          ng-show="!contract || contract == 'simple'"
          ng-click="selectContract('simple')">
         <div class="row">
             <p class="text0 flex">{{str.simple_token}}</p>
-            <img class="img20 img-white" src="/mfm-wallet/img/edit.svg" ng-show="contract">
+            <img class="img20 img-white" src="./img/edit.svg" ng-show="contract">
         </div>
         <div class="nowrap-disabled"
-             ng-include="'/mfm-wallet/launch/contracts/simple/' + getLanguage() + '.html'"></div>
+             ng-include="'./launch/contracts/simple/' + getLanguage() + '.html'"></div>
     </div>
     <div class="col p16 radius-default border-gray ripple gap16"
          ng-show="!contract || contract == 'wrapped'"
          ng-click="selectContract('wrapped')">
         <div class="row">
             <p class="text0 flex">{{str.simple_token}}</p>
-            <img class="img20 img-white" src="/mfm-wallet/img/edit.svg" ng-show="contract">
+            <img class="img20 img-white" src="./img/edit.svg" ng-show="contract">
         </div>
         <div class="nowrap-disabled"
-             ng-include="'/mfm-wallet/launch/contracts/wrapped/' + getLanguage() + '.html'"></div>
+             ng-include="'./launch/contracts/wrapped/' + getLanguage() + '.html'"></div>
     </div>
 </div>

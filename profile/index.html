@@ -1,48 +1,48 @@
 <md-dialog class="fill col">
     <div class="row align-start-center p16 text1">
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="closeAll()">
-            <img class="img16 img-gray400" src="/mfm-wallet/img/home.svg">
+            <img class="img16 img-gray400" src="./img/home.svg">
         </div>
         <div class="flex col align-center-center">
             <p>{{formatDomain(domain)}}</p>
             <p ng-show="formatDomain(domain).toLowerCase() != domain" class="text2">{{domain}}</p>
         </div>
         <div class="row align-center-center img32 back-gray radius-default ripple" ng-click="close()">
-            <img class="img16 img-gray400" src="/mfm-wallet/img/close.svg">
+            <img class="img16 img-gray400" src="./img/close.svg">
         </div>
     </div>
     <div class="flex col scroll align-start-center">
         <div class="flex col block">
-            <img class="refresh-icon img-gray" src="/mfm-wallet/img/close.svg">
+            <img class="refresh-icon img-gray" src="./img/close.svg">
             <div class="input-content" ng-show="domain != wallet.gas_domain">
-                <ng-include class="p0" src="'/mfm-wallet/profile/chart/chart.html?v=15'"></ng-include>
+                <ng-include class="p0" src="'./profile/chart/chart.html?v=15'"></ng-include>
                 <div class="row">
                     <div class="flex p16 col align-start-center ripple"
                          ng-click="openExchange(domain, refresh)">
-                        <img class="img16 img-gray" src="/mfm-wallet/img/exchange.svg">
+                        <img class="img16 img-gray" src="./img/exchange.svg">
                         <p class="mt8 text2">{{str.swap}}</p>
                     </div>
                     <div class="flex p16 col align-start-center ripple"
                          ng-show="isWrappedToken(token)"
                          ng-click="openDeposit(domain, refresh)">
-                        <img class="img16 img-gray" src="/mfm-wallet/img/plus.svg">
+                        <img class="img16 img-gray" src="./img/plus.svg">
                         <p class="mt8 text2">{{str.deposit}}</p>
                     </div>
                     <div class="flex p16 col align-start-center ripple"
                          ng-show="isMiningToken(token)"
                          ng-click="openMiner(domain, refresh)">
-                        <img class="img16 img-gray" src="/mfm-wallet/img/mining.svg">
+                        <img class="img16 img-gray" src="./img/mining.svg">
                         <p class="mt8 text2">{{str.mining}}</p>
                     </div>
                     <div class="flex p16 col align-start-center ripple"
                          ng-show="isCraftToken(token)"
                          ng-click="openRecipe(domain, refresh)">
-                        <img class="img16 img-gray" src="/mfm-wallet/img/craft.svg">
+                        <img class="img16 img-gray" src="./img/craft.svg">
                         <p class="mt8 text2">{{str.craft}}</p>
                     </div>
                     <div class="flex p16 col align-start-center ripple"
                          ng-click="openSend(domain, null, null, refresh)">
-                        <img class="img16 img-gray" src="/mfm-wallet/img/send.svg">
+                        <img class="img16 img-gray" src="./img/send.svg">
                         <p class="mt8 text2">{{str.send}}</p>
                     </div>
                 </div>
@@ -71,29 +71,29 @@
                 </div>
                 <div class="nowrap-disabled"
                      ng-show="isCraftToken(token)"
-                     ng-include="'/mfm-wallet/launch/contracts/craft/' + getLanguage() + '.html'"></div>
+                     ng-include="'./launch/contracts/craft/' + getLanguage() + '.html'"></div>
 
                 <div class="nowrap-disabled"
                      ng-show="isMiningToken(token)"
-                     ng-include="'/mfm-wallet/launch/contracts/mining/' + getLanguage() + '.html'"></div>
+                     ng-include="'./launch/contracts/mining/' + getLanguage() + '.html'"></div>
 
                 <div class="nowrap-disabled"
                      ng-show="isSimpleToken(token)"
-                     ng-include="'/mfm-wallet/launch/contracts/simple/' + getLanguage() + '.html'"></div>
+                     ng-include="'./launch/contracts/simple/' + getLanguage() + '.html'"></div>
 
                 <div class="nowrap-disabled"
                      ng-show="isWrappedToken(token)"
-                     ng-include="'/mfm-wallet/launch/contracts/wrapped/' + getLanguage() + '.html'"></div>
+                     ng-include="'./launch/contracts/wrapped/' + getLanguage() + '.html'"></div>
 
                 <div class="row gap8"
                      ng-show="airdrop">
                     <a class="back-gray radius-default img32 p8 hover-accent"
                        href="https://t.me/{{airdrop.telegram}}">
-                        <img class="img16 img-white" src="/mfm-wallet/img/telegram.svg">
+                        <img class="img16 img-white" src="./img/telegram.svg">
                     </a>
                     <!--<a class="back-gray radius-default img32 p8 hover-accent"
                        href="https://github.com/mikefromminsk/mfm-token" target="_blank">
-                        <img class="img16 img-white" src="/mfm-wallet/img/git.svg">
+                        <img class="img16 img-white" src="./img/git.svg">
                     </a>-->
                     <a class="back-gray radius-default img32 p8 hover-accent"
                        href="/mfm-landing/docs/?doc=dev.md" target="_blank">
@@ -106,8 +106,8 @@
                 </div>
             </div>
 
-            <ng-include src="'/mfm-wallet/profile/analytics.html?v=15'"></ng-include>
-            <ng-include src="'/mfm-wallet/profile/recommended.html?v=15'"></ng-include>
+            <ng-include src="'./profile/analytics.html?v=15'"></ng-include>
+            <ng-include src="'./profile/recommended.html?v=15'"></ng-include>
 
             <div class="input-content">
                 <div class="col">
